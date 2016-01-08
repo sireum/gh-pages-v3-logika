@@ -9,34 +9,52 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   IntelliJ-based Integrated Verification Environment (IVE)
+   IntelliJ-based Logika Integrated Verification Environment (LIVE)
    </b></big></big></big></big>
    </font>
 
-.. _intellij:
+.. _live:
 
-IntelliJ-based Integrated Verification Environment (IVE)
-########################################################
+IntelliJ-based Logika Integrated Verification Environment (LIVE)
+################################################################
 
 To aid the development of Logika proofs, you can use
-the Sireum IntelliJ plugin that provides an IVE for Logika.
-Below is a screenshot of the IVE:
+the Sireum IntelliJ plugin that includes LIVE.
+Here is a LIVE screenshot:
 
 .. raw:: html
 
+   <center>
    <a href = "../_static/syntax-message.png"><img src="../_static/syntax-message.png" width="800"/></a>
+   </center>
 
 Features
 ********
 
-The IVE provides the following features:
+LIVE provides the following features:
 
 * Syntax highlighting and error/warning reporting similar to most
   Integrated Development Environments (IDEs) for popular programming
   languages.
 
-* Verification engine running in the background as you type.
+* Convenient keyboard shortcuts for inserting logical symbols.
 
-* Can be used in conjunction with with IntelliJ's Scala Worksheet (``.sc`` files)
+* Verification engine running in the background to check proofs as you type.
+
+* Can be used in conjunction with IntelliJ's Scala Worksheet (``.sc`` files)
   or its Scala editor (``.scala`` files) to benefit from IntelliJ IDE features.
   The screenshot above illustrates how Logika IVE works with the Scala Worksheet.
+
+LIVE Install
+************
+
+
+Using LIVE
+**********
+
+Keyboard Shortcuts
+==================
+
+
+LIVE Configuration
+******************
