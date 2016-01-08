@@ -24,7 +24,7 @@ Below is a screenshot of the IVE:
 
 .. raw:: html
 
-   <a href = "../_images/syntax-message.png"><img src="../_images/syntax-message.png" width="800"/></a>
+   <a href = "../_static/syntax-message.png"><img src="../_static/syntax-message.png" width="800"/></a>
 
 Features
 ********
