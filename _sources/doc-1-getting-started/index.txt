@@ -180,7 +180,7 @@ Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.
 
 Auto Mode (``-a`` or ``--auto``)
-=================================
+================================
 
 The auto mode enables :ref:`auto justification/tactic <auto>`
 for deducing claims.
