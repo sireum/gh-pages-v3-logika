@@ -7,11 +7,14 @@
    </b></big></big></big></big>
    </font>
 
-----
-
 Sireum Logika Documentation
 ###########################
 
+The Sireum Logika tool is distributed under the
+`Simplified BSD <https://github.com/sireum/v3/blob/master/license.md>`__
+License.
+
+----
 
 .. toctree::
    :maxdepth: 2
