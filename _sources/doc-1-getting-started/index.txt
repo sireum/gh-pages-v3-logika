@@ -41,7 +41,7 @@ or `Homebrew <http://brew.sh>`__::
     brew install wget
 
 On Windows, it is best to install `MSYS2 <https://msys2.github.io>`__ (64-bit)
-and use its MSYS2 shell to install the above tools as follows
+and use its MSYS2 ``bash`` shell to install the above tools as follows
 (open MSYS2 shell from the Windows start menu's MSYS2 64bit group)::
 
    pacman -S git unzip wget
