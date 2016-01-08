@@ -20,29 +20,43 @@
 Getting Started
 ###############
 
-System Requirements
-*******************
+Prerequisites
+*************
 
-Logika runs on 64-bit OS X, Linux, and Windows operating systems
+Logika runs on **64-bit** Mac OS X, Linux, and Windows operating systems
 (tested on OS X 10.11, Ubuntu 14.04, and Windows 10).
 
 On all systems, it requires the following tools:
 `git <https://git-scm.com>`__, ``bash``, ``unzip``, ``wget``.
 
-These tools are available on most Linux distributions.
+Mac OS X
+========
 
-On OS X, you can install ``wget`` using
-`MacPorts <https://www.macports.org>`__::
+On OS X, you can install ``wget`` using:
 
-    sudo port install wget
+* `MacPorts <https://www.macports.org>`__::
 
-or `Homebrew <http://brew.sh>`__::
+      sudo port install wget
 
-    brew install wget
+  or
+
+* `Homebrew <http://brew.sh>`__::
+
+      brew install wget
+
+Linux
+=====
+
+These tools are available on most Linux distributions either by default or
+through the distribution package manager.
+
+
+Windows
+=======
 
 On Windows, it is best to install `MSYS2 <https://msys2.github.io>`__ (64-bit)
-and use its MSYS2 ``bash`` shell to install the above tools as follows
-(open MSYS2 shell from the Windows start menu's MSYS2 64bit group)::
+and use its MSYS2 ``bash`` shell to install the above tools.
+First, open MSYS2 ``bash`` shell from the Windows start menu's MSYS2 64bit group)::
 
    pacman -S git unzip wget
 
