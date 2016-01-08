@@ -1,0 +1,2231 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Logika: Programming Logics
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   Loop, Invariants, Induction
+   </b></big></big></big></big>
+   </font>
+
+
+.. _loops-invariants-induction:
+
+Loops, Invariants, Induction
+############################
+
+At the end of the previous chapter, we saw that a function that recursively
+calls ("restarts") itself reuses its own pre- and post-conditions to deduce the
+knowledge gained from the recursions.
+A *loop* is a command that restarts itself over and over, and it is like a
+function that restarts itself over and over.
+
+If we think of a loop as a function that restarts itself each iteration, then
+we must ask, "What are the pre- and post-conditions?"
+Since the loop iterations follow one another, it must be that the
+*post-condition* from the end of the previous iteration is the exactly the
+*pre-condition* for starting the next iteration -- the loop's "pre" and "post"
+conditions are one and the same.
+The loop's pre-post-condition is called the loop's *invariant*.
+We will develop this idea and other important ideas in this chapter.
+
+
+
+While Loops
+***********
+
+In the previous chapter, we saw how factorial is defined as a recurrence::
+
+  0! == 1
+  n! == (n-1)! * n,   for  n > 0
+
+But we can understand factorial as a repeated product: for integer ``n > 0``::
+
+  n! == 1 * 2 * 3 * ...up to... * n
+
+It is easy to write a loop program that computes the repeated product:
+
+.. code-block:: python
+
+   n = readInt("Type a nonnegative int: ")
+   assert n >= 0
+   i = 0
+   fac = 1
+             
+   while i != n :
+       i = i + 1
+       fac = fac * i
+   
+   print n, fac
+
+The loop adjoins the multiplications, ``*1``, ``*2``, ``*3``, etc., to the
+running total, ``fac``, until the loop reaches ``i == n``.
+Consider some execution cases::
+
+  n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0! 
+  n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
+  n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
+  n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
+  n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4!
+  . . . 
+  the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
+  
+For input, ``n == 4``, the loop computes correctly ``4!`` in 4 iterations
+because the loop computes correctly ``3!`` in 3 iterations --
+*the fourth loop iteration builds upon the work of the previous three*.
+This is the standard use of a loop: each loop iteration builds on the previous
+iterations to move one step closer to the final goal.
+
+We should always ask this crucial question about every loop we write:
+
+    Say that the loop has been running for some iterations; what has it accomplished so far?
+
+For the factorial example, the response is: 
+"after ``i`` iterations, variable ``fac`` has the value, ``i!``, that is,
+``fac == i!``."
+
+This answer is important, because it reveals the strategy the loop uses to reach
+its goal in stages: as ``i`` counts upwards towards ``n``, ``fac == i!``
+repeatedly holds true.
+Because the loop stops when ``i == n``, this means the loop will achieve its
+goal: ``fac == n!``.
+
+The answer to the "crucial question" listed above is the loop's
+*invariant property*.
+Now, why is it an invariant, like the global-variable invariants from the
+previous chapter?
+
+This is because *the output from the loop's prior iterations flows into the
+loop's next iteration*.
+So, whatever is accomplished looks the same, iteration after iteration after
+iteration.
+This is a logical property that can be proved:
+
+We deduce the invariant property on the factorial-loop body like this:
+
+.. code-block:: python
+
+   """{ fac == i! }"""   (we have conducted  i  iterations so far)
+   i = i + 1
+   """
+   { 1. i == i_old + 1          premise
+     2. fac == (i_old)!         premise 
+     3. fac == (i-1)!           algebra 2 1 }
+   """
+   fac = fac * i
+   """
+   { 1. fac == fac_old * i      premise
+     2. fac_old == (i-1)!       premise
+     3. fac == (i-1)! * i       subst 2 1
+     4. fac == i!               definition of  i! }
+   """    (we have completed one more iteration and the invariant reappears)
+
+The assertion that results from doing one more loop iteration is the *same* as
+the assertion we had when we started the iteration!
+Of course, the loop counter, ``i``, gets larger by one, meaning that we are
+closer to achieving the final goal, but the changing values of ``fac`` and ``i``
+ensure that ``fac == i!`` remains true: "after ``i`` iterations, ``fac`` has
+value ``i!``."
+
+This property holds true --- it is *invariant* for no matter how many times the
+loop repeats.
+*The invariant property documents the loop's structure -- how the loop achieves
+its goal*.
+It is a one-line summary of the code, and for this reason it is valuable
+documentation, whether it is stated in English words or in algebra symbols.
+
+If we think of a program as an electronic circuit, where knowledge flows along
+the wires instead of voltage, then a loop program is a feedback circuit, where
+a voltage, ``I``, is forced backwards into the circuit's entry::
+
+       I|
+         v         I
+   +->while B : ---->
+   |   I|         
+   |    v        
+   |    C        
+  I|    |
+   +----+
+
+The voltage (knowledge) level, ``I``, must be stable along the back arc of the
+circuit, else the circuit will oscillate and misbehave.
+A loop works the same way ---for the loop's iterations to progress towards a
+goal, there must be stable knowledge along the back arc.
+The invariant property is actually quite natural.
+Consider this sequence of commands, which computes ``3!``:
+
+.. code-block:: python
+
+   n = 3
+   i = 0
+   fac = 1
+   """{ i == 0  ^  fac == i!  }"""
+   i = i + 1
+   fac = fac * i
+   """{ i == 1  ^  fac == i!  }"""
+   i = i + 1
+   fac = fac * i
+   """{ i == 2  ^  fac == i!  }"""
+   i = i + 1
+   fac = fac * i
+   """{ i == 3  ^  fac == i!  }"""
+   print n, fac
+
+This little example is just the loop repeated three times.
+The invariant, ``fac == i!``, is critical to the success of the computation.
+Notice how the knowledge generated by completing one iteration "feeds into"
+the next iteration.
+And, after each iteration, that knowledge is that ``fac == i!``.
+
+When the loop for factorial quits, what do we know?
+
+.. code-block:: python
+
+   n = readInt("Type a nonnegative int: ")
+   assert n >= 0
+   """{ n >= 0 }"""
+   i = 0
+   fac = 1
+   """{ fac == i! }"""
+             
+   while i != n :
+       """{ fac == i! }"""
+       i = i + 1
+       fac = fac * i 
+       """{ fac == i! }"""
+   
+   """{ ??? }"""
+   print n, fac
+
+For certain, when the loop quits after ``i`` iterations, we know that
+``fac == i!`` (``i`` remembers the number of loop iterations).
+But we also know that the loop's test has gone false, that is, ``~(i != n)``,
+that is, ``i == n``:
+
+.. code-block:: python
+
+   n = readInt("Type a nonnegative int: ")
+   assert n >= 0
+   i = 0
+   fac = 1
+   """{ fac == i! }"""
+   while i != n :
+       """{ fac == i! }"""
+       i = i + 1
+       fac == fac * i
+       """{ fac == i! }"""
+   
+   """
+   { 1. i == n     premise    (the loop's test has gone False)
+     2. fac == i!  premise    (the invariant holds at the end of each interation)
+     3. fac = n!   subst 1 2  (the loop accomplished its goal) }
+   """
+   print n, fac
+
+Since the loop terminated at the correct time, ``fac`` holds the correct answer.
+
+Here is a summary of the main points just made:
+
+* **A loop is a function that repeatedly calls itself.**
+  **(It is a** *tail-recursive* **function.)**
+
+* **The loop's invariant states a strategy for accomplishing a goal:**
+
+      the loop has been running for awhile; what has it accomplished so far?
+
+* **The loop's invariant is exactly the precondition for executing the loop's
+  body, and it is exactly the postcondition of what is generated by executing
+  the loop's body.**
+
+* **When the loop terminates, the falsity of the termination test coupled with
+  the invariant should imply that the loop has achieved its goal.**
+
+Even if you forget all about algebra and proofs, whenever you write a loop,
+*document the loop with its invariant stated in words*.
+If you are unable to state in words the invariant, then you don't understand
+yourself what your loop is doing.
+
+
+Law for While-Loops
+===================
+
+Here is the law we use for deducing the properties of a while-loop.
+It uses an invariant assertion, ``I``:
+
+.. code-block:: python
+
+   """{ ... I }"""  (we must prove this True before the loop is entered)
+   while B :
+     """
+     { invariant  I  
+        modifies  VARLIST   (the variables updated in  C) }
+     """
+     """
+     { 1. B   premise
+       2. I   premise       (the premises for the loop's body)
+       ... }
+     """
+     C
+     """{ ... I }"""        (we must prove  I  at the end of the body)
+   
+   """
+   { 1. ~B    premise
+     2. I     premise       (both  ~B  and  I  hold true when the loop terminates)
+     ... }
+   """
+
+That is, to deduce the knowledge produced by a while-loop (when we do not know
+in advance how many times the loop will iterate), we must deduce an invariant
+``I`` that:
+
+1. is proved true the first time we enter the loop
+
+2. is proved true at the end of the loop's body
+
+Then, no matter how many times (0,1,2,...) the loop repeats, we know that ``I``
+must hold true when the loop stops.
+We also know ``~B`` holds when the loop stops.
+
+Because the loop will update some variables in its body, we must know these
+variables' names, so that any premises other than the loop invariant that enter
+the loop body that mention these variables are cancelled.
+We see this below in an example:
+
+Here is the factorial example, reassembled to use the while-law:
+
+.. code-block:: python
+
+   """
+   { def  0! == 1             # these are the recurrences that define  n!
+     def  k! == (k-1)! * k }
+   """
+   n = readInt("Type a nonnegative int: ")
+   assert n >= 0
+   """{ 1. n >= 0                 premise  }"""
+   i = 0
+   fac = 1
+   """
+   { 1. i == 0                    premise
+     2. fac == 1                  premise
+     3. 0! == 1                   def (of 0!)
+     4. fac == i!                 algebra 1 2 3 }
+   """
+   while i != n :
+       """
+       { invariant  fac == i!
+         modifies i, fac }
+       """
+       # Here, the invariant is a legal premise, but 
+       #   i == 0,  fac == 1,  and  fac == 0!  ARE NOT,
+       #   because  i  and  fac  are modified by the loop's body
+       """
+       { 1. i != n                premise
+         2. fac == i!             premise  }
+       """
+       i = i + 1
+       """
+       { 1. i == i_old + 1        premise
+         2. i_old == i - 1        algebra 1
+         3. fac == (i_old)!       premise  # from the invariant
+         4. fac == (i-1)!         subst 2 3
+       }
+       """
+       fac = fac * i
+       """
+       { 1. fac == fac_old * i    premise
+         2. fac_old == (i-1)!     premise
+         3. fac == (i-1)! * i     subst 2 1
+         4. i! == (i-1)! * i      def (of i!)
+         5. fac == i!             algebra 3 4
+       }
+       """
+   # the loop ends here
+   
+   """
+   { 1. not(i != n)               premise
+     2. i == n                    algebra 1
+     3. fac == i!                 premise
+     4. fac == n!                 subst 2 3 }
+   """
+   print n, fac
+
+A challenge lies in formulating the appropriate invariant that states what the
+loop is accomplishing while it repeats.
+Invariant discovery is an art form; there cannot exist a mechanical algorithm to
+do this.
+(This is a key result of computability theory, the study of what problems are
+mechanically solvable.)
+So, we now study how to discover loop invariants.
+
+
+
+Examples of Invariant Discovery
+*******************************
+
+A key intellectual task in programming is stating a loop's invariant.
+The invariant tells us "what the loop is doing" as it iterates -- progresses in
+small steps -- towards its goal.
+
+**IMPORTANT: Saying what "the loop is doing" is different from saying what the
+loop "will do" before it starts or what the loop "has done" after it has
+finished.**
+We must ask the crucial question:
+
+    Say that the loop has been running for a while -- what has it accomplished so far?
+    
+The answer to this question, whether stated in English or algebra, is the
+invariant, the loop's true meaning.
+
+Following are some examples of invariant discovery.
+
+
+
+Multiplication as Repeated Addition
+===================================
+
+Most people forget that the Greeks and Arabs intended multiplication to be just
+repeated addition.
+So, what does this program print for ``z`` when it finishes?
+What is the loop's invariant?
+(How does the loop reach its goal?)
+
+.. code-block:: python
+
+   x = readInt("Type an int: ")
+   y = readInt("Type another: ")
+   z = 0
+   count = 0
+   
+   while count != x :
+       print "(a) x =", x, " y =", y, " count =", count, " z =", z
+       """
+       { invariant  ??? 
+         modifies   z, count }
+       """
+       z = z + y
+       count = count + 1
+   
+   print "(b) x =", x, " y =", y, " count =", count, " z =", z
+
+Apparently, this program computes ``x * y`` and saves it in ``z``.
+To understand, we execute a test case and watch what is printed::
+
+  Type an int: 3
+  Type another: 4
+  (a) x = 3  y = 4  count = 0  z = 0
+  (a) x = 3  y = 4  count = 1  z = 4
+  (a) x = 3  y = 4  count = 2  z = 8
+  (b) x = 3  y = 4  count = 3  z = 12
+
+The trace information in each row shows this pattern between the values of the
+variables:
+
+.. code-block:: python
+
+   count * y  == z
+
+This is what the loop is doing --- what is means --- ``z`` holds the value of
+``count * y``.
+Because the loop stops when ``count == x``, we conclude that ``z == x * y``.
+
+We can apply logic laws to prove that ``count * y == z`` is invariant for the
+loop's body:
+
+.. code-block:: python
+
+       """{ 1.  count * y == z          premise  }"""
+       z = z + y
+       """
+       { 1. z == z_old + y              premise
+         2. count * y == z_old          premise
+         3. (count + 1) * y  == z       algebra 2 1 }
+       """
+       count = count + 1
+       """
+       { 1. count == count_old + 1      premise
+         2. (count_old + 1) * y == z    premise
+         3. count * y == z              subst 1 2 }
+       """
+
+Now, we insert this subproof into the program's proof:
+
+.. code-block:: python
+
+   z = 0
+   count = 0
+   """
+   { 1. z == 0                          premise
+     2. count == 0                      premise
+     3. count * y == z                  algebra 1 2 }
+   """
+   while count != x :
+       """
+       { invariant  count * y == z
+         modifies   z  count   }
+       """
+       """{ 1.  count * y == z          premise  }"""
+       z = z + y
+       """
+       { 1. z == z_old + y              premise
+         2. count * y == z_old          premise
+         3. (count + 1) * y  == z       algebra 2 1 }
+       """
+       count = count + 1
+       """
+       { 1. count == count_old + 1      premise
+         2. (count_old + 1) * y == z    premise
+         3. count * y == z              subst 1 2 }
+       """
+   
+   """
+   { 1. ~(count != x)                   premise
+     2. count == x                      algebra 1
+     3. count * y == z                  premise
+     4. x * y == z                      subst 2 3 }
+   """
+
+
+Programming as Game Theory; Invariants as Strategies
+====================================================
+
+There are strong connections between algorithmics and game theory.
+Just about any programming problem can be thought of as a game to be played and
+won.
+An algorithm (program) is a list of moves for playing (and winning) the game.
+In particular, a loop program is a recipe for a game that is played in rounds,
+where each loop iteration is one round of the game.
+Parallel and synchronization algorithms are portrayed as multi-player games, and
+classic sequential programs, like the ones we study, are single-player games.
+
+For a single-player game that is coded as a loop, the loop's invariant tells the
+*strategy* the loop uses to to win the game.
+
+Consider the multiplication example in the previous section.
+It is a game, where the objective is place into ``z`` the value of ``x * y``,
+using only the ``+`` operator.
+To win the game, we must play multiple rounds of addition.
+We decide that we will do the following moves at each round:
+
+.. code-block:: python
+
+   z = z + y
+   count = count + 1
+
+until ``count == x``.
+Now, what is the strategy underlying our moves? The invariant tells us:
+
+.. code-block:: python
+
+   """{ count * y == z }"""
+   z = z + y
+   count = count + 1 
+   """{ count * y == z }"""
+
+That is, we are moving count-many copies of ``y`` into ``z``.
+Because the invariant holds at the start of each round, we can exploit it to
+move one more round.
+When ``count == x``, our rounds end, and our strategy implies that we won the
+game.
+
+
+Example: Controlling a Single Player Game: Pebbles
+==================================================
+
+Loops are often used as "controllers" for real-time and interactive systems.
+In what sense is a controller's invariant a "strategy"?
+Let's take a look:
+
+Here is a little computer game, where we have two boxes, an in-box and an
+out-box.
+Say the computer places some secret quantity of pebbles into the in-box.
+Each round, the game's player must guess a quantity of pebbles to move from the
+in-box to the out-box.
+Rounds are played over and over until either:
+
+* the in-box is empty -- the player wins
+
+* the player asks to move more pebbles than what remain in the in-box --
+  the player loses
+
+The computerized game uses a controller loop that enforces the rules of the
+game.
+The loop's invariant and a global invariant state the game's rules:
+
+.. code-block:: python
+
+   # One-player pebble game:
+   import random                       # Python random-number-generator module
+   total = random.randrange(1,100)     # choose a quantity between 1 and 99
+   assert total >= 1 and total <= 99   # this is  randrange(1,100)'s postcondition
+   
+   inbox = total
+   outbox = 0
+   win = False
+   lose = False
+   """{ globalinv   win == (inbox == 0) ^  ~(win and lose) }"""
+   
+   while not(win or lose) :
+       """
+       { invariant  inbox + outbox == total  and  inbox >= 0
+         modifies inbox, outbox, play }
+       """
+       # here,  ~win ^ ~lose  holds true,  thanks to the loop test
+       quantity = playerMakeMove()
+       if quantity > inbox :
+           lose = True     # globalinv still holds tree       
+       else :
+           inbox = inbox - quantity
+           outbox = outbox + quantity   # loop invariant still holds true
+           if inbox == 0 :
+               win = True  # this reestablishes the globalinv
+   
+   # Exited loop --- game's over.  We have these facts:
+   #   win or lose
+   #   inbox + outbox == total  and  inbox >= 0
+   #   win == (inbox == 0) ^  ~(win and lose)
+   
+   # We use these to deduce that 
+   #    (i) there is either a win or a loss (but not both)
+   #   (ii) a win means that  inbox == 0
+   #   (iii) no pebbles were lost when moving them from the inbox
+
+The controller's "strategy" (loop invariant) explains how the controller/loop
+enforces the rules of the game.
+
+But there is also a player of the game -- Once we code ``playerMakeMove``,
+we have a completed game.
+Here is the specification for the missing component:
+
+.. code-block:: python
+
+   def playerMakeMove():
+       """
+       { pre    True
+         post   move > 0
+         return move }
+       """
+
+Here are three implementations, all of which satisfy the specification:
+
+1. Implementation 1
+
+   .. code-block:: python  
+   
+      def playerMakeMove():
+        move = 1           
+        return move        
+                        
+2. Implementation 2
+
+   .. code-block:: python
+   
+      def playerMakeMove():          
+        import random                
+        move = random.randrange(1,10)
+        return move                  
+
+3. Implementation 3
+
+   .. code-block:: python
+   
+      def playerMakeMove();
+         move = readInt()
+         if move <= 0 :
+             move = -(move-1)
+      return move
+                                                               
+Which of the above codings will win most often?
+(From the player's perspective, the completed game would have this winning
+strategy: ``not lose`` and ``inbox + outbox == total`` and ``inbox >= 0``.
+That is, as long as each round begins and ends with the player "playing fair"
+and not losing, the player is on the path to a win.)
+
+The specifications and loop invariants help us analyze the program and show why
+it plays the game correctly.
+
+A Board Game: Global (Class) Invariant + Loop Invariant
+=======================================================
+
+Next, consider a board game like Sudoku:
+There is a data structure (a grid), and each round the player tries to insert a
+digit into one cell of the grid.
+The computerized game is built in a Model-View-Controller (MVC) architecture,
+where:
+
+* the grid is the Model module;
+
+* the loop that counts the rounds is the Controller module; and
+
+* the View module displays the grid and interacts with the player to read moves.
+
+Here is an outline of the Model of the Sudoku board:
+
+.. code-block:: python
+
+   # Model.py  --- model of N-by-N sudoku gameboard
+   grid = ...grid of N-rows and N-columns of ints and blank spaces...
+   
+   """
+   { globalinv   forall 0 <= row < N,  forall 0 <= i < N,
+                         i appears at most once in  grid[row]
+     globalinv   forall 0 <= col < N,  forall 0 <= i < N,
+                         i appears at most once in  grid[_][col] }
+   """  
+   # Recall that the methods below must preserve the global invariants!
+   
+   def insert(num, rowindex, colindex):
+       """
+       { pre   0 <= rowindex < N  and  0 <= colindex < N  and  0 <= num < N
+                     and  grid[rowindex][colindex] == " "
+         post  grid[rowindex][colindex] == num
+               and forall 0 <= r < N, 0 <= c < N, 
+                   (r != rowindex and c != colindex) -> grid[r][c] == grid_in[r][c] }
+       """
+       grid[rowindex][colindex] = num
+       if  not(global invariant stated above) :
+           grid[rowindex][colindex] = " "   # undo assignment
+           print "insertion error"          # a wasted move
+   
+   def gameNotOver():
+       """
+       { pre    True
+         post   ans == not(for all 0 <= r < N, 0 <= c < N,  grid[r][c] != " ")
+         return ans }
+       """
+       ...searches  grid  to find any " " values...
+
+The Model's global invariant enforces that the grid is always well formed, and the insert method enforces the invariant. This allows insert to be called repetitively, say, within a loop body.
+The Controller module is a loop that runs the rounds of the game, maintaining the game board, the score, and any other rules of play:
+
+.. code-block:: python
+
+   # Controller.py  ---  controller for Sudoku game:
+   import Model
+   
+   guesses = 0   # remembers how many total guesses the player makes
+   while Model.gameNotOver() :
+       """{ invariant ...all rules of play are enforced...  and  guesses >= 0  }"""
+       (numberToInsert, rowindex, colindex) = View.playerMakeMove()
+       Model.insert(numberToInsert, rowindex, colindex)
+       ... do any needed rules enforcement here ...
+       guesses = guesses + 1
+   
+   # Loop exits, and we have these facts:
+   #   not Model.gameNotOver()  --- see the method's postcondition
+   #   ...all rules of play are enforced...  and  guesses >= 0 
+   # Hence, the player has `won' with the `score' of  guesses
+
+For this simple example, the key invariants are the ones inside the Model.
+The Controller enforces a "protocol" between the player and the Model, ensuring
+that the Model's invariant as well as all other game rules are preserved.
+
+Two-player Games == Protocols
+=============================
+
+The rules for a multi-player game are called a *protocol* because the rules
+ensure a controlled interaction between the players.
+The game's controller enforces the protocol.
+*Temporal logic* is a form of symbolic logic used to define protocols.
+We can't study temporal logic here, but we can note that the loop invariant for
+a multiplayer game states a protocol that in real-life situations is precisely
+coded in temporal logic.
+
+Here is the controller for a two-player counting game, where the first player
+shouts a number and the second player, who hears the number, must shout a reply
+number such that the sum of the two is even valued:
+
+.. code-block:: python
+
+   total = 0 
+   while True :
+       """{ invariant  total % 2 == 0  }"""   # total  is even valued
+       request = ProcessOne.shoutNumber()
+       reply = ProcessTwo.replyNumber(request)
+       if (request + reply) % 2 == 0 :
+           total == total + (request + reply)
+       else :
+           ProcessOne.reset("try again")
+           ProcessTwo.reset("try again")
+
+Modules ``ProcessOne`` and ``ProcessTwo`` have methods for generating numbers,
+responses, and resets.
+The controller's invariant enforces the protocol --- the rules --- for playing
+the game (for enacting the controlled communication).
+
+A classic two-player game, like chess, operates with a Model module
+(the chess board) whose invariants enforce the rules of board layout and piece
+movement.
+The Controller module uses a loop that enforces the order of interaction between
+the players --- the protocol --- which might also include time constraints on
+the moves.
+The View module displays the state of the Model and forwards the players'
+communications to the controller.
+
+Division as Repeated Subtraction
+================================
+
+Back to more traditional number games:
+Maybe you remember that division was invented to represent repeated subtraction,
+e.g., "how many times can you subtract 4 from 20?
+(5) --- 4 goes into 20 five times --- 20 divided by 4 is 5 (with remainder 0)".
+
+Here is the program that does repeated subtraction like division is meant to do:
+
+.. code-block:: python
+
+   n = readInt("Type an nonegative int: ")
+   d = readInt("Type a positive int: ")
+   assert n >= 0  and  d > 0
+   q = 0
+   r = n
+   
+   while r >= d :
+       print "(a) n =", n, " d =", d, " q =", q, " r =", r
+       """
+       { invariant: ???    
+         modifies q r }
+       """
+       q = q + 1
+       r = r - d
+   
+   print "(b) n =", n, " d =", d, " q =", q, " r =", r
+   print n, "divided by", d, "is", q, "with remainder", r
+
+Here is a sample execution with trace information printed::
+
+  Type an nonegative int: 14
+  Type a positive int: 3
+  (a) n = 14  d = 3  q = 0  r = 14
+  (a) n = 14  d = 3  q = 1  r = 11
+  (a) n = 14  d = 3  q = 2  r = 8
+  (a) n = 14  d = 3  q = 3  r = 5
+  (b) n = 14  d = 3  q = 4  r = 2
+  14 divided by 3 is 4 with remainder 2
+
+This is a "numbers game", where we are allowed to use only ``+`` and ``-`` on
+the numbers.
+The underlying strategy (invariant) at point ``(a)`` is:
+
+.. code-block:: python
+
+   """{ invariant  (d * q) + r == n  }"""
+
+When the loop quits, that is, when there is no longer enough value in ``r`` to
+allow yet one more subtraction of ``q``, then the result is exactly the
+quotient-remainder that results from dividing ``n`` by ``d``.
+
+
+Averaging Test Scores
+=====================
+
+Even a task like summing scores and computing their average depends on a loop
+invariant:
+
+.. code-block:: python
+
+   count = 0  # how many scores read so far 
+   total = 0  # the points of all the scores read so far
+   processing = True
+   """{ total == 0  }"""
+   while processing :
+       """
+       { invariant  total == score_1 + score_2 + ...up to... + score_count
+         modifies  processing, total, count }
+       """
+       score = readInt("Type next score (-1 to quit): ")
+       if score < 0 :
+           processing = False
+           """{ total == score_1 + score_2 + ...up to... + score_count }"""
+       else :
+           total = total + score
+           """{ total == score_1 + score_2 + ...up to... + score_count+1 }"""
+           count = count + 1 
+           """{ total == score_1 + score_2 + ...up to... + score_count }"""
+   
+   """{ total == score_1 + score_2 + ...up to... + score_count }"""
+   print "The average is", (float(total) / count)  # compute a fractional average
+
+``total`` holds the sum of the scores read so far: when ``count`` is 1,
+``total`` holds the sum of one score;
+when ``count`` equals 2, ``total`` holds the sum of two scores, and so on.
+We write the pattern like this:
+
+.. code-block:: python
+
+   total  =  score_1 + score_2 + ...up to... + score_count
+
+Here, ``score_i`` denotes the input score that was read at the loop's i-th
+iteration.
+
+When the loop starts, there are no scores saved in ``total``.
+In a technical, default sense, the sum of
+``total = score_1 + ...up to... + score_0`` is an "empty sum", which is treated
+by mathematicians as 0.
+(You can't count from 1 "up to" 0 ---it is an empty range of values.)
+This means the invariant holds for zero iterations of the loop, which allows us
+to enter the loop and then prove that the invariant is preserved as the loop
+repeats and then quits.
+
+
+Reversing a Word
+================
+
+Let's make a function that reverses a word, ``w``, and returns the reversed
+word.
+The specification is
+
+.. code-block:: python
+
+   def reverse(w) :
+       """reverse reverses the letters in  w  and returns the answer"""
+       """
+       { pre    w  is a string 
+         post   ans == w[len(w)-1] w[len(w)-2] ...down to... w[1] w[0] 
+         return ans }
+       """
+
+How to do it?
+Think of it as a game: count through the letters of ``w`` and copy each letter
+to the front of variable string ``ans``. Round number ``i`` of the game would go
+
+.. code-block:: python
+
+   ans = w[i] + ans
+   i = i + 1
+
+When we apply this repeatedly, we get the desired behavior -- we win the game::
+
+  after 0 iterations:  w = "abcd"   i = 0   ans = ""
+  after 1 iteration:   w = "abcd"   i = 1   ans = "a"
+  after 2 iterations:  w = "abcd"   i = 2   ans = "ba"
+  after 3 iterations:  w = "abcd"   i = 3   ans = "cba"
+  after 4 iterations:  w = "abcd"   i = 4   ans = "dcba"
+
+The strategy for playing the rounds of the game is exactly the loop's invariant:
+the first ``i`` letters of ``w`` are saved in reverse order within ``ans``:
+
+.. code-block:: python
+
+   ans =  w[i-1] w[i-2] ...down to... w[0]
+
+You should check that this is indeed an invariant property of the proposed loop
+body above.
+This completes the function:
+
+.. code-block:: python
+
+   def reverse(w) :
+       """reverse reverses the letters in  w  and returns the answer"""
+       """
+       { pre    w  is a string 
+         post   ans == w[len(w)-1] w[len(w)-2] ...down to... w[1] w[0] 
+         return ans }
+       """
+       ans = ""
+       i = 0
+       """
+       { 1. ans == ""                                                       premise
+         2. ans == w[i-1] w[i-2] ...down to... w[0]                         algebra 1
+            # "-1 down-to 0" is an empty range of characters from  w
+       }
+       """
+       while i != len(w) :
+           """
+           { invariant  ans ==  w[i-1] w[i-2] ...down to... w[0]
+             modifies  ans, i }
+           """
+           ans = w[i] + ans
+           """
+           { 1. ans == w[i] + ans_old                                       premise
+             2. ans_old == w[i-1] w[i-2] ...down to... w[0]                 premise
+             3. ans == w[i] + w[i-1] w[i-2] ...down to... w[0]              algebra 1 2 }
+           """
+           i = i + 1
+           """
+           { 1. i == i_old + 1                                              premise
+             2. ans == w[i_old] + w[i_old-1] w[i_old-2] ...down to... w[0]  premise
+             3. i_old == i - 1                                              algebra 1
+             4. ans == w[i-1] w[i-2] ...down to... w[0]                     subst 3 2
+           }
+           """
+   
+       """
+       { 1. i = len(w)                                                      premise
+         2. ans ==  w[i-1] w[i-2] ...down to... w[0]                        premise
+         3. ans ==  w[len(w)-1] w[len(w)-2] ...down to... w[0]              subst 1 2 }
+       """   # the function's postcondition is proved
+       return ans
+
+The ellipsis (``...down to...``) in the invariant is a bit imprecise;
+we can construct the proof more precisely with the assistance of these two
+recurrences, which we write in the same style that we used to define factorial
+(``n!``)::
+
+  rev(w, ans, 0)    if  ans == ""
+  rev(w, ans, k+1)  if  rev(w, a', k) and  ans == w[k] + a'
+
+That is, ``rev(w, a, i)`` says that the first ``i`` letters of string ``w`` are
+saved in reverse order in string ``a``, that is,
+
+  rev(w, a, i)  exactly when  a == w[i-1] + w[i-2] + ...downton... + w[0]
+
+We use the recurrence to prove that the loop's invariant is ``rev(w, ans, i)``:
+
+.. code-block:: python
+
+   """
+   { def rev(w, ans, 0)    if  ans == ""
+     def rev(w, ans, k+1)  if  rev(w, a', k) and  ans == w[k] + a' }
+   """
+   
+   def reverse(w) :
+       """reverse reverses the letters in  w  and returns the answer"""
+       """
+       { pre    w  is a string  
+         post   rev(w, ans, len(w))
+         return ans }
+       """
+       ans = ""
+       i = 0 
+       """
+       { 1. ans == ""                                                      premise
+         2. rev(w, ans, 0)  if  ans == ""                                  def
+         3. rev(w, ans, 0)                                                 ife 2 1   # "if elimination"
+         4. i == 0                                                         premise
+         5. rev(w, ans, i)                                                 subst 4 3 }
+       """
+       while i != len(w) :
+           """
+           { invariant  rev(w, ans, i)
+             modifies  ans, i }
+           """
+           ans = w[i] + ans
+           """
+           { 1. ans == w[i] + ans_old                                      premise
+             2. rev(w, ans_old, i)                                         premise
+             3. rev(w, ans_old, i) and  ans == w[i] + ans_old              andi 2 1
+             4. rev(w, ans, i+1)  if  rev(w, a', i) and  ans == w[i] + a'  def
+             5. rev(w, ans, i+1)                                           ife 3 4 }
+           """
+           i = i + 1
+           """
+           { 1. i == i_old + 1                                             premise
+             2. rev(w, ans, i_old+1)                                       premise
+             3. rev(w, ans, i)                                             subst 1 2 }
+           """
+   
+       """
+       { 1. not(i != len(w))                                               premise
+         2. rev(w, ans, i)                                                 premise
+         3. i == len(w)                                                    algebra 1
+         4. rev(w, ans, len(w))                                            subst 3 2 }
+       """ # the function's postcondition is proved
+       return ans
+
+Recurrences are the standard way of eliminating ellipses in mathematical
+statements.
+You may find them a bit difficult to digest at first, but recurrences are
+surprisingly powerful and form the basis of the Prolog programming language,
+which is the standard programming language for artifical intelligence.
+You will learn about Prolog later in the course.
+
+
+Squaring an Array's Numbers
+===========================
+
+Say that ``a`` is an array of ints, and say we write a loop that squares each of
+``a``'s elements:
+
+.. code-block:: python
+
+   a = [5, 10, 15, 20, ... ]
+   
+   i = 0
+   while i != len(a) :
+       """{ invariant: ??? }"""
+       a[i] = a[i] * a[i]
+       i = i + 1
+   print a
+
+In words, the loop's invariant is that
+
+    while the loop is running, ``a``'s elements, from 0 up to ``i``,
+    are squared, and the rest are unchanged
+
+It is a little difficult to state this precisely with algebra notation.
+Our first attempt might read like this:
+Let  ``a_in``  be the starting value of ``a``.  The invariant is
+
+.. code-block:: python
+
+   a[0] == a_in[0] * a_in[0]  ^
+     a[1] == a_in[1] * a_in[1]  ^
+       ... ^ a[i-1] == a_in[i-1] * a_in[i-1] 
+   ^
+   a[i] == a_in[i]             ^
+     a[i+1] == a_in[i+1]         ^
+       ... ^  a[len(a)-1] == a_in[len(a)-1]
+
+This is terribly wordy.
+
+There is a better way to represent the assertion (even better than a
+recurrence), using the logical operator, "forall".
+(We will see that the for-all operator is written FORALL (:math:`\forall`), but
+for now we use the words, "for all".)
+The invariant is
+
+.. code-block:: python
+
+   forall 0 <= j < i, a[j] == a_in[j] * a_in[j]
+   ^
+   forall i <= j < len(a), a[j] == a_in[j]
+
+That is, for all ``j`` in the range from ``0`` to
+``i-1, a[j] == a_in[j] * a_in[j]``, and for all ``j`` in the range, ``i`` to
+``len(a)-1, a[j] == a_in[j]``.
+This indicates clearly that array ``a`` is split into one segment whose elements
+are squared and one segment whose elements are not yet altered.
+
+When the loop quits, it is because ``i == len(a)``.
+In this situation, the range from ``i`` to ``len(a)-1`` is empty -- all the
+array's elements are squared.
+
+Finding a Letter in a Word
+==========================
+
+Here is a classic linear-search function, just the code alone, first:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """find  locates char  c  in string  s  and returns its index.
+          If  c  is not present in  s,  then  -1  is returned.
+       """
+       index = 0  # THE POSITION IN  s  WE ARE EXAMINING
+       found = False  # DID WE FIND  c  YET?
+   
+       while index != len(s)  and  not found :
+           # WHAT HAS HAPPENED SO FAR?  WHAT'S THE INVARIANT?
+           if  s[index] == c :
+               found = True
+           else :  
+               index = index + 1
+   
+       # LOOP FINISHED; DID WE FIND c ?
+       if not found :
+           index = -1
+       else :
+           pass
+       return index
+
+Sample calls are ``find("d", "abcded")``, which returns 3, and
+``find("d", "cbac")``, which returns -1.
+
+The function resembles data-base-search and optimization problems, where a loop
+repeats indefinitely until some quality of answer is reached.
+The loop invariant and exit text are critical to the function's correctness.
+
+It is not so easy to write the function's specification precisely; here is one
+version:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """find locates an occurrence of  c  in  s  and returns its index.
+          If  c  is not present in  s,  then  -1  is returned.
+          parameters: c - a letter;  s - a string
+       """
+       """
+       { pre    c  is a char  and  s  is a string
+         post   (index >= 0 --> s[index] == c)
+                and  (index == -1 --> (forall 0 <= i < len(s),  s[i] != c))
+         return index }
+       """  # Recall that  P --> Q  means "if P holds then so does Q"
+
+The postcondition states how the value of ``index`` communicates the result of
+the search.
+The postcondition's two clauses become the loop invariant and a global-variable
+invariant:
+
+.. code-block:: python
+
+       index = 0
+       found = False 
+       """{ globalinv  found --> s[index] == c }"""  # MUST ALWAYS HOLD TRUE
+       while index != len(s)  and  not found :
+           # so far,  c  is not any of  s[0], s[1], ..., s[index-1]
+           """
+           { invariant   forall 0 <= i < index, s[i] != c
+             modifies  found, index }
+           """
+           if  s[index] == c :
+               found = True
+           else :  
+               index = index + 1
+
+Based on how the loop terminates, the loop invariant and global invariant
+combine to prove the postcondition.
+Here is the completed analysis:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """find locates an occurrence of  c  in  s  and returns its index.
+          If  c  is not present in  s,  then  -1  is returned.
+          parameters: c - a letter;  s - a string
+       """
+       """
+       { pre    c is a char  and  s  is a string
+         post   (index >= 0 -->  s[index] == c)
+                  and  (index == -1 --> (forall 0 <= i < len(s),  s[i] != c))
+         return index
+       }"""  # Recall that  P --> Q  means "if P holds then so does Q"
+       
+       index = 0  # the position of the  letter  in  s  we are examining
+       found = False  # did we find  c  in  s  yet?
+       """{ globalinv  found --> s[index] == c }"""  # IMPORTANT
+   
+       while index != len(s)  and  not found :
+           # so far,  c  is not any of  s[0], s[1], ..., s[index-1]
+           """
+           { invariant forall 0 <= i < index,  s[i] != c
+             modifies  found, index }
+           """
+           if  s[index] == c :
+               found = True
+               # Reprove here that the global invariant is true (and it is! :-)
+               # We do NOT increment  index!  So, the loop invariant remains true.
+           else :  
+               index = index + 1
+               # Reprove here the loop invariant
+   
+           # The loop invariant is reproved in both cases.
+   
+       # We have exited the loop.  This happened for one of two reasons:
+       #  (i) found = True,  meaning that  s[index] == c, by the globalinv
+       #  (ii) index = len(s), meaning  c  was not found in  s
+       """
+       { 1. not(index != len(s) and not found)        premise  (test is false)
+         2. index == len(s) or found                  SYMBOLIC LOGIC 1
+         3. forall 0 <= i < index,  s[i] != c         premise   (loop invariant)
+         4. found --> s[index] == c                   globalinv }
+       """
+       if not found :
+           """
+           { 1. not found                             premise
+             2. index == len(s) or found              premise
+             3. index == len(s)                       SYMBOLIC LOGIC 1 2
+             4. forall 0 <= i < index,  s[i] != c     premise
+             5. forall 0 <= i < len(s), s[i] != c     subst 3 4 }
+           """
+           index = -1
+           """
+           { 1. index == - 1                          premise
+             2. forall 0 <= i < len(s), s[i] != c     premise
+             3.  AT THIS POINT, WE USE SYMBOLIC LOGIC TO PROVE  post }
+           """
+       else :
+           """
+           { 1. not(not found)                        premise
+             2. forall 0 <= i < index,  s[i] != c     premise
+             3. found --> s[index] == c               globalinv
+             4. s[index] == c                         SYMBOLIC LOGIC 1 3
+             5. AT THIS POINT, WE USE SYMBOLIC LOGIC TO PROVE  post }
+           """
+           pass
+   
+       # POSTCONDITION IS PROVED IN BOTH CASES:
+       """
+       { 1. (index >= 0 -->  s[index] == c)
+            and  (index == -1 --> forall 0 <= i < len(s),  s[i] != c)  premise }
+       """
+       return index
+
+The analysis requires deduction involving ``-->``, ``v`` and ``~`` that exceed
+our current knowledge.
+For this reason, we will soon pause our study of programming logic for a study
+of symbolic logic, that is, the "algebra of logical assertions".
+
+String Search, Variation 1
+--------------------------
+
+Here is the same function but with a different specification, which means a different loop invariant is needed:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """
+       { pre    c  is a character  and  s  is a string 
+         post   s[index] == c 
+                v  (index == -1 ^  forall 0<= i < len(s), s[i]!=c)
+        return  index }
+       """
+       index = 0
+       found = False
+   
+       while index != len(s)  and  not found :
+           """
+           { invariant
+               (~found  ^ forall 0<= i < index, s[i]!=c)
+                v (found  ^  c == s[index])
+             modifies  found, index
+           }
+           """
+           if  s[index] == c :
+               found = True
+               """{ found  ^  c == s[index] }"""
+           else :
+               index = index + 1
+               """
+               { ~found  ^
+                 c != s[0] ^  forall 0<= i < index, s[i]!=c)  }
+               """
+   
+       if not found :
+           index = -1
+       else :
+           pass
+       return index
+
+The specification's postcondition indicates that there are two possible outcomes
+from the function.
+By using symbolic logic, we can prove that the postcondition given here is
+logically equivalent (has the same knowledge content) as the one seen in the
+earlier example.
+
+String Search, Variation 2
+--------------------------
+
+Some loops use a ``break`` command.
+At such a break, the loop invariant must be proved true, just as if the loop had
+progressed to the end of its body.
+Here is string search, once more:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """
+       { pre    c  is a character  and  s  is a string
+         post   s[index] == c  
+                v  (index == -1  ^  forall 0<= i < len(s), s[i]!=c)
+        return  index }
+       """
+       index = 0
+       while index != len(s) :
+           """
+           { invariant  forall 0<= i < index, s[i]!=c
+             modifies  index }
+           """
+           if  s[index] == c :
+               # invariant still holds, since we did not alter  index
+               break
+           else :
+               index = index + 1
+   
+       # LOOP EXIT: the first premise below lists the possible exit conditions:
+       """
+       { 1. not(index != len(s)) or s[index] == c       premise
+         2. forall 0<= i < index, s[i]!= c              premise # invariant
+       }
+       """
+       if index == len(s) :
+           """
+           { 1. index == len(s)                         premise
+             2. forall 0<= i < index, s[i]!= c          premise
+             3. forall 0<= i < len(s), s[i]!= c         subst 1 2 }
+           """
+           index = -1
+       else :
+           """
+           { 1. not(index == len(s))                    premise
+             2. not(index != len(s)) or s[index] == c   premise
+             3. s[index] == c                           SYMBOLIC LOGIC 1 2 }
+           """
+           pass
+       return index
+
+There are two ways of exiting the loop, which are listed as the first premise at
+the loop's exit.
+
+
+Universal and Existential Assertions
+************************************
+
+Perhaps you expected this specification for the search function:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """find locates an occurrence of  c  in  s  and returns its index.
+          If  c  is not present in  s,  then  -1  is returned.
+          parameters: c - a letter;  s - a string 
+       """
+       """
+       { pre    c  is a character  and  s  is a string 
+         post   s[index] == c 
+                v ((index = -1) ^ c!=s[0] ^ c!=s[1] ^ ..upto.. ^ c!=s[len(s)-1])
+        return  index }
+       """
+
+The shortened form of stating,
+
+.. code-block:: python
+
+   c != s[0] ^ c !=s[1] ^ ...upto... ^ c!=s[index-1],
+
+is just
+
+.. code-block:: python
+
+   FORALL 0 <= i < index: c != s[i]
+
+There are standard laws for using ``FORALL``, which we learn later.
+
+The specification of the previous example now looks like this:
+
+.. code-block:: python
+
+   def find(c, s) :
+       """find locates an occurrence of  c  in  s  and returns its index.
+          If  c  is not present in  s,  then  -1  is returned. 
+          parameters: c - a letter;  s - a string 
+       """
+       """
+       { pre    c  is a character  and  s  is a string
+         post   s[index] == c  
+                v ((index = -1) ^  FORALL 0 <= i < len(s): s[i] != c)
+        return  index }
+       """
+
+We can use symbolic logic to prove that this specification has the same logical
+information content as the one in the previous section.
+
+There is a dual operator to ``FORALL`` that asserts existence of a value.
+To understand how it might be used, consider this variation of the previous
+example.
+
+(Before we get started, please remember that Python allows you to compute a
+"slice" (substring) of a string ``s``, like this:
+
+* For string, ``s``, ``s[:index]`` computes a substring that is ``s`` up to and
+  not including ``s[index]``:
+
+  .. code-block:: python
+  
+     x = "abcde"
+     y = x[:3]    # y = "abc"
+     z = x[:0]    # z = ""
+   
+* For string, ``s``, ``s[index;]`` computes a substring that is ``s`` from
+  ``s[index]`` to the end:
+
+  .. code-block:: python
+   
+     x = "abcde"
+     v = x[2:]   # v = "cde"
+     w = x[5:]   # w = ""
+.)
+   
+Here is the example:
+
+.. code-block:: python
+
+   def delete(c, s) :
+       """delete locates an occurrence of  c  in  s  and
+          removes it and returns the resulting string. 
+          If  c  is not in  s, a copy of  s  is returned, unchanged.
+          parameters: c - a letter;  s - a string
+          returns: answer, a new string that looks like  s  with  c  removed
+       """
+       """
+       { pre    c  is a letter and  s  is a string 
+         post   (s[index] == c  ^  answer == s[:index] + s[index+1:])
+                 v
+                (answer == s  ^  (FORALL 0 <= i < len(s): s[i] != c))
+         return answer }
+       """
+       index = 0 
+       found = False
+       answer = ""
+       while index != len(s)  and  not found :
+           if  s[index] == c :
+               found = True
+           else :
+               ans = ans + s[index]
+               index = index + 1
+   
+       if found :
+           answer = answer + s[index+1:]
+       else :
+           pass
+       return answer
+
+Examples: ``delete("d", "abcded")`` returns ``"abced"``, and
+``delete("d", "abc")`` returns ``"abc"``.
+You are welcome to deduce that the program meets its postcondition.
+(Reuse the loop invariant from ``find`` in the previous exercise.)
+
+But there is a technical problem -- variable ``index`` is a variable local to
+the function's body and is not part of the precondition nor is it part of the
+answer returned by delete -- it makes no sense to include it in the
+postcondition.
+Worse yet, its presence can lead to false deductions at the point where the
+function is called!
+
+(An example:
+
+.. code-block:: python
+
+   index = 2
+   t = "abcd"
+   u = delete("a", t)
+   """{ at this point, we certainly cannot assert that t[2] = "a"! }"""
+.)
+
+We must hide the name, ``index``, from the function's postcondition.
+We do it like this:
+
+.. code-block:: python
+
+   EXIST 0 <= i < len(s):  s[i] = c  ^  answer = s[:i] + s[i+1:]
+
+Read ``EXIST`` (:math:`\exists`) as "there exists";
+it is called an *existential quantifier*.
+So, the assertion reads, "there exists some value ``i``, such that ``i`` is
+``>=0`` and ``< len(s)`` such that ``s[i] = c ^ answer = s[:i] + s[i+1:]``".
+
+The existential quantifier hides the local variable name inside function delete
+so that it is not incorrectly used by the command that calls the function.
+We will study both ``FORALL`` and ``EXIST`` in Chapter 6.
+
+Partial and Total Correctness
+*****************************
+
+Consider again the proved factorial example:
+
+.. code-block:: python
+
+   def fact(n) :
+       """
+       { pre    n >= 0 
+         post   answer == n! 
+         return answer }
+       """
+       i = 0
+       answer = 1
+       """{ answer == i! }"""
+       while i != n :
+           """{ invariant  answer == i!    modifies  fac i }"""
+           answer = answer * (i+1)
+           """{ answer == i! * (i+1)  }"""
+           i = i + 1 
+           """{ answer == i! }"""
+   
+       """
+       { 1. i == n  
+         2. answer == i! 
+         3. answer == n! }
+       """
+       return answer
+
+What happens for ``fact(-1)``?
+No answer is returned because the precondition is violated and the loop is
+unable to terminate.
+What if we ignored the function's precondition -- the proof of the loop remains
+the same?!
+
+The deduction law for loops guarantees, *if the loop terminates*, then the
+postcondition must hold true.
+There can be silly applications of the loop law.
+Consider this faulty program:
+
+.. code-block:: python
+
+   def f(n) :
+       """
+       { pre  n is an int 
+         post answer == n! }
+       """
+       i = 0
+       answer = 1
+       """{ answer == i! }"""
+       while i != n :
+           """{  invariant  answer == i! }"""
+           pass  
+           """{ answer == i! }"""  # but no variables are modified!
+   
+       """
+       { 1. i == n 
+         2. answer = i! 
+         3. answer = n! }
+       """
+       return answer
+
+The proof of ``f``'s postcondition is *correct*:
+But the loop body preserves the invariant only because its body, ``pass``, is
+too timid to make any progress at all towards the goal.
+So, the loop never terminates.
+Now, if the loop *would* terminate, then the proof shows we will achieve the
+goal.
+But, for every argument but 0, the loop will not terminate.
+
+Because of this limitation of the loop law, it is called a *partial correctness*
+law.
+To ensure *total correctness*, that is, to prove the loop must terminate and
+satisfies its goal, we must use additional reasoning.
+The reasoning is usually based on a numerical, "count down" measure, which
+measures the number of iterations the loop needs to do before it quits and
+achieves its goal.
+In the first example,
+
+.. code-block:: python
+
+   def fact(n) :
+       """
+       { pre    n >= 0
+         post   answer == n!
+         return answer }
+       """
+       i = 0
+       answer = 1
+       """{ answer == i! }"""
+       while i != n :
+           """
+           { invariant             answer = i!
+             modifies              answer, i
+             termination measure   n - i  # must compute to a nonnegative int
+           }
+           """
+           answer = answer * (i+1)
+           i = i + 1 
+           """{ answer == i! }"""
+           # at this point, the termination measure has decreased
+   
+       # at this point, the termination measure equals 0
+       """{ i == n  ^  answer == i! }"""
+       return answer
+
+The numerical expression, ``n - i``, measures an upper bound of how many
+iterations are needed to cause the loop to quit.
+The value of the measure must always compute to a nonnegative integer, and
+after each iteration of the loop, the measure must decrease by at least 1.
+This means, after some finite number of iterations, the measure hits 0 and the
+loop stops.
+
+We won't develop this further....
+
+
+.. _induction:
+
+An Introduction to Mathematical Induction
+*****************************************
+
+There is a fundamental mathematical principle that underlies invariants and the
+loop law.
+It is called mathematical induction.
+We will introduce mathematical induction by examples seen earlier.
+
+Go back to the first section in this chapter. It says this:
+
+. . . factorial is defined as a recurrence::
+
+  0! == 1
+  n! == (n-1)! * n,   for  n > 0
+
+But we can understand factorial as a repeated product: for integer n > 0::
+
+  n! == 1 * 2 * 3 * ...up to... * n
+
+Now, *why* is it that ``k!`` *must* equal ``1 * 2 * 3 * ...up to... * k``,
+for any nonnegative ``k`` that we choose?
+
+A typical computer programmer would pretend that the definition of ``!`` is
+"computer code" and would invent some test cases to try out this claim.
+For example, we can test ``5!`` like this::
+
+  5! == (5-1)! * 5 == 4! * 5
+
+To finish this test, we must write out the test case for ``4!``.
+Before we grind out ``4!`` (and ``3!`` and ``2!`` and ...), we can make an
+important observation: if the test case for ``4!`` works out correctly, so will
+the test case for ``5!``, because::
+
+  5! == 4! * 5
+    and if  4! == 1 * 2 * 3 * 4
+    this means
+  5! == (1 * 2 * 3 * 4) * 5
+    and the claim will hold for 5!, too:
+  5! == 1 * 2 * 3 * 4 * 5
+
+This observation holds not only for ``5!`` but for every positive integer,
+``k``: *the success of the immediately smaller test case*, ``k - 1``,
+*leads to the success of* k.
+There is an important principle hiding here: there are only two test cases that
+matter: ``0!`` and ``k!``, for positive int ``k``.
+This will save us a lot of time testing the definition of ``!``.
+
+Now, go back to the beginning of this chapter, where there is a loop that
+computes factorial by repeated multiplications.
+There is this quote after the loop code:
+
+    The loop adjoins the multiplications, ``*1``, ``*2``, ``*3``, etc., to the
+    running total, ``fac``, until the loop reaches ``i == n``.
+    Consider some execution cases::
+    
+      n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0! 
+      n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
+      n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
+      n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
+      n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4!
+       . . . 
+      the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
+    
+    For example, when input ``n == 4``, the loop computes correctly ``4!`` in 4
+    iterations because the loop computes correctly ``3!`` in 3 iterations --
+    the fourth loop iteration builds upon the work of the previous three.
+    This is the standard use of a loop: each loop iteration builds on the
+    previous iterations to move one step closer to the final goal.
+
+The same principle is hiding in the loop code -- the correctness of a loop's
+computation depends on the correctness of the previous iterations.
+
+The principle inside the definition of factorial and the loop code is called
+*mathematical induction*.
+
+
+
+Formal Statement of The Mathematical Induction Proof Law
+========================================================
+
+The mathematical induction proof law was formulated almost the same time as the
+counting numbers (nonnegative ints), ``0``, ``1``, ``2``, ..., were invented.
+We should think of the nonnegative ints as a "chain" of numbers, "linked"
+together by ``+1``s.
+So, the successor to, say, ``5``, is ``6`` because the latter is linked to the
+former by ``+1``.
+Similarly, the predecessor to ``5`` is ``4``.
+Of course, ``0`` has no predecessor.
+
+Say that we have a question to answer, or a problem to solve, or a program to
+test, and there are an *infinite* number of possibilities/cases/tests to
+consider.
+We cannot consider all the possibilities one by one.
+How do we cover them all?
+Proof by mathematical induction shows us how:
+
+For the question/problem/program, say that we can arrange its
+possibilities/cases/tests so that they are ordered as ``0``, ``1``, ``2``,
+``3``,....
+To cover all the cases and prove our goal, we write two proofs:
+
+1. *Basis Case*: We calculate/deduce directly the correct result for for Case
+   ``0``.
+
+2. *Induction Case*: For a positive int, ``k``, we pretend/presume that Case
+   ``k - 1`` has a correct result.
+   (Remember, for the moment, we pretend this!)
+   This premise is called the induction hypothesis.
+   Then we use the induction hypothesis to calculate/deduce the correct result
+   for Case ``k+1``.
+
+With these two Cases worked completely, the mathematical induction proof law
+lets us conclude that,
+
+    **for all nonnegative ints**, ``n >= 0``, **Case** ``n`` **must be correct.**
+
+This is because every nonnegative int, ``n``, has a position in the infinite
+chain, ``0``, ``1``, ``2``, ``3``, ..., and we can use the Basis and Induction
+Cases to assemble a correctness proof for every nonnegative int, ``n``, we might
+pick, in terms of the correctness of all its predecessor ints in the chain.
+
+(To spell this out in complete detail, here is an example:
+We write correctness proofs for the Basis case and the Induction case.
+We then pick an int -- ``6``.
+Here is the correctness proof for ``6``:
+We use the Basis Case to assemble the correctess proof for ``0``.
+We then insert this proof in place of the induction hypothesis in the Induction
+Case to assemble a correctness proof for ``1``.
+We then insert *this proof*, *the proof for* ``1`` in place of the induction
+hypothesis in the Induction Case to assemble a correctness proof for ``2``.
+We then insert this proof in place of the induction hypothesis in the Induction
+Case to assemble a correctness proof for ``3``.
+And we continue doing this until we assemble the correctness proof for ``6``.
+Since all the ints are chained together, this technique assembles a proof for
+every nonnegative int.)
+
+
+
+First Example: Factorial is Repeated Multiplication
+===================================================
+
+We can now prove this claim: *for every nonnegative int*, ``n``,
+``n! == 1 * 2 * ...upto... * n``.
+
+(Note: we use the standard math convention that the "empty multiplication"
+equals one: ``1 * 2 * ...upto... * 0 == 1``.)
+
+We prove ``n! == 1 * 2 * ...upto... * n`` by mathematical induction:
+
+1. *Basis Case*: the argument, ``n``, is ``0``: so ``0! == 1``, and 
+   ``1 * 2 * ...upto... 0 == 1`` also.
+   The claim is proved for this case.
+
+2. *Induction Case*: the argument, ``n``, is a positive int:
+   assume the induction hypothesis, that is,
+   ``(n-1)! == 1 * 2 * ...up to... * (n-1)`` is proved for the predecessor case.
+   Now, consider ``n! == (n-1)! * n``.
+   We substitute the induction hypothesis into the previous definition, giving
+   us::
+
+     n! == (1 * 2 *...up to... * (n-1)) * n.
+     
+   But multiplication is associative, meaning that we have proved the result in
+   this case, too::
+   
+     n! == 1 * 2 * ...up to... * n
+     
+   This claim is proved.
+   
+Since both cases are proved correct, the claim is proved for all ``n >= 0``.
+
+We now realize that when we do a test of, say, ``5!``, by expanding it to
+``4! * 5``, and then we start the test of ``4!``, etc., what we are doing is
+applying the Induction case repeatedly, counting downwards to the Base case of
+``0!``.
+
+Testing Loop Code Systematically
+================================
+
+Many programmers test their loops by randomly choosing a few test cases that 
+"run the loop for awhile".
+When the tests finish, there is still no guarantee that the loop operates
+properly in all cases.
+Mathematical induction gives us the insight we need to test loop code
+systematically:
+
+    **Test the loop's body, not the entire loop.**
+    
+A loop body is "repeatable code" --- it repeats so that variables are repeatedly
+updated in a systematic way.
+To test the loop body, think this way:
+
+    **Pretend the loop has been running for awhile, working correctly.
+    Test that running the the loop's body one more time keeps the loop working
+    correctly.**
+
+This is like the induction case of a mathematical induction proof -- no matter
+how many repetitions occur, the loop is always working correctly.
+
+Better still, we should write a formula or expression or a sentence that
+describes the values of the variables used by the loop and what it means to
+"work correctly".
+Then we test this formula/sentence with the loop body.
+
+For example, here is the loop that does multiplication by repeated additions:
+
+.. code-block:: python
+
+   while count != x :
+       z = z + y
+       count = count + 1
+
+The loop updates ``z`` and ``count``.
+We can blindly test the loop, but we will save time if we ask what it means for
+the loop's body to "work correctly".
+The secret to the loop is that ``z`` is holding the value of a running product:
+
+.. code-block:: python
+
+   z == count * y
+
+So, if the values of ``z`` and ``count`` are set correctly reset when the loop
+body repeats, then the loop is correctly working, because it leads us back to
+``z == count * y`` (so that we are set for the next repetition).
+
+You pull out the loop body and test it, like this:
+
+.. code-block:: python
+
+   y = readInt()
+   z = readInt()
+   count = readInt()
+   assert z == count * y   # The test inputs you use must be related correctly
+                           #  so that we can test whether the loop body is
+                           #  ''repeatable code''
+   z = z + y
+   count = count + 1 
+   assert z == count * y   # Verify that the variables are still related correctly
+
+The formula, ``z == count * y``, *tells us what to test for* at the beginning
+and end of the loop body.
+(Many people test code, not knowing what they are testing for!)
+
+Of course, a repeatable test condition is a kind of invariant, and the above
+test methodology is the induction step of a mathematical induction proof.
+If you know what to test for, you can test an entire loop by just testing its
+body.
+
+OK, you probably don't want to extract loop bodies and write test harnesses for
+them.
+Well, you can at least add just one line of run-time monitoring code to your
+loop:
+
+.. code-block:: python
+
+   while count != x :
+       assert  z == count * y
+       z = z + y
+       count = count + 1
+
+Now, when you test the entire program, you are testing your loop bodies to
+ensure they are repeatable code.
+
+Proofs of Recursive Functions and Loops are Mathematical-Induction Proofs
+=========================================================================
+
+When we prove the correctness of a recursively defined function that
+"counts down" its argument, we are actually constructing a mathematical
+induction proof.
+Here is a small example:
+
+.. code-block:: python
+
+   def double(n) :
+       """double returns an int that is twice as large as its int argument"""
+       """
+       { pre    n >= 0
+         post   ans == 2 * n
+         return ans }
+       """
+       if n == 0 :
+           ans = 0
+           """
+           { 1. ans == 0                  premise
+             2. n == 0                    premise
+             3. ans == 2 * n              algebra 1 2 }
+           """
+       else :
+           """
+           { 1. not(n == 0)               premise
+             2. n >= 0                    premise
+             3. n - 1 >= 0                algebra 1 2 }
+           """
+           subans = double(n - 1)
+           """{ 1. subans == 2 * (n - 1)  premise }"""  # from the function call
+           ans = subans + 2
+           """
+           { 1. ans == subans + 2         premise
+             2. subans == 2 * (n - 1)     premise
+             3. ans ==  2 * n             algebra 1 2 }
+           """
+       """{ 1. ans == 2 * n               premise }"""  # both cases prove the postcondition
+       return ans
+
+The code and proofs are structured into two cases:
+
+1. *Basis Case*: ``n == 0``.
+   Then, ``ans == 0`` and ``ans == 2 * n``, as shown by the proof in the
+   then-arm.
+
+2. *Induction Case*: ``n > 0``.
+   *Presume that the recursive call*, ``subans = double(n - 1)``, **returns a
+   value that makes** ``subans == 2 * (n - 1)``.
+   Then, ``ans == subans + 2 == 2 * n``, as shown by the proof in the else-arm.
+
+Thanks to mathematical induction, the above efforts prove this result
+
+    *for all* ``n >= 0``, ``double(n) == 2 * n``.
+
+In this way, the proof of a recursively defined function's postcondition is a
+proof based on mathematical induction.
+
+Loops operate the same way.
+Here is the loop code for doubling an int:
+
+.. code-block:: python
+
+   n = readInt()
+   assert n >= 0
+   ans = 0
+   i = 0
+   """
+   { 1.  ans = 0                 premise
+     2.  i == 0                  premise
+     3.  ans == 2 * i            algebra 1 2 }
+   """  # prove invariant for initial loop entry
+   while i != n :
+       """
+       { invariant  ans == 2 * i
+         modifies   ans, i }
+       """
+       ans = ans + 2
+       i = i + 1
+       """
+       { 1. ans_old == 2 * i     premise
+         2. ans == ans_old + 2   premise
+         3. i == i_old + 1       premise
+         4. ans == 2 * i         algebra 1 2 3 }
+       """ # assuming the invariant on entry, reprove it after one more iteration
+   
+   """
+   { 1. not(i != n )             premise
+     2.  ans == 2 * i            premise
+     3.  ans == 2 * n            algebra 1 2 }
+   """ 
+   print ans
+
+The code and proofs are structured into two cases:
+
+1. *Basis Case*: The loop's body has iterated zero times.
+   Then, ``ans == 0`` and ``i == 0`` so, ``ans == 2 * i``, as worked in the
+   proof just before initial loop entry.
+
+2. *Induction Case*: *Presume that the loop's previous* ``k-1``-*many iterations
+   have worked correctly and have maintained* ``ans = 2 * i``.
+   Then, one more iteration sets ``ans = ans + 2`` and ``i = i + 1``, making
+   ``ans == 2 * i`` hold true at the end of ``k`` iterations, as proved in the
+   proof in the loop's body.
+
+Thanks to mathematical induction, these efforts prove this result:
+
+    *for all* ``k >= 0``, *if the loop iterates (repeats)* ``k`` *times*,
+    *then* ``ans == 2 * i`` *after the* ``k`` *iterations*.
+
+    But since variable ``i`` is counting the iterations, we have this stronger
+    result, too: *for all* ``i >= 0``, *if the loop iterates* ``i`` *times,
+    then* ``ans == 2 * i`` after the ``i`` iterations.
+
+In this way, the proof of a loop invariant property is a proof based on
+mathematical induction.
+
+More Program Analysis and Mathematical Induction
+================================================
+
+Here is another way of applying mathematical induction to systematic program
+analyis.
+
+Consider this example program, which reads a nonnegative int, ``n``, and
+computes the sum, ``0 + 1 + 2 + ... + n``, with a loop:
+
+.. code-block:: python
+
+   n = readInt("Type a nonnegative int: ")
+   assert n >= 0
+   i = 0
+   sum = 0
+   while i != n :
+       i = i + 1
+       sum = sum + i
+   print sum
+
+You might test this program with some sample input integers to see if it behaves
+properly.
+Which test cases should you try?
+How many test cases should you try?
+Are you ever certain that you have tested the program sufficiently?
+(These questions are famous ones and do not have clear-cut answers.
+There are even mathematical proofs that show it is impossible to have a
+guaranteed-sufficient testing strategy for an arbitrary program.)
+
+For our example, we might do this "systematic testing"::
+
+1. We use ``0`` as a test; the program prints ``0``
+
+2. We use ``1`` as a test; the program prints ``1``
+
+3. We use ``2`` as a test; the program prints ``3``
+
+4. We use ``3`` as a test; the program prints ``6``
+
+5. We use ``4`` as a test; the program prints ``10``
+
+We tell ourselves, "Perhaps the reason why the test case for ``4`` worked OK was
+because the test case for ``3`` worked OK and the loop body ran one more time".
+We next realize that the test case for ``3`` worked OK because the test case for
+``2`` worked OK and the loop body ran one more time. And so on.
+
+The test cases are connected.
+Rather than test, ``5``, ``6``, ..., ``6000``, ..., we realize that there are
+really only two distinct test cases: the one for ``0``, which makes the loop
+stop immediately, and the one for a positive int, call it ``k+1``, where 
+*if the test case for* ``k`` *worked correctly, then we can argue that running
+the loop body one more time will make the* ``k+1`` *test work correctly*.
+When we make an argument in this style, we are using mathematical induction as a
+kind of "systematic testing", covering all possible test cases.
+
+Here is our mathematical induction proof for the above example:
+
+    *CLAIM: For every input* ``n`` *in the set,* ``{0,1,2,...}``,
+    the program will compute ``sum == 0 + ...up to... + n`` in ``n`` iterations.
+
+The proof is made by mathematical induction:
+
+1. *Basis Case*: the input integer is ``0``: the program sets ``sum = 0`` and
+   the loop test goes immediately false. So, ``sum == 0 == 0 + ...up to... + 0``
+   was computed in ``0`` iterations of the loop.
+   This test case works correctly.
+
+2. *Induction Case*: The input integer is some positive integer, call it, 
+   ``k+1``.
+   First, say that all the previous test cases on smaller integers have worked
+   correctly; in particular, *say that the program with input* ``k`` *computed*
+   ``sum = 0 + 1 + ... + k`` *in* ``k`` *iterations*.
+   Call this number, ``sum_k``.
+   Now, for the test case of ``k+1``, the loop proceeds the same way as it did
+   for input ``k``, plus it makes one more iteration.
+   The extra iteration sets ``i = k+1`` and then ``sum = sum_k + i``, and the
+   loop quits.
+   Since the program with input ``k`` correctly computed
+   ``sum_k = 0 + 1 + ... + k`` in ``k`` iterations, we know the program with
+   input ``k+1`` computes ``sum = (0 + 1 + ... + k) + (k+1)`` in ``k+1``
+   iterations, which is the correct answer.
+
+This mathematical induction argument explains why every possible test case ``n``
+from the set ``{0, 1, 2, ...}`` will cause the program to compute
+``sum == 0 + 1 + ... + n`` in ``n`` loop iterations.
+
+Programs that use "counting loops" can often be argued correct using this
+technique.
+Indeed, if you reread the previous section, you realize that the point of
+finding a loop invariant is so that a mathematical induction argument can be
+made with the invariant -- when the loop quits, the invariant must hold true.
+
+
+
+A Mathematical Proof by Mathematical Induction
+==============================================
+
+Here is a traditional use of mathematical induction -- proving a fact about
+algebra and numbers.
+
+It might appear a bit surprising, but the repeated sum,
+``0 + 1 + 2 + ... + n``, always totals up to ``((n*n)+n)/2``, no matter what
+value nonnegative integer, ``n``, might be.
+Try some examples, and you will see this happen, e.g.::
+
+  0 + 1 + 2 + 3 + 4 + 5 + 6  = 21  equals  (6*6)+6 / 2,  that is,  42/2 = 21
+  
+How do we know this formula, ``((n*n)+n)/2``, works for all possible nonnegative
+integers?
+Should we try them all?
+We can use the mathematical induction technique to prove, once and for all,
+that the formula works correctly for all nonnegatives.
+
+Here is what we want to prove::
+
+                                                       n2 + n
+  For all integers,  n >= 0,   0 + 1 + 2 + ... + n  =  -------
+                                                          2
+
+(If you wish, you can think of ``n`` as the "input", and think of
+``0 + 1 + 2 + ... + n`` as a "loop program", and think of the formula,
+``((n*n)+n)/2``, as the program's "correctness property".)
+We make the proof by mathematical induction, meaning there are two cases to
+analyze:
+
+1. *Basis Case* -- ``n = 0``: In this case, the sum from ``0`` up to ``0`` is
+   just ``0``.
+   But ``((0*0)+0)/2`` is ``0`` also.
+   So, the formula works correctly for the starting case, when ``n`` is ``0``.
+
+2. *Induction Case*: ``n > 0``, *that is* ``n = k+1``, *for some nonnegative*
+   ``k``:
+   We assume the induction hypothesis that the formula works correctly for the
+   integer just before ``n``::
+   
+     0 + 1 + 2 + ... + k  =  ((k*k)+k)/2
+
+   We must show that ``0 + 1 + 2 + ... + k + (k+1)`` equals
+   ``(((k+1)*(k+1)) + (k+1)) / 2``.
+   We do algebra on the second expression, like this::
+
+      (k+1)*(k+1) + (k+1)     (k*k) + 2k + 1 + (k+1)    (k*k) + k + 2k + 2
+     --------------------- =  ----------------------- = ------------------
+               2                        2                      2
+
+   and we can split this fraction into two pieces::
+
+     (k*k) + k + 2k + 2       (k*k) + k     2k + 2       (k*k) + k 
+     -------------------  =  ----------- + --------  =  ----------- + (k + 1)
+              2                    2           2              2
+
+   But we recall the induction hypothesis, which we use to substitute::
+  
+      (k*k) + k   
+     ----------- + (k + 1)  =  (0 + 1 + 2 + ... + k) + (k + 1)
+           2
+
+   This proves the desired result.
+   
+The result is proved, with the basis step and the induction step, by
+mathematical induction.
+These two cases cover all the nonnegative ints, starting from zero and counting
+upwards as often as needed for arbitrarily large positive integers.
+(Example: we now know that ``0+1+...+500`` equals ``((500*500)+500)/2``, because
+we can use the basis step to start and apply the induction step ``500`` times to
+follow and to obtain the result for ``500``.)
+
+To finish, we repeat the mathematical-induction proof law:
+When you are asked to prove a property of the form,
+"*for all nonnegative integers*, ``i``, ``P_i`` *holds true*", you can do so in
+two steps:
+
+1. Basis step: prove the starting case, ``P_0``.
+
+2. Induction step: assume that ``P_k`` holds, for an anonymous integer, ``k``,
+   and use this induction hypothesis to prove ``P_k+1``.
+   
+Once these steps are completed, they provide the "algorithm" for building proofs
+of ``P_0``, ``P_1``, ..., ``P_i``, ..., for all the nonnegative integers.
+
+
+Summary
+*******
+
+The law for while-loops is
+
+.. code-block:: python
+
+   """{ ... I }""" 
+   while B :
+     """
+     { invariant  I
+       modifies   VARLIST   (those variables updated in  C) }
+     """
+     """
+     { 1. B   premise 
+       2. I   premise 
+       ... }
+     """
+     C
+     """{ ... I }""" 
+   
+   """
+   { 1. ~B    premise 
+     2. I     premise
+     ... }
+   """
+
+The mathematical-induction proof law is: to prove a property of the form,
+"*for all nonnegative integers*, ``i``, ``P_i`` *holds true*", do so in two
+steps:
+
+1. Basis step: prove the starting case, ``P_0``.
+
+2. Induction step: assume that ``P_k`` holds, for an anonymous integer, ``k``,
+   and use this *induction hypothesis* to prove ``P_k+1``.
+
+----
+
+.. raw:: html
+
+   <p align=right><small><em>
+   This note was adapted from David Schmidt's CIS 301, 2008, 
+   <a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/4whileT.html">Chapter 4</a>
+   course note.
+   </em></small></p>

@@ -1,0 +1,1324 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Logika: Programming Logics
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   Functions and Procedures
+   </b></big></big></big></big>
+   </font>
+
+
+.. _functions-procedures:
+
+Functions and Procedures
+########################
+
+A function is a named body of commands that do significant work, converting
+input arguments into a returned answer.
+When we define a function, we should summarize its knowledge-production
+capabilities.
+This is critical when we assemble a program from a collection of functions,
+because we connect functions together based on what they are capable of doing.
+
+
+
+Pre- and Post-conditions
+************************
+
+A function is a "mini-program":
+it has inputs, namely the arguments assigned to its parameters, and
+it has outputs, namely the information returned as the function's answer.
+It acts like a logic gate or chip, with "input wires" and "output wires".
+
+Here is an example that shows the format we use for writing a function:
+
+.. code-block:: python
+
+   def recip(n) :              # HEADER LINE : LISTS NAME AND PARAMETERS
+       """recip  computes the reciprocal for  n"""
+       """
+       { pre   n != 0          # PRECONDITION : REQUIRED PROPERTY OF ARGUMENTS
+         post  ans == 1.0 / n  # POSTCONDITION : THE GENERATED KNOWLEDGE
+         return ans            # VARIABLE USED TO RETURN THE RESULT }
+       """
+       ans = 1.0 / n           # BODY  (no assignment to parameter  n  allowed)
+       return ans
+
+The precondition states the situation under which the function operates
+correctly, and the postcondition states what the function has accomplished when
+it terminates.
+For simplicity, we require that *no assignment is made to a parameter inside the
+body of the function*.
+In a call-by-value language like Python and Java, this is never a handicap.
+
+The functions's *specification* consists of its header line and its ``pre``-,
+``post``-condition, and ``return`` lines;
+it tells us how to use the function correctly:
+(The comment with the informal description is also nice to have.)
+Here is the specification for the above function:
+
+.. code-block:: python
+
+   def recip(n) :  
+       """recip  computes the reciprocal for  n"""
+       """
+       { pre   n != 0   
+         post  ans == 1.0 / n 
+         return ans }
+       """
+
+The specification tells us what we need to know to use the function correctly.
+*The person/program who calls the function is not supposed to read the
+function's code to know how to use the function*.
+This is especially crucial when you use a function from a library that was
+written by someone else -- ideally, you should not read the library's code to
+learn how to call the library's functions!
+
+Back to the example: Since we do not allow assignments to parameter ``n`` within
+the body of ``recip``, we know that the value of ``n`` in the postcondition is
+the same as the value of ``n`` in the precondition --
+this makes the postcondition meaningful.
+
+To call the function, we supply an argument that binds to (is assigned to) its
+parameter, and we supply a variable that is the target for the returned answer.
+Once again, for this specification:
+
+.. code-block:: python
+
+   def recip(n) :
+       """recip  computes the reciprocal for  n"""
+       """
+       { pre   n != 0
+         post  ans == 1.0 / n
+         return ans }
+       """
+
+we correctly call the function like this:
+
+.. code-block:: python
+
+   a = readInt()
+   if a > 0 :
+       """
+       { 1. a > 0               premise
+         2. a != 0              algebra 1 }    # this proves  recip's  precondition
+       """
+       b = recip(a)
+       """{ 1.   b == 1.0 / a   premise  }"""  # in return, we presume its postcondition
+       print "the reciprocal of", a, "is", b
+   else :
+       . . .
+
+To call the function, *we must prove the function's precondition at the point of
+call for its argument*.
+As our reward for establishing the precondition, we receive in return the
+postcondition, stated in terms of ``a`` and ``b``: ``b == 1.0 / a``.
+
+For simplicity, we require that *the target variable that receives the
+function's answer does not appear in the function's arguments*, e.g., the call,
+``b = recip(b+2)``, is not allowed, because it confuses the ``b`` in the
+argument to ``recip`` with the ``b`` in the answer.
+
+In contrast, we cannot presume ``recip``'s postcondition in this situation:
+
+.. code-block:: python
+
+   x = readInt()
+   # We do not know if  x  is nonzero....
+   y = recip(x)
+   """{  ??? }"""
+
+Since we did not prove ``x != 0`` as a precondition for applying ``recip``,
+we cannot assert the postcondition after the call.
+Literally, we have no knowledge of what the function produces in this situation
+-- perhaps the call will "crash" (generate an exception)!
+
+
+Forwards Law for Function Definition and Call
+=============================================
+
+Here is a summary of what we have developed so far.
+Given a function, ``f``, with a pre-post specification, we must show that the
+presumption of the precondition at the beginning of the function's body lets us
+prove the postcondition at the end of the body:
+
+.. code-block:: python
+
+   def f(x):
+       """
+       {  pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.
+          post   R    (where assertion  R  can mention  ans and x)  Call this,  f_post.
+          return ans  (the name of the answer variable) }
+       """
+       """{ 1.  Q     premise  }"""
+       BODY  # does not assign to  x
+       """{ ... prove  R  here, that is,  ans  and  x  have property  R }"""
+
+Outside of the function, ``f``, we write ``f_pre`` for ``Q`` and ``f_post`` for
+``R``.
+Here is the schematic for a correct call of the function.
+It is a variation of the assignment law:
+
+.. code-block:: python
+
+   """{ [e/x]f_pre  }"""               # prove the precondition, where  e  binds to parameter x
+   y = f(e)                            # y  does not appear in  e
+   """
+   { 1. [y/ans][e/x]f_post   premise   # presume the postcondition,
+                                       # where  y  gets  ans's  value
+     2. [y_old/y][e/x]f_pre  premise   # knowledge before the call is revised
+      . . . }
+   """
+
+Recall that ``[e/x]f_pre`` defines a substitution of ``e`` for all occurrences
+of ``x`` within formula ``f_pre``.
+
+Here is another example, an absolute-value function:
+
+.. code-block:: python
+
+   def absValue(x) :
+       """
+       { pre    x != 0
+         post   ans > 0 and (ans == x or ans == 0 - x)
+         return ans }
+       """
+       if x < 0 :
+           ans = 0 - x
+       else :
+           ans = x
+       return ans
+
+The precondition is crucial to the success of the postcondition (that the answer 
+is positive).
+We construct a proof that converts the knowledge in the precondition into the
+knowledge in the postcondition:
+
+.. code-block:: python
+
+   def absValue(x) :
+       """
+       { pre    x != 0
+         post   ans > 0 and (ans == x or ans == 0 - x)
+         return ans }
+       """
+       if x < 0 :
+           ans = 0 - x
+           """
+           { 1. x < 0                               premise
+             2. ans == 0 - x                        premise
+             3. ans > 0                             algebra 1 2
+             4. ans == x or ans == 0 - x            algebra 2
+             5. return 3 4 }                        # lets us collect two facts at once
+           """
+       else :
+           """
+           { 1. x != 0                              premise
+             2. not(x < 0)                          premise
+             3. x > 0                               algebra 1 2 }
+           """
+           ans = x
+           """
+           { 1.  ans == x                           premise
+             2.  x > 0                              premise
+             3.  ans > 0                            subst 1 2
+             4.  ans == x or ans == 0 - x           algebra 1
+             5.  return 3 4 }
+           """
+       # in each arm, we proved  ans == x or ans == 0 - x  and also  ans > 0
+       """
+       { 1. ans == x or ans == 0 - x                premise
+         2. ans > 0                                 premise
+         3. ans > 0 and (ans == x or ans == 0 - x)  andi 2 1 }
+       """
+       return ans
+
+Now that the function is certified to satisfy its specification, we can call it:
+
+.. code-block:: python
+
+   n = readInt()
+   if n != 0 :
+       """{ 1.  n != 0                               premise  }""" 
+       m = absValue(n)
+       """
+       { 1. ans > 0 and (ans == x or ans == 0 - x)   premise  
+         2. m > 0                                    ande 1 }
+       """
+
+Function specifications are critical to software libraries:
+Every library component simply must has a specification that describes how to
+connect the component into an application.
+Often the specifications are written in English, but underlying the English
+descriptions are the pre-postconditions illustrated in this section.
+
+
+Optional Section: How to Work from Specifications To Code
+=========================================================
+
+When you call a function that someone else wrote, you rely on to tell you how
+the function behaves.
+(In many cases, you can't read the code, e.g., .NET components)
+If you the person *writing* the function for others to use, you supply the
+function's specification.
+You can calculate the specification using the laws we studied in the previous
+chapter.
+But better still, you should *start with the specification and write the
+function so that it matches the specification*.
+
+You start by stating, in English or otherwise, the function's goal.
+You study the goal and consider how to meet it; you write the code.
+You take note of the requirements your function needs on its entry parameters
+and global variables to reach the goal.
+Finally, you apply the programming-logic laws to show that the coding matches
+the specification.
+
+Here is a simplistic example.
+Say you must write a function that receives two numbers as inputs and selects
+the maximum, or larger, of the two as the function's output.
+The specification of the function, ``max``, might look like this:
+
+.. code-block:: python
+
+   def max(x, y)
+   """max  selects the larger of  x  and  y  and returns it as its answer"""
+   """
+   { pre    ??? 
+     post   (ans == x v ans == y) ^  (ans >= x ^ ans >= y)
+     return ... }
+   """
+
+You must write the code for function max so that it meets the postcondition.
+Along the way, you might require some restrictions on ``x`` and ``y`` for your
+solution to work.
+These would be listed in the precondition.
+
+The logical operators in the postcondition sometimes give us hints how to code
+the function.
+Here, we see that the function's answer will be either ``x`` or ``y``,
+suggesting that the function will use assignment commands of the form,
+``ans = x`` and ``ans = y``.
+We also see that there is an "or" operator in the specification.
+This suggests that we will require an if-command to choose which of the two
+assignments to use.
+Although it is not an exact science, we can move from the postcondition to this
+possible coding:
+
+.. code-block:: python
+
+   def max(x, y)
+       """
+       { pre    ??? 
+         post   (ans == x v ans == y) ^  (ans >= x ^ ans >= y)
+         return ans  }
+       """
+       if  x > y :
+           ans = x
+       else :
+           ans = y
+       return ans
+
+Now, we use the laws for assignments and conditionals to compute whether a
+precondition is needed that places restrictions on ``x`` and ``y`` so that the
+function behaves properly.
+What we see here is that our coding works correctly with numbers
+(and with strings, too!).
+But it might not work correctly, say, if ``x`` or ``y`` are arrays or pointers.
+For this reason, it seems safe to use this precondition:
+
+.. code-block:: python
+
+   def max(x, y)
+       """max  selects the larger of  x  and  y  and returns it as its answer"""
+       """
+       { pre    x and y are both numbers or both strings 
+         post   (ans == x v ans == y) ^  (ans >= x ^ ans >= y)
+         return ans  }
+       """
+       if  x > y :
+           ans = x
+       else :
+           ans = y
+       return ans
+
+Now, we have a function --- a component --- that others can insert into their
+programs.
+
+
+Optional Section: Backwards Law for Function Invocation
+=======================================================
+
+Here is a precise statement of how to reason backwards from a goal across a
+function call.
+First, given the specification,
+
+.. code-block:: python
+
+   def f(x):
+       """
+       { pre    Q  
+         post   R 
+         return ans
+       }
+       """
+
+If a call to ``f`` is meant to achieve a goal, ``G``, we reason backwards from
+``G`` to its subgoal like this:
+
+.. code-block:: python
+
+   """{ subgoal:  [e/x]f_pre  ^  ([e/x][y/ans]f_post --> G)  }"""
+   y = f(e)  # y  does not appear in argument  e
+   """{ goal: G }"""
+
+That is, for the call, ``f(e)``, to accomplish ``G``, it must be the case that
+``f``'s postcondition implies ``G`` and that we can prove ``f``'s precondition
+holds true (so that we can call ``f``).
+An example:
+
+.. code-block:: python
+
+   def recip(n) :
+      """
+      { pre    n != 0 
+        post   ans == 1.0 / n 
+        return ans
+      }
+      """
+
+and the program
+
+.. code-block:: python
+
+   a = readInt()
+   """{  subgoal: ??? }"""
+   b = recip(a)
+   """{  goal: b < 1.0/3 }"""
+
+we compute that the subgoal is ``a != 0 ^ (b = 1.0/a --> b < 1.0/3)``.
+This simplifies to ``a != 0 ^ (1.0/a < 1.0/3))``, which simplifies to
+``a != 0 ^ a > 3``, which simplifies to ``a > 3``.
+This tells us what ``assert`` or ``if`` command to add to our program:
+
+.. code-block:: python
+
+   a = readInt()
+   assert a > 3
+   """{  subgoal: a > 3 }"""
+   b = recip(a)
+   """{  goal: b < 1.0/3 }"""
+
+That is, if we expect the computed reciprocal to be less than one-third, then
+we must supply an input int that is 4 or more.
+
+
+Global Variables and Procedures
+*******************************
+
+The term, "function", suggests that the named body of commands will accept one
+or more arguments and return an answer.
+But we can have functions that return no answers and even receive no arguments,
+because they can read and update the values of non-local, *global* variables.
+We call a function that updates a global variable, a *procedure*.
+
+Say that a variable, ``v``, is "global" to a function ``f`` if ``v`` exists
+prior to a call to ``f``.
+(More precisely stated, ``v``'s cell does not live in ``f``'s
+namespace/activation-record.)
+For example, ``pi`` is global to ``circumference`` here:
+
+.. code-block:: python
+
+   pi = 3.14159
+   
+   def circumference(diameter) :
+       answer = pi * diameter
+       return answer
+   
+     . . .
+   r = readFloat("Type radius of a circle: ")
+   c = circumference(2 * r)          # compute circumference of circle
+   area = r * r * pi                 # compute circle's area
+
+A global variable "lives" before a function is called and lives after the
+function finishes.
+In the above example, ``pi`` is defined before the function is called, and
+it exists after the function finishes.
+In contrast, ``pi`` is local here:
+
+.. code-block:: python
+
+   def circ(d) :
+       pi = 3.14159   # pi is created each time  circ  is called
+       answer = pi * diameter
+       return answer
+   
+     . . .
+   r = readFloat("Type radius of a circle: ")
+   c = circumference(2 * r) 
+   # pi  does not exist here; it cannot be referenced:
+   area = r * r * pi   # ???!
+
+A global variable that is read (but *not updated*) by a function body can be
+safely used in the function's pre- and post-conditions;
+it acts just like an extra parameter to the function:
+
+.. code-block:: python
+
+   pi = 3.14159
+   
+   def circumference(diameter) :
+       """
+       { pre    diameter >= 0  ^  pi > 3
+         post   answer = pi * diameter 
+         return answer }
+       """
+       answer = pi * diameter
+       return answer
+
+We must restrict all calls to the function so that the call does *not* use the
+global variable as the target of the function's answer.
+That is, ``c = circumference(5)`` is ok, and so is ``c = circumference(pi)``,
+but ``pi = circumference(5)`` *is not*.
+
+
+Global Variables that are Updated
+=================================
+
+We use the name, *procedure*, for a function that updates a global variable.
+A global variable that is updated by a function acts like an extra answer
+variable for the function.
+In the Python language, every global variable that is updated by a function must
+be listed in the ``global`` line that immediately follows the function's header
+line.
+This is a good practice that we will follow.
+
+Here is a simple but important example: a timer that counts down to zero.
+The ``init`` and ``tick`` methods maintain the global variable ``time``.
+
+.. code-block:: python
+
+   time = 0
+   """
+   { 1.  time == 0     premise
+     2.  time >= 0     algebra 1 }      # time shouldn't be negative
+   """
+   
+   def tick() :
+       """
+       { pre    time >= 0
+         post   time >= 0
+         return ans }
+       """
+       global time                      # this line says the function can update time
+       """{ 1.  time >= 0               premise }"""
+       if time != 0 :
+           time = time - 1
+           """
+           { 1. time_old != 0           premise
+             2. time_old >= 0           premise
+             3. time_old > 0            algebra 1 2
+             4. time == time_old - 1    premise
+             5. time >= 0               algebra 3 4 }
+           """
+       else :
+           print "RING RING RING"
+           """{ 1.  time >= 0           premise }"""
+       """{ 1. time >= 0  premise  }"""
+       ans = time
+       return ans
+   
+   
+   def init(starttime) :
+       """
+       { pre  starttime > 0
+         post time >= 0 }
+       """
+       global time
+       time = starttime
+       """
+       { 1.  starttime > 0              premise
+         2.  time == starttime          premise
+         3.  time >= 0                  algebra 1 2 }
+       """
+   
+   # Driver code starts here: run the timer
+   """{ 1.  time >= 0                   premise  }"""
+   novar = init(10)
+   """{ 1.  time >= 0                   premise  }"""
+   a = tick()
+   """{ 1.  time >= 0                   premise  }"""
+   a = tick()
+   """{ 1.  time >= 0                   premise  }"""
+   a = tick()
+   """{ 1.  time >= 0                   premise  }"""
+
+Each of the functions can change variable ``time``, and each time a function
+finished, there is a postcondition that ``time >= 0``.
+We will learn that a property that repeats over and over is *invariant*.
+Here, it is invariant that ``time`` stays nonnegative.
+This next example is similar and important:
+The procedure that withdraws money from a bank account must never let the
+balance go negative:
+
+.. code-block:: python
+
+   balance = 100;  # global variable in the module for the bank account
+   
+   def withdraw(howmuch) :
+       """withdraw  removes  howmuch  from  balance"""
+       """
+       { pre    howmuch >= 0  ^  balance >= 0   
+         post   balance == balance_in + cash   ^   balance >= 0
+         return cash }
+       """
+       global balance
+       if  howmuch <= balance :    
+           cash = howmuch
+       else :
+           cash = balance
+       balance = balance - cash
+       return cash
+
+``withdraw``'s pre- and post-conditions are carefully written to ensure that
+the procedure is used correctly.
+Recall that ``balance_in`` means the value of global variable ``balance`` on
+procedure entry.
+We will return to both these examples shortly.
+
+
+
+Deduction Law for Procedures
+****************************
+
+Here is a precise statement of the law we use for procedures:
+
+.. code-block:: python
+
+   g = ...   # the global variable
+   
+   def f(x):
+       """
+       { pre    Q    (where assertion  Q  mentions  x and g)  This is  f_pre.
+         post   R    (where  R  mentions  ans, x, g, and g_in)   This is  f_post.
+         return ans  (this line is optional) }
+       """
+       global g      # notes that  g  can be updated by  f
+       BODY          # does not assign to  x  but may assign to  g
+       return ans    # this line is optional
+
+To invoke the function, we prove the precondition:
+
+.. code-block:: python
+
+   """{ [e/x]f_pre  }"""
+   y = f(e)                             # y and g  do not appear in  e,  and  y and g  are distinct
+   """
+   { 1. [y/ans][e/x][g_old/g_in]f_post  premise
+     2. [y_old/y][g_old/g][e/x]f_pre    premise
+     ... }
+   """
+
+Since global variable ``g`` acts as a second answer variable, ``g`` cannot
+appear in argument ``e`` nor can it be the same as ``y``.
+
+
+Global-Variable Invariants
+==========================
+
+A global variable is often shared by more than one procedure, and the procedures
+must cooperate and keep the global variable in proper shape for shared use.
+For this reason, a global variable often has attached to it a
+*global-variable invariant* that asserts a property of the variable's value that
+must be preserved by every procedure that updates the variable.
+
+Earlier, we saw a timer module that maintained a nonnegative value for ``time``.
+It is best to assert that ``time >= 0`` is a global invariant.
+Then, each of the two functions can assume the invariant when they execute.
+(And, each function must ensure the invariant is still holding true when they
+exit!)
+
+Here's the timer example, reworked:
+
+.. code-block:: python
+
+   ### simple example of a global variable invariant
+   
+   time = 0
+   # we maintain this invariant property:
+   """{ globalinv   time >= 0 }"""
+   
+   # the function can use the invariant on entry, and the function
+   # must ensure that the invariant holds on exit:
+   def tick() :
+       """
+       { pre    True 
+         post   ans == time
+         return ans }
+       """
+       global time 
+       # as needed, we introduce the globalinv in a proof:
+       """{ 1.  time >= 0               premise   }"""
+       if time != 0 :
+           time = time - 1
+           """{ 1. time_old != 0        premise
+             2. time_old >= 0           premise
+             3. time_old > 0            algebra 1 2
+             4. time == time_old - 1    premise
+             5. time >= 0               algebra 3 4
+           }"""
+       else :
+           print "RING RING RING"
+           """{ 1.  time >= 0           premise  }"""
+       ans = time
+       return ans
+   
+   def init(starttime) :
+       """
+       { pre  starttime > 0
+         post True }
+       """
+       global time
+       time = starttime
+   
+   
+   ### Driver code starts here: run the timer
+   # global invariant holds true
+   novar = init(10)
+   # invariant holds true:
+   """{ 1.  time >= 0                   globalinv   }"""
+   a = tick()
+   # invariant holds true:
+   """{ 1.  time >= 0                   globalinv   }"""
+   a = tick()
+   # invariant holds true:
+   """{ 1.  time >= 0                   globalinv   }"""
+   a = tick()
+   # and so on ...
+
+In an object-oriented language, when a global variable and its procedures
+("methods") are defined within a class, the global-variable invariant is called
+the *class invariant*.
+
+Here's an example, a class that is embedded in a toy bank into which a child
+inserts ten-cent coins.
+(The bank is a "reactive system" that processes "coin-insertion events"!)
+The class enforces its invariant -- that's its mission.
+
+.. code-block:: python
+
+   class DimesBank {   # MAINTAINS A TOY BANK
+   
+   # fields in the class:
+   dimes = 0    # how many coins inserted so far into the bank
+   money = 0    # how much the coins are worth
+   
+   # the class maintains this invariant property:
+   """{ globalinv  money == dimes * 10  }"""
+   
+   # the handler method below can assume the invariant on entry, 
+   # and the method must ensure that the invariant holds on exit:
+   def handleCoinInsertion(howmany) :
+       """called when a child inserts  howmany  dimes into the bank"""
+       """
+       { pre   howmany >= 0 
+         post  True }                                   # the method enforces the invariant, that's it.
+       """
+       global dimes, money
+       # we introduce the invariant as a premise when needed:
+       """{ 1.  money == dimes * 10                     premise   }"""
+       dimes = dimes + howmany
+       """
+       { 1.  money == dimes_old * 10                    premise
+         2.  dimes == dimesold + howmany                premise
+         3.  money + (howmany * 10) == dimes * 10       algebra  1 2
+       }"""
+       # the invariant is broken here, but the next command restores it:
+       money = money + (howmany * 10)
+       """
+       { 1.  money_old + (howmany * 10) == dimes * 10   premise
+         2.  money == moneyold + (howmany * 10)         premise
+         3.  money == dimes * 10                        subst 2 1 }
+       """
+   # } END CLASS
+   
+   # the following code might be in a controller component that
+   #   accepts input events and calls event handlers:
+   coins = readInt("insert your coins and press the button!")
+   assert coins > 0
+   novar = handleCoinInsertion(coins)                   # see the method above
+   print money                                          # on the toy bank's GUI
+
+*When you code a class, first decide on the class's fields (its "attributes")
+and write down the class invariant*.
+Then, define and code the methods so that they maintain the invariant.
+
+Here is a second example, a class that models a bank account.
+The account's balance should always be kept nonnegative:
+
+.. code-block:: python
+
+   # A bank-account "class" and its maintenance methods.
+   # The balance balance must be kept nonnegative.
+   class BankAccount {
+   
+   # The global variable, the money in a bank balance:
+   balance = 0   
+   """
+   { 1.  balance == 0       premise
+     2.  balance >= 0       algebra 1 }
+   """
+   # the global invariant:
+   """{ globalinv  balance >= 0  }"""  # this property is currently true, and
+                                       #  we want the methods to preserve it
+   
+   def deposit(howmuch) :
+       """deposit adds  howmuch  to  balance"""
+       """
+       { pre   howmuch >= 0    
+         post  balance == balance_in + howmuch  }
+       """ 
+       # balance_in  is the value of balance when the method was entered
+       global balance
+       """
+       { 1.  balance >= 0                                         premise  # the globalinv holds on entry
+         2.  howmuch >= 0                                         premise  # the precondition
+         3.  balance == balance_in                                premise  # the value of balance on entry
+         4.  return 1 2 3 }                                                # remember all three facts for later
+       """
+       balance = balance + howmuch
+       """{ 1. balance == balance_old + howmuch                   premise
+         2. balance_old >= 0                                      premise
+         3. howmuch >= 0                                          premise 
+         4. balance_old == balance_in                             premise 
+         5. balance == balance_in + howmuch                       subst 4 1
+         6. balance >= 0                                          algebra 1 2 3
+         7. return 5 6 }
+       """
+       # The last line asserts that the global invariant is preserved 
+       # at the exit, and the postcondition is proved, too.
+   
+   def withdraw(howmuch) :
+       """withdraw  removes  howmuch  from  balance"""
+       """
+       { pre    howmuch >= 0      
+         post   balance == balance_in + cash  
+         return cash }
+       """
+       global balance
+       """
+       { 1.  balance >= 0                                         premise  # the globalinv holds on entry
+         2.  howmuch >= 0                                         premise  # the precondition
+         3.  balance == balance_in                                premise  # the value of balance on entry
+         4.  return 1 2 3 }                                                # remember all three facts for later
+       """
+       if  howmuch <= balance :
+           balance = balance - howmuch
+           cash = howmuch
+           """{ ... # prove here  balance == balance_in + cash  and  balance >= 0 }"""
+       else :
+           cash = 0
+           """{ ... # prove here  balance == balance_in + cash  and  balance >= 0 }"""
+       """{ 1. balance == balance_in + cash  and  balance >= 0    premise }"""
+       return cash
+   
+   def getBalance() :
+       """getBalance returns the current balance"""
+       """
+       { pre    True
+         post   ans == balance
+         return ans }
+       """
+       ans = balance
+       """{ 1. ans == balance                                     premise  }"""
+       return ans
+   
+   } # END CLASS
+
+All the class's methods pledge to keep ``balance`` nonnegative.
+Assuming that no other program commands update the ``balance``, the proofs
+ensure that ``balance``'s global invariant holds always.
+
+Whenever a module or class holds a data structure, there
+*always should be a global invariant that states the critical properties of the
+structure that must be maintained*.
+The procedures that maintain the data structure pledge to preserve its invariant.
+
+This is the technique used in modular and object-oriented programming, where
+a data structure, its global invariant, and the data structure's maintenance
+procedures/methods are placed together.
+Since only the maintenance procedures update the global variable and preserve
+the invariant, the rest of the program can always rely on the global invariant
+to hold true
+*Without this convention, it is impossible to do component-based programming.*
+
+Law for Global Invariants and Procedure Calls
+=============================================
+
+Here is the law used in the above example:
+
+.. code-block:: python
+
+   g = ...   # the global variable
+   """{ globalinv  I_g  }"""  # must be proved true here
+   
+   def f(x):
+       """
+       { pre    Q  (where assertion  Q  mentions  x and g)   This is  f_pre.
+         post   R  (where  R  mentions  ans, x, g, and  g_in)   This is  f_post.
+         return ans }
+       """
+       global g    # g  can be updated by  f
+       """
+       { 1. Q      premise
+         2. I_g    premise
+         ... }
+       """ 
+       BODY        # does not assign to  x  but may assign to  g
+       """{ R ^ I_g }"""  # we must prove both  R  and  I_g  on exit
+       return ans
+
+For the function's invocation, we deduce ``[e/x]pre_f`` to get the result.
+Since global variable ``g`` acts as a second answer variable, ``g`` cannot
+appear in argument ``e`` nor can it be the same as ``y``.
+
+.. code-block:: python
+
+   """{ [e/x]pre_f,  that is,  Q_e,g  }"""  
+   y = f(e)   # y and g  do not appear in  e,  and  y and g  are distinct names
+   """
+   { 1. [y/ans][e/x][g_old/g_in]f_post      premise
+     2. [y_old/y][g_old/g][e/x]f_pre        premise
+     3. I_g                                 globalinv
+     ... }
+   """
+
+Further, provided that all assignments to global variable ``g`` occur only
+within functions that preserve its ``I_g``, we can always assert ``I_g`` as
+needed in the main program.
+
+There are many other examples of modules/classes that use global invariants.
+Here are three obvious ones:
+
+* A spreadsheet program: a module holds a grid that models a spreadsheet, and
+  the key invariant property is that the last cell in each row of the
+  spreadsheet holds the sum of the numbers in that row.
+  So, the functions that insert or change numbers in the cells of the
+  spreadsheet must compute new totals for the rows so that the invariant is
+  preserved.
+
+* A board game, like chess: a module holds a grid that models the chess board
+  and the pieces placed on it.
+  The global invariant is that the pieces correctly show the history of the
+  moves made so far during the game.
+  The functions that make moves and captures must preserve the invariant.
+
+* An animation: a module holds a three-dimensional space inhabited by one or
+  more sprites (moving objects).
+  The invariant is that no sprite can travel outside the dimensions of the
+  space.
+  The functions that insert, move, and delete sprites must preserve the
+  invariant.
+
+*A key job when doing object-oriented programming is writing class invariants*,
+that is, global invariants for the private fields in each class.
+When you design a class, define the fields (data structures) and their
+invariants before you write the methods that maintain the data structures and
+preserve the invariants.
+
+
+Procedures that Call Procedures
+*******************************
+
+All the techniques apply when the code inside a procedure body calls another
+procedure: as long as we establish the precondition for the called procedure,
+we can call it, and we obtain the postcondition as new knowledge in return.
+In this way, procedures can build on each others' postconditions.
+
+
+Procedures that Call Themselves
+===============================
+
+It is interesting that a procedure can call *itself*, and we can reason about
+this in the same way that we use for any other procedure call.
+Here is a detailed example.
+
+For integer ``n > 0``, the *factorial* of ``n``, written ``n!`` is defined as
+``1 * 2 * 3 * ...up to... * n``.
+It is the tradition to define ``0! = 1``, but factorials for negative integers
+do not exist.
+
+Factorial lists the number of permutations (combinations or "shuffles"), e.g.,
+``fact(3) = 6`` notes there six permutations for arranging three items,
+``a``, ``b``, and ``c``::
+
+  abc
+  bac
+  bca
+  acb
+  cab
+  cba
+  
+There is a profound recursive definition of factorial::
+
+  0! == 1
+  n! == (n-1)! * n,   for  n > 0
+  
+For example, we calculate ``4!`` like this::
+
+  4! == 3! * 4
+     where 3! == 2! * 3
+              where 2! == 1! * 2
+                       where 1! == 0! * 1
+                                where 0! == 1
+  So...
+     0! == 1
+     1! == 0! * 1 = 1
+     2! == 1! * 2 = 2
+     3! == 2! * 3 = 6
+  and finally,
+     4! == 3! * 4 = 24
+
+The process of counting downwards from ``4!`` to ``3!`` to ``2!`` to ``1!`` to 
+``0!`` and assembling the answer as ``1 * 1 * 2 * 3 * 4`` can be programmed as a
+function that repeatedly calls *itself* for the answers to ``3!``, ``2!``,
+``1!``, etc.:
+
+.. code-block:: python
+
+   def fact(n) :  # returns  n!
+       """
+       { pre     n >= 0  
+         post    (to come)
+         return  ans }
+       """
+       if n == 0 :
+           ans = 1        # this computes  0! = 1
+       else :
+           a = fact(n-1)  # this computes  (n-1)!
+           ans = a * n    # this computes  n! = (n-1)! * n
+   return ans
+
+The easiest way to understand the computation of, say, ``fact(3)``, is to draw
+out the function calls, making a new copy of the called function each time it is
+restarted, like this::
+
+  fact(3) =>  n = 3
+              if n == 0 :
+                ans = 1
+              else :
+                a = fact(n-1)
+                ans = a * n
+              return ans
+
+Notice how the *binding* of argument ``3`` to parameter ``n`` is enacted with
+the assignment, ``n = 3``.
+(This is how it is implemented within a computer, too.)
+The code for ``fact(3)`` activates a fresh copy of ``fact`` with argument 2::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+                             if n == 0 :
+             ans = a * n        ans = 1
+             return ans      else :
+                                a = fact(n-1)
+                                ans = a * n
+                             return ans
+
+This generates another call (fresh copy of) fact::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * n     a = fact(1) => n = 1
+                                            if n == 0 :
+             return ans      ans = a * 2       ans = 1
+                             return ans     else :
+                                               a = fact(n-1)
+                                               ans = a * n
+                                            return ans
+
+This expands to::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * n     a = fact(1) => n = 1
+             return ans      ans = a * n    a = fact(0) =>  n = 0
+                                                            if n == 0 :
+                             return ans     ans = a * n       ans = 1
+                                            return ans     else :
+                                                              . . .
+                                                           return ans
+
+We see a sequence, or "stack", of activations of ``fact``, one per call.
+Within a computer, an *activation-record stack* remembers the activations.
+The call to ``fact(0)`` returns an answer -- 1::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * n     a = fact(1) => n = 1
+             return ans      ans = a * n    a = fact(0) => return 1
+                             return ans     ans = a * n 
+                                            return ans     
+
+This makes the most recent activation (copy) of ``fact`` disappear, and the
+returned answer is assigned to ``ans`` in the previous call::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * 3     a = fact(1) => n = 1
+             return ans      ans = a * 2    a = 1
+                             return ans     ans = a * n 
+                                            return ans     
+
+allowing the previous call to return *its* answer to *its* caller::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * 3     a = fact(1) => return 1
+             return ans      ans = a * 2
+                             return ans     
+
+You see the pattern -- the calls are finishing in reverse order, returning the
+partial answers, ``fact(0) = 1``, ``fact(1) = 1``, ``fact(2) = 2``, and so on::
+
+  fact(3) => n = 3
+             a = fact(2) =>  n = 2
+             ans = a * n     a = 1
+             return ans      ans = a * n
+                             return ans     
+
+and then::
+
+  fact(3) => n = 3
+             a = fact(2) =>  return 2
+             ans = a * n
+             return ans 
+
+and::
+
+  fact(3) => n = 3
+             a = 2
+             ans = a * n
+             return ans      
+
+and finally::
+
+  fact(3) => return 6
+
+Within the computer, the code for ``fact`` is not copied at each call --
+instead, a new *namespace* (activation record) is generated for each call to
+``fact``.
+When a call finishes, its answer is returned and its namespace is erased
+(popped from the activation stack).
+
+Every function has its own pre- and post- conditions.
+So, if a function calls itself, it can use *its own pre- and postconditions to
+deduce the properties of the answer computed by the self-call*.
+This is remarkable and exactly correct.
+
+Here is the desired specification of fact:
+
+.. code-block:: python
+
+   def fact(n)
+       """
+       { pre    n >= 0 
+         post   ans == n! 
+         return ans }
+       """
+    
+When ``fact`` calls itself, we use the above pre- and post-conditions to deduce
+what happens.
+In the process, we deduce that the completed coding of ``fact`` possesses
+exactly these same pre- and post-conditions!
+
+Recall again the "official definition" of ``n!``::
+
+  0! == 1
+  n! == (n-1)! * n,  for  n > 0
+  
+Here is the deduction that ``fact`` meets its stated pre- and post-conditions:
+
+.. code-block:: python
+
+   def fact(n) :
+       """
+       { pre    n >= 0
+         post   ans == n!
+         return ans }
+       """
+       if n == 0 :
+           ans = 1
+           """
+           { 1. ans == 1                 premise
+             2. n == 0                   premise
+             3. ans == 0!                definition of  0! == 1
+             4. ans == n!                subst 2 3 }
+           """
+       else :
+           """
+           { 1. ~(n == 0)                premise
+             2. n  > 0                   premise
+             3. n - 1 >= 0               algebra 1 2 } # this proves  pre_fac
+           """
+           sub = fact(n-1)
+           """{ 1.  sub == (n-1)!        premise }"""  # post_fac 
+           ans = sub * n
+           """
+           { 1.  ans == sub * n          premise
+             2.  sub ==  (n-1)!          premise
+             3.  ans ==  (n-1)! * n      subst 2 1
+             4.  ans ==  n!              definition of  n! == (n-1)! * n }
+           """
+       """{ 1.  ans == n!                premise }"""
+       return ans
+
+We did it!
+The proof is not magic or trickery -- notice that the call, ``fact(n - 1)``,
+uses an argument value that is different --- one smaller than --- argument ``n``
+used with ``fact(n)``.
+This style of recursion by counting-downward-by-ones-until-zero will be exposed
+in the next chapter as an instance of *mathematical induction*.
+
+Here is a sample call of the end result:
+
+.. code-block:: python
+
+   """{ 200 >= 0, that is  [200/n]pre_fact }"""
+   x = fact(200)
+   """{ [x/ans][200/n]post_fact,  that is,  x == 200! }"""
+
+In the next chapter, we will see a strong connection between a function's
+self-call and a loop -- in both cases, the construct reuses its very own
+"pre-post-condition" when repeating itself.
+
+
+Summary
+*******
+
+We used a variety of laws for function definitions and calls.
+
+1. Here is the simplest version, a forwards law where there is no updating to
+   global variables:
+
+   .. code-block:: python
+   
+      def f(x):
+          """
+          {  pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.
+             post   R    (where assertion  R  can mention  ans and x)  Call this,  f_post.
+             return ans  (the name of the answer variable) }
+          """
+          """{ 1.  Q     premise  }"""
+          BODY  # does not assign to  x
+          """{ ... prove  R  here, that is,  ans  and  x  have property  R }"""
+
+   Outside of the function, ``f``, we write ``f_pre`` for ``Q`` and ``f_post``
+   for ``R``.
+   Here is the schematic for a correct call of the function:
+
+   .. code-block:: python
+   
+      """{ [e/x]f_pre  }"""                  # prove the precondition, where  e  binds to parameter x
+      y = f(e)                               # y  does not appear in  e
+      """
+      { 1. [y/ans][e/x]f_post      premise   # presume the postcondition where
+                                             # y  receives the  ans  value
+        2. [y_old/y][e/x]f_pre     premise
+         . . . }
+      """
+
+   Recall that ``[e/x]f_pre`` defines a substitution of ``e`` for all
+   occurrences of ``x`` within formula ``f_pre``.
+   The other two substitions explain how ``f_post`` is stated in terms of the
+   receiving variable, ``y``, and how the entry premise is propagated after
+   the call.
+
+2. When we use a procedure, that is, a function that updates a global variable,
+   the laws become more complex, because the global variable acts like a second
+   answer from the function.
+   Every global variable should have an invariant property, and every function
+   that uses the global variable should pledge to preserve that invariant
+   property:
+
+   .. code-block:: python
+   
+      g = ...                    # the global variable
+      """{ globalinv  I_g  }"""  # must be proved true here
+      
+      def f(x):
+          """
+          { pre    Q  (where assertion  Q  mentions  x and g)   This is  f_pre.
+            post   R  (where  R  mentions  ans, x, g, and  g_in)   This is  f_post.
+            return ans
+          }"""
+          global g               # g  can be updated by  f
+          """
+          { 1. Q                 premise
+            2. I_g               premise
+            ... }
+          """ 
+          BODY                   # does not assign to  x  but may assign to  g
+          """{ R ^ I_g }"""      # we must prove both  R  and  I_g  on exit
+          return ans
+
+   For the function's invocation, we deduce ``[e/x]pre_f`` to get the result. 
+   Since global variable ``g`` acts as a second answer variable, ``g`` cannot
+   appear in argument ``e`` nor can it be the same as ``y``.
+
+   .. code-block:: python
+   
+      """{ [e/x]pre_f,  that is,  Q_e,g  }"""  
+      y = f(e)   # y and g  do not appear in  e,  and  y and g  are distinct names
+      """
+      { 1. [y/ans][e/x][g_old/g_in]f_post      premise
+        2. [y_old/y][g_old/g][e/x]f_pre        premise
+        3. I_g                                 globalinv
+        ... }
+      """
+
+   Further, provided that all assignments to global variable ``g`` occur only
+   within functions that preserve its ``I_g``, we can always assert ``I_g`` as
+   needed in the main program.
+
+3. If we wish to reason in a backwards fashion about function calls, we can use
+   a different law.
+   To keep it simple, assume no global variables are updated by the function.
+   For the specification,
+
+   .. code-block:: python
+   
+      def f(x):
+          """
+          { pre    Q_x  
+            post   R_ans,x 
+            return ans }
+          """
+
+   if a call to ``f`` is meant to achieve a goal, ``G``, we reason backwards
+   from ``G`` to its subgoal like this:
+
+   .. code-block:: python
+   
+      """{ subgoal:  [e/x]pre_f  ^  ([e/x][y/ans]post_f --> G)  }"""
+      y = f(e)  # y  does not appear in argument  e
+      """{ goal: G }"""
+
+   It is a good exercise to extend this backwards law to procedures.
+   Try it.
+
+----
+
+.. raw:: html
+
+   <p align=right><small><em>
+   This note was adapted from David Schmidt's CIS 301, 2008, 
+   <a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/3procT.html">Chapter 3</a>
+   course note.
+   </em></small></p>

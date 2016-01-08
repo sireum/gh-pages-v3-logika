@@ -1,0 +1,20 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Sireum Logika Documentation
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   IntelliJ-based Integrated Verification Environment (IVE)
+   </b></big></big></big></big>
+   </font>
+
+.. _intellij:
+
+IntelliJ-based Integrated Verification Environment (IVE)
+########################################################
+

@@ -1,0 +1,21 @@
+.. raw:: html
+
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   Sireum Logika Documentation
+   </b></big></big></big></big>
+   </font>
+
+----
+
+Sireum Logika Documentation
+###########################
+
+
+.. toctree::
+   :maxdepth: 2
+   :numbered: 3
+
+   doc-1-getting-started/index.rst
+   doc-2-intellij/index.rst
