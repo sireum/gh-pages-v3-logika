@@ -32,7 +32,7 @@ input language as the notations for the propositional, predicate, and programmin
 
 .. note::
 
-   The adaptation to use Logika formal languag is still in progress;
+   The adaptation to use Logika formal language is still in progress;
    it is currently up to :ref:`Chapter 1 <introduction>`.
 
 ----

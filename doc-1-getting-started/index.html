@@ -83,12 +83,13 @@
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
 <li><a class="reference internal" href="#system-requirements">1.1. System Requirements</a></li>
 <li><a class="reference internal" href="#installing-and-running-logika">1.2. Installing and Running Logika</a></li>
-<li><a class="reference internal" href="#running-examples">1.3. Running Examples</a></li>
-<li><a class="reference internal" href="#logika-command-line-configuration">1.4. Logika Command-Line Configuration</a><ul>
-<li><a class="reference internal" href="#last-mode-l-or-last">1.4.1. Last Mode (<code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>)</a></li>
-<li><a class="reference internal" href="#sequent-s-or-sequent">1.4.2. Sequent (<code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>)</a></li>
-<li><a class="reference internal" href="#timeout-t-or-timeout">1.4.3. Timeout (<code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>)</a></li>
-<li><a class="reference internal" href="#satisfiability-checking-mode-sat">1.4.4. Satisfiability Checking Mode (<code class="docutils literal"><span class="pre">--sat</span></code>)</a></li>
+<li><a class="reference internal" href="#updating-logika">1.3. Updating Logika</a></li>
+<li><a class="reference internal" href="#running-examples">1.4. Running Examples</a></li>
+<li><a class="reference internal" href="#logika-command-line-configuration">1.5. Logika Command-Line Configuration</a><ul>
+<li><a class="reference internal" href="#last-mode-l-or-last">1.5.1. Last Mode (<code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>)</a></li>
+<li><a class="reference internal" href="#sequent-s-or-sequent">1.5.2. Sequent (<code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>)</a></li>
+<li><a class="reference internal" href="#timeout-t-or-timeout">1.5.3. Timeout (<code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>)</a></li>
+<li><a class="reference internal" href="#satisfiability-checking-mode-sat">1.5.4. Satisfiability Checking Mode (<code class="docutils literal"><span class="pre">--sat</span></code>)</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +194,7 @@ Options:
 -h, --help       Display usage information
 </pre></div>
 </div>
-<p>Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.</p>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
@@ -203,8 +204,17 @@ Options:
 </div>
 </div>
 </div>
+<div class="section" id="updating-logika">
+<h2>1.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h2>
+<p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run logika again:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>sireum-v3
+git pull
+logika
+</pre></div>
+</div>
+</div>
 <div class="section" id="running-examples">
-<h2>1.3. Running Examples<a class="headerlink" href="#running-examples" title="Permalink to this headline">¶</a></h2>
+<h2>1.4. Running Examples<a class="headerlink" href="#running-examples" title="Permalink to this headline">¶</a></h2>
 <p>Some Logika examples are available at <a class="reference external" href="https://github.com/sireum/v3-logika-examples">https://github.com/sireum/v3-logika-examples</a></p>
 <p>Clone the repository to try out some of the examples:</p>
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
@@ -268,7 +278,7 @@ p ∨ q, r  ⊢  <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <sp
 </div>
 </div>
 <div class="section" id="logika-command-line-configuration">
-<span id="cli-configuration"></span><h2>1.4. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="cli-configuration"></span><h2>1.5. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.</p>
 <p>Auto Mode (<code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>)
@@ -286,7 +296,7 @@ automatically prove a contract or a runtime error check
 for automatic proving, or help Logika by establishing more
 claims to help with making the necessary deduction).</p>
 <div class="section" id="last-mode-l-or-last">
-<h3>1.4.1. Last Mode (<code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>)<a class="headerlink" href="#last-mode-l-or-last" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.1. Last Mode (<code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>)<a class="headerlink" href="#last-mode-l-or-last" title="Permalink to this headline">¶</a></h3>
 <p>Logika supports checking multiple files at the same time.</p>
 <p>For propositional/predicate logics, it treats each file
 as a separate proof.</p>
@@ -299,7 +309,7 @@ This is handy for proof management by separating a program
 of a system into multiple files.</p>
 </div>
 <div class="section" id="sequent-s-or-sequent">
-<h3>1.4.2. Sequent (<code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>)<a class="headerlink" href="#sequent-s-or-sequent" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.2. Sequent (<code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>)<a class="headerlink" href="#sequent-s-or-sequent" title="Permalink to this headline">¶</a></h3>
 <p>The sequent option is use to provide the sequent
 (as the following string argument to the option switch)
 that a file should provide a proof for.
@@ -307,7 +317,7 @@ This provides a redundancy check at the command-line level to
 ensure some sort of consistency.</p>
 </div>
 <div class="section" id="timeout-t-or-timeout">
-<span id="timeout"></span><h3>1.4.3. Timeout (<code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>)<a class="headerlink" href="#timeout-t-or-timeout" title="Permalink to this headline">¶</a></h3>
+<span id="timeout"></span><h3>1.5.3. Timeout (<code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>)<a class="headerlink" href="#timeout-t-or-timeout" title="Permalink to this headline">¶</a></h3>
 <p>Logika uses the Z3 theorem prover to automatically prove
 some formulae (e.g., arithmetic).
 In some cases, Z3 might take a long time, thus,
@@ -315,7 +325,7 @@ the timeout option specifies how long Z3 can spend to
 prove a claim.</p>
 </div>
 <div class="section" id="satisfiability-checking-mode-sat">
-<h3>1.4.4. Satisfiability Checking Mode (<code class="docutils literal"><span class="pre">--sat</span></code>)<a class="headerlink" href="#satisfiability-checking-mode-sat" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.4. Satisfiability Checking Mode (<code class="docutils literal"><span class="pre">--sat</span></code>)<a class="headerlink" href="#satisfiability-checking-mode-sat" title="Permalink to this headline">¶</a></h3>
 <p>If enabled, Logika will check the satisfiability of
 contracts and facts (axioms) to ensure that
 the system is implementable (or not broken by

@@ -86,7 +86,7 @@ When it finishes, Logika will display its usage information::
     -h, --help       Display usage information
 
 
-Please refer to :ref:`cli-configuration` for descriptions on the above option switches.
+(Please refer to :ref:`cli-configuration` for descriptions on the above option switches.)
 
 .. note::
 
@@ -94,6 +94,17 @@ Please refer to :ref:`cli-configuration` for descriptions on the above option sw
    ``sireum-v3/sireum logika``. You can introduce a ``bash`` alias for it as follows::
 
        alias logika="$(cd "$(dirname sireum-v3/sireum)" && pwd)/$(basename sireum-v3/sireum) logika"
+
+
+Updating Logika
+***************
+
+To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run logika again::
+
+    cd sireum-v3
+    git pull
+    logika
+
 
 Running Examples
 ****************
