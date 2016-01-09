@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   Circuits and Truth Tables
+   2. Circuits and Truth Tables
    </b></big></big></big></big>
    </font>
 

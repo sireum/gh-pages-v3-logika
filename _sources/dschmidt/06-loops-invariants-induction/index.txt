@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   Loop, Invariants, Induction
+   6. Loop, Invariants, Induction
    </b></big></big></big></big>
    </font>
 

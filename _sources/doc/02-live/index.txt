@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   IntelliJ-based Logika Integrated Verification Environment (LIVE)
+   2. IntelliJ-based Logika Integrated Verification Environment (LIVE)
    </b></big></big></big></big>
    </font>
 

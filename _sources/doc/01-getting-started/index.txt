@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   Getting Started
+   1. Getting Started
    </b></big></big></big></big>
    </font>
 
@@ -113,7 +113,7 @@ When it finishes, Logika will display its usage information::
 Updating Logika
 ***************
 
-To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run logika again::
+To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run Logika again::
 
     cd sireum-v3
     git pull

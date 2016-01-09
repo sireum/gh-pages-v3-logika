@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   Applications of Propositional Logic to Program Proving
+   7. Applications of Propositional Logic to Program Proving
    </b></big></big></big></big>
    </font>
 

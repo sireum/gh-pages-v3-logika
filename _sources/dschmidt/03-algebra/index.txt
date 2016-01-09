@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   Circuits that Compute on Numbers: Algebra
+   3. Circuits that Compute on Numbers: Algebra
    </b></big></big></big></big>
    </font>
 

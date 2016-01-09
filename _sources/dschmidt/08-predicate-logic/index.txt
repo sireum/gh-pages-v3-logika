@@ -9,7 +9,7 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   The Predicate-Logic Quantifiers
+   8. The Predicate-Logic Quantifiers
    </b></big></big></big></big>
    </font>
 
