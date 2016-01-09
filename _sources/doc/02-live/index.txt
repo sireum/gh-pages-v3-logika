@@ -1,0 +1,75 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Sireum Logika Documentation
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   IntelliJ-based Logika Integrated Verification Environment (LIVE)
+   </b></big></big></big></big>
+   </font>
+
+.. _live:
+
+IntelliJ-based Logika Integrated Verification Environment (LIVE)
+################################################################
+
+To aid the development of Logika proofs, you can use
+the Sireum IntelliJ plugin that includes LIVE.
+Here is a LIVE screenshot:
+
+.. image:: syntax-message.png
+   :align: center
+   :width: 800
+
+Features
+********
+
+LIVE provides the following features:
+
+* Syntax highlighting and error/warning reporting similar to most
+  Integrated Development Environments (IDEs) for popular programming
+  languages.
+
+* Convenient keyboard shortcuts for inserting logical symbols.
+
+* Verification engine running in the background to check proofs as you type.
+
+* Can be used in conjunction with IntelliJ's Scala Worksheet (``.sc`` files)
+  or its Scala editor (``.scala`` files) to benefit from IntelliJ IDE features.
+  The screenshot above illustrates how LIVE works with the Scala Worksheet.
+
+
+LIVE Install
+************
+
+The Sireum IntelliJ plugin that LIVE is a part of is currently under review
+for approval for distribution through
+`JetBrains' plugins website <http://plugins.jetbrains.com/plugin/8141>`__.
+For now, you can download the
+`plugin zip file <https://drive.google.com/open?id=0B3opDhlww1AXaWVid2MyZUNOMzg>`__,
+and install it in IntelliJ.
+To do that, open IntelliJ's
+`Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
+(shortcut: ``⌘,`` in OS X);
+then click on "Plugins" (1), select "Install from disk..." (2), select the
+downloaded plugin file, and restart IntelliJ.
+
+.. image:: install-from-disk.png
+   :width: 50%
+
+
+Using LIVE
+**********
+
+
+Keyboard Shortcuts
+==================
+
+
+LIVE Configuration
+******************

@@ -1,0 +1,2133 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Loops, Invariants, Induction &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../doc/index.html">Documentation</a></li>
+                <li><a href="../index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">6. Loops, Invariants, Induction</a><ul>
+<li><a class="reference internal" href="#while-loops">6.1. While Loops</a><ul>
+<li><a class="reference internal" href="#law-for-while-loops">6.1.1. Law for While-Loops</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples-of-invariant-discovery">6.2. Examples of Invariant Discovery</a><ul>
+<li><a class="reference internal" href="#multiplication-as-repeated-addition">6.2.1. Multiplication as Repeated Addition</a></li>
+<li><a class="reference internal" href="#programming-as-game-theory-invariants-as-strategies">6.2.2. Programming as Game Theory; Invariants as Strategies</a></li>
+<li><a class="reference internal" href="#example-controlling-a-single-player-game-pebbles">6.2.3. Example: Controlling a Single Player Game: Pebbles</a></li>
+<li><a class="reference internal" href="#a-board-game-global-class-invariant-loop-invariant">6.2.4. A Board Game: Global (Class) Invariant + Loop Invariant</a></li>
+<li><a class="reference internal" href="#two-player-games-protocols">6.2.5. Two-player Games == Protocols</a></li>
+<li><a class="reference internal" href="#division-as-repeated-subtraction">6.2.6. Division as Repeated Subtraction</a></li>
+<li><a class="reference internal" href="#averaging-test-scores">6.2.7. Averaging Test Scores</a></li>
+<li><a class="reference internal" href="#reversing-a-word">6.2.8. Reversing a Word</a></li>
+<li><a class="reference internal" href="#squaring-an-array-s-numbers">6.2.9. Squaring an Array&#8217;s Numbers</a></li>
+<li><a class="reference internal" href="#finding-a-letter-in-a-word">6.2.10. Finding a Letter in a Word</a><ul>
+<li><a class="reference internal" href="#string-search-variation-1">String Search, Variation 1</a></li>
+<li><a class="reference internal" href="#string-search-variation-2">String Search, Variation 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#universal-and-existential-assertions">6.3. Universal and Existential Assertions</a></li>
+<li><a class="reference internal" href="#partial-and-total-correctness">6.4. Partial and Total Correctness</a></li>
+<li><a class="reference internal" href="#an-introduction-to-mathematical-induction">6.5. An Introduction to Mathematical Induction</a><ul>
+<li><a class="reference internal" href="#formal-statement-of-the-mathematical-induction-proof-law">6.5.1. Formal Statement of The Mathematical Induction Proof Law</a></li>
+<li><a class="reference internal" href="#first-example-factorial-is-repeated-multiplication">6.5.2. First Example: Factorial is Repeated Multiplication</a></li>
+<li><a class="reference internal" href="#testing-loop-code-systematically">6.5.3. Testing Loop Code Systematically</a></li>
+<li><a class="reference internal" href="#proofs-of-recursive-functions-and-loops-are-mathematical-induction-proofs">6.5.4. Proofs of Recursive Functions and Loops are Mathematical-Induction Proofs</a></li>
+<li><a class="reference internal" href="#more-program-analysis-and-mathematical-induction">6.5.5. More Program Analysis and Mathematical Induction</a></li>
+<li><a class="reference internal" href="#a-mathematical-proof-by-mathematical-induction">6.5.6. A Mathematical Proof by Mathematical Induction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">6.6. Summary</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Logika: Programming Logics
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+Loop, Invariants, Induction
+</b></big></big></big></big>
+</font><div class="section" id="loops-invariants-induction">
+<span id="id1"></span><h1>6. Loops, Invariants, Induction<a class="headerlink" href="#loops-invariants-induction" title="Permalink to this headline">¶</a></h1>
+<p>At the end of the previous chapter, we saw that a function that recursively
+calls (&#8220;restarts&#8221;) itself reuses its own pre- and post-conditions to deduce the
+knowledge gained from the recursions.
+A <em>loop</em> is a command that restarts itself over and over, and it is like a
+function that restarts itself over and over.</p>
+<p>If we think of a loop as a function that restarts itself each iteration, then
+we must ask, &#8220;What are the pre- and post-conditions?&#8221;
+Since the loop iterations follow one another, it must be that the
+<em>post-condition</em> from the end of the previous iteration is the exactly the
+<em>pre-condition</em> for starting the next iteration &#8211; the loop&#8217;s &#8220;pre&#8221; and &#8220;post&#8221;
+conditions are one and the same.
+The loop&#8217;s pre-post-condition is called the loop&#8217;s <em>invariant</em>.
+We will develop this idea and other important ideas in this chapter.</p>
+<div class="section" id="while-loops">
+<h2>6.1. While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
+<p>In the previous chapter, we saw how factorial is defined as a recurrence:</p>
+<div class="highlight-python"><div class="highlight"><pre>0! == 1
+n! == (n-1)! * n,   for  n &gt; 0
+</pre></div>
+</div>
+<p>But we can understand factorial as a repeated product: for integer <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>n! == 1 * 2 * 3 * ...up to... * n
+</pre></div>
+</div>
+<p>It is easy to write a loop program that computes the repeated product:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="n">fac</span>
+</pre></div>
+</div>
+<p>The loop adjoins the multiplications, <code class="docutils literal"><span class="pre">*1</span></code>, <code class="docutils literal"><span class="pre">*2</span></code>, <code class="docutils literal"><span class="pre">*3</span></code>, etc., to the
+running total, <code class="docutils literal"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
+Consider some execution cases:</p>
+<div class="highlight-python"><div class="highlight"><pre>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
+n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
+n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
+n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4!
+. . .
+the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
+</pre></div>
+</div>
+<p>For input, <code class="docutils literal"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">4</span></code>, the loop computes correctly <code class="docutils literal"><span class="pre">4!</span></code> in 4 iterations
+because the loop computes correctly <code class="docutils literal"><span class="pre">3!</span></code> in 3 iterations &#8211;
+<em>the fourth loop iteration builds upon the work of the previous three</em>.
+This is the standard use of a loop: each loop iteration builds on the previous
+iterations to move one step closer to the final goal.</p>
+<p>We should always ask this crucial question about every loop we write:</p>
+<blockquote>
+<div>Say that the loop has been running for some iterations; what has it accomplished so far?</div></blockquote>
+<p>For the factorial example, the response is:
+&#8220;after <code class="docutils literal"><span class="pre">i</span></code> iterations, variable <code class="docutils literal"><span class="pre">fac</span></code> has the value, <code class="docutils literal"><span class="pre">i!</span></code>, that is,
+<code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>.&#8221;</p>
+<p>This answer is important, because it reveals the strategy the loop uses to reach
+its goal in stages: as <code class="docutils literal"><span class="pre">i</span></code> counts upwards towards <code class="docutils literal"><span class="pre">n</span></code>, <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>
+repeatedly holds true.
+Because the loop stops when <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, this means the loop will achieve its
+goal: <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">n!</span></code>.</p>
+<p>The answer to the &#8220;crucial question&#8221; listed above is the loop&#8217;s
+<em>invariant property</em>.
+Now, why is it an invariant, like the global-variable invariants from the
+previous chapter?</p>
+<p>This is because <em>the output from the loop&#8217;s prior iterations flows into the
+loop&#8217;s next iteration</em>.
+So, whatever is accomplished looks the same, iteration after iteration after
+iteration.
+This is a logical property that can be proved:</p>
+<p>We deduce the invariant property on the factorial-loop body like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>   <span class="p">(</span><span class="n">we</span> <span class="n">have</span> <span class="n">conducted</span>  <span class="n">i</span>  <span class="n">iterations</span> <span class="n">so</span> <span class="n">far</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. i == i_old + 1          premise</span>
+<span class="sd">  2. fac == (i_old)!         premise</span>
+<span class="sd">  3. fac == (i-1)!           algebra 2 1 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. fac == fac_old * i      premise</span>
+<span class="sd">  2. fac_old == (i-1)!       premise</span>
+<span class="sd">  3. fac == (i-1)! * i       subst 2 1</span>
+<span class="sd">  4. fac == i!               definition of  i! }</span>
+<span class="sd">&quot;&quot;&quot;</span>    <span class="p">(</span><span class="n">we</span> <span class="n">have</span> <span class="n">completed</span> <span class="n">one</span> <span class="n">more</span> <span class="n">iteration</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">invariant</span> <span class="n">reappears</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The assertion that results from doing one more loop iteration is the <em>same</em> as
+the assertion we had when we started the iteration!
+Of course, the loop counter, <code class="docutils literal"><span class="pre">i</span></code>, gets larger by one, meaning that we are
+closer to achieving the final goal, but the changing values of <code class="docutils literal"><span class="pre">fac</span></code> and <code class="docutils literal"><span class="pre">i</span></code>
+ensure that <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code> remains true: &#8220;after <code class="docutils literal"><span class="pre">i</span></code> iterations, <code class="docutils literal"><span class="pre">fac</span></code> has
+value <code class="docutils literal"><span class="pre">i!</span></code>.&#8221;</p>
+<p>This property holds true &#8212; it is <em>invariant</em> for no matter how many times the
+loop repeats.
+<em>The invariant property documents the loop&#8217;s structure &#8211; how the loop achieves
+its goal</em>.
+It is a one-line summary of the code, and for this reason it is valuable
+documentation, whether it is stated in English words or in algebra symbols.</p>
+<p>If we think of a program as an electronic circuit, where knowledge flows along
+the wires instead of voltage, then a loop program is a feedback circuit, where
+a voltage, <code class="docutils literal"><span class="pre">I</span></code>, is forced backwards into the circuit&#8217;s entry:</p>
+<div class="highlight-python"><div class="highlight"><pre>     I|
+       v         I
+ +-&gt;while B : ----&gt;
+ |   I|
+ |    v
+ |    C
+I|    |
+ +----+
+</pre></div>
+</div>
+<p>The voltage (knowledge) level, <code class="docutils literal"><span class="pre">I</span></code>, must be stable along the back arc of the
+circuit, else the circuit will oscillate and misbehave.
+A loop works the same way &#8212;for the loop&#8217;s iterations to progress towards a
+goal, there must be stable knowledge along the back arc.
+The invariant property is actually quite natural.
+Consider this sequence of commands, which computes <code class="docutils literal"><span class="pre">3!</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;{ i == 0  ^  fac == i!  }&quot;&quot;&quot;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="sd">&quot;&quot;&quot;{ i == 1  ^  fac == i!  }&quot;&quot;&quot;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="sd">&quot;&quot;&quot;{ i == 2  ^  fac == i!  }&quot;&quot;&quot;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="sd">&quot;&quot;&quot;{ i == 3  ^  fac == i!  }&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="n">fac</span>
+</pre></div>
+</div>
+<p>This little example is just the loop repeated three times.
+The invariant, <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>, is critical to the success of the computation.
+Notice how the knowledge generated by completing one iteration &#8220;feeds into&#8221;
+the next iteration.
+And, after each iteration, that knowledge is that <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>.</p>
+<p>When the loop for factorial quits, what do we know?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="sd">&quot;&quot;&quot;{ n &gt;= 0 }&quot;&quot;&quot;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;{ ??? }&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="n">fac</span>
+</pre></div>
+</div>
+<p>For certain, when the loop quits after <code class="docutils literal"><span class="pre">i</span></code> iterations, we know that
+<code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code> (<code class="docutils literal"><span class="pre">i</span></code> remembers the number of loop iterations).
+But we also know that the loop&#8217;s test has gone false, that is, <code class="docutils literal"><span class="pre">~(i</span> <span class="pre">!=</span> <span class="pre">n)</span></code>,
+that is, <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">fac</span> <span class="o">==</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="sd">&quot;&quot;&quot;{ fac == i! }&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. i == n     premise    (the loop&#39;s test has gone False)</span>
+<span class="sd">  2. fac == i!  premise    (the invariant holds at the end of each interation)</span>
+<span class="sd">  3. fac = n!   subst 1 2  (the loop accomplished its goal) }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="n">fac</span>
+</pre></div>
+</div>
+<p>Since the loop terminated at the correct time, <code class="docutils literal"><span class="pre">fac</span></code> holds the correct answer.</p>
+<p>Here is a summary of the main points just made:</p>
+<ul>
+<li><p class="first"><strong>A loop is a function that repeatedly calls itself.</strong>
+<strong>(It is a</strong> <em>tail-recursive</em> <strong>function.)</strong></p>
+</li>
+<li><p class="first"><strong>The loop&#8217;s invariant states a strategy for accomplishing a goal:</strong></p>
+<blockquote>
+<div><p>the loop has been running for awhile; what has it accomplished so far?</p>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>The loop&#8217;s invariant is exactly the precondition for executing the loop&#8217;s
+body, and it is exactly the postcondition of what is generated by executing
+the loop&#8217;s body.</strong></p>
+</li>
+<li><p class="first"><strong>When the loop terminates, the falsity of the termination test coupled with
+the invariant should imply that the loop has achieved its goal.</strong></p>
+</li>
+</ul>
+<p>Even if you forget all about algebra and proofs, whenever you write a loop,
+<em>document the loop with its invariant stated in words</em>.
+If you are unable to state in words the invariant, then you don&#8217;t understand
+yourself what your loop is doing.</p>
+<div class="section" id="law-for-while-loops">
+<h3>6.1.1. Law for While-Loops<a class="headerlink" href="#law-for-while-loops" title="Permalink to this headline">¶</a></h3>
+<p>Here is the law we use for deducing the properties of a while-loop.
+It uses an invariant assertion, <code class="docutils literal"><span class="pre">I</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>  <span class="p">(</span><span class="n">we</span> <span class="n">must</span> <span class="n">prove</span> <span class="n">this</span> <span class="bp">True</span> <span class="n">before</span> <span class="n">the</span> <span class="n">loop</span> <span class="ow">is</span> <span class="n">entered</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">B</span> <span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  { invariant  I</span>
+<span class="sd">     modifies  VARLIST   (the variables updated in  C) }</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  { 1. B   premise</span>
+<span class="sd">    2. I   premise       (the premises for the loop&#39;s body)</span>
+<span class="sd">    ... }</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">C</span>
+  <span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>        <span class="p">(</span><span class="n">we</span> <span class="n">must</span> <span class="n">prove</span>  <span class="n">I</span>  <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">body</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. ~B    premise</span>
+<span class="sd">  2. I     premise       (both  ~B  and  I  hold true when the loop terminates)</span>
+<span class="sd">  ... }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>That is, to deduce the knowledge produced by a while-loop (when we do not know
+in advance how many times the loop will iterate), we must deduce an invariant
+<code class="docutils literal"><span class="pre">I</span></code> that:</p>
+<ol class="arabic simple">
+<li>is proved true the first time we enter the loop</li>
+<li>is proved true at the end of the loop&#8217;s body</li>
+</ol>
+<p>Then, no matter how many times (0,1,2,...) the loop repeats, we know that <code class="docutils literal"><span class="pre">I</span></code>
+must hold true when the loop stops.
+We also know <code class="docutils literal"><span class="pre">~B</span></code> holds when the loop stops.</p>
+<p>Because the loop will update some variables in its body, we must know these
+variables&#8217; names, so that any premises other than the loop invariant that enter
+the loop body that mention these variables are cancelled.
+We see this below in an example:</p>
+<p>Here is the factorial example, reassembled to use the while-law:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ def  0! == 1             # these are the recurrences that define  n!</span>
+<span class="sd">  def  k! == (k-1)! * k }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="sd">&quot;&quot;&quot;{ 1. n &gt;= 0                 premise  }&quot;&quot;&quot;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">fac</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. i == 0                    premise</span>
+<span class="sd">  2. fac == 1                  premise</span>
+<span class="sd">  3. 0! == 1                   def (of 0!)</span>
+<span class="sd">  4. fac == i!                 algebra 1 2 3 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  fac == i!</span>
+<span class="sd">      modifies i, fac }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># Here, the invariant is a legal premise, but</span>
+    <span class="c">#   i == 0,  fac == 1,  and  fac == 0!  ARE NOT,</span>
+    <span class="c">#   because  i  and  fac  are modified by the loop&#39;s body</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. i != n                premise</span>
+<span class="sd">      2. fac == i!             premise  }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. i == i_old + 1        premise</span>
+<span class="sd">      2. i_old == i - 1        algebra 1</span>
+<span class="sd">      3. fac == (i_old)!       premise  # from the invariant</span>
+<span class="sd">      4. fac == (i-1)!         subst 2 3</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. fac == fac_old * i    premise</span>
+<span class="sd">      2. fac_old == (i-1)!     premise</span>
+<span class="sd">      3. fac == (i-1)! * i     subst 2 1</span>
+<span class="sd">      4. i! == (i-1)! * i      def (of i!)</span>
+<span class="sd">      5. fac == i!             algebra 3 4</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c"># the loop ends here</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. not(i != n)               premise</span>
+<span class="sd">  2. i == n                    algebra 1</span>
+<span class="sd">  3. fac == i!                 premise</span>
+<span class="sd">  4. fac == n!                 subst 2 3 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="n">fac</span>
+</pre></div>
+</div>
+<p>A challenge lies in formulating the appropriate invariant that states what the
+loop is accomplishing while it repeats.
+Invariant discovery is an art form; there cannot exist a mechanical algorithm to
+do this.
+(This is a key result of computability theory, the study of what problems are
+mechanically solvable.)
+So, we now study how to discover loop invariants.</p>
+</div>
+</div>
+<div class="section" id="examples-of-invariant-discovery">
+<h2>6.2. Examples of Invariant Discovery<a class="headerlink" href="#examples-of-invariant-discovery" title="Permalink to this headline">¶</a></h2>
+<p>A key intellectual task in programming is stating a loop&#8217;s invariant.
+The invariant tells us &#8220;what the loop is doing&#8221; as it iterates &#8211; progresses in
+small steps &#8211; towards its goal.</p>
+<p><strong>IMPORTANT: Saying what &#8220;the loop is doing&#8221; is different from saying what the
+loop &#8220;will do&#8221; before it starts or what the loop &#8220;has done&#8221; after it has
+finished.</strong>
+We must ask the crucial question:</p>
+<blockquote>
+<div>Say that the loop has been running for a while &#8211; what has it accomplished so far?</div></blockquote>
+<p>The answer to this question, whether stated in English or algebra, is the
+invariant, the loop&#8217;s true meaning.</p>
+<p>Following are some examples of invariant discovery.</p>
+<div class="section" id="multiplication-as-repeated-addition">
+<h3>6.2.1. Multiplication as Repeated Addition<a class="headerlink" href="#multiplication-as-repeated-addition" title="Permalink to this headline">¶</a></h3>
+<p>Most people forget that the Greeks and Arabs intended multiplication to be just
+repeated addition.
+So, what does this program print for <code class="docutils literal"><span class="pre">z</span></code> when it finishes?
+What is the loop&#8217;s invariant?
+(How does the loop reach its goal?)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type an int: &quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type another: &quot;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">count</span> <span class="o">!=</span> <span class="n">x</span> <span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  ???</span>
+<span class="sd">      modifies   z, count }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">print</span> <span class="s">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span>
+</pre></div>
+</div>
+<p>Apparently, this program computes <code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> and saves it in <code class="docutils literal"><span class="pre">z</span></code>.
+To understand, we execute a test case and watch what is printed:</p>
+<div class="highlight-python"><div class="highlight"><pre>Type an int: 3
+Type another: 4
+(a) x = 3  y = 4  count = 0  z = 0
+(a) x = 3  y = 4  count = 1  z = 4
+(a) x = 3  y = 4  count = 2  z = 8
+(b) x = 3  y = 4  count = 3  z = 12
+</pre></div>
+</div>
+<p>The trace information in each row shows this pattern between the values of the
+variables:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">count</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">==</span> <span class="n">z</span>
+</pre></div>
+</div>
+<p>This is what the loop is doing &#8212; what is means &#8212; <code class="docutils literal"><span class="pre">z</span></code> holds the value of
+<code class="docutils literal"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code>.
+Because the loop stops when <code class="docutils literal"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>, we conclude that <code class="docutils literal"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p>
+<p>We can apply logic laws to prove that <code class="docutils literal"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">==</span> <span class="pre">z</span></code> is invariant for the
+loop&#8217;s body:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ 1.  count * y == z          premise  }&quot;&quot;&quot;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. z == z_old + y              premise</span>
+<span class="sd">  2. count * y == z_old          premise</span>
+<span class="sd">  3. (count + 1) * y  == z       algebra 2 1 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. count == count_old + 1      premise</span>
+<span class="sd">  2. (count_old + 1) * y == z    premise</span>
+<span class="sd">  3. count * y == z              subst 1 2 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Now, we insert this subproof into the program&#8217;s proof:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. z == 0                          premise</span>
+<span class="sd">  2. count == 0                      premise</span>
+<span class="sd">  3. count * y == z                  algebra 1 2 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">!=</span> <span class="n">x</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  count * y == z</span>
+<span class="sd">      modifies   z  count   }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;{ 1.  count * y == z          premise  }&quot;&quot;&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. z == z_old + y              premise</span>
+<span class="sd">      2. count * y == z_old          premise</span>
+<span class="sd">      3. (count + 1) * y  == z       algebra 2 1 }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. count == count_old + 1      premise</span>
+<span class="sd">      2. (count_old + 1) * y == z    premise</span>
+<span class="sd">      3. count * y == z              subst 1 2 }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. ~(count != x)                   premise</span>
+<span class="sd">  2. count == x                      algebra 1</span>
+<span class="sd">  3. count * y == z                  premise</span>
+<span class="sd">  4. x * y == z                      subst 2 3 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="programming-as-game-theory-invariants-as-strategies">
+<h3>6.2.2. Programming as Game Theory; Invariants as Strategies<a class="headerlink" href="#programming-as-game-theory-invariants-as-strategies" title="Permalink to this headline">¶</a></h3>
+<p>There are strong connections between algorithmics and game theory.
+Just about any programming problem can be thought of as a game to be played and
+won.
+An algorithm (program) is a list of moves for playing (and winning) the game.
+In particular, a loop program is a recipe for a game that is played in rounds,
+where each loop iteration is one round of the game.
+Parallel and synchronization algorithms are portrayed as multi-player games, and
+classic sequential programs, like the ones we study, are single-player games.</p>
+<p>For a single-player game that is coded as a loop, the loop&#8217;s invariant tells the
+<em>strategy</em> the loop uses to to win the game.</p>
+<p>Consider the multiplication example in the previous section.
+It is a game, where the objective is place into <code class="docutils literal"><span class="pre">z</span></code> the value of <code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>,
+using only the <code class="docutils literal"><span class="pre">+</span></code> operator.
+To win the game, we must play multiple rounds of addition.
+We decide that we will do the following moves at each round:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>until <code class="docutils literal"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>.
+Now, what is the strategy underlying our moves? The invariant tells us:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ count * y == z }&quot;&quot;&quot;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="sd">&quot;&quot;&quot;{ count * y == z }&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>That is, we are moving count-many copies of <code class="docutils literal"><span class="pre">y</span></code> into <code class="docutils literal"><span class="pre">z</span></code>.
+Because the invariant holds at the start of each round, we can exploit it to
+move one more round.
+When <code class="docutils literal"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>, our rounds end, and our strategy implies that we won the
+game.</p>
+</div>
+<div class="section" id="example-controlling-a-single-player-game-pebbles">
+<h3>6.2.3. Example: Controlling a Single Player Game: Pebbles<a class="headerlink" href="#example-controlling-a-single-player-game-pebbles" title="Permalink to this headline">¶</a></h3>
+<p>Loops are often used as &#8220;controllers&#8221; for real-time and interactive systems.
+In what sense is a controller&#8217;s invariant a &#8220;strategy&#8221;?
+Let&#8217;s take a look:</p>
+<p>Here is a little computer game, where we have two boxes, an in-box and an
+out-box.
+Say the computer places some secret quantity of pebbles into the in-box.
+Each round, the game&#8217;s player must guess a quantity of pebbles to move from the
+in-box to the out-box.
+Rounds are played over and over until either:</p>
+<ul class="simple">
+<li>the in-box is empty &#8211; the player wins</li>
+<li>the player asks to move more pebbles than what remain in the in-box &#8211;
+the player loses</li>
+</ul>
+<p>The computerized game uses a controller loop that enforces the rules of the
+game.
+The loop&#8217;s invariant and a global invariant state the game&#8217;s rules:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># One-player pebble game:</span>
+<span class="kn">import</span> <span class="nn">random</span>                       <span class="c"># Python random-number-generator module</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>     <span class="c"># choose a quantity between 1 and 99</span>
+<span class="k">assert</span> <span class="n">total</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">99</span>   <span class="c"># this is  randrange(1,100)&#39;s postcondition</span>
+
+<span class="n">inbox</span> <span class="o">=</span> <span class="n">total</span>
+<span class="n">outbox</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">win</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">lose</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="sd">&quot;&quot;&quot;{ globalinv   win == (inbox == 0) ^  ~(win and lose) }&quot;&quot;&quot;</span>
+
+<span class="k">while</span> <span class="ow">not</span><span class="p">(</span><span class="n">win</span> <span class="ow">or</span> <span class="n">lose</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  inbox + outbox == total  and  inbox &gt;= 0</span>
+<span class="sd">      modifies inbox, outbox, play }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># here,  ~win ^ ~lose  holds true,  thanks to the loop test</span>
+    <span class="n">quantity</span> <span class="o">=</span> <span class="n">playerMakeMove</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">quantity</span> <span class="o">&gt;</span> <span class="n">inbox</span> <span class="p">:</span>
+        <span class="n">lose</span> <span class="o">=</span> <span class="bp">True</span>     <span class="c"># globalinv still holds tree</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">inbox</span> <span class="o">=</span> <span class="n">inbox</span> <span class="o">-</span> <span class="n">quantity</span>
+        <span class="n">outbox</span> <span class="o">=</span> <span class="n">outbox</span> <span class="o">+</span> <span class="n">quantity</span>   <span class="c"># loop invariant still holds true</span>
+        <span class="k">if</span> <span class="n">inbox</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">win</span> <span class="o">=</span> <span class="bp">True</span>  <span class="c"># this reestablishes the globalinv</span>
+
+<span class="c"># Exited loop --- game&#39;s over.  We have these facts:</span>
+<span class="c">#   win or lose</span>
+<span class="c">#   inbox + outbox == total  and  inbox &gt;= 0</span>
+<span class="c">#   win == (inbox == 0) ^  ~(win and lose)</span>
+
+<span class="c"># We use these to deduce that</span>
+<span class="c">#    (i) there is either a win or a loss (but not both)</span>
+<span class="c">#   (ii) a win means that  inbox == 0</span>
+<span class="c">#   (iii) no pebbles were lost when moving them from the inbox</span>
+</pre></div>
+</div>
+<p>The controller&#8217;s &#8220;strategy&#8221; (loop invariant) explains how the controller/loop
+enforces the rules of the game.</p>
+<p>But there is also a player of the game &#8211; Once we code <code class="docutils literal"><span class="pre">playerMakeMove</span></code>,
+we have a completed game.
+Here is the specification for the missing component:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">playerMakeMove</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    True</span>
+<span class="sd">      post   move &gt; 0</span>
+<span class="sd">      return move }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Here are three implementations, all of which satisfy the specification:</p>
+<ol class="arabic">
+<li><p class="first">Implementation 1</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">playerMakeMove</span><span class="p">():</span>
+  <span class="n">move</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">move</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Implementation 2</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">playerMakeMove</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">random</span>
+  <span class="n">move</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">move</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Implementation 3</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">playerMakeMove</span><span class="p">();</span>
+   <span class="n">move</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+   <span class="k">if</span> <span class="n">move</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">:</span>
+       <span class="n">move</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">move</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">move</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Which of the above codings will win most often?
+(From the player&#8217;s perspective, the completed game would have this winning
+strategy: <code class="docutils literal"><span class="pre">not</span> <span class="pre">lose</span></code> and <code class="docutils literal"><span class="pre">inbox</span> <span class="pre">+</span> <span class="pre">outbox</span> <span class="pre">==</span> <span class="pre">total</span></code> and <code class="docutils literal"><span class="pre">inbox</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.
+That is, as long as each round begins and ends with the player &#8220;playing fair&#8221;
+and not losing, the player is on the path to a win.)</p>
+<p>The specifications and loop invariants help us analyze the program and show why
+it plays the game correctly.</p>
+</div>
+<div class="section" id="a-board-game-global-class-invariant-loop-invariant">
+<h3>6.2.4. A Board Game: Global (Class) Invariant + Loop Invariant<a class="headerlink" href="#a-board-game-global-class-invariant-loop-invariant" title="Permalink to this headline">¶</a></h3>
+<p>Next, consider a board game like Sudoku:
+There is a data structure (a grid), and each round the player tries to insert a
+digit into one cell of the grid.
+The computerized game is built in a Model-View-Controller (MVC) architecture,
+where:</p>
+<ul class="simple">
+<li>the grid is the Model module;</li>
+<li>the loop that counts the rounds is the Controller module; and</li>
+<li>the View module displays the grid and interacts with the player to read moves.</li>
+</ul>
+<p>Here is an outline of the Model of the Sudoku board:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Model.py  --- model of N-by-N sudoku gameboard</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="o">...</span><span class="n">grid</span> <span class="n">of</span> <span class="n">N</span><span class="o">-</span><span class="n">rows</span> <span class="ow">and</span> <span class="n">N</span><span class="o">-</span><span class="n">columns</span> <span class="n">of</span> <span class="n">ints</span> <span class="ow">and</span> <span class="n">blank</span> <span class="n">spaces</span><span class="o">...</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ globalinv   forall 0 &lt;= row &lt; N,  forall 0 &lt;= i &lt; N,</span>
+<span class="sd">                      i appears at most once in  grid[row]</span>
+<span class="sd">  globalinv   forall 0 &lt;= col &lt; N,  forall 0 &lt;= i &lt; N,</span>
+<span class="sd">                      i appears at most once in  grid[_][col] }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c"># Recall that the methods below must preserve the global invariants!</span>
+
+<span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">rowindex</span><span class="p">,</span> <span class="n">colindex</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre   0 &lt;= rowindex &lt; N  and  0 &lt;= colindex &lt; N  and  0 &lt;= num &lt; N</span>
+<span class="sd">                  and  grid[rowindex][colindex] == &quot; &quot;</span>
+<span class="sd">      post  grid[rowindex][colindex] == num</span>
+<span class="sd">            and forall 0 &lt;= r &lt; N, 0 &lt;= c &lt; N,</span>
+<span class="sd">                (r != rowindex and c != colindex) -&gt; grid[r][c] == grid_in[r][c] }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">grid</span><span class="p">[</span><span class="n">rowindex</span><span class="p">][</span><span class="n">colindex</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span>
+    <span class="k">if</span>  <span class="ow">not</span><span class="p">(</span><span class="k">global</span> <span class="n">invariant</span> <span class="n">stated</span> <span class="n">above</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">grid</span><span class="p">[</span><span class="n">rowindex</span><span class="p">][</span><span class="n">colindex</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot; &quot;</span>   <span class="c"># undo assignment</span>
+        <span class="k">print</span> <span class="s">&quot;insertion error&quot;</span>          <span class="c"># a wasted move</span>
+
+<span class="k">def</span> <span class="nf">gameNotOver</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    True</span>
+<span class="sd">      post   ans == not(for all 0 &lt;= r &lt; N, 0 &lt;= c &lt; N,  grid[r][c] != &quot; &quot;)</span>
+<span class="sd">      return ans }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span><span class="n">searches</span>  <span class="n">grid</span>  <span class="n">to</span> <span class="n">find</span> <span class="nb">any</span> <span class="s">&quot; &quot;</span> <span class="n">values</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>The Model&#8217;s global invariant enforces that the grid is always well formed, and the insert method enforces the invariant. This allows insert to be called repetitively, say, within a loop body.
+The Controller module is a loop that runs the rounds of the game, maintaining the game board, the score, and any other rules of play:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Controller.py  ---  controller for Sudoku game:</span>
+<span class="kn">import</span> <span class="nn">Model</span>
+
+<span class="n">guesses</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c"># remembers how many total guesses the player makes</span>
+<span class="k">while</span> <span class="n">Model</span><span class="o">.</span><span class="n">gameNotOver</span><span class="p">()</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;{ invariant ...all rules of play are enforced...  and  guesses &gt;= 0  }&quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">numberToInsert</span><span class="p">,</span> <span class="n">rowindex</span><span class="p">,</span> <span class="n">colindex</span><span class="p">)</span> <span class="o">=</span> <span class="n">View</span><span class="o">.</span><span class="n">playerMakeMove</span><span class="p">()</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">numberToInsert</span><span class="p">,</span> <span class="n">rowindex</span><span class="p">,</span> <span class="n">colindex</span><span class="p">)</span>
+    <span class="o">...</span> <span class="n">do</span> <span class="nb">any</span> <span class="n">needed</span> <span class="n">rules</span> <span class="n">enforcement</span> <span class="n">here</span> <span class="o">...</span>
+    <span class="n">guesses</span> <span class="o">=</span> <span class="n">guesses</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c"># Loop exits, and we have these facts:</span>
+<span class="c">#   not Model.gameNotOver()  --- see the method&#39;s postcondition</span>
+<span class="c">#   ...all rules of play are enforced...  and  guesses &gt;= 0</span>
+<span class="c"># Hence, the player has `won&#39; with the `score&#39; of  guesses</span>
+</pre></div>
+</div>
+<p>For this simple example, the key invariants are the ones inside the Model.
+The Controller enforces a &#8220;protocol&#8221; between the player and the Model, ensuring
+that the Model&#8217;s invariant as well as all other game rules are preserved.</p>
+</div>
+<div class="section" id="two-player-games-protocols">
+<h3>6.2.5. Two-player Games == Protocols<a class="headerlink" href="#two-player-games-protocols" title="Permalink to this headline">¶</a></h3>
+<p>The rules for a multi-player game are called a <em>protocol</em> because the rules
+ensure a controlled interaction between the players.
+The game&#8217;s controller enforces the protocol.
+<em>Temporal logic</em> is a form of symbolic logic used to define protocols.
+We can&#8217;t study temporal logic here, but we can note that the loop invariant for
+a multiplayer game states a protocol that in real-life situations is precisely
+coded in temporal logic.</p>
+<p>Here is the controller for a two-player counting game, where the first player
+shouts a number and the second player, who hears the number, must shout a reply
+number such that the sum of the two is even valued:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;{ invariant  total % 2 == 0  }&quot;&quot;&quot;</span>   <span class="c"># total  is even valued</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">ProcessOne</span><span class="o">.</span><span class="n">shoutNumber</span><span class="p">()</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="n">ProcessTwo</span><span class="o">.</span><span class="n">replyNumber</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">request</span> <span class="o">+</span> <span class="n">reply</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">total</span> <span class="o">==</span> <span class="n">total</span> <span class="o">+</span> <span class="p">(</span><span class="n">request</span> <span class="o">+</span> <span class="n">reply</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">ProcessOne</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="s">&quot;try again&quot;</span><span class="p">)</span>
+        <span class="n">ProcessTwo</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="s">&quot;try again&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Modules <code class="docutils literal"><span class="pre">ProcessOne</span></code> and <code class="docutils literal"><span class="pre">ProcessTwo</span></code> have methods for generating numbers,
+responses, and resets.
+The controller&#8217;s invariant enforces the protocol &#8212; the rules &#8212; for playing
+the game (for enacting the controlled communication).</p>
+<p>A classic two-player game, like chess, operates with a Model module
+(the chess board) whose invariants enforce the rules of board layout and piece
+movement.
+The Controller module uses a loop that enforces the order of interaction between
+the players &#8212; the protocol &#8212; which might also include time constraints on
+the moves.
+The View module displays the state of the Model and forwards the players&#8217;
+communications to the controller.</p>
+</div>
+<div class="section" id="division-as-repeated-subtraction">
+<h3>6.2.6. Division as Repeated Subtraction<a class="headerlink" href="#division-as-repeated-subtraction" title="Permalink to this headline">¶</a></h3>
+<p>Back to more traditional number games:
+Maybe you remember that division was invented to represent repeated subtraction,
+e.g., &#8220;how many times can you subtract 4 from 20?
+(5) &#8212; 4 goes into 20 five times &#8212; 20 divided by 4 is 5 (with remainder 0)&#8221;.</p>
+<p>Here is the program that does repeated subtraction like division is meant to do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type an nonegative int: &quot;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a positive int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>  <span class="ow">and</span>  <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">n</span>
+
+<span class="k">while</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">d</span> <span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;(a) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant: ???</span>
+<span class="sd">      modifies q r }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">d</span>
+
+<span class="k">print</span> <span class="s">&quot;(b) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">,</span> <span class="s">&quot;divided by&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s">&quot;with remainder&quot;</span><span class="p">,</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>Here is a sample execution with trace information printed:</p>
+<div class="highlight-python"><div class="highlight"><pre>Type an nonegative int: 14
+Type a positive int: 3
+(a) n = 14  d = 3  q = 0  r = 14
+(a) n = 14  d = 3  q = 1  r = 11
+(a) n = 14  d = 3  q = 2  r = 8
+(a) n = 14  d = 3  q = 3  r = 5
+(b) n = 14  d = 3  q = 4  r = 2
+14 divided by 3 is 4 with remainder 2
+</pre></div>
+</div>
+<p>This is a &#8220;numbers game&#8221;, where we are allowed to use only <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">-</span></code> on
+the numbers.
+The underlying strategy (invariant) at point <code class="docutils literal"><span class="pre">(a)</span></code> is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ invariant  (d * q) + r == n  }&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>When the loop quits, that is, when there is no longer enough value in <code class="docutils literal"><span class="pre">r</span></code> to
+allow yet one more subtraction of <code class="docutils literal"><span class="pre">q</span></code>, then the result is exactly the
+quotient-remainder that results from dividing <code class="docutils literal"><span class="pre">n</span></code> by <code class="docutils literal"><span class="pre">d</span></code>.</p>
+</div>
+<div class="section" id="averaging-test-scores">
+<h3>6.2.7. Averaging Test Scores<a class="headerlink" href="#averaging-test-scores" title="Permalink to this headline">¶</a></h3>
+<p>Even a task like summing scores and computing their average depends on a loop
+invariant:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># how many scores read so far</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># the points of all the scores read so far</span>
+<span class="n">processing</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="sd">&quot;&quot;&quot;{ total == 0  }&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="n">processing</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  total == score_1 + score_2 + ...up to... + score_count</span>
+<span class="sd">      modifies  processing, total, count }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type next score (-1 to quit): &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">processing</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="sd">&quot;&quot;&quot;{ total == score_1 + score_2 + ...up to... + score_count }&quot;&quot;&quot;</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">score</span>
+        <span class="sd">&quot;&quot;&quot;{ total == score_1 + score_2 + ...up to... + score_count+1 }&quot;&quot;&quot;</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;{ total == score_1 + score_2 + ...up to... + score_count }&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;{ total == score_1 + score_2 + ...up to... + score_count }&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="s">&quot;The average is&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">)</span> <span class="o">/</span> <span class="n">count</span><span class="p">)</span>  <span class="c"># compute a fractional average</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">total</span></code> holds the sum of the scores read so far: when <code class="docutils literal"><span class="pre">count</span></code> is 1,
+<code class="docutils literal"><span class="pre">total</span></code> holds the sum of one score;
+when <code class="docutils literal"><span class="pre">count</span></code> equals 2, <code class="docutils literal"><span class="pre">total</span></code> holds the sum of two scores, and so on.
+We write the pattern like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">total</span>  <span class="o">=</span>  <span class="n">score_1</span> <span class="o">+</span> <span class="n">score_2</span> <span class="o">+</span> <span class="o">...</span><span class="n">up</span> <span class="n">to</span><span class="o">...</span> <span class="o">+</span> <span class="n">score_count</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal"><span class="pre">score_i</span></code> denotes the input score that was read at the loop&#8217;s i-th
+iteration.</p>
+<p>When the loop starts, there are no scores saved in <code class="docutils literal"><span class="pre">total</span></code>.
+In a technical, default sense, the sum of
+<code class="docutils literal"><span class="pre">total</span> <span class="pre">=</span> <span class="pre">score_1</span> <span class="pre">+</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">+</span> <span class="pre">score_0</span></code> is an &#8220;empty sum&#8221;, which is treated
+by mathematicians as 0.
+(You can&#8217;t count from 1 &#8220;up to&#8221; 0 &#8212;it is an empty range of values.)
+This means the invariant holds for zero iterations of the loop, which allows us
+to enter the loop and then prove that the invariant is preserved as the loop
+repeats and then quits.</p>
+</div>
+<div class="section" id="reversing-a-word">
+<h3>6.2.8. Reversing a Word<a class="headerlink" href="#reversing-a-word" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s make a function that reverses a word, <code class="docutils literal"><span class="pre">w</span></code>, and returns the reversed
+word.
+The specification is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;reverse reverses the letters in  w  and returns the answer&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    w  is a string</span>
+<span class="sd">      post   ans == w[len(w)-1] w[len(w)-2] ...down to... w[1] w[0]</span>
+<span class="sd">      return ans }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>How to do it?
+Think of it as a game: count through the letters of <code class="docutils literal"><span class="pre">w</span></code> and copy each letter
+to the front of variable string <code class="docutils literal"><span class="pre">ans</span></code>. Round number <code class="docutils literal"><span class="pre">i</span></code> of the game would go</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ans</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">ans</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>When we apply this repeatedly, we get the desired behavior &#8211; we win the game:</p>
+<div class="highlight-python"><div class="highlight"><pre>after 0 iterations:  w = &quot;abcd&quot;   i = 0   ans = &quot;&quot;
+after 1 iteration:   w = &quot;abcd&quot;   i = 1   ans = &quot;a&quot;
+after 2 iterations:  w = &quot;abcd&quot;   i = 2   ans = &quot;ba&quot;
+after 3 iterations:  w = &quot;abcd&quot;   i = 3   ans = &quot;cba&quot;
+after 4 iterations:  w = &quot;abcd&quot;   i = 4   ans = &quot;dcba&quot;
+</pre></div>
+</div>
+<p>The strategy for playing the rounds of the game is exactly the loop&#8217;s invariant:
+the first <code class="docutils literal"><span class="pre">i</span></code> letters of <code class="docutils literal"><span class="pre">w</span></code> are saved in reverse order within <code class="docutils literal"><span class="pre">ans</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ans</span> <span class="o">=</span>  <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">...</span><span class="n">down</span> <span class="n">to</span><span class="o">...</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You should check that this is indeed an invariant property of the proposed loop
+body above.
+This completes the function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;reverse reverses the letters in  w  and returns the answer&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    w  is a string</span>
+<span class="sd">      post   ans == w[len(w)-1] w[len(w)-2] ...down to... w[1] w[0]</span>
+<span class="sd">      return ans }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. ans == &quot;&quot;                                                       premise</span>
+<span class="sd">      2. ans == w[i-1] w[i-2] ...down to... w[0]                         algebra 1</span>
+<span class="sd">         # &quot;-1 down-to 0&quot; is an empty range of characters from  w</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant  ans ==  w[i-1] w[i-2] ...down to... w[0]</span>
+<span class="sd">          modifies  ans, i }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">ans</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. ans == w[i] + ans_old                                       premise</span>
+<span class="sd">          2. ans_old == w[i-1] w[i-2] ...down to... w[0]                 premise</span>
+<span class="sd">          3. ans == w[i] + w[i-1] w[i-2] ...down to... w[0]              algebra 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. i == i_old + 1                                              premise</span>
+<span class="sd">          2. ans == w[i_old] + w[i_old-1] w[i_old-2] ...down to... w[0]  premise</span>
+<span class="sd">          3. i_old == i - 1                                              algebra 1</span>
+<span class="sd">          4. ans == w[i-1] w[i-2] ...down to... w[0]                     subst 3 2</span>
+<span class="sd">        }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. i = len(w)                                                      premise</span>
+<span class="sd">      2. ans ==  w[i-1] w[i-2] ...down to... w[0]                        premise</span>
+<span class="sd">      3. ans ==  w[len(w)-1] w[len(w)-2] ...down to... w[0]              subst 1 2 }</span>
+<span class="sd">    &quot;&quot;&quot;</span>   <span class="c"># the function&#39;s postcondition is proved</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</pre></div>
+</div>
+<p>The ellipsis (<code class="docutils literal"><span class="pre">...down</span> <span class="pre">to...</span></code>) in the invariant is a bit imprecise;
+we can construct the proof more precisely with the assistance of these two
+recurrences, which we write in the same style that we used to define factorial
+(<code class="docutils literal"><span class="pre">n!</span></code>):</p>
+<div class="highlight-python"><div class="highlight"><pre>rev(w, ans, 0)    if  ans == &quot;&quot;
+rev(w, ans, k+1)  if  rev(w, a&#39;, k) and  ans == w[k] + a&#39;
+</pre></div>
+</div>
+<p>That is, <code class="docutils literal"><span class="pre">rev(w,</span> <span class="pre">a,</span> <span class="pre">i)</span></code> says that the first <code class="docutils literal"><span class="pre">i</span></code> letters of string <code class="docutils literal"><span class="pre">w</span></code> are
+saved in reverse order in string <code class="docutils literal"><span class="pre">a</span></code>, that is,</p>
+<blockquote>
+<div>rev(w, a, i)  exactly when  a == w[i-1] + w[i-2] + ...downton... + w[0]</div></blockquote>
+<p>We use the recurrence to prove that the loop&#8217;s invariant is <code class="docutils literal"><span class="pre">rev(w,</span> <span class="pre">ans,</span> <span class="pre">i)</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ def rev(w, ans, 0)    if  ans == &quot;&quot;</span>
+<span class="sd">  def rev(w, ans, k+1)  if  rev(w, a&#39;, k) and  ans == w[k] + a&#39; }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;reverse reverses the letters in  w  and returns the answer&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    w  is a string</span>
+<span class="sd">      post   rev(w, ans, len(w))</span>
+<span class="sd">      return ans }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. ans == &quot;&quot;                                                      premise</span>
+<span class="sd">      2. rev(w, ans, 0)  if  ans == &quot;&quot;                                  def</span>
+<span class="sd">      3. rev(w, ans, 0)                                                 ife 2 1   # &quot;if elimination&quot;</span>
+<span class="sd">      4. i == 0                                                         premise</span>
+<span class="sd">      5. rev(w, ans, i)                                                 subst 4 3 }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant  rev(w, ans, i)</span>
+<span class="sd">          modifies  ans, i }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">ans</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. ans == w[i] + ans_old                                      premise</span>
+<span class="sd">          2. rev(w, ans_old, i)                                         premise</span>
+<span class="sd">          3. rev(w, ans_old, i) and  ans == w[i] + ans_old              andi 2 1</span>
+<span class="sd">          4. rev(w, ans, i+1)  if  rev(w, a&#39;, i) and  ans == w[i] + a&#39;  def</span>
+<span class="sd">          5. rev(w, ans, i+1)                                           ife 3 4 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. i == i_old + 1                                             premise</span>
+<span class="sd">          2. rev(w, ans, i_old+1)                                       premise</span>
+<span class="sd">          3. rev(w, ans, i)                                             subst 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. not(i != len(w))                                               premise</span>
+<span class="sd">      2. rev(w, ans, i)                                                 premise</span>
+<span class="sd">      3. i == len(w)                                                    algebra 1</span>
+<span class="sd">      4. rev(w, ans, len(w))                                            subst 3 2 }</span>
+<span class="sd">    &quot;&quot;&quot;</span> <span class="c"># the function&#39;s postcondition is proved</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</pre></div>
+</div>
+<p>Recurrences are the standard way of eliminating ellipses in mathematical
+statements.
+You may find them a bit difficult to digest at first, but recurrences are
+surprisingly powerful and form the basis of the Prolog programming language,
+which is the standard programming language for artifical intelligence.
+You will learn about Prolog later in the course.</p>
+</div>
+<div class="section" id="squaring-an-array-s-numbers">
+<h3>6.2.9. Squaring an Array&#8217;s Numbers<a class="headerlink" href="#squaring-an-array-s-numbers" title="Permalink to this headline">¶</a></h3>
+<p>Say that <code class="docutils literal"><span class="pre">a</span></code> is an array of ints, and say we write a loop that squares each of
+<code class="docutils literal"><span class="pre">a</span></code>&#8216;s elements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">...</span> <span class="p">]</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;{ invariant: ??? }&quot;&quot;&quot;</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">print</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>In words, the loop&#8217;s invariant is that</p>
+<blockquote>
+<div>while the loop is running, <code class="docutils literal"><span class="pre">a</span></code>&#8216;s elements, from 0 up to <code class="docutils literal"><span class="pre">i</span></code>,
+are squared, and the rest are unchanged</div></blockquote>
+<p>It is a little difficult to state this precisely with algebra notation.
+Our first attempt might read like this:
+Let  <code class="docutils literal"><span class="pre">a_in</span></code>  be the starting value of <code class="docutils literal"><span class="pre">a</span></code>.  The invariant is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">a_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">^</span>
+  <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">a_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">^</span>
+    <span class="o">...</span> <span class="o">^</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">a_in</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">^</span>
+<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>             <span class="o">^</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>         <span class="o">^</span>
+    <span class="o">...</span> <span class="o">^</span>  <span class="n">a</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is terribly wordy.</p>
+<p>There is a better way to represent the assertion (even better than a
+recurrence), using the logical operator, &#8220;forall&#8221;.
+(We will see that the for-all operator is written FORALL (∀), but
+for now we use the words, &#8220;for all&#8221;.)
+The invariant is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">forall</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">a_in</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+<span class="o">^</span>
+<span class="n">forall</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">a_in</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>That is, for all <code class="docutils literal"><span class="pre">j</span></code> in the range from <code class="docutils literal"><span class="pre">0</span></code> to
+<code class="docutils literal"><span class="pre">i-1,</span> <span class="pre">a[j]</span> <span class="pre">==</span> <span class="pre">a_in[j]</span> <span class="pre">*</span> <span class="pre">a_in[j]</span></code>, and for all <code class="docutils literal"><span class="pre">j</span></code> in the range, <code class="docutils literal"><span class="pre">i</span></code> to
+<code class="docutils literal"><span class="pre">len(a)-1,</span> <span class="pre">a[j]</span> <span class="pre">==</span> <span class="pre">a_in[j]</span></code>.
+This indicates clearly that array <code class="docutils literal"><span class="pre">a</span></code> is split into one segment whose elements
+are squared and one segment whose elements are not yet altered.</p>
+<p>When the loop quits, it is because <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">len(a)</span></code>.
+In this situation, the range from <code class="docutils literal"><span class="pre">i</span></code> to <code class="docutils literal"><span class="pre">len(a)-1</span></code> is empty &#8211; all the
+array&#8217;s elements are squared.</p>
+</div>
+<div class="section" id="finding-a-letter-in-a-word">
+<h3>6.2.10. Finding a Letter in a Word<a class="headerlink" href="#finding-a-letter-in-a-word" title="Permalink to this headline">¶</a></h3>
+<p>Here is a classic linear-search function, just the code alone, first:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;find  locates char  c  in string  s  and returns its index.</span>
+<span class="sd">       If  c  is not present in  s,  then  -1  is returned.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># THE POSITION IN  s  WE ARE EXAMINING</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c"># DID WE FIND  c  YET?</span>
+
+    <span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="ow">and</span>  <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="c"># WHAT HAS HAPPENED SO FAR?  WHAT&#39;S THE INVARIANT?</span>
+        <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c"># LOOP FINISHED; DID WE FIND c ?</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">index</span>
+</pre></div>
+</div>
+<p>Sample calls are <code class="docutils literal"><span class="pre">find(&quot;d&quot;,</span> <span class="pre">&quot;abcded&quot;)</span></code>, which returns 3, and
+<code class="docutils literal"><span class="pre">find(&quot;d&quot;,</span> <span class="pre">&quot;cbac&quot;)</span></code>, which returns -1.</p>
+<p>The function resembles data-base-search and optimization problems, where a loop
+repeats indefinitely until some quality of answer is reached.
+The loop invariant and exit text are critical to the function&#8217;s correctness.</p>
+<p>It is not so easy to write the function&#8217;s specification precisely; here is one
+version:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;find locates an occurrence of  c  in  s  and returns its index.</span>
+<span class="sd">       If  c  is not present in  s,  then  -1  is returned.</span>
+<span class="sd">       parameters: c - a letter;  s - a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a char  and  s  is a string</span>
+<span class="sd">      post   (index &gt;= 0 --&gt; s[index] == c)</span>
+<span class="sd">             and  (index == -1 --&gt; (forall 0 &lt;= i &lt; len(s),  s[i] != c))</span>
+<span class="sd">      return index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>  <span class="c"># Recall that  P --&gt; Q  means &quot;if P holds then so does Q&quot;</span>
+</pre></div>
+</div>
+<p>The postcondition states how the value of <code class="docutils literal"><span class="pre">index</span></code> communicates the result of
+the search.
+The postcondition&#8217;s two clauses become the loop invariant and a global-variable
+invariant:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="sd">&quot;&quot;&quot;{ globalinv  found --&gt; s[index] == c }&quot;&quot;&quot;</span>  <span class="c"># MUST ALWAYS HOLD TRUE</span>
+<span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="ow">and</span>  <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+    <span class="c"># so far,  c  is not any of  s[0], s[1], ..., s[index-1]</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant   forall 0 &lt;= i &lt; index, s[i] != c</span>
+<span class="sd">      modifies  found, index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Based on how the loop terminates, the loop invariant and global invariant
+combine to prove the postcondition.
+Here is the completed analysis:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;find locates an occurrence of  c  in  s  and returns its index.</span>
+<span class="sd">       If  c  is not present in  s,  then  -1  is returned.</span>
+<span class="sd">       parameters: c - a letter;  s - a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c is a char  and  s  is a string</span>
+<span class="sd">      post   (index &gt;= 0 --&gt;  s[index] == c)</span>
+<span class="sd">               and  (index == -1 --&gt; (forall 0 &lt;= i &lt; len(s),  s[i] != c))</span>
+<span class="sd">      return index</span>
+<span class="sd">    }&quot;&quot;&quot;</span>  <span class="c"># Recall that  P --&gt; Q  means &quot;if P holds then so does Q&quot;</span>
+
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c"># the position of the  letter  in  s  we are examining</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>  <span class="c"># did we find  c  in  s  yet?</span>
+    <span class="sd">&quot;&quot;&quot;{ globalinv  found --&gt; s[index] == c }&quot;&quot;&quot;</span>  <span class="c"># IMPORTANT</span>
+
+    <span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="ow">and</span>  <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="c"># so far,  c  is not any of  s[0], s[1], ..., s[index-1]</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant forall 0 &lt;= i &lt; index,  s[i] != c</span>
+<span class="sd">          modifies  found, index }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="c"># Reprove here that the global invariant is true (and it is! :-)</span>
+            <span class="c"># We do NOT increment  index!  So, the loop invariant remains true.</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="c"># Reprove here the loop invariant</span>
+
+        <span class="c"># The loop invariant is reproved in both cases.</span>
+
+    <span class="c"># We have exited the loop.  This happened for one of two reasons:</span>
+    <span class="c">#  (i) found = True,  meaning that  s[index] == c, by the globalinv</span>
+    <span class="c">#  (ii) index = len(s), meaning  c  was not found in  s</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. not(index != len(s) and not found)        premise  (test is false)</span>
+<span class="sd">      2. index == len(s) or found                  SYMBOLIC LOGIC 1</span>
+<span class="sd">      3. forall 0 &lt;= i &lt; index,  s[i] != c         premise   (loop invariant)</span>
+<span class="sd">      4. found --&gt; s[index] == c                   globalinv }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. not found                             premise</span>
+<span class="sd">          2. index == len(s) or found              premise</span>
+<span class="sd">          3. index == len(s)                       SYMBOLIC LOGIC 1 2</span>
+<span class="sd">          4. forall 0 &lt;= i &lt; index,  s[i] != c     premise</span>
+<span class="sd">          5. forall 0 &lt;= i &lt; len(s), s[i] != c     subst 3 4 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. index == - 1                          premise</span>
+<span class="sd">          2. forall 0 &lt;= i &lt; len(s), s[i] != c     premise</span>
+<span class="sd">          3.  AT THIS POINT, WE USE SYMBOLIC LOGIC TO PROVE  post }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. not(not found)                        premise</span>
+<span class="sd">          2. forall 0 &lt;= i &lt; index,  s[i] != c     premise</span>
+<span class="sd">          3. found --&gt; s[index] == c               globalinv</span>
+<span class="sd">          4. s[index] == c                         SYMBOLIC LOGIC 1 3</span>
+<span class="sd">          5. AT THIS POINT, WE USE SYMBOLIC LOGIC TO PROVE  post }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="c"># POSTCONDITION IS PROVED IN BOTH CASES:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. (index &gt;= 0 --&gt;  s[index] == c)</span>
+<span class="sd">         and  (index == -1 --&gt; forall 0 &lt;= i &lt; len(s),  s[i] != c)  premise }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">index</span>
+</pre></div>
+</div>
+<p>The analysis requires deduction involving <code class="docutils literal"><span class="pre">--&gt;</span></code>, <code class="docutils literal"><span class="pre">v</span></code> and <code class="docutils literal"><span class="pre">~</span></code> that exceed
+our current knowledge.
+For this reason, we will soon pause our study of programming logic for a study
+of symbolic logic, that is, the &#8220;algebra of logical assertions&#8221;.</p>
+<div class="section" id="string-search-variation-1">
+<h4>String Search, Variation 1<a class="headerlink" href="#string-search-variation-1" title="Permalink to this headline">¶</a></h4>
+<p>Here is the same function but with a different specification, which means a different loop invariant is needed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a character  and  s  is a string</span>
+<span class="sd">      post   s[index] == c</span>
+<span class="sd">             v  (index == -1 ^  forall 0&lt;= i &lt; len(s), s[i]!=c)</span>
+<span class="sd">     return  index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="ow">and</span>  <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant</span>
+<span class="sd">            (~found  ^ forall 0&lt;= i &lt; index, s[i]!=c)</span>
+<span class="sd">             v (found  ^  c == s[index])</span>
+<span class="sd">          modifies  found, index</span>
+<span class="sd">        }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="sd">&quot;&quot;&quot;{ found  ^  c == s[index] }&quot;&quot;&quot;</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            { ~found  ^</span>
+<span class="sd">              c != s[0] ^  forall 0&lt;= i &lt; index, s[i]!=c)  }</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">index</span>
+</pre></div>
+</div>
+<p>The specification&#8217;s postcondition indicates that there are two possible outcomes
+from the function.
+By using symbolic logic, we can prove that the postcondition given here is
+logically equivalent (has the same knowledge content) as the one seen in the
+earlier example.</p>
+</div>
+<div class="section" id="string-search-variation-2">
+<h4>String Search, Variation 2<a class="headerlink" href="#string-search-variation-2" title="Permalink to this headline">¶</a></h4>
+<p>Some loops use a <code class="docutils literal"><span class="pre">break</span></code> command.
+At such a break, the loop invariant must be proved true, just as if the loop had
+progressed to the end of its body.
+Here is string search, once more:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a character  and  s  is a string</span>
+<span class="sd">      post   s[index] == c</span>
+<span class="sd">             v  (index == -1  ^  forall 0&lt;= i &lt; len(s), s[i]!=c)</span>
+<span class="sd">     return  index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant  forall 0&lt;= i &lt; index, s[i]!=c</span>
+<span class="sd">          modifies  index }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+            <span class="c"># invariant still holds, since we did not alter  index</span>
+            <span class="k">break</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c"># LOOP EXIT: the first premise below lists the possible exit conditions:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. not(index != len(s)) or s[index] == c       premise</span>
+<span class="sd">      2. forall 0&lt;= i &lt; index, s[i]!= c              premise # invariant</span>
+<span class="sd">    }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. index == len(s)                         premise</span>
+<span class="sd">          2. forall 0&lt;= i &lt; index, s[i]!= c          premise</span>
+<span class="sd">          3. forall 0&lt;= i &lt; len(s), s[i]!= c         subst 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. not(index == len(s))                    premise</span>
+<span class="sd">          2. not(index != len(s)) or s[index] == c   premise</span>
+<span class="sd">          3. s[index] == c                           SYMBOLIC LOGIC 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">index</span>
+</pre></div>
+</div>
+<p>There are two ways of exiting the loop, which are listed as the first premise at
+the loop&#8217;s exit.</p>
+</div>
+</div>
+</div>
+<div class="section" id="universal-and-existential-assertions">
+<h2>6.3. Universal and Existential Assertions<a class="headerlink" href="#universal-and-existential-assertions" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps you expected this specification for the search function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;find locates an occurrence of  c  in  s  and returns its index.</span>
+<span class="sd">       If  c  is not present in  s,  then  -1  is returned.</span>
+<span class="sd">       parameters: c - a letter;  s - a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a character  and  s  is a string</span>
+<span class="sd">      post   s[index] == c</span>
+<span class="sd">             v ((index = -1) ^ c!=s[0] ^ c!=s[1] ^ ..upto.. ^ c!=s[len(s)-1])</span>
+<span class="sd">     return  index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The shortened form of stating,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">c</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="n">c</span> <span class="o">!=</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">^</span> <span class="o">...</span><span class="n">upto</span><span class="o">...</span> <span class="o">^</span> <span class="n">c</span><span class="o">!=</span><span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+</pre></div>
+</div>
+<p>is just</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">index</span><span class="p">:</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>There are standard laws for using <code class="docutils literal"><span class="pre">FORALL</span></code>, which we learn later.</p>
+<p>The specification of the previous example now looks like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;find locates an occurrence of  c  in  s  and returns its index.</span>
+<span class="sd">       If  c  is not present in  s,  then  -1  is returned.</span>
+<span class="sd">       parameters: c - a letter;  s - a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a character  and  s  is a string</span>
+<span class="sd">      post   s[index] == c</span>
+<span class="sd">             v ((index = -1) ^  FORALL 0 &lt;= i &lt; len(s): s[i] != c)</span>
+<span class="sd">     return  index }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>We can use symbolic logic to prove that this specification has the same logical
+information content as the one in the previous section.</p>
+<p>There is a dual operator to <code class="docutils literal"><span class="pre">FORALL</span></code> that asserts existence of a value.
+To understand how it might be used, consider this variation of the previous
+example.</p>
+<p>(Before we get started, please remember that Python allows you to compute a
+&#8220;slice&#8221; (substring) of a string <code class="docutils literal"><span class="pre">s</span></code>, like this:</p>
+<ul>
+<li><p class="first">For string, <code class="docutils literal"><span class="pre">s</span></code>, <code class="docutils literal"><span class="pre">s[:index]</span></code> computes a substring that is <code class="docutils literal"><span class="pre">s</span></code> up to and
+not including <code class="docutils literal"><span class="pre">s[index]</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;abcde&quot;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>    <span class="c"># y = &quot;abc&quot;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>    <span class="c"># z = &quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">For string, <code class="docutils literal"><span class="pre">s</span></code>, <code class="docutils literal"><span class="pre">s[index;]</span></code> computes a substring that is <code class="docutils literal"><span class="pre">s</span></code> from
+<code class="docutils literal"><span class="pre">s[index]</span></code> to the end:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;abcde&quot;</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>   <span class="c"># v = &quot;cde&quot;</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>   <span class="c"># w = &quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>.)</p>
+<p>Here is the example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;delete locates an occurrence of  c  in  s  and</span>
+<span class="sd">       removes it and returns the resulting string.</span>
+<span class="sd">       If  c  is not in  s, a copy of  s  is returned, unchanged.</span>
+<span class="sd">       parameters: c - a letter;  s - a string</span>
+<span class="sd">       returns: answer, a new string that looks like  s  with  c  removed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    c  is a letter and  s  is a string</span>
+<span class="sd">      post   (s[index] == c  ^  answer == s[:index] + s[index+1:])</span>
+<span class="sd">              v</span>
+<span class="sd">             (answer == s  ^  (FORALL 0 &lt;= i &lt; len(s): s[i] != c))</span>
+<span class="sd">      return answer }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">index</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="ow">and</span>  <span class="ow">not</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="k">if</span>  <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">c</span> <span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="n">ans</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+            <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">found</span> <span class="p">:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+<p>Examples: <code class="docutils literal"><span class="pre">delete(&quot;d&quot;,</span> <span class="pre">&quot;abcded&quot;)</span></code> returns <code class="docutils literal"><span class="pre">&quot;abced&quot;</span></code>, and
+<code class="docutils literal"><span class="pre">delete(&quot;d&quot;,</span> <span class="pre">&quot;abc&quot;)</span></code> returns <code class="docutils literal"><span class="pre">&quot;abc&quot;</span></code>.
+You are welcome to deduce that the program meets its postcondition.
+(Reuse the loop invariant from <code class="docutils literal"><span class="pre">find</span></code> in the previous exercise.)</p>
+<p>But there is a technical problem &#8211; variable <code class="docutils literal"><span class="pre">index</span></code> is a variable local to
+the function&#8217;s body and is not part of the precondition nor is it part of the
+answer returned by delete &#8211; it makes no sense to include it in the
+postcondition.
+Worse yet, its presence can lead to false deductions at the point where the
+function is called!</p>
+<p>(An example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;{ at this point, we certainly cannot assert that t[2] = &quot;a&quot;! }&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>.)</p>
+<p>We must hide the name, <code class="docutils literal"><span class="pre">index</span></code>, from the function&#8217;s postcondition.
+We do it like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">EXIST</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>  <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>  <span class="o">^</span>  <span class="n">answer</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+<p>Read <code class="docutils literal"><span class="pre">EXIST</span></code> (∃) as &#8220;there exists&#8221;;
+it is called an <em>existential quantifier</em>.
+So, the assertion reads, &#8220;there exists some value <code class="docutils literal"><span class="pre">i</span></code>, such that <code class="docutils literal"><span class="pre">i</span></code> is
+<code class="docutils literal"><span class="pre">&gt;=0</span></code> and <code class="docutils literal"><span class="pre">&lt;</span> <span class="pre">len(s)</span></code> such that <code class="docutils literal"><span class="pre">s[i]</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">^</span> <span class="pre">answer</span> <span class="pre">=</span> <span class="pre">s[:i]</span> <span class="pre">+</span> <span class="pre">s[i+1:]</span></code>&#8221;.</p>
+<p>The existential quantifier hides the local variable name inside function delete
+so that it is not incorrectly used by the command that calls the function.
+We will study both <code class="docutils literal"><span class="pre">FORALL</span></code> and <code class="docutils literal"><span class="pre">EXIST</span></code> in Chapter 6.</p>
+</div>
+<div class="section" id="partial-and-total-correctness">
+<h2>6.4. Partial and Total Correctness<a class="headerlink" href="#partial-and-total-correctness" title="Permalink to this headline">¶</a></h2>
+<p>Consider again the proved factorial example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    n &gt;= 0</span>
+<span class="sd">      post   answer == n!</span>
+<span class="sd">      return answer }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;{ invariant  answer == i!    modifies  fac i }&quot;&quot;&quot;</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;{ answer == i! * (i+1)  }&quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. i == n</span>
+<span class="sd">      2. answer == i!</span>
+<span class="sd">      3. answer == n! }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+<p>What happens for <code class="docutils literal"><span class="pre">fact(-1)</span></code>?
+No answer is returned because the precondition is violated and the loop is
+unable to terminate.
+What if we ignored the function&#8217;s precondition &#8211; the proof of the loop remains
+the same?!</p>
+<p>The deduction law for loops guarantees, <em>if the loop terminates</em>, then the
+postcondition must hold true.
+There can be silly applications of the loop law.
+Consider this faulty program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre  n is an int</span>
+<span class="sd">      post answer == n! }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;{  invariant  answer == i! }&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+        <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>  <span class="c"># but no variables are modified!</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. i == n</span>
+<span class="sd">      2. answer = i!</span>
+<span class="sd">      3. answer = n! }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+<p>The proof of <code class="docutils literal"><span class="pre">f</span></code>&#8216;s postcondition is <em>correct</em>:
+But the loop body preserves the invariant only because its body, <code class="docutils literal"><span class="pre">pass</span></code>, is
+too timid to make any progress at all towards the goal.
+So, the loop never terminates.
+Now, if the loop <em>would</em> terminate, then the proof shows we will achieve the
+goal.
+But, for every argument but 0, the loop will not terminate.</p>
+<p>Because of this limitation of the loop law, it is called a <em>partial correctness</em>
+law.
+To ensure <em>total correctness</em>, that is, to prove the loop must terminate and
+satisfies its goal, we must use additional reasoning.
+The reasoning is usually based on a numerical, &#8220;count down&#8221; measure, which
+measures the number of iterations the loop needs to do before it quits and
+achieves its goal.
+In the first example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    n &gt;= 0</span>
+<span class="sd">      post   answer == n!</span>
+<span class="sd">      return answer }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { invariant             answer = i!</span>
+<span class="sd">          modifies              answer, i</span>
+<span class="sd">          termination measure   n - i  # must compute to a nonnegative int</span>
+<span class="sd">        }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;{ answer == i! }&quot;&quot;&quot;</span>
+        <span class="c"># at this point, the termination measure has decreased</span>
+
+    <span class="c"># at this point, the termination measure equals 0</span>
+    <span class="sd">&quot;&quot;&quot;{ i == n  ^  answer == i! }&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">answer</span>
+</pre></div>
+</div>
+<p>The numerical expression, <code class="docutils literal"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">i</span></code>, measures an upper bound of how many
+iterations are needed to cause the loop to quit.
+The value of the measure must always compute to a nonnegative integer, and
+after each iteration of the loop, the measure must decrease by at least 1.
+This means, after some finite number of iterations, the measure hits 0 and the
+loop stops.</p>
+<p>We won&#8217;t develop this further....</p>
+</div>
+<div class="section" id="an-introduction-to-mathematical-induction">
+<span id="induction"></span><h2>6.5. An Introduction to Mathematical Induction<a class="headerlink" href="#an-introduction-to-mathematical-induction" title="Permalink to this headline">¶</a></h2>
+<p>There is a fundamental mathematical principle that underlies invariants and the
+loop law.
+It is called mathematical induction.
+We will introduce mathematical induction by examples seen earlier.</p>
+<p>Go back to the first section in this chapter. It says this:</p>
+<p>. . . factorial is defined as a recurrence:</p>
+<div class="highlight-python"><div class="highlight"><pre>0! == 1
+n! == (n-1)! * n,   for  n &gt; 0
+</pre></div>
+</div>
+<p>But we can understand factorial as a repeated product: for integer n &gt; 0:</p>
+<div class="highlight-python"><div class="highlight"><pre>n! == 1 * 2 * 3 * ...up to... * n
+</pre></div>
+</div>
+<p>Now, <em>why</em> is it that <code class="docutils literal"><span class="pre">k!</span></code> <em>must</em> equal <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">k</span></code>,
+for any nonnegative <code class="docutils literal"><span class="pre">k</span></code> that we choose?</p>
+<p>A typical computer programmer would pretend that the definition of <code class="docutils literal"><span class="pre">!</span></code> is
+&#8220;computer code&#8221; and would invent some test cases to try out this claim.
+For example, we can test <code class="docutils literal"><span class="pre">5!</span></code> like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>5! == (5-1)! * 5 == 4! * 5
+</pre></div>
+</div>
+<p>To finish this test, we must write out the test case for <code class="docutils literal"><span class="pre">4!</span></code>.
+Before we grind out <code class="docutils literal"><span class="pre">4!</span></code> (and <code class="docutils literal"><span class="pre">3!</span></code> and <code class="docutils literal"><span class="pre">2!</span></code> and ...), we can make an
+important observation: if the test case for <code class="docutils literal"><span class="pre">4!</span></code> works out correctly, so will
+the test case for <code class="docutils literal"><span class="pre">5!</span></code>, because:</p>
+<div class="highlight-python"><div class="highlight"><pre>5! == 4! * 5
+  and if  4! == 1 * 2 * 3 * 4
+  this means
+5! == (1 * 2 * 3 * 4) * 5
+  and the claim will hold for 5!, too:
+5! == 1 * 2 * 3 * 4 * 5
+</pre></div>
+</div>
+<p>This observation holds not only for <code class="docutils literal"><span class="pre">5!</span></code> but for every positive integer,
+<code class="docutils literal"><span class="pre">k</span></code>: <em>the success of the immediately smaller test case</em>, <code class="docutils literal"><span class="pre">k</span> <span class="pre">-</span> <span class="pre">1</span></code>,
+<em>leads to the success of</em> k.
+There is an important principle hiding here: there are only two test cases that
+matter: <code class="docutils literal"><span class="pre">0!</span></code> and <code class="docutils literal"><span class="pre">k!</span></code>, for positive int <code class="docutils literal"><span class="pre">k</span></code>.
+This will save us a lot of time testing the definition of <code class="docutils literal"><span class="pre">!</span></code>.</p>
+<p>Now, go back to the beginning of this chapter, where there is a loop that
+computes factorial by repeated multiplications.
+There is this quote after the loop code:</p>
+<blockquote>
+<div><p>The loop adjoins the multiplications, <code class="docutils literal"><span class="pre">*1</span></code>, <code class="docutils literal"><span class="pre">*2</span></code>, <code class="docutils literal"><span class="pre">*3</span></code>, etc., to the
+running total, <code class="docutils literal"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
+Consider some execution cases:</p>
+<div class="highlight-python"><div class="highlight"><pre>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
+n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
+n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
+n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4!
+ . . .
+the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
+</pre></div>
+</div>
+<p>For example, when input <code class="docutils literal"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">4</span></code>, the loop computes correctly <code class="docutils literal"><span class="pre">4!</span></code> in 4
+iterations because the loop computes correctly <code class="docutils literal"><span class="pre">3!</span></code> in 3 iterations &#8211;
+the fourth loop iteration builds upon the work of the previous three.
+This is the standard use of a loop: each loop iteration builds on the
+previous iterations to move one step closer to the final goal.</p>
+</div></blockquote>
+<p>The same principle is hiding in the loop code &#8211; the correctness of a loop&#8217;s
+computation depends on the correctness of the previous iterations.</p>
+<p>The principle inside the definition of factorial and the loop code is called
+<em>mathematical induction</em>.</p>
+<div class="section" id="formal-statement-of-the-mathematical-induction-proof-law">
+<h3>6.5.1. Formal Statement of The Mathematical Induction Proof Law<a class="headerlink" href="#formal-statement-of-the-mathematical-induction-proof-law" title="Permalink to this headline">¶</a></h3>
+<p>The mathematical induction proof law was formulated almost the same time as the
+counting numbers (nonnegative ints), <code class="docutils literal"><span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">2</span></code>, ..., were invented.
+We should think of the nonnegative ints as a &#8220;chain&#8221; of numbers, &#8220;linked&#8221;
+together by <code class="docutils literal"><span class="pre">+1``s.</span>
+<span class="pre">So,</span> <span class="pre">the</span> <span class="pre">successor</span> <span class="pre">to,</span> <span class="pre">say,</span> <span class="pre">``5</span></code>, is <code class="docutils literal"><span class="pre">6</span></code> because the latter is linked to the
+former by <code class="docutils literal"><span class="pre">+1</span></code>.
+Similarly, the predecessor to <code class="docutils literal"><span class="pre">5</span></code> is <code class="docutils literal"><span class="pre">4</span></code>.
+Of course, <code class="docutils literal"><span class="pre">0</span></code> has no predecessor.</p>
+<p>Say that we have a question to answer, or a problem to solve, or a program to
+test, and there are an <em>infinite</em> number of possibilities/cases/tests to
+consider.
+We cannot consider all the possibilities one by one.
+How do we cover them all?
+Proof by mathematical induction shows us how:</p>
+<p>For the question/problem/program, say that we can arrange its
+possibilities/cases/tests so that they are ordered as <code class="docutils literal"><span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">2</span></code>,
+<code class="docutils literal"><span class="pre">3</span></code>,....
+To cover all the cases and prove our goal, we write two proofs:</p>
+<ol class="arabic simple">
+<li><em>Basis Case</em>: We calculate/deduce directly the correct result for for Case
+<code class="docutils literal"><span class="pre">0</span></code>.</li>
+<li><em>Induction Case</em>: For a positive int, <code class="docutils literal"><span class="pre">k</span></code>, we pretend/presume that Case
+<code class="docutils literal"><span class="pre">k</span> <span class="pre">-</span> <span class="pre">1</span></code> has a correct result.
+(Remember, for the moment, we pretend this!)
+This premise is called the induction hypothesis.
+Then we use the induction hypothesis to calculate/deduce the correct result
+for Case <code class="docutils literal"><span class="pre">k+1</span></code>.</li>
+</ol>
+<p>With these two Cases worked completely, the mathematical induction proof law
+lets us conclude that,</p>
+<blockquote>
+<div><strong>for all nonnegative ints</strong>, <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <strong>Case</strong> <code class="docutils literal"><span class="pre">n</span></code> <strong>must be correct.</strong></div></blockquote>
+<p>This is because every nonnegative int, <code class="docutils literal"><span class="pre">n</span></code>, has a position in the infinite
+chain, <code class="docutils literal"><span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">3</span></code>, ..., and we can use the Basis and Induction
+Cases to assemble a correctness proof for every nonnegative int, <code class="docutils literal"><span class="pre">n</span></code>, we might
+pick, in terms of the correctness of all its predecessor ints in the chain.</p>
+<p>(To spell this out in complete detail, here is an example:
+We write correctness proofs for the Basis case and the Induction case.
+We then pick an int &#8211; <code class="docutils literal"><span class="pre">6</span></code>.
+Here is the correctness proof for <code class="docutils literal"><span class="pre">6</span></code>:
+We use the Basis Case to assemble the correctess proof for <code class="docutils literal"><span class="pre">0</span></code>.
+We then insert this proof in place of the induction hypothesis in the Induction
+Case to assemble a correctness proof for <code class="docutils literal"><span class="pre">1</span></code>.
+We then insert <em>this proof</em>, <em>the proof for</em> <code class="docutils literal"><span class="pre">1</span></code> in place of the induction
+hypothesis in the Induction Case to assemble a correctness proof for <code class="docutils literal"><span class="pre">2</span></code>.
+We then insert this proof in place of the induction hypothesis in the Induction
+Case to assemble a correctness proof for <code class="docutils literal"><span class="pre">3</span></code>.
+And we continue doing this until we assemble the correctness proof for <code class="docutils literal"><span class="pre">6</span></code>.
+Since all the ints are chained together, this technique assembles a proof for
+every nonnegative int.)</p>
+</div>
+<div class="section" id="first-example-factorial-is-repeated-multiplication">
+<h3>6.5.2. First Example: Factorial is Repeated Multiplication<a class="headerlink" href="#first-example-factorial-is-repeated-multiplication" title="Permalink to this headline">¶</a></h3>
+<p>We can now prove this claim: <em>for every nonnegative int</em>, <code class="docutils literal"><span class="pre">n</span></code>,
+<code class="docutils literal"><span class="pre">n!</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">...upto...</span> <span class="pre">*</span> <span class="pre">n</span></code>.</p>
+<p>(Note: we use the standard math convention that the &#8220;empty multiplication&#8221;
+equals one: <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">...upto...</span> <span class="pre">*</span> <span class="pre">0</span> <span class="pre">==</span> <span class="pre">1</span></code>.)</p>
+<p>We prove <code class="docutils literal"><span class="pre">n!</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">...upto...</span> <span class="pre">*</span> <span class="pre">n</span></code> by mathematical induction:</p>
+<ol class="arabic">
+<li><p class="first"><em>Basis Case</em>: the argument, <code class="docutils literal"><span class="pre">n</span></code>, is <code class="docutils literal"><span class="pre">0</span></code>: so <code class="docutils literal"><span class="pre">0!</span> <span class="pre">==</span> <span class="pre">1</span></code>, and
+<code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">...upto...</span> <span class="pre">0</span> <span class="pre">==</span> <span class="pre">1</span></code> also.
+The claim is proved for this case.</p>
+</li>
+<li><p class="first"><em>Induction Case</em>: the argument, <code class="docutils literal"><span class="pre">n</span></code>, is a positive int:
+assume the induction hypothesis, that is,
+<code class="docutils literal"><span class="pre">(n-1)!</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">(n-1)</span></code> is proved for the predecessor case.
+Now, consider <code class="docutils literal"><span class="pre">n!</span> <span class="pre">==</span> <span class="pre">(n-1)!</span> <span class="pre">*</span> <span class="pre">n</span></code>.
+We substitute the induction hypothesis into the previous definition, giving
+us:</p>
+<div class="highlight-python"><div class="highlight"><pre>n! == (1 * 2 *...up to... * (n-1)) * n.
+</pre></div>
+</div>
+<p>But multiplication is associative, meaning that we have proved the result in
+this case, too:</p>
+<div class="highlight-python"><div class="highlight"><pre>n! == 1 * 2 * ...up to... * n
+</pre></div>
+</div>
+<p>This claim is proved.</p>
+</li>
+</ol>
+<p>Since both cases are proved correct, the claim is proved for all <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.</p>
+<p>We now realize that when we do a test of, say, <code class="docutils literal"><span class="pre">5!</span></code>, by expanding it to
+<code class="docutils literal"><span class="pre">4!</span> <span class="pre">*</span> <span class="pre">5</span></code>, and then we start the test of <code class="docutils literal"><span class="pre">4!</span></code>, etc., what we are doing is
+applying the Induction case repeatedly, counting downwards to the Base case of
+<code class="docutils literal"><span class="pre">0!</span></code>.</p>
+</div>
+<div class="section" id="testing-loop-code-systematically">
+<h3>6.5.3. Testing Loop Code Systematically<a class="headerlink" href="#testing-loop-code-systematically" title="Permalink to this headline">¶</a></h3>
+<p>Many programmers test their loops by randomly choosing a few test cases that
+&#8220;run the loop for awhile&#8221;.
+When the tests finish, there is still no guarantee that the loop operates
+properly in all cases.
+Mathematical induction gives us the insight we need to test loop code
+systematically:</p>
+<blockquote>
+<div><strong>Test the loop&#8217;s body, not the entire loop.</strong></div></blockquote>
+<p>A loop body is &#8220;repeatable code&#8221; &#8212; it repeats so that variables are repeatedly
+updated in a systematic way.
+To test the loop body, think this way:</p>
+<blockquote>
+<div><strong>Pretend the loop has been running for awhile, working correctly.
+Test that running the the loop&#8217;s body one more time keeps the loop working
+correctly.</strong></div></blockquote>
+<p>This is like the induction case of a mathematical induction proof &#8211; no matter
+how many repetitions occur, the loop is always working correctly.</p>
+<p>Better still, we should write a formula or expression or a sentence that
+describes the values of the variables used by the loop and what it means to
+&#8220;work correctly&#8221;.
+Then we test this formula/sentence with the loop body.</p>
+<p>For example, here is the loop that does multiplication by repeated additions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">while</span> <span class="n">count</span> <span class="o">!=</span> <span class="n">x</span> <span class="p">:</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>The loop updates <code class="docutils literal"><span class="pre">z</span></code> and <code class="docutils literal"><span class="pre">count</span></code>.
+We can blindly test the loop, but we will save time if we ask what it means for
+the loop&#8217;s body to &#8220;work correctly&#8221;.
+The secret to the loop is that <code class="docutils literal"><span class="pre">z</span></code> is holding the value of a running product:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">z</span> <span class="o">==</span> <span class="n">count</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>So, if the values of <code class="docutils literal"><span class="pre">z</span></code> and <code class="docutils literal"><span class="pre">count</span></code> are set correctly reset when the loop
+body repeats, then the loop is correctly working, because it leads us back to
+<code class="docutils literal"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code> (so that we are set for the next repetition).</p>
+<p>You pull out the loop body and test it, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">z</span> <span class="o">==</span> <span class="n">count</span> <span class="o">*</span> <span class="n">y</span>   <span class="c"># The test inputs you use must be related correctly</span>
+                        <span class="c">#  so that we can test whether the loop body is</span>
+                        <span class="c">#  &#39;&#39;repeatable code&#39;&#39;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">z</span> <span class="o">==</span> <span class="n">count</span> <span class="o">*</span> <span class="n">y</span>   <span class="c"># Verify that the variables are still related correctly</span>
+</pre></div>
+</div>
+<p>The formula, <code class="docutils literal"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code>, <em>tells us what to test for</em> at the beginning
+and end of the loop body.
+(Many people test code, not knowing what they are testing for!)</p>
+<p>Of course, a repeatable test condition is a kind of invariant, and the above
+test methodology is the induction step of a mathematical induction proof.
+If you know what to test for, you can test an entire loop by just testing its
+body.</p>
+<p>OK, you probably don&#8217;t want to extract loop bodies and write test harnesses for
+them.
+Well, you can at least add just one line of run-time monitoring code to your
+loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">while</span> <span class="n">count</span> <span class="o">!=</span> <span class="n">x</span> <span class="p">:</span>
+    <span class="k">assert</span>  <span class="n">z</span> <span class="o">==</span> <span class="n">count</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Now, when you test the entire program, you are testing your loop bodies to
+ensure they are repeatable code.</p>
+</div>
+<div class="section" id="proofs-of-recursive-functions-and-loops-are-mathematical-induction-proofs">
+<h3>6.5.4. Proofs of Recursive Functions and Loops are Mathematical-Induction Proofs<a class="headerlink" href="#proofs-of-recursive-functions-and-loops-are-mathematical-induction-proofs" title="Permalink to this headline">¶</a></h3>
+<p>When we prove the correctness of a recursively defined function that
+&#8220;counts down&#8221; its argument, we are actually constructing a mathematical
+induction proof.
+Here is a small example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;double returns an int that is twice as large as its int argument&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { pre    n &gt;= 0</span>
+<span class="sd">      post   ans == 2 * n</span>
+<span class="sd">      return ans }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. ans == 0                  premise</span>
+<span class="sd">          2. n == 0                    premise</span>
+<span class="sd">          3. ans == 2 * n              algebra 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. not(n == 0)               premise</span>
+<span class="sd">          2. n &gt;= 0                    premise</span>
+<span class="sd">          3. n - 1 &gt;= 0                algebra 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">subans</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;{ 1. subans == 2 * (n - 1)  premise }&quot;&quot;&quot;</span>  <span class="c"># from the function call</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">subans</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        { 1. ans == subans + 2         premise</span>
+<span class="sd">          2. subans == 2 * (n - 1)     premise</span>
+<span class="sd">          3. ans ==  2 * n             algebra 1 2 }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;{ 1. ans == 2 * n               premise }&quot;&quot;&quot;</span>  <span class="c"># both cases prove the postcondition</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</pre></div>
+</div>
+<p>The code and proofs are structured into two cases:</p>
+<ol class="arabic simple">
+<li><em>Basis Case</em>: <code class="docutils literal"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">0</span></code>.
+Then, <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n</span></code>, as shown by the proof in the
+then-arm.</li>
+<li><em>Induction Case</em>: <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.
+<em>Presume that the recursive call</em>, <code class="docutils literal"><span class="pre">subans</span> <span class="pre">=</span> <span class="pre">double(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>, <strong>returns a
+value that makes</strong> <code class="docutils literal"><span class="pre">subans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>.
+Then, <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">subans</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n</span></code>, as shown by the proof in the else-arm.</li>
+</ol>
+<p>Thanks to mathematical induction, the above efforts prove this result</p>
+<blockquote>
+<div><em>for all</em> <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">double(n)</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n</span></code>.</div></blockquote>
+<p>In this way, the proof of a recursively defined function&#8217;s postcondition is a
+proof based on mathematical induction.</p>
+<p>Loops operate the same way.
+Here is the loop code for doubling an int:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1.  ans = 0                 premise</span>
+<span class="sd">  2.  i == 0                  premise</span>
+<span class="sd">  3.  ans == 2 * i            algebra 1 2 }</span>
+<span class="sd">&quot;&quot;&quot;</span>  <span class="c"># prove invariant for initial loop entry</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { invariant  ans == 2 * i</span>
+<span class="sd">      modifies   ans, i }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">ans</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    { 1. ans_old == 2 * i     premise</span>
+<span class="sd">      2. ans == ans_old + 2   premise</span>
+<span class="sd">      3. i == i_old + 1       premise</span>
+<span class="sd">      4. ans == 2 * i         algebra 1 2 3 }</span>
+<span class="sd">    &quot;&quot;&quot;</span> <span class="c"># assuming the invariant on entry, reprove it after one more iteration</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. not(i != n )             premise</span>
+<span class="sd">  2.  ans == 2 * i            premise</span>
+<span class="sd">  3.  ans == 2 * n            algebra 1 2 }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">print</span> <span class="n">ans</span>
+</pre></div>
+</div>
+<p>The code and proofs are structured into two cases:</p>
+<ol class="arabic simple">
+<li><em>Basis Case</em>: The loop&#8217;s body has iterated zero times.
+Then, <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">0</span></code> so, <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">i</span></code>, as worked in the
+proof just before initial loop entry.</li>
+<li><em>Induction Case</em>: <em>Presume that the loop&#8217;s previous</em> <code class="docutils literal"><span class="pre">k-1</span></code>-<em>many iterations
+have worked correctly and have maintained</em> <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">i</span></code>.
+Then, one more iteration sets <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">ans</span> <span class="pre">+</span> <span class="pre">2</span></code> and <code class="docutils literal"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">i</span> <span class="pre">+</span> <span class="pre">1</span></code>, making
+<code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">i</span></code> hold true at the end of <code class="docutils literal"><span class="pre">k</span></code> iterations, as proved in the
+proof in the loop&#8217;s body.</li>
+</ol>
+<p>Thanks to mathematical induction, these efforts prove this result:</p>
+<blockquote>
+<div><p><em>for all</em> <code class="docutils literal"><span class="pre">k</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <em>if the loop iterates (repeats)</em> <code class="docutils literal"><span class="pre">k</span></code> <em>times</em>,
+<em>then</em> <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">i</span></code> <em>after the</em> <code class="docutils literal"><span class="pre">k</span></code> <em>iterations</em>.</p>
+<p>But since variable <code class="docutils literal"><span class="pre">i</span></code> is counting the iterations, we have this stronger
+result, too: <em>for all</em> <code class="docutils literal"><span class="pre">i</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, <em>if the loop iterates</em> <code class="docutils literal"><span class="pre">i</span></code> <em>times,
+then</em> <code class="docutils literal"><span class="pre">ans</span> <span class="pre">==</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">i</span></code> after the <code class="docutils literal"><span class="pre">i</span></code> iterations.</p>
+</div></blockquote>
+<p>In this way, the proof of a loop invariant property is a proof based on
+mathematical induction.</p>
+</div>
+<div class="section" id="more-program-analysis-and-mathematical-induction">
+<h3>6.5.5. More Program Analysis and Mathematical Induction<a class="headerlink" href="#more-program-analysis-and-mathematical-induction" title="Permalink to this headline">¶</a></h3>
+<p>Here is another way of applying mathematical induction to systematic program
+analyis.</p>
+<p>Consider this example program, which reads a nonnegative int, <code class="docutils literal"><span class="pre">n</span></code>, and
+computes the sum, <code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">n</span></code>, with a loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span> <span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">i</span>
+<span class="k">print</span> <span class="nb">sum</span>
+</pre></div>
+</div>
+<p>You might test this program with some sample input integers to see if it behaves
+properly.
+Which test cases should you try?
+How many test cases should you try?
+Are you ever certain that you have tested the program sufficiently?
+(These questions are famous ones and do not have clear-cut answers.
+There are even mathematical proofs that show it is impossible to have a
+guaranteed-sufficient testing strategy for an arbitrary program.)</p>
+<p>For our example, we might do this &#8220;systematic testing&#8221;:</p>
+<ol class="arabic simple">
+<li>We use <code class="docutils literal"><span class="pre">0</span></code> as a test; the program prints <code class="docutils literal"><span class="pre">0</span></code></li>
+<li>We use <code class="docutils literal"><span class="pre">1</span></code> as a test; the program prints <code class="docutils literal"><span class="pre">1</span></code></li>
+<li>We use <code class="docutils literal"><span class="pre">2</span></code> as a test; the program prints <code class="docutils literal"><span class="pre">3</span></code></li>
+<li>We use <code class="docutils literal"><span class="pre">3</span></code> as a test; the program prints <code class="docutils literal"><span class="pre">6</span></code></li>
+<li>We use <code class="docutils literal"><span class="pre">4</span></code> as a test; the program prints <code class="docutils literal"><span class="pre">10</span></code></li>
+</ol>
+<p>We tell ourselves, &#8220;Perhaps the reason why the test case for <code class="docutils literal"><span class="pre">4</span></code> worked OK was
+because the test case for <code class="docutils literal"><span class="pre">3</span></code> worked OK and the loop body ran one more time&#8221;.
+We next realize that the test case for <code class="docutils literal"><span class="pre">3</span></code> worked OK because the test case for
+<code class="docutils literal"><span class="pre">2</span></code> worked OK and the loop body ran one more time. And so on.</p>
+<p>The test cases are connected.
+Rather than test, <code class="docutils literal"><span class="pre">5</span></code>, <code class="docutils literal"><span class="pre">6</span></code>, ..., <code class="docutils literal"><span class="pre">6000</span></code>, ..., we realize that there are
+really only two distinct test cases: the one for <code class="docutils literal"><span class="pre">0</span></code>, which makes the loop
+stop immediately, and the one for a positive int, call it <code class="docutils literal"><span class="pre">k+1</span></code>, where
+<em>if the test case for</em> <code class="docutils literal"><span class="pre">k</span></code> <em>worked correctly, then we can argue that running
+the loop body one more time will make the</em> <code class="docutils literal"><span class="pre">k+1</span></code> <em>test work correctly</em>.
+When we make an argument in this style, we are using mathematical induction as a
+kind of &#8220;systematic testing&#8221;, covering all possible test cases.</p>
+<p>Here is our mathematical induction proof for the above example:</p>
+<blockquote>
+<div><em>CLAIM: For every input</em> <code class="docutils literal"><span class="pre">n</span></code> <em>in the set,</em> <code class="docutils literal"><span class="pre">{0,1,2,...}</span></code>,
+the program will compute <code class="docutils literal"><span class="pre">sum</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">+</span> <span class="pre">n</span></code> in <code class="docutils literal"><span class="pre">n</span></code> iterations.</div></blockquote>
+<p>The proof is made by mathematical induction:</p>
+<ol class="arabic simple">
+<li><em>Basis Case</em>: the input integer is <code class="docutils literal"><span class="pre">0</span></code>: the program sets <code class="docutils literal"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">0</span></code> and
+the loop test goes immediately false. So, <code class="docutils literal"><span class="pre">sum</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">+</span> <span class="pre">0</span></code>
+was computed in <code class="docutils literal"><span class="pre">0</span></code> iterations of the loop.
+This test case works correctly.</li>
+<li><em>Induction Case</em>: The input integer is some positive integer, call it,
+<code class="docutils literal"><span class="pre">k+1</span></code>.
+First, say that all the previous test cases on smaller integers have worked
+correctly; in particular, <em>say that the program with input</em> <code class="docutils literal"><span class="pre">k</span></code> <em>computed</em>
+<code class="docutils literal"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">k</span></code> <em>in</em> <code class="docutils literal"><span class="pre">k</span></code> <em>iterations</em>.
+Call this number, <code class="docutils literal"><span class="pre">sum_k</span></code>.
+Now, for the test case of <code class="docutils literal"><span class="pre">k+1</span></code>, the loop proceeds the same way as it did
+for input <code class="docutils literal"><span class="pre">k</span></code>, plus it makes one more iteration.
+The extra iteration sets <code class="docutils literal"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">k+1</span></code> and then <code class="docutils literal"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">sum_k</span> <span class="pre">+</span> <span class="pre">i</span></code>, and the
+loop quits.
+Since the program with input <code class="docutils literal"><span class="pre">k</span></code> correctly computed
+<code class="docutils literal"><span class="pre">sum_k</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">k</span></code> in <code class="docutils literal"><span class="pre">k</span></code> iterations, we know the program with
+input <code class="docutils literal"><span class="pre">k+1</span></code> computes <code class="docutils literal"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">(0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">k)</span> <span class="pre">+</span> <span class="pre">(k+1)</span></code> in <code class="docutils literal"><span class="pre">k+1</span></code>
+iterations, which is the correct answer.</li>
+</ol>
+<p>This mathematical induction argument explains why every possible test case <code class="docutils literal"><span class="pre">n</span></code>
+from the set <code class="docutils literal"><span class="pre">{0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...}</span></code> will cause the program to compute
+<code class="docutils literal"><span class="pre">sum</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">n</span></code> in <code class="docutils literal"><span class="pre">n</span></code> loop iterations.</p>
+<p>Programs that use &#8220;counting loops&#8221; can often be argued correct using this
+technique.
+Indeed, if you reread the previous section, you realize that the point of
+finding a loop invariant is so that a mathematical induction argument can be
+made with the invariant &#8211; when the loop quits, the invariant must hold true.</p>
+</div>
+<div class="section" id="a-mathematical-proof-by-mathematical-induction">
+<h3>6.5.6. A Mathematical Proof by Mathematical Induction<a class="headerlink" href="#a-mathematical-proof-by-mathematical-induction" title="Permalink to this headline">¶</a></h3>
+<p>Here is a traditional use of mathematical induction &#8211; proving a fact about
+algebra and numbers.</p>
+<p>It might appear a bit surprising, but the repeated sum,
+<code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">n</span></code>, always totals up to <code class="docutils literal"><span class="pre">((n*n)+n)/2</span></code>, no matter what
+value nonnegative integer, <code class="docutils literal"><span class="pre">n</span></code>, might be.
+Try some examples, and you will see this happen, e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre>0 + 1 + 2 + 3 + 4 + 5 + 6  = 21  equals  (6*6)+6 / 2,  that is,  42/2 = 21
+</pre></div>
+</div>
+<p>How do we know this formula, <code class="docutils literal"><span class="pre">((n*n)+n)/2</span></code>, works for all possible nonnegative
+integers?
+Should we try them all?
+We can use the mathematical induction technique to prove, once and for all,
+that the formula works correctly for all nonnegatives.</p>
+<p>Here is what we want to prove:</p>
+<div class="highlight-python"><div class="highlight"><pre>                                                     n2 + n
+For all integers,  n &gt;= 0,   0 + 1 + 2 + ... + n  =  -------
+                                                        2
+</pre></div>
+</div>
+<p>(If you wish, you can think of <code class="docutils literal"><span class="pre">n</span></code> as the &#8220;input&#8221;, and think of
+<code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">n</span></code> as a &#8220;loop program&#8221;, and think of the formula,
+<code class="docutils literal"><span class="pre">((n*n)+n)/2</span></code>, as the program&#8217;s &#8220;correctness property&#8221;.)
+We make the proof by mathematical induction, meaning there are two cases to
+analyze:</p>
+<ol class="arabic">
+<li><p class="first"><em>Basis Case</em> &#8211; <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">0</span></code>: In this case, the sum from <code class="docutils literal"><span class="pre">0</span></code> up to <code class="docutils literal"><span class="pre">0</span></code> is
+just <code class="docutils literal"><span class="pre">0</span></code>.
+But <code class="docutils literal"><span class="pre">((0*0)+0)/2</span></code> is <code class="docutils literal"><span class="pre">0</span></code> also.
+So, the formula works correctly for the starting case, when <code class="docutils literal"><span class="pre">n</span></code> is <code class="docutils literal"><span class="pre">0</span></code>.</p>
+</li>
+<li><p class="first"><em>Induction Case</em>: <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, <em>that is</em> <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">k+1</span></code>, <em>for some nonnegative</em>
+<code class="docutils literal"><span class="pre">k</span></code>:
+We assume the induction hypothesis that the formula works correctly for the
+integer just before <code class="docutils literal"><span class="pre">n</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">k</span>  <span class="o">=</span>  <span class="p">((</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>We must show that <code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">k</span> <span class="pre">+</span> <span class="pre">(k+1)</span></code> equals
+<code class="docutils literal"><span class="pre">(((k+1)*(k+1))</span> <span class="pre">+</span> <span class="pre">(k+1))</span> <span class="pre">/</span> <span class="pre">2</span></code>.
+We do algebra on the second expression, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre> (k+1)*(k+1) + (k+1)     (k*k) + 2k + 1 + (k+1)    (k*k) + k + 2k + 2
+--------------------- =  ----------------------- = ------------------
+          2                        2                      2
+</pre></div>
+</div>
+<p>and we can split this fraction into two pieces:</p>
+<div class="highlight-python"><div class="highlight"><pre>(k*k) + k + 2k + 2       (k*k) + k     2k + 2       (k*k) + k
+-------------------  =  ----------- + --------  =  ----------- + (k + 1)
+         2                    2           2              2
+</pre></div>
+</div>
+<p>But we recall the induction hypothesis, which we use to substitute:</p>
+<div class="highlight-python"><div class="highlight"><pre> (k*k) + k
+----------- + (k + 1)  =  (0 + 1 + 2 + ... + k) + (k + 1)
+      2
+</pre></div>
+</div>
+<p>This proves the desired result.</p>
+</li>
+</ol>
+<p>The result is proved, with the basis step and the induction step, by
+mathematical induction.
+These two cases cover all the nonnegative ints, starting from zero and counting
+upwards as often as needed for arbitrarily large positive integers.
+(Example: we now know that <code class="docutils literal"><span class="pre">0+1+...+500</span></code> equals <code class="docutils literal"><span class="pre">((500*500)+500)/2</span></code>, because
+we can use the basis step to start and apply the induction step <code class="docutils literal"><span class="pre">500</span></code> times to
+follow and to obtain the result for <code class="docutils literal"><span class="pre">500</span></code>.)</p>
+<p>To finish, we repeat the mathematical-induction proof law:
+When you are asked to prove a property of the form,
+&#8220;<em>for all nonnegative integers</em>, <code class="docutils literal"><span class="pre">i</span></code>, <code class="docutils literal"><span class="pre">P_i</span></code> <em>holds true</em>&#8221;, you can do so in
+two steps:</p>
+<ol class="arabic simple">
+<li>Basis step: prove the starting case, <code class="docutils literal"><span class="pre">P_0</span></code>.</li>
+<li>Induction step: assume that <code class="docutils literal"><span class="pre">P_k</span></code> holds, for an anonymous integer, <code class="docutils literal"><span class="pre">k</span></code>,
+and use this induction hypothesis to prove <code class="docutils literal"><span class="pre">P_k+1</span></code>.</li>
+</ol>
+<p>Once these steps are completed, they provide the &#8220;algorithm&#8221; for building proofs
+of <code class="docutils literal"><span class="pre">P_0</span></code>, <code class="docutils literal"><span class="pre">P_1</span></code>, ..., <code class="docutils literal"><span class="pre">P_i</span></code>, ..., for all the nonnegative integers.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>6.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The law for while-loops is</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="n">B</span> <span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  { invariant  I</span>
+<span class="sd">    modifies   VARLIST   (those variables updated in  C) }</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  { 1. B   premise</span>
+<span class="sd">    2. I   premise</span>
+<span class="sd">    ... }</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">C</span>
+  <span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">{ 1. ~B    premise</span>
+<span class="sd">  2. I     premise</span>
+<span class="sd">  ... }</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The mathematical-induction proof law is: to prove a property of the form,
+&#8220;<em>for all nonnegative integers</em>, <code class="docutils literal"><span class="pre">i</span></code>, <code class="docutils literal"><span class="pre">P_i</span></code> <em>holds true</em>&#8221;, do so in two
+steps:</p>
+<ol class="arabic simple">
+<li>Basis step: prove the starting case, <code class="docutils literal"><span class="pre">P_0</span></code>.</li>
+<li>Induction step: assume that <code class="docutils literal"><span class="pre">P_k</span></code> holds, for an anonymous integer, <code class="docutils literal"><span class="pre">k</span></code>,
+and use this <em>induction hypothesis</em> to prove <code class="docutils literal"><span class="pre">P_k+1</span></code>.</li>
+</ol>
+<hr class="docutils" />
+<p align=right><small><em>
+This note was adapted from David Schmidt's CIS 301, 2008,
+<a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/4whileT.html">Chapter 4</a>
+course note.
+</em></small></p></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>
