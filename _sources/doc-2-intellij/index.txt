@@ -28,6 +28,7 @@ Here is a LIVE screenshot:
    <a href = "../_static/syntax-message.png"><img src="../_static/syntax-message.png" width="800"/></a>
    </center>
 
+
 Features
 ********
 
@@ -43,14 +44,31 @@ LIVE provides the following features:
 
 * Can be used in conjunction with IntelliJ's Scala Worksheet (``.sc`` files)
   or its Scala editor (``.scala`` files) to benefit from IntelliJ IDE features.
-  The screenshot above illustrates how Logika IVE works with the Scala Worksheet.
+  The screenshot above illustrates how LIVE works with the Scala Worksheet.
+
 
 LIVE Install
 ************
 
+The Sireum IntelliJ plugin that LIVE is a part of is currently under review
+for approval for distribution through
+`JetBrains' plugins website <http://plugins.jetbrains.com/plugin/8141>`__.
+For now, you can download the
+`plugin zip file <https://drive.google.com/open?id=0B3opDhlww1AXaWVid2MyZUNOMzg>`__,
+and install it in IntelliJ.
+To do that, open IntelliJ's
+`Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
+(shortcut: ``⌘,`` in OS X);
+then click on "Plugins" (1), select "Install from disk..." (2), select the
+downloaded plugin file, and restart IntelliJ.
+
+.. image:: install-from-disk.png
+   :width: 50%
+
 
 Using LIVE
 **********
+
 
 Keyboard Shortcuts
 ==================
