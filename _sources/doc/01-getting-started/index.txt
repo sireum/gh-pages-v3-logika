@@ -202,6 +202,8 @@ Logika Command-Line Configuration
 Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.
 
+.. _auto-mode:
+
 Auto Mode (``-a`` or ``--auto``)
 ================================
 

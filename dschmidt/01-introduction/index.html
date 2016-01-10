@@ -608,6 +608,63 @@ array of integers.
 In this case, &#8220;what goes out&#8221; is an array whose elements are squared &#8211;
 it is guaranteed to work, because it was analyzed the same way an electronics
 engineer analyzes a circuit.</p>
+<p>If the above somehow looks daunting, here is a shorter proof by leveraging
+<a class="reference internal" href="../../doc/01-getting-started/index.html#auto-mode"><span>Logika&#8217;s automation</span></a>:</p>
+<div class="highlight-scala"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ modifies a</span>
+<span class="s">        post     ∀i: (0 ..&lt; a.size)  a(i) == a_in(i) * a_in(i)                  }&quot;&quot;&quot;</span>
+
+  <span class="k">var</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">while</span> <span class="o">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ invariant  ∀i: (0 ..&lt; x)  a(i) == a_in(i) * a_in(i)</span>
+<span class="s">                     ∀i: (x ..&lt; a.size)  a(i) == a_in(i)</span>
+<span class="s">                     0 &lt;= x</span>
+<span class="s">                     x &lt;= a.size</span>
+<span class="s">          modifies x, a                                                         }&quot;&quot;&quot;</span>
+
+    <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">*</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. x &lt; a.size                                                auto</span>
+<span class="s">          2. ∀ i: (0 .. x) a(i) = a_in(i) * a_in(i)                    auto</span>
+<span class="s">          3. ∀i: (x + 1 ..&lt; a.size)  a(i) == a_in(i)                   auto     }&quot;&quot;&quot;</span>
+
+    <span class="n">x</span> <span class="k">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. 0 ≤ x                                                     auto</span>
+<span class="s">          2. x ≤ a.size                                                auto</span>
+<span class="s">          3. ∀i: (0 ..&lt; x)  a(i) = a_in(i) * a_in(i)                   auto</span>
+<span class="s">          4. ∀i: (x ..&lt; a.size)  a(i) == a_in(i)                       auto     }&quot;&quot;&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 <hr class="docutils" />
 <p align=right><small><em>
 This note was adapted from David Schmidt's CIS 301, 2008,
