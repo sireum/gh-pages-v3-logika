@@ -1,0 +1,174 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Sireum Logika Documentation
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   3. The Logika Formal Language
+   </b></big></big></big></big>
+   </font>
+
+.. _language:
+
+The Logika Formal Language
+##########################
+
+Design and Rationale
+********************
+
+Basic Language Elements
+***********************
+
+Identifiers
+===========
+
+Operators
+=========
+
+Literals
+========
+
+Keywords
+========
+
+Comments
+========
+
+Lines and Whitespaces
+=====================
+
+
+Propositional Logic
+*******************
+
+Grammar
+=======
+
+Sequent
+-------
+
+Proof
+-----
+
+Expression
+----------
+
+Well-formed-ness
+================
+
+Tactics
+=======
+
+Premise
+-------
+
+And-Introduction (∧i)
+---------------------
+
+And-Elimination (∧e1, ∧e2)
+--------------------------
+
+Or-Introduction (∨i1, ∨i2)
+--------------------------
+
+Or-Elimination (∨e)
+-------------------
+
+Implication-Introduction (→i)
+-----------------------------
+
+Implication-Elimination (→e)
+----------------------------
+
+Negation-Introduction (¬i)
+--------------------------
+
+Negation-Elimination (¬e)
+-------------------------
+
+Bottom-Elimination  (⊥e)
+------------------------
+
+Proof-by-contradiction (Pbc)
+----------------------------
+
+
+Predicate Logic
+***************
+
+
+Grammar
+=======
+
+Uninterpreted Function
+----------------------
+
+Universal Quantifications (∀)
+-----------------------------
+
+Existensial Quantifications (∃)
+-------------------------------
+
+
+Tactics
+=======
+
+Forall-Introduction (∀i)
+------------------------
+
+Forall-Elimination (∀e)
+-----------------------
+
+Exists-Introduction (∃i)
+------------------------
+
+Exists-Elimination (∃e)
+-----------------------
+
+
+Programming Logic
+*****************
+
+Grammar
+=======
+
+Program
+-------
+
+Statement
+---------
+
+Proof Statement
+---------------
+
+Expression
+----------
+
+Well-formed-ness
+================
+
+Type Checking
+-------------
+
+Tactics
+=======
+
+Subst1
+------
+
+Subst2
+------
+
+Algebra
+-------
+
+Invariant
+---------
+
+Auto
+----

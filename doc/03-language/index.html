@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. The Logika Formal Language &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../index.html" />
+    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
+    <link rel="next" title="Logika: Programming Logics" href="../../dschmidt/index.html" />
+    <link rel="prev" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Documentation</a></li>
+                <li><a href="../../dschmidt/index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3. The Logika Formal Language</a><ul>
+<li><a class="reference internal" href="#design-and-rationale">3.1. Design and Rationale</a></li>
+<li><a class="reference internal" href="#basic-language-elements">3.2. Basic Language Elements</a><ul>
+<li><a class="reference internal" href="#identifiers">3.2.1. Identifiers</a></li>
+<li><a class="reference internal" href="#operators">3.2.2. Operators</a></li>
+<li><a class="reference internal" href="#literals">3.2.3. Literals</a></li>
+<li><a class="reference internal" href="#keywords">3.2.4. Keywords</a></li>
+<li><a class="reference internal" href="#comments">3.2.5. Comments</a></li>
+<li><a class="reference internal" href="#lines-and-whitespaces">3.2.6. Lines and Whitespaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#propositional-logic">3.3. Propositional Logic</a><ul>
+<li><a class="reference internal" href="#grammar">3.3.1. Grammar</a><ul>
+<li><a class="reference internal" href="#sequent">Sequent</a></li>
+<li><a class="reference internal" href="#proof">Proof</a></li>
+<li><a class="reference internal" href="#expression">Expression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#well-formed-ness">3.3.2. Well-formed-ness</a></li>
+<li><a class="reference internal" href="#tactics">3.3.3. Tactics</a><ul>
+<li><a class="reference internal" href="#premise">Premise</a></li>
+<li><a class="reference internal" href="#and-introduction-i">And-Introduction (∧i)</a></li>
+<li><a class="reference internal" href="#and-elimination-e1-e2">And-Elimination (∧e1, ∧e2)</a></li>
+<li><a class="reference internal" href="#or-introduction-i1-i2">Or-Introduction (∨i1, ∨i2)</a></li>
+<li><a class="reference internal" href="#or-elimination-e">Or-Elimination (∨e)</a></li>
+<li><a class="reference internal" href="#implication-introduction-i">Implication-Introduction (→i)</a></li>
+<li><a class="reference internal" href="#implication-elimination-e">Implication-Elimination (→e)</a></li>
+<li><a class="reference internal" href="#negation-introduction-i">Negation-Introduction (¬i)</a></li>
+<li><a class="reference internal" href="#negation-elimination-e">Negation-Elimination (¬e)</a></li>
+<li><a class="reference internal" href="#bottom-elimination-e">Bottom-Elimination  (⊥e)</a></li>
+<li><a class="reference internal" href="#proof-by-contradiction-pbc">Proof-by-contradiction (Pbc)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#predicate-logic">3.4. Predicate Logic</a><ul>
+<li><a class="reference internal" href="#id1">3.4.1. Grammar</a><ul>
+<li><a class="reference internal" href="#uninterpreted-function">Uninterpreted Function</a></li>
+<li><a class="reference internal" href="#universal-quantifications">Universal Quantifications (∀)</a></li>
+<li><a class="reference internal" href="#existensial-quantifications">Existensial Quantifications (∃)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">3.4.2. Tactics</a><ul>
+<li><a class="reference internal" href="#forall-introduction-i">Forall-Introduction (∀i)</a></li>
+<li><a class="reference internal" href="#forall-elimination-e">Forall-Elimination (∀e)</a></li>
+<li><a class="reference internal" href="#exists-introduction-i">Exists-Introduction (∃i)</a></li>
+<li><a class="reference internal" href="#exists-elimination-e">Exists-Elimination (∃e)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#programming-logic">3.5. Programming Logic</a><ul>
+<li><a class="reference internal" href="#id3">3.5.1. Grammar</a><ul>
+<li><a class="reference internal" href="#program">Program</a></li>
+<li><a class="reference internal" href="#statement">Statement</a></li>
+<li><a class="reference internal" href="#proof-statement">Proof Statement</a></li>
+<li><a class="reference internal" href="#id4">Expression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">3.5.2. Well-formed-ness</a><ul>
+<li><a class="reference internal" href="#type-checking">Type Checking</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">3.5.3. Tactics</a><ul>
+<li><a class="reference internal" href="#subst1">Subst1</a></li>
+<li><a class="reference internal" href="#subst2">Subst2</a></li>
+<li><a class="reference internal" href="#algebra">Algebra</a></li>
+<li><a class="reference internal" href="#invariant">Invariant</a></li>
+<li><a class="reference internal" href="#auto">Auto</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Sireum Logika Documentation
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+3. The Logika Formal Language
+</b></big></big></big></big>
+</font><div class="section" id="the-logika-formal-language">
+<span id="language"></span><h1>3. The Logika Formal Language<a class="headerlink" href="#the-logika-formal-language" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="design-and-rationale">
+<h2>3.1. Design and Rationale<a class="headerlink" href="#design-and-rationale" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="basic-language-elements">
+<h2>3.2. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="identifiers">
+<h3>3.2.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="operators">
+<h3>3.2.2. Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="literals">
+<h3>3.2.3. Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="keywords">
+<h3>3.2.4. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="comments">
+<h3>3.2.5. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="lines-and-whitespaces">
+<h3>3.2.6. Lines and Whitespaces<a class="headerlink" href="#lines-and-whitespaces" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="propositional-logic">
+<h2>3.3. Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="grammar">
+<h3>3.3.1. Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sequent">
+<h4>Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="proof">
+<h4>Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="expression">
+<h4>Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="well-formed-ness">
+<h3>3.3.2. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tactics">
+<h3>3.3.3. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="premise">
+<h4>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="and-introduction-i">
+<h4>And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="and-elimination-e1-e2">
+<h4>And-Elimination (∧e1, ∧e2)<a class="headerlink" href="#and-elimination-e1-e2" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="or-introduction-i1-i2">
+<h4>Or-Introduction (∨i1, ∨i2)<a class="headerlink" href="#or-introduction-i1-i2" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="or-elimination-e">
+<h4>Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="implication-introduction-i">
+<h4>Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="implication-elimination-e">
+<h4>Implication-Elimination (→e)<a class="headerlink" href="#implication-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="negation-introduction-i">
+<h4>Negation-Introduction (¬i)<a class="headerlink" href="#negation-introduction-i" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="negation-elimination-e">
+<h4>Negation-Elimination (¬e)<a class="headerlink" href="#negation-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="bottom-elimination-e">
+<h4>Bottom-Elimination  (⊥e)<a class="headerlink" href="#bottom-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="proof-by-contradiction-pbc">
+<h4>Proof-by-contradiction (Pbc)<a class="headerlink" href="#proof-by-contradiction-pbc" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="predicate-logic">
+<h2>3.4. Predicate Logic<a class="headerlink" href="#predicate-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>3.4.1. Grammar<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="uninterpreted-function">
+<h4>Uninterpreted Function<a class="headerlink" href="#uninterpreted-function" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="universal-quantifications">
+<h4>Universal Quantifications (∀)<a class="headerlink" href="#universal-quantifications" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="existensial-quantifications">
+<h4>Existensial Quantifications (∃)<a class="headerlink" href="#existensial-quantifications" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>3.4.2. Tactics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="forall-introduction-i">
+<h4>Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="forall-elimination-e">
+<h4>Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="exists-introduction-i">
+<h4>Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="exists-elimination-e">
+<h4>Exists-Elimination (∃e)<a class="headerlink" href="#exists-elimination-e" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="programming-logic">
+<h2>3.5. Programming Logic<a class="headerlink" href="#programming-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>3.5.1. Grammar<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="program">
+<h4>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="statement">
+<h4>Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="proof-statement">
+<h4>Proof Statement<a class="headerlink" href="#proof-statement" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id4">
+<h4>Expression<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>3.5.2. Well-formed-ness<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="type-checking">
+<h4>Type Checking<a class="headerlink" href="#type-checking" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>3.5.3. Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="subst1">
+<h4>Subst1<a class="headerlink" href="#subst1" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="subst2">
+<h4>Subst2<a class="headerlink" href="#subst2" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="algebra">
+<h4>Algebra<a class="headerlink" href="#algebra" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="invariant">
+<h4>Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="auto">
+<h4>Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>
