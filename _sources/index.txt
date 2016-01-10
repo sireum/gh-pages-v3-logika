@@ -45,7 +45,7 @@ to aid in teaching an introductory logics course in computer science (e.g.,
 The tool is accompanied by:
 (1) a set of :ref:`course notes <course-notes>`,
 which is an adaptation of the |ProgrammingLogics| lecture notes written by |Schmidt|, and
-(2) an Integrated Verification Environment (IVE) -- :ref:`LIVE <live>` built on top of
+(2) an Integrated Verification Environment (IVE) for Logika -- :ref:`LIVE <live>` built on top of
 `JetBrains <https://www.jetbrains.com>`__' `IntelliJ IDEA <https://www.jetbrains.com/idea/>`__.
 Logika uses the `Z3 <https://github.com/Z3Prover/z3>`__ theorem prover to
 automatically solve algebraic formulae and to offer some level of automation suitable
