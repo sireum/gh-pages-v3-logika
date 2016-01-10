@@ -216,9 +216,7 @@ and prints it:</p>
 11
 12
 13
-14
-15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
 <span class="c1">// the above imports, for example, type Z,</span>
 <span class="c1">// which is an arbitrary-precision integer type (i.e., scala.BigInt)</span>
 <span class="c1">// for the remaining examples, we&#39;ll elide it</span>
@@ -231,9 +229,7 @@ and prints it:</p>
 <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
   <span class="n">max</span> <span class="k">=</span> <span class="n">y</span>
 <span class="o">}</span>
-<span class="n">println</span><span class="o">(</span><span class="s">s&quot;Maximum of </span><span class="si">$x</span><span class="s"> and </span><span class="si">$y</span><span class="s"> is </span><span class="si">$max</span><span class="s">.&quot;</span><span class="o">)</span>
-<span class="c1">// s&quot;...&quot; is a string interpolator that inserts variable values</span>
-<span class="c1">// into the string when $ is used in front of a variable name</span>
+<span class="n">println</span><span class="o">(</span><span class="s">&quot;Maximum of &quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="s">&quot; and &quot;</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="s">&quot; is &quot;</span><span class="o">,</span> <span class="n">max</span><span class="o">,</span> <span class="s">&quot;.&quot;</span><span class="o">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>Think of the program as a &#8220;circuit&#8221; whose lines are &#8220;wired&#8221; together in
@@ -286,7 +282,7 @@ enclosed by set braces, <code class="docutils literal"><span class="pre">l&quot;
 <span class="s">        5. max &gt;= x  ∧  max &gt;= y   ∧i 4 3      }&quot;&quot;&quot;</span>
 <span class="o">}</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. max &gt;= x  ∧  max &gt;= y     premise     }&quot;&quot;&quot;</span>
-<span class="n">println</span><span class="o">(</span><span class="s">s&quot;Maximum of </span><span class="si">$x</span><span class="s"> and </span><span class="si">$y</span><span class="s"> is </span><span class="si">$max</span><span class="s">.&quot;</span><span class="o">)</span>
+<span class="n">println</span><span class="o">(</span><span class="s">&quot;Maximum of &quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="s">&quot; and &quot;</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="s">&quot; is &quot;</span><span class="o">,</span> <span class="n">max</span><span class="o">,</span> <span class="s">&quot;.&quot;</span><span class="o">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>The last annotation, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span> <span class="pre">...</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span> <span class="pre">...</span> <span class="pre">}&quot;&quot;&quot;</span></code>, is a symbolic-logic
