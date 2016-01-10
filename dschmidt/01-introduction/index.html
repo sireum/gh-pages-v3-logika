@@ -489,7 +489,7 @@ integers in an array that is passed to it as its argument:</p>
 <span class="s">                     ∀i: (x ..&lt; a.size)  a(i) == a_in(i)</span>
 <span class="s">                     0 &lt;= x</span>
 <span class="s">                     x &lt;= a.size</span>
-<span class="s">          modifies x, a                                                         }&quot;&quot;&quot;</span>
+<span class="s">          modifies   x, a                                                         }&quot;&quot;&quot;</span>
 
     <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. ∀i: (0 ..&lt; x)  a(i) == a_in(i) * a_in(i)        premise</span>
 <span class="s">          2. ∀i: (x ..&lt; a.size)  a(i) == a_in(i)             premise</span>
@@ -647,20 +647,20 @@ engineer analyzes a circuit.</p>
 <span class="s">                     ∀i: (x ..&lt; a.size)  a(i) == a_in(i)</span>
 <span class="s">                     0 &lt;= x</span>
 <span class="s">                     x &lt;= a.size</span>
-<span class="s">          modifies x, a                                                         }&quot;&quot;&quot;</span>
+<span class="s">          modifies   x, a                                                         }&quot;&quot;&quot;</span>
 
     <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">*</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
 
-    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. x &lt; a.size                                                auto</span>
-<span class="s">          2. ∀i: (0 .. x) a(i)  == a_in(i) * a_in(i)                   auto</span>
-<span class="s">          3. ∀i: (x + 1 ..&lt; a.size)  a(i) == a_in(i)                   auto     }&quot;&quot;&quot;</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. x &lt; a.size                                      auto</span>
+<span class="s">          2. ∀i: (0 .. x) a(i)  == a_in(i) * a_in(i)         auto</span>
+<span class="s">          3. ∀i: (x + 1 ..&lt; a.size)  a(i) == a_in(i)         auto               }&quot;&quot;&quot;</span>
 
     <span class="n">x</span> <span class="k">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 
-    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. 0 ≤ x                                                     auto</span>
-<span class="s">          2. x ≤ a.size                                                auto</span>
-<span class="s">          3. ∀i: (0 ..&lt; x)  a(i) == a_in(i) * a_in(i)                  auto</span>
-<span class="s">          4. ∀i: (x ..&lt; a.size)  a(i) == a_in(i)                       auto     }&quot;&quot;&quot;</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. 0 ≤ x                                           auto</span>
+<span class="s">          2. x ≤ a.size                                      auto</span>
+<span class="s">          3. ∀i: (0 ..&lt; x)  a(i) == a_in(i) * a_in(i)        auto</span>
+<span class="s">          4. ∀i: (x ..&lt; a.size)  a(i) == a_in(i)             auto               }&quot;&quot;&quot;</span>
   <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
