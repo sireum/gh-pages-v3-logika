@@ -65,8 +65,8 @@ LIVE Install
 This step is optional as opening any Logika files during :ref:`live-examples` will cause
 IntelliJ to suggest you to install the Sireum v3 plugin.
 
-However, here is the instructions on how to install LIVE through
-`JetBrains' plugins repository <https://plugins.jetbrains.com/plugin/8148>`__.
+However, for reference, below are the instructions on how to install LIVE through
+`JetBrains' plugin repositories <https://plugins.jetbrains.com/plugin/8148>`__.
 First, open IntelliJ's
 `Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
 (shortcut: ``⌘,`` in OS X):
