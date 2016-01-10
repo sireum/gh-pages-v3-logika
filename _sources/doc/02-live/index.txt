@@ -49,7 +49,7 @@ LIVE Install
 
 The Sireum IntelliJ plugin that LIVE is a part of is currently under review
 for approval for distribution through
-`JetBrains' plugins website <http://plugins.jetbrains.com/plugin/8141>`__.
+`JetBrains' plugins website <https://plugins.jetbrains.com/plugin/8148>`__.
 For now, you can download the
 `plugin zip file <https://drive.google.com/open?id=0B3opDhlww1AXaWVid2MyZUNOMzg>`__,
 and install it in IntelliJ.
