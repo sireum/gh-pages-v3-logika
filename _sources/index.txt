@@ -57,8 +57,7 @@ Logika is inspired by:
   tool (see its
   `manual <http://people.cis.ksu.edu/~schmidt/301s14/NDPC/user_manual.pdf>`__)
   for propositional and predicate logics developed by Brian Mulanda,
-  `Rodney Howell <http://people.cis.ksu.edu/~rhowell/>`__, and
-  James Thompson.
+  |Howell|, and James Thompson.
 
 * The `Floyd-Hoare Programming Logic Proof Checker <http://people.cis.ksu.edu/~schmidt/301s14/cis301.zip>`__
   developed by Schmidt that accompanies his |ProgrammingLogics| lecture notes.

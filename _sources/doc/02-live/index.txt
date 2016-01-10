@@ -76,24 +76,24 @@ and install it in IntelliJ:
   `Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
   (shortcut: ``⌘,`` in OS X)
 
-* Click on "Plugins" ...(1)
+* Click on ``Plugins`` ...(1)
 
-* Select "Install from disk..." ...(2)
+* Select ``Install from disk...`` ...(2)
 
 * Select the downloaded plugin file, and restart IntelliJ.
 
-Once restarted, LIVE adds a "Sireum->Logika" sub-menu under the
-`IntelliJ "Tools" menu <https://www.jetbrains.com/idea/help/menus-and-toolbars.html>`__
+Once restarted, LIVE adds a ``Sireum``->``Logika`` sub-menu under the
+`IntelliJ Tools menu <https://www.jetbrains.com/idea/help/menus-and-toolbars.html>`__.
 
 Optional: Adobe's Source Code Pro Font
 ======================================
 
 When working with Logika math Unicode symbols (see :ref:`shortcuts`),
-it is best to use a font that also mostly fixed-width for those symbols.
+it is best to use a font that is also (mostly) fixed-width for those symbols.
 
 `Adobe's Source Code Pro <https://github.com/adobe-fonts/source-code-pro>`__
 is one such font (it is also an excellent font for programming or other
-purposes where a fixed-width font is preferable).
+purposes where a fixed-width font is desirable).
 
 Follow the
 `download and install instructions <https://github.com/adobe-fonts/source-code-pro/blob/master/README.md>`__,
@@ -107,14 +107,14 @@ LIVE Update
 Whenever the LIVE plugin is updated, you also need to update Sireum v3's
 command-line interface (see :ref:`update`).
 LIVE tries to detect when such situation occurs and presents a nice
-reminder that you need to update Sireum (and refuses to work until Sireum
-is updated).
+reminder that you need to update Sireum (and it kindly refuses to work until
+Sireum is updated).
 
 .. image:: sireum-needs-updating.png
    :width: 30%
 
-(In the future, this will be changed to a more automatic approach, e.g.,
-by having LIVE do the git pull and rebuild Sireum v3, and even removing
+(In the future, this might be changed to a more automatic approach, e.g.,
+by having LIVE to do the git pull and rebuild Sireum v3, or even removing
 the manual step of setting up Sireum v3 via command-line first.)
 
 
@@ -122,23 +122,25 @@ LIVE Examples
 *************
 
 To see how LIVE works,
-open the Logika examples repository (that was cloned in :ref:`logika-examples`)
+open the `Logika examples repository <https://github.com/sireum/v3-logika-examples>`__
+(which was cloned in :ref:`logika-examples`)
 as an `IntelliJ project <https://www.jetbrains.com/idea/help/opening-reopening-and-closing-projects.html>`__.
 
 If this is your first time opening the project, you need to
 `configure the project SDK <https://www.jetbrains.com/idea/help/configuring-global-project-and-module-sdks.html>`__
-(note SDK Type is Java SDK), and point it to the ``sireum-v3/platform/java`` directory
-(that was created in the process of :ref:`installing-logika`).
+(note: the SDK Type should be Java SDK), and point it to the ``sireum-v3/platform/java`` directory
+(which was created during the process of :ref:`installing-logika`).
 
 Opening any of the ``.logika`` files would:
 
 ----
 
-* Syntax highlight the file document.
+* Syntax highlight the file document as shown in
+  :ref:`the screenshot at the top of this page <live>`.
 
 ----
 
-* Ask for the Sireum v3 home directory (if this is the first time).
+* Cause LIVE to ask for the Sireum v3 installation directory (if this is the first time).
 
   Just point it to ``sireum-v3`` (see :ref:`installing-logika`).
 
@@ -169,7 +171,7 @@ Opening any of the ``.logika`` files would:
   .. image:: logika-server-shutdown.png
      :scale: 75
 
-  Answering "Yes" will terminate the server and cause the status icon to disappear.
+  Answering ``Yes`` will terminate the server and cause the status icon to disappear.
 
 ----
 
@@ -182,12 +184,13 @@ Opening any of the ``.logika`` files would:
 
 That is, opening a ``.logika`` file (or a ``.lgk`` file) cause Logika to
 automatically work on the file document.
-As you edit the file, Logika will continually analyze it and gives various
-feedback such as syntax error marking, etc. (see :ref:`Effects <effect>`).
+As you edit the file, Logika will continually analyze it and give various
+feedback such as syntax error marking (see :ref:`Effects <effect>`),
+notification, etc.
 (LIVE waits a certain amount of time after the file content is modified before
-calling Logika; this "idle" time wait period can be :ref:`configured <live-configuration>`).
+calling Logika; this "idle" wait time period can be :ref:`configured <live-configuration>`).
 
-LIVE can be configured to work on other file types.
+LIVE can also be configured to work with other file types.
 By default, it is :ref:`configured <live-configuration>` to also work with
 Scala Worksheet ``.sc`` files.
 However, opening any of such files does not automatically bring Logika to LIVE.
@@ -197,14 +200,14 @@ There are three ways to explicitly bring Logika to LIVE:
 
 ----
 
-* Triggering the menu item "Tools"->"Sireum"->"Logika"->"Logika Check":
+* Triggering the menu item ``Tools`` -> ``Sireum`` -> ``Logika`` -> ``Logika Check``:
 
   .. image:: live-check-menuitem.png
      :scale: 60
 
 ----
 
-* Right-clicking on the editor and selecting "Logika Check":
+* Right-clicking on the editor and selecting ``Logika Check``:
 
   .. image:: live-check-editor.png
      :scale: 60
@@ -217,7 +220,7 @@ There are three ways to explicitly bring Logika to LIVE:
 
 Once invoked, LIVE will continue to monitor changes to the file document
 similar to ``.logika`` or ``.lgk`` files.
-If the editor is closed and reopened, Logika needs to be implicitly invoked once again.
+If the editor is closed and reopened, Logika needs to be explicitly invoked once again.
 
 Note that these LIVE actions to verify file documents are only available for file types
 that have been registered in :ref:`live-configuration`.
@@ -233,7 +236,7 @@ LIVE provides two main shortcuts:
 ----
 
 * For invoking Logika to analyze an opened file document.
-  The default keyboard short cut is Command-Shift-L (``⌘⇧L`` in Mac OS X) or
+  The default keyboard shortcut is Command-Shift-L (``⌘⇧L`` in Mac OS X) or
   Control-Shift-L (``⌃⇧L`` in Linux and Windows).
 
   This shortcut is only available for file types that have been registered in
@@ -244,35 +247,35 @@ LIVE provides two main shortcuts:
 * For inserting math Unicode symbols relevant for Logika.
   There are two keystrokes needed for a symbol insertion:
 
-  * The first keystroke is Command/Control-Shift-Semicolon (``⌘⇧;``/``⌃⇧;``)
+  1. The first keystroke is Command/Control-Shift-Semicolon (``⌘⇧;``/``⌃⇧;``)
 
-  * The second keystroke depends on which symbol to insert; below is a table
-    of the shortcut, Unicode symbol and hexadecimal code, and its equivalent
-    ASCII characters accepted by Logika.
+  2. The second keystroke depends on which symbol to insert; below is a table
+     of the shortcut, Unicode symbol and hexadecimal code, and its equivalent
+     ASCII characters accepted by Logika.
 
-    ====================== ============== ======== ==================================
-    2\ :sup:`nd` Keystroke Unicode Symbol Hex Code Logika ASCII Equivalents
-    ====================== ============== ======== ==================================
-    ``T``                  ``⊤``          U+22A4   ``T``, ``true``
-    ``F``                  ``⊥``          U+22A5   ``F``, ``_|_``, ``false``
-    ``<``                  ``≤``          U+2264   ``<=``
-    ``>``                  ``≥``          U+2265   ``>=``
-    ``!``                  ``≠``          U+2260   ``!=``
-    ``N``                  ``¬``          U+00AC   ``!``, ``~``, ``not``
-    ``^``                  ``∧``          U+2227   ``&``, ``^``, ``and``
-    ``V``                  ``∨``          U+2228   ``|``, ``V``, ``or``
-    ``-``                  ``→``          U+21D2   ``->``, ``implies``
-    ``A``                  ``∀``          U+2200   ``A``, ``all``, ``forall``
-    ``E``                  ``∃``          U+2203   ``E``, ``some``, ``exists``
-    ``S``                  ``⊢``          U+22A2   ``|-``
-    ====================== ============== ======== ==================================
+     ====================== ============== ======== ==================================
+     2\ :sup:`nd` Keystroke Unicode Symbol Hex Code Logika ASCII Equivalents
+     ====================== ============== ======== ==================================
+     ``T``                  ``⊤``          U+22A4   ``T``, ``true``
+     ``F``                  ``⊥``          U+22A5   ``F``, ``_|_``, ``false``
+     ``<``                  ``≤``          U+2264   ``<=``
+     ``>``                  ``≥``          U+2265   ``>=``
+     ``!``                  ``≠``          U+2260   ``!=``
+     ``N``                  ``¬``          U+00AC   ``!``, ``~``, ``not``
+     ``^``                  ``∧``          U+2227   ``&``, ``^``, ``and``
+     ``V``                  ``∨``          U+2228   ``|``, ``V``, ``or``
+     ``-``                  ``→``          U+21D2   ``->``, ``implies``
+     ``A``                  ``∀``          U+2200   ``A``, ``all``, ``forall``
+     ``E``                  ``∃``          U+2203   ``E``, ``some``, ``exists``
+     ``S``                  ``⊢``          U+22A2   ``|-``
+     ====================== ============== ======== ==================================
 
-    These symbol shortcuts are available for use in any text editor for any file types.
+     These symbol shortcuts are available for use in any text editor for any file types.
 
 ----
 
 The keystrokes for the above shortcuts are the default keystrokes; they can be
-configured in `IntelliJ's "Keymap" settings <https://www.jetbrains.com/idea/help/keymap.html>`__.
+configured in `IntelliJ's Keymap settings <https://www.jetbrains.com/idea/help/keymap.html>`__.
 
 
 .. _live-configuration:
@@ -304,7 +307,7 @@ Sireum Settings
 
   This setting can be used to (re-) enter the Sireum v3 directory, either
   by typing the absolute path to the directory or by using a file browser dialog
-  that can be opened by clicking the "..." button.
+  that can be opened by clicking the ``...`` button.
 
   The entered path is checked to see whether it contains a working Sireum v3
   installation.
@@ -336,7 +339,7 @@ Sireum Settings
 
   The expected format is a key-value pair separated by an equal sign (``=``) per line.
   The key has to satisfy the following regular expression ``[a-zA-Z_][a-zA-Z0-9_]*``
-  (i.e., a letter or an underscore, followed by zero or more letter, digit, or underscore).
+  (i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).
 
 ----
 
@@ -354,14 +357,14 @@ Below are the additional settings for LIVE.
 
 * **Syntax Highlighting**
 
-  The checkbox indicates whether LIVE should syntax highlight Logika file document.
+  The checkbox indicates whether LIVE should syntax highlight file documents.
 
 ----
 
 * **File Extensions**
 
   The text field provides a way to configure which file types
-  (based on their extension) that LIVE actions should be enabled.
+  (based on their extension name) that LIVE actions should be enabled.
 
   By default, only Scala Worksheet ``.sc`` files are configured.
   One can add other files such as ``.scala`` and ``.txt`` files.
@@ -377,7 +380,7 @@ Below are the additional settings for LIVE.
 
   This underwave effect checkbox controls how location-aware errors and
   warnings are marked in the editor.
-  When selected it uses the (more subtle) underwave effect typically used by
+  When selected, it uses the (more subtle) underwave effect typically used by
   IDEs to indicate ill-formed programs such as the following (compare it
   with the LIVE screenshot at :ref:`the top of this page <live>` that does
   not use the underwave effect):
@@ -398,7 +401,8 @@ Below are the additional settings for LIVE.
 
 * **Background Analysis and Idle Time**
 
-  This setting is used to turn on/off the background analysis.
+  This setting is used to turn on/off the Logika automatic background
+  analysis as file documents are modified.
 
   When turned off, the idle time is disabled (ignored), and one has to
   explicitly invoke Logika manually to verify file documents.
@@ -413,10 +417,10 @@ Below are the additional settings for LIVE.
 
   Verifying programs can be challenging.
   To help the process, Logika can generate some hints on the kind
-  of claims that one can make.
+  of program state claims can be made.
   If the hint generation is enabled, LIVE will mark locations
   where hints are available by using a bulb gutter editor icon.
-  When clicked, it will open a view that gives the before/pre and
+  If clicked, it will open a view that gives the before/pre and
   after/post claims of the corresponding program location.
   For example,
 
