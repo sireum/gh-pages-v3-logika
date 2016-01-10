@@ -379,5 +379,5 @@ For example,
    :scale: 75
 
 when the bulb gutter icon associated with ``a(3) = 5`` is clicked,
-LIVE opens a window on the right hand side of the editor that should
-pre/post claims.
+LIVE opens a window on the right hand side of the editor that displays
+the available pre/post claims that can be used as premises.
