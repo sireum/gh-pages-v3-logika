@@ -236,8 +236,8 @@ LIVE provides two main shortcuts:
 ----
 
 * For invoking Logika to analyze an opened file document.
-  The default keyboard shortcut is Command-Shift-L (``⌘⇧L`` in Mac OS X) or
-  Control-Shift-L (``⌃⇧L`` in Linux and Windows).
+  The default keyboard shortcut is Shift-Command-L (``⇧⌘L`` in Mac OS X) or
+  Shift-Control-L (``⇧⌃L`` in Linux and Windows).
 
   This shortcut is only available for file types that have been registered in
   :ref:`live-configuration`.
@@ -247,7 +247,7 @@ LIVE provides two main shortcuts:
 * For inserting math Unicode symbols relevant for Logika.
   There are two keystrokes needed for a symbol insertion:
 
-  1. The first keystroke is Command/Control-Shift-Semicolon (``⌘⇧;``/``⌃⇧;``)
+  1. The first keystroke is Shift-Command/Control-Semicolon (``⇧⌘;``/``⇧⌃;``)
 
   2. The second keystroke depends on which symbol to insert; below is a table
      of the shortcut, Unicode symbol and hexadecimal code, and its equivalent
@@ -258,11 +258,11 @@ LIVE provides two main shortcuts:
      ====================== ============== ======== ==================================
      ``T``                  ``⊤``          U+22A4   ``T``, ``true``
      ``F``                  ``⊥``          U+22A5   ``F``, ``_|_``, ``false``
-     ``<``                  ``≤``          U+2264   ``<=``
-     ``>``                  ``≥``          U+2265   ``>=``
-     ``!``                  ``≠``          U+2260   ``!=``
+     ``<`` or ``,``         ``≤``          U+2264   ``<=``
+     ``>`` or ``.``         ``≥``          U+2265   ``>=``
+     ``!`` or ``1``         ``≠``          U+2260   ``!=``
      ``N``                  ``¬``          U+00AC   ``!``, ``~``, ``not``
-     ``^``                  ``∧``          U+2227   ``&``, ``^``, ``and``
+     ``^`` or ``6``         ``∧``          U+2227   ``&``, ``^``, ``and``
      ``V``                  ``∨``          U+2228   ``|``, ``V``, ``or``
      ``-``                  ``→``          U+21D2   ``->``, ``implies``
      ``A``                  ``∀``          U+2200   ``A``, ``all``, ``forall``
