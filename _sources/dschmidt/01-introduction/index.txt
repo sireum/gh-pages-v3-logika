@@ -150,7 +150,7 @@ In this case, "what goes out" is an array whose elements are squared --
 it is guaranteed to work, because it was analyzed the same way an electronics
 engineer analyzes a circuit.
 
-If the above somehow looks daunting, here is a shorter proof by leveraging
+If the above somehow looks daunting, here is a shorter proof that leverages
 :ref:`Logika's automation <auto-mode>`:
 
 .. literalinclude:: 01-example-4.logika

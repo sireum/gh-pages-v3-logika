@@ -60,30 +60,31 @@ LIVE Install
 
 .. note::
 
-   Before installing LIVE, make sure that you update Logika first (see :ref:`update`).
+   After installing LIVE, make sure that you update Logika (see :ref:`update`).
 
-The LIVE plugin is currently under review for approval for distribution through
-`JetBrains' plugins website <https://plugins.jetbrains.com/plugin/8148>`__.
+This step is optional as opening any Logika files during :ref:`live-examples` will cause
+IntelliJ to suggest you to install the Sireum v3 plugin.
 
-For now, you can download the
-`plugin zip file <https://drive.google.com/open?id=0B3opDhlww1AXaWVid2MyZUNOMzg>`__,
-and install it in IntelliJ:
+However, here is the instructions on how to install LIVE through
+`JetBrains' plugins repository <https://plugins.jetbrains.com/plugin/8148>`__.
+First, open IntelliJ's
+`Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
+(shortcut: ``⌘,`` in OS X):
 
-.. image:: install-from-disk.png
-   :width: 50%
+.. image:: install-from-jetbrains.png
+   :scale: 40
 
-* Open IntelliJ's
-  `Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
-  (shortcut: ``⌘,`` in OS X)
+1. Click on ``Plugins``.
 
-* Click on ``Plugins`` ...(1)
+2. Select ``Browse repositories...``.
 
-* Select ``Install from disk...`` ...(2)
+3. Type ``sireum`` in the search text field of the newly displayed window.
 
-* Select the downloaded plugin file, and restart IntelliJ.
+4. Click ``Install`` and then click ``Restart`` IntelliJ.
 
-Once restarted, LIVE adds a ``Sireum``->``Logika`` sub-menu under the
+Once restarted, LIVE adds a ``Sireum`` -> ``Logika`` sub-menu under the
 `IntelliJ Tools menu <https://www.jetbrains.com/idea/help/menus-and-toolbars.html>`__.
+
 
 Optional: Adobe's Source Code Pro Font
 ======================================
@@ -104,11 +105,12 @@ to use it.
 LIVE Update
 ***********
 
-Whenever the LIVE plugin is updated, you also need to update Sireum v3's
+IntelliJ will notify you whenever there is a newer version of LIVE.
+If accepted and LIVE is updated, you also need to update Sireum v3's
 command-line interface (see :ref:`update`).
-LIVE tries to detect when such situation occurs and presents a nice
-reminder that you need to update Sireum (and it kindly refuses to work until
-Sireum is updated).
+LIVE tries to detect when Sireum v3 has not been updated and it would present
+a nice reminder that you need to update Sireum first
+(and it kindly refuses to work until it is updated).
 
 .. image:: sireum-needs-updating.png
    :width: 30%
@@ -117,6 +119,8 @@ Sireum is updated).
 by having LIVE to do the git pull and rebuild Sireum v3, or even removing
 the manual step of setting up Sireum v3 via command-line first.)
 
+
+.. _live-examples:
 
 LIVE Examples
 *************

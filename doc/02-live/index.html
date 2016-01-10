@@ -172,23 +172,23 @@ or its Scala editor (<code class="docutils literal"><span class="pre">.scala</sp
 <h2>2.2. LIVE Install<a class="headerlink" href="#live-install" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Before installing LIVE, make sure that you update Logika first (see <a class="reference internal" href="../01-getting-started/index.html#update"><span>Updating Logika</span></a>).</p>
+<p class="last">After installing LIVE, make sure that you update Logika (see <a class="reference internal" href="../01-getting-started/index.html#update"><span>Updating Logika</span></a>).</p>
 </div>
-<p>The LIVE plugin is currently under review for approval for distribution through
-<a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">JetBrains&#8217; plugins website</a>.</p>
-<p>For now, you can download the
-<a class="reference external" href="https://drive.google.com/open?id=0B3opDhlww1AXaWVid2MyZUNOMzg">plugin zip file</a>,
-and install it in IntelliJ:</p>
-<a class="reference internal image-reference" href="../../_images/install-from-disk.png"><img alt="../../_images/install-from-disk.png" src="../../_images/install-from-disk.png" style="width: 50%;" /></a>
-<ul class="simple">
-<li>Open IntelliJ&#8217;s
+<p>This step is optional as opening any Logika files during <a class="reference internal" href="#live-examples"><span>LIVE Examples</span></a> will cause
+IntelliJ to suggest you to install the Sireum v3 plugin.</p>
+<p>However, here is the instructions on how to install LIVE through
+<a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">JetBrains&#8217; plugins repository</a>.
+First, open IntelliJ&#8217;s
 <a class="reference external" href="https://www.jetbrains.com/idea/help/settings-preferences-dialog.html">Preferences</a>
-(shortcut: <code class="docutils literal"><span class="pre">⌘,</span></code> in OS X)</li>
-<li>Click on <code class="docutils literal"><span class="pre">Plugins</span></code> ...(1)</li>
-<li>Select <code class="docutils literal"><span class="pre">Install</span> <span class="pre">from</span> <span class="pre">disk...</span></code> ...(2)</li>
-<li>Select the downloaded plugin file, and restart IntelliJ.</li>
-</ul>
-<p>Once restarted, LIVE adds a <code class="docutils literal"><span class="pre">Sireum</span></code>-&gt;``Logika`` sub-menu under the
+(shortcut: <code class="docutils literal"><span class="pre">⌘,</span></code> in OS X):</p>
+<a class="reference internal image-reference" href="../../_images/install-from-jetbrains.png"><img alt="../../_images/install-from-jetbrains.png" src="../../_images/install-from-jetbrains.png" style="width: 529.6px; height: 334.40000000000003px;" /></a>
+<ol class="arabic simple">
+<li>Click on <code class="docutils literal"><span class="pre">Plugins</span></code>.</li>
+<li>Select <code class="docutils literal"><span class="pre">Browse</span> <span class="pre">repositories...</span></code>.</li>
+<li>Type <code class="docutils literal"><span class="pre">sireum</span></code> in the search text field of the newly displayed window.</li>
+<li>Click <code class="docutils literal"><span class="pre">Install</span></code> and then click <code class="docutils literal"><span class="pre">Restart</span></code> IntelliJ.</li>
+</ol>
+<p>Once restarted, LIVE adds a <code class="docutils literal"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal"><span class="pre">Logika</span></code> sub-menu under the
 <a class="reference external" href="https://www.jetbrains.com/idea/help/menus-and-toolbars.html">IntelliJ Tools menu</a>.</p>
 <div class="section" id="optional-adobe-s-source-code-pro-font">
 <h3>2.2.1. Optional: Adobe&#8217;s Source Code Pro Font<a class="headerlink" href="#optional-adobe-s-source-code-pro-font" title="Permalink to this headline">¶</a></h3>
@@ -205,18 +205,19 @@ to use it.</p>
 </div>
 <div class="section" id="live-update">
 <h2>2.3. LIVE Update<a class="headerlink" href="#live-update" title="Permalink to this headline">¶</a></h2>
-<p>Whenever the LIVE plugin is updated, you also need to update Sireum v3&#8217;s
+<p>IntelliJ will notify you whenever there is a newer version of LIVE.
+If accepted and LIVE is updated, you also need to update Sireum v3&#8217;s
 command-line interface (see <a class="reference internal" href="../01-getting-started/index.html#update"><span>Updating Logika</span></a>).
-LIVE tries to detect when such situation occurs and presents a nice
-reminder that you need to update Sireum (and it kindly refuses to work until
-Sireum is updated).</p>
+LIVE tries to detect when Sireum v3 has not been updated and it would present
+a nice reminder that you need to update Sireum first
+(and it kindly refuses to work until it is updated).</p>
 <a class="reference internal image-reference" href="../../_images/sireum-needs-updating.png"><img alt="../../_images/sireum-needs-updating.png" src="../../_images/sireum-needs-updating.png" style="width: 30%;" /></a>
 <p>(In the future, this might be changed to a more automatic approach, e.g.,
 by having LIVE to do the git pull and rebuild Sireum v3, or even removing
 the manual step of setting up Sireum v3 via command-line first.)</p>
 </div>
 <div class="section" id="live-examples">
-<h2>2.4. LIVE Examples<a class="headerlink" href="#live-examples" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>2.4. LIVE Examples<a class="headerlink" href="#live-examples" title="Permalink to this headline">¶</a></h2>
 <p>To see how LIVE works,
 open the <a class="reference external" href="https://github.com/sireum/v3-logika-examples">Logika examples repository</a>
 (which was cloned in <a class="reference internal" href="../01-getting-started/index.html#logika-examples"><span>Verifying Examples</span></a>)
