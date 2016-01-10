@@ -90,20 +90,8 @@
 <li><a class="reference internal" href="#live-examples">2.4. LIVE Examples</a></li>
 <li><a class="reference internal" href="#live-shortcuts">2.5. LIVE Shortcuts</a></li>
 <li><a class="reference internal" href="#sireum-live-configuration">2.6. Sireum LIVE Configuration</a><ul>
-<li><a class="reference internal" href="#sireum-settings">2.6.1. Sireum Settings</a><ul>
-<li><a class="reference internal" href="#sireum-v3-directory">Sireum v3 Directory</a></li>
-<li><a class="reference internal" href="#vm-arguments">VM Arguments</a></li>
-<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#live-settings">2.6.2. LIVE Settings</a><ul>
-<li><a class="reference internal" href="#syntax-highlighting">Syntax Highlighting</a></li>
-<li><a class="reference internal" href="#file-extensions">File Extensions</a></li>
-<li><a class="reference internal" href="#underwave-effects">Underwave Effects</a></li>
-<li><a class="reference internal" href="#background-analysis-and-idle-time">Background Analysis and Idle Time</a></li>
-<li><a class="reference internal" href="#hint-generation">Hint Generation</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#sireum-settings">2.6.1. Sireum Settings</a></li>
+<li><a class="reference internal" href="#live-settings">2.6.2. LIVE Settings</a></li>
 </ul>
 </li>
 </ul>
@@ -156,17 +144,30 @@ Here is a screenshot:</p>
 <a class="reference internal image-reference" href="../../_images/syntax-message.png"><img alt="../../_images/syntax-message.png" class="align-center" src="../../_images/syntax-message.png" style="width: 80%;" /></a>
 <div class="section" id="live-features">
 <h2>2.1. LIVE Features<a class="headerlink" href="#live-features" title="Permalink to this headline">¶</a></h2>
+<p>LIVE features mimic the typical features one would expect in a modern IDE.</p>
+<hr class="docutils" />
 <ul class="simple">
 <li>Syntax highlighting and error/warning reporting similar to most
 Integrated Development Environments (IDEs) for popular programming
 languages.</li>
-<li>Convenient keyboard shortcuts for inserting logical symbols.</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>Convenient keyboard shortcuts for inserting logical symbols that works
+for any editor file types.</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
 <li>Verification engine running in the background to check proofs as you type.</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
 <li>Can be used in conjunction with IntelliJ&#8217;s Scala Worksheet (<code class="docutils literal"><span class="pre">.sc</span></code> files)
-or its Scala editor (<code class="docutils literal"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features.
-The screenshot above illustrates how LIVE works with the Scala Worksheet.</li>
+or its Scala editor (<code class="docutils literal"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
+(e.g., the screenshot above illustrates how LIVE works with the Scala Worksheet).</li>
 </ul>
 </div>
+<hr class="docutils" />
 <div class="section" id="live-install">
 <h2>2.2. LIVE Install<a class="headerlink" href="#live-install" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
@@ -224,36 +225,47 @@ as an <a class="reference external" href="https://www.jetbrains.com/idea/help/op
 (note SDK Type is Java SDK), and point it to the <code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code> directory
 (that was created in the process of <a class="reference internal" href="../01-getting-started/index.html#installing-logika"><span>Installing and Running Logika</span></a>).</p>
 <p>Opening any of the <code class="docutils literal"><span class="pre">.logika</span></code> files would:</p>
+<hr class="docutils" />
+<ul class="simple">
+<li>Syntax highlight the file document.</li>
+</ul>
+<hr class="docutils" />
 <ul>
-<li><p class="first">ask for the Sireum v3 home directory (if this is the first time).</p>
+<li><p class="first">Ask for the Sireum v3 home directory (if this is the first time).</p>
 <p>Just point it to <code class="docutils literal"><span class="pre">sireum-v3</span></code> (see <a class="reference internal" href="../01-getting-started/index.html#installing-logika"><span>Installing and Running Logika</span></a>).</p>
 <p>If LIVE cannot confirm that the selected directory contains a working Sireum v3
 installation, it will display the following:</p>
 <a class="reference internal image-reference" href="../../_images/sireum-dir-invalid.png"><img alt="../../_images/sireum-dir-invalid.png" src="../../_images/sireum-dir-invalid.png" style="width: 300.0px; height: 139.5px;" /></a>
+<p>See <a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a> to adjust the settings.</p>
 </li>
-<li><p class="first">syntax highlight the file document</p>
-</li>
-<li><p class="first">display the Logika status icon the bottom-right corner of the IntelliJ project window
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first">Display the Logika status icon the bottom-right corner of the IntelliJ project window
 <a class="reference external" href="https://www.jetbrains.com/idea/help/status-bar.html">status bar</a>:</p>
 <img alt="../../_images/live-status-bar.png" src="../../_images/live-status-bar.png" />
-<p>The status icon animates when Logika has a pending work or is working in
-the background, and hovering the mouse cursor shows a tooltip of Logika&#8217;s status.</p>
 <p>The presence of the Logika status icon indicates that the <a class="reference internal" href="../01-getting-started/index.html#server"><span>Logika server</span></a>
 is running/waiting in the background.</p>
+<p>The status icon animates when Logika has a pending work or is working in
+the background, and hovering the mouse cursor shows a tooltip of Logika&#8217;s status.</p>
 <p>Clicking on the status icon will bring up a dialog that asks whether the server should
 be shutdown:</p>
 <a class="reference internal image-reference" href="../../_images/logika-server-shutdown.png"><img alt="../../_images/logika-server-shutdown.png" src="../../_images/logika-server-shutdown.png" style="width: 301.5px; height: 108.0px;" /></a>
 <p>Answering &#8220;Yes&#8221; will terminate the server and cause the status icon to disappear.</p>
 </li>
-<li><p class="first">display a notification at the top-right corner that the <code class="docutils literal"><span class="pre">.logika</span></code> example is
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first">Display a notification at the top-right corner that the <code class="docutils literal"><span class="pre">.logika</span></code> example is
 &#8220;Logika Verified&#8221;:</p>
 <img alt="../../_images/logika-verified.png" src="../../_images/logika-verified.png" />
 </li>
 </ul>
+<hr class="docutils" />
 <p>That is, opening a <code class="docutils literal"><span class="pre">.logika</span></code> file (or a <code class="docutils literal"><span class="pre">.lgk</span></code> file) cause Logika to
 automatically work on the file document.
 As you edit the file, Logika will continually analyze it and gives various
-feedback such as syntax error marking, etc. (see <a class="reference internal" href="#effect"><span>Underwave Effects</span></a>).
+feedback such as syntax error marking, etc. (see <a class="reference internal" href="#effect"><span>Effects</span></a>).
 (LIVE waits a certain amount of time after the file content is modified before
 calling Logika; this &#8220;idle&#8221; time wait period can be <a class="reference internal" href="#live-configuration"><span>configured</span></a>).</p>
 <p>LIVE can be configured to work on other file types.
@@ -261,26 +273,34 @@ By default, it is <a class="reference internal" href="#live-configuration"><span
 Scala Worksheet <code class="docutils literal"><span class="pre">.sc</span></code> files.
 However, opening any of such files does not automatically bring Logika to LIVE.
 Instead one needs to explicitly invoke Logika once.</p>
-<p>There are three ways to explicitly invoke Logika:</p>
+<p>There are three ways to explicitly bring Logika to LIVE:</p>
+<hr class="docutils" />
 <ul>
 <li><p class="first">Triggering the menu item &#8220;Tools&#8221;-&gt;&#8221;Sireum&#8221;-&gt;&#8221;Logika&#8221;-&gt;&#8221;Logika Check&#8221;:</p>
 <a class="reference internal image-reference" href="../../_images/live-check-menuitem.png"><img alt="../../_images/live-check-menuitem.png" src="../../_images/live-check-menuitem.png" style="width: 385.8px; height: 252.6px;" /></a>
 </li>
+</ul>
+<hr class="docutils" />
+<ul>
 <li><p class="first">Right-clicking on the editor and selecting &#8220;Logika Check&#8221;:</p>
 <a class="reference internal image-reference" href="../../_images/live-check-editor.png"><img alt="../../_images/live-check-editor.png" src="../../_images/live-check-editor.png" style="width: 222.6px; height: 195.0px;" /></a>
 </li>
-<li><p class="first">Using a <a class="reference internal" href="#shortcuts"><span>shortcut</span></a>.</p>
-</li>
 </ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>Using a <a class="reference internal" href="#shortcuts"><span>shortcut</span></a>.</li>
+</ul>
+<hr class="docutils" />
 <p>Once invoked, LIVE will continue to monitor changes to the file document
 similar to <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code> files.
-If the editor is closed and reopened, Logika needs to be implicitly invoked again.</p>
-<p>Note that these actions are only available for file types that have been registered in
-<a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a>.</p>
+If the editor is closed and reopened, Logika needs to be implicitly invoked once again.</p>
+<p>Note that these LIVE actions to verify file documents are only available for file types
+that have been registered in <a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a>.</p>
 </div>
 <div class="section" id="live-shortcuts">
 <span id="shortcuts"></span><h2>2.5. LIVE Shortcuts<a class="headerlink" href="#live-shortcuts" title="Permalink to this headline">¶</a></h2>
 <p>LIVE provides two main shortcuts:</p>
+<hr class="docutils" />
 <ul>
 <li><p class="first">For invoking Logika to analyze an opened file document.
 The default keyboard short cut is Command-Shift-L (<code class="docutils literal"><span class="pre">⌘⇧L</span></code> in Mac OS X) or
@@ -288,6 +308,9 @@ Control-Shift-L (<code class="docutils literal"><span class="pre">⌃⇧L</span>
 <p>This shortcut is only available for file types that have been registered in
 <a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a>.</p>
 </li>
+</ul>
+<hr class="docutils" />
+<ul>
 <li><p class="first">For inserting math Unicode symbols relevant for Logika.
 There are two keystrokes needed for a symbol insertion:</p>
 <ul>
@@ -378,6 +401,7 @@ ASCII characters accepted by Logika.</p>
 </ul>
 </li>
 </ul>
+<hr class="docutils" />
 <p>The keystrokes for the above shortcuts are the default keystrokes; they can be
 configured in <a class="reference external" href="https://www.jetbrains.com/idea/help/keymap.html">IntelliJ&#8217;s &#8220;Keymap&#8221; settings</a>.</p>
 </div>
@@ -395,16 +419,19 @@ the expected format.</p>
 <div class="section" id="sireum-settings">
 <h3>2.6.1. Sireum Settings<a class="headerlink" href="#sireum-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/sireum-settings.png"><img alt="../../_images/sireum-settings.png" src="../../_images/sireum-settings.png" style="width: 647.4px; height: 252.0px;" /></a>
-<div class="section" id="sireum-v3-directory">
-<h4>Sireum v3 Directory<a class="headerlink" href="#sireum-v3-directory" title="Permalink to this headline">¶</a></h4>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>Sireum v3 Directory</strong></p>
 <p>This setting can be used to (re-) enter the Sireum v3 directory, either
 by typing the absolute path to the directory or by using a file browser dialog
 that can be opened by clicking the &#8221;...&#8221; button.</p>
 <p>The entered path is checked to see whether it contains a working Sireum v3
 installation.</p>
-</div>
-<div class="section" id="vm-arguments">
-<h4>VM Arguments<a class="headerlink" href="#vm-arguments" title="Permalink to this headline">¶</a></h4>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>VM Arguments</strong></p>
 <p>Sireum tools such as Logika does not run directly inside the Java Virtual Machine
 (VM) instance that IntelliJ runs on.
 Instead, a VM is spawned, for example, for the Logika server in the background.</p>
@@ -414,9 +441,11 @@ By default, no VM arguments are specified.</p>
 <p>In the case where invalid VM arguments are specified, it would prevent
 spawning the Logika server; the plugin detects this situation and will revert
 the configuration to previous settings.</p>
-</div>
-<div class="section" id="environment-variables">
-<h4>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h4>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>Environment Variables</strong></p>
 <p>Additional environment variables can be specified in the text area.
 By default, <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> is set to the Sireum v3 directory and cannot be overriden;
 it is required by Sireum tools to work properly
@@ -424,30 +453,38 @@ it is required by Sireum tools to work properly
 <p>The expected format is a key-value pair separated by an equal sign (<code class="docutils literal"><span class="pre">=</span></code>) per line.
 The key has to satisfy the following regular expression <code class="docutils literal"><span class="pre">[a-zA-Z_][a-zA-Z0-9_]*</span></code>
 (i.e., a letter or an underscore, followed by zero or more letter, digit, or underscore).</p>
+</li>
+</ul>
 </div>
-</div>
+<hr class="docutils" />
 <div class="section" id="live-settings">
 <h3>2.6.2. LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 609.0px; height: 253.79999999999998px;" /></a>
 <p>Some of the options such as auto mode, checking satisfiability, and timeout are
-described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span>Logika Command-Line Configuration</span></a>.</p>
-<div class="section" id="syntax-highlighting">
-<h4>Syntax Highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
+described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span>Logika Command-Line Configuration</span></a>.
+Below are the additional settings for LIVE.</p>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>Syntax Highlighting</strong></p>
 <p>The checkbox indicates whether LIVE should syntax highlight Logika file document.</p>
-</div>
-<div class="section" id="file-extensions">
-<h4>File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this headline">¶</a></h4>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>File Extensions</strong></p>
 <p>The text field provides a way to configure which file types
 (based on their extension) that LIVE actions should be enabled.</p>
 <p>By default, only Scala Worksheet <code class="docutils literal"><span class="pre">.sc</span></code> files are configured.
 One can add other files such as <code class="docutils literal"><span class="pre">.scala</span></code> and <code class="docutils literal"><span class="pre">.txt</span></code> files.</p>
 <p>The expected format is the file extension names separated by semicolon
 (whitespaces are ignored).</p>
-</div>
-<div class="section" id="underwave-effects">
-<span id="effect"></span><h4>Underwave Effects<a class="headerlink" href="#underwave-effects" title="Permalink to this headline">¶</a></h4>
-<p>This checkbox controls how location-aware errors and warnings are marked
-in the editor.
+</li>
+</ul>
+<hr class="docutils" />
+<ul id="effect">
+<li><p class="first"><strong>Effects</strong></p>
+<p>This underwave effect checkbox controls how location-aware errors and
+warnings are marked in the editor.
 When selected it uses the (more subtle) underwave effect typically used by
 IDEs to indicate ill-formed programs such as the following (compare it
 with the LIVE screenshot at <a class="reference internal" href="#live"><span>the top of this page</span></a> that does
@@ -459,18 +496,22 @@ of the editor to help accentuate the marking.</p>
 indicates the marking.</p>
 <p>Mouse hovering on any of the marker visualization will show a tooltip
 of the marker message.</p>
-</div>
-<div class="section" id="background-analysis-and-idle-time">
-<h4>Background Analysis and Idle Time<a class="headerlink" href="#background-analysis-and-idle-time" title="Permalink to this headline">¶</a></h4>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>Background Analysis and Idle Time</strong></p>
 <p>This setting is used to turn on/off the background analysis.</p>
 <p>When turned off, the idle time is disabled (ignored), and one has to
 explicitly invoke Logika manually to verify file documents.</p>
 <p>If selected, the idle time can be configured on how many milliseconds
 LIVE should wait after a file document is modified before sending it
 to the background Logika server for analysis.</p>
-</div>
-<div class="section" id="hint-generation">
-<h4>Hint Generation<a class="headerlink" href="#hint-generation" title="Permalink to this headline">¶</a></h4>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p class="first"><strong>Hint Generation</strong></p>
 <p>Verifying programs can be challenging.
 To help the process, Logika can generate some hints on the kind
 of claims that one can make.
@@ -483,7 +524,8 @@ For example,</p>
 <p>when the bulb gutter icon associated with <code class="docutils literal"><span class="pre">a(3)</span> <span class="pre">=</span> <span class="pre">5</span></code> is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 the available pre/post claims that can be used as premises.</p>
-</div>
+</li>
+</ul>
 </div>
 </div>
 </div>

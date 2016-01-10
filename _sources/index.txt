@@ -11,10 +11,15 @@ Home
 
 .. raw:: html
 
+   <script src="_static/jquery.cycle2.js" ></script>
    <div class="container-fluid">
      <div class="row">
        <div class="col-md-12">
-         <img src="_static/sireum-logika.png" />
+         <div class = "cycle-slideshow" data-cycle-slides="> a">
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/sireum-logika.png" ></a>
+           <a href="doc/02-live/index.html"><img width="100%" src="_static/LIVE.png" ></a>
+           <a href="dschmidt/index.html"><img width="100%" src="_static/dschmidt-notes.png" ></a>
+         </div>
        </div>
      </div>
 

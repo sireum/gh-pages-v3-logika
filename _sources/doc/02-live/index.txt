@@ -30,18 +30,30 @@ Here is a screenshot:
 LIVE Features
 *************
 
+LIVE features mimic the typical features one would expect in a modern IDE.
+
+----
+
 * Syntax highlighting and error/warning reporting similar to most
   Integrated Development Environments (IDEs) for popular programming
   languages.
 
-* Convenient keyboard shortcuts for inserting logical symbols.
+----
+
+* Convenient keyboard shortcuts for inserting logical symbols that works
+  for any editor file types.
+
+----
 
 * Verification engine running in the background to check proofs as you type.
 
-* Can be used in conjunction with IntelliJ's Scala Worksheet (``.sc`` files)
-  or its Scala editor (``.scala`` files) to benefit from IntelliJ IDE features.
-  The screenshot above illustrates how LIVE works with the Scala Worksheet.
+----
 
+* Can be used in conjunction with IntelliJ's Scala Worksheet (``.sc`` files)
+  or its Scala editor (``.scala`` files) to benefit from IntelliJ IDE features
+  (e.g., the screenshot above illustrates how LIVE works with the Scala Worksheet).
+
+----
 
 LIVE Install
 ************
@@ -120,7 +132,13 @@ If this is your first time opening the project, you need to
 
 Opening any of the ``.logika`` files would:
 
-* ask for the Sireum v3 home directory (if this is the first time).
+----
+
+* Syntax highlight the file document.
+
+----
+
+* Ask for the Sireum v3 home directory (if this is the first time).
 
   Just point it to ``sireum-v3`` (see :ref:`installing-logika`).
 
@@ -130,18 +148,20 @@ Opening any of the ``.logika`` files would:
   .. image:: sireum-dir-invalid.png
      :scale: 75
 
-* syntax highlight the file document
+  See :ref:`live-configuration` to adjust the settings.
 
-* display the Logika status icon the bottom-right corner of the IntelliJ project window
+----
+
+* Display the Logika status icon the bottom-right corner of the IntelliJ project window
   `status bar <https://www.jetbrains.com/idea/help/status-bar.html>`__:
 
   .. image:: live-status-bar.png
 
-  The status icon animates when Logika has a pending work or is working in
-  the background, and hovering the mouse cursor shows a tooltip of Logika's status.
-
   The presence of the Logika status icon indicates that the :ref:`Logika server <server>`
   is running/waiting in the background.
+
+  The status icon animates when Logika has a pending work or is working in
+  the background, and hovering the mouse cursor shows a tooltip of Logika's status.
 
   Clicking on the status icon will bring up a dialog that asks whether the server should
   be shutdown:
@@ -151,15 +171,19 @@ Opening any of the ``.logika`` files would:
 
   Answering "Yes" will terminate the server and cause the status icon to disappear.
 
-* display a notification at the top-right corner that the ``.logika`` example is
+----
+
+* Display a notification at the top-right corner that the ``.logika`` example is
   "Logika Verified":
 
   .. image:: logika-verified.png
 
+----
+
 That is, opening a ``.logika`` file (or a ``.lgk`` file) cause Logika to
 automatically work on the file document.
 As you edit the file, Logika will continually analyze it and gives various
-feedback such as syntax error marking, etc. (see :ref:`effect`).
+feedback such as syntax error marking, etc. (see :ref:`Effects <effect>`).
 (LIVE waits a certain amount of time after the file content is modified before
 calling Logika; this "idle" time wait period can be :ref:`configured <live-configuration>`).
 
@@ -169,26 +193,34 @@ Scala Worksheet ``.sc`` files.
 However, opening any of such files does not automatically bring Logika to LIVE.
 Instead one needs to explicitly invoke Logika once.
 
-There are three ways to explicitly invoke Logika:
+There are three ways to explicitly bring Logika to LIVE:
+
+----
 
 * Triggering the menu item "Tools"->"Sireum"->"Logika"->"Logika Check":
 
   .. image:: live-check-menuitem.png
      :scale: 60
 
+----
+
 * Right-clicking on the editor and selecting "Logika Check":
 
   .. image:: live-check-editor.png
      :scale: 60
 
+----
+
 * Using a :ref:`shortcut <shortcuts>`.
+
+----
 
 Once invoked, LIVE will continue to monitor changes to the file document
 similar to ``.logika`` or ``.lgk`` files.
-If the editor is closed and reopened, Logika needs to be implicitly invoked again.
+If the editor is closed and reopened, Logika needs to be implicitly invoked once again.
 
-Note that these actions are only available for file types that have been registered in
-:ref:`live-configuration`.
+Note that these LIVE actions to verify file documents are only available for file types
+that have been registered in :ref:`live-configuration`.
 
 
 .. _shortcuts:
@@ -198,12 +230,16 @@ LIVE Shortcuts
 
 LIVE provides two main shortcuts:
 
+----
+
 * For invoking Logika to analyze an opened file document.
   The default keyboard short cut is Command-Shift-L (``⌘⇧L`` in Mac OS X) or
   Control-Shift-L (``⌃⇧L`` in Linux and Windows).
 
   This shortcut is only available for file types that have been registered in
   :ref:`live-configuration`.
+
+----
 
 * For inserting math Unicode symbols relevant for Logika.
   There are two keystrokes needed for a symbol insertion:
@@ -233,6 +269,8 @@ LIVE provides two main shortcuts:
 
     These symbol shortcuts are available for use in any text editor for any file types.
 
+----
+
 The keystrokes for the above shortcuts are the default keystrokes; they can be
 configured in `IntelliJ's "Keymap" settings <https://www.jetbrains.com/idea/help/keymap.html>`__.
 
@@ -260,43 +298,47 @@ Sireum Settings
 .. image:: sireum-settings.png
    :scale: 60
 
-Sireum v3 Directory
--------------------
+----
 
-This setting can be used to (re-) enter the Sireum v3 directory, either
-by typing the absolute path to the directory or by using a file browser dialog
-that can be opened by clicking the "..." button.
+* **Sireum v3 Directory**
 
-The entered path is checked to see whether it contains a working Sireum v3
-installation.
+  This setting can be used to (re-) enter the Sireum v3 directory, either
+  by typing the absolute path to the directory or by using a file browser dialog
+  that can be opened by clicking the "..." button.
 
-VM Arguments
-------------
+  The entered path is checked to see whether it contains a working Sireum v3
+  installation.
 
-Sireum tools such as Logika does not run directly inside the Java Virtual Machine
-(VM) instance that IntelliJ runs on.
-Instead, a VM is spawned, for example, for the Logika server in the background.
+----
 
-This setting can be used to provide some VM arguments when spawning the VM.
-Each argument is separated by space(s) and each should start with a dash (``-``).
-By default, no VM arguments are specified.
+* **VM Arguments**
 
-In the case where invalid VM arguments are specified, it would prevent
-spawning the Logika server; the plugin detects this situation and will revert
-the configuration to previous settings.
+  Sireum tools such as Logika does not run directly inside the Java Virtual Machine
+  (VM) instance that IntelliJ runs on.
+  Instead, a VM is spawned, for example, for the Logika server in the background.
 
-Environment Variables
----------------------
+  This setting can be used to provide some VM arguments when spawning the VM.
+  Each argument is separated by space(s) and each should start with a dash (``-``).
+  By default, no VM arguments are specified.
 
-Additional environment variables can be specified in the text area.
-By default, ``SIREUM_HOME`` is set to the Sireum v3 directory and cannot be overriden;
-it is required by Sireum tools to work properly
-(e.g., it is how Logika finds where Z3 is installed).
+  In the case where invalid VM arguments are specified, it would prevent
+  spawning the Logika server; the plugin detects this situation and will revert
+  the configuration to previous settings.
 
-The expected format is a key-value pair separated by an equal sign (``=``) per line.
-The key has to satisfy the following regular expression ``[a-zA-Z_][a-zA-Z0-9_]*``
-(i.e., a letter or an underscore, followed by zero or more letter, digit, or underscore).
+----
 
+* **Environment Variables**
+
+  Additional environment variables can be specified in the text area.
+  By default, ``SIREUM_HOME`` is set to the Sireum v3 directory and cannot be overriden;
+  it is required by Sireum tools to work properly
+  (e.g., it is how Logika finds where Z3 is installed).
+
+  The expected format is a key-value pair separated by an equal sign (``=``) per line.
+  The key has to satisfy the following regular expression ``[a-zA-Z_][a-zA-Z0-9_]*``
+  (i.e., a letter or an underscore, followed by zero or more letter, digit, or underscore).
+
+----
 
 LIVE Settings
 =============
@@ -306,78 +348,81 @@ LIVE Settings
 
 Some of the options such as auto mode, checking satisfiability, and timeout are
 described in :ref:`cli-configuration`.
+Below are the additional settings for LIVE.
 
-Syntax Highlighting
--------------------
+----
 
-The checkbox indicates whether LIVE should syntax highlight Logika file document.
+* **Syntax Highlighting**
 
-File Extensions
----------------
+  The checkbox indicates whether LIVE should syntax highlight Logika file document.
 
-The text field provides a way to configure which file types
-(based on their extension) that LIVE actions should be enabled.
+----
 
-By default, only Scala Worksheet ``.sc`` files are configured.
-One can add other files such as ``.scala`` and ``.txt`` files.
+* **File Extensions**
 
-The expected format is the file extension names separated by semicolon
-(whitespaces are ignored).
+  The text field provides a way to configure which file types
+  (based on their extension) that LIVE actions should be enabled.
+
+  By default, only Scala Worksheet ``.sc`` files are configured.
+  One can add other files such as ``.scala`` and ``.txt`` files.
+
+  The expected format is the file extension names separated by semicolon
+  (whitespaces are ignored).
+
+----
 
 .. _effect:
 
-Underwave Effects
------------------
+* **Effects**
 
-This checkbox controls how location-aware errors and warnings are marked
-in the editor.
-When selected it uses the (more subtle) underwave effect typically used by
-IDEs to indicate ill-formed programs such as the following (compare it
-with the LIVE screenshot at :ref:`the top of this page <live>` that does
-not use the underwave effect):
+  This underwave effect checkbox controls how location-aware errors and
+  warnings are marked in the editor.
+  When selected it uses the (more subtle) underwave effect typically used by
+  IDEs to indicate ill-formed programs such as the following (compare it
+  with the LIVE screenshot at :ref:`the top of this page <live>` that does
+  not use the underwave effect):
 
-.. image:: error-underwave.png
-   :scale: 70
+  .. image:: error-underwave.png
+     :scale: 70
 
-While more subtle, it comes with a red gutter icon on left hand side
-of the editor to help accentuate the marking.
+  While more subtle, it comes with a red gutter icon on left hand side
+  of the editor to help accentuate the marking.
 
-Regardless of which one, the error stripe on the right hand side also
-indicates the marking.
+  Regardless of which one, the error stripe on the right hand side also
+  indicates the marking.
 
-Mouse hovering on any of the marker visualization will show a tooltip
-of the marker message.
+  Mouse hovering on any of the marker visualization will show a tooltip
+  of the marker message.
 
+----
 
-Background Analysis and Idle Time
----------------------------------
+* **Background Analysis and Idle Time**
 
-This setting is used to turn on/off the background analysis.
+  This setting is used to turn on/off the background analysis.
 
-When turned off, the idle time is disabled (ignored), and one has to
-explicitly invoke Logika manually to verify file documents.
+  When turned off, the idle time is disabled (ignored), and one has to
+  explicitly invoke Logika manually to verify file documents.
 
-If selected, the idle time can be configured on how many milliseconds
-LIVE should wait after a file document is modified before sending it
-to the background Logika server for analysis.
+  If selected, the idle time can be configured on how many milliseconds
+  LIVE should wait after a file document is modified before sending it
+  to the background Logika server for analysis.
 
+----
 
+* **Hint Generation**
 
-Hint Generation
----------------
+  Verifying programs can be challenging.
+  To help the process, Logika can generate some hints on the kind
+  of claims that one can make.
+  If the hint generation is enabled, LIVE will mark locations
+  where hints are available by using a bulb gutter editor icon.
+  When clicked, it will open a view that gives the before/pre and
+  after/post claims of the corresponding program location.
+  For example,
 
-Verifying programs can be challenging.
-To help the process, Logika can generate some hints on the kind
-of claims that one can make.
-If the hint generation is enabled, LIVE will mark locations
-where hints are available by using a bulb gutter editor icon.
-When clicked, it will open a view that gives the before/pre and
-after/post claims of the corresponding program location.
-For example,
+  .. image:: live-hint.png
+     :scale: 75
 
-.. image:: live-hint.png
-   :scale: 75
-
-when the bulb gutter icon associated with ``a(3) = 5`` is clicked,
-LIVE opens a window on the right hand side of the editor that displays
-the available pre/post claims that can be used as premises.
+  when the bulb gutter icon associated with ``a(3) = 5`` is clicked,
+  LIVE opens a window on the right hand side of the editor that displays
+  the available pre/post claims that can be used as premises.
