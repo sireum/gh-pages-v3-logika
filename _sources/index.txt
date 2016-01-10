@@ -1,8 +1,8 @@
 .. toctree::
    :hidden:
 
-   doc
-   notes
+   doc/index.rst
+   dschmidt/index.rst
 
 .. include:: def.rst
 

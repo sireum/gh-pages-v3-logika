@@ -61,6 +61,9 @@ First, open MSYS2 ``bash`` shell from the Windows start menu's MSYS2 64bit group
    pacman -S git unzip wget
 
 
+
+.. _installing-logika:
+
 Installing and Running Logika
 *****************************
 
@@ -110,6 +113,9 @@ When it finishes, Logika will display its usage information::
        alias logika="$(cd "$(dirname sireum-v3/sireum)" && pwd)/$(basename sireum-v3/sireum) logika"
 
 
+
+.. _update:
+
 Updating Logika
 ***************
 
@@ -119,6 +125,9 @@ To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run Logika aga
     git pull
     logika
 
+
+
+.. _logika-examples:
 
 Verifying Examples
 ******************
@@ -266,6 +275,8 @@ contracts and facts (axioms) to ensure that
 the system is implementable (or not broken by
 assuming untrue facts).
 
+.. _server:
+
 Server Mode (``--server``)
 ==========================
 
@@ -281,3 +292,5 @@ package; the actual serialization mechanisms are defined in
 `InputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/InputMessageJson.scala>`__
 and
 `OutputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/OutputMessageJson.scala>`__.
+
+----
