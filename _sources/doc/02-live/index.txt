@@ -318,7 +318,7 @@ LIVE provides two main shortcuts:
      ``-``                  ``→``          U+21D2   ``->``, ``implies``
      ``A``                  ``∀``          U+2200   ``A``, ``all``, ``forall``
      ``E``                  ``∃``          U+2203   ``E``, ``some``, ``exists``
-     ``S``                  ``⊢``          U+22A2   ``|-``
+     ``|`` or ``\``         ``⊢``          U+22A2   ``|-``
      ====================== ============== ======== ==================================
 
      These symbol shortcuts are available for use in any text editor for any file types.

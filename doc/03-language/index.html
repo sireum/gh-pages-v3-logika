@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3. The Logika Formal Language &mdash; Sireum Logika</title>
+    <title>3. The Logika Formal Input Language &mdash; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -80,26 +80,24 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3. The Logika Formal Language</a><ul>
-<li><a class="reference internal" href="#design-and-rationale">3.1. Design and Rationale</a></li>
-<li><a class="reference internal" href="#basic-language-elements">3.2. Basic Language Elements</a><ul>
-<li><a class="reference internal" href="#identifiers">3.2.1. Identifiers</a></li>
-<li><a class="reference internal" href="#operators">3.2.2. Operators</a></li>
-<li><a class="reference internal" href="#literals">3.2.3. Literals</a></li>
-<li><a class="reference internal" href="#keywords">3.2.4. Keywords</a></li>
-<li><a class="reference internal" href="#comments">3.2.5. Comments</a></li>
-<li><a class="reference internal" href="#lines-and-whitespaces">3.2.6. Lines and Whitespaces</a></li>
+<li><a class="reference internal" href="#">3. The Logika Formal Input Language</a><ul>
+<li><a class="reference internal" href="#basic-language-elements">3.1. Basic Language Elements</a><ul>
+<li><a class="reference internal" href="#identifiers">3.1.1. Identifiers</a></li>
+<li><a class="reference internal" href="#operators-and-literals">3.1.2. Operators and Literals</a></li>
+<li><a class="reference internal" href="#keywords">3.1.3. Keywords</a></li>
+<li><a class="reference internal" href="#comments">3.1.4. Comments</a></li>
+<li><a class="reference internal" href="#newlines-and-whitespaces">3.1.5. Newlines and Whitespaces</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#propositional-logic">3.3. Propositional Logic</a><ul>
-<li><a class="reference internal" href="#grammar">3.3.1. Grammar</a><ul>
+<li><a class="reference internal" href="#propositional-logic-input-language">3.2. Propositional Logic Input Language</a><ul>
+<li><a class="reference internal" href="#grammar">3.2.1. Grammar</a><ul>
 <li><a class="reference internal" href="#sequent">Sequent</a></li>
 <li><a class="reference internal" href="#proof">Proof</a></li>
 <li><a class="reference internal" href="#expression">Expression</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#well-formed-ness">3.3.2. Well-formed-ness</a></li>
-<li><a class="reference internal" href="#tactics">3.3.3. Tactics</a><ul>
+<li><a class="reference internal" href="#well-formed-ness">3.2.2. Well-formed-ness</a></li>
+<li><a class="reference internal" href="#tactics">3.2.3. Tactics</a><ul>
 <li><a class="reference internal" href="#premise">Premise</a></li>
 <li><a class="reference internal" href="#and-introduction-i">And-Introduction (∧i)</a></li>
 <li><a class="reference internal" href="#and-elimination-e1-e2">And-Elimination (∧e1, ∧e2)</a></li>
@@ -115,14 +113,14 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#predicate-logic">3.4. Predicate Logic</a><ul>
-<li><a class="reference internal" href="#id1">3.4.1. Grammar</a><ul>
+<li><a class="reference internal" href="#predicate-logic-input-language">3.3. Predicate Logic Input Language</a><ul>
+<li><a class="reference internal" href="#id1">3.3.1. Grammar</a><ul>
 <li><a class="reference internal" href="#uninterpreted-function">Uninterpreted Function</a></li>
 <li><a class="reference internal" href="#universal-quantifications">Universal Quantifications (∀)</a></li>
 <li><a class="reference internal" href="#existensial-quantifications">Existensial Quantifications (∃)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id2">3.4.2. Tactics</a><ul>
+<li><a class="reference internal" href="#id2">3.3.2. Tactics</a><ul>
 <li><a class="reference internal" href="#forall-introduction-i">Forall-Introduction (∀i)</a></li>
 <li><a class="reference internal" href="#forall-elimination-e">Forall-Elimination (∀e)</a></li>
 <li><a class="reference internal" href="#exists-introduction-i">Exists-Introduction (∃i)</a></li>
@@ -131,19 +129,19 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#programming-logic">3.5. Programming Logic</a><ul>
-<li><a class="reference internal" href="#id3">3.5.1. Grammar</a><ul>
+<li><a class="reference internal" href="#programming-logic-input-language">3.4. Programming Logic Input Language</a><ul>
+<li><a class="reference internal" href="#id3">3.4.1. Grammar</a><ul>
 <li><a class="reference internal" href="#program">Program</a></li>
 <li><a class="reference internal" href="#statement">Statement</a></li>
 <li><a class="reference internal" href="#proof-statement">Proof Statement</a></li>
 <li><a class="reference internal" href="#id4">Expression</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">3.5.2. Well-formed-ness</a><ul>
+<li><a class="reference internal" href="#id5">3.4.2. Well-formed-ness</a><ul>
 <li><a class="reference internal" href="#type-checking">Type Checking</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">3.5.3. Tactics</a><ul>
+<li><a class="reference internal" href="#id6">3.4.3. Tactics</a><ul>
 <li><a class="reference internal" href="#subst1">Subst1</a></li>
 <li><a class="reference internal" href="#subst2">Subst2</a></li>
 <li><a class="reference internal" href="#algebra">Algebra</a></li>
@@ -193,38 +191,144 @@ Sireum Logika Documentation
 <br/>
 <font color="black">
 <big><big><big><big><b>
-3. The Logika Formal Language
+3. The Logika Formal Input Language
 </b></big></big></big></big>
-</font><div class="section" id="the-logika-formal-language">
-<span id="language"></span><h1>3. The Logika Formal Language<a class="headerlink" href="#the-logika-formal-language" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="design-and-rationale">
-<h2>3.1. Design and Rationale<a class="headerlink" href="#design-and-rationale" title="Permalink to this headline">¶</a></h2>
-</div>
+</font><div class="section" id="the-logika-formal-input-language">
+<span id="language"></span><h1>3. The Logika Formal Input Language<a class="headerlink" href="#the-logika-formal-input-language" title="Permalink to this headline">¶</a></h1>
+<p>The Logika input formal language are generally categorized into two:</p>
+<ul class="simple">
+<li>Proof language, for expressing formulae in propositional and predicate logics,
+as well as for expressing software contracts.</li>
+<li>Programming language, for expressing Logika programs.</li>
+</ul>
+<p>There are common elements between the two categories (e.g., the expression language).
+However, they may have some difference, thus,
+it is convenient to be able to distinguish when the elements are in a certain context
+by using &#8220;proof context&#8221; or &#8220;programming context&#8221;.</p>
+<p>The programming language is a simple procedural subset of the
+<a class="reference external" href="http://scala-lang.org">Scala programming language</a>.
+The proof language is actually embedded in the programming language,
+but they are easily distinguishable because of their reserved form that uses
+Scala&#8217;s <em>multi-line</em>
+<a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> &#8211;
+more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> ... <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>.</p>
+<p>Let us first discuss the basic language elements that are common to the two categories,
+before proceeding to discuss the
+<a class="reference internal" href="#propositional-language"><span>propositional</span></a>,
+<a class="reference internal" href="#predicate-language"><span>predicate</span></a>, and
+<a class="reference internal" href="#programming-language"><span>programming</span></a> logic input languages.</p>
 <div class="section" id="basic-language-elements">
-<h2>3.2. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="identifiers">
-<h3>3.2.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h3>
+<h3>3.1.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h3>
+<p>Variable and function (method) identifiers are of the following regular expression form:
+<code class="docutils literal"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
+underscores.</p>
+<p>Identifiers containing an underscore cannot be used in the programming context (i.e.,
+underscore cannot be a part of a user-declared variable/function identifier).</p>
 </div>
-<div class="section" id="operators">
-<h3>3.2.2. Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="operators-and-literals">
+<h3>3.1.2. Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h3>
+<p>Below are a table of Logika operators and literals in both programming and proof context,
+listed with an increasingly higher precedence order along with Math Unicode <a class="reference internal" href="../02-live/index.html#shortcuts"><span>LIVE Shortcuts</span></a>.
+Note that the proof context operators and literals include the ones in the programming
+context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
+<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java&#8217;s string literal</a>
+without the octal escape.</p>
+<hr class="docutils" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="23%" />
+<col width="22%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Programming Context</th>
+<th class="head">Proof Context (ASCII)</th>
+<th class="head">Proof Context (Math Unicode)</th>
+<th class="head"><a class="reference internal" href="../02-live/index.html#live"><span>LIVE</span></a> 2 <sup>nd</sup> Keystroke Shortcut (1 <sup>st</sup> Keystroke: <code class="docutils literal"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal"><span class="pre">⇧⌃;</span></code>)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">|-</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊢</span></code> (U+22A2)</td>
+<td>(<code class="docutils literal"><span class="pre">|</span></code> or <code class="docutils literal"><span class="pre">\</span></code>)</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">all</span></code> <code class="docutils literal"><span class="pre">forall</span></code> <code class="docutils literal"><span class="pre">E</span></code> <code class="docutils literal"><span class="pre">some</span></code> <code class="docutils literal"><span class="pre">exists</span></code></td>
+<td><code class="docutils literal"><span class="pre">∀</span></code> (U+2200) <code class="docutils literal"><span class="pre">∃</span></code> (U+2203)</td>
+<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">E</span></code></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">-&gt;</span></code> <code class="docutils literal"><span class="pre">implies</span></code></td>
+<td><code class="docutils literal"><span class="pre">→</span></code> (U+21D2)</td>
+<td><code class="docutils literal"><span class="pre">-</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">|</span></code></td>
+<td><code class="docutils literal"><span class="pre">V</span></code> <code class="docutils literal"><span class="pre">or</span></code></td>
+<td><code class="docutils literal"><span class="pre">∨</span></code> (U+2228)</td>
+<td><code class="docutils literal"><span class="pre">V</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&amp;</span></code></td>
+<td><code class="docutils literal"><span class="pre">^</span></code> <code class="docutils literal"><span class="pre">and</span></code></td>
+<td><code class="docutils literal"><span class="pre">∧</span></code> (U+2227)</td>
+<td>(<code class="docutils literal"><span class="pre">^</span></code> or <code class="docutils literal"><span class="pre">6</span></code>)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&lt;=</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code> <code class="docutils literal"><span class="pre">&gt;=</span></code></td>
+<td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">≤</span></code> (U+2264) <code class="docutils literal"><span class="pre">≥</span></code> (U+2265)</td>
+<td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">==</span></code> <code class="docutils literal"><span class="pre">!=</span></code> <code class="docutils literal"><span class="pre">!</span></code></td>
+<td><code class="docutils literal"><span class="pre">=</span></code> <code class="docutils literal"><span class="pre">~</span></code> <code class="docutils literal"><span class="pre">not</span></code></td>
+<td><code class="docutils literal"><span class="pre">≠</span></code> (U+2260) <code class="docutils literal"><span class="pre">¬</span></code> (U+00AC)</td>
+<td>(<code class="docutils literal"><span class="pre">!</span></code> or <code class="docutils literal"><span class="pre">1</span></code>) <code class="docutils literal"><span class="pre">N</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">:+</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">+</span></code> <code class="docutils literal"><span class="pre">-</span></code> <code class="docutils literal"><span class="pre">+:</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">*</span></code> <code class="docutils literal"><span class="pre">/</span></code> <code class="docutils literal"><span class="pre">%</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">true</span></code> <code class="docutils literal"><span class="pre">F</span></code> <code class="docutils literal"><span class="pre">false</span></code> <code class="docutils literal"><span class="pre">NUM</span></code> <code class="docutils literal"><span class="pre">STRING</span></code></td>
+<td><code class="docutils literal"><span class="pre">_|_</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊤</span></code> (U+22A4) <code class="docutils literal"><span class="pre">⊥</span></code> (U+22A5)</td>
+<td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">F</span></code></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="literals">
-<h3>3.2.3. Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h3>
-</div>
+<hr class="docutils" />
 <div class="section" id="keywords">
-<h3>3.2.4. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
+<h3>3.1.3. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="comments">
-<h3>3.2.5. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<h3>3.1.4. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="lines-and-whitespaces">
-<h3>3.2.6. Lines and Whitespaces<a class="headerlink" href="#lines-and-whitespaces" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="newlines-and-whitespaces">
+<h3>3.1.5. Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h3>
+<p>The proof language follows Scala&#8217;s line-orientation where one
+separates expressions in a code block using newline characters; which means that
+newline characters are treated specially in some cases instead of as whitespaces like
+in semicolon-oriented languages such as Java or C that separate statements using
+semicolons.</p>
 </div>
 </div>
-<div class="section" id="propositional-logic">
-<h2>3.3. Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="propositional-logic-input-language">
+<span id="propositional-language"></span><h2>3.2. Propositional Logic Input Language<a class="headerlink" href="#propositional-logic-input-language" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="grammar">
-<h3>3.3.1. Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.1. Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="sequent">
 <h4>Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -236,10 +340,10 @@ Sireum Logika Documentation
 </div>
 </div>
 <div class="section" id="well-formed-ness">
-<h3>3.3.2. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.2. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="tactics">
-<h3>3.3.3. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.3. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="premise">
 <h4>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -275,10 +379,10 @@ Sireum Logika Documentation
 </div>
 </div>
 </div>
-<div class="section" id="predicate-logic">
-<h2>3.4. Predicate Logic<a class="headerlink" href="#predicate-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="predicate-logic-input-language">
+<span id="predicate-language"></span><h2>3.3. Predicate Logic Input Language<a class="headerlink" href="#predicate-logic-input-language" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h3>3.4.1. Grammar<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.1. Grammar<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="uninterpreted-function">
 <h4>Uninterpreted Function<a class="headerlink" href="#uninterpreted-function" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -290,7 +394,7 @@ Sireum Logika Documentation
 </div>
 </div>
 <div class="section" id="id2">
-<h3>3.4.2. Tactics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.2. Tactics<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="forall-introduction-i">
 <h4>Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -305,10 +409,10 @@ Sireum Logika Documentation
 </div>
 </div>
 </div>
-<div class="section" id="programming-logic">
-<h2>3.5. Programming Logic<a class="headerlink" href="#programming-logic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="programming-logic-input-language">
+<span id="programming-language"></span><h2>3.4. Programming Logic Input Language<a class="headerlink" href="#programming-logic-input-language" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>3.5.1. Grammar<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.1. Grammar<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="program">
 <h4>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h4>
 </div>
@@ -323,13 +427,13 @@ Sireum Logika Documentation
 </div>
 </div>
 <div class="section" id="id5">
-<h3>3.5.2. Well-formed-ness<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.2. Well-formed-ness<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="type-checking">
 <h4>Type Checking<a class="headerlink" href="#type-checking" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 <div class="section" id="id6">
-<h3>3.5.3. Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.3. Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="subst1">
 <h4>Subst1<a class="headerlink" href="#subst1" title="Permalink to this headline">¶</a></h4>
 </div>

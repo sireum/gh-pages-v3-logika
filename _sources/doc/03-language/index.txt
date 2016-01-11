@@ -9,17 +9,40 @@
    <br/>
    <font color="black">
    <big><big><big><big><b>
-   3. The Logika Formal Language
+   3. The Logika Formal Input Language
    </b></big></big></big></big>
    </font>
 
 .. _language:
 
-The Logika Formal Language
-##########################
+The Logika Formal Input Language
+################################
 
-Design and Rationale
-********************
+The Logika input formal language are generally categorized into two:
+
+* Proof language, for expressing formulae in propositional and predicate logics,
+  as well as for expressing software contracts.
+
+* Programming language, for expressing Logika programs.
+
+There are common elements between the two categories (e.g., the expression language).
+However, they may have some difference, thus,
+it is convenient to be able to distinguish when the elements are in a certain context
+by using "proof context" or "programming context".
+
+The programming language is a simple procedural subset of the
+`Scala programming language <http://scala-lang.org>`__.
+The proof language is actually embedded in the programming language,
+but they are easily distinguishable because of their reserved form that uses
+Scala's *multi-line*
+`string interpolation syntax <http://docs.scala-lang.org/overviews/core/string-interpolation.html>`__ --
+more specifically, ``l"""{`` ... ``}"""``.
+
+Let us first discuss the basic language elements that are common to the two categories,
+before proceeding to discuss the
+:ref:`propositional <propositional-language>`,
+:ref:`predicate <predicate-language>`, and
+:ref:`programming <programming-language>` logic input languages.
 
 Basic Language Elements
 ***********************
@@ -27,11 +50,43 @@ Basic Language Elements
 Identifiers
 ===========
 
-Operators
-=========
+Variable and function (method) identifiers are of the following regular expression form:
+``[a-zA-Z][a-zA-Z0-9_]*``, i.e., a letter followed by zero of more letters, digits, or
+underscores.
 
-Literals
-========
+Identifiers containing an underscore cannot be used in the programming context (i.e.,
+underscore cannot be a part of a user-declared variable/function identifier).
+
+Operators and Literals
+======================
+
+Below are a table of Logika operators and literals in both programming and proof context,
+listed with an increasingly higher precedence order along with Math Unicode :ref:`shortcuts`.
+Note that the proof context operators and literals include the ones in the programming
+context, ``NUM`` is either ``0`` or ``[1-9][0-9]*``, ``STRING`` is
+`Java's string literal <https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5>`__
+without the octal escape.
+
+----
+
+.. csv-table::
+   :header: Programming Context                     , Proof Context (ASCII)                             , Proof Context (Math Unicode)  , :ref:`LIVE <live>` 2\ :sup:`nd` Keystroke Shortcut (1\ :sup:`st` Keystroke: ``⇧⌘;``/``⇧⌃;``)
+   :widths: 15, 23, 22, 40
+
+                                                    , ``|-``                                            , ``⊢`` (U+22A2)                , (``|`` or ``\``)
+                                                    , ``A`` ``all`` ``forall`` ``E`` ``some`` ``exists``, ``∀`` (U+2200) ``∃`` (U+2203) , ``A`` ``E``
+                                                    , ``->`` ``implies``                                , ``→`` (U+21D2)                , ``-``
+   ``|``                                            , ``V`` ``or``                                      , ``∨`` (U+2228)                , ``V``
+   ``&``                                            , ``^`` ``and``                                     , ``∧`` (U+2227)                , (``^`` or ``6``)
+   ``<`` ``<=`` ``>`` ``>=``                        ,                                                   , ``≤`` (U+2264) ``≥`` (U+2265) , ``<`` ``>``
+   ``==`` ``!=`` ``!``                              , ``=`` ``~`` ``not``                               , ``≠`` (U+2260) ``¬`` (U+00AC) , (``!`` or ``1``) ``N``
+   ``:+``                                           ,                                                   ,                               ,
+   ``+`` ``-`` ``+:``                               ,                                                   ,                               ,
+   ``*`` ``/`` ``%``                                ,                                                   ,                               ,
+   ``T`` ``true`` ``F`` ``false`` ``NUM`` ``STRING``, ``_|_``                                           , ``⊤`` (U+22A4) ``⊥`` (U+22A5) , ``T`` ``F``
+
+----
+
 
 Keywords
 ========
@@ -39,12 +94,21 @@ Keywords
 Comments
 ========
 
-Lines and Whitespaces
-=====================
+Newlines and Whitespaces
+========================
+
+The proof language follows Scala's line-orientation where one
+separates expressions in a code block using newline characters; which means that
+newline characters are treated specially in some cases instead of as whitespaces like
+in semicolon-oriented languages such as Java or C that separate statements using
+semicolons.
 
 
-Propositional Logic
-*******************
+
+.. _propositional-language:
+
+Propositional Logic Input Language
+**********************************
 
 Grammar
 =======
@@ -98,8 +162,10 @@ Proof-by-contradiction (Pbc)
 ----------------------------
 
 
-Predicate Logic
-***************
+.. _predicate-language:
+
+Predicate Logic Input Language
+******************************
 
 
 Grammar
@@ -131,8 +197,11 @@ Exists-Elimination (∃e)
 -----------------------
 
 
-Programming Logic
-*****************
+.. _programming-language:
+
+
+Programming Logic Input Language
+********************************
 
 Grammar
 =======
