@@ -60,13 +60,16 @@ LIVE Install
 
 .. note::
 
-   After installing LIVE, make sure that you update Logika (see :ref:`update`).
+   After installing/updating LIVE, please update Logika as well
+   (see :ref:`update`).
 
 This step is optional as opening any Logika files during :ref:`live-examples` will cause
-IntelliJ to suggest you to install the Sireum v3 plugin.
+IntelliJ to suggest you to install the Sireum v3 IntelliJ plugin.
+Thus, you can choose to skip directly to :ref:`live-examples`.
 
-However, for reference, below are the instructions on how to install LIVE through
+As a reference, below are the instructions to manually install LIVE from
 `JetBrains' plugin repositories <https://plugins.jetbrains.com/plugin/8148>`__.
+
 First, open IntelliJ's
 `Preferences <https://www.jetbrains.com/idea/help/settings-preferences-dialog.html>`__
 (shortcut: ``⌘,`` in OS X):
@@ -419,7 +422,7 @@ Below are the additional settings for LIVE.
 * **Hint Generation**
 
   Verifying programs can be challenging.
-  To help the process, Logika can generate some hints on the kind
+  To help with the process, Logika can generate some hints on the kind
   of program state claims can be made.
   If the hint generation is enabled, LIVE will mark locations
   where hints are available by using a bulb gutter editor icon.
