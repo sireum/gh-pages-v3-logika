@@ -72,9 +72,9 @@ A proof consists of sequence of proof steps delimited by curly braces
 A proof step in a proof should be *uniquely*
 ``NUM``\ bered (can be unordered), and it is either:
 (a) a regular proof step (atomic), or (b) a sub-proof (composite).
-(regular step number ``rNUM`` and sub-proof number ``sNUM`` are
+(Regular step number ``rNUM`` and sub-proof number ``sNUM`` are
 ``NUM`` :ref:`literals <ops-literals>`, but distinguished here to
-increase readability of the :ref:`tactic grammar <prop-tactics>` later.
+increase readability of the :ref:`tactic grammar <prop-tactics>` later.)
 
 In addition to its unique ``NUM``\ ber, a regular proof step consists of a
 claim expression, followed by a justification -- an application of
