@@ -38,11 +38,14 @@ Scala's *multi-line*
 `string interpolation syntax <http://docs.scala-lang.org/overviews/core/string-interpolation.html>`__ --
 more specifically, ``l"""{`` ... ``}"""``.
 
-Let us first discuss the basic language elements that are common to the two categories,
+Let us first discuss the
+:ref:`basic language elements<basic-language>` that are common to the two categories,
 before proceeding to discuss the
 :ref:`propositional <propositional-language>`,
 :ref:`predicate <predicate-language>`, and
 :ref:`programming <programming-language>` logic input languages.
+
+.. _basic-language:
 
 Basic Language Elements
 ***********************
@@ -52,7 +55,8 @@ Identifiers
 
 Variable and function (method) identifiers are of the following regular expression form:
 ``[a-zA-Z][a-zA-Z0-9_]*``, i.e., a letter followed by zero of more letters, digits, or
-underscores.
+underscores. A valid identifier should not be the same as any of Logika operators,
+literals, and keywords.
 
 Identifiers containing an underscore cannot be used in the programming context (i.e.,
 underscore cannot be a part of a user-declared variable/function identifier).
@@ -91,19 +95,93 @@ without the octal escape.
 Keywords
 ========
 
+Logika keywords consists of Scala's keywords, contract keywords,
+tactic keywords, and type keywords.
+
+Scala Keywords
+--------------
+::
+
+    abstract       case           catch          class          def
+    do             else           extends        false          final
+    finally        for            forSome        if             implicit
+    import         lazy           macro          match          new
+    null           object         override       package        private
+    protected      return         sealed         super          this
+    throw          trait          try            true           type
+    val            var            while          with           yield
+
+Types
+-----
+::
+
+    B              Z              ZS
+
+
+Built-in Functions
+------------------
+::
+
+    readInt        randomInt      print          println
+
+Contracts
+---------
+::
+
+    pre            requires       modifies       post           ensures
+    fact           invariant      assert         assume
+
+
+Tactics
+-------
+::
+
+    premise        andi           ande1          ande2          ori1
+    Vi1            ori2           Vi2            ore            Ve
+    impliesi       impliese       noti           negi           note
+    nege           bottome        falsee         Pbc
+    foralli        alli           Ai             foralle        alle
+    Ae             existsi        somei          Ei             existse
+    somee          Ee
+    subst1         subst2         algebra        auto
+
+
 Comments
 ========
+
+Logika comments are `C99 <https://en.wikipedia.org/wiki/C_syntax#Comments>`__
+line (``//`` ... until end of the line) and block (``/*`` ... ``*/``) comments.
+
 
 Newlines and Whitespaces
 ========================
 
-.. The proof language follows Scala's line-orientation where one
-   separates expressions in a code block using newline characters; which means that
-   newline characters are treated specially in some cases instead of as whitespaces like
-   in semicolon-oriented languages such as Java or C that separate statements using
-   semicolons.
+Scala is a line-oriented language where newline characters are treated specially in some cases.
+For example, newline characters *can* separate expressions in a code block.
+The `actual rules of when newlines are treated specially <http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#newline-characters>`__
+are not immediately obvious but they behave "intuitively" (resulting in rare surprises when
+programming).
+
+Logika follows Scala's line-orientation (otherwise, it is not a subset language),
+even inside proof context (e.g., proof steps have to be separated by newlines).
+For clarity sake, instead of explicitly listing newlines in the Logika context-free grammars
+that go beyond Scala's, special situations are described in the relevant sections.
+Interested readers are referred to the full
+`Logika's ANTLR4 grammar <https://github.com/sireum/v3/blob/master/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4>`__
+(``NL`` token) if such details are preferred.
+(A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
+to implement Scala's newline rules, thus, it is not directly specified in the ANTLR4 grammar.)
+
+Other than the special newline rules that Logika follows in proof context,
+Logika whitespaces are similar to Scala's.
 
 
+Grammatical Rules (EBNF)
+========================
+
+Logika grammars are written in this document using the
+`ANTLR4-style <https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md>`__ of
+`Backus-Naur Form (BNF) grammar <https://en.wikipedia.org/wiki/Backus–Naur_Form>`__.
 
 .. _propositional-language:
 
@@ -112,6 +190,56 @@ Propositional Logic Input Language
 
 Grammar
 =======
+
+.. code-block:: antlr
+
+   propositional: sequent proof        // newlines are ignored until start of proof
+
+   sequent     : expList? ( '|-' | '⊢' ) expList
+               | exp* HLINE exp+
+
+   expList     : exp ( ',' exp )*
+
+   proof       : '{'
+                   proofStep+          // separated by newlines
+                 '}'
+
+   proofStep   : regularStep
+               | subProof
+
+   regularStep : rNUM '.' exp tactic   // rNUM is NUM, distinguished for readability
+
+   subProof    : sNUM '.'              // sNUM is NUM, distinguished for readability
+                 '{'
+                   assumeStep          // separated by newlines
+                   proofStep*          // separated by newlines
+                 '}'
+
+   assumeStep  : bNUM '.' exp 'assume'
+
+   exp         : '⊤'                   // can also use 'T' or 'true' for '⊤'           (also apply in tactic)
+               | '⊥'                   // can also use 'F', 'false', or '_|_' for '⊥'  (also apply in tactic)
+               | ID                    // identifier
+               | '(' exp ')'
+               | '¬' exp               // can also use 'not', '!', or '~' for '¬'       (also apply in tactic)
+               | exp '∧' exp           // can also use '&', 'and', or '^' for '∧'       (also apply in tactic)
+               | exp '∨' exp           // can also use '|', 'or', or 'V' for '∨'        (also apply in tactic)
+               | exp '→' exp           // can also use '->' or 'implies' for '→'        (also apply in tactic)
+
+   tactic      : 'premise'
+               | '∧i'  rNUM rNUM       // And-Introduction
+               | '∧e1' rNUM            // And-Elimination1
+               | '∧e2' rNUM            // And-Elimination2
+               | '∨i1' rNUM            // Or-Introduction1
+               | '∨i2' rNUM            // Or-Introduction2
+               | '∨e'  rNUM sNUM sNUM  // Or-Elimination
+               | '→i'  sNUM            // Implication-Introduction
+               | '→e'  rNUM rNUM       // Implication-Elimination
+               | '¬i'  sNUM            // Negation-Introduction
+               | '¬e'  rNUM rNUM       // Negation-Elimination
+               | '⊥e'  rNUM            // ⊥-Elimination
+               | 'Pbc' sNUM            // Proof by contradiction
+
 
 Sequent
 -------
