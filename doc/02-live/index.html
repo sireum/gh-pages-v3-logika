@@ -87,11 +87,15 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#live-update">2.3. LIVE Update</a></li>
-<li><a class="reference internal" href="#live-examples">2.4. LIVE Examples</a></li>
-<li><a class="reference internal" href="#live-shortcuts">2.5. LIVE Shortcuts</a></li>
-<li><a class="reference internal" href="#sireum-live-configuration">2.6. Sireum LIVE Configuration</a><ul>
-<li><a class="reference internal" href="#sireum-settings">2.6.1. Sireum Settings</a></li>
-<li><a class="reference internal" href="#live-settings">2.6.2. LIVE Settings</a></li>
+<li><a class="reference internal" href="#live-examples">2.4. LIVE Examples</a><ul>
+<li><a class="reference internal" href="#working-with-scala-scala-worksheet-and-other-text-editors">2.4.1. Working with Scala, Scala Worksheet, and Other Text Editors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#live-actions">2.5. LIVE Actions</a></li>
+<li><a class="reference internal" href="#live-shortcuts">2.6. LIVE Shortcuts</a></li>
+<li><a class="reference internal" href="#sireum-live-configuration">2.7. Sireum LIVE Configuration</a><ul>
+<li><a class="reference internal" href="#sireum-settings">2.7.1. Sireum Settings</a></li>
+<li><a class="reference internal" href="#live-settings">2.7.2. LIVE Settings</a></li>
 </ul>
 </li>
 </ul>
@@ -162,8 +166,9 @@ for any editor file types.</li>
 </ul>
 <hr class="docutils" />
 <ul class="simple">
-<li>Can be used in conjunction with IntelliJ&#8217;s Scala Worksheet (<code class="docutils literal"><span class="pre">.sc</span></code> files)
-or its Scala editor (<code class="docutils literal"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
+<li>Can be used in conjunction with IntelliJ&#8217;s
+<a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet">Scala Worksheet</a>
+(<code class="docutils literal"><span class="pre">.sc</span></code> files) or its Scala editor (<code class="docutils literal"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
 (e.g., the screenshot above illustrates how LIVE works with the Scala Worksheet).</li>
 </ul>
 </div>
@@ -273,11 +278,54 @@ feedback such as syntax error marking (see <a class="reference internal" href="#
 notification, etc.
 (LIVE waits a certain amount of time after the file content is modified before
 calling Logika; this &#8220;idle&#8221; wait time period can be <a class="reference internal" href="#live-configuration"><span>configured</span></a>).</p>
+<div class="section" id="working-with-scala-scala-worksheet-and-other-text-editors">
+<h3>2.4.1. Working with Scala, Scala Worksheet, and Other Text Editors<a class="headerlink" href="#working-with-scala-scala-worksheet-and-other-text-editors" title="Permalink to this headline">¶</a></h3>
 <p>LIVE can also be configured to work with other file types.
 By default, it is <a class="reference internal" href="#live-configuration"><span>configured</span></a> to also work with
-Scala Worksheet <code class="docutils literal"><span class="pre">.sc</span></code> files.
-However, opening any of such files does not automatically bring Logika to LIVE.
-Instead one needs to explicitly invoke Logika once.</p>
+<a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet">Scala Worksheet</a>
+<code class="docutils literal"><span class="pre">.sc</span></code> files, which is an excellent tool for learning Scala.
+Using <code class="docutils literal"><span class="pre">.sc</span></code> files allow one to test and prove Logika programs using the same editor.</p>
+<p>You can <a class="reference internal" href="#live-configuration"><span>configure</span></a> LIVE to work with <code class="docutils literal"><span class="pre">.scala</span></code> files to
+benefit from, for example, its code folding feature, which is handy for hiding
+proof claims that have been verified.</p>
+<p>To have a better experience working with Logika programs using the Scala and Scala
+Worksheet editors, it is best to configure Scala CodeStyle and Inspection</p>
+<ul class="simple">
+<li>Logika does not accept margin characters that can be stripped for its
+<span class="xref std std-ref">proof statements</span> that use multi-line strings.
+By default, IntelliJ is configured to insert margin characters and
+strip/insert margin on copy and paste.
+It is best to disable these features when working with Logika
+(see <a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Strings+in+Scala">Working with Strings in Scala</a>).</li>
+<li>The IntelliJ Scala plugin defines some code inspections that are beneficial when
+programming Scala programs. A couple of these code inspections produce spurious
+warnings for Logika programs.
+Thus, it is best to disable them when working on Logika programs.
+The two code inspections can be found in the
+<a class="reference external" href="https://www.jetbrains.com/idea/help/disabling-and-enabling-inspections.html">IntelliJ&#8217;s Editor Inspections</a>
+settings under <code class="docutils literal"><span class="pre">Scala</span></code> -&gt; <code class="docutils literal"><span class="pre">General</span></code>:<ul>
+<li><code class="docutils literal"><span class="pre">Comparing</span> <span class="pre">unrelated</span> <span class="pre">types</span></code>:
+Logika uses arbitrary-precision integers (<code class="docutils literal"><span class="pre">scala.BigInt</span></code>, which is aliased as <code class="docutils literal"><span class="pre">Z</span></code>
+in Logika) instead of using 32-bit <code class="docutils literal"><span class="pre">Int</span></code>.
+IntelliJ gives a spurious warning when a variable of type <code class="docutils literal"><span class="pre">Z</span></code> (the alias) is
+compared with an <code class="docutils literal"><span class="pre">Int</span></code> literal (it does not give such warning if <code class="docutils literal"><span class="pre">BigInt</span></code> is used
+directly, but that is not supported in Logika).</li>
+<li><code class="docutils literal"><span class="pre">Redundant</span> <span class="pre">Return</span></code>:
+Logika requires an explicit <code class="docutils literal"><span class="pre">return</span></code> keyword when a method returns a value (which
+can only be done at the end of the method, thus, in Scala, it is unnecessary).</li>
+</ul>
+</li>
+</ul>
+<p>Note that opening any configured files other than <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code>
+does not automatically cause LIVE to directly verify and monitor such files.
+Instead one needs to explicitly <a class="reference internal" href="#live-action"><span>invoke Logika</span></a> once.
+Once invoked, LIVE will continue to monitor changes to the file document
+similar to <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code> files.
+If the editor is closed and reopened, Logika needs to be explicitly invoked once again.</p>
+</div>
+</div>
+<div class="section" id="live-actions">
+<span id="live-action"></span><h2>2.5. LIVE Actions<a class="headerlink" href="#live-actions" title="Permalink to this headline">¶</a></h2>
 <p>There are three ways to explicitly bring Logika to LIVE:</p>
 <hr class="docutils" />
 <ul>
@@ -296,14 +344,11 @@ Instead one needs to explicitly invoke Logika once.</p>
 <li>Using a <a class="reference internal" href="#shortcuts"><span>shortcut</span></a>.</li>
 </ul>
 <hr class="docutils" />
-<p>Once invoked, LIVE will continue to monitor changes to the file document
-similar to <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code> files.
-If the editor is closed and reopened, Logika needs to be explicitly invoked once again.</p>
-<p>Note that these LIVE actions to verify file documents are only available for file types
-that have been registered in <a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a>.</p>
+<p>Note that these LIVE actions to verify file documents are only available for <code class="docutils literal"><span class="pre">.logika</span></code>,
+<code class="docutils literal"><span class="pre">.lgk</span></code> and other file types that have been registered in <a class="reference internal" href="#live-configuration"><span>Sireum LIVE Configuration</span></a>.</p>
 </div>
 <div class="section" id="live-shortcuts">
-<span id="shortcuts"></span><h2>2.5. LIVE Shortcuts<a class="headerlink" href="#live-shortcuts" title="Permalink to this headline">¶</a></h2>
+<span id="shortcuts"></span><h2>2.6. LIVE Shortcuts<a class="headerlink" href="#live-shortcuts" title="Permalink to this headline">¶</a></h2>
 <p>LIVE provides two main shortcuts:</p>
 <hr class="docutils" />
 <ul>
@@ -411,7 +456,7 @@ ASCII characters accepted by Logika.</p>
 configured in <a class="reference external" href="https://www.jetbrains.com/idea/help/keymap.html">IntelliJ&#8217;s Keymap settings</a>.</p>
 </div>
 <div class="section" id="sireum-live-configuration">
-<span id="live-configuration"></span><h2>2.6. Sireum LIVE Configuration<a class="headerlink" href="#sireum-live-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="live-configuration"></span><h2>2.7. Sireum LIVE Configuration<a class="headerlink" href="#sireum-live-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Sireum and LIVE can be configured through
 <a class="reference external" href="https://www.jetbrains.com/idea/help/settings-preferences-dialog.html">IntelliJ&#8217;s Settings/Preferences dialog</a>
 under the <a class="reference external" href="https://www.jetbrains.com/idea/help/tools.html">Tools</a> category.</p>
@@ -422,7 +467,7 @@ An invalid setting is indicated by coloring the corresponding label red;
 in such case, mouse hovering the input widget may give a description of
 the expected format.</p>
 <div class="section" id="sireum-settings">
-<h3>2.6.1. Sireum Settings<a class="headerlink" href="#sireum-settings" title="Permalink to this headline">¶</a></h3>
+<h3>2.7.1. Sireum Settings<a class="headerlink" href="#sireum-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/sireum-settings.png"><img alt="../../_images/sireum-settings.png" src="../../_images/sireum-settings.png" style="width: 647.4px; height: 252.0px;" /></a>
 <hr class="docutils" />
 <ul>
@@ -463,7 +508,7 @@ The key has to satisfy the following regular expression <code class="docutils li
 </div>
 <hr class="docutils" />
 <div class="section" id="live-settings">
-<h3>2.6.2. LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
+<h3>2.7.2. LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 609.0px; height: 253.79999999999998px;" /></a>
 <p>Some of the options such as auto mode, checking satisfiability, and timeout are
 described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span>Logika Command-Line Configuration</span></a>.
