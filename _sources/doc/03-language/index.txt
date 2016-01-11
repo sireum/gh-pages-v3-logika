@@ -97,11 +97,11 @@ Comments
 Newlines and Whitespaces
 ========================
 
-The proof language follows Scala's line-orientation where one
-separates expressions in a code block using newline characters; which means that
-newline characters are treated specially in some cases instead of as whitespaces like
-in semicolon-oriented languages such as Java or C that separate statements using
-semicolons.
+.. The proof language follows Scala's line-orientation where one
+   separates expressions in a code block using newline characters; which means that
+   newline characters are treated specially in some cases instead of as whitespaces like
+   in semicolon-oriented languages such as Java or C that separate statements using
+   semicolons.
 
 
 
