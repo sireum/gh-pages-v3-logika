@@ -176,8 +176,8 @@ Other than the special newline rules that Logika follows in proof context,
 Logika whitespaces are similar to Scala's.
 
 
-Grammatical Rules (EBNF)
-========================
+Grammatical Rules
+=================
 
 Logika grammars are written in this document using the
 `ANTLR4-style <https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md>`__ of
