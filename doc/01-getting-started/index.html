@@ -244,22 +244,22 @@ logika
 </div>
 <p>Then run Logika on, e.g., <code class="docutils literal"><span class="pre">logika-examples/src/propositional/intro-nat-ded.logika</span></code>,
 whose content is as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre>p ∨ q, r  ⊢  <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>
-<span class="o">{</span>
+<div class="highlight-none"><div class="highlight"><pre>p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
+{
   1. p ∨ q                    premise
   2. r                        premise
-  3. <span class="o">{</span>
+  3. {
        4. p                   assume
-       5. p ∧ r               ∧i <span class="m">4</span> 2
-       6. <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>   ∨i1 5
-     <span class="o">}</span>
-  7. <span class="o">{</span>
+       5. p ∧ r               ∧i 4 2
+       6. (p ∧ r) ∨ (q ∧ r)   ∨i1 5
+     }
+  7. {
        8. q                   assume
-       9. q ∧ r               ∧i <span class="m">8</span> 2
-      10. <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>   ∨i2 9
-     <span class="o">}</span>
- 11. <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>        ∨e <span class="m">1</span> <span class="m">3</span> 7
-<span class="o">}</span>
+       9. q ∧ r               ∧i 8 2
+      10. (p ∧ r) ∨ (q ∧ r)   ∨i2 9
+     }
+ 11. (p ∧ r) ∨ (q ∧ r)        ∨e 1 3 7
+}
 </pre></div>
 </div>
 <p>using the following command:</p>

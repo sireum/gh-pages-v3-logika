@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1. Basic Language Elements &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../../index.html" />
+    <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
+    <link rel="next" title="3.2. Propositional Logic" href="../propositional/index.html" />
+    <link rel="prev" title="3. The Logika Formal Input Language" href="../index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="../../../dschmidt/index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3.1. Basic Language Elements</a><ul>
+<li><a class="reference internal" href="#identifiers">3.1.1. Identifiers</a></li>
+<li><a class="reference internal" href="#operators-and-literals">3.1.2. Operators and Literals</a></li>
+<li><a class="reference internal" href="#keywords">3.1.3. Keywords</a><ul>
+<li><a class="reference internal" href="#scala-keywords">Scala Keywords</a></li>
+<li><a class="reference internal" href="#types">Types</a></li>
+<li><a class="reference internal" href="#built-in-functions">Built-in Functions</a></li>
+<li><a class="reference internal" href="#contracts">Contracts</a></li>
+<li><a class="reference internal" href="#tactics">Tactics</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#comments">3.1.4. Comments</a></li>
+<li><a class="reference internal" href="#newlines-and-whitespaces">3.1.5. Newlines and Whitespaces</a></li>
+<li><a class="reference internal" href="#grammatical-rules">3.1.6. Grammatical Rules</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+3.1. Basic Language Elements
+</b></big></big></big></big>
+</font><div class="section" id="basic-language-elements">
+<span id="basic-language"></span><h1>3.1. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="identifiers">
+<h2>3.1.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h2>
+<p>Variable and function (method) identifiers are of the following regular expression form:
+<code class="docutils literal"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
+underscores. A valid identifier should not be the same as any of Logika operators,
+literals, and keywords.</p>
+<p>Identifiers containing an underscore cannot be used in the programming context (i.e.,
+underscore cannot be a part of a user-declared variable/function identifier).</p>
+</div>
+<div class="section" id="operators-and-literals">
+<span id="ops-literals"></span><h2>3.1.2. Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h2>
+<p>Below are a table of Logika operators and literals in both programming and proof context,
+listed with an increasingly higher precedence order along with Math Unicode <a class="reference internal" href="../../02-live/index.html#shortcuts"><span>LIVE Shortcuts</span></a>.
+Note that the proof context operators and literals include the ones in the programming
+context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
+<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java&#8217;s string literal</a>
+without the octal escape.</p>
+<hr class="docutils" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="23%" />
+<col width="22%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Programming Context</th>
+<th class="head">Proof Context (ASCII)</th>
+<th class="head">Proof Context (Math Unicode)</th>
+<th class="head"><a class="reference internal" href="../../02-live/index.html#live"><span>LIVE</span></a> 2 <sup>nd</sup> Keystroke Shortcut (1 <sup>st</sup> Keystroke: <code class="docutils literal"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal"><span class="pre">⇧⌃;</span></code>)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">|-</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊢</span></code> (U+22A2)</td>
+<td>(<code class="docutils literal"><span class="pre">|</span></code> or <code class="docutils literal"><span class="pre">\</span></code>)</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">all</span></code> <code class="docutils literal"><span class="pre">forall</span></code> <code class="docutils literal"><span class="pre">E</span></code> <code class="docutils literal"><span class="pre">some</span></code> <code class="docutils literal"><span class="pre">exists</span></code></td>
+<td><code class="docutils literal"><span class="pre">∀</span></code> (U+2200) <code class="docutils literal"><span class="pre">∃</span></code> (U+2203)</td>
+<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">E</span></code></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">-&gt;</span></code> <code class="docutils literal"><span class="pre">implies</span></code></td>
+<td><code class="docutils literal"><span class="pre">→</span></code> (U+21D2)</td>
+<td><code class="docutils literal"><span class="pre">-</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">|</span></code></td>
+<td><code class="docutils literal"><span class="pre">V</span></code> <code class="docutils literal"><span class="pre">or</span></code></td>
+<td><code class="docutils literal"><span class="pre">∨</span></code> (U+2228)</td>
+<td><code class="docutils literal"><span class="pre">V</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&amp;</span></code></td>
+<td><code class="docutils literal"><span class="pre">^</span></code> <code class="docutils literal"><span class="pre">and</span></code></td>
+<td><code class="docutils literal"><span class="pre">∧</span></code> (U+2227)</td>
+<td>(<code class="docutils literal"><span class="pre">^</span></code> or <code class="docutils literal"><span class="pre">6</span></code>)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&lt;=</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code> <code class="docutils literal"><span class="pre">&gt;=</span></code></td>
+<td>&nbsp;</td>
+<td><code class="docutils literal"><span class="pre">≤</span></code> (U+2264) <code class="docutils literal"><span class="pre">≥</span></code> (U+2265)</td>
+<td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">==</span></code> <code class="docutils literal"><span class="pre">!=</span></code> <code class="docutils literal"><span class="pre">!</span></code></td>
+<td><code class="docutils literal"><span class="pre">=</span></code> <code class="docutils literal"><span class="pre">~</span></code> <code class="docutils literal"><span class="pre">not</span></code></td>
+<td><code class="docutils literal"><span class="pre">≠</span></code> (U+2260) <code class="docutils literal"><span class="pre">¬</span></code> (U+00AC)</td>
+<td>(<code class="docutils literal"><span class="pre">!</span></code> or <code class="docutils literal"><span class="pre">1</span></code>) <code class="docutils literal"><span class="pre">N</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">:+</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">+</span></code> <code class="docutils literal"><span class="pre">-</span></code> <code class="docutils literal"><span class="pre">+:</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">*</span></code> <code class="docutils literal"><span class="pre">/</span></code> <code class="docutils literal"><span class="pre">%</span></code></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">true</span></code> <code class="docutils literal"><span class="pre">F</span></code> <code class="docutils literal"><span class="pre">false</span></code> <code class="docutils literal"><span class="pre">NUM</span></code> <code class="docutils literal"><span class="pre">STRING</span></code></td>
+<td><code class="docutils literal"><span class="pre">_|_</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊤</span></code> (U+22A4) <code class="docutils literal"><span class="pre">⊥</span></code> (U+22A5)</td>
+<td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">F</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="keywords">
+<h2>3.1.3. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
+<p>Logika keywords consists of Scala&#8217;s keywords, contract keywords,
+tactic keywords, and type keywords.</p>
+<div class="section" id="scala-keywords">
+<h3>Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>abstract       case           catch          class          def
+do             else           extends        false          final
+finally        for            forSome        if             implicit
+import         lazy           macro          match          new
+null           object         override       package        private
+protected      return         sealed         super          this
+throw          trait          try            true           type
+val            var            while          with           yield
+</pre></div>
+</div>
+</div>
+<div class="section" id="types">
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>B              Z              ZS
+</pre></div>
+</div>
+</div>
+<div class="section" id="built-in-functions">
+<h3>Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>readInt        randomInt      print          println
+</pre></div>
+</div>
+</div>
+<div class="section" id="contracts">
+<h3>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>pre            requires       modifies       post           ensures
+fact           invariant      assert         assume
+</pre></div>
+</div>
+</div>
+<div class="section" id="tactics">
+<h3>Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>premise        andi           ande1          ande2          ori1
+Vi1            ori2           Vi2            ore            Ve
+impliesi       impliese       noti           negi           note
+nege           bottome        falsee         Pbc
+foralli        alli           Ai             foralle        alle
+Ae             existsi        somei          Ei             existse
+somee          Ee
+subst1         subst2         algebra        auto
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="comments">
+<h2>3.1.4. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>Logika comments are <a class="reference external" href="https://en.wikipedia.org/wiki/C_syntax#Comments">C99</a>
+line (<code class="docutils literal"><span class="pre">//</span></code> ... until end of the line) and block (<code class="docutils literal"><span class="pre">/*</span></code> ... <code class="docutils literal"><span class="pre">*/</span></code>) comments.</p>
+</div>
+<div class="section" id="newlines-and-whitespaces">
+<h2>3.1.5. Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h2>
+<p>Scala is a line-oriented language where newline characters are treated specially in some cases.
+For example, newline characters <em>can</em> separate expressions in a code block.
+The <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#newline-characters">actual rules of when newlines are treated specially</a>
+are not immediately obvious but they behave &#8220;intuitively&#8221; (resulting in rare surprises when
+programming).</p>
+<p>Logika follows Scala&#8217;s line-orientation (otherwise, it is not a subset language),
+even inside proof context (e.g., proof steps have to be separated by newlines).
+For clarity sake, instead of explicitly listing newlines in the Logika context-free grammars
+that go beyond Scala&#8217;s, special situations are described in the relevant sections.
+Interested readers are referred to the full
+<a class="reference external" href="https://github.com/sireum/v3/blob/master/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4">Logika&#8217;s ANTLR4 grammar</a>
+(<code class="docutils literal"><span class="pre">NL</span></code> token) if such details are preferred.
+(A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
+to implement Scala&#8217;s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
+<p>Other than the special newline rules that Logika follows in proof context,
+Logika whitespaces are similar to Scala&#8217;s.</p>
+</div>
+<div class="section" id="grammatical-rules">
+<h2>3.1.6. Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h2>
+<p>Logika grammars are written in this document using the
+<a class="reference external" href="https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md">ANTLR4-style</a> of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Backus–Naur_Form">Backus-Naur Form (BNF) grammar</a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>

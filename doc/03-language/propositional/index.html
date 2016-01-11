@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.2. Propositional Logic &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../../index.html" />
+    <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
+    <link rel="next" title="3.3. Predicate Logic" href="../predicate/index.html" />
+    <link rel="prev" title="3.1. Basic Language Elements" href="../basic/index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="../../../dschmidt/index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3.2. Propositional Logic</a><ul>
+<li><a class="reference internal" href="#sequent">3.2.1. Sequent</a></li>
+<li><a class="reference internal" href="#proof">3.2.2. Proof</a></li>
+<li><a class="reference internal" href="#expression">3.2.3. Expression</a></li>
+<li><a class="reference internal" href="#tactics">3.2.4. Tactics</a><ul>
+<li><a class="reference internal" href="#premise">Premise</a></li>
+<li><a class="reference internal" href="#and-introduction-i">And-Introduction (∧i)</a></li>
+<li><a class="reference internal" href="#and-elimination-e1-e2">And-Elimination (∧e1, ∧e2)</a></li>
+<li><a class="reference internal" href="#or-introduction-i1-i2">Or-Introduction (∨i1, ∨i2)</a></li>
+<li><a class="reference internal" href="#or-elimination-e">Or-Elimination (∨e)</a></li>
+<li><a class="reference internal" href="#implication-introduction-i">Implication-Introduction (→i)</a></li>
+<li><a class="reference internal" href="#implication-elimination-e">Implication-Elimination (→e)</a></li>
+<li><a class="reference internal" href="#negation-introduction-i">Negation-Introduction (¬i)</a></li>
+<li><a class="reference internal" href="#negation-elimination-e">Negation-Elimination (¬e)</a></li>
+<li><a class="reference internal" href="#bottom-elimination-e">Bottom-Elimination  (⊥e)</a></li>
+<li><a class="reference internal" href="#proof-by-contradiction-pbc">Proof-by-contradiction (Pbc)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complete-propositional-logic-input-language-grammar">3.2.5. Complete Propositional Logic Input Language Grammar</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+3.2. Propositional Logic
+</b></big></big></big></big>
+</font><div class="section" id="propositional-logic">
+<span id="propositional-language"></span><h1>3.2. Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h1>
+<p><strong>Propositional Logic Input Language Grammar</strong></p>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">        </span><span class="c">// newlines are ignored until start of proof</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The propositional logic input language consists of two main parts:
+(1) a sequent, which is followed by (2) a proof of the sequent.</p>
+<p>An example input has been shown in the <a class="reference internal" href="../../01-getting-started/index.html#logika-examples"><span>Verifying Examples</span></a> section.</p>
+<div class="section" id="sequent">
+<h2>3.2.1. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;|-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊢&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">expList</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="o">*</span><span class="w"> </span><span class="no">HLINE</span><span class="w"> </span><span class="nv">exp</span><span class="o">+</span><span class="w"></span>
+
+<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A sequent consists of premises and conclusions that are
+separated either by a turnstile <code class="docutils literal"><span class="pre">⊢</span></code> or a horizontal line
+(<code class="docutils literal"><span class="pre">HLINE</span></code>, i.e., three or more continuous dashes <code class="docutils literal"><span class="pre">-</span></code>).
+In the former, the premise and conclusion expressions are
+separated by a comma <code class="docutils literal"><span class="pre">,</span></code>; the latter separates them using
+whitespaces (newlines are considered as whitespaces inside
+sequents).</p>
+<p>Here is an example of sequent written using the turnstile notation.</p>
+<div class="highlight-none"><div class="highlight"><pre>p → r,  q → r  ⊢  (p ∨ q) → r
+</pre></div>
+</div>
+<p>An equivalent sequent to that written using the horizontal line
+notation is as follows.</p>
+<div class="highlight-none"><div class="highlight"><pre> p → r     q → r
+-----------------
+   (p ∨ q) → r
+</pre></div>
+</div>
+<p>Either way to express a sequent is fine; it is just a matter of style.</p>
+</div>
+<div class="section" id="proof">
+<h2>3.2.2. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
+
+<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="nv">tactic</span><span class="w">   </span><span class="c">// rNUM is NUM, distinguished for readability of tactic arguments later</span><span class="w"></span>
+
+<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">              </span><span class="c">// sNUM is NUM, distinguished for readability of tactic arguments later</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">assumeStep</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">bNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A proof consists of sequence of proof steps delimited by curly braces
+<code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code>; the proof steps should be separated by newline(s).</p>
+<p>A proof step in a proof should be <em>uniquely</em>
+<code class="docutils literal"><span class="pre">NUM</span></code>bered (can be unordered), and it is either:
+(a) a regular proof step (atomic), or (b) a sub-proof (composite).
+(regular step number <code class="docutils literal"><span class="pre">rNUM</span></code> and sub-proof number <code class="docutils literal"><span class="pre">sNUM</span> <span class="pre">are</span>
+<span class="pre">``NUM</span></code> <a class="reference internal" href="../basic/index.html#ops-literals"><span>literals</span></a>, but distinguished here to
+increase readability of the <a class="reference internal" href="#prop-tactics"><span>tactic grammar</span></a> later.</p>
+<p>In addition to its unique <code class="docutils literal"><span class="pre">NUM</span></code>ber, a regular proof step consists of a
+claim expression, followed by a justification &#8211; an application of
+one of propositional logic rules/<a class="reference internal" href="#prop-tactics"><span>Tactics</span></a> to deduce the claim.
+A sub-proof in the propositional logic language consists an assumption proof
+step, followed by zero or more proof steps (that are delimited inside
+<code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> similar to a proof); the steps should be separated by newline(s).</p>
+<p>Here is an example proof of the above sequent.</p>
+<div class="highlight-none"><div class="highlight"><pre>p → r,  q → r  ⊢  (p ∨ q) → r
+{
+  1. p → r                    premise
+  2. q → r                    premise
+  3. {
+       4. p ∨ q               assume
+       5. {
+            6. p              assume
+            7. r              →e 1 6
+          }
+       8. {
+            9. q              assume
+           10. r              →e 2 9
+          }
+      11. r                   ∨e 4 5 8
+     }
+ 12. (p ∨ q) → r              →i 3
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="expression">
+<h2>3.2.3. Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tactics">
+<span id="prop-tactics"></span><h2>3.2.4. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="premise">
+<h3>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="and-introduction-i">
+<h3>And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="and-elimination-e1-e2">
+<h3>And-Elimination (∧e1, ∧e2)<a class="headerlink" href="#and-elimination-e1-e2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="or-introduction-i1-i2">
+<h3>Or-Introduction (∨i1, ∨i2)<a class="headerlink" href="#or-introduction-i1-i2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="or-elimination-e">
+<h3>Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="implication-introduction-i">
+<h3>Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="implication-elimination-e">
+<h3>Implication-Elimination (→e)<a class="headerlink" href="#implication-elimination-e" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="negation-introduction-i">
+<h3>Negation-Introduction (¬i)<a class="headerlink" href="#negation-introduction-i" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="negation-elimination-e">
+<h3>Negation-Elimination (¬e)<a class="headerlink" href="#negation-elimination-e" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bottom-elimination-e">
+<h3>Bottom-Elimination  (⊥e)<a class="headerlink" href="#bottom-elimination-e" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="proof-by-contradiction-pbc">
+<h3>Proof-by-contradiction (Pbc)<a class="headerlink" href="#proof-by-contradiction-pbc" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="complete-propositional-logic-input-language-grammar">
+<h2>3.2.5. Complete Propositional Logic Input Language Grammar<a class="headerlink" href="#complete-propositional-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">        </span><span class="c">// newlines are ignored until start of proof</span><span class="w"></span>
+
+<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;|-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊢&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">expList</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="o">*</span><span class="w"> </span><span class="no">HLINE</span><span class="w"> </span><span class="nv">exp</span><span class="o">+</span><span class="w"></span>
+
+<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+
+<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
+
+<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="nv">tactic</span><span class="w">   </span><span class="c">// rNUM is NUM, distinguished for readability of tactic arguments later</span><span class="w"></span>
+
+<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">              </span><span class="c">// sNUM is NUM, distinguished for readability of tactic arguments later</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">assumeStep</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">          </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">bNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+
+<span class="nv">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                   </span><span class="c">// can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;           (also apply in tactic)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                   </span><span class="c">// can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in tactic)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                    </span><span class="c">// identifier</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">               </span><span class="c">// can also use &#39;not&#39;, &#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;       (also apply in tactic)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;∧&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;       (also apply in tactic)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;∨&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;        (also apply in tactic)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;        (also apply in tactic)</span><span class="w"></span>
+
+<span class="nv">tactic</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// And-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Elimination1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Elimination2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Or-Introduction1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Or-Introduction2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">  </span><span class="c">// Or-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// Implication-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Negation-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// Negation-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Proof by contradiction</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>

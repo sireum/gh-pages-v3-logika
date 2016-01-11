@@ -1,0 +1,136 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   3.2. Propositional Logic
+   </b></big></big></big></big>
+   </font>
+
+.. _propositional-language:
+
+Propositional Logic
+*******************
+
+**Propositional Logic Input Language Grammar**
+
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 1
+
+The propositional logic input language consists of two main parts:
+(1) a sequent, which is followed by (2) a proof of the sequent.
+
+An example input has been shown in the :ref:`logika-examples` section.
+
+Sequent
+=======
+
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 3-6
+
+A sequent consists of premises and conclusions that are
+separated either by a turnstile ``⊢`` or a horizontal line
+(``HLINE``, i.e., three or more continuous dashes ``-``).
+In the former, the premise and conclusion expressions are
+separated by a comma ``,``; the latter separates them using
+whitespaces (newlines are considered as whitespaces inside
+sequents).
+
+Here is an example of sequent written using the turnstile notation.
+
+.. literalinclude:: propositional-1a.logika
+   :language: none
+   :lines: 1
+
+An equivalent sequent to that written using the horizontal line
+notation is as follows.
+
+.. literalinclude:: propositional-1b.logika
+   :language: none
+   :lines: 1-3
+
+Either way to express a sequent is fine; it is just a matter of style.
+
+Proof
+=====
+
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 8-23
+
+A proof consists of sequence of proof steps delimited by curly braces
+``{`` ... ``}``; the proof steps should be separated by newline(s).
+
+A proof step in a proof should be *uniquely*
+``NUM``\ bered (can be unordered), and it is either:
+(a) a regular proof step (atomic), or (b) a sub-proof (composite).
+(regular step number ``rNUM`` and sub-proof number ``sNUM are
+``NUM`` :ref:`literals <ops-literals>`, but distinguished here to
+increase readability of the :ref:`tactic grammar <prop-tactics>` later.
+
+In addition to its unique ``NUM``\ ber, a regular proof step consists of a
+claim expression, followed by a justification -- an application of
+one of propositional logic rules/:ref:`prop-tactics` to deduce the claim.
+A sub-proof in the propositional logic language consists an assumption proof
+step, followed by zero or more proof steps (that are delimited inside
+``{`` ... ``}`` similar to a proof); the steps should be separated by newline(s).
+
+Here is an example proof of the above sequent.
+
+.. literalinclude:: propositional-1a.logika
+   :language: none
+
+Expression
+==========
+
+.. _prop-tactics:
+
+Tactics
+=======
+
+Premise
+-------
+
+And-Introduction (∧i)
+---------------------
+
+And-Elimination (∧e1, ∧e2)
+--------------------------
+
+Or-Introduction (∨i1, ∨i2)
+--------------------------
+
+Or-Elimination (∨e)
+-------------------
+
+Implication-Introduction (→i)
+-----------------------------
+
+Implication-Elimination (→e)
+----------------------------
+
+Negation-Introduction (¬i)
+--------------------------
+
+Negation-Elimination (¬e)
+-------------------------
+
+Bottom-Elimination  (⊥e)
+------------------------
+
+Proof-by-contradiction (Pbc)
+----------------------------
+
+Complete Propositional Logic Input Language Grammar
+===================================================
+
+.. literalinclude:: propositional.txt
+   :language: antlr

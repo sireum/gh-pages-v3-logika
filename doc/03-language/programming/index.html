@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.4. Programming Logic &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../../index.html" />
+    <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
+    <link rel="next" title="Logika: Programming Logics" href="../../../dschmidt/index.html" />
+    <link rel="prev" title="3.3. Predicate Logic" href="../predicate/index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Documentation</a></li>
+                <li><a href="../../../dschmidt/index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">3.4. Programming Logic</a><ul>
+<li><a class="reference internal" href="#grammar">3.4.1. Grammar</a><ul>
+<li><a class="reference internal" href="#program">Program</a></li>
+<li><a class="reference internal" href="#statement">Statement</a></li>
+<li><a class="reference internal" href="#proof-statement">Proof Statement</a></li>
+<li><a class="reference internal" href="#expression">Expression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#well-formed-ness">3.4.2. Well-formed-ness</a><ul>
+<li><a class="reference internal" href="#type-checking">Type Checking</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tactics">3.4.3. Tactics</a><ul>
+<li><a class="reference internal" href="#subst1">Subst1</a></li>
+<li><a class="reference internal" href="#subst2">Subst2</a></li>
+<li><a class="reference internal" href="#algebra">Algebra</a></li>
+<li><a class="reference internal" href="#invariant">Invariant</a></li>
+<li><a class="reference internal" href="#auto">Auto</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+3.4. Programming Logic
+</b></big></big></big></big>
+</font><div class="section" id="programming-logic">
+<span id="programming-language"></span><h1>3.4. Programming Logic<a class="headerlink" href="#programming-logic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="grammar">
+<h2>3.4.1. Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program">
+<h3>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="statement">
+<h3>Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="proof-statement">
+<h3>Proof Statement<a class="headerlink" href="#proof-statement" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="expression">
+<h3>Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="well-formed-ness">
+<h2>3.4.2. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="type-checking">
+<h3>Type Checking<a class="headerlink" href="#type-checking" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="tactics">
+<h2>3.4.3. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subst1">
+<h3>Subst1<a class="headerlink" href="#subst1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="subst2">
+<h3>Subst2<a class="headerlink" href="#subst2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="algebra">
+<h3>Algebra<a class="headerlink" href="#algebra" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="invariant">
+<h3>Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="auto">
+<h3>Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>

@@ -34,7 +34,7 @@
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
     <link rel="top" title="Sireum Logika" href="../../index.html" />
     <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
-    <link rel="next" title="Logika: Programming Logics" href="../../dschmidt/index.html" />
+    <link rel="next" title="3.1. Basic Language Elements" href="basic/index.html" />
     <link rel="prev" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
   </head>
   <body role="document">
@@ -80,87 +80,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">3. The Logika Formal Input Language</a><ul>
-<li><a class="reference internal" href="#basic-language-elements">3.1. Basic Language Elements</a><ul>
-<li><a class="reference internal" href="#identifiers">3.1.1. Identifiers</a></li>
-<li><a class="reference internal" href="#operators-and-literals">3.1.2. Operators and Literals</a></li>
-<li><a class="reference internal" href="#keywords">3.1.3. Keywords</a><ul>
-<li><a class="reference internal" href="#scala-keywords">Scala Keywords</a></li>
-<li><a class="reference internal" href="#types">Types</a></li>
-<li><a class="reference internal" href="#built-in-functions">Built-in Functions</a></li>
-<li><a class="reference internal" href="#contracts">Contracts</a></li>
-<li><a class="reference internal" href="#tactics">Tactics</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#comments">3.1.4. Comments</a></li>
-<li><a class="reference internal" href="#newlines-and-whitespaces">3.1.5. Newlines and Whitespaces</a></li>
-<li><a class="reference internal" href="#grammatical-rules">3.1.6. Grammatical Rules</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#propositional-logic-input-language">3.2. Propositional Logic Input Language</a><ul>
-<li><a class="reference internal" href="#grammar">3.2.1. Grammar</a><ul>
-<li><a class="reference internal" href="#sequent">Sequent</a></li>
-<li><a class="reference internal" href="#proof">Proof</a></li>
-<li><a class="reference internal" href="#expression">Expression</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#well-formed-ness">3.2.2. Well-formed-ness</a></li>
-<li><a class="reference internal" href="#id1">3.2.3. Tactics</a><ul>
-<li><a class="reference internal" href="#premise">Premise</a></li>
-<li><a class="reference internal" href="#and-introduction-i">And-Introduction (∧i)</a></li>
-<li><a class="reference internal" href="#and-elimination-e1-e2">And-Elimination (∧e1, ∧e2)</a></li>
-<li><a class="reference internal" href="#or-introduction-i1-i2">Or-Introduction (∨i1, ∨i2)</a></li>
-<li><a class="reference internal" href="#or-elimination-e">Or-Elimination (∨e)</a></li>
-<li><a class="reference internal" href="#implication-introduction-i">Implication-Introduction (→i)</a></li>
-<li><a class="reference internal" href="#implication-elimination-e">Implication-Elimination (→e)</a></li>
-<li><a class="reference internal" href="#negation-introduction-i">Negation-Introduction (¬i)</a></li>
-<li><a class="reference internal" href="#negation-elimination-e">Negation-Elimination (¬e)</a></li>
-<li><a class="reference internal" href="#bottom-elimination-e">Bottom-Elimination  (⊥e)</a></li>
-<li><a class="reference internal" href="#proof-by-contradiction-pbc">Proof-by-contradiction (Pbc)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#predicate-logic-input-language">3.3. Predicate Logic Input Language</a><ul>
-<li><a class="reference internal" href="#id2">3.3.1. Grammar</a><ul>
-<li><a class="reference internal" href="#uninterpreted-function">Uninterpreted Function</a></li>
-<li><a class="reference internal" href="#universal-quantifications">Universal Quantifications (∀)</a></li>
-<li><a class="reference internal" href="#existensial-quantifications">Existensial Quantifications (∃)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3">3.3.2. Tactics</a><ul>
-<li><a class="reference internal" href="#forall-introduction-i">Forall-Introduction (∀i)</a></li>
-<li><a class="reference internal" href="#forall-elimination-e">Forall-Elimination (∀e)</a></li>
-<li><a class="reference internal" href="#exists-introduction-i">Exists-Introduction (∃i)</a></li>
-<li><a class="reference internal" href="#exists-elimination-e">Exists-Elimination (∃e)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#programming-logic-input-language">3.4. Programming Logic Input Language</a><ul>
-<li><a class="reference internal" href="#id4">3.4.1. Grammar</a><ul>
-<li><a class="reference internal" href="#program">Program</a></li>
-<li><a class="reference internal" href="#statement">Statement</a></li>
-<li><a class="reference internal" href="#proof-statement">Proof Statement</a></li>
-<li><a class="reference internal" href="#id5">Expression</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id6">3.4.2. Well-formed-ness</a><ul>
-<li><a class="reference internal" href="#type-checking">Type Checking</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id7">3.4.3. Tactics</a><ul>
-<li><a class="reference internal" href="#subst1">Subst1</a></li>
-<li><a class="reference internal" href="#subst2">Subst2</a></li>
-<li><a class="reference internal" href="#algebra">Algebra</a></li>
-<li><a class="reference internal" href="#invariant">Invariant</a></li>
-<li><a class="reference internal" href="#auto">Auto</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">3. The Logika Formal Input Language</a></li>
 </ul>
 </ul>
 </li>
@@ -221,359 +141,43 @@ Scala&#8217;s <em>multi-line</em>
 <a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> &#8211;
 more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> ... <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>.</p>
 <p>Let us first discuss the
-<a class="reference internal" href="#basic-language"><span>basic language elements</span></a> that are common to the two categories,
+<a class="reference internal" href="basic/index.html#basic-language"><span>basic language elements</span></a> that are common to the two categories,
 before proceeding to discuss the
-<a class="reference internal" href="#propositional-language"><span>propositional</span></a>,
-<a class="reference internal" href="#predicate-language"><span>predicate</span></a>, and
-<a class="reference internal" href="#programming-language"><span>programming</span></a> logic input languages.</p>
-<div class="section" id="basic-language-elements">
-<span id="basic-language"></span><h2>3.1. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="identifiers">
-<h3>3.1.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h3>
-<p>Variable and function (method) identifiers are of the following regular expression form:
-<code class="docutils literal"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
-underscores. A valid identifier should not be the same as any of Logika operators,
-literals, and keywords.</p>
-<p>Identifiers containing an underscore cannot be used in the programming context (i.e.,
-underscore cannot be a part of a user-declared variable/function identifier).</p>
-</div>
-<div class="section" id="operators-and-literals">
-<h3>3.1.2. Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h3>
-<p>Below are a table of Logika operators and literals in both programming and proof context,
-listed with an increasingly higher precedence order along with Math Unicode <a class="reference internal" href="../02-live/index.html#shortcuts"><span>LIVE Shortcuts</span></a>.
-Note that the proof context operators and literals include the ones in the programming
-context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
-<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java&#8217;s string literal</a>
-without the octal escape.</p>
+<a class="reference internal" href="propositional/index.html#propositional-language"><span>propositional</span></a>,
+<a class="reference internal" href="predicate/index.html#predicate-language"><span>predicate</span></a>, and
+<a class="reference internal" href="programming/index.html#programming-language"><span>programming</span></a> logic input languages.</p>
 <hr class="docutils" />
-<table border="1" class="docutils">
-<colgroup>
-<col width="15%" />
-<col width="23%" />
-<col width="22%" />
-<col width="40%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Programming Context</th>
-<th class="head">Proof Context (ASCII)</th>
-<th class="head">Proof Context (Math Unicode)</th>
-<th class="head"><a class="reference internal" href="../02-live/index.html#live"><span>LIVE</span></a> 2 <sup>nd</sup> Keystroke Shortcut (1 <sup>st</sup> Keystroke: <code class="docutils literal"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal"><span class="pre">⇧⌃;</span></code>)</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>&nbsp;</td>
-<td><code class="docutils literal"><span class="pre">|-</span></code></td>
-<td><code class="docutils literal"><span class="pre">⊢</span></code> (U+22A2)</td>
-<td>(<code class="docutils literal"><span class="pre">|</span></code> or <code class="docutils literal"><span class="pre">\</span></code>)</td>
-</tr>
-<tr class="row-odd"><td>&nbsp;</td>
-<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">all</span></code> <code class="docutils literal"><span class="pre">forall</span></code> <code class="docutils literal"><span class="pre">E</span></code> <code class="docutils literal"><span class="pre">some</span></code> <code class="docutils literal"><span class="pre">exists</span></code></td>
-<td><code class="docutils literal"><span class="pre">∀</span></code> (U+2200) <code class="docutils literal"><span class="pre">∃</span></code> (U+2203)</td>
-<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">E</span></code></td>
-</tr>
-<tr class="row-even"><td>&nbsp;</td>
-<td><code class="docutils literal"><span class="pre">-&gt;</span></code> <code class="docutils literal"><span class="pre">implies</span></code></td>
-<td><code class="docutils literal"><span class="pre">→</span></code> (U+21D2)</td>
-<td><code class="docutils literal"><span class="pre">-</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">|</span></code></td>
-<td><code class="docutils literal"><span class="pre">V</span></code> <code class="docutils literal"><span class="pre">or</span></code></td>
-<td><code class="docutils literal"><span class="pre">∨</span></code> (U+2228)</td>
-<td><code class="docutils literal"><span class="pre">V</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">&amp;</span></code></td>
-<td><code class="docutils literal"><span class="pre">^</span></code> <code class="docutils literal"><span class="pre">and</span></code></td>
-<td><code class="docutils literal"><span class="pre">∧</span></code> (U+2227)</td>
-<td>(<code class="docutils literal"><span class="pre">^</span></code> or <code class="docutils literal"><span class="pre">6</span></code>)</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&lt;=</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code> <code class="docutils literal"><span class="pre">&gt;=</span></code></td>
-<td>&nbsp;</td>
-<td><code class="docutils literal"><span class="pre">≤</span></code> (U+2264) <code class="docutils literal"><span class="pre">≥</span></code> (U+2265)</td>
-<td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">==</span></code> <code class="docutils literal"><span class="pre">!=</span></code> <code class="docutils literal"><span class="pre">!</span></code></td>
-<td><code class="docutils literal"><span class="pre">=</span></code> <code class="docutils literal"><span class="pre">~</span></code> <code class="docutils literal"><span class="pre">not</span></code></td>
-<td><code class="docutils literal"><span class="pre">≠</span></code> (U+2260) <code class="docutils literal"><span class="pre">¬</span></code> (U+00AC)</td>
-<td>(<code class="docutils literal"><span class="pre">!</span></code> or <code class="docutils literal"><span class="pre">1</span></code>) <code class="docutils literal"><span class="pre">N</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">:+</span></code></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">+</span></code> <code class="docutils literal"><span class="pre">-</span></code> <code class="docutils literal"><span class="pre">+:</span></code></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">*</span></code> <code class="docutils literal"><span class="pre">/</span></code> <code class="docutils literal"><span class="pre">%</span></code></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">true</span></code> <code class="docutils literal"><span class="pre">F</span></code> <code class="docutils literal"><span class="pre">false</span></code> <code class="docutils literal"><span class="pre">NUM</span></code> <code class="docutils literal"><span class="pre">STRING</span></code></td>
-<td><code class="docutils literal"><span class="pre">_|_</span></code></td>
-<td><code class="docutils literal"><span class="pre">⊤</span></code> (U+22A4) <code class="docutils literal"><span class="pre">⊥</span></code> (U+22A5)</td>
-<td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">F</span></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr class="docutils" />
-<div class="section" id="keywords">
-<h3>3.1.3. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
-<p>Logika keywords consists of Scala&#8217;s keywords, contract keywords,
-tactic keywords, and type keywords.</p>
-<div class="section" id="scala-keywords">
-<h4>Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre>abstract       case           catch          class          def
-do             else           extends        false          final
-finally        for            forSome        if             implicit
-import         lazy           macro          match          new
-null           object         override       package        private
-protected      return         sealed         super          this
-throw          trait          try            true           type
-val            var            while          with           yield
-</pre></div>
-</div>
-</div>
-<div class="section" id="types">
-<h4>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre>B              Z              ZS
-</pre></div>
-</div>
-</div>
-<div class="section" id="built-in-functions">
-<h4>Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre>readInt        randomInt      print          println
-</pre></div>
-</div>
-</div>
-<div class="section" id="contracts">
-<h4>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre>pre            requires       modifies       post           ensures
-fact           invariant      assert         assume
-</pre></div>
-</div>
-</div>
-<div class="section" id="tactics">
-<h4>Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre>premise        andi           ande1          ande2          ori1
-Vi1            ori2           Vi2            ore            Ve
-impliesi       impliese       noti           negi           note
-nege           bottome        falsee         Pbc
-foralli        alli           Ai             foralle        alle
-Ae             existsi        somei          Ei             existse
-somee          Ee
-subst1         subst2         algebra        auto
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="comments">
-<h3>3.1.4. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
-<p>Logika comments are <a class="reference external" href="https://en.wikipedia.org/wiki/C_syntax#Comments">C99</a>
-line (<code class="docutils literal"><span class="pre">//</span></code> ... until end of the line) and block (<code class="docutils literal"><span class="pre">/*</span></code> ... <code class="docutils literal"><span class="pre">*/</span></code>) comments.</p>
-</div>
-<div class="section" id="newlines-and-whitespaces">
-<h3>3.1.5. Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h3>
-<p>Scala is a line-oriented language where newline characters are treated specially in some cases.
-For example, newline characters <em>can</em> separate expressions in a code block.
-The <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#newline-characters">actual rules of when newlines are treated specially</a>
-are not immediately obvious but they behave &#8220;intuitively&#8221; (resulting in rare surprises when
-programming).</p>
-<p>Logika follows Scala&#8217;s line-orientation (otherwise, it is not a subset language),
-even inside proof context (e.g., proof steps have to be separated by newlines).
-For clarity sake, instead of explicitly listing newlines in the Logika context-free grammars
-that go beyond Scala&#8217;s, special situations are described in the relevant sections.
-Interested readers are referred to the full
-<a class="reference external" href="https://github.com/sireum/v3/blob/master/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4">Logika&#8217;s ANTLR4 grammar</a>
-(<code class="docutils literal"><span class="pre">NL</span></code> token) if such details are preferred.
-(A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
-to implement Scala&#8217;s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
-<p>Other than the special newline rules that Logika follows in proof context,
-Logika whitespaces are similar to Scala&#8217;s.</p>
-</div>
-<div class="section" id="grammatical-rules">
-<h3>3.1.6. Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h3>
-<p>Logika grammars are written in this document using the
-<a class="reference external" href="https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md">ANTLR4-style</a> of
-<a class="reference external" href="https://en.wikipedia.org/wiki/Backus–Naur_Form">Backus-Naur Form (BNF) grammar</a>.</p>
-</div>
-</div>
-<div class="section" id="propositional-logic-input-language">
-<span id="propositional-language"></span><h2>3.2. Propositional Logic Input Language<a class="headerlink" href="#propositional-logic-input-language" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="grammar">
-<h3>3.2.1. Grammar<a class="headerlink" href="#grammar" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">        </span><span class="c">// newlines are ignored until start of proof</span><span class="w"></span>
-
-<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;|-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊢&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">expList</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="o">*</span><span class="w"> </span><span class="no">HLINE</span><span class="w"> </span><span class="nv">exp</span><span class="o">+</span><span class="w"></span>
-
-<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">          </span><span class="c">// separated by newlines</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-
-<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
-
-<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="nv">tactic</span><span class="w">   </span><span class="c">// rNUM is NUM, distinguished for readability</span><span class="w"></span>
-
-<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">              </span><span class="c">// sNUM is NUM, distinguished for readability</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">assumeStep</span><span class="w">          </span><span class="c">// separated by newlines</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">          </span><span class="c">// separated by newlines</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-
-<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">bNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
-
-<span class="nv">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                   </span><span class="c">// can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;           (also apply in tactic)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                   </span><span class="c">// can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in tactic)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                    </span><span class="c">// identifier</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">               </span><span class="c">// can also use &#39;not&#39;, &#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;       (also apply in tactic)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;∧&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;       (also apply in tactic)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;∨&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;        (also apply in tactic)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">           </span><span class="c">// can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;        (also apply in tactic)</span><span class="w"></span>
-
-<span class="nv">tactic</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// And-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Elimination1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Elimination2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Or-Introduction1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Or-Introduction2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">  </span><span class="c">// Or-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Implication-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// Implication-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Negation-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// Negation-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Proof by contradiction</span><span class="w"></span>
-</pre></div>
-</div>
-<div class="section" id="sequent">
-<h4>Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="proof">
-<h4>Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="expression">
-<h4>Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="well-formed-ness">
-<h3>3.2.2. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id1">
-<h3>3.2.3. Tactics<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="premise">
-<h4>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="and-introduction-i">
-<h4>And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="and-elimination-e1-e2">
-<h4>And-Elimination (∧e1, ∧e2)<a class="headerlink" href="#and-elimination-e1-e2" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="or-introduction-i1-i2">
-<h4>Or-Introduction (∨i1, ∨i2)<a class="headerlink" href="#or-introduction-i1-i2" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="or-elimination-e">
-<h4>Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="implication-introduction-i">
-<h4>Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="implication-elimination-e">
-<h4>Implication-Elimination (→e)<a class="headerlink" href="#implication-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="negation-introduction-i">
-<h4>Negation-Introduction (¬i)<a class="headerlink" href="#negation-introduction-i" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="negation-elimination-e">
-<h4>Negation-Elimination (¬e)<a class="headerlink" href="#negation-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="bottom-elimination-e">
-<h4>Bottom-Elimination  (⊥e)<a class="headerlink" href="#bottom-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="proof-by-contradiction-pbc">
-<h4>Proof-by-contradiction (Pbc)<a class="headerlink" href="#proof-by-contradiction-pbc" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="section" id="predicate-logic-input-language">
-<span id="predicate-language"></span><h2>3.3. Predicate Logic Input Language<a class="headerlink" href="#predicate-logic-input-language" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>3.3.1. Grammar<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="uninterpreted-function">
-<h4>Uninterpreted Function<a class="headerlink" href="#uninterpreted-function" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="universal-quantifications">
-<h4>Universal Quantifications (∀)<a class="headerlink" href="#universal-quantifications" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="existensial-quantifications">
-<h4>Existensial Quantifications (∃)<a class="headerlink" href="#existensial-quantifications" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="id3">
-<h3>3.3.2. Tactics<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="forall-introduction-i">
-<h4>Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="forall-elimination-e">
-<h4>Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="exists-introduction-i">
-<h4>Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="exists-elimination-e">
-<h4>Exists-Elimination (∃e)<a class="headerlink" href="#exists-elimination-e" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="section" id="programming-logic-input-language">
-<span id="programming-language"></span><h2>3.4. Programming Logic Input Language<a class="headerlink" href="#programming-logic-input-language" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>3.4.1. Grammar<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="program">
-<h4>Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="statement">
-<h4>Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="proof-statement">
-<h4>Proof Statement<a class="headerlink" href="#proof-statement" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="id5">
-<h4>Expression<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="id6">
-<h3>3.4.2. Well-formed-ness<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="type-checking">
-<h4>Type Checking<a class="headerlink" href="#type-checking" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="id7">
-<h3>3.4.3. Tactics<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="subst1">
-<h4>Subst1<a class="headerlink" href="#subst1" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="subst2">
-<h4>Subst2<a class="headerlink" href="#subst2" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="algebra">
-<h4>Algebra<a class="headerlink" href="#algebra" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="invariant">
-<h4>Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="auto">
-<h4>Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic/index.html">3.1. Basic Language Elements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#identifiers">3.1.1. Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#operators-and-literals">3.1.2. Operators and Literals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#keywords">3.1.3. Keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#comments">3.1.4. Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#newlines-and-whitespaces">3.1.5. Newlines and Whitespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic/index.html#grammatical-rules">3.1.6. Grammatical Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="propositional/index.html">3.2. Propositional Logic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="propositional/index.html#sequent">3.2.1. Sequent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="propositional/index.html#proof">3.2.2. Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="propositional/index.html#expression">3.2.3. Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="propositional/index.html#tactics">3.2.4. Tactics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="propositional/index.html#complete-propositional-logic-input-language-grammar">3.2.5. Complete Propositional Logic Input Language Grammar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="predicate/index.html">3.3. Predicate Logic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="predicate/index.html#grammar">3.3.1. Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="predicate/index.html#tactics">3.3.2. Tactics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/index.html">3.4. Programming Logic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#grammar">3.4.1. Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#well-formed-ness">3.4.2. Well-formed-ness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#tactics">3.4.3. Tactics</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
