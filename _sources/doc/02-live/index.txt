@@ -106,11 +106,10 @@ LIVE Update
 ***********
 
 IntelliJ will notify you whenever there is a newer version of LIVE.
-If accepted and LIVE is updated, you also need to update Sireum v3's
+If accepted and LIVE is updated, you may also need to update Sireum v3's
 command-line interface (see :ref:`update`).
 LIVE tries to detect when Sireum v3 has not been updated and it would present
-a nice reminder that you need to update Sireum first
-(and it kindly refuses to work until it is updated).
+a nice reminder that you need to update Sireum.
 
 .. image:: sireum-needs-updating.png
    :width: 30%
