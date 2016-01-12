@@ -93,8 +93,54 @@ Once restarted, LIVE adds a ``Sireum`` -> ``Logika`` sub-menu under the
 `IntelliJ Tools menu <https://www.jetbrains.com/idea/help/menus-and-toolbars.html>`__.
 
 
-Optional: Adobe's Source Code Pro Font
-======================================
+Optional Settings
+*****************
+
+Configuring Scala and Scala Worksheet Settings
+==============================================
+
+By default, LIVE is :ref:`configured <live-configuration>` to also work with
+`Scala Worksheet <https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet>`__
+``.sc`` files; Scala Worksheet is an excellent tool for learning Scala.
+Using ``.sc`` files allow one to test and prove Logika programs using the same editor.
+
+You can :ref:`configure <live-configuration>` LIVE to also work with ``.scala`` files to
+benefit from, for example, its code-folding feature, which is handy for hiding
+proof claims that have been verified.
+
+To have a better experience working with Logika programs using the Scala or Scala
+Worksheet editors, it is best to configure IntelliJ's Scala
+`CodeStyle <https://www.jetbrains.com/idea/help/code-style.html>`__ and
+`Inspection <intellij inspections slow>`__ settings.
+
+* Logika does not accept margin characters that can be stripped for its
+  :ref:`proof statements <proof-statement>` that use multi-line strings.
+  By default, IntelliJ is configured to insert margin characters and
+  strip/insert margin on copy and paste.
+  It is best to disable these features when working with Logika
+  (see `Working with Strings in Scala <https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Strings+in+Scala>`__).
+
+* The IntelliJ Scala plugin defines some code inspections that are beneficial when
+  programming Scala programs. A couple of these code inspections produce spurious
+  warnings for Logika programs.
+  Thus, it is best to disable them when working on Logika programs.
+  The two code inspections can be found in the
+  `IntelliJ's Editor Inspections <https://www.jetbrains.com/idea/help/disabling-and-enabling-inspections.html>`__
+  settings under ``Scala`` -> ``General``:
+
+  * ``Comparing unrelated types``:
+    Logika uses arbitrary-precision integers (``scala.BigInt``, which is aliased as ``Z``
+    in Logika) instead of using 32-bit ``Int``.
+    IntelliJ gives a spurious warning when a variable of type ``Z`` (the alias) is
+    compared with an ``Int`` literal (it does not give such warning if ``BigInt`` is used
+    directly, but that is not supported in Logika).
+
+  * ``Redundant Return``:
+    Logika requires an explicit ``return`` keyword when a method returns a value (which
+    can only be done at the end of the method, thus, in Scala, it is unnecessary).
+
+Using A Fixed-Width Font
+========================
 
 When working with Logika math Unicode symbols (see :ref:`shortcuts`),
 it is best to use a font that is also (mostly) fixed-width for those symbols.
@@ -200,48 +246,7 @@ notification, etc.
 (LIVE waits a certain amount of time after the file content is modified before
 calling Logika; this "idle" wait time period can be :ref:`configured <live-configuration>`).
 
-Working with Scala, Scala Worksheet, and Other Text Editors
-===========================================================
-
 LIVE can also be configured to work with other file types.
-By default, it is :ref:`configured <live-configuration>` to also work with
-`Scala Worksheet <https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet>`__
-``.sc`` files, which is an excellent tool for learning Scala.
-Using ``.sc`` files allow one to test and prove Logika programs using the same editor.
-
-You can :ref:`configure <live-configuration>` LIVE to work with ``.scala`` files to
-benefit from, for example, its code folding feature, which is handy for hiding
-proof claims that have been verified.
-
-To have a better experience working with Logika programs using the Scala and Scala
-Worksheet editors, it is best to configure Scala CodeStyle and Inspection
-
-* Logika does not accept margin characters that can be stripped for its
-  :ref:`proof statements <proof-statement>` that use multi-line strings.
-  By default, IntelliJ is configured to insert margin characters and
-  strip/insert margin on copy and paste.
-  It is best to disable these features when working with Logika
-  (see `Working with Strings in Scala <https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Strings+in+Scala>`__).
-
-* The IntelliJ Scala plugin defines some code inspections that are beneficial when
-  programming Scala programs. A couple of these code inspections produce spurious
-  warnings for Logika programs.
-  Thus, it is best to disable them when working on Logika programs.
-  The two code inspections can be found in the
-  `IntelliJ's Editor Inspections <https://www.jetbrains.com/idea/help/disabling-and-enabling-inspections.html>`__
-  settings under ``Scala`` -> ``General``:
-
-  * ``Comparing unrelated types``:
-    Logika uses arbitrary-precision integers (``scala.BigInt``, which is aliased as ``Z``
-    in Logika) instead of using 32-bit ``Int``.
-    IntelliJ gives a spurious warning when a variable of type ``Z`` (the alias) is
-    compared with an ``Int`` literal (it does not give such warning if ``BigInt`` is used
-    directly, but that is not supported in Logika).
-
-  * ``Redundant Return``:
-    Logika requires an explicit ``return`` keyword when a method returns a value (which
-    can only be done at the end of the method, thus, in Scala, it is unnecessary).
-
 Note that opening any configured files other than ``.logika`` or ``.lgk``
 does not automatically cause LIVE to directly verify and monitor such files.
 Instead one needs to explicitly :ref:`invoke Logika <live-action>` once.

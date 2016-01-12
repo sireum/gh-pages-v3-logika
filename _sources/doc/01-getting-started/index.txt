@@ -206,8 +206,10 @@ thus, there is no configuration switch needed for it.
 
 .. _auto-mode:
 
-Auto Mode (``-a`` or ``--auto``)
-================================
+Auto Mode
+=========
+
+**Command-Line Option:** ``-a`` or ``--auto``.
 
 The auto mode enables :ref:`auto tactic <auto>` for deducing claims.
 It also enables Logika to try to automatically prove
@@ -234,8 +236,10 @@ propagate their premises along with their proven claims.
 For more information with examples, please refer to the
 :ref:`proof statement <proof-statement>` section.
 
-Last Mode (``-l`` or ``--last``)
-================================
+Last Mode
+=========
+
+**Command-Line Option:** ``-l`` or ``--last``.
 
 Logika supports checking multiple files at the same time.
 
@@ -250,8 +254,10 @@ type checks all the files).
 This is handy for proof management by separating a program
 of a system into multiple files.
 
-Sequent (``-s`` or ``--sequent``)
-=================================
+Sequent
+=======
+
+**Command-Line Option**: ``-s`` or ``--sequent``, followed by the sequent string to check.
 
 The sequent option is use to provide the sequent
 (as the following string argument to the option switch)
@@ -261,8 +267,10 @@ ensure some sort of consistency.
 
 .. _timeout:
 
-Timeout (``-t`` or ``--timeout``)
-=================================
+Timeout
+=======
+
+**Command-Line Option**: ``-t`` or ``--timeout``, followed by the timeout integer (non-positive means unbounded).
 
 Logika uses the Z3 theorem prover to automatically prove
 some formulae (e.g., arithmetic).
@@ -270,8 +278,10 @@ In some cases, Z3 might take a long time, thus,
 the timeout option specifies how long Z3 can spend to
 prove a claim.
 
-Satisfiability Checking Mode (``--sat``)
-========================================
+Satisfiability Checking Mode
+============================
+
+**Command-Line Option**: ``--sat``
 
 If enabled, Logika will check the satisfiability of
 contracts and facts (axioms) to ensure that
@@ -280,8 +290,10 @@ assuming untrue facts).
 
 .. _server:
 
-Server Mode (``--server``)
-==========================
+Server Mode
+===========
+
+**Command-Line Option**: ``--server``
 
 The server mode puts Logika to accepts requests through
 its console input and responds through its console output.
@@ -295,5 +307,10 @@ package; the actual serialization mechanisms are defined in
 `InputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/InputMessageJson.scala>`__
 and
 `OutputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/OutputMessageJson.scala>`__.
+
+.. note::
+
+   All other options are ignored when the server mode is enabled.
+
 
 ----
