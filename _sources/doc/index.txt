@@ -17,8 +17,8 @@ License.
 ----
 
 .. toctree::
-   :maxdepth: 3
-   :numbered: 3
+   :maxdepth: 4
+   :numbered: 4
 
    01-getting-started/index.rst
    02-live/index.rst

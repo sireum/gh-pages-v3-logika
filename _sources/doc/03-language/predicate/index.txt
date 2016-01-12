@@ -22,8 +22,8 @@ Predicate Logic
 Grammar
 =======
 
-Uninterpreted Function
-----------------------
+Uninterpreted (First-Order) Functions
+-------------------------------------
 
 Universal Quantifications (∀)
 -----------------------------
