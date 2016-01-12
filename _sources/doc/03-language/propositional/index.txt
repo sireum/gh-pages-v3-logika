@@ -35,12 +35,12 @@ Sequent
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 3-6
+   :lines: 3-11
 
-A sequent consists of premises (optional) and conclusions that are
-separated either by a turnstile ``⊢`` or a horizontal line
-(``HLINE``, i.e., three or more continuous dashes ``-``).
-In the former, the premise and conclusion expressions are
+A sequent consists of premises (optional) and
+conclusions that are separated either by a turnstile
+``⊢`` or a ``HLINE``.
+In the former, each premises and conclusions is
 separated by a comma ``,``; the latter separates them using
 whitespaces (newlines are considered as whitespaces inside
 sequents).
@@ -65,7 +65,7 @@ Proof
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 8-23
+   :lines: 13-28
 
 A proof consists of a sequence of proof steps delimited by curly braces
 ``{`` ... ``}``; the proof steps should be separated by newline(s).
@@ -100,8 +100,8 @@ sub-proofs, where ``5`` and ``8`` are nested inside ``3``.
 
 .. _scoping:
 
-Scoping Rules
--------------
+Proof Scoping Rules
+===================
 
 When applying an :ref:`inference rule <prop-rules>` to justify a proof step,
 one can refer to proof step numbers preceeding it
@@ -114,13 +114,41 @@ Hence, the scoping rules are similar to variable scoping rules in various progra
 languages such as Scala or Java (with the exception that, again, each proof step number
 is unique throughout the whole proof, in order to avoid confusion).
 
+.. _schematic-pattern:
 
-Expression
-==========
+Proof Schematic Pattern
+=======================
+
+The discussion on :ref:`justification and inference rules <prop-rules>`
+uses the following schematic pattern rule and notation.
+
+At any regular proof step numbered ``Z`` whose claim expression is ``R``,
+when ``Z`` applies an inference rule and refer to some other
+proof step numbers, they should be in ``Z``'s :ref:`scope <scoping>`.
+
+Now, suppose that ``Z`` uses an inference rule ``I`` that accepts two
+claim arguments that can be retrieved from proof steps ``Y`` and ``Z``.
+Here is a schematic pattern notation that we use throughout this section::
+
+    …
+    Y. …
+    …
+    Z. …
+    …
+    X. R    I Y Z
+    …
+
+
+In this notation, ``Y`` or ``Z`` could be the same proof step and/or
+in the outer :ref:`scope <scoping>` layers of ``X``.
+
+
+Claim Expression
+================
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 25-32
+   :lines: 30-37
 
 The claim boolean expression language in propositional logic is rather small; it
 consists of boolean literals, variable reference (identifier),
@@ -143,7 +171,7 @@ Justification and Inference Rules
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 34-46
+   :lines: 39-51
 
 Each regular proof step should justify the deduction that it makes
 to derive its claim by applying some inference rules.
@@ -151,34 +179,17 @@ This section summarizes Logika's rendition of propositional logic
 natural deduction rules that are intuitively described in
 :ref:`propositional-logic`.
 
-The discussion for each inference rules assumes that it is being
-applied in a regular proof step numbered ``Z``
+The subsequent discussion for each inference rules assumes that
+it is being applied at a regular proof step numbered ``Z``
 and whose claim expression is ``R``.
-When ``Z`` applies an inference rule and refer to some other
-proof step numbers, they should be in ``Z``'s :ref:`scope <scoping>`.
 
-Suppose that ``Z`` uses an inference rule ``I`` that accepts two
-claim arguments that can be retrieved from proof steps ``Y`` and ``Z``.
-Here is a schematic pattern notation that we use throughout this section::
-
-    …
-    Y. …
-    …
-    Z. …
-    …
-    X. R    I Y Z
-    …
-
-
-In this notation, ``Y`` or ``Z`` could be the same and/or in the outer
-:ref:`scope <scoping>` layers of ``X``.
 
 Premise
 -------
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 34
+   :lines: 39
 
 The ``premise`` justification can be used to call on one of the
 sequent's premises associated with the proof.
@@ -207,32 +218,39 @@ And-Introduction (∧i)
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 48, 35
+   :lines: 53, 40
 
 The ∧i rule requires two arguments, which are regular proof step
-numbers.
-Here is a valid schematic inference pattern for ∧i where ``R ≡ P ∧ Q``::
+numbers ``rNUM``\ s.
 
-    …
-    Y. P        … // justification for P
-    …
-    Z. Q        … // justification for Q
-    …
-    X. P ∧ Q    ∧i Y Z
-    …
+Here is a schematic pattern for valid inference using ∧i, where ``R ≡ P ∧ Q``:
+
+.. literalinclude:: and-intro-pattern.txt
+   :language: none
+   :caption: **∧i Schematic Pattern**
+   :name: and-intro-pattern
 
 For example,
 
 .. literalinclude:: and-intro-1.logika
    :language: none
 
-In this case, ``Y ≡ Z ≡ 1``, ``P ≡ Q ≡ ⊤``, and ``R ≡ ⊤ ∧ ⊤``.
+In this case, the pattern is instantiated with
+``Y ≡ Z ≡ 1``, ``P ≡ Q ≡ ⊤``, and ``R ≡ ⊤ ∧ ⊤``.
 
-And-Elimination (∧e1, ∧e2)
---------------------------
+Another example,
 
-Or-Introduction (∨i1, ∨i2)
---------------------------
+.. literalinclude:: and-intro-2.logika
+   :language: none
+
+In this example, ``Y ≡ 1``, ``P ≡ q``, ``Z ≡ 2``, ``Q ≡ p``, and ``R ≡ p ∧ q``.
+
+
+And-Eliminations (∧e1, ∧e2)
+---------------------------
+
+Or-Introductions (∨i1, ∨i2)
+---------------------------
 
 Or-Elimination (∨e)
 -------------------
@@ -249,8 +267,8 @@ Negation-Introduction (¬i)
 Negation-Elimination (¬e)
 -------------------------
 
-Bottom-Elimination  (⊥e)
-------------------------
+⊥-Elimination  (⊥e)
+-------------------
 
 Proof-by-contradiction (Pbc)
 ----------------------------
