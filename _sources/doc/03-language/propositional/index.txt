@@ -25,7 +25,8 @@ Propositional Logic
    :lines: 1
 
 The propositional logic input language consists of two main parts:
-(1) a sequent, which is followed by (2) a proof of the sequent.
+(1) a sequent, which is followed by (2) a proof of the
+sequent.
 
 An example input has been shown in the :ref:`logika-examples` section.
 
@@ -36,7 +37,7 @@ Sequent
    :language: antlr
    :lines: 3-6
 
-A sequent consists of premises and conclusions that are
+A sequent consists of premises (optional) and conclusions that are
 separated either by a turnstile ``⊢`` or a horizontal line
 (``HLINE``, i.e., three or more continuous dashes ``-``).
 In the former, the premise and conclusion expressions are
@@ -66,30 +67,70 @@ Proof
    :language: antlr
    :lines: 8-23
 
-A proof consists of sequence of proof steps delimited by curly braces
+A proof consists of a sequence of proof steps delimited by curly braces
 ``{`` ... ``}``; the proof steps should be separated by newline(s).
 
-A proof step in a proof should be *uniquely*
-``NUM``\ bered (can be unordered), and it is either:
+Each proof step in the whole proof should be *uniquely*
+``NUM``\ bered (but can be out of order), and it is either:
 (a) a regular proof step (atomic), or (b) a sub-proof (composite).
 (Regular step number ``rNUM`` and sub-proof number ``sNUM`` are
 ``NUM`` :ref:`literals <ops-literals>`, but distinguished here to
 increase readability of the :ref:`tactic grammar <prop-tactics>` later.)
 
-In addition to its unique ``NUM``\ ber, a regular proof step consists of a
-claim expression, followed by a justification -- an application of
+In addition to its unique number, a regular proof step consists of a
+claim expression, followed by a justification -- a valid application of
 one of propositional logic rules/:ref:`prop-tactics` to deduce the claim.
-A sub-proof in the propositional logic language consists an assumption proof
-step, followed by zero or more proof steps (that are delimited inside
-``{`` ... ``}`` similar to a proof); the steps should be separated by newline(s).
+A sub-proof in the propositional logic language starts with an assumption
+(``assume`` justification) that is a regular proof step,
+followed by zero or more proof steps (they are delimited inside
+``{`` ... ``}`` similar to a proof); the steps, including the assumption,
+should be separated by newline(s).
 
-Here is an example proof of the above sequent.
+Here is an example proof of the above sequent: ``p → r,  q → r  ⊢  (p ∨ q) → r``.
 
 .. literalinclude:: propositional-1a.logika
    :language: none
+   :lines: 2-
+
+Steps ``1``, ``2``, ``7``, ``10``, ``11``, and ``12`` are regular proof steps;
+steps ``4``, ``6``, and ``9`` are assumptions; and ``3``, ``5``, and ``8`` are
+sub-proofs, where ``5`` and ``8`` are nested inside ``3``.
+
+Scoping Rules
+-------------
+
+When applying a :ref:`tactic <prop-tactics>` in a proof step,
+one can refer to proof step numbers preceeding it
+in the same level of ``{`` ... ``}`` (e.g., ``11`` refers to ``4``, ``5``, and ``8``)
+or at the preeceding step numbers in its outer ``{`` ... ``}`` layers
+(e.g., ``7`` refers ``1``).
+As a non-example, Step ``10`` cannot refer to step ``7`` to deduce its claim.
+
+Hence, the scoping rules are similar to variable scoping rules in various programming
+languages such as Scala or Java (with the exception that, again, each proof step number
+is unique throughout the whole proof, in order to avoid confusion).
+
 
 Expression
 ==========
+
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 25-32
+
+The claim boolean expression language in propositional logic is rather small; it
+consists of boolean literals, variable reference (identifier),
+parenthesis expression, one unary expression (negation),
+and and/or/imply binary expressions.
+Note that variables do not need to be explicitly declared in the propositional
+input language.
+
+Also, a parenthesis expression is structurally or semantically
+indistinguishable from the expression it contains;
+it is only used as a means to override operator precedences.
+In other words, for any Logika expression ``e``, ``e ≡ (e)``.
+This equivalence holds even for programming logic expressions.
+
 
 .. _prop-tactics:
 
@@ -129,8 +170,8 @@ Bottom-Elimination  (⊥e)
 Proof-by-contradiction (Pbc)
 ----------------------------
 
-Complete Propositional Logic Input Language Grammar
-===================================================
+Propositional Logic Input Language Grammar
+==========================================
 
 .. literalinclude:: propositional.txt
    :language: antlr
