@@ -139,8 +139,8 @@ Here is a schematic pattern notation that we use throughout this section::
     …
 
 
-In this notation, ``Y`` or ``Z`` could be the same proof step and/or
-in the outer :ref:`scope <scoping>` layers of ``X``.
+In this notation, ``Y`` or ``Z`` could be the same proof step,
+out of order, and/or in the outer :ref:`scope <scoping>` layers of ``X``.
 
 
 Claim Expression
@@ -247,15 +247,18 @@ Another example,
 In this example, ``X ≡ 1``, ``P ≡ q``, ``Y ≡ 2``, ``Q ≡ p``,
 ``Z ≡ 3``, and ``R ≡ p ∧ q``.
 
+The rest of this section assumes that one already "groks"
+the schematic pattern by now, hence, without examples and
+only discuss Logika nuances that enhance the natural
+deduction rules in :ref:`propositional-logic`.
+
 And-Eliminations (∧e1, ∧e2)
 ---------------------------
-
 
 .. literalinclude:: and-elim1-pattern.txt
    :language: none
    :caption: **∧e1 Schematic Pattern**
    :name: and-elim1-pattern
-
 
 .. literalinclude:: and-elim2-pattern.txt
    :language: none
@@ -266,8 +269,24 @@ And-Eliminations (∧e1, ∧e2)
 Or-Introductions (∨i1, ∨i2)
 ---------------------------
 
+.. literalinclude:: or-intro1-pattern.txt
+   :language: none
+   :caption: **∨i1 Schematic Pattern**
+   :name: or-intro1-pattern
+
+.. literalinclude:: or-intro2-pattern.txt
+   :language: none
+   :caption: **∨i2 Schematic Pattern**
+   :name: or-intro2-pattern
+
+
 Or-Elimination (∨e)
 -------------------
+
+.. literalinclude:: or-elim-pattern.txt
+   :language: none
+   :caption: **∨e Schematic Pattern**
+   :name: or-elim-pattern
 
 Implication-Introduction (→i)
 -----------------------------

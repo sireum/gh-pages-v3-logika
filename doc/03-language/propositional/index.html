@@ -279,8 +279,8 @@ X. R    I Y Z
 …
 </pre></div>
 </div>
-<p>In this notation, <code class="docutils literal"><span class="pre">Y</span></code> or <code class="docutils literal"><span class="pre">Z</span></code> could be the same proof step and/or
-in the outer <a class="reference internal" href="#scoping"><span>scope</span></a> layers of <code class="docutils literal"><span class="pre">X</span></code>.</p>
+<p>In this notation, <code class="docutils literal"><span class="pre">Y</span></code> or <code class="docutils literal"><span class="pre">Z</span></code> could be the same proof step,
+out of order, and/or in the outer <a class="reference internal" href="#scoping"><span>scope</span></a> layers of <code class="docutils literal"><span class="pre">X</span></code>.</p>
 </div>
 <div class="section" id="claim-expression">
 <h2>3.2.5. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
@@ -404,6 +404,10 @@ Z.  P ∧ Q    ∧i X Y      // R ≡ P ∧ Q
 </div>
 <p>In this example, <code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">q</span></code>, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">p</span></code>,
 <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">3</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>.</p>
+<p>The rest of this section assumes that one already &#8220;groks&#8221;
+the schematic pattern by now, hence, without examples and
+only discuss Logika nuances that enhance the natural
+deduction rules in <a class="reference internal" href="../../../dschmidt/07-propositional-logic/index.html#propositional-logic"><span>Applications of Propositional Logic to Program Proving</span></a>.</p>
 </div>
 <div class="section" id="and-eliminations-e1-e2">
 <h3>And-Eliminations (∧e1, ∧e2)<a class="headerlink" href="#and-eliminations-e1-e2" title="Permalink to this headline">¶</a></h3>
@@ -430,9 +434,53 @@ Z.  Q        ∧e2 X  // R ≡ Q
 </div>
 <div class="section" id="or-introductions-i1-i2">
 <h3>Or-Introductions (∨i1, ∨i2)<a class="headerlink" href="#or-introductions-i1-i2" title="Permalink to this headline">¶</a></h3>
+<div class="literal-block-wrapper container" id="or-intro1-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>∨i1 Schematic Pattern</strong></span><a class="headerlink" href="#or-intro1-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre>…
+X.  P        …
+…
+Z.  P ∨ Q    ∨i1 X  // R ≡ P ∨ Q
+…
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="or-intro2-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>∨i2 Schematic Pattern</strong></span><a class="headerlink" href="#or-intro2-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre>…
+X.  Q        …
+…
+Z.  P ∨ Q    ∨i2 X  // R ≡ P ∨ Q
+…
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="or-elimination-e">
 <h3>Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
+<div class="literal-block-wrapper container" id="or-elim-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>∨e Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre>…
+X.  P ∨ Q    …
+…
+Y1. {
+      Y11. P  assume
+      …
+      Y1K. R  …
+      …
+    }
+…
+Y2. {
+      Y21. Q  assume
+      …
+      Y2K. R  …
+      …
+    }
+…
+Z.  R         ∨e X Y1 Y2
+…
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="implication-introduction-i">
 <h3>Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h3>
