@@ -124,12 +124,12 @@ Expression
 
 The claim boolean expression language in propositional logic is rather small; it
 consists of boolean literals, variable reference (identifier),
-parenthesis expression, one unary expression (negation),
+parenthesized expression, one unary expression (negation),
 and and/or/imply binary expressions.
 Note that variables do not need to be explicitly declared in the propositional
 input language.
 
-Also, a parenthesis expression is structurally or semantically
+Also, a parenthesized expression is structurally or semantically
 indistinguishable from the expression it contains;
 it is only used as a means to override operator precedences.
 In other words, for any Logika expression ``e``, ``e ≡ (e)``.
