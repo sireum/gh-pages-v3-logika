@@ -39,8 +39,8 @@ Well-formed-ness
 Type Checking
 -------------
 
-Tactics
-=======
+Inference Rules
+===============
 
 Subst1
 ------

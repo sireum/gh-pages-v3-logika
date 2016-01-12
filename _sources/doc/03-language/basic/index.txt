@@ -67,7 +67,7 @@ Keywords
 ========
 
 Logika keywords consists of Scala's keywords, contract keywords,
-tactic keywords, and type keywords.
+justification keywords, and type keywords.
 
 Scala Keywords
 --------------
@@ -103,8 +103,8 @@ Contracts
     fact           invariant      assert         assume
 
 
-Tactics
--------
+Justifications
+--------------
 ::
 
     premise        andi           ande1          ande2          ori1

@@ -32,8 +32,8 @@ Existensial Quantifications (∃)
 -------------------------------
 
 
-Tactics
-=======
+Inference Rules
+===============
 
 Forall-Introduction (∀i)
 ------------------------

@@ -87,7 +87,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#expression">3.2.3. Expression</a></li>
-<li><a class="reference internal" href="#tactics">3.2.4. Tactics</a><ul>
+<li><a class="reference internal" href="#inference-rules">3.2.4. Inference Rules</a><ul>
 <li><a class="reference internal" href="#premise">Premise</a></li>
 <li><a class="reference internal" href="#and-introduction-i">And-Introduction (∧i)</a></li>
 <li><a class="reference internal" href="#and-elimination-e1-e2">And-Elimination (∧e1, ∧e2)</a></li>
@@ -209,10 +209,10 @@ notation is as follows.</p>
 (a) a regular proof step (atomic), or (b) a sub-proof (composite).
 (Regular step number <code class="docutils literal"><span class="pre">rNUM</span></code> and sub-proof number <code class="docutils literal"><span class="pre">sNUM</span></code> are
 <code class="docutils literal"><span class="pre">NUM</span></code> <a class="reference internal" href="../basic/index.html#ops-literals"><span>literals</span></a>, but distinguished here to
-increase readability of the <a class="reference internal" href="#prop-tactics"><span>tactic grammar</span></a> later.)</p>
+increase readability of the <span class="xref std std-ref">justification grammar</span> later.)</p>
 <p>In addition to its unique number, a regular proof step consists of a
 claim expression, followed by a justification &#8211; a valid application of
-one of propositional logic rules/<a class="reference internal" href="#prop-tactics"><span>Tactics</span></a> to deduce the claim.
+one of propositional logic rules/<span class="xref std std-ref">prop-just</span> to deduce the claim.
 A sub-proof in the propositional logic language starts with an assumption
 (<code class="docutils literal"><span class="pre">assume</span></code> justification) that is a regular proof step,
 followed by zero or more proof steps (they are delimited inside
@@ -243,7 +243,7 @@ steps <code class="docutils literal"><span class="pre">4</span></code>, <code cl
 sub-proofs, where <code class="docutils literal"><span class="pre">5</span></code> and <code class="docutils literal"><span class="pre">8</span></code> are nested inside <code class="docutils literal"><span class="pre">3</span></code>.</p>
 <div class="section" id="scoping-rules">
 <h3>Scoping Rules<a class="headerlink" href="#scoping-rules" title="Permalink to this headline">¶</a></h3>
-<p>When applying a <a class="reference internal" href="#prop-tactics"><span>tactic</span></a> in a proof step,
+<p>When applying an inference rule to <span class="xref std std-ref">justify</span> a proof step,
 one can refer to proof step numbers preceeding it
 in the same level of <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> (e.g., <code class="docutils literal"><span class="pre">11</span></code> refers to <code class="docutils literal"><span class="pre">4</span></code>, <code class="docutils literal"><span class="pre">5</span></code>, and <code class="docutils literal"><span class="pre">8</span></code>)
 or at the preeceding step numbers in its outer <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> layers
@@ -278,8 +278,8 @@ it is only used as a means to override operator precedences.
 In other words, for any Logika expression <code class="docutils literal"><span class="pre">e</span></code>, <code class="docutils literal"><span class="pre">e</span> <span class="pre">≡</span> <span class="pre">(e)</span></code>.
 This equivalence holds even for programming logic expressions.</p>
 </div>
-<div class="section" id="tactics">
-<span id="prop-tactics"></span><h2>3.2.4. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inference-rules">
+<span id="prop-rules"></span><h2>3.2.4. Inference Rules<a class="headerlink" href="#inference-rules" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="premise">
 <h3>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h3>
 </div>

@@ -75,11 +75,11 @@ Each proof step in the whole proof should be *uniquely*
 (a) a regular proof step (atomic), or (b) a sub-proof (composite).
 (Regular step number ``rNUM`` and sub-proof number ``sNUM`` are
 ``NUM`` :ref:`literals <ops-literals>`, but distinguished here to
-increase readability of the :ref:`tactic grammar <prop-tactics>` later.)
+increase readability of the :ref:`justification grammar <prop-just>` later.)
 
 In addition to its unique number, a regular proof step consists of a
 claim expression, followed by a justification -- a valid application of
-one of propositional logic rules/:ref:`prop-tactics` to deduce the claim.
+one of propositional logic rules/:ref:`prop-just` to deduce the claim.
 A sub-proof in the propositional logic language starts with an assumption
 (``assume`` justification) that is a regular proof step,
 followed by zero or more proof steps (they are delimited inside
@@ -99,7 +99,7 @@ sub-proofs, where ``5`` and ``8`` are nested inside ``3``.
 Scoping Rules
 -------------
 
-When applying a :ref:`tactic <prop-tactics>` in a proof step,
+When applying an inference rule to :ref:`justify <prop-just>` a proof step,
 one can refer to proof step numbers preceeding it
 in the same level of ``{`` ... ``}`` (e.g., ``11`` refers to ``4``, ``5``, and ``8``)
 or at the preeceding step numbers in its outer ``{`` ... ``}`` layers
@@ -132,10 +132,10 @@ In other words, for any Logika expression ``e``, ``e ≡ (e)``.
 This equivalence holds even for programming logic expressions.
 
 
-.. _prop-tactics:
+.. _prop-rules:
 
-Tactics
-=======
+Inference Rules
+===============
 
 Premise
 -------
