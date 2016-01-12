@@ -3,7 +3,7 @@
    <br/>
    <font color="darkgray">
    <big><big><b>
-   Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+   Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal Input Language</a>
    </b></big></big>
    </font>
    <br/>

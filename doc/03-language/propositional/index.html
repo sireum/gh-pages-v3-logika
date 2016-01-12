@@ -136,7 +136,7 @@
   <br/>
 <font color="darkgray">
 <big><big><b>
-Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal Input Language</a>
 </b></big></big>
 </font>
 <br/>
@@ -244,7 +244,7 @@ should be separated by newline(s).</p>
 steps <code class="docutils literal"><span class="pre">4</span></code>, <code class="docutils literal"><span class="pre">6</span></code>, and <code class="docutils literal"><span class="pre">9</span></code> are assumptions; and <code class="docutils literal"><span class="pre">3</span></code>, <code class="docutils literal"><span class="pre">5</span></code>, and <code class="docutils literal"><span class="pre">8</span></code> are
 sub-proofs, where <code class="docutils literal"><span class="pre">5</span></code> and <code class="docutils literal"><span class="pre">8</span></code> are nested inside <code class="docutils literal"><span class="pre">3</span></code>.</p>
 <div class="section" id="scoping-rules">
-<h3>Scoping Rules<a class="headerlink" href="#scoping-rules" title="Permalink to this headline">¶</a></h3>
+<span id="scoping"></span><h3>Scoping Rules<a class="headerlink" href="#scoping-rules" title="Permalink to this headline">¶</a></h3>
 <p>When applying an <a class="reference internal" href="#prop-rules"><span>inference rule</span></a> to justify a proof step,
 one can refer to proof step numbers preceeding it
 in the same level of <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> (e.g., <code class="docutils literal"><span class="pre">11</span></code> refers to <code class="docutils literal"><span class="pre">4</span></code>, <code class="docutils literal"><span class="pre">5</span></code>, and <code class="docutils literal"><span class="pre">8</span></code>)
@@ -295,6 +295,8 @@ This equivalence holds even for programming logic expressions.</p>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Proof by contradiction</span><span class="w"></span>
+
+<span class="nv">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">/* … */</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Each regular proof step should justify the deduction that it makes
@@ -302,11 +304,81 @@ to derive its claim by applying some inference rules.
 This section summarizes Logika&#8217;s rendition of propositional logic
 natural deduction rules that are intuitively described in
 <a class="reference internal" href="../../../dschmidt/07-propositional-logic/index.html#propositional-logic"><span>Applications of Propositional Logic to Program Proving</span></a>.</p>
+<p>The discussion for each inference rules assumes that it is being
+applied in a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>
+and whose claim expression is <code class="docutils literal"><span class="pre">R</span></code>.
+When <code class="docutils literal"><span class="pre">Z</span></code> applies an inference rule and refer to some other
+proof step numbers, they should be in <code class="docutils literal"><span class="pre">Z</span></code>&#8216;s <a class="reference internal" href="#scoping"><span>scope</span></a>.</p>
+<p>Suppose that <code class="docutils literal"><span class="pre">Z</span></code> uses an inference rule <code class="docutils literal"><span class="pre">I</span></code> that accepts two
+claim arguments that can be retrieved from proof steps <code class="docutils literal"><span class="pre">Y</span></code> and <code class="docutils literal"><span class="pre">Z</span></code>.
+Here is a schematic pattern notation that we use throughout this section:</p>
+<div class="highlight-python"><div class="highlight"><pre>…
+Y. …
+…
+Z. …
+…
+X. R    I Y Z
+…
+</pre></div>
+</div>
+<p>In this notation, <code class="docutils literal"><span class="pre">Y</span></code> or <code class="docutils literal"><span class="pre">Z</span></code> could be in the outer <a class="reference internal" href="#scoping"><span>scope</span></a> layers of <code class="docutils literal"><span class="pre">X</span></code>.</p>
 <div class="section" id="premise">
 <h3>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can be used to call on one of the
+sequent&#8217;s premises associated with the proof.
+That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent&#8217;s premises.
+For example,</p>
+<div class="highlight-none"><div class="highlight"><pre>p,  q  ⊢  q
+{
+  1. q    premise
+}
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal"><span class="pre">R</span></code> is <code class="docutils literal"><span class="pre">q</span></code> and
+proof step <code class="docutils literal"><span class="pre">1</span></code> uses <code class="docutils literal"><span class="pre">premise</span></code> to deduce its claim <code class="docutils literal"><span class="pre">q</span></code>,
+which is exactly the second sequent&#8217;s premise.</p>
+<p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can also be used to conjure <code class="docutils literal"><span class="pre">⊤</span></code> (true).
+For example, here is the shortest sequent and proof in Logika.</p>
+<div class="highlight-none"><div class="highlight"><pre>⊢  ⊤
+{
+  1. ⊤   premise
+}
+</pre></div>
+</div>
+<p>In this example, there is no premise in the sequent needed to
+justify for <code class="docutils literal"><span class="pre">⊤</span></code>; one can always depend on <code class="docutils literal"><span class="pre">⊤</span></code> to be true
+to its true self.</p>
 </div>
 <div class="section" id="and-introduction-i">
 <h3>And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">/* … */</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">       </span><span class="c">// And-Introduction</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The ∧i rule requires two arguments, which are regular proof step
+numbers.
+Here is a valid schematic inference pattern for ∧i where <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>…
+Y. P        … // just. for P
+…
+Z. Q        … // just. for Q
+…
+X. P ∧ Q    ∧i Y Z
+…
+</pre></div>
+</div>
+<p>For example,</p>
+<div class="highlight-none"><div class="highlight"><pre>⊢ ⊤ ∧ ⊤
+{
+  1. ⊤       premise
+  2. ⊤ ∧ ⊤   ∧i 1 1
+}
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">⊤</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">⊤</span> <span class="pre">∧</span> <span class="pre">⊤</span></code>.</p>
 </div>
 <div class="section" id="and-elimination-e1-e2">
 <h3>And-Elimination (∧e1, ∧e2)<a class="headerlink" href="#and-elimination-e1-e2" title="Permalink to this headline">¶</a></h3>

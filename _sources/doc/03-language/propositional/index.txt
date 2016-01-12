@@ -3,7 +3,7 @@
    <br/>
    <font color="darkgray">
    <big><big><b>
-   Sireum Logika Documentation &mdash; <a href="../">3. The Logika Formal Input Language</a>
+   Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal Input Language</a>
    </b></big></big>
    </font>
    <br/>
@@ -98,6 +98,8 @@ Steps ``1``, ``2``, ``7``, ``10``, ``11``, and ``12`` are regular proof steps;
 steps ``4``, ``6``, and ``9`` are assumptions; and ``3``, ``5``, and ``8`` are
 sub-proofs, where ``5`` and ``8`` are nested inside ``3``.
 
+.. _scoping:
+
 Scoping Rules
 -------------
 
@@ -149,12 +151,81 @@ This section summarizes Logika's rendition of propositional logic
 natural deduction rules that are intuitively described in
 :ref:`propositional-logic`.
 
+The discussion for each inference rules assumes that it is being
+applied in a regular proof step numbered ``Z``
+and whose claim expression is ``R``.
+When ``Z`` applies an inference rule and refer to some other
+proof step numbers, they should be in ``Z``'s :ref:`scope <scoping>`.
+
+Suppose that ``Z`` uses an inference rule ``I`` that accepts two
+claim arguments that can be retrieved from proof steps ``Y`` and ``Z``.
+Here is a schematic pattern notation that we use throughout this section::
+
+    …
+    Y. …
+    …
+    Z. …
+    …
+    X. R    I Y Z
+    …
+
+
+In this notation, ``Y`` or ``Z`` could be in the outer :ref:`scope <scoping>` layers of ``X``.
 
 Premise
 -------
 
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 34
+
+The ``premise`` justification can be used to call on one of the
+sequent's premises associated with the proof.
+That is, ``R`` has to be one of the sequent's premises.
+For example,
+
+.. literalinclude:: premise-1.logika
+   :language: none
+
+In this case, ``R`` is ``q`` and
+proof step ``1`` uses ``premise`` to deduce its claim ``q``,
+which is exactly the second sequent's premise.
+
+The ``premise`` justification can also be used to conjure ``⊤`` (true).
+For example, here is the shortest sequent and proof in Logika.
+
+.. literalinclude:: premise-2.logika
+   :language: none
+
+In this example, there is no premise in the sequent needed to
+justify for ``⊤``; one can always depend on ``⊤`` to be true
+to its true self.
+
 And-Introduction (∧i)
 ---------------------
+
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 48, 35
+
+The ∧i rule requires two arguments, which are regular proof step
+numbers.
+Here is a valid schematic inference pattern for ∧i where ``R ≡ P ∧ Q``::
+
+    …
+    Y. P        … // just. for P
+    …
+    Z. Q        … // just. for Q
+    …
+    X. P ∧ Q    ∧i Y Z
+    …
+
+For example,
+
+.. literalinclude:: and-intro-1.logika
+   :language: none
+
+In this case, ``Y ≡ Z ≡ 1``, ``P ≡ Q ≡ ⊤``, and ``R ≡ ⊤ ∧ ⊤``.
 
 And-Elimination (∧e1, ∧e2)
 --------------------------
@@ -188,3 +259,4 @@ Propositional Logic Input Language Grammar
 
 .. literalinclude:: propositional.txt
    :language: antlr
+   :lines: 1 - 46
