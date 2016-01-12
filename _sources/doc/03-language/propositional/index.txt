@@ -170,7 +170,8 @@ Here is a schematic pattern notation that we use throughout this section::
     …
 
 
-In this notation, ``Y`` or ``Z`` could be in the outer :ref:`scope <scoping>` layers of ``X``.
+In this notation, ``Y`` or ``Z`` could be the same and/or in the outer
+:ref:`scope <scoping>` layers of ``X``.
 
 Premise
 -------
