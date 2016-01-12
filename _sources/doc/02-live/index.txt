@@ -26,7 +26,6 @@ Here is a screenshot:
    :align: center
    :width: 80%
 
-
 LIVE Features
 *************
 
@@ -59,7 +58,11 @@ LIVE features mimic the typical features one would expect in a modern IDE.
 LIVE Install
 ************
 
+**Requirement:** LIVE requires **IntelliJ 15**.
+
 .. note::
+
+
 
    After installing/updating LIVE, please update Logika as well
    (see :ref:`update`).
