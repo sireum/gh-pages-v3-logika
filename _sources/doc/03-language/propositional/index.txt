@@ -106,8 +106,9 @@ Proof Scoping Rules
 ===================
 
 When applying an :ref:`inference rule <prop-rules>` to justify a proof step,
-one can refer to proof step numbers lexicographically preceeding
-it (i.e., instead of by their numbers) in the same level of ``{`` ... ``}``
+one can refer to proof step numbers preceeding it
+(i.e., in the order of appearance instead of by their number ordering)
+in the same level of ``{`` ... ``}``
 (e.g., ``11`` refers to ``4``, ``5``, and ``8``)
 or at the preeceding step numbers in any of its outer ``{`` ... ``}`` layers
 (e.g., ``7`` refers ``1``).
