@@ -346,18 +346,19 @@ For example,</p>
 }
 </pre></div>
 </div>
-<p>In this case, <code class="docutils literal"><span class="pre">R</span></code> is <code class="docutils literal"><span class="pre">q</span></code> and
-proof step <code class="docutils literal"><span class="pre">1</span></code> uses <code class="docutils literal"><span class="pre">premise</span></code> to deduce its claim <code class="docutils literal"><span class="pre">q</span></code>,
-which is exactly the second sequent&#8217;s premise.</p>
+<p>In this case, <code class="docutils literal"><span class="pre">R</span></code> is <code class="docutils literal"><span class="pre">q</span></code> (<code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">q</span></code>) and
+proof step <code class="docutils literal"><span class="pre">1</span></code> (<code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code>) uses <code class="docutils literal"><span class="pre">premise</span></code> to deduce its
+claim <code class="docutils literal"><span class="pre">q</span></code>, which is exactly the second sequent&#8217;s premise.</p>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can also be used to conjure <code class="docutils literal"><span class="pre">⊤</span></code> (true).
-For example, here is the shortest sequent and proof in Logika.</p>
+For example, here is the shortest sequent proof in Logika.</p>
 <div class="highlight-none"><div class="highlight"><pre>⊢  ⊤
 {
   1. ⊤   premise
 }
 </pre></div>
 </div>
-<p>In this example, there is no premise in the sequent needed to
+<p>In this example, <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">⊤</span></code>.
+There is no premise in the sequent needed to
 justify for <code class="docutils literal"><span class="pre">⊤</span></code>; one can always depend on <code class="docutils literal"><span class="pre">⊤</span></code> to be true
 to its true self.</p>
 </div>
@@ -369,15 +370,15 @@ to its true self.</p>
 </div>
 <p>The ∧i rule requires two arguments, which are regular proof step
 numbers <code class="docutils literal"><span class="pre">rNUM</span></code>s.</p>
-<p>Here is a schematic pattern for valid inference using ∧i, where <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code>:</p>
+<p>Here is a schematic pattern for valid inference using ∧i:</p>
 <div class="literal-block-wrapper container" id="and-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>∧i Schematic Pattern</strong></span><a class="headerlink" href="#and-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre>…
-Y. P        … // justification for P
+X.  P        … // justification for P
 …
-Z. Q        … // justification for Q
+Y.  Q        … // justification for Q
 …
-X. P ∧ Q    ∧i Y Z
+Z.  P ∧ Q    ∧i X Y      // R ≡ P ∧ Q
 …
 </pre></div>
 </div>
@@ -391,7 +392,7 @@ X. P ∧ Q    ∧i Y Z
 </pre></div>
 </div>
 <p>In this case, the pattern is instantiated with
-<code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">⊤</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">⊤</span> <span class="pre">∧</span> <span class="pre">⊤</span></code>.</p>
+<code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">⊤</span></code>, <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">2</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">⊤</span> <span class="pre">∧</span> <span class="pre">⊤</span></code>.</p>
 <p>Another example,</p>
 <div class="highlight-none"><div class="highlight"><pre>p, q ⊢ p ∧ q
 {
@@ -401,10 +402,31 @@ X. P ∧ Q    ∧i Y Z
 }
 </pre></div>
 </div>
-<p>In this example, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">q</span></code>, <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">p</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>.</p>
+<p>In this example, <code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">q</span></code>, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">p</span></code>,
+<code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">3</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>.</p>
 </div>
 <div class="section" id="and-eliminations-e1-e2">
 <h3>And-Eliminations (∧e1, ∧e2)<a class="headerlink" href="#and-eliminations-e1-e2" title="Permalink to this headline">¶</a></h3>
+<div class="literal-block-wrapper container" id="and-elim1-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>∧e1 Schematic Pattern</strong></span><a class="headerlink" href="#and-elim1-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre>…
+X.  P ∧ Q    …
+…
+Z.  P        ∧e1 X  // R ≡ P
+…
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="and-elim2-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>∧e2 Schematic Pattern</strong></span><a class="headerlink" href="#and-elim2-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre>…
+X.  P ∧ Q    …
+…
+Z.  Q        ∧e2 X  // R ≡ Q
+…
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="or-introductions-i1-i2">
 <h3>Or-Introductions (∨i1, ∨i2)<a class="headerlink" href="#or-introductions-i1-i2" title="Permalink to this headline">¶</a></h3>
