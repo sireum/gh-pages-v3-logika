@@ -143,7 +143,7 @@ Justification and Inference Rules
 
 .. literalinclude:: propositional.txt
    :language: antlr
-   :lines: 34-
+   :lines: 34-46
 
 Each regular proof step should justify the deduction that it makes
 to derive its claim by applying some inference rules.
