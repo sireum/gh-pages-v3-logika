@@ -290,8 +290,10 @@ LIVE provides two main shortcuts:
 ----
 
 * For invoking Logika to analyze an opened file document.
-  The default keyboard shortcut is Shift-Command-L (``⇧⌘L`` in Mac OS X) or
-  Shift-Control-L (``⇧⌃L`` in Linux and Windows).
+  The default keyboard shortcut is Shift-Command-L (``⇧⌘L``) when
+  `Intelli's Keymap <https://www.jetbrains.com/idea/help/keymap.html>`__
+  is set using one of the ``Mac OS X`` Keymaps (i.e., the keymap name
+  contains ``Mac OS X``); otherwise, it is Shift-Control-L (``⇧⌃L``).
 
   This shortcut is only available for file types that have been registered in
   :ref:`live-configuration`.
