@@ -212,6 +212,9 @@ Opening any of the ``.logika`` files would:
 
 ----
 
+.. |logikastatusanim| image:: logika-status-anim.gif
+   :scale: 50
+
 * Display the Logika status icon the bottom-right corner of the IntelliJ project window
   `status bar <https://www.jetbrains.com/idea/help/status-bar.html>`__:
 
@@ -220,7 +223,7 @@ Opening any of the ``.logika`` files would:
   The presence of the Logika status icon indicates that the :ref:`Logika server <server>`
   is running/waiting in the background.
 
-  The status icon animates when Logika has a pending work or is working in
+  The status icon animates |logikastatusanim| when Logika has a pending work or is working in
   the background, and hovering the mouse cursor shows a tooltip of Logika's status.
 
   Clicking on the status icon will bring up a dialog that asks whether the server should
