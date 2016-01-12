@@ -209,8 +209,7 @@ thus, there is no configuration switch needed for it.
 Auto Mode (``-a`` or ``--auto``)
 ================================
 
-The auto mode enables :ref:`auto justification/tactic <auto>`
-for deducing claims.
+The auto mode enables :ref:`auto tactic <auto>` for deducing claims.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).

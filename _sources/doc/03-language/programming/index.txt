@@ -39,8 +39,8 @@ Well-formed-ness
 Type Checking
 -------------
 
-Inference Rules
-===============
+Justification and Inference Rules
+=================================
 
 Subst1
 ------
@@ -54,5 +54,7 @@ Algebra
 Invariant
 ---------
 
-Auto
-----
+.. _auto:
+
+Auto Tactic
+===========
