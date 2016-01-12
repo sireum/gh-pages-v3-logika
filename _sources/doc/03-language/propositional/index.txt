@@ -139,6 +139,17 @@ This equivalence holds even for programming logic expressions.
 Justification and Inference Rules
 =================================
 
+.. literalinclude:: propositional.txt
+   :language: antlr
+   :lines: 34-
+
+Each regular proof step should justify the deduction that it makes
+to derive its claim by applying some inference rules.
+This section summarizes Logika's rendition of propositional logic
+natural deduction rules that are intuitively described in
+:ref:`propositional-logic`.
+
+
 Premise
 -------
 
