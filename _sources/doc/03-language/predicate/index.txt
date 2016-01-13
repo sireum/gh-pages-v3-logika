@@ -58,8 +58,8 @@ Extended Claim Expressions
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 32 - 45
-   :emphasize-lines: 4, 10 - 12, 14
+   :lines: 32 - 43
+   :emphasize-lines: 4, 10 - 12
 
 Similar to :ref:`propositional logic claim expressions <prop-claim>`,
 the predicate logic claim expressions are untyped.
@@ -151,9 +151,59 @@ Universally (∀) and Existensially (∃) Quantified Claims
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 65, 41 - 45
+   :lines: 63, 41 - 43
+
+Logika's quantification form can be used to quantify
+over multiple variables at once (followed by a
+claim expression), which means the same as if one
+quantifies over the variables one by one in the same order.
+For example,
+``∀x ∀y p(x,y)`` is semantically equivalent as ``∀x,y p(x,y)``;
+however, for simplicity, they are not considered as structurally equivalent, i.e.,
+``¬(∀x ∀y p(x,y) ≡ ∀x,y p(x,y))`` or ``∀x ∀y p(x,y) ≢ ∀x,y p(x,y)``.
+
+Well-Formed-ness
+----------------
+
+For simplicity, Logika does not allow identifier "shadowing",
+which means that a variable cannot be quantified more than one time in the
+same scope.
+For example, ``∀x (… ∧ ∀x …)`` is ill-formed in Logika, but
+``(∀x …)  ∧  (∀x …)`` is well-formed.
+
+In general, ``x ∧ ∀x …`` is well-formed, because the first variable ``x`` is
+different than the quantified variable ``x``.
+The first ``x`` is a *free* variable because it is not
+defined/quantified in the expression where it is referred,
+while the second ``x`` is defined in the quantification.
+
+However, to avoid confusion, Logika disallows such claim expression.
+This is because, in the context of a sequent and its proof, all free variables
+are actually *implicitly universally-quantified* (even for propositional logic).
+In that sense, disallowing the same identifier used for as both free and quantified
+is consistent with the restriction of disallowing identifier shadowing.
+
+Abstract Notation
+-----------------
+
+One abstract notation that is used from now on is to express that a claim
+``R`` that refers to some free (in the context of ``R`` itself) variables
+such as ``a`` and ``b``, by delimiting the list of variables in
+a square bracket after ``R``, e.g.,: ``R[a, b]``.
+In this notation, the order appearance of variables ``a`` and ``b``
+do not matter.
+For example, one can abstract ``∀x,y p(x,y))`` as ``∀x,y Q[x,y]`` or
+``∀x,y Q[y,x]`` because both just say that the claim ``Q`` refers
+to both ``x`` and ``y``.
 
 
+Thus, in general, when defining a quantification, it is either one of the
+following forms:
+``∀a1,...,aN P[a1,...,aN]`` (universal), or
+``∃a1,...,aN P[a1,...,aN]`` (existensial).
+That is, all the quantified variables appear in the claim (most preferably).
+This is not a requirement, but it is not useful to introduce
+a quantified variable without ever using it in the claim.
 
 .. _revised-assumptions:
 
@@ -165,6 +215,9 @@ Revised Assumption Proof Steps
    :lines: 28-30
    :emphasize-lines: 2 - 3
 
+
+
+
 .. _pred-rules:
 
 Quantified Claim Justification and Inference Rules
@@ -172,7 +225,7 @@ Quantified Claim Justification and Inference Rules
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 47-63
+   :lines: 45-61
    :emphasize-lines: 14 - 17
 
 Forall-Introduction (∀i)
@@ -180,28 +233,28 @@ Forall-Introduction (∀i)
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 69, 60
+   :lines: 67, 58
 
 Forall-Elimination (∀e)
 -----------------------
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 69, 61
+   :lines: 67, 59
 
 Exists-Introduction (∃i)
 ------------------------
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 69, 62
+   :lines: 67, 60
 
 Exists-Elimination (∃e)
 -----------------------
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 69, 63
+   :lines: 67, 61
 
 .. _pred-grammar:
 
@@ -213,5 +266,5 @@ in the :ref:`prop-grammar` are highlighted.
 
 .. literalinclude:: predicate.txt
    :language: antlr
-   :lines: 1 - 63
-   :emphasize-lines: 1, 29 - 30, 35, 41 - 43, 45, 60 - 63
+   :lines: 1 - 61
+   :emphasize-lines: 1, 29 - 30, 35, 41 - 43, 43, 58 - 61

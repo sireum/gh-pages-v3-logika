@@ -84,6 +84,8 @@
 <li><a class="reference internal" href="#extended-claim-expressions">3.3.1. Extended Claim Expressions</a><ul>
 <li><a class="reference internal" href="#first-order-uninterpreted-predicate-and-function-applications">3.3.1.1. First-Order Uninterpreted Predicate and Function Applications</a></li>
 <li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.1.2. Universally (∀) and Existensially (∃) Quantified Claims</a></li>
+<li><a class="reference internal" href="#well-formed-ness">3.3.1.3. Well-Formed-ness</a></li>
+<li><a class="reference internal" href="#abstract-notation">3.3.1.4. Abstract Notation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#revised-assumption-proof-steps">3.3.2. Revised Assumption Proof Steps</a></li>
@@ -190,9 +192,7 @@ given in the <a class="reference internal" href="#pred-grammar"><span>Predicate 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                      </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 </span><span class="hll"><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                      </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
-</span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="nv">idList</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
-</span>
-<span class="hll"><span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"></span>
+</span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w">      </span><span class="c">// the claim most preferably refers to the identifiers</span><span class="w"></span>
 </span></pre></div>
 </div>
 <p>Similar to <a class="reference internal" href="../propositional/index.html#prop-claim"><span>propositional logic claim expressions</span></a>,
@@ -210,7 +210,7 @@ predicate logic has two additional kinds of expression:
 as highlighted above, and described next.</p>
 <div class="section" id="first-order-uninterpreted-predicate-and-function-applications">
 <span id="uninterpreted-functions"></span><h3>3.3.1.1. First-Order Uninterpreted Predicate and Function Applications<a class="headerlink" href="#first-order-uninterpreted-predicate-and-function-applications" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">      </span><span class="c">// predicate application</span><span class="w"></span>
 
 <span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
@@ -290,18 +290,61 @@ each function has a fixed number of arguments.</p>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                      </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                      </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
-<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="nv">idList</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
-
-<span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"></span>
+<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w">      </span><span class="c">// the claim most preferably refers to the identifiers</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Logika&#8217;s quantification form can be used to quantify
+over multiple variables at once (followed by a
+claim expression), which means the same as if one
+quantifies over the variables one by one in the same order.
+For example,
+<code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span></code> is semantically equivalent as <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>;
+however, for simplicity, they are not considered as structurally equivalent, i.e.,
+<code class="docutils literal"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
+</div>
+<div class="section" id="well-formed-ness">
+<h3>3.3.1.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+<p>For simplicity, Logika does not allow identifier &#8220;shadowing&#8221;,
+which means that a variable cannot be quantified more than one time in the
+same scope.
+For example, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
+<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&nbsp; <span class="pre">∧</span>&nbsp; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
+<p>In general, <code class="docutils literal"><span class="pre">x</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…</span></code> is well-formed, because the first variable <code class="docutils literal"><span class="pre">x</span></code> is
+different than the quantified variable <code class="docutils literal"><span class="pre">x</span></code>.
+The first <code class="docutils literal"><span class="pre">x</span></code> is a <em>free</em> variable because it is not
+defined/quantified in the expression where it is referred,
+while the second <code class="docutils literal"><span class="pre">x</span></code> is defined in the quantification.</p>
+<p>However, to avoid confusion, Logika disallows such claim expression.
+This is because, in the context of a sequent and its proof, all free variables
+are actually <em>implicitly universally-quantified</em> (even for propositional logic).
+In that sense, disallowing the same identifier used for as both free and quantified
+is consistent with the restriction of disallowing identifier shadowing.</p>
+</div>
+<div class="section" id="abstract-notation">
+<h3>3.3.1.4. Abstract Notation<a class="headerlink" href="#abstract-notation" title="Permalink to this headline">¶</a></h3>
+<p>One abstract notation that is used from now on is to express that a claim
+<code class="docutils literal"><span class="pre">R</span></code> that refers to some free (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself) variables
+such as <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>, by delimiting the list of variables in
+a square bracket after <code class="docutils literal"><span class="pre">R</span></code>, e.g.,: <code class="docutils literal"><span class="pre">R[a,</span> <span class="pre">b]</span></code>.
+In this notation, the order appearance of variables <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>
+do not matter.
+For example, one can abstract <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> as <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">Q[x,y]</span></code> or
+<code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">Q[y,x]</span></code> because both just say that the claim <code class="docutils literal"><span class="pre">Q</span></code> refers
+to both <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.</p>
+<p>Thus, in general, when defining a quantification, it is either one of the
+following forms:
+<code class="docutils literal"><span class="pre">∀a1,...,aN</span> <span class="pre">P[a1,...,aN]</span></code> (universal), or
+<code class="docutils literal"><span class="pre">∃a1,...,aN</span> <span class="pre">P[a1,...,aN]</span></code> (existensial).
+That is, all the quantified variables appear in the claim (most preferably).
+This is not a requirement, but it is not useful to introduce
+a quantified variable without ever using it in the claim.</p>
 </div>
 </div>
 <div class="section" id="revised-assumption-proof-steps">
 <span id="revised-assumptions"></span><h2>3.3.2. Revised Assumption Proof Steps<a class="headerlink" href="#revised-assumption-proof-steps" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w">                </span><span class="c">// ID must be &quot;fresh&quot;; used for ForAll-Introduction</span><span class="w"></span>
-</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; claim uses the fresh ID; used for Exists-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; the claim most preferably refers to ID; used for Exists-Elimination</span><span class="w"></span>
 </span></pre></div>
 </div>
 </div>
@@ -388,7 +431,7 @@ in the <a class="reference internal" href="../propositional/index.html#prop-gram
 
 <span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w">                </span><span class="c">// ID must be &quot;fresh&quot;; used for ForAll-Introduction</span><span class="w"></span>
-</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; claim uses the fresh ID; used for Exists-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; the claim most preferably refers to ID; used for Exists-Elimination</span><span class="w"></span>
 </span>
 <span class="nv">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
@@ -401,9 +444,7 @@ in the <a class="reference internal" href="../propositional/index.html#prop-gram
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                      </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 </span><span class="hll"><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                      </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
-</span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="nv">idList</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
-</span>
-<span class="hll"><span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"></span>
+</span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w">      </span><span class="c">// the claim most preferably refers to the identifiers</span><span class="w"></span>
 </span>
 <span class="nv">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
