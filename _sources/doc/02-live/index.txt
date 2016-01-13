@@ -147,8 +147,9 @@ Using A Fixed-Width Font
 When working with Logika math Unicode symbols (see :ref:`shortcuts`),
 it is best to use a font that is also (mostly) fixed-width for those symbols.
 
+For Mac OS X and Linux,
 `Adobe's Source Code Pro <https://github.com/adobe-fonts/source-code-pro>`__
-is one such font (it is also an excellent font for programming or other
+is a good font to use (it is also an excellent font for programming or other
 purposes where a fixed-width font is desirable).
 
 Follow the
@@ -195,6 +196,9 @@ Opening any of the ``.logika`` files would:
 
 * Syntax highlight the file document as shown in
   :ref:`the screenshot at the top of this page <live>`.
+
+  The syntax highlighting uses
+  `IntelliJ's Language Defaults editor color settings <https://www.jetbrains.com/idea/help/configuring-colors-and-fonts.html>`__.
 
 ----
 

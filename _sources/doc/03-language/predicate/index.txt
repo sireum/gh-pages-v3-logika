@@ -18,31 +18,199 @@
 Predicate Logic
 ***************
 
+The Logika predicate logic input language is a small
+extension of the :ref:`propositional-language` input language
+where the additional language elements are:
+(1) :ref:`uninterpreted-functions`,
+(2) :ref:`quantified-claims`,
+(3) :ref:`revised-assumptions`,
+(4) :ref:`pred-rules`.
 
-Grammar
-=======
+Similar to the discussion in the :ref:`propositional-language` input
+language chapter, this chapter only discuss
+Logika's rendition of predicate logic natural deductions;
+the reader is referred to :ref:`predicate-logic` for intuitive
+discussion on predicate logic.
 
-Uninterpreted (First-Order) Functions
--------------------------------------
+**Predicate Logic Input Language Grammar**
 
-Universal Quantifications (∀)
------------------------------
+.. _predicate-1:
 
-Existensial Quantifications (∃)
--------------------------------
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 1
+
+The predicate logic input language is similar to that of
+:ref:`propositional-language` input language, where it consists
+of a sequent and the sequent's proof. Here is an example that is
+also a `syllogism <https://en.wikipedia.org/wiki/Syllogism>`__:
+
+.. literalinclude:: predicate-1.logika
+   :language: none
+
+In the subsequent description, only language elements that are new
+or extend the :ref:`propositional-language` input language are
+discussed. The complete predicate logic input language is
+given in the :ref:`pred-grammar` section as a reference.
+
+Extended Claim Expressions
+==========================
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 32 - 45
+   :emphasize-lines: 4, 10 - 12, 14
+
+Similar to :ref:`propositional logic claim expressions <prop-claim>`,
+the predicate logic claim expressions are untyped.
+One can take the view that all variables in Logika's predicate logic
+language are of integer type and
+all predicates/functions accepts only integers and returns an integer, where
+zero is treated as ``⊥`` and non-zero as ``⊤``.
+Integers are desirable in this context instead of booleans because
+it allows one to quantify over (infinitely) many objects
+instead of only two.
+
+At any rate, the claim expression language in Logika's
+predicate logic has two additional kinds of expression:
+(1) predicate/function applications, and (2) quantified claims,
+as highlighted above, and described next.
 
 
-Justification and Inference Rules
-=================================
+.. _uninterpreted-functions:
+
+First-Order Uninterpreted Predicate and Function Applications
+-------------------------------------------------------------
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 65, 35, 10 - 11
+
+A predicate is a function that returns either ``⊤`` or ``⊥``.
+In predicate logic, the meaning of each function is unspecified,
+thus, uninterpreted.
+
+Instead of depending on function interpretations,
+Logika's predicate logic reasoning uses
+:ref:`rewriting/substitution techniques <pred-rules>`, in addition to
+:ref:`structural equivalence <structural-eq>` (``≡``)
+that is used in propositional logic.
+The techniques depend on the fact that each function is
+pure, meaning that it produces the same result
+when given the same arguments regardless of how many times
+it is applied (invoked/called).
+
+A predicate is applied by referring to its
+identifier followed by some ordered arguments (optional)
+which are separated by a comma (``,``) and delimited by a
+parenthesis, such as shown in the
+:ref:`syllogism <predicate-1>` example above.
+
+Predicates have to always be supplied with arguments whenever
+referred (as a convenient consequence of Logika's
+first-order-ness).
+This makes it easy to distinguish whether an identifier is
+a predicate, e.g.,:
+
+.. literalinclude:: predicate-3.logika
+   :language: none
+
+In this popular syllogism,
+``Socrates`` is distinguishably a variable (intuitively, it points
+to Socrates the person, which is mechanically modeled using
+an integer object made up from ``1``\ s and ``0``\ s), but
+``human`` and ``mortal`` are predicates (which intuitively,
+classify whether an object is a human and a mortal, respectively).
+
+In Logika, all functions are first-order, i.e., they
+do not accept function values as arguments. Note that this
+does not preclude functions to accepts results of other functions,
+as illustrated in the following example:
+
+.. literalinclude:: predicate-2.logika
+   :language: none
+
+As can be observed, the ``gt`` predicate can accepts results of
+applying functions ``inc`` and ``dec``.
+(By the way, the example uses uninterpreted functions/predicates
+to model properties of integer arithmetic operators
+due to the lack for algebra support in Logika's predicate logic.)
+
+Furthermore, Logika functions cannot be overloaded;
+each is only associated with exactly one signature.
+In Logika's predicate logic, the signature is
+only determined by the number of its arguments; hence,
+each function has a fixed number of arguments.
+
+
+.. _quantified-claims:
+
+Universally (∀) and Existensially (∃) Quantified Claims
+-------------------------------------------------------
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 65, 41 - 45
+
+
+
+.. _revised-assumptions:
+
+Revised Assumption Proof Steps
+==============================
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 28-30
+   :emphasize-lines: 2 - 3
+
+.. _pred-rules:
+
+Quantified Claim Justification and Inference Rules
+==================================================
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 47-63
+   :emphasize-lines: 14 - 17
 
 Forall-Introduction (∀i)
 ------------------------
 
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 69, 60
+
 Forall-Elimination (∀e)
 -----------------------
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 69, 61
 
 Exists-Introduction (∃i)
 ------------------------
 
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 69, 62
+
 Exists-Elimination (∃e)
 -----------------------
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 69, 63
+
+.. _pred-grammar:
+
+Predicate Logic Input Language Grammar
+======================================
+
+Note that extended language elements that are not
+in the :ref:`prop-grammar` are highlighted.
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 1 - 63
+   :emphasize-lines: 1, 29 - 30, 35, 41 - 43, 45, 60 - 63

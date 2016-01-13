@@ -85,7 +85,11 @@
 <li><a class="reference internal" href="#proof">3.2.2. Proof</a></li>
 <li><a class="reference internal" href="#proof-scoping-rules">3.2.3. Proof Scoping Rules</a></li>
 <li><a class="reference internal" href="#proof-schematic-pattern">3.2.4. Proof Schematic Pattern</a></li>
-<li><a class="reference internal" href="#claim-expression">3.2.5. Claim Expression</a></li>
+<li><a class="reference internal" href="#claim-expression">3.2.5. Claim Expression</a><ul>
+<li><a class="reference internal" href="#newlines-in-expression">3.2.5.1. Newlines in Expression</a></li>
+<li><a class="reference internal" href="#expression-equivalence">3.2.5.2. Expression Equivalence (<code class="docutils literal"><span class="pre">≡</span></code>)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#justification-and-inference-rules">3.2.6. Justification and Inference Rules</a><ul>
 <li><a class="reference internal" href="#premise">3.2.6.1. Premise</a></li>
 <li><a class="reference internal" href="#and-introduction-i">3.2.6.2. And-Introduction (∧i)</a></li>
@@ -312,7 +316,7 @@ Z. R    I X
 which preceeds <code class="docutils literal"><span class="pre">Z</span></code>.</p>
 </div>
 <div class="section" id="claim-expression">
-<h2>3.2.5. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
+<span id="prop-claim"></span><h2>3.2.5. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                      </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                      </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                       </span><span class="c">// identifier</span><span class="w"></span>
@@ -326,14 +330,13 @@ which preceeds <code class="docutils literal"><span class="pre">Z</span></code>.
 <p>The claim boolean expression language in propositional logic is rather small; it
 consists of boolean literals, variable reference (identifier),
 parenthesized expression, one unary expression (negation),
-and and/or/imply binary expressions.
+and and/or/imply binary expressions;
+they are listed in decreasing order of precedence (i.e., first is highest) that
+is inline with the precedence ordering specified in the <a class="reference internal" href="../basic/index.html#ops-literals"><span>Operators and Literals</span></a> section.
 Note that variables do not need to be explicitly declared nor typed (they are booleans)
 in the propositional input language.</p>
-<p>Also, a parenthesized expression is structurally or semantically
-indistinguishable from the expression it contains;
-it is only used as a means to override operator precedences.
-In other words, for any Logika expression <code class="docutils literal"><span class="pre">e</span></code>, <code class="docutils literal"><span class="pre">e</span> <span class="pre">≡</span> <span class="pre">(e)</span></code>.
-This equivalence holds even for programming logic expressions.</p>
+<div class="section" id="newlines-in-expression">
+<h3>3.2.5.1. Newlines in Expression<a class="headerlink" href="#newlines-in-expression" title="Permalink to this headline">¶</a></h3>
 <p>One newline separator can be inserted after a binary expression operator.
 For example, <code class="docutils literal"><span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code> is the same as:</p>
 <div class="highlight-python"><div class="highlight"><pre>P ∧
@@ -359,6 +362,18 @@ That is:</p>
 <p>These rules follow
 <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html">Scala&#8217;s line-orientation</a>
 (follow the link to see more examples).</p>
+</div>
+<div class="section" id="expression-equivalence">
+<span id="structural-eq"></span><h3>3.2.5.2. Expression Equivalence (<code class="docutils literal"><span class="pre">≡</span></code>)<a class="headerlink" href="#expression-equivalence" title="Permalink to this headline">¶</a></h3>
+<p>Logika&#8217;s propositional logic reasoning mainly uses structural equivalence
+(<code class="docutils literal"><span class="pre">≡</span></code>) that determines equality of two expressions <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code>
+(i.e., <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≡</span> <span class="pre">E2</span></code>) based on whether they have the same structure/form.</p>
+<p>A parenthesized expression is structurally (and semantically)
+equivalent to the expression it contains;
+it is only used as a means to override operator precedences.
+In other words, for any Logika expression <code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">(E)</span></code>.
+This equivalence holds even for programming logic expressions.</p>
+</div>
 </div>
 <div class="section" id="justification-and-inference-rules">
 <span id="prop-rules"></span><h2>3.2.6. Justification and Inference Rules<a class="headerlink" href="#justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
@@ -749,7 +764,7 @@ Z.  R          Pbc
 </div>
 </div>
 <div class="section" id="propositional-logic-input-language-grammar">
-<h2>3.2.7. Propositional Logic Input Language Grammar<a class="headerlink" href="#propositional-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
+<span id="prop-grammar"></span><h2>3.2.7. Propositional Logic Input Language Grammar<a class="headerlink" href="#propositional-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>

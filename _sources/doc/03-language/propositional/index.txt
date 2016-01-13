@@ -165,6 +165,8 @@ In this case, X1 and XK have to be in same level, and they are proof steps of ``
 which preceeds ``Z``.
 
 
+.. _prop-claim:
+
 Claim Expression
 ================
 
@@ -175,15 +177,14 @@ Claim Expression
 The claim boolean expression language in propositional logic is rather small; it
 consists of boolean literals, variable reference (identifier),
 parenthesized expression, one unary expression (negation),
-and and/or/imply binary expressions.
+and and/or/imply binary expressions;
+they are listed in decreasing order of precedence (i.e., first is highest) that
+is inline with the precedence ordering specified in the :ref:`ops-literals` section.
 Note that variables do not need to be explicitly declared nor typed (they are booleans)
 in the propositional input language.
 
-Also, a parenthesized expression is structurally or semantically
-indistinguishable from the expression it contains;
-it is only used as a means to override operator precedences.
-In other words, for any Logika expression ``e``, ``e ≡ (e)``.
-This equivalence holds even for programming logic expressions.
+Newlines in Expression
+----------------------
 
 One newline separator can be inserted after a binary expression operator.
 For example, ``P ∧ Q`` is the same as::
@@ -213,6 +214,21 @@ is the same as ``P ∧ Q``
 These rules follow
 `Scala's line-orientation <http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html>`__
 (follow the link to see more examples).
+
+.. _structural-eq:
+
+Expression Equivalence (``≡``)
+------------------------------
+
+Logika's propositional logic reasoning mainly uses structural equivalence
+(``≡``) that determines equality of two expressions ``E1`` and ``E2``
+(i.e., ``E1 ≡ E2``) based on whether they have the same structure/form.
+
+A parenthesized expression is structurally (and semantically)
+equivalent to the expression it contains;
+it is only used as a means to override operator precedences.
+In other words, for any Logika expression ``E``, ``E ≡ (E)``.
+This equivalence holds even for programming logic expressions.
 
 .. _prop-rules:
 
@@ -487,6 +503,7 @@ Proof-by-Contradiction (Pbc)
    :caption: **Proof-by-Contradiction (Pbc) Schematic Pattern**
    :name: pbc-elim-pattern
 
+.. _prop-grammar:
 
 Propositional Logic Input Language Grammar
 ==========================================
