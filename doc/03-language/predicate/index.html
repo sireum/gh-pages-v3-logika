@@ -234,9 +234,7 @@ which are separated by a comma (<code class="docutils literal"><span class="pre"
 parenthesis, such as shown in the
 <a class="reference internal" href="#predicate-1"><span>syllogism</span></a> example above.</p>
 <p>Predicates have to always be supplied with arguments whenever
-referred (as a convenient consequence of Logika&#8217;s
-first-order-ness).
-This makes it easy to distinguish whether an identifier is
+referred. This makes it easy to distinguish whether an identifier is
 a predicate, e.g.,:</p>
 <div class="highlight-none"><div class="highlight"><pre>∀x human(x) → mortal(x),  human(Socrates)  ⊢  mortal(Socrates)
 {
@@ -277,7 +275,10 @@ as illustrated in the following example:</p>
 applying functions <code class="docutils literal"><span class="pre">inc</span></code> and <code class="docutils literal"><span class="pre">dec</span></code>.
 (By the way, the example uses uninterpreted functions/predicates
 to model properties of integer arithmetic operators
-due to the lack for algebra support in Logika&#8217;s predicate logic.)</p>
+due to the lack for
+<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span>algebra</span></a> support in Logika&#8217;s predicate logic;
+it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span>programming logic</span></a>
+instead.)</p>
 <p>Furthermore, Logika functions cannot be overloaded;
 each is only associated with exactly one signature.
 In Logika&#8217;s predicate logic, the signature is

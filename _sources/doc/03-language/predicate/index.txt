@@ -107,12 +107,10 @@ parenthesis, such as shown in the
 :ref:`syllogism <predicate-1>` example above.
 
 Predicates have to always be supplied with arguments whenever
-referred (as a convenient consequence of Logika's
-first-order-ness).
-This makes it easy to distinguish whether an identifier is
+referred. This makes it easy to distinguish whether an identifier is
 a predicate, e.g.,:
 
-.. literalinclude:: predicate-3.logika
+.. literalinclude:: predicate-2.logika
    :language: none
 
 In this popular syllogism,
@@ -127,14 +125,17 @@ do not accept function values as arguments. Note that this
 does not preclude functions to accepts results of other functions,
 as illustrated in the following example:
 
-.. literalinclude:: predicate-2.logika
+.. literalinclude:: predicate-3.logika
    :language: none
 
 As can be observed, the ``gt`` predicate can accepts results of
 applying functions ``inc`` and ``dec``.
 (By the way, the example uses uninterpreted functions/predicates
 to model properties of integer arithmetic operators
-due to the lack for algebra support in Logika's predicate logic.)
+due to the lack for
+:ref:`algebra <algebra>` support in Logika's predicate logic;
+it is supported in :ref:`programming logic <programming-language>`
+instead.)
 
 Furthermore, Logika functions cannot be overloaded;
 each is only associated with exactly one signature.
