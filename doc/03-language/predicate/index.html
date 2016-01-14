@@ -323,7 +323,7 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 <code class="docutils literal"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
 </div>
 <div class="section" id="well-formed-ness">
-<h3>3.3.2.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+<span id="pred-well-formed"></span><h3>3.3.2.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
 <p>For simplicity, Logika does not allow identifier &#8220;shadowing&#8221;,
 which means that a variable cannot be quantified more than one time in the
 same scope.
@@ -361,6 +361,11 @@ which one replaces which one is to read <code class="docutils literal"><span cla
 thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.
 Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
 Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
+<p>The substitution notation is right-associative.
+When multiple substitutions are done on an expression at the same time,
+notated as: <code class="docutils literal"><span class="pre">[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R</span></code>, for <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> &#8211;
+it means, <code class="docutils literal"><span class="pre">[E2_N/E1_N]</span> <span class="pre">(…</span> <span class="pre">([E2_2/E1_2]</span> <span class="pre">([E2_1/E1_1]</span> <span class="pre">R)))</span></code>.
+For example, <code class="docutils literal"><span class="pre">[z/y][y/x]x</span> <span class="pre">≡</span> <span class="pre">[z/y]([y/x]x)</span> <span class="pre">≡</span> <span class="pre">[z/y]y</span> <span class="pre">≡</span> <span class="pre">z</span></code>.</p>
 </div>
 </div>
 <div class="section" id="quantified-claim-justification-and-inference-rules">
@@ -387,6 +392,8 @@ Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]
 <p>There are four new inference rules for Logika&#8217;s predicate
 logic &#8211; one introduction rule and one elimination rule for
 both universal and existensial quantifications.</p>
+<p>The subsequent sections assumes that
+each rule is being applied at a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>.</p>
 <div class="section" id="forall-introduction-i">
 <span id="forall-intro"></span><h3>3.3.3.1. Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
@@ -407,6 +414,12 @@ Z. ∀x P{x}                                   ∀i X            // P{x} ≡ [x/
 </pre></div>
 </div>
 </div>
+<p>Note that <code class="docutils literal"><span class="pre">x</span></code> cannot appear in <code class="docutils literal"><span class="pre">P{a}</span></code>; otherwise,
+the proof violates the <a class="reference internal" href="#pred-well-formed"><span>Well-Formed-ness</span></a> rules
+(i.e., such <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P{a}</span></code> can only either be a free variable or
+defined in an enclosing sub-proof, both of which are disallowed).</p>
+<p>The following alternative pattern is used grouping multiple
+quantified variables in a single ∀-quantification.</p>
 <div class="literal-block-wrapper container" id="forall-intro-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre>…
@@ -437,6 +450,8 @@ Z. [E/x]P{x}                                 ∀e X E
 </pre></div>
 </div>
 </div>
+<p>The following pattern is used for eliminating multiple quantified
+variables at once.</p>
 <div class="literal-block-wrapper container" id="forall-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre>…
@@ -446,6 +461,7 @@ Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &l
 </pre></div>
 </div>
 </div>
+<p>The following can be applied for nested ∀-quantifications.</p>
 <div class="literal-block-wrapper container" id="forall-elim-alt2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt2-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre>…
@@ -455,6 +471,10 @@ Z. ∀x(J+1),…,xN [E1/x1]…[EJ/xK]P{x1,…,xN}    ∀e X E1 … EJ    // 0 &l
 </pre></div>
 </div>
 </div>
+<p>There are actually infinitely many of such patterns according to the level
+of ∀-quantification nesting that is implemented in Logika (i.e., there exists
+<strong>Alternative+</strong><code class="docutils literal"><span class="pre">M</span></code> <strong>Forall-Elimination (∀e) Schematic Pattern</strong>
+for any positive <code class="docutils literal"><span class="pre">M</span></code>).</p>
 </div>
 <div class="section" id="exists-introduction-i">
 <h3>3.3.3.3. Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h3>
@@ -467,7 +487,7 @@ Z. ∀x(J+1),…,xN [E1/x1]…[EJ/xK]P{x1,…,xN}    ∀e X E1 … EJ    // 0 &l
 <div class="highlight-none"><div class="highlight"><pre>…
 X. [E/x]P{x}                                 …
 …
-Z. ∃x P{x}                                   ∀e X E
+Z. ∃x P{x}                                   ∃i X E
 </pre></div>
 </div>
 </div>
@@ -476,7 +496,7 @@ Z. ∃x P{x}                                   ∀e X E
 <div class="highlight-none"><div class="highlight"><pre>…
 X. [E1/x1]…[EK/xK]P{x}                       …
 …
-Z. ∃x1,…,xN P{x}                             ∀e X E1 … EK    // K &lt;= N, N &gt; 1 (otherwise the previous applies)
+Z. ∃x1,…,xN P{x}                             ∃i X E1 … EK    // K &lt;= N, N &gt; 1 (otherwise the previous applies)
 </pre></div>
 </div>
 </div>
@@ -485,7 +505,7 @@ Z. ∃x1,…,xN P{x}                             ∀e X E1 … EK    // K &lt;= 
 <div class="highlight-none"><div class="highlight"><pre>…
 X. [E1/x1]…[EJ/xJ]P{x}                       …
 …
-Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∀e X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
+Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
 </pre></div>
 </div>
 </div>

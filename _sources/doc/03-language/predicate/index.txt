@@ -188,6 +188,8 @@ For example,
 however, for simplicity, they are not considered as structurally equivalent, i.e.,
 ``¬(∀x ∀y p(x,y) ≡ ∀x,y p(x,y))`` or ``∀x ∀y p(x,y) ≢ ∀x,y p(x,y)``.
 
+.. _pred-well-formed:
+
 Well-Formed-ness
 ----------------
 
@@ -235,6 +237,11 @@ thus ``[E2/E1]R`` reads as ``E2`` steps over ``E1`` in ``R``.
 Here is a concrete example of a substitution, ``[x/y]g(y) ≡ g(x)``.
 Another example, ``[f(g(x))/f(y)]g(f(y), f(x)) ≡ g(f(g(x)), f(x))``.
 
+The substitution notation is right-associative.
+When multiple substitutions are done on an expression at the same time,
+notated as: ``[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R``, for ``N > 1`` --
+it means, ``[E2_N/E1_N] (… ([E2_2/E1_2] ([E2_1/E1_1] R)))``.
+For example, ``[z/y][y/x]x ≡ [z/y]([y/x]x) ≡ [z/y]y ≡ z``.
 
 .. _pred-rules:
 
@@ -250,6 +257,9 @@ There are four new inference rules for Logika's predicate
 logic -- one introduction rule and one elimination rule for
 both universal and existensial quantifications.
 
+The subsequent sections assumes that
+each rule is being applied at a regular proof step numbered ``Z``.
+
 .. _forall-intro:
 
 Forall-Introduction (∀i)
@@ -263,6 +273,14 @@ Forall-Introduction (∀i)
    :language: none
    :caption: **Forall-Introduction (∀i) Schematic Pattern**
    :name: forall-intro-pattern
+
+Note that ``x`` cannot appear in ``P{a}``; otherwise,
+the proof violates the :ref:`pred-well-formed` rules
+(i.e., such ``x`` in ``P{a}`` can only either be a free variable or
+defined in an enclosing sub-proof, both of which are disallowed).
+
+The following alternative pattern is used grouping multiple
+quantified variables in a single ∀-quantification.
 
 .. literalinclude:: forall-intro-alt-pattern.txt
    :language: none
@@ -282,16 +300,26 @@ Forall-Elimination (∀e)
    :caption: **Forall-Elimination (∀e) Schematic Pattern**
    :name: forall-elim-pattern
 
+The following pattern is used for eliminating multiple quantified
+variables at once.
+
 .. literalinclude:: forall-elim-alt-pattern.txt
    :language: none
    :caption: **Alternative Forall-Elimination (∀e) Schematic Pattern**
    :name: forall-elim-alt-pattern
 
+The following can be applied for nested ∀-quantifications.
 
 .. literalinclude:: forall-elim-alt2-pattern.txt
    :language: none
    :caption: **Alternative+1 Forall-Elimination (∀e) Schematic Pattern**
    :name: forall-elim-alt2-pattern
+
+There are actually infinitely many of such patterns according to the level
+of ∀-quantification nesting that is implemented in Logika (i.e., there exists
+**Alternative+**\ ``M`` **Forall-Elimination (∀e) Schematic Pattern**
+for any positive ``M``).
+
 
 Exists-Introduction (∃i)
 ------------------------
