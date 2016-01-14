@@ -19,18 +19,18 @@ Predicate Logic
 ***************
 
 The Logika predicate logic input language is a small
-extension of the :ref:`propositional-language` input language
-where the additional language elements are:
+extension of its :ref:`propositional-language`
+that adds the following language elements:
 (1) :ref:`revised-assumptions`,
 (2) :ref:`uninterpreted-functions`,
-(3) :ref:`quantified-claims`,
+(3) :ref:`quantified-claims`, and
 (4) :ref:`pred-rules`.
 
-Similar to the discussion in the :ref:`propositional-language` input
-language chapter, this chapter only discuss
-Logika's rendition of predicate logic natural deductions;
-the reader is referred to :ref:`predicate-logic` for intuitive
-discussion on predicate logic.
+Similar to the discussion in :ref:`propositional-language`,
+this section only discusses Logika's rendition of predicate
+logic natural deductions;
+the reader is referred to :ref:`predicate-logic` for more intuitive
+and general discussion on predicate logic.
 
 **Predicate Logic Input Language Grammar**
 
@@ -40,18 +40,17 @@ discussion on predicate logic.
    :language: antlr
    :lines: 1
 
-The predicate logic input language is similar to that of
-:ref:`propositional-language` input language, where it consists
-of a sequent and the sequent's proof. Here is an example that is
-also a `syllogism <https://en.wikipedia.org/wiki/Syllogism>`__:
+Logika's predicate logic input language is similar to that of
+:ref:`propositional-language`, where it consists of a sequent and the sequent's proof.
+Here is an example that is also a `syllogism <https://en.wikipedia.org/wiki/Syllogism>`__:
 
 .. literalinclude:: predicate-1.logika
    :language: none
 
 In the subsequent description, only language elements that are new
-or extend the :ref:`propositional-language` input language are
-discussed. The complete predicate logic input language is
-given in the :ref:`pred-grammar` section as a reference.
+or extend :ref:`propositional-language` are discussed.
+As a reference, the complete predicate logic input language is specified in
+:ref:`pred-grammar`.
 
 .. _revised-assumptions:
 
@@ -67,15 +66,14 @@ To support :ref:`pred-rules`, the sub-proof assumption form has to be
 enhanced.
 
 The first highlighted enhancement is to introduce a "fresh" variable
-suitable for :ref:`introducing a universal quantification <forall-intro>`;
+suitable for :ref:`forall-intro`;
 here, "fresh" means that the identifier is not used in the
 :ref:`scope <scoping>` of the variable; this form is a special one
 because it is not a regular proof step which has a claim associated with it.
 
 The second highlighted form also introduces a fresh variable, but also
 has an associated claim assumption that refers to the fresh variable.
-This form is used for
-:ref:`eliminating an existensial quantification <exists-elim>`.
+This form is used for :ref:`exists-elim`.
 
 
 Extended Claim Expressions
@@ -86,7 +84,7 @@ Extended Claim Expressions
    :lines: 32 - 43
    :emphasize-lines: 4, 10 - 12
 
-Similar to :ref:`propositional logic claim expressions <prop-claim>`,
+Similar to propositional logic's :ref:`prop-claim`,
 the predicate logic claim expressions are untyped.
 One can take the view that all variables in Logika's predicate logic
 language are of integer type and
@@ -120,26 +118,28 @@ Logika's predicate logic reasoning uses
 :ref:`rewriting/substitution <subst-notation>`, in addition to
 :ref:`structural equivalence <structural-eq>` (``≡``)
 that is used in propositional logic.
-The rewriting technique depends on the fact that each function is
-pure, meaning that it produces the same result
+The rewriting technique depends on the inherent property that
+each function is pure -- meaning that it produces the same result
 when given the same arguments regardless of how many times
 it is applied (invoked/called).
 
-A predicate is applied by referring to its
+A function is applied by referring to its
 identifier followed by some ordered arguments (optional)
 which are separated by a comma (``,``) and delimited by a
 parenthesis, such as shown in the
-:ref:`syllogism <predicate-1>` example above.
+:ref:`syllogism <predicate-1>` example above (and below) for
+``human`` and ``mortal``.
 
-Predicates have to always be supplied with arguments whenever
-referred. This makes it easy to distinguish whether an identifier is
+Functions have to always be supplied with arguments whenever
+referred (i.e., they have to always be applied).
+This makes it easy to distinguish whether an identifier is
 a predicate, e.g.,:
 
 .. literalinclude:: predicate-2.logika
    :language: none
 
 In this popular syllogism,
-``Socrates`` is distinguishably a variable (intuitively, it points
+``socrates`` is distinguishably a variable (intuitively, it points
 to Socrates the person, which is mechanically modeled using
 an integer object made up from ``1``\ s and ``0``\ s), but
 ``human`` and ``mortal`` are predicates (which intuitively,
@@ -159,11 +159,12 @@ applying functions ``inc`` and ``dec``.
 to model properties of integer arithmetic operators
 due to the lack for
 :ref:`algebra <algebra>` support in Logika's predicate logic;
-it is supported in :ref:`programming logic <programming-language>`
-instead.)
+instead, it is supported in :ref:`programming logic <programming-language>`
+later.)
 
 Furthermore, Logika functions cannot be overloaded;
-each is only associated with exactly one signature.
+each identifier is only associated with exactly
+one signature.
 In Logika's predicate logic, the signature is
 only determined by the number of its arguments; hence,
 each function has a fixed number of arguments.
@@ -171,15 +172,15 @@ each function has a fixed number of arguments.
 
 .. _quantified-claims:
 
-Universally (∀) and Existensially (∃) Quantified Claims
--------------------------------------------------------
+Universally and Existensially Quantified Claims
+-----------------------------------------------
 
 .. literalinclude:: predicate.txt
    :language: antlr
    :lines: 63, 41 - 43
 
 Logika's quantification form can be used to quantify
-over multiple variables at once (followed by a
+over multiple variables at once (followed by the quantified
 claim expression), which means the same as if one
 quantifies over the variables one by one in the same order.
 For example,
@@ -214,7 +215,7 @@ Abstract Notation and Substitution
 ----------------------------------
 
 One abstract notation that is used from now on is to express that a claim
-``R`` that refers to some free (in the context of ``R`` itself) variables
+``R`` that refers to some free variables (in the context of ``R`` itself)
 such as ``a`` and ``b``, as: ``R{a,b}``.
 In this notation, the order appearance of variables ``a`` and ``b``
 do not matter.
@@ -224,14 +225,13 @@ to both ``x`` and ``y``.
 Thus, in general, when defining a quantification, it is either one of the
 following forms:
 ``∀a1,...,aN P{a1,...,aN}`` (universal), or
-``∃a1,...,aN P{a1,...,aN}`` (existensial).
+``∃a1,...,aN P{a1,...,aN}`` (existensial), where ``N > 0``.
 
 Another notation is for expression substitution.
 The notation ``[E2/E1]R`` means all occurences of expression
-``E1`` in ``R`` is replaced with ``E2``; one easy way to remember
+``E1`` in ``R`` is replaced with ``E2``; an easy way to remember
 which one replaces which one is to read ``/`` as "steps over",
 thus ``[E2/E1]R`` reads as ``E2`` steps over ``E1`` in ``R``.
-
 Here is a concrete example of a substitution, ``[x/y]g(y) ≡ g(x)``.
 Another example, ``[f(g(x))/f(y)]g(f(y), f(x)) ≡ g(f(g(x)), f(x))``.
 

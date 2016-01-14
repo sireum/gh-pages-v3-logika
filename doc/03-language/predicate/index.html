@@ -84,7 +84,7 @@
 <li><a class="reference internal" href="#revised-sub-proof-assumption-step">3.3.1. Revised Sub-Proof Assumption Step</a></li>
 <li><a class="reference internal" href="#extended-claim-expressions">3.3.2. Extended Claim Expressions</a><ul>
 <li><a class="reference internal" href="#first-order-uninterpreted-predicate-and-function-applications">3.3.2.1. First-Order Uninterpreted Predicate and Function Applications</a></li>
-<li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.2.2. Universally (∀) and Existensially (∃) Quantified Claims</a></li>
+<li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.2.2. Universally and Existensially Quantified Claims</a></li>
 <li><a class="reference internal" href="#well-formed-ness">3.3.2.3. Well-Formed-ness</a></li>
 <li><a class="reference internal" href="#abstract-notation-and-substitution">3.3.2.4. Abstract Notation and Substitution</a></li>
 </ul>
@@ -142,25 +142,24 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </font><div class="section" id="predicate-logic">
 <span id="predicate-language"></span><h1>3.3. Predicate Logic<a class="headerlink" href="#predicate-logic" title="Permalink to this headline">¶</a></h1>
 <p>The Logika predicate logic input language is a small
-extension of the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input language
-where the additional language elements are:
+extension of its <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>
+that adds the following language elements:
 (1) <a class="reference internal" href="#revised-assumptions"><span>Revised Sub-Proof Assumption Step</span></a>,
 (2) <a class="reference internal" href="#uninterpreted-functions"><span>First-Order Uninterpreted Predicate and Function Applications</span></a>,
-(3) <a class="reference internal" href="#quantified-claims"><span>Universally (∀) and Existensially (∃) Quantified Claims</span></a>,
+(3) <a class="reference internal" href="#quantified-claims"><span>Universally and Existensially Quantified Claims</span></a>, and
 (4) <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>.</p>
-<p>Similar to the discussion in the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input
-language chapter, this chapter only discuss
-Logika&#8217;s rendition of predicate logic natural deductions;
-the reader is referred to <a class="reference internal" href="../../../dschmidt/08-predicate-logic/index.html#predicate-logic"><span>The Predicate-Logic Quantifiers</span></a> for intuitive
-discussion on predicate logic.</p>
+<p>Similar to the discussion in <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>,
+this section only discusses Logika&#8217;s rendition of predicate
+logic natural deductions;
+the reader is referred to <a class="reference internal" href="../../../dschmidt/08-predicate-logic/index.html#predicate-logic"><span>The Predicate-Logic Quantifiers</span></a> for more intuitive
+and general discussion on predicate logic.</p>
 <p><strong>Predicate Logic Input Language Grammar</strong></p>
 <div class="highlight-antlr" id="predicate-1"><div class="highlight"><pre><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">              </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The predicate logic input language is similar to that of
-<a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input language, where it consists
-of a sequent and the sequent&#8217;s proof. Here is an example that is
-also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogism">syllogism</a>:</p>
+<p>Logika&#8217;s predicate logic input language is similar to that of
+<a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>, where it consists of a sequent and the sequent&#8217;s proof.
+Here is an example that is also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogism">syllogism</a>:</p>
 <div class="highlight-none"><div class="highlight"><pre>∀x human(x) → mortal(x),  ∃y human(y)  ⊢  ∃z mortal(z)
 {
   1. ∀x human(x) → mortal(x)               premise
@@ -176,9 +175,9 @@ also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogi
 </pre></div>
 </div>
 <p>In the subsequent description, only language elements that are new
-or extend the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input language are
-discussed. The complete predicate logic input language is
-given in the <a class="reference internal" href="#pred-grammar"><span>Predicate Logic Input Language Grammar</span></a> section as a reference.</p>
+or extend <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> are discussed.
+As a reference, the complete predicate logic input language is specified in
+<a class="reference internal" href="#pred-grammar"><span>Predicate Logic Input Language Grammar</span></a>.</p>
 <div class="section" id="revised-sub-proof-assumption-step">
 <span id="revised-assumptions"></span><h2>3.3.1. Revised Sub-Proof Assumption Step<a class="headerlink" href="#revised-sub-proof-assumption-step" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
@@ -189,14 +188,13 @@ given in the <a class="reference internal" href="#pred-grammar"><span>Predicate 
 <p>To support <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
 enhanced.</p>
 <p>The first highlighted enhancement is to introduce a &#8220;fresh&#8221; variable
-suitable for <a class="reference internal" href="#forall-intro"><span>introducing a universal quantification</span></a>;
+suitable for <a class="reference internal" href="#forall-intro"><span>Forall-Introduction (∀i)</span></a>;
 here, &#8220;fresh&#8221; means that the identifier is not used in the
 <a class="reference internal" href="../propositional/index.html#scoping"><span>scope</span></a> of the variable; this form is a special one
 because it is not a regular proof step which has a claim associated with it.</p>
 <p>The second highlighted form also introduces a fresh variable, but also
 has an associated claim assumption that refers to the fresh variable.
-This form is used for
-<a class="reference internal" href="#exists-elim"><span>eliminating an existensial quantification</span></a>.</p>
+This form is used for <a class="reference internal" href="#exists-elim"><span>Exists-Elimination (∃e)</span></a>.</p>
 </div>
 <div class="section" id="extended-claim-expressions">
 <h2>3.3.2. Extended Claim Expressions<a class="headerlink" href="#extended-claim-expressions" title="Permalink to this headline">¶</a></h2>
@@ -214,7 +212,7 @@ This form is used for
 </span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>Similar to <a class="reference internal" href="../propositional/index.html#prop-claim"><span>propositional logic claim expressions</span></a>,
+<p>Similar to propositional logic&#8217;s <a class="reference internal" href="../propositional/index.html#prop-claim"><span>Claim Expression</span></a>,
 the predicate logic claim expressions are untyped.
 One can take the view that all variables in Logika&#8217;s predicate logic
 language are of integer type and
@@ -243,29 +241,31 @@ Logika&#8217;s predicate logic reasoning uses
 <a class="reference internal" href="#subst-notation"><span>rewriting/substitution</span></a>, in addition to
 <a class="reference internal" href="../propositional/index.html#structural-eq"><span>structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
 that is used in propositional logic.
-The rewriting technique depends on the fact that each function is
-pure, meaning that it produces the same result
+The rewriting technique depends on the inherent property that
+each function is pure &#8211; meaning that it produces the same result
 when given the same arguments regardless of how many times
 it is applied (invoked/called).</p>
-<p>A predicate is applied by referring to its
+<p>A function is applied by referring to its
 identifier followed by some ordered arguments (optional)
 which are separated by a comma (<code class="docutils literal"><span class="pre">,</span></code>) and delimited by a
 parenthesis, such as shown in the
-<a class="reference internal" href="#predicate-1"><span>syllogism</span></a> example above.</p>
-<p>Predicates have to always be supplied with arguments whenever
-referred. This makes it easy to distinguish whether an identifier is
+<a class="reference internal" href="#predicate-1"><span>syllogism</span></a> example above (and below) for
+<code class="docutils literal"><span class="pre">human</span></code> and <code class="docutils literal"><span class="pre">mortal</span></code>.</p>
+<p>Functions have to always be supplied with arguments whenever
+referred (i.e., they have to always be applied).
+This makes it easy to distinguish whether an identifier is
 a predicate, e.g.,:</p>
-<div class="highlight-none"><div class="highlight"><pre>∀x human(x) → mortal(x),  human(Socrates)  ⊢  mortal(Socrates)
+<div class="highlight-none"><div class="highlight"><pre>∀x human(x) → mortal(x),  human(socrates)  ⊢  mortal(socrates)
 {
   1. ∀x human(x) → mortal(x)               premise
-  2. human(Socrates)                       premise
-  3. human(Socrates) → mortal(Socrates)    ∀e 1 Socrates
-  4. mortal(Socrates)                      →e 3 2
+  2. human(socrates)                       premise
+  3. human(socrates) → mortal(socrates)    ∀e 1 socrates
+  4. mortal(socrates)                      →e 3 2
 }
 </pre></div>
 </div>
 <p>In this popular syllogism,
-<code class="docutils literal"><span class="pre">Socrates</span></code> is distinguishably a variable (intuitively, it points
+<code class="docutils literal"><span class="pre">socrates</span></code> is distinguishably a variable (intuitively, it points
 to Socrates the person, which is mechanically modeled using
 an integer object made up from <code class="docutils literal"><span class="pre">1</span></code>s and <code class="docutils literal"><span class="pre">0</span></code>s), but
 <code class="docutils literal"><span class="pre">human</span></code> and <code class="docutils literal"><span class="pre">mortal</span></code> are predicates (which intuitively,
@@ -296,16 +296,17 @@ applying functions <code class="docutils literal"><span class="pre">inc</span></
 to model properties of integer arithmetic operators
 due to the lack for
 <a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span>algebra</span></a> support in Logika&#8217;s predicate logic;
-it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span>programming logic</span></a>
-instead.)</p>
+instead, it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span>programming logic</span></a>
+later.)</p>
 <p>Furthermore, Logika functions cannot be overloaded;
-each is only associated with exactly one signature.
+each identifier is only associated with exactly
+one signature.
 In Logika&#8217;s predicate logic, the signature is
 only determined by the number of its arguments; hence,
 each function has a fixed number of arguments.</p>
 </div>
 <div class="section" id="universally-and-existensially-quantified-claims">
-<span id="quantified-claims"></span><h3>3.3.2.2. Universally (∀) and Existensially (∃) Quantified Claims<a class="headerlink" href="#universally-and-existensially-quantified-claims" title="Permalink to this headline">¶</a></h3>
+<span id="quantified-claims"></span><h3>3.3.2.2. Universally and Existensially Quantified Claims<a class="headerlink" href="#universally-and-existensially-quantified-claims" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                      </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                      </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
@@ -313,7 +314,7 @@ each function has a fixed number of arguments.</p>
 </pre></div>
 </div>
 <p>Logika&#8217;s quantification form can be used to quantify
-over multiple variables at once (followed by a
+over multiple variables at once (followed by the quantified
 claim expression), which means the same as if one
 quantifies over the variables one by one in the same order.
 For example,
@@ -342,7 +343,7 @@ is consistent with the restriction of disallowing identifier shadowing.</p>
 <div class="section" id="abstract-notation-and-substitution">
 <span id="subst-notation"></span><h3>3.3.2.4. Abstract Notation and Substitution<a class="headerlink" href="#abstract-notation-and-substitution" title="Permalink to this headline">¶</a></h3>
 <p>One abstract notation that is used from now on is to express that a claim
-<code class="docutils literal"><span class="pre">R</span></code> that refers to some free (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself) variables
+<code class="docutils literal"><span class="pre">R</span></code> that refers to some free variables (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself)
 such as <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>, as: <code class="docutils literal"><span class="pre">R{a,b}</span></code>.
 In this notation, the order appearance of variables <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>
 do not matter.
@@ -352,13 +353,13 @@ to both <code class="docutils literal"><span class="pre">x</span></code> and <co
 Thus, in general, when defining a quantification, it is either one of the
 following forms:
 <code class="docutils literal"><span class="pre">∀a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (universal), or
-<code class="docutils literal"><span class="pre">∃a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (existensial).</p>
+<code class="docutils literal"><span class="pre">∃a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (existensial), where <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 <p>Another notation is for expression substitution.
 The notation <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> means all occurences of expression
-<code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code> is replaced with <code class="docutils literal"><span class="pre">E2</span></code>; one easy way to remember
+<code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code> is replaced with <code class="docutils literal"><span class="pre">E2</span></code>; an easy way to remember
 which one replaces which one is to read <code class="docutils literal"><span class="pre">/</span></code> as &#8220;steps over&#8221;,
-thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.</p>
-<p>Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
+thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.
+Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
 Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
 </div>
 </div>
