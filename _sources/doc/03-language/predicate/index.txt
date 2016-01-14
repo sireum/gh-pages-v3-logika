@@ -257,8 +257,11 @@ There are four new inference rules for Logika's predicate
 logic -- one introduction rule and one elimination rule for
 both universal and existensial quantifications.
 
-The subsequent sections assumes that
-each rule is being applied at a regular proof step numbered ``Z``.
+The subsequent sections assume that
+each rule is being applied at a regular proof step numbered ``Z``
+and they use the :ref:`schematic-pattern` to characterize valid
+inference rule applications.
+
 
 .. _forall-intro:
 
