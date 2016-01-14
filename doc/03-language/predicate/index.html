@@ -82,21 +82,21 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">3.3. Predicate Logic</a><ul>
 <li><a class="reference internal" href="#revised-sub-proof-assumption-step">3.3.1. Revised Sub-Proof Assumption Step</a></li>
-<li><a class="reference internal" href="#extended-claim-expressions">3.3.2. Extended Claim Expressions</a><ul>
+<li><a class="reference internal" href="#claim-expression">3.3.2. Claim Expression</a><ul>
 <li><a class="reference internal" href="#first-order-uninterpreted-predicate-and-function-applications">3.3.2.1. First-Order Uninterpreted Predicate and Function Applications</a></li>
 <li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.2.2. Universally and Existensially Quantified Claims</a></li>
-<li><a class="reference internal" href="#well-formed-ness">3.3.2.3. Well-Formed-ness</a></li>
-<li><a class="reference internal" href="#abstract-notation-and-substitution">3.3.2.4. Abstract Notation and Substitution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#quantified-claim-justification-and-inference-rules">3.3.3. Quantified Claim Justification and Inference Rules</a><ul>
-<li><a class="reference internal" href="#forall-introduction-i">3.3.3.1. Forall-Introduction (∀i)</a></li>
-<li><a class="reference internal" href="#forall-elimination-e">3.3.3.2. Forall-Elimination (∀e)</a></li>
-<li><a class="reference internal" href="#exists-introduction-i">3.3.3.3. Exists-Introduction (∃i)</a></li>
-<li><a class="reference internal" href="#exists-elimination-e">3.3.3.4. Exists-Elimination (∃e)</a></li>
+<li><a class="reference internal" href="#well-formed-ness">3.3.3. Well-Formed-Ness</a></li>
+<li><a class="reference internal" href="#abstract-notations-and-substitution">3.3.4. Abstract Notations and Substitution</a></li>
+<li><a class="reference internal" href="#quantified-claim-justification-and-inference-rules">3.3.5. Quantified Claim Justification and Inference Rules</a><ul>
+<li><a class="reference internal" href="#forall-introduction-i">3.3.5.1. Forall-Introduction (∀i)</a></li>
+<li><a class="reference internal" href="#forall-elimination-e">3.3.5.2. Forall-Elimination (∀e)</a></li>
+<li><a class="reference internal" href="#exists-introduction-i">3.3.5.3. Exists-Introduction (∃i)</a></li>
+<li><a class="reference internal" href="#exists-elimination-e">3.3.5.4. Exists-Elimination (∃e)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#predicate-logic-input-language-grammar">3.3.4. Predicate Logic Input Language Grammar</a></li>
+<li><a class="reference internal" href="#predicate-logic-input-language-grammar">3.3.6. Predicate Logic Input Language Grammar</a></li>
 </ul>
 </li>
 </ul>
@@ -196,8 +196,8 @@ because it is not a regular proof step which has a claim associated with it.</p>
 has an associated claim assumption that refers to the fresh variable.
 This form is used for <a class="reference internal" href="#exists-elim"><span>Exists-Elimination (∃e)</span></a>.</p>
 </div>
-<div class="section" id="extended-claim-expressions">
-<h2>3.3.2. Extended Claim Expressions<a class="headerlink" href="#extended-claim-expressions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="claim-expression">
+<h2>3.3.2. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                         </span><span class="c">// identifier</span><span class="w"></span>
@@ -322,8 +322,9 @@ For example,
 however, for simplicity, they are not considered as structurally equivalent, i.e.,
 <code class="docutils literal"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
 </div>
+</div>
 <div class="section" id="well-formed-ness">
-<span id="pred-well-formed"></span><h3>3.3.2.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+<span id="pred-well-formed"></span><h2>3.3.3. Well-Formed-Ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
 <p>For simplicity, Logika does not allow identifier &#8220;shadowing&#8221;,
 which means that a variable cannot be quantified more than one time in the
 same scope.
@@ -340,8 +341,8 @@ are actually <em>implicitly universally-quantified</em> (even for propositional 
 In that sense, disallowing the same identifier used for as both free and quantified
 is consistent with the restriction of disallowing identifier shadowing.</p>
 </div>
-<div class="section" id="abstract-notation-and-substitution">
-<span id="subst-notation"></span><h3>3.3.2.4. Abstract Notation and Substitution<a class="headerlink" href="#abstract-notation-and-substitution" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="abstract-notations-and-substitution">
+<span id="subst-notation"></span><h2>3.3.4. Abstract Notations and Substitution<a class="headerlink" href="#abstract-notations-and-substitution" title="Permalink to this headline">¶</a></h2>
 <p>One abstract notation that is used from now on is to express that a claim
 <code class="docutils literal"><span class="pre">R</span></code> that refers to some free variables (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself)
 such as <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>, as: <code class="docutils literal"><span class="pre">R{a,b}</span></code>.
@@ -367,9 +368,8 @@ notated as: <code class="docutils literal"><span class="pre">[E2_N/E1_N]…[E2_2
 it means, <code class="docutils literal"><span class="pre">[E2_N/E1_N]</span> <span class="pre">(…</span> <span class="pre">([E2_2/E1_2]</span> <span class="pre">([E2_1/E1_1]</span> <span class="pre">R)))</span></code>.
 For example, <code class="docutils literal"><span class="pre">[z/y][y/x]x</span> <span class="pre">≡</span> <span class="pre">[z/y]([y/x]x)</span> <span class="pre">≡</span> <span class="pre">[z/y]y</span> <span class="pre">≡</span> <span class="pre">z</span></code>.</p>
 </div>
-</div>
 <div class="section" id="quantified-claim-justification-and-inference-rules">
-<span id="pred-rules"></span><h2>3.3.3. Quantified Claim Justification and Inference Rules<a class="headerlink" href="#quantified-claim-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
+<span id="pred-rules"></span><h2>3.3.5. Quantified Claim Justification and Inference Rules<a class="headerlink" href="#quantified-claim-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
@@ -395,7 +395,7 @@ both universal and existensial quantifications.</p>
 <p>The subsequent sections assumes that
 each rule is being applied at a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>.</p>
 <div class="section" id="forall-introduction-i">
-<span id="forall-intro"></span><h3>3.3.3.1. Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h3>
+<span id="forall-intro"></span><h3>3.3.5.1. Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Forall-Introduction</span><span class="w"></span>
 </pre></div>
@@ -415,7 +415,7 @@ Z. ∀x P{x}                                   ∀i X            // P{x} ≡ [x/
 </div>
 </div>
 <p>Note that <code class="docutils literal"><span class="pre">x</span></code> cannot appear in <code class="docutils literal"><span class="pre">P{a}</span></code>; otherwise,
-the proof violates the <a class="reference internal" href="#pred-well-formed"><span>Well-Formed-ness</span></a> rules
+the proof violates the <a class="reference internal" href="#pred-well-formed"><span>Well-Formed-Ness</span></a> rules
 (i.e., such <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P{a}</span></code> can only either be a free variable or
 defined in an enclosing sub-proof, both of which are disallowed).</p>
 <p>The following alternative pattern is used grouping multiple
@@ -436,7 +436,7 @@ Z. ∀x,y1,…,yN P{x}                           ∀i X            // P{x} ≡ [
 </div>
 </div>
 <div class="section" id="forall-elimination-e">
-<h3>3.3.3.2. Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.5.2. Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">          </span><span class="c">// Forall-Elimination</span><span class="w"></span>
 </pre></div>
@@ -477,7 +477,7 @@ of ∀-quantification nesting that is implemented in Logika (i.e., there exists
 for any positive <code class="docutils literal"><span class="pre">M</span></code>).</p>
 </div>
 <div class="section" id="exists-introduction-i">
-<h3>3.3.3.3. Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.5.3. Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">          </span><span class="c">// Exists-Introduction</span><span class="w"></span>
 </pre></div>
@@ -511,7 +511,7 @@ Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &l
 </div>
 </div>
 <div class="section" id="exists-elimination-e">
-<span id="exists-elim"></span><h3>3.3.3.4. Exists-Elimination (∃e)<a class="headerlink" href="#exists-elimination-e" title="Permalink to this headline">¶</a></h3>
+<span id="exists-elim"></span><h3>3.3.5.4. Exists-Elimination (∃e)<a class="headerlink" href="#exists-elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">            </span><span class="c">// Exists-Elimination</span><span class="w"></span>
 </pre></div>
@@ -551,7 +551,7 @@ Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]
 </div>
 </div>
 <div class="section" id="predicate-logic-input-language-grammar">
-<span id="pred-grammar"></span><h2>3.3.4. Predicate Logic Input Language Grammar<a class="headerlink" href="#predicate-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
+<span id="pred-grammar"></span><h2>3.3.6. Predicate Logic Input Language Grammar<a class="headerlink" href="#predicate-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <p>Note that extended language elements that are not
 in the <a class="reference internal" href="../propositional/index.html#prop-grammar"><span>Propositional Logic Input Language Grammar</span></a> are highlighted.</p>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="hll"><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">              </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>

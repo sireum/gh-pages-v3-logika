@@ -76,8 +76,8 @@ has an associated claim assumption that refers to the fresh variable.
 This form is used for :ref:`exists-elim`.
 
 
-Extended Claim Expressions
-==========================
+Claim Expression
+================
 
 .. literalinclude:: predicate.txt
    :language: antlr
@@ -190,8 +190,8 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 
 .. _pred-well-formed:
 
-Well-Formed-ness
-----------------
+Well-Formed-Ness
+================
 
 For simplicity, Logika does not allow identifier "shadowing",
 which means that a variable cannot be quantified more than one time in the
@@ -213,8 +213,8 @@ is consistent with the restriction of disallowing identifier shadowing.
 
 .. _subst-notation:
 
-Abstract Notation and Substitution
-----------------------------------
+Abstract Notations and Substitution
+===================================
 
 One abstract notation that is used from now on is to express that a claim
 ``R`` that refers to some free variables (in the context of ``R`` itself)
