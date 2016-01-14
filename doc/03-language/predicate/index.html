@@ -81,14 +81,14 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">3.3. Predicate Logic</a><ul>
-<li><a class="reference internal" href="#extended-claim-expressions">3.3.1. Extended Claim Expressions</a><ul>
-<li><a class="reference internal" href="#first-order-uninterpreted-predicate-and-function-applications">3.3.1.1. First-Order Uninterpreted Predicate and Function Applications</a></li>
-<li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.1.2. Universally (∀) and Existensially (∃) Quantified Claims</a></li>
-<li><a class="reference internal" href="#well-formed-ness">3.3.1.3. Well-Formed-ness</a></li>
-<li><a class="reference internal" href="#abstract-notation">3.3.1.4. Abstract Notation</a></li>
+<li><a class="reference internal" href="#revised-sub-proof-assumption-step">3.3.1. Revised Sub-Proof Assumption Step</a></li>
+<li><a class="reference internal" href="#extended-claim-expressions">3.3.2. Extended Claim Expressions</a><ul>
+<li><a class="reference internal" href="#first-order-uninterpreted-predicate-and-function-applications">3.3.2.1. First-Order Uninterpreted Predicate and Function Applications</a></li>
+<li><a class="reference internal" href="#universally-and-existensially-quantified-claims">3.3.2.2. Universally (∀) and Existensially (∃) Quantified Claims</a></li>
+<li><a class="reference internal" href="#well-formed-ness">3.3.2.3. Well-Formed-ness</a></li>
+<li><a class="reference internal" href="#abstract-notation-and-substitution">3.3.2.4. Abstract Notation and Substitution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#revised-sub-proof-assumption-step">3.3.2. Revised Sub-Proof Assumption Step</a></li>
 <li><a class="reference internal" href="#quantified-claim-justification-and-inference-rules">3.3.3. Quantified Claim Justification and Inference Rules</a><ul>
 <li><a class="reference internal" href="#forall-introduction-i">3.3.3.1. Forall-Introduction (∀i)</a></li>
 <li><a class="reference internal" href="#forall-elimination-e">3.3.3.2. Forall-Elimination (∀e)</a></li>
@@ -144,9 +144,9 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 <p>The Logika predicate logic input language is a small
 extension of the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input language
 where the additional language elements are:
-(1) <a class="reference internal" href="#uninterpreted-functions"><span>First-Order Uninterpreted Predicate and Function Applications</span></a>,
-(2) <a class="reference internal" href="#quantified-claims"><span>Universally (∀) and Existensially (∃) Quantified Claims</span></a>,
-(3) <a class="reference internal" href="#revised-assumptions"><span>Revised Sub-Proof Assumption Step</span></a>,
+(1) <a class="reference internal" href="#revised-assumptions"><span>Revised Sub-Proof Assumption Step</span></a>,
+(2) <a class="reference internal" href="#uninterpreted-functions"><span>First-Order Uninterpreted Predicate and Function Applications</span></a>,
+(3) <a class="reference internal" href="#quantified-claims"><span>Universally (∀) and Existensially (∃) Quantified Claims</span></a>,
 (4) <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>.</p>
 <p>Similar to the discussion in the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input
 language chapter, this chapter only discuss
@@ -179,8 +179,27 @@ also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogi
 or extend the <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> input language are
 discussed. The complete predicate logic input language is
 given in the <a class="reference internal" href="#pred-grammar"><span>Predicate Logic Input Language Grammar</span></a> section as a reference.</p>
+<div class="section" id="revised-sub-proof-assumption-step">
+<span id="revised-assumptions"></span><h2>3.3.1. Revised Sub-Proof Assumption Step<a class="headerlink" href="#revised-sub-proof-assumption-step" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w">                </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; used for Exists-Elimination</span><span class="w"></span>
+</span></pre></div>
+</div>
+<p>To support <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
+enhanced.</p>
+<p>The first highlighted enhancement is to introduce a &#8220;fresh&#8221; variable
+suitable for <a class="reference internal" href="#forall-intro"><span>introducing a universal quantification</span></a>;
+here, &#8220;fresh&#8221; means that the identifier is not used in the
+<a class="reference internal" href="../propositional/index.html#scoping"><span>scope</span></a> of the variable; this form is a special one
+because it is not a regular proof step which has a claim associated with it.</p>
+<p>The second highlighted form also introduces a fresh variable, but also
+has an associated claim assumption that refers to the fresh variable.
+This form is used for
+<a class="reference internal" href="#exists-elim"><span>eliminating an existensial quantification</span></a>.</p>
+</div>
 <div class="section" id="extended-claim-expressions">
-<h2>3.3.1. Extended Claim Expressions<a class="headerlink" href="#extended-claim-expressions" title="Permalink to this headline">¶</a></h2>
+<h2>3.3.2. Extended Claim Expressions<a class="headerlink" href="#extended-claim-expressions" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                         </span><span class="c">// identifier</span><span class="w"></span>
@@ -209,7 +228,7 @@ predicate logic has two additional kinds of expression:
 (1) predicate/function applications, and (2) quantified claims,
 as highlighted above, and described next.</p>
 <div class="section" id="first-order-uninterpreted-predicate-and-function-applications">
-<span id="uninterpreted-functions"></span><h3>3.3.1.1. First-Order Uninterpreted Predicate and Function Applications<a class="headerlink" href="#first-order-uninterpreted-predicate-and-function-applications" title="Permalink to this headline">¶</a></h3>
+<span id="uninterpreted-functions"></span><h3>3.3.2.1. First-Order Uninterpreted Predicate and Function Applications<a class="headerlink" href="#first-order-uninterpreted-predicate-and-function-applications" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">      </span><span class="c">// predicate application</span><span class="w"></span>
 
@@ -221,7 +240,7 @@ In predicate logic, the meaning of each function is unspecified,
 thus, uninterpreted.</p>
 <p>Instead of depending on function interpretations,
 Logika&#8217;s predicate logic reasoning uses
-<a class="reference internal" href="#pred-rules"><span>rewriting/substitution</span></a>, in addition to
+<a class="reference internal" href="#subst-notation"><span>rewriting/substitution</span></a>, in addition to
 <a class="reference internal" href="../propositional/index.html#structural-eq"><span>structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
 that is used in propositional logic.
 The rewriting technique depends on the fact that each function is
@@ -286,7 +305,7 @@ only determined by the number of its arguments; hence,
 each function has a fixed number of arguments.</p>
 </div>
 <div class="section" id="universally-and-existensially-quantified-claims">
-<span id="quantified-claims"></span><h3>3.3.1.2. Universally (∀) and Existensially (∃) Quantified Claims<a class="headerlink" href="#universally-and-existensially-quantified-claims" title="Permalink to this headline">¶</a></h3>
+<span id="quantified-claims"></span><h3>3.3.2.2. Universally (∀) and Existensially (∃) Quantified Claims<a class="headerlink" href="#universally-and-existensially-quantified-claims" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                      </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                      </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
@@ -303,7 +322,7 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 <code class="docutils literal"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
 </div>
 <div class="section" id="well-formed-ness">
-<h3>3.3.1.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
+<h3>3.3.2.3. Well-Formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h3>
 <p>For simplicity, Logika does not allow identifier &#8220;shadowing&#8221;,
 which means that a variable cannot be quantified more than one time in the
 same scope.
@@ -320,8 +339,8 @@ are actually <em>implicitly universally-quantified</em> (even for propositional 
 In that sense, disallowing the same identifier used for as both free and quantified
 is consistent with the restriction of disallowing identifier shadowing.</p>
 </div>
-<div class="section" id="abstract-notation">
-<h3>3.3.1.4. Abstract Notation<a class="headerlink" href="#abstract-notation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="abstract-notation-and-substitution">
+<span id="subst-notation"></span><h3>3.3.2.4. Abstract Notation and Substitution<a class="headerlink" href="#abstract-notation-and-substitution" title="Permalink to this headline">¶</a></h3>
 <p>One abstract notation that is used from now on is to express that a claim
 <code class="docutils literal"><span class="pre">R</span></code> that refers to some free (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself) variables
 such as <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>, as: <code class="docutils literal"><span class="pre">R{a,b}</span></code>.
@@ -334,26 +353,14 @@ Thus, in general, when defining a quantification, it is either one of the
 following forms:
 <code class="docutils literal"><span class="pre">∀a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (universal), or
 <code class="docutils literal"><span class="pre">∃a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (existensial).</p>
+<p>Another notation is for expression substitution.
+The notation <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> means all occurences of expression
+<code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code> is replaced with <code class="docutils literal"><span class="pre">E2</span></code>; one easy way to remember
+which one replaces which one is to read <code class="docutils literal"><span class="pre">/</span></code> as &#8220;steps over&#8221;,
+thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.</p>
+<p>Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
+Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
 </div>
-</div>
-<div class="section" id="revised-sub-proof-assumption-step">
-<span id="revised-assumptions"></span><h2>3.3.2. Revised Sub-Proof Assumption Step<a class="headerlink" href="#revised-sub-proof-assumption-step" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w">                </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>
-</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="c">// ID must be &quot;fresh&quot;; used for Exists-Elimination</span><span class="w"></span>
-</span></pre></div>
-</div>
-<p>To support <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
-enhanced.</p>
-<p>The first highlighted enhancement is to introduce a &#8220;fresh&#8221; variable
-suitable for <a class="reference internal" href="#forall-intro"><span>introducing a universal quantification</span></a>;
-here, &#8220;fresh&#8221; means that the identifier is not used in the
-<a class="reference internal" href="../propositional/index.html#scoping"><span>scope</span></a> of the variable; this form is a special one
-because it is not a regular proof step which has a claim associated with it.</p>
-<p>The second highlighted form also introduces a fresh variable, but also
-has an associated claim assumption that refers to the fresh variable.
-This form is used for
-<a class="reference internal" href="#exists-elim"><span>eliminating an existensial quantification</span></a>.</p>
 </div>
 <div class="section" id="quantified-claim-justification-and-inference-rules">
 <span id="pred-rules"></span><h2>3.3.3. Quantified Claim Justification and Inference Rules<a class="headerlink" href="#quantified-claim-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>

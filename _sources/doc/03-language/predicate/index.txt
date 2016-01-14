@@ -21,9 +21,9 @@ Predicate Logic
 The Logika predicate logic input language is a small
 extension of the :ref:`propositional-language` input language
 where the additional language elements are:
-(1) :ref:`uninterpreted-functions`,
-(2) :ref:`quantified-claims`,
-(3) :ref:`revised-assumptions`,
+(1) :ref:`revised-assumptions`,
+(2) :ref:`uninterpreted-functions`,
+(3) :ref:`quantified-claims`,
 (4) :ref:`pred-rules`.
 
 Similar to the discussion in the :ref:`propositional-language` input
@@ -52,6 +52,31 @@ In the subsequent description, only language elements that are new
 or extend the :ref:`propositional-language` input language are
 discussed. The complete predicate logic input language is
 given in the :ref:`pred-grammar` section as a reference.
+
+.. _revised-assumptions:
+
+Revised Sub-Proof Assumption Step
+=================================
+
+.. literalinclude:: predicate.txt
+   :language: antlr
+   :lines: 28-30
+   :emphasize-lines: 2 - 3
+
+To support :ref:`pred-rules`, the sub-proof assumption form has to be
+enhanced.
+
+The first highlighted enhancement is to introduce a "fresh" variable
+suitable for :ref:`introducing a universal quantification <forall-intro>`;
+here, "fresh" means that the identifier is not used in the
+:ref:`scope <scoping>` of the variable; this form is a special one
+because it is not a regular proof step which has a claim associated with it.
+
+The second highlighted form also introduces a fresh variable, but also
+has an associated claim assumption that refers to the fresh variable.
+This form is used for
+:ref:`eliminating an existensial quantification <exists-elim>`.
+
 
 Extended Claim Expressions
 ==========================
@@ -92,7 +117,7 @@ thus, uninterpreted.
 
 Instead of depending on function interpretations,
 Logika's predicate logic reasoning uses
-:ref:`rewriting/substitution <pred-rules>`, in addition to
+:ref:`rewriting/substitution <subst-notation>`, in addition to
 :ref:`structural equivalence <structural-eq>` (``≡``)
 that is used in propositional logic.
 The rewriting technique depends on the fact that each function is
@@ -183,8 +208,10 @@ are actually *implicitly universally-quantified* (even for propositional logic).
 In that sense, disallowing the same identifier used for as both free and quantified
 is consistent with the restriction of disallowing identifier shadowing.
 
-Abstract Notation
------------------
+.. _subst-notation:
+
+Abstract Notation and Substitution
+----------------------------------
 
 One abstract notation that is used from now on is to express that a claim
 ``R`` that refers to some free (in the context of ``R`` itself) variables
@@ -199,29 +226,14 @@ following forms:
 ``∀a1,...,aN P{a1,...,aN}`` (universal), or
 ``∃a1,...,aN P{a1,...,aN}`` (existensial).
 
-.. _revised-assumptions:
+Another notation is for expression substitution.
+The notation ``[E2/E1]R`` means all occurences of expression
+``E1`` in ``R`` is replaced with ``E2``; one easy way to remember
+which one replaces which one is to read ``/`` as "steps over",
+thus ``[E2/E1]R`` reads as ``E2`` steps over ``E1`` in ``R``.
 
-Revised Sub-Proof Assumption Step
-=================================
-
-.. literalinclude:: predicate.txt
-   :language: antlr
-   :lines: 28-30
-   :emphasize-lines: 2 - 3
-
-To support :ref:`pred-rules`, the sub-proof assumption form has to be
-enhanced.
-
-The first highlighted enhancement is to introduce a "fresh" variable
-suitable for :ref:`introducing a universal quantification <forall-intro>`;
-here, "fresh" means that the identifier is not used in the
-:ref:`scope <scoping>` of the variable; this form is a special one
-because it is not a regular proof step which has a claim associated with it.
-
-The second highlighted form also introduces a fresh variable, but also
-has an associated claim assumption that refers to the fresh variable.
-This form is used for
-:ref:`eliminating an existensial quantification <exists-elim>`.
+Here is a concrete example of a substitution, ``[x/y]g(y) ≡ g(x)``.
+Another example, ``[f(g(x))/f(y)]g(f(y), f(x)) ≡ g(f(g(x)), f(x))``.
 
 
 .. _pred-rules:
