@@ -48,7 +48,7 @@ before proceeding to discuss the
 ----
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    basic/index.rst
    propositional/index.rst

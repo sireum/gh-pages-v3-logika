@@ -492,7 +492,7 @@ Negation-Elimination (¬e)
    :name: bottom-elim-pattern
 
 
-Proof-by-Contradiction (Pbc)
+Proof-by-Contradiction (pbc)
 ----------------------------
 .. literalinclude:: propositional.txt
    :language: antlr
@@ -500,7 +500,7 @@ Proof-by-Contradiction (Pbc)
 
 .. literalinclude:: pbc-pattern.txt
    :language: none
-   :caption: **Proof-by-Contradiction (Pbc) Schematic Pattern**
+   :caption: **Proof-by-Contradiction (pbc) Schematic Pattern**
    :name: pbc-elim-pattern
 
 .. _prop-grammar:

@@ -110,7 +110,7 @@ Justifications
     premise        andi           ande1          ande2          ori1
     Vi1            ori2           Vi2            ore            Ve
     impliesi       impliese       noti           negi           note
-    nege           bottome        falsee         Pbc
+    nege           bottome        falsee         pbc
     foralli        alli           Ai             foralle        alle
     Ae             existsi        somei          Ei             existse
     somee          Ee
