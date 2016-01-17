@@ -139,7 +139,72 @@ The proof language is actually embedded in the programming language,
 but they are easily distinguishable because of their reserved form that uses
 Scala&#8217;s <em>multi-line</em>
 <a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> &#8211;
-more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> ... <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>.</p>
+more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> ... <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>. Here is an example:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
+
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{ fact</span>
+<span class="s">        def sum(zs: ZS, n: Z): Z</span>
+<span class="s">        base. ∀zs: ZS  sum(zs, 0) == 0</span>
+<span class="s">        rec.  ∀zs: ZS</span>
+<span class="s">                ∀n: Z</span>
+<span class="s">                  sum(zs, n + 1) == sum(zs, n) + zs(n)               }&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="n">add</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ post  result == sum(a, a.size)                               }&quot;&quot;&quot;</span>
+
+  <span class="k">var</span> <span class="n">answer</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == 0                                  premise</span>
+<span class="s">        2. ∀zs: ZS  sum(zs, 0) == 0                     fact base</span>
+<span class="s">        3. sum(a, 0) == 0                               ∀e 2 a</span>
+<span class="s">        4. answer == sum(a, 0)                          subst2 3 1   }&quot;&quot;&quot;</span>
+  <span class="k">var</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, 0)                          premise</span>
+<span class="s">        2. i == 0                                       premise</span>
+<span class="s">        3. answer == sum(a, i)                          subst2 2 1</span>
+<span class="s">        4. 0 ≤ a.size                                   algebra</span>
+<span class="s">        5. i ≤ a.size                                   subst2 2 4</span>
+<span class="s">        6. 0 ≤ i                                        algebra 2    }&quot;&quot;&quot;</span>
+  <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ invariant  answer == sum(a, i)</span>
+<span class="s">                     0 ≤ i</span>
+<span class="s">                     i ≤ a.size</span>
+<span class="s">          modifies   answer, i                                       }&quot;&quot;&quot;</span>
+
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, i)                        premise</span>
+<span class="s">          2. 0 ≤ i                                      premise</span>
+<span class="s">          3. i ≤ a.size                                 premise</span>
+<span class="s">          4. i ≠ a.size                                 premise</span>
+<span class="s">          5. i &lt; a.size                                 algebra 3 4  }&quot;&quot;&quot;</span>
+    <span class="n">answer</span> <span class="k">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">a</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == answer_old + a(i)                premise</span>
+<span class="s">          2. answer_old == sum(a, i)                    premise</span>
+<span class="s">          3. answer == sum(a, i) + a(i)                 algebra 2 1</span>
+<span class="s">          4. ∀zs: ZS</span>
+<span class="s">               ∀n: Z</span>
+<span class="s">                 sum(zs, n + 1) == sum(zs, n) + zs(n)   fact rec</span>
+<span class="s">          5. sum(a, i + 1) == sum(a, i) + a(i)          ∀e 4 a i</span>
+<span class="s">          6. answer == sum(a, i + 1)                    subst2 5 3</span>
+<span class="s">          7. i &lt; a.size                                 premise</span>
+<span class="s">          8. 0 ≤ i                                      premise      }&quot;&quot;&quot;</span>
+
+    <span class="n">i</span> <span class="k">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, i_old + 1)                premise</span>
+<span class="s">          2. i == i_old + 1                             premise</span>
+<span class="s">          3. answer == sum(a, i)                        subst2 2 1</span>
+<span class="s">          4. 0 ≤ i_old                                  premise</span>
+<span class="s">          5. 0 ≤ i                                      algebra 2 4</span>
+<span class="s">          6. i_old &lt; a.size                             premise</span>
+<span class="s">          7. i ≤ a.size                                 algebra 2 6  }&quot;&quot;&quot;</span>
+  <span class="o">}</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, i)                          premise</span>
+<span class="s">        2. not (i ≠ a.size)                             premise</span>
+<span class="s">        3. i == a.size                                  algebra 2</span>
+<span class="s">        4. answer == sum(a, a.size)                     subst1 3 1   }&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">answer</span>
+<span class="o">}</span>
+</pre></div>
+</div>
 <p>Let us first discuss the
 <a class="reference internal" href="basic/index.html#basic-language"><span>basic language elements</span></a> that are common to the two categories,
 before proceeding to discuss the
