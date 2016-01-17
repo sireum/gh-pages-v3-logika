@@ -154,7 +154,7 @@ Extended Claim Expression
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 161 - 195
-   :emphasize-lines: 4 - 7, 10, 12 - 22, 26 - 28
+   :emphasize-lines: 4 - 8, 11, 13 - 23, 27 - 29
 
 Extended Justification and Inference Rules
 ==========================================
@@ -169,35 +169,35 @@ Fact
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 214
+   :lines: 226, 215
 
 Invariant
 ---------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 215
+   :lines: 226, 216
 
 Subst1
 ------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 216
+   :lines: 226, 217
 
 Subst2
 ------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 217
+   :lines: 226, 218
 
 Algebra
 -------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 218
+   :lines: 226, 219
 
 .. _auto:
 
@@ -206,7 +206,7 @@ Auto
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 225, 219
+   :lines: 226, 220
 
 
 Well-formed-ness
@@ -221,5 +221,5 @@ that of the :ref:`pred-grammar` are highlighted.
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 1 - 219
-   :emphasize-lines: 157 - 159, 164 - 167, 170, 172 - 182, 186 - 188, 214 - 219
+   :lines: 1 - 220
+   :emphasize-lines: 157 - 159, 164 - 168, 171, 173 - 183, 187 - 189, 215 - 220

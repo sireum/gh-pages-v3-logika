@@ -37,6 +37,10 @@ but they are easily distinguishable because of their reserved form that uses
 Scala's *multi-line*
 `string interpolation syntax <http://docs.scala-lang.org/overviews/core/string-interpolation.html>`__ --
 more specifically, ``l"""{`` ... ``}"""``.
+Here is an example to ponder:
+
+.. literalinclude:: example.logika
+   :language: scala
 
 Let us first discuss the
 :ref:`basic language elements<basic-language>` that are common to the two categories,
