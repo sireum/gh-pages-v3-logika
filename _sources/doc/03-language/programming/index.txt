@@ -154,7 +154,7 @@ Extended Claim Expression
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 162 - 196
-   :emphasize-lines: 4 - 22, 26 - 28
+   :emphasize-lines: 4 - 7, 10, 12 - 22, 26 - 28
 
 Extended Justification and Inference Rules
 ==========================================
@@ -222,4 +222,4 @@ that of the :ref:`pred-grammar` are highlighted.
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 1 - 220
-   :emphasize-lines: 158 - 161, 165 - 183, 187 - 189, 215 - 220
+   :emphasize-lines: 158 - 160, 165 - 168, 171, 173 - 183, 187 - 189, 215 - 220
