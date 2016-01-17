@@ -53,68 +53,61 @@ Statement
    :language: antlr
    :lines: 60 - 72
 
-Variable Declaration
---------------------
+Variable Declaration and Assignment
+-----------------------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 60 - 62, 26 - 29, 73 - 78, 98 - 101
-
-Assignment
-----------
-
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 227, 63, 73 - 78, 98 - 101
+   :lines: 60 - 63, 26 - 29, 73 - 78, 98 - 101
 
 Assumption
 ----------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 64
+   :lines: 228, 64
 
 Assertion
 ---------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 65
+   :lines: 228, 65
 
 If-Else Conditional
 -------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 66, 79 - 84
+   :lines: 228, 66, 79 - 84
 
 While-Loop
 ----------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 67, 85 - 97, 51 - 54
+   :lines: 228, 67, 85 - 97, 51 - 54
 
 Method Invocation
 -----------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 68, 98 - 101
+   :lines: 228, 68, 98 - 101
 
 Sequence Element Assigment
 --------------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 69, 73 - 78
+   :lines: 228, 69
 
 Print
 -----
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 70, 102 - 107
+   :lines: 228, 70, 102 - 107
 
 
 Sequent
@@ -122,7 +115,7 @@ Sequent
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 71, 126 - 133
+   :lines: 228, 71, 126 - 133
 
 .. _proof-statement:
 
@@ -131,7 +124,7 @@ Proof
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 227, 72, 136 - 154
+   :lines: 228, 72, 136 - 154
 
 Expression
 ==========
