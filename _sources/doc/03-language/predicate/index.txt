@@ -21,7 +21,7 @@ Predicate Logic
 The Logika predicate logic input language is a small
 extension of its :ref:`propositional-language`
 that adds the following language elements:
-(1) :ref:`revised-assumptions`,
+(1) :ref:`extended-assumptions`,
 (2) :ref:`uninterpreted-functions`,
 (3) :ref:`quantified-claims`, and
 (4) :ref:`pred-rules`.
@@ -52,10 +52,10 @@ or extend :ref:`propositional-language` are discussed.
 As a reference, the complete predicate logic input language is specified in
 :ref:`pred-grammar`.
 
-.. _revised-assumptions:
+.. _extended-assumptions:
 
-Revised Sub-Proof Assumption Step
-=================================
+Extended Sub-Proof Assumption Step
+==================================
 
 .. literalinclude:: predicate.txt
    :language: antlr
@@ -76,8 +76,8 @@ has an associated claim assumption that refers to the fresh variable.
 This form is used for :ref:`exists-elim`.
 
 
-Claim Expression
-================
+Extended Claim Expression
+=========================
 
 .. literalinclude:: predicate.txt
    :language: antlr
@@ -371,10 +371,10 @@ Exists-Elimination (∃e)
 Predicate Logic Input Language Grammar
 ======================================
 
-Note that extended language elements that are not
-in the :ref:`prop-grammar` are highlighted.
+Note that extended language elements from
+that of the :ref:`prop-grammar` are highlighted.
 
 .. literalinclude:: predicate.txt
    :language: antlr
    :lines: 1 - 61
-   :emphasize-lines: 1, 29 - 30, 35, 41 - 43, 43, 58 - 61
+   :emphasize-lines: 29 - 30, 35, 41 - 43, 43, 58 - 61

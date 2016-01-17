@@ -306,7 +306,7 @@ thus, there is no configuration switch needed for it.</p>
 <div class="section" id="auto-mode">
 <span id="id2"></span><h3>1.5.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
-<p>The auto mode enables <a class="reference internal" href="../03-language/programming/index.html#auto"><span>auto tactic</span></a> for deducing claims.
+<p>The auto mode enables <a class="reference internal" href="../03-language/programming/index.html#auto"><span>automatic claim deduction</span></a>.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).</p>
@@ -317,7 +317,7 @@ automatically prove a contract or a runtime error check
 (in which case, one can increase the <a class="reference internal" href="#timeout"><span>timeout</span></a>
 for automatic proving, or guide Logika by establishing more
 claims to help with making the necessary deduction).</p>
-<p>Furthermore, auto mode changes the way <span class="xref std std-ref">proof statement</span> works.
+<p>Furthermore, auto mode changes the way <a class="reference internal" href="../03-language/programming/index.html#proof-statement"><span>proof statement</span></a> works.
 By default, a proof statement only propagates the proven
 claims inside that statement.
 This essentially resets the premises that are available
@@ -326,7 +326,7 @@ has proven.
 If auto is enabled, proof statements also
 propagate their premises along with their proven claims.
 For more information with examples, please refer to the
-<span class="xref std std-ref">proof statement</span> section.</p>
+<a class="reference internal" href="../03-language/programming/index.html#proof-statement"><span>proof statement</span></a> section.</p>
 </div>
 <div class="section" id="last-mode">
 <h3>1.5.2. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>

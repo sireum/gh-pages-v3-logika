@@ -18,43 +18,208 @@
 Programming Logic
 *****************
 
-Grammar
+Program
 =======
 
-Program
--------
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 1 - 11
+
+Fact
+====
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 13 - 28
+
+Invariant
+=========
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 30 - 32
 
 Statement
----------
+=========
 
-Proof Statement
----------------
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 34 - 47
 
-Expression
+Variable Declaration
+--------------------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 34 - 36, 48 - 53, 25 - 28
+
+Assignment
 ----------
 
-Well-formed-ness
-================
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 37, 48 - 53
 
-Type Checking
--------------
+Assumption
+----------
 
-Justification and Inference Rules
-=================================
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 38
 
-Subst1
-------
+Assertion
+---------
 
-Subst2
-------
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 39
 
-Algebra
+If-Else Conditional
+-------------------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 40, 54 - 59
+
+While-Loop
+----------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 41, 60 - 75
+
+Method Declaration
+------------------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 42, 76 - 84, 21 - 28, 85 - 94, 72 - 75, 95 - 98
+
+Method Invocation
+-----------------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 43, 99 - 102
+
+Sequence Element Assigment
+--------------------------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 44, 48 - 53, 99 - 102
+
+Print
+-----
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 45, 103 - 108
+
+
+Sequent
 -------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 46, 127 - 134
+
+.. _proof-statement:
+
+Proof
+-----
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 47, 137 - 155
+
+Expression
+==========
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 110 - 126
+
+Extended Assume Step
+====================
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 157 - 160
+   :emphasize-lines: 2 - 4
+
+Extended Claim Expression
+=========================
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 162 - 196
+   :emphasize-lines: 4 - 22, 26 - 28
+
+Extended Justification and Inference Rules
+==========================================
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 198 - 220
+   :emphasize-lines: 1, 18 - 22
+
+Fact
+----
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 215
 
 Invariant
 ---------
 
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 216
+
+Subst1
+------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 217
+
+Subst2
+------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 218
+
+Algebra
+-------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 219
+
 .. _auto:
 
-Auto Tactic
-===========
+Auto
+----
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 226, 220
+
+
+Well-formed-ness
+================
+
+
+Programming Logic Input Language Grammar
+========================================
+
+Note that extended language elements from
+that of the :ref:`pred-grammar` are highlighted.
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 1 - 220
+   :emphasize-lines: 158 - 161, 165 - 183, 187 - 189, 215 - 220

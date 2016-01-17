@@ -211,7 +211,7 @@ Auto Mode
 
 **Command-Line Option:** ``-a`` or ``--auto``.
 
-The auto mode enables :ref:`auto tactic <auto>` for deducing claims.
+The auto mode enables :ref:`automatic claim deduction <auto>`.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).
