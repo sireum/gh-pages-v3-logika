@@ -179,7 +179,9 @@ commands (statements) and queries (expressions).
 Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
 (side-effect free &#8211; they do not change values stored in variables).</p>
-<p>The following pattern notation is used to describe a statement&#8217;s side-effects:</p>
+<p>The following pattern notation is used to describe a statement&#8217;s side-effects
+(similar to <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span>Proof Schematic Pattern</span></a>, but enclosed in <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code> to
+distinguish it from statement blocks):</p>
 <div class="literal-block-wrapper container" id="claim-transformation-notation">
 <div class="code-block-caption"><span class="caption-text"><strong>Statement Claim Transformation Rule Notation</strong></span><a class="headerlink" href="#claim-transformation-notation" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ // precondition</span>
@@ -209,7 +211,7 @@ done by each of the program statements.</p>
 <li><code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">Y</span></code> are used to represent variable identifiers.</li>
 <li><code class="docutils literal"><span class="pre">ZS</span></code> (prefix) is used to represent variable identifiers of type <code class="docutils literal"><span class="pre">ZS</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">T</span></code> is used to represent a type.</li>
-<li><code class="docutils literal"><span class="pre">F</span></code> is used to represent function/method identifier.</li>
+<li><code class="docutils literal"><span class="pre">F</span></code> is used to represent a function/method identifier.</li>
 <li><code class="docutils literal"><span class="pre">E</span></code> is used to represent a general expression.</li>
 <li><code class="docutils literal"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
 </ul>
@@ -301,7 +303,8 @@ assignment.
 Below are the claim transformation rules for an assignment based on
 the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>).
 Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable does not
-survive the next statement.</p>
+survive the next statement, thus, such claim has to be rewritten in order
+to be propagated.</p>
 <div class="literal-block-wrapper container" id="var-assign-exp-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Variable Assignment Rule</strong></span><a class="headerlink" href="#var-assign-exp-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -315,8 +318,19 @@ survive the next statement.</p>
 </pre></div>
 </div>
 </div>
+<p>The <a class="reference internal" href="#var-assign-exp-rule"><span>Variable Assignment Rule</span></a> indicates that any claim in its precondition
+is rewritten by substituting the assigned variable <code class="docutils literal"><span class="pre">X</span></code> with the newly
+introduced variable <code class="docutils literal"><span class="pre">X_old</span></code> that stores the value of <code class="docutils literal"><span class="pre">X</span></code> before the
+assignment, and the value of <code class="docutils literal"><span class="pre">X</span></code> is now equal to the value of expression
+<code class="docutils literal"><span class="pre">E</span></code> (which leverages the fact that any Logika expression is pure &#8211;
+side-effect free).</p>
+<p>To avoid aliasing issues of mutable objects that complicate reasoning,
+Logika forces <code class="docutils literal"><span class="pre">ZS</span></code> to be cloned (resulting in a new object copy of the sequence)
+when assigned to a different variable.
+That is, <code class="docutils literal"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">Y</span></code> are ill-formed if <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">Y</span></code> are of type <code class="docutils literal"><span class="pre">ZS</span></code>.
+The <code class="docutils literal"><span class="pre">ZS</span></code> cloning rule is as follows.</p>
 <div class="literal-block-wrapper container" id="var-assign-clone-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Sequence Cloning Rule</strong></span><a class="headerlink" href="#var-assign-clone-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>ZS Cloning Rule</strong></span><a class="headerlink" href="#var-assign-clone-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
@@ -328,6 +342,18 @@ survive the next statement.</p>
 </pre></div>
 </div>
 </div>
+<p><code class="docutils literal"><span class="pre">ZS</span></code> variable can also be assigned as a result of <code class="docutils literal"><span class="pre">ZS</span></code>
+appending operation
+(<code class="docutils literal"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">:+</span> <span class="pre">E2</span></code>, where <code class="docutils literal"><span class="pre">E1</span></code> is of type <code class="docutils literal"><span class="pre">ZS</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> is of type <code class="docutils literal"><span class="pre">Z</span></code>)
+or prepending operation
+(<code class="docutils literal"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">+:</span> <span class="pre">E2</span></code>, where <code class="docutils literal"><span class="pre">E1</span></code> is of type <code class="docutils literal"><span class="pre">Z</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> is of type <code class="docutils literal"><span class="pre">ZS</span></code>),
+both of which also produce a new <code class="docutils literal"><span class="pre">ZS</span></code> object.</p>
+<p>The <code class="docutils literal"><span class="pre">readInt</span></code> built-in function asks for an integer input through the program
+console input (an optional string literal prompt <code class="docutils literal"><span class="pre">STRING</span></code> can be provided to
+display a custom message). Since the resulting integer value depends on
+the user input, which cannot be predicted, there is no claim that can be stated
+regarding the value the can be deduced,
+which is reflected in <a class="reference internal" href="#var-assign-readint-rule"><span>readInt Rule</span></a>.</p>
 <div class="literal-block-wrapper container" id="var-assign-readint-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>readInt Rule</strong></span><a class="headerlink" href="#var-assign-readint-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -340,6 +366,8 @@ survive the next statement.</p>
 </pre></div>
 </div>
 </div>
+<p>The <code class="docutils literal"><span class="pre">randomInt</span></code> built-in function generates a random integer value.
+Similar to <code class="docutils literal"><span class="pre">readInt</span></code>, there is no claim that can be stated regarding the value.</p>
 <div class="literal-block-wrapper container" id="var-assign-randomint-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>randomInt Rule</strong></span><a class="headerlink" href="#var-assign-randomint-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -353,7 +381,8 @@ survive the next statement.</p>
 </div>
 </div>
 <p>The rule for <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span>Method Invocation</span></a>
-(replace <code class="docutils literal"><span class="pre">F_result</span></code> in the rules with the assigned variable identifier).</p>
+(just replace occurrence of <code class="docutils literal"><span class="pre">F_result</span></code> in the rules with the assigned variable
+identifier <code class="docutils literal"><span class="pre">X</span></code>).</p>
 </div>
 <div class="section" id="assertion-and-assumption">
 <span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
@@ -659,11 +688,15 @@ survive the next statement.</p>
 <span class="s">  }&quot;&quot;&quot;</span>
 
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …</span>
 <span class="s">    …. I                                 premise</span>
+<span class="s">    …</span>
 <span class="s">    …. PRE                               premise</span>
+<span class="s">    …</span>
 <span class="s">    …. X1 == X1_in                       premise</span>
-<span class="s">       …</span>
+<span class="s">    …</span>
 <span class="s">    …. XN == XN_in                       premise</span>
+<span class="s">    …</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="n">C</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -688,7 +721,6 @@ survive the next statement.</p>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">    …. PRE                               premise</span>
 <span class="s">    …. X1 == X1_in                       premise</span>
-<span class="s">       …</span>
 <span class="s">    …. XN == XN_in                       premise</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="n">C</span>
@@ -890,12 +922,10 @@ before applying any of the ∀-quantified claim rules.</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="fact-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Fact Rule</strong></span><a class="headerlink" href="#fact-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Fact Schematic Pattern</strong></span><a class="headerlink" href="#fact-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  fact</span>
-<span class="s">     …</span>
 <span class="s">     X. E</span>
-<span class="s">     …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -912,12 +942,9 @@ before applying any of the ∀-quantified claim rules.</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="invariant-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Invariant Rule</strong></span><a class="headerlink" href="#invariant-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Invariant Schematic Pattern</strong></span><a class="headerlink" href="#invariant-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  invariant</span>
-<span class="s">     …</span>
-<span class="s">     I</span>
-<span class="s">     …</span>
+<span class="s">  invariant I</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -935,26 +962,20 @@ before applying any of the ∀-quantified claim rules.</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="subst1-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Substitution1 (subst1) Rule</strong></span><a class="headerlink" href="#subst1-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Substitution1 (subst1) Schematic Pattern</strong></span><a class="headerlink" href="#subst1-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">     …</span>
 <span class="s">  X. E1 == E2                            …</span>
-<span class="s">     …</span>
 <span class="s">  Y. P{E1}</span>
-<span class="s">     …</span>
 <span class="s">  Z. [E2/E1]P{E1}                        subst1 X Y</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper container" id="subst2-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Substitution2 (subst1) Rule</strong></span><a class="headerlink" href="#subst2-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Substitution2 (subst1) Schematic Pattern</strong></span><a class="headerlink" href="#subst2-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">     …</span>
 <span class="s">  X. E1 == E2                            …</span>
-<span class="s">     …</span>
 <span class="s">  Y. P{E2}</span>
-<span class="s">     …</span>
 <span class="s">  Z. [E1/E2]P{E2}                        subst2 X Y</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
@@ -978,22 +999,18 @@ on how summoning works).</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="algebra-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Algebra Rule (with some arguments)</strong></span><a class="headerlink" href="#algebra-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Algebra Schematic Pattern (with some arguments)</strong></span><a class="headerlink" href="#algebra-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">      …</span>
 <span class="s">  X1. E1                                 …                 // E1 cannot use ∧, ∨, →, ∀, ∃</span>
-<span class="s">      …</span>
 <span class="s">  XN. EN                                 …                 // N &gt; 0, EN cannot use ∧, ∨, →, ∀, ∃</span>
-<span class="s">      …</span>
 <span class="s">  Z.  E                                  algebra X1 … XN   // if ¬(E1 ∧ … ∧ EN → E) is unsat</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper container" id="algebra-empty-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Algebra Rule (without argument)</strong></span><a class="headerlink" href="#algebra-empty-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Algebra Schematic Pattern (without argument)</strong></span><a class="headerlink" href="#algebra-empty-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">      …</span>
 <span class="s">  Z.  E                                  algebra           // if ¬E is unsat</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
@@ -1007,24 +1024,24 @@ on how summoning works).</p>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="auto-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Auto Rule (with some arguments)</strong></span><a class="headerlink" href="#auto-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Auto Schematic Pattern (with some arguments)</strong></span><a class="headerlink" href="#auto-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">      …</span>
 <span class="s">  X1. E1                                 …</span>
-<span class="s">      …</span>
 <span class="s">  XN. EN                                 …                 // N &gt; 0</span>
-<span class="s">      …</span>
 <span class="s">  Z.  E                                  auto X1 … XN      // if ¬(E1 ∧ … ∧ EN → E) is unsat</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper container" id="auto-empty-rule">
-<div class="code-block-caption"><span class="caption-text"><strong>Auto Rule (without argument)</strong></span><a class="headerlink" href="#auto-empty-rule" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text"><strong>Auto Schematic Pattern (without argument)</strong></span><a class="headerlink" href="#auto-empty-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">      …</span>
-<span class="s">  Z.  E                                  auto              // if ¬(premise1 ∧ … ∧ premiseN ∧ axiom1 ∧ … ∧ axiomM → E) is unsat</span>
-<span class="s">}&quot;&quot;&quot;</span>
+<span class="s">  X1. P1                                 …</span>
+<span class="s">  XK. PK                                 …</span>
+<span class="s">  Z.  E                                  auto              // if ¬(premise1 ∧ … ∧ premiseN ∧ axiom1 ∧ … ∧ axiomM ∧ P1 ∧ … ∧ PK → E) is unsat</span>
+<span class="s">}&quot;&quot;&quot;</span>                                                       <span class="c1">// where:</span>
+                                                           <span class="c1">// * premiseI comes from the postcondition of the preceeding statement</span>
+                                                           <span class="c1">// * axiomI is an axiom declared in a fact</span>
 </pre></div>
 </div>
 </div>

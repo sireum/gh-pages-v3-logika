@@ -38,7 +38,9 @@ Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
 (side-effect free -- they do not change values stored in variables).
 
-The following pattern notation is used to describe a statement's side-effects:
+The following pattern notation is used to describe a statement's side-effects
+(similar to :ref:`schematic-pattern`, but enclosed in ``l"""`` … ``"""`` to
+distinguish it from statement blocks):
 
 .. literalinclude:: claim-transformation-notation.txt
    :language: scala
@@ -68,7 +70,7 @@ As a convention:
 
 * ``T`` is used to represent a type.
 
-* ``F`` is used to represent function/method identifier.
+* ``F`` is used to represent a function/method identifier.
 
 * ``E`` is used to represent a general expression.
 
@@ -136,22 +138,53 @@ assignment.
 Below are the claim transformation rules for an assignment based on
 the form of its right-hand side (``rhs``).
 Note that any claim referring to the generated ``_old`` variable does not
-survive the next statement.
+survive the next statement, thus, such claim has to be rewritten in order
+to be propagated.
 
 .. literalinclude:: var-assign-exp-rule.txt
    :language: scala
    :caption: **Variable Assignment Rule**
    :name: var-assign-exp-rule
 
+The :ref:`var-assign-exp-rule` indicates that any claim in its precondition
+is rewritten by substituting the assigned variable ``X`` with the newly
+introduced variable ``X_old`` that stores the value of ``X`` before the
+assignment, and the value of ``X`` is now equal to the value of expression
+``E`` (which leverages the fact that any Logika expression is pure --
+side-effect free).
+
+To avoid aliasing issues of mutable objects that complicate reasoning,
+Logika forces ``ZS`` to be cloned (resulting in a new object copy of the sequence)
+when assigned to a different variable.
+That is, ``X = Y`` are ill-formed if ``X`` and ``Y`` are of type ``ZS``.
+The ``ZS`` cloning rule is as follows.
+
 .. literalinclude:: var-assign-clone-rule.txt
    :language: scala
-   :caption: **Sequence Cloning Rule**
+   :caption: **ZS Cloning Rule**
    :name: var-assign-clone-rule
+
+``ZS`` variable can also be assigned as a result of ``ZS``
+appending operation
+(``E ≡ E1 :+ E2``, where ``E1`` is of type ``ZS`` and ``E2`` is of type ``Z``)
+or prepending operation
+(``E ≡ E1 +: E2``, where ``E1`` is of type ``Z`` and ``E2`` is of type ``ZS``),
+both of which also produce a new ``ZS`` object.
+
+The ``readInt`` built-in function asks for an integer input through the program
+console input (an optional string literal prompt ``STRING`` can be provided to
+display a custom message). Since the resulting integer value depends on
+the user input, which cannot be predicted, there is no claim that can be stated
+regarding the value the can be deduced,
+which is reflected in :ref:`var-assign-readint-rule`.
 
 .. literalinclude:: var-assign-readint-rule.txt
    :language: scala
    :caption: **readInt Rule**
    :name: var-assign-readint-rule
+
+The ``randomInt`` built-in function generates a random integer value.
+Similar to ``readInt``, there is no claim that can be stated regarding the value.
 
 .. literalinclude:: var-assign-randomint-rule.txt
    :language: scala
@@ -159,7 +192,8 @@ survive the next statement.
    :name: var-assign-randomint-rule
 
 The rule for ``invoke`` is discussed in :ref:`prog-invoke`
-(replace ``F_result`` in the rules with the assigned variable identifier).
+(just replace occurrence of ``F_result`` in the rules with the assigned variable
+identifier ``X``).
 
 .. _prog-assert:
 
@@ -378,7 +412,7 @@ Fact (fact)
 
 .. literalinclude:: fact-rule.txt
    :language: scala
-   :caption: **Fact Rule**
+   :caption: **Fact Schematic Pattern**
    :name: fact-rule
 
 Invariant (invariant)
@@ -390,7 +424,7 @@ Invariant (invariant)
 
 .. literalinclude:: invariant-rule.txt
    :language: scala
-   :caption: **Invariant Rule**
+   :caption: **Invariant Schematic Pattern**
    :name: invariant-rule
 
 Substitutions (subst1 and subst2)
@@ -402,12 +436,12 @@ Substitutions (subst1 and subst2)
 
 .. literalinclude:: subst1-rule.txt
    :language: scala
-   :caption: **Substitution1 (subst1) Rule**
+   :caption: **Substitution1 (subst1) Schematic Pattern**
    :name: subst1-rule
 
 .. literalinclude:: subst2-rule.txt
    :language: scala
-   :caption: **Substitution2 (subst1) Rule**
+   :caption: **Substitution2 (subst1) Schematic Pattern**
    :name: subst2-rule
 
 
@@ -432,12 +466,12 @@ Algebra (algebra)
 
 .. literalinclude:: algebra-rule.txt
    :language: scala
-   :caption: **Algebra Rule (with some arguments)**
+   :caption: **Algebra Schematic Pattern (with some arguments)**
    :name: algebra-rule
 
 .. literalinclude:: algebra-empty-rule.txt
    :language: scala
-   :caption: **Algebra Rule (without argument)**
+   :caption: **Algebra Schematic Pattern (without argument)**
    :name: algebra-empty-rule
 
 .. _prog-auto:
@@ -451,12 +485,12 @@ Auto (auto)
 
 .. literalinclude:: auto-rule.txt
    :language: scala
-   :caption: **Auto Rule (with some arguments)**
+   :caption: **Auto Schematic Pattern (with some arguments)**
    :name: auto-rule
 
 .. literalinclude:: auto-empty-rule.txt
    :language: scala
-   :caption: **Auto Rule (without argument)**
+   :caption: **Auto Schematic Pattern (without argument)**
    :name: auto-empty-rule
 
 
