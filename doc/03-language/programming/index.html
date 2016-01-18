@@ -303,9 +303,10 @@ Note a variable cannot be forward-referenced.</p>
 assignment.
 Below are the claim transformation rules for an assignment based on
 the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>).
-Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable does not
-survive the next statement, thus, such claim has to be rewritten in order
-to be propagated.</p>
+Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable is <em>transient</em>;
+it does not survive the next (non-proof/sequent) statement. Thus,
+such claim has to be transformed in a <a class="reference internal" href="#prog-proof"><span>Proof</span></a>/<a class="reference internal" href="#prog-sequent"><span>Sequent</span></a>
+statement in order for the information that it contains to be propagated.</p>
 <div class="literal-block-wrapper container" id="var-assign-exp-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Variable Assignment Rule</strong></span><a class="headerlink" href="#var-assign-exp-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -575,8 +576,8 @@ expressed by an expression <code class="docutils literal"><span class="pre">E2</
 they are required as the statement&#8217;s precondition.</p>
 <p>At the postcondition, <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> and all precondition claims are rewritten to refer to
 <code class="docutils literal"><span class="pre">X_old</span></code> if they refer to <code class="docutils literal"><span class="pre">X</span></code>.
-(Similar to the variable assignment rules, any claim referring to the generated
-<code class="docutils literal"><span class="pre">_old</span></code> variable does not survive the next statement.)</p>
+Similar to the variable assignment rules, any claim referring to the generated
+<code class="docutils literal"><span class="pre">_old</span></code> variable is transient.</p>
 <p>The update does not change the size of <code class="docutils literal"><span class="pre">X</span></code>, thus, one can deduce <code class="docutils literal"><span class="pre">X.size</span> <span class="pre">==</span> <span class="pre">X_old.size</span></code>.
 Furthermore, only the updated element got changed to the new value.</p>
 <div class="literal-block-wrapper container" id="seq-assign-rule">
@@ -664,6 +665,19 @@ the postcondition.</p>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A proof statement contains a natural deduction proof similar to a proof in
+<a class="reference internal" href="../predicate/index.html#predicate-language"><span>Predicate Logic</span></a> and <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>.
+It can be used to deduce new claims from other (transient) claims
+(e.g., to satisfy the next statement&#8217;s precondition).</p>
+<p>The behavior of a proof statement differs on whether the <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a> is
+enabled.
+When enabled, the proof statement <em>adds</em> its deduced claims to existing ones.
+Otherwise, it <em>replaces</em> existing ones with its deduce claims, which
+results in a Logika program where all deductions necessary to verify the program
+are forced to be explicitly written (and proof statements intermingled with
+non-proof/sequent statements as a side-effect).</p>
+<p>Note that the deduced claims of a proof statement consists of all claims in regular
+proof steps at the proof-level (i.e., claims in sub-proofs are excluded).</p>
 </div>
 <div class="section" id="sequent">
 <span id="prog-sequent"></span><h3>3.4.2.8. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
@@ -679,6 +693,41 @@ the postcondition.</p>
 <span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
 
 <span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A sequent statement can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a>.
+While the form is similar to the ones in <a class="reference internal" href="../predicate/index.html#predicate-language"><span>Predicate Logic</span></a>
+and <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>, it has a different purpose in
+Logika&#8217;s programming logic.
+That is, it serves as a convenient syntactic sugar for
+<a class="reference internal" href="#prog-auto"><span>Auto (auto)</span></a>.</p>
+<p>There are two ways the form can be used:
+with or without premises.</p>
+<p>When some premises are specified to automatically conclusions, such as:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;premise1,  …,  premiseN  ⊢  conclusion1,  …, conclusionM&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>it desugars to the following proof statement:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      1. premise1          premise</span>
+<span class="s">  …</span>
+<span class="s">      N. premiseN          premise</span>
+<span class="s">  (N+1). conclusion1       auto 1 … N</span>
+<span class="s">  …</span>
+<span class="s">  (N+M). conclusionM       auto 1 … N</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>When no premise is specified, such as:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;⊢  conclusion1,  …, conclusionM&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>it desugars to the following proof statement:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. conclusion1           auto</span>
+<span class="s">  …</span>
+<span class="s">  M. conclusionM           auto</span>
+<span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -702,8 +751,28 @@ the postcondition.</p>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;==&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!=&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">      </span><span class="c">// equality expression</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;&amp;&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-and (non short-circuit) expression</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;|&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-or (non short-circuit) expression</span><span class="w"></span>
+
+<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Logika&#8217;s programming language expression is a subset of
+its claim expression language in that it does not support
+math symbols and quantifications.</p>
+<p>It supports typical operators on integer values.
+The integer literal form <code class="docutils literal"><span class="pre">NUM</span></code> can only be used for
+value up to 2` <sup>31</sup> - 1;
+otherwise the <code class="docutils literal"><span class="pre">Z(STRING)</span></code> form
+(e.g., <code class="docutils literal"><span class="pre">Z(&quot;2147483648&quot;)</span></code>, <code class="docutils literal"><span class="pre">Z(&quot;-2147483649&quot;)</span></code>)
+has to be used instead.
+This is because Scala&#8217;s integer literal by default is
+a 32-bit signed integer.
+Logika detects the erroneous situation when
+<code class="docutils literal"><span class="pre">NUM</span></code> is used for integers that cannot fit into 32-bit.
+It also detects expressions involving 32-bit integer literal
+that result in values that do not fit into 32-bit such
+as <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal errors; this is because
+such expression can be optimized to a 32-bit integer value
+when compiled.</p>
 <div class="section" id="runtime-checks">
 <h3>3.4.3.1. Runtime Checks<a class="headerlink" href="#runtime-checks" title="Permalink to this headline">¶</a></h3>
 </div>

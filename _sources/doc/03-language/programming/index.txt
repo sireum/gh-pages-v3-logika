@@ -138,9 +138,10 @@ The claim transformation rule for a variable declaration is the same as for
 assignment.
 Below are the claim transformation rules for an assignment based on
 the form of its right-hand side (``rhs``).
-Note that any claim referring to the generated ``_old`` variable does not
-survive the next statement, thus, such claim has to be rewritten in order
-to be propagated.
+Note that any claim referring to the generated ``_old`` variable is *transient*;
+it does not survive the next (non-proof/sequent) statement. Thus,
+such claim has to be transformed in a :ref:`prog-proof`/:ref:`prog-sequent`
+statement in order for the information that it contains to be propagated.
 
 .. literalinclude:: var-assign-exp-rule.txt
    :language: scala
@@ -317,8 +318,8 @@ they are required as the statement's precondition.
 
 At the postcondition, ``E1`` and ``E2`` and all precondition claims are rewritten to refer to
 ``X_old`` if they refer to ``X``.
-(Similar to the variable assignment rules, any claim referring to the generated
-``_old`` variable does not survive the next statement.)
+Similar to the variable assignment rules, any claim referring to the generated
+``_old`` variable is transient.
 
 The update does not change the size of ``X``, thus, one can deduce ``X.size == X_old.size``.
 Furthermore, only the updated element got changed to the new value.
@@ -372,6 +373,22 @@ Proof
    :language: antlr
    :lines: 228, 70, 126 - 144
 
+A proof statement contains a natural deduction proof similar to a proof in
+:ref:`predicate-language` and :ref:`propositional-language`.
+It can be used to deduce new claims from other (transient) claims
+(e.g., to satisfy the next statement's precondition).
+
+The behavior of a proof statement differs on whether the :ref:`auto-mode` is
+enabled.
+When enabled, the proof statement *adds* its deduced claims to existing ones.
+Otherwise, it *replaces* existing ones with its deduce claims, which
+results in a Logika program where all deductions necessary to verify the program
+are forced to be explicitly written (and proof statements intermingled with
+non-proof/sequent statements as a side-effect).
+
+Note that the deduced claims of a proof statement consists of all claims in regular
+proof steps at the proof-level (i.e., claims in sub-proofs are excluded).
+
 .. _prog-sequent:
 
 Sequent
@@ -381,12 +398,67 @@ Sequent
    :language: antlr
    :lines: 228, 71, 145 - 154
 
+A sequent statement can only be used in :ref:`auto-mode`.
+While the form is similar to the ones in :ref:`predicate-language`
+and :ref:`propositional-language`, it has a different purpose in
+Logika's programming logic.
+That is, it serves as a convenient syntactic sugar for
+:ref:`prog-auto`.
+
+There are two ways the form can be used:
+with or without premises.
+
+When some premises are specified to automatically conclusions, such as:
+
+.. code-block:: scala
+
+   l"""premise1,  …,  premiseN  ⊢  conclusion1,  …, conclusionM"""
+
+it desugars to the following proof statement:
+
+.. literalinclude:: sequent-premise-sugar.txt
+   :language: scala
+
+When no premise is specified, such as:
+
+.. code-block:: scala
+
+   l"""⊢  conclusion1,  …, conclusionM"""
+
+it desugars to the following proof statement:
+
+.. literalinclude:: sequent-no-premise-sugar.txt
+   :language: scala
+
+
+
 Expression
 ==========
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 109 - 125
+   :lines: 109 - 125, 100 - 101
+
+Logika's programming language expression is a subset of
+its claim expression language in that it does not support
+math symbols and quantifications.
+
+It supports typical operators on integer values.
+The integer literal form ``NUM`` can only be used for
+value up to 2` :sup:`31` - 1;
+otherwise the ``Z(STRING)`` form
+(e.g., ``Z("2147483648")``, ``Z("-2147483649")``)
+has to be used instead.
+This is because Scala's integer literal by default is
+a 32-bit signed integer.
+Logika detects the erroneous situation when
+``NUM`` is used for integers that cannot fit into 32-bit.
+It also detects expressions involving 32-bit integer literal
+that result in values that do not fit into 32-bit such
+as ``1 + 2147483647`` and signal errors; this is because
+such expression can be optimized to a 32-bit integer value
+when compiled.
+
 
 Runtime Checks
 --------------
