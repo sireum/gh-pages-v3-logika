@@ -170,11 +170,12 @@ variable and function types have to be explicitly specified.</p>
 (2) <code class="docutils literal"><span class="pre">Z</span></code> &#8211; arbitrary-precision integer type, and
 (3) <code class="docutils literal"><span class="pre">ZS</span></code> &#8211; mutable integer sequence (array) type
 (whose index and element type is <code class="docutils literal"><span class="pre">Z</span></code> with indices starting
-at <code class="docutils literal"><span class="pre">0</span></code>).</p>
-<p>In contrast to regular Scala,
+at <code class="docutils literal"><span class="pre">0</span></code>). There is no <code class="docutils literal"><span class="pre">null</span></code> value in Logika, which simplifies
+reasoning.</p>
+<p>In addition, in contrast to regular Scala,
 Logika&#8217;s programming language separates between
 commands (statements) and queries (expressions).
-(In Scala, commands are expressions whose return value is of
+(In Scala, commands are simply expressions whose return value is of
 <code class="docutils literal"><span class="pre">Unit</span></code> type.)
 Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
@@ -391,13 +392,27 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
 </pre></div>
 </div>
+<p>In Scala, both assertion and assumption check whether
+the specified boolean expression is true;
+if not, it throws an <code class="docutils literal"><span class="pre">AssertionError</span></code> (if assertion
+checking is enabled).</p>
+<p>The two differ in the intention behind it for verification
+purposes.
+Assertion&#8217;s expression has to be proven (i.e.,
+<code class="docutils literal"><span class="pre">E</span></code> is required as a precondition of <a class="reference internal" href="#assert-rule"><span>Assertion Rule</span></a>),
+while assumption&#8217;s expression can be taken as an axiom
+(i.e., <code class="docutils literal"><span class="pre">E</span></code> is not required as
+a precondition of <a class="reference internal" href="#assume-rule"><span>Assumption Rule</span></a>, but can be concluded
+in the postcondition).
+When a program has been verified, all assertions can be
+safely erased.</p>
 <div class="literal-block-wrapper container" id="assert-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Assertion Rule</strong></span><a class="headerlink" href="#assert-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">  …. E                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
-<span class="n">assert</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span>
+<span class="n">assert</span><span class="o">(</span><span class="n">E</span><span class="o">)</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   premise</span>
 <span class="s">  …. E                                   premise</span>
@@ -410,7 +425,7 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
-<span class="n">assume</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span>
+<span class="n">assume</span><span class="o">(</span><span class="n">E</span><span class="o">)</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   premise</span>
 <span class="s">  …. E                                   premise</span>
@@ -431,6 +446,18 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Logika&#8217;s conditional can omit the else-branch, in which case
+it is treated as an empty statement block.</p>
+<p>The <a class="reference internal" href="#if-else-rule"><span>If-Else Conditional Rule</span></a> specifies that
+its precondition <code class="docutils literal"><span class="pre">P</span></code> hold in the beginning of
+both branches. In the true-branch, the conditional
+test expression <code class="docutils literal"><span class="pre">E</span></code> can be deduced, while
+its negation <code class="docutils literal"><span class="pre">¬E</span></code> can be deduced in the false-branch.
+At the end of the conditional,
+the claim <code class="docutils literal"><span class="pre">R1</span> <span class="pre">∨</span> <span class="pre">R2</span></code> can be deduced, where <code class="docutils literal"><span class="pre">R1</span></code> is
+the postcondition of <code class="docutils literal"><span class="pre">C1</span></code> and <code class="docutils literal"><span class="pre">R2</span></code> is the postcondition
+of <code class="docutils literal"><span class="pre">C2</span></code> (if there no such <code class="docutils literal"><span class="pre">C2</span></code>, then <code class="docutils literal"><span class="pre">R2</span></code> represents <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">¬E</span></code>).
+If <code class="docutils literal"><span class="pre">R1</span> <span class="pre">≡</span> <span class="pre">R2</span></code>, then one can also deduce just <code class="docutils literal"><span class="pre">R1</span></code>.</p>
 <div class="literal-block-wrapper container" id="if-else-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>If-Else Conditional Rule</strong></span><a class="headerlink" href="#if-else-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -485,6 +512,24 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 <span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
+<p>While-loops in Logika can include a loop invariant and a modifies clause
+(verified programs most likely include loop invariants and modifies clauses).</p>
+<p>The loop invariant specifies the condition that has to be true before (hence, at the beginning of the loop body)
+and after the statement. At the end of the loop body, the invariant has to be proven to be true.
+These are reflected in <a class="reference internal" href="#while-loop-rule"><span>While-Loop Rule</span></a>.</p>
+<p>The invariant can be specified as a sequence of boolean claim expressions; they implicitly form a conjunction
+where each claim is a conjunct.
+The main benefit of separating the invariant into several expressions is that Logika can specifically pinpoint
+which invariant conjunct has yet to be proven as one works through the verification process.
+In the case that no loop invariant is specified, then it is considered as <code class="docutils literal"><span class="pre">⊤</span></code>.</p>
+<p>The modifies clause should comprehensively lists all variables that may be modified by the loop body.
+The program is ill-formed if the loop body modifies a variable, but it is not listed in the modifies clause.
+The set of variables that are modified include variables that are assigned in the loop, modified by nested loops,
+and side-effects of method invocations.</p>
+<p>A loop precondition <code class="docutils literal"><span class="pre">P</span></code> is also treated as an invariant if it does not refer to any of the
+variables listed in the loop&#8217;s modifies clause.
+The loop test condition <code class="docutils literal"><span class="pre">E</span></code> holds at the beginning of the loop body, and its negation <code class="docutils literal"><span class="pre">¬E</span></code> is a
+postcondition of loop.</p>
 <div class="literal-block-wrapper container" id="while-loop-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>While-Loop Rule</strong></span><a class="headerlink" href="#while-loop-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -522,27 +567,37 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A <code class="docutils literal"><span class="pre">ZS</span></code> sequence value stored in a variable <code class="docutils literal"><span class="pre">X</span></code> can be mutated by updating
+one of its elements at a certain index expressed by <code class="docutils literal"><span class="pre">E1</span></code> with a new value
+expressed by an expression <code class="docutils literal"><span class="pre">E2</span></code> (see <a class="reference internal" href="#seq-assign-rule"><span>Sequence Element Assignment Rule</span></a>).</p>
+<p>The avoid runtime errors, <code class="docutils literal"><span class="pre">E1</span></code> has to be within the bound of
+<code class="docutils literal"><span class="pre">X</span></code>&#8216;s indices, i.e., <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>; thus,
+they are required as the statement&#8217;s precondition.</p>
+<p>At the postcondition, <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> and all precondition claims are rewritten to refer to
+<code class="docutils literal"><span class="pre">X_old</span></code> if they refer to <code class="docutils literal"><span class="pre">X</span></code>.
+(Similar to the variable assignment rules, any claim referring to the generated
+<code class="docutils literal"><span class="pre">_old</span></code> variable does not survive the next statement.)</p>
+<p>The update does not change the size of <code class="docutils literal"><span class="pre">X</span></code>, thus, one can deduce <code class="docutils literal"><span class="pre">X.size</span> <span class="pre">==</span> <span class="pre">X_old.size</span></code>.
+Furthermore, only the updated element got changed to the new value.</p>
 <div class="literal-block-wrapper container" id="seq-assign-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Sequence Element Assignment Rule</strong></span><a class="headerlink" href="#seq-assign-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
-<span class="s">  …. 0 ≤ Y                               …</span>
-<span class="s">  …. Y &lt; X.size                          …</span>
+<span class="s">  …. 0 ≤ E1                              …</span>
+<span class="s">  …. E1 &lt; X.size                         …</span>
 <span class="s">}&quot;&quot;&quot;</span>
-<span class="n">X</span><span class="o">(</span><span class="n">Y</span><span class="o">)</span> <span class="k">=</span> <span class="n">E</span>
+<span class="n">X</span><span class="o">(</span><span class="n">E1</span><span class="o">)</span> <span class="k">=</span> <span class="n">E2</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. [X_old/X]P                          premise</span>
 <span class="s">  …. X.size == X_old.size                premise</span>
-<span class="s">  …. X([X_old/X]Y) == [X_old/X]E         premise</span>
+<span class="s">  …. X([X_old/X]E1) == [X_old/X]E2       premise</span>
 <span class="s">  …. ∀q_i: Z</span>
-<span class="s">       q_i ≠ [X_old/X]Y →</span>
+<span class="s">       q_i ≠ [X_old/X]E1 →</span>
 <span class="s">         X(q_i) == X_old(q_i)            premise</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable does not
-survive the next statement.</p>
 </div>
 <div class="section" id="print">
 <span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
@@ -556,6 +611,21 @@ survive the next statement.</p>
 <span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
+<p>The <code class="docutils literal"><span class="pre">print</span></code> and <code class="docutils literal"><span class="pre">println</span></code> built-in methods are
+provided for logging purposes (albeit primitive ones).
+They are n-ary methods accepting any number of arguments,
+which can be string literals, and
+<code class="docutils literal"><span class="pre">B</span></code>,  <code class="docutils literal"><span class="pre">Z</span></code>, and <code class="docutils literal"><span class="pre">ZS</span></code> values.</p>
+<p>Logika does not reason about their side-effects as they are
+tangential to Logika&#8217;s verification focus.</p>
+<p>For example, a Logika verified program may still be unsafe
+if the program console output is piped through a disk and
+as it turns out, the disk does not have enough space for the
+printed text. (Similarly, Logika does not guarantee that
+a program cannot be out of memory.)</p>
+<p>At any rate, the two methods do not change program states so
+any claim in the precondition can be deduced in
+the postcondition.</p>
 <div class="literal-block-wrapper container" id="print-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Print Rule</strong></span><a class="headerlink" href="#print-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -688,15 +758,11 @@ survive the next statement.</p>
 <span class="s">  }&quot;&quot;&quot;</span>
 
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …</span>
 <span class="s">    …. I                                 premise</span>
-<span class="s">    …</span>
 <span class="s">    …. PRE                               premise</span>
-<span class="s">    …</span>
 <span class="s">    …. X1 == X1_in                       premise</span>
 <span class="s">    …</span>
 <span class="s">    …. XN == XN_in                       premise</span>
-<span class="s">    …</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="n">C</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>

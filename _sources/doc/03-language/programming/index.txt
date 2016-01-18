@@ -27,12 +27,13 @@ It has three built-in types:
 (2) ``Z`` -- arbitrary-precision integer type, and
 (3) ``ZS`` -- mutable integer sequence (array) type
 (whose index and element type is ``Z`` with indices starting
-at ``0``).
+at ``0``). There is no ``null`` value in Logika, which simplifies
+reasoning.
 
-In contrast to regular Scala,
+In addition, in contrast to regular Scala,
 Logika's programming language separates between
 commands (statements) and queries (expressions).
-(In Scala, commands are expressions whose return value is of
+(In Scala, commands are simply expressions whose return value is of
 ``Unit`` type.)
 Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
@@ -204,6 +205,22 @@ Assertion and Assumption
    :language: antlr
    :lines: 228, 64 - 65
 
+In Scala, both assertion and assumption check whether
+the specified boolean expression is true;
+if not, it throws an ``AssertionError`` (if assertion
+checking is enabled).
+
+The two differ in the intention behind it for verification
+purposes.
+Assertion's expression has to be proven (i.e.,
+``E`` is required as a precondition of :ref:`assert-rule`),
+while assumption's expression can be taken as an axiom
+(i.e., ``E`` is not required as
+a precondition of :ref:`assume-rule`, but can be concluded
+in the postcondition).
+When a program has been verified, all assertions can be
+safely erased.
+
 .. literalinclude:: assert-rule.txt
    :language: scala
    :caption: **Assertion Rule**
@@ -224,6 +241,20 @@ If-Else Conditional
    :language: antlr
    :lines: 228, 66, 79 - 84
 
+Logika's conditional can omit the else-branch, in which case
+it is treated as an empty statement block.
+
+The :ref:`if-else-rule` specifies that
+its precondition ``P`` hold in the beginning of
+both branches. In the true-branch, the conditional
+test expression ``E`` can be deduced, while
+its negation ``¬E`` can be deduced in the false-branch.
+At the end of the conditional,
+the claim ``R1 ∨ R2`` can be deduced, where ``R1`` is
+the postcondition of ``C1`` and ``R2`` is the postcondition
+of ``C2`` (if there no such ``C2``, then ``R2`` represents ``P`` and ``¬E``).
+If ``R1 ≡ R2``, then one can also deduce just ``R1``.
+
 .. literalinclude:: if-else-rule.txt
    :language: scala
    :caption: **If-Else Conditional Rule**
@@ -239,6 +270,29 @@ While-Loop
    :language: antlr
    :lines: 228, 67, 85 - 97, 51 - 54
 
+While-loops in Logika can include a loop invariant and a modifies clause
+(verified programs most likely include loop invariants and modifies clauses).
+
+The loop invariant specifies the condition that has to be true before (hence, at the beginning of the loop body)
+and after the statement. At the end of the loop body, the invariant has to be proven to be true.
+These are reflected in :ref:`while-loop-rule`.
+
+The invariant can be specified as a sequence of boolean claim expressions; they implicitly form a conjunction
+where each claim is a conjunct.
+The main benefit of separating the invariant into several expressions is that Logika can specifically pinpoint
+which invariant conjunct has yet to be proven as one works through the verification process.
+In the case that no loop invariant is specified, then it is considered as ``⊤``.
+
+The modifies clause should comprehensively lists all variables that may be modified by the loop body.
+The program is ill-formed if the loop body modifies a variable, but it is not listed in the modifies clause.
+The set of variables that are modified include variables that are assigned in the loop, modified by nested loops,
+and side-effects of method invocations.
+
+A loop precondition ``P`` is also treated as an invariant if it does not refer to any of the
+variables listed in the loop's modifies clause.
+The loop test condition ``E`` holds at the beginning of the loop body, and its negation ``¬E`` is a
+postcondition of loop.
+
 .. literalinclude:: while-loop-rule.txt
    :language: scala
    :caption: **While-Loop Rule**
@@ -253,13 +307,27 @@ Sequence Element Assignment
    :language: antlr
    :lines: 228, 68
 
+A ``ZS`` sequence value stored in a variable ``X`` can be mutated by updating
+one of its elements at a certain index expressed by ``E1`` with a new value
+expressed by an expression ``E2`` (see :ref:`seq-assign-rule`).
+
+The avoid runtime errors, ``E1`` has to be within the bound of
+``X``'s indices, i.e., ``0 ≤ E1`` and ``E1 < X.size``; thus,
+they are required as the statement's precondition.
+
+At the postcondition, ``E1`` and ``E2`` and all precondition claims are rewritten to refer to
+``X_old`` if they refer to ``X``.
+(Similar to the variable assignment rules, any claim referring to the generated
+``_old`` variable does not survive the next statement.)
+
+The update does not change the size of ``X``, thus, one can deduce ``X.size == X_old.size``.
+Furthermore, only the updated element got changed to the new value.
+
 .. literalinclude:: seq-assign-rule.txt
    :language: scala
    :caption: **Sequence Element Assignment Rule**
    :name: seq-assign-rule
 
-Note that any claim referring to the generated ``_old`` variable does not
-survive the next statement.
 
 .. _prog-print:
 
@@ -269,6 +337,25 @@ Print
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 228, 69, 102 - 107
+
+The ``print`` and ``println`` built-in methods are
+provided for logging purposes (albeit primitive ones).
+They are n-ary methods accepting any number of arguments,
+which can be string literals, and
+``B``,  ``Z``, and ``ZS`` values.
+
+Logika does not reason about their side-effects as they are
+tangential to Logika's verification focus.
+
+For example, a Logika verified program may still be unsafe
+if the program console output is piped through a disk and
+as it turns out, the disk does not have enough space for the
+printed text. (Similarly, Logika does not guarantee that
+a program cannot be out of memory.)
+
+At any rate, the two methods do not change program states so
+any claim in the precondition can be deduced in
+the postcondition.
 
 .. literalinclude:: print-rule.txt
    :language: scala
