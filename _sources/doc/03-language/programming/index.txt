@@ -62,7 +62,13 @@ As a convention:
 
 * ``P``, ``Q``, and ``R`` are used to represent claims.
 
-* ``X``, ``Y``, and ``Z`` are used to represent variable identifiers.
+* ``X`` and ``Y`` are used to represent variable identifiers.
+
+* ``ZS`` (prefix) is used to represent variable identifiers of type ``ZS``.
+
+* ``T`` is used to represent a type.
+
+* ``F`` is used to represent function/method identifier.
 
 * ``E`` is used to represent a general expression.
 
@@ -126,9 +132,11 @@ which cannot be reassigned later on, or read/write (using the ``var`` keyword).
 Note a variable cannot be forward-referenced.
 
 The claim transformation rule for a variable declaration is the same as for
-assignment. Below are the claim transformation rules for an assignment based on
-the form of its right-hand side (``rhs``);
-note that ``invoke`` is discussed in :ref:`prog-invoke`.
+assignment.
+Below are the claim transformation rules for an assignment based on
+the form of its right-hand side (``rhs``).
+Note that any claim referring to the generated ``_old`` variable does not
+survive the next statement.
 
 .. literalinclude:: var-assign-exp-rule.txt
    :language: scala
@@ -149,6 +157,9 @@ note that ``invoke`` is discussed in :ref:`prog-invoke`.
    :language: scala
    :caption: **randomInt Rule**
    :name: var-assign-randomint-rule
+
+The rule for ``invoke`` is discussed in :ref:`prog-invoke`
+(replace ``F_result`` in the rules with the assigned variable identifier).
 
 .. _prog-assert:
 
@@ -194,6 +205,11 @@ While-Loop
    :language: antlr
    :lines: 228, 67, 85 - 97, 51 - 54
 
+.. literalinclude:: while-loop-rule.txt
+   :language: scala
+   :caption: **While-Loop Rule**
+   :name: while-loop-rule
+
 .. _prog-seq-assign:
 
 Sequence Element Assignment
@@ -203,6 +219,14 @@ Sequence Element Assignment
    :language: antlr
    :lines: 228, 68
 
+.. literalinclude:: seq-assign-rule.txt
+   :language: scala
+   :caption: **Sequence Element Assignment Rule**
+   :name: seq-assign-rule
+
+Note that any claim referring to the generated ``_old`` variable does not
+survive the next statement.
+
 .. _prog-print:
 
 Print
@@ -211,6 +235,12 @@ Print
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 228, 69, 102 - 107
+
+.. literalinclude:: print-rule.txt
+   :language: scala
+   :caption: **Print Rule**
+   :name: print-rule
+
 
 .. _prog-proof:
 
@@ -237,6 +267,10 @@ Expression
    :language: antlr
    :lines: 109 - 125
 
+Runtime Checks
+--------------
+
+
 .. _prog-invariant:
 
 Invariant
@@ -255,6 +289,16 @@ Method Declaration
    :language: antlr
    :lines: 35 - 58
 
+.. literalinclude:: method-decl-rule.txt
+   :language: scala
+   :caption: **Method Declaration Rule**
+   :name: method-decl-rule
+
+.. literalinclude:: method-decl-helper-rule.txt
+   :language: scala
+   :caption: **Helper Method Declaration Rule**
+   :name: method-decl-helper-rule
+
 .. _prog-invoke:
 
 Method Invocation
@@ -263,6 +307,16 @@ Method Invocation
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 98 - 101
+
+.. literalinclude:: method-invoke-rule.txt
+   :language: scala
+   :caption: **Method Invocation Rule**
+   :name: method-invoke-rule
+
+.. literalinclude:: method-invoke-helper-rule.txt
+   :language: scala
+   :caption: **Helper Method Invocation Rule**
+   :name: method-invoke-helper-rule
 
 .. _prog-fact:
 
@@ -295,7 +349,25 @@ Extended Justification and Inference Rules
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 197 - 219
-   :emphasize-lines: 18 - 23
+   :emphasize-lines: 7, 14 - 23
+
+Or-Elimination (∨e)
+-------------------
+
+The ∨e patterns now work for ``≤`` and ``≥``,
+where ``E1 ≤ E2`` is treated as ``E1 < E2  ∨  E1 == E2`` and
+``E1 ≥ E2`` is tread as ``E1 > E2  ∨  E1 == E2``.
+
+Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)
+-------------------------------------------------
+
+Quantifications using the integer range domain form
+are simplified first before applying quantified
+claim inference rules.
+
+For example, the claim ``∀x: (0 ..< 3) P{x}`` is
+simplified first to ``∀x: Z  0 ≤ x ∧ x < 3  →  P{x}``
+before applying any of the ∀-quantified claim rules.
 
 Fact (fact)
 -----------
@@ -304,12 +376,22 @@ Fact (fact)
    :language: antlr
    :lines: 226, 215
 
+.. literalinclude:: fact-rule.txt
+   :language: scala
+   :caption: **Fact Rule**
+   :name: fact-rule
+
 Invariant (invariant)
 ---------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 216
+
+.. literalinclude:: invariant-rule.txt
+   :language: scala
+   :caption: **Invariant Rule**
+   :name: invariant-rule
 
 Substitutions (subst1 and subst2)
 ---------------------------------
@@ -318,8 +400,28 @@ Substitutions (subst1 and subst2)
    :language: antlr
    :lines: 226, 217 - 218
 
+.. literalinclude:: subst1-rule.txt
+   :language: scala
+   :caption: **Substitution1 (subst1) Rule**
+   :name: subst1-rule
+
+.. literalinclude:: subst2-rule.txt
+   :language: scala
+   :caption: **Substitution2 (subst1) Rule**
+   :name: subst2-rule
+
+
 Summonings
 ==========
+
+Logika summonings are special justifications;
+they are distinguished because the deduction is checked by
+leveraging the work of giants such as using Z3
+(see
+`a classical example <https://www.youtube.com/embed/gb2zIR2rvRQ?rel=0&autoplay=1&start=30>`__ or
+`a modern example <https://www.youtube.com/embed/Qs51cQUuEOM?rel=0&autoplay=1&start=280>`__
+on how summoning works).
+
 
 Algebra (algebra)
 -----------------
@@ -327,6 +429,16 @@ Algebra (algebra)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 219
+
+.. literalinclude:: algebra-rule.txt
+   :language: scala
+   :caption: **Algebra Rule (with some arguments)**
+   :name: algebra-rule
+
+.. literalinclude:: algebra-empty-rule.txt
+   :language: scala
+   :caption: **Algebra Rule (without argument)**
+   :name: algebra-empty-rule
 
 .. _prog-auto:
 
@@ -336,6 +448,16 @@ Auto (auto)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 220
+
+.. literalinclude:: auto-rule.txt
+   :language: scala
+   :caption: **Auto Rule (with some arguments)**
+   :name: auto-rule
+
+.. literalinclude:: auto-empty-rule.txt
+   :language: scala
+   :caption: **Auto Rule (without argument)**
+   :name: auto-empty-rule
 
 
 Well-formed-ness
@@ -351,4 +473,4 @@ that of the :ref:`pred-grammar` are highlighted.
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 1 - 220
-   :emphasize-lines: 157 - 159, 164 - 168, 171, 173 - 183, 187 - 189, 215 - 220
+   :emphasize-lines: 157 - 159, 164 - 168, 171, 173 - 183, 187 - 189, 204, 211 - 220

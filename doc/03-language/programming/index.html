@@ -93,7 +93,10 @@
 <li><a class="reference internal" href="#sequent">3.4.2.8. Sequent</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#expression">3.4.3. Expression</a></li>
+<li><a class="reference internal" href="#expression">3.4.3. Expression</a><ul>
+<li><a class="reference internal" href="#runtime-checks">3.4.3.1. Runtime Checks</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#invariant">3.4.4. Invariant</a></li>
 <li><a class="reference internal" href="#method-declaration">3.4.5. Method Declaration</a></li>
 <li><a class="reference internal" href="#method-invocation">3.4.6. Method Invocation</a></li>
@@ -101,9 +104,11 @@
 <li><a class="reference internal" href="#extended-assume-step">3.4.8. Extended Assume Step</a></li>
 <li><a class="reference internal" href="#extended-claim-expression">3.4.9. Extended Claim Expression</a></li>
 <li><a class="reference internal" href="#extended-justification-and-inference-rules">3.4.10. Extended Justification and Inference Rules</a><ul>
-<li><a class="reference internal" href="#fact-fact">3.4.10.1. Fact (fact)</a></li>
-<li><a class="reference internal" href="#invariant-invariant">3.4.10.2. Invariant (invariant)</a></li>
-<li><a class="reference internal" href="#substitutions-subst1-and-subst2">3.4.10.3. Substitutions (subst1 and subst2)</a></li>
+<li><a class="reference internal" href="#or-elimination-e">3.4.10.1. Or-Elimination (∨e)</a></li>
+<li><a class="reference internal" href="#quantified-claim-inference-rules-i-e-i-e">3.4.10.2. Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)</a></li>
+<li><a class="reference internal" href="#fact-fact">3.4.10.3. Fact (fact)</a></li>
+<li><a class="reference internal" href="#invariant-invariant">3.4.10.4. Invariant (invariant)</a></li>
+<li><a class="reference internal" href="#substitutions-subst1-and-subst2">3.4.10.5. Substitutions (subst1 and subst2)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#summonings">3.4.11. Summonings</a><ul>
@@ -201,7 +206,10 @@ done by each of the program statements.</p>
 <p>As a convention:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">Q</span></code>, and <code class="docutils literal"><span class="pre">R</span></code> are used to represent claims.</li>
-<li><code class="docutils literal"><span class="pre">X</span></code>, <code class="docutils literal"><span class="pre">Y</span></code>, and <code class="docutils literal"><span class="pre">Z</span></code> are used to represent variable identifiers.</li>
+<li><code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">Y</span></code> are used to represent variable identifiers.</li>
+<li><code class="docutils literal"><span class="pre">ZS</span></code> (prefix) is used to represent variable identifiers of type <code class="docutils literal"><span class="pre">ZS</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">T</span></code> is used to represent a type.</li>
+<li><code class="docutils literal"><span class="pre">F</span></code> is used to represent function/method identifier.</li>
 <li><code class="docutils literal"><span class="pre">E</span></code> is used to represent a general expression.</li>
 <li><code class="docutils literal"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
 </ul>
@@ -289,9 +297,11 @@ The variable has to be declared as either read-only (using the <code class="docu
 which cannot be reassigned later on, or read/write (using the <code class="docutils literal"><span class="pre">var</span></code> keyword).
 Note a variable cannot be forward-referenced.</p>
 <p>The claim transformation rule for a variable declaration is the same as for
-assignment. Below are the claim transformation rules for an assignment based on
-the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>);
-note that <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span>Method Invocation</span></a>.</p>
+assignment.
+Below are the claim transformation rules for an assignment based on
+the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>).
+Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable does not
+survive the next statement.</p>
 <div class="literal-block-wrapper container" id="var-assign-exp-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Variable Assignment Rule</strong></span><a class="headerlink" href="#var-assign-exp-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
@@ -337,11 +347,13 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">X</span> <span class="k">=</span> <span class="n">randomInt</span><span class="o">()</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  …. [X_old/Y]P                          …</span>
+<span class="s">  …. [X_old/Y]P                          premise</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
+<p>The rule for <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span>Method Invocation</span></a>
+(replace <code class="docutils literal"><span class="pre">F_result</span></code> in the rules with the assigned variable identifier).</p>
 </div>
 <div class="section" id="assertion-and-assumption">
 <span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
@@ -415,7 +427,7 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="s">  }&quot;&quot;&quot;</span>
 <span class="o">}</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  …. R1 ∨ R2                             …</span>
+<span class="s">  …. R1 ∨ R2                             premise           // or simply R1, if R1 ≡ R2</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -444,6 +456,36 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="while-loop-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>While-Loop Rule</strong></span><a class="headerlink" href="#while-loop-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P</span>
+<span class="s">  …. I</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    invariant I</span>
+<span class="s">    modifies  X1, …, XN</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. P                                 premise           // if P does not refer to X1, …, or XN</span>
+<span class="s">    …. I                                 premise</span>
+<span class="s">    …. E                                 premise</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. I                                 …</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+<span class="o">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   premise           // if P does not refer to X1, …, or XN</span>
+<span class="s">  …. I                                   premise</span>
+<span class="s">  …. ¬E                                  premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="sequence-element-assignment">
 <span id="prog-seq-assign"></span><h3>3.4.2.5. Sequence Element Assignment<a class="headerlink" href="#sequence-element-assignment" title="Permalink to this headline">¶</a></h3>
@@ -451,6 +493,27 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="seq-assign-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Sequence Element Assignment Rule</strong></span><a class="headerlink" href="#seq-assign-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">  …. 0 ≤ Y                               …</span>
+<span class="s">  …. Y &lt; X.size                          …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">X</span><span class="o">(</span><span class="n">Y</span><span class="o">)</span> <span class="k">=</span> <span class="n">E</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. [X_old/X]P                          premise</span>
+<span class="s">  …. X.size == X_old.size                premise</span>
+<span class="s">  …. X([X_old/X]Y) == [X_old/X]E         premise</span>
+<span class="s">  …. ∀q_i: Z</span>
+<span class="s">       q_i ≠ [X_old/X]Y →</span>
+<span class="s">         X(q_i) == X_old(q_i)            premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable does not
+survive the next statement.</p>
 </div>
 <div class="section" id="print">
 <span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
@@ -463,6 +526,18 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 
 <span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="literal-block-wrapper container" id="print-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Print Rule</strong></span><a class="headerlink" href="#print-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">print</span> <span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="c1">// also applies for println</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="proof">
@@ -530,6 +605,9 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;|&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-or (non short-circuit) expression</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="section" id="runtime-checks">
+<h3>3.4.3.1. Runtime Checks<a class="headerlink" href="#runtime-checks" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="invariant">
 <span id="prog-invariant"></span><h2>3.4.4. Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h2>
@@ -567,6 +645,61 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="w">                </span><span class="nv">claim</span><span class="o">+</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="method-decl-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  invariant I</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="c1">// …</span>
+<span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    requires  PRE</span>
+<span class="s">    modifies  X1, …, XN</span>
+<span class="s">    ensures   POST</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. I                                 premise</span>
+<span class="s">    …. PRE                               premise</span>
+<span class="s">    …. X1 == X1_in                       premise</span>
+<span class="s">       …</span>
+<span class="s">    …. XN == XN_in                       premise</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. I                                 …</span>
+<span class="s">    …. [E/result]POST                    …</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="o">(</span> <span class="k">return</span> <span class="n">E</span><span class="o">?</span> <span class="o">)?</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="method-decl-helper-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Helper Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-helper-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nd">@helper</span>
+<span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    requires  PRE</span>
+<span class="s">    modifies  X1, …, XN</span>
+<span class="s">    ensures   POST</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. PRE                               premise</span>
+<span class="s">    …. X1 == X1_in                       premise</span>
+<span class="s">       …</span>
+<span class="s">    …. XN == XN_in                       premise</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. [E/result]POST                    …</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="o">(</span> <span class="k">return</span> <span class="n">E</span><span class="o">?</span> <span class="o">)?</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="method-invocation">
 <span id="prog-invoke"></span><h2>3.4.6. Method Invocation<a class="headerlink" href="#method-invocation" title="Permalink to this headline">¶</a></h2>
@@ -574,6 +707,69 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 
 <span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="literal-block-wrapper container" id="method-invoke-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Method Invocation Rule</strong></span><a class="headerlink" href="#method-invoke-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  invariant I // I refers to Y1, …, or YN</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="c1">// …</span>
+<span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="n">X1</span><span class="k">:</span> <span class="kt">T1</span><span class="o">,</span> <span class="cm">/* … */</span><span class="o">,</span> <span class="nc">XN</span><span class="k">:</span> <span class="kt">TN</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    requires  PRE</span>
+<span class="s">    modifies  Y1, …, YM</span>
+<span class="s">    ensures   POST</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="c1">// …</span>
+<span class="o">}</span>
+
+<span class="c1">// …</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">  …. I                                   …</span>
+<span class="s">  …. [EN/YN]…[E1/Y1]PRE                  …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. I                                   premise</span>
+<span class="s">  …. POST3                               premise  // POST1   ≡ [F_result/result]POST</span>
+<span class="s">                                                  // POST2-1 ≡ [ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">                                                  //         ≡ POST1, otherwise</span>
+<span class="s">                                                  // POST2-I ≡ [ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">                                                  //         ≡ POST2-(I-1), otherwise</span>
+<span class="s">                                                  // POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="method-invoke-helper-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Helper Method Invocation Rule</strong></span><a class="headerlink" href="#method-invoke-helper-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nd">@helper</span>
+<span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="n">X1</span><span class="k">:</span> <span class="kt">T1</span><span class="o">,</span> <span class="cm">/* … */</span><span class="o">,</span> <span class="nc">XN</span><span class="k">:</span> <span class="kt">TN</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    requires  PRE</span>
+<span class="s">    modifies  Y1, …, YM</span>
+<span class="s">    ensures   POST</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="c1">// …</span>
+<span class="o">}</span>
+
+<span class="c1">// …</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">  …. [EN/YN]…[E1/Y1]PRE                  …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. POST3                               premise  // POST1   ≡ [F_result/result]POST</span>
+<span class="s">                                                  // POST2-1 ≡ [ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">                                                  //         ≡ POST1, otherwise</span>
+<span class="s">                                                  // POST2-I ≡ [ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">                                                  //         ≡ POST2-(I-1), otherwise</span>
+<span class="s">                                                  // POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="fact">
@@ -654,54 +850,154 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// And-Elimination2</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// Or-Introduction1</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// Or-Introduction2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">     </span><span class="c">// Or-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">     </span><span class="c">// Or-Elimination</span><span class="w"></span>
+</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Implication-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// Implication-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Negation-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w">     </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Forall-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Forall-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Exists-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">          </span><span class="c">// Exists-Elimination</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Forall-Introduction</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Forall-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Exists-Introduction</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">          </span><span class="c">// Exists-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst1&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </span></pre></div>
 </div>
+<div class="section" id="or-elimination-e">
+<h3>3.4.10.1. Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
+<p>The ∨e patterns now work for <code class="docutils literal"><span class="pre">≤</span></code> and <code class="docutils literal"><span class="pre">≥</span></code>,
+where <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≤</span> <span class="pre">E2</span></code> is treated as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">E2</span>&nbsp; <span class="pre">∨</span>&nbsp; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code> and
+<code class="docutils literal"><span class="pre">E1</span> <span class="pre">≥</span> <span class="pre">E2</span></code> is tread as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&gt;</span> <span class="pre">E2</span>&nbsp; <span class="pre">∨</span>&nbsp; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>.</p>
+</div>
+<div class="section" id="quantified-claim-inference-rules-i-e-i-e">
+<h3>3.4.10.2. Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)<a class="headerlink" href="#quantified-claim-inference-rules-i-e-i-e" title="Permalink to this headline">¶</a></h3>
+<p>Quantifications using the integer range domain form
+are simplified first before applying quantified
+claim inference rules.</p>
+<p>For example, the claim <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span> <span class="pre">P{x}</span></code> is
+simplified first to <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&nbsp; <span class="pre">0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span>&nbsp; <span class="pre">→</span>&nbsp; <span class="pre">P{x}</span></code>
+before applying any of the ∀-quantified claim rules.</p>
+</div>
 <div class="section" id="fact-fact">
-<h3>3.4.10.1. Fact (fact)<a class="headerlink" href="#fact-fact" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.10.3. Fact (fact)<a class="headerlink" href="#fact-fact" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="fact-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Fact Rule</strong></span><a class="headerlink" href="#fact-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  fact</span>
+<span class="s">     …</span>
+<span class="s">     X. E</span>
+<span class="s">     …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="c1">// …</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  Z. E                                   fact X</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="invariant-invariant">
-<h3>3.4.10.2. Invariant (invariant)<a class="headerlink" href="#invariant-invariant" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.10.4. Invariant (invariant)<a class="headerlink" href="#invariant-invariant" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="invariant-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Invariant Rule</strong></span><a class="headerlink" href="#invariant-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  invariant</span>
+<span class="s">     …</span>
+<span class="s">     I</span>
+<span class="s">     …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="c1">// …</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  Z. I                                   invariant</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="substitutions-subst1-and-subst2">
-<h3>3.4.10.3. Substitutions (subst1 and subst2)<a class="headerlink" href="#substitutions-subst1-and-subst2" title="Permalink to this headline">¶</a></h3>
+<h3>3.4.10.5. Substitutions (subst1 and subst2)<a class="headerlink" href="#substitutions-subst1-and-subst2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst1&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </pre></div>
 </div>
+<div class="literal-block-wrapper container" id="subst1-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Substitution1 (subst1) Rule</strong></span><a class="headerlink" href="#subst1-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     …</span>
+<span class="s">  X. E1 == E2                            …</span>
+<span class="s">     …</span>
+<span class="s">  Y. P{E1}</span>
+<span class="s">     …</span>
+<span class="s">  Z. [E2/E1]P{E1}                        subst1 X Y</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="subst2-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Substitution2 (subst1) Rule</strong></span><a class="headerlink" href="#subst2-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     …</span>
+<span class="s">  X. E1 == E2                            …</span>
+<span class="s">     …</span>
+<span class="s">  Y. P{E2}</span>
+<span class="s">     …</span>
+<span class="s">  Z. [E1/E2]P{E2}                        subst2 X Y</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="summonings">
 <h2>3.4.11. Summonings<a class="headerlink" href="#summonings" title="Permalink to this headline">¶</a></h2>
+<p>Logika summonings are special justifications;
+they are distinguished because the deduction is checked by
+leveraging the work of giants such as using Z3
+(see
+<a class="reference external" href="https://www.youtube.com/embed/gb2zIR2rvRQ?rel=0&amp;autoplay=1&amp;start=30">a classical example</a> or
+<a class="reference external" href="https://www.youtube.com/embed/Qs51cQUuEOM?rel=0&amp;autoplay=1&amp;start=280">a modern example</a>
+on how summoning works).</p>
 <div class="section" id="algebra-algebra">
 <h3>3.4.11.1. Algebra (algebra)<a class="headerlink" href="#algebra-algebra" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="literal-block-wrapper container" id="algebra-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Algebra Rule (with some arguments)</strong></span><a class="headerlink" href="#algebra-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      …</span>
+<span class="s">  X1. E1                                 …                 // E1 cannot use ∧, ∨, →, ∀, ∃</span>
+<span class="s">      …</span>
+<span class="s">  XN. EN                                 …                 // N &gt; 0, EN cannot use ∧, ∨, →, ∀, ∃</span>
+<span class="s">      …</span>
+<span class="s">  Z.  E                                  algebra X1 … XN   // if ¬(E1 ∧ … ∧ EN → E) is unsat</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="algebra-empty-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Algebra Rule (without argument)</strong></span><a class="headerlink" href="#algebra-empty-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      …</span>
+<span class="s">  Z.  E                                  algebra           // if ¬E is unsat</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="auto-auto">
@@ -709,6 +1005,28 @@ note that <code class="docutils literal"><span class="pre">invoke</span></code> 
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;auto&#39;</span><span class="w">    </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="literal-block-wrapper container" id="auto-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Auto Rule (with some arguments)</strong></span><a class="headerlink" href="#auto-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      …</span>
+<span class="s">  X1. E1                                 …</span>
+<span class="s">      …</span>
+<span class="s">  XN. EN                                 …                 // N &gt; 0</span>
+<span class="s">      …</span>
+<span class="s">  Z.  E                                  auto X1 … XN      // if ¬(E1 ∧ … ∧ EN → E) is unsat</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="auto-empty-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Auto Rule (without argument)</strong></span><a class="headerlink" href="#auto-empty-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      …</span>
+<span class="s">  Z.  E                                  auto              // if ¬(premise1 ∧ … ∧ premiseN ∧ axiom1 ∧ … ∧ axiomM → E) is unsat</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -922,18 +1240,18 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// And-Elimination2</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// Or-Introduction1</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// Or-Introduction2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">     </span><span class="c">// Or-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">     </span><span class="c">// Or-Elimination</span><span class="w"></span>
+</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Implication-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// Implication-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Negation-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w">     </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Forall-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Forall-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Exists-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">          </span><span class="c">// Exists-Elimination</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">      </span><span class="nv">sNUM</span><span class="w">               </span><span class="c">// Forall-Introduction</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Forall-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">        </span><span class="c">// Exists-Introduction</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">          </span><span class="c">// Exists-Elimination</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst1&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
