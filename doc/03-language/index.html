@@ -123,7 +123,60 @@ Sireum Logika Documentation
 </b></big></big></big></big>
 </font><div class="section" id="the-logika-formal-input-language">
 <span id="language"></span><h1>3. The Logika Formal Input Language<a class="headerlink" href="#the-logika-formal-input-language" title="Permalink to this headline">¶</a></h1>
-<p>The Logika input formal language are generally categorized into two:</p>
+<h2>Design Rationale</h2><p>There are many ways one can take when designing a language
+for introducing logics in computer science.
+Below are the main design criteria for Logika&#8217;s:</p>
+<ol class="arabic">
+<li><p class="first">Based on a real, popular, and modern statically-typed
+programming language.</p>
+<p>This criterion helps with making the case that logics
+are applicable in real-world settings.</p>
+<p>The &#8220;statically-typed&#8221; part of the criterion is of
+a personal opinion (i.e., static typing is one showcase
+of widely-successful applications of logics
+in computer science, which was introduced to avoid
+commonly made mistakes; unfortunately, history seems to
+repeat itself recently)
+and preference (e.g., it enables various analyses for
+better IDE support).</p>
+</li>
+<li><p class="first">Small, yet sufficiently interesting.</p>
+<p>Having a large set of well-designed language features are
+definitely preferable when developing realistic software.
+However, a small set is desirable in this context to avoid
+becoming too overwhelming.
+Yet, the feature set should be sufficiently large to enable
+case studies on interesting problems.
+When larger sets are needed, they should be introduced
+gradually.</p>
+</li>
+<li><p class="first">Has a &#8220;clean&#8221; semantic.</p>
+<p>&#8220;Clean&#8221; here really means that the language
+semantic does not complicate reasoning.
+For example, 32-bit or 64-bit integers are typically used
+in most programming languages for efficiency sake.
+However, they complicate reasoning because one has to
+worry about underflows/overflows.
+Such concerns should be separated and considered later
+once reasoning basics have been grasped.
+In this particular case, &#8220;clean&#8221; translates
+to using arbitrary-precision integers; reasoning
+to handle ranged or modulo integers can be exposed as
+additional learning modules.</p>
+</li>
+</ol>
+<p>The above criteria conflict with each other.
+For example, using arbitrary-precision integers
+(with arrays indexed by arbitrary-precision index values) often
+complicates usage and requires a larger set of programming
+language features (or a library).</p>
+<p>The <a class="reference external" href="http://scala-lang.org">Scala</a> programming language
+is chosen as the basis due to its customizability to provide
+a clean sandbox for a small, yet interesting language features
+(i.e., by leveraging advanced Scala features such as implicits,
+macro, and &#8220;magic&#8221; functions such as <code class="docutils literal"><span class="pre">apply</span></code> and <code class="docutils literal"><span class="pre">update</span></code>;
+see <a class="reference external" href="https://github.com/sireum/v3/blob/master/logika/jvm/src/main/scala/org/sireum/logika/package.scala">Logika runtime library</a>).</p>
+<h2>Language Overview</h2><p>The Logika input formal language are generally categorized into two:</p>
 <ul class="simple">
 <li>Proof language, for expressing formulae in propositional and predicate logics,
 as well as for expressing software contracts.</li>
@@ -206,13 +259,13 @@ Here is an example to ponder:</p>
 <span class="o">}</span>
 </pre></div>
 </div>
+<hr class="docutils" />
 <p>Let us first discuss the
 <a class="reference internal" href="basic/index.html#basic-language"><span>basic language elements</span></a> that are common to the two categories,
 before proceeding to discuss the
 <a class="reference internal" href="propositional/index.html#propositional-language"><span>propositional</span></a>,
 <a class="reference internal" href="predicate/index.html#predicate-language"><span>predicate</span></a>, and
 <a class="reference internal" href="programming/index.html#programming-language"><span>programming</span></a> logic input languages.</p>
-<hr class="docutils" />
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/index.html">3.1. Basic Language Elements</a><ul>
@@ -279,36 +332,37 @@ before proceeding to discuss the
 </li>
 <li class="toctree-l1"><a class="reference internal" href="programming/index.html">3.4. Programming Logic</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="programming/index.html#program">3.4.1. Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#fact">3.4.2. Fact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#invariant">3.4.3. Invariant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#method-declaration">3.4.4. Method Declaration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#statement">3.4.5. Statement</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#variable-declaration-and-assignment">3.4.5.1. Variable Declaration and Assignment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#assumption">3.4.5.2. Assumption</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#assertion">3.4.5.3. Assertion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#if-else-conditional">3.4.5.4. If-Else Conditional</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#while-loop">3.4.5.5. While-Loop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#method-invocation">3.4.5.6. Method Invocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#sequence-element-assigment">3.4.5.7. Sequence Element Assigment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#print">3.4.5.8. Print</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#sequent">3.4.5.9. Sequent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#proof">3.4.5.10. Proof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#statement">3.4.2. Statement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#variable-declaration-and-assignment">3.4.2.1. Variable Declaration and Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#assertion-and-assumption">3.4.2.2. Assertion and Assumption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#if-else-conditional">3.4.2.3. If-Else Conditional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#while-loop">3.4.2.4. While-Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#sequence-element-assignment">3.4.2.5. Sequence Element Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#print">3.4.2.6. Print</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#proof">3.4.2.7. Proof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#sequent">3.4.2.8. Sequent</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#expression">3.4.6. Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-assume-step">3.4.7. Extended Assume Step</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-claim-expression">3.4.8. Extended Claim Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-justification-and-inference-rules">3.4.9. Extended Justification and Inference Rules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#id1">3.4.9.1. Fact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#id2">3.4.9.2. Invariant</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#subst1">3.4.9.3. Subst1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#subst2">3.4.9.4. Subst2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#algebra">3.4.9.5. Algebra</a></li>
-<li class="toctree-l3"><a class="reference internal" href="programming/index.html#auto">3.4.9.6. Auto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#expression">3.4.3. Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#invariant">3.4.4. Invariant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#method-declaration">3.4.5. Method Declaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#method-invocation">3.4.6. Method Invocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#fact">3.4.7. Fact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-assume-step">3.4.8. Extended Assume Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-claim-expression">3.4.9. Extended Claim Expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#extended-justification-and-inference-rules">3.4.10. Extended Justification and Inference Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#fact-fact">3.4.10.1. Fact (fact)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#invariant-invariant">3.4.10.2. Invariant (invariant)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#substitutions-subst1-and-subst2">3.4.10.3. Substitutions (subst1 and subst2)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#well-formed-ness">3.4.10. Well-formed-ness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="programming/index.html#programming-logic-input-language-grammar">3.4.11. Programming Logic Input Language Grammar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#summonings">3.4.11. Summonings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#algebra-algebra">3.4.11.1. Algebra (algebra)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="programming/index.html#auto-auto">3.4.11.2. Auto (auto)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#well-formed-ness">3.4.12. Well-formed-ness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/index.html#programming-logic-input-language-grammar">3.4.13. Programming Logic Input Language Grammar</a></li>
 </ul>
 </li>
 </ul>

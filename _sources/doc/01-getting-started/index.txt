@@ -211,7 +211,7 @@ Auto Mode
 
 **Command-Line Option:** ``-a`` or ``--auto``.
 
-The auto mode enables :ref:`automatic claim deduction <auto>`.
+The auto mode enables :ref:`automatic claim deduction <prog-auto>`.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).
@@ -224,8 +224,8 @@ automatically prove a contract or a runtime error check
 for automatic proving, or guide Logika by establishing more
 claims to help with making the necessary deduction).
 
-Furthermore, auto mode changes the way :ref:`proof statement
-<proof-statement>` works.
+Furthermore, auto mode changes the way
+:ref:`proof statement <prog-proof>` works.
 By default, a proof statement only propagates the proven
 claims inside that statement.
 This essentially resets the premises that are available
@@ -234,7 +234,7 @@ has proven.
 If auto is enabled, proof statements also
 propagate their premises along with their proven claims.
 For more information with examples, please refer to the
-:ref:`proof statement <proof-statement>` section.
+:ref:`proof statement <prog-proof>` section.
 
 Last Mode
 =========

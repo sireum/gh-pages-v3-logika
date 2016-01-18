@@ -18,33 +18,79 @@
 Programming Logic
 *****************
 
+Logika's programming logic input language differs from its
+propositional and predicate logics' in one main characteristic:
+variable and function types have to be explicitly specified.
+
+It has three built-in types:
+(1) ``B`` -- boolean type,
+(2) ``Z`` -- arbitrary-precision integer type, and
+(3) ``ZS`` -- mutable integer sequence (array) type
+(whose index and element type is ``Z`` with indices starting
+at ``0``).
+
+In contrast to regular Scala,
+Logika's programming language separates between
+commands (statements) and queries (expressions).
+(In Scala, commands are expressions whose return value is of
+``Unit`` type.)
+Logika statements are evaluated for their side effect, and
+expressions are evaluated purely for their resulting value
+(side-effect free -- they do not change values stored in variables).
+
+The following pattern notation is used to describe a statement's side-effects:
+
+.. literalinclude:: claim-transformation-notation.txt
+   :language: scala
+   :caption: **Statement Claim Transformation Rule Notation**
+   :name: claim-transformation-notation
+
+``P`` represents any claim that holds (is true) before the statement (precondition)
+and ``R`` represents any claim that holds after the statement (postcondition).
+The notation uses an identifier such as ``P`` and ``R`` to represent
+multiple claims.
+
+In essence, a statement is a claim transformer -- a function that transforms
+its precondition to its postcondition.
+To relate to program execution,
+the precondition essentially characterizes the program state before the statement is executed,
+and the postcondition characterizes the program state after the statement is executed.
+Thus, the whole program execution can be characterized by composing the claim transformations
+done by each of the program statements.
+
+As a convention:
+
+* ``P``, ``Q``, and ``R`` are used to represent claims.
+
+* ``X``, ``Y``, and ``Z`` are used to represent variable identifiers.
+
+* ``E`` is used to represent a general expression.
+
+* ``C`` is used to represent a command/statement or a sequence of statements.
+
+
 Program
 =======
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 1 - 11
+   :lines: 1 - 12
 
-Fact
-====
+A Logika program can be empty, or
+it consists of an import statement followed
+by a zero or more program elements.
+A program element can be either
+a :ref:`prog-statement`,
+an :ref:`prog-invariant`,
+a :ref:`prog-method-decl`,
+or a :ref:`prog-fact` (axiom or proof function).
 
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 13 - 29
+Similar to Java or Scala, methods can be forward-referenced
+(referenced before their declaration).
+In addition, axioms and proof functions defined in
+:ref:`prog-fact` can also be forward-referenced.
 
-Invariant
-=========
-
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 31 - 33
-
-Method Declaration
-==================
-
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 35 - 58
+.. _prog-statement:
 
 Statement
 =========
@@ -53,6 +99,19 @@ Statement
    :language: antlr
    :lines: 60 - 72
 
+A Logika statement can be either
+a :ref:`prog-var-assign`,
+an :ref:`prog-assert`,
+an :ref:`prog-conditional`,
+a :ref:`prog-while-loop`,
+a :ref:`prog-seq-assign`,
+a :ref:`prog-print` statement,
+a :ref:`prog-proof`, or
+a :ref:`prog-sequent`.
+Method invocation ``invoke`` is discussed in :ref:`prog-invoke`.
+
+.. _prog-var-assign:
+
 Variable Declaration and Assignment
 -----------------------------------
 
@@ -60,19 +119,58 @@ Variable Declaration and Assignment
    :language: antlr
    :lines: 60 - 63, 26 - 29, 73 - 78, 98 - 101
 
-Assumption
-----------
+A variable declaration is a special assignment form that also declares
+the variable that it assigns at the same time.
+The variable has to be declared as either read-only (using the ``val`` keyword) --
+which cannot be reassigned later on, or read/write (using the ``var`` keyword).
+Note a variable cannot be forward-referenced.
+
+The claim transformation rule for a variable declaration is the same as for
+assignment. Below are the claim transformation rules for an assignment based on
+the form of its right-hand side (``rhs``);
+note that ``invoke`` is discussed in :ref:`prog-invoke`.
+
+.. literalinclude:: var-assign-exp-rule.txt
+   :language: scala
+   :caption: **Variable Assignment Rule**
+   :name: var-assign-exp-rule
+
+.. literalinclude:: var-assign-clone-rule.txt
+   :language: scala
+   :caption: **Sequence Cloning Rule**
+   :name: var-assign-clone-rule
+
+.. literalinclude:: var-assign-readint-rule.txt
+   :language: scala
+   :caption: **readInt Rule**
+   :name: var-assign-readint-rule
+
+.. literalinclude:: var-assign-randomint-rule.txt
+   :language: scala
+   :caption: **randomInt Rule**
+   :name: var-assign-randomint-rule
+
+.. _prog-assert:
+
+Assertion and Assumption
+------------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 64
+   :lines: 228, 64 - 65
 
-Assertion
----------
+.. literalinclude:: assert-rule.txt
+   :language: scala
+   :caption: **Assertion Rule**
+   :name: assert-rule
 
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 228, 65
+.. literalinclude:: assume-rule.txt
+   :language: scala
+   :caption: **Assumption Rule**
+   :name: assume-rule
+
+
+.. _prog-conditional:
 
 If-Else Conditional
 -------------------
@@ -81,6 +179,14 @@ If-Else Conditional
    :language: antlr
    :lines: 228, 66, 79 - 84
 
+.. literalinclude:: if-else-rule.txt
+   :language: scala
+   :caption: **If-Else Conditional Rule**
+   :name: if-else-rule
+
+
+.. _prog-while-loop:
+
 While-Loop
 ----------
 
@@ -88,43 +194,41 @@ While-Loop
    :language: antlr
    :lines: 228, 67, 85 - 97, 51 - 54
 
-Method Invocation
------------------
+.. _prog-seq-assign:
+
+Sequence Element Assignment
+---------------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 68, 98 - 101
+   :lines: 228, 68
 
-Sequence Element Assigment
---------------------------
-
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 228, 69
+.. _prog-print:
 
 Print
 -----
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 70, 102 - 107
+   :lines: 228, 69, 102 - 107
 
-
-Sequent
--------
-
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 228, 71, 126 - 133
-
-.. _proof-statement:
+.. _prog-proof:
 
 Proof
 -----
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 72, 136 - 154
+   :lines: 228, 70, 126 - 144
+
+.. _prog-sequent:
+
+Sequent
+-------
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 228, 71, 145 - 154
 
 Expression
 ==========
@@ -132,6 +236,42 @@ Expression
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 109 - 125
+
+.. _prog-invariant:
+
+Invariant
+=========
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 31 - 33
+
+.. _prog-method-decl:
+
+Method Declaration
+==================
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 35 - 58
+
+.. _prog-invoke:
+
+Method Invocation
+=================
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 98 - 101
+
+.. _prog-fact:
+
+Fact
+====
+
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 13 - 29
 
 Extended Assume Step
 ====================
@@ -157,45 +297,41 @@ Extended Justification and Inference Rules
    :lines: 197 - 219
    :emphasize-lines: 18 - 23
 
-Fact
-----
+Fact (fact)
+-----------
 
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 215
 
-Invariant
----------
+Invariant (invariant)
+---------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 216
 
-Subst1
-------
+Substitutions (subst1 and subst2)
+---------------------------------
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 217
+   :lines: 226, 217 - 218
 
-Subst2
-------
+Summonings
+==========
 
-.. literalinclude:: programming.txt
-   :language: antlr
-   :lines: 226, 218
-
-Algebra
--------
+Algebra (algebra)
+-----------------
 
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 226, 219
 
-.. _auto:
+.. _prog-auto:
 
-Auto
-----
+Auto (auto)
+-----------
 
 .. literalinclude:: programming.txt
    :language: antlr

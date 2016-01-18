@@ -82,36 +82,37 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">3.4. Programming Logic</a><ul>
 <li><a class="reference internal" href="#program">3.4.1. Program</a></li>
-<li><a class="reference internal" href="#fact">3.4.2. Fact</a></li>
-<li><a class="reference internal" href="#invariant">3.4.3. Invariant</a></li>
-<li><a class="reference internal" href="#method-declaration">3.4.4. Method Declaration</a></li>
-<li><a class="reference internal" href="#statement">3.4.5. Statement</a><ul>
-<li><a class="reference internal" href="#variable-declaration-and-assignment">3.4.5.1. Variable Declaration and Assignment</a></li>
-<li><a class="reference internal" href="#assumption">3.4.5.2. Assumption</a></li>
-<li><a class="reference internal" href="#assertion">3.4.5.3. Assertion</a></li>
-<li><a class="reference internal" href="#if-else-conditional">3.4.5.4. If-Else Conditional</a></li>
-<li><a class="reference internal" href="#while-loop">3.4.5.5. While-Loop</a></li>
-<li><a class="reference internal" href="#method-invocation">3.4.5.6. Method Invocation</a></li>
-<li><a class="reference internal" href="#sequence-element-assigment">3.4.5.7. Sequence Element Assigment</a></li>
-<li><a class="reference internal" href="#print">3.4.5.8. Print</a></li>
-<li><a class="reference internal" href="#sequent">3.4.5.9. Sequent</a></li>
-<li><a class="reference internal" href="#proof">3.4.5.10. Proof</a></li>
+<li><a class="reference internal" href="#statement">3.4.2. Statement</a><ul>
+<li><a class="reference internal" href="#variable-declaration-and-assignment">3.4.2.1. Variable Declaration and Assignment</a></li>
+<li><a class="reference internal" href="#assertion-and-assumption">3.4.2.2. Assertion and Assumption</a></li>
+<li><a class="reference internal" href="#if-else-conditional">3.4.2.3. If-Else Conditional</a></li>
+<li><a class="reference internal" href="#while-loop">3.4.2.4. While-Loop</a></li>
+<li><a class="reference internal" href="#sequence-element-assignment">3.4.2.5. Sequence Element Assignment</a></li>
+<li><a class="reference internal" href="#print">3.4.2.6. Print</a></li>
+<li><a class="reference internal" href="#proof">3.4.2.7. Proof</a></li>
+<li><a class="reference internal" href="#sequent">3.4.2.8. Sequent</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#expression">3.4.6. Expression</a></li>
-<li><a class="reference internal" href="#extended-assume-step">3.4.7. Extended Assume Step</a></li>
-<li><a class="reference internal" href="#extended-claim-expression">3.4.8. Extended Claim Expression</a></li>
-<li><a class="reference internal" href="#extended-justification-and-inference-rules">3.4.9. Extended Justification and Inference Rules</a><ul>
-<li><a class="reference internal" href="#id1">3.4.9.1. Fact</a></li>
-<li><a class="reference internal" href="#id2">3.4.9.2. Invariant</a></li>
-<li><a class="reference internal" href="#subst1">3.4.9.3. Subst1</a></li>
-<li><a class="reference internal" href="#subst2">3.4.9.4. Subst2</a></li>
-<li><a class="reference internal" href="#algebra">3.4.9.5. Algebra</a></li>
-<li><a class="reference internal" href="#auto">3.4.9.6. Auto</a></li>
+<li><a class="reference internal" href="#expression">3.4.3. Expression</a></li>
+<li><a class="reference internal" href="#invariant">3.4.4. Invariant</a></li>
+<li><a class="reference internal" href="#method-declaration">3.4.5. Method Declaration</a></li>
+<li><a class="reference internal" href="#method-invocation">3.4.6. Method Invocation</a></li>
+<li><a class="reference internal" href="#fact">3.4.7. Fact</a></li>
+<li><a class="reference internal" href="#extended-assume-step">3.4.8. Extended Assume Step</a></li>
+<li><a class="reference internal" href="#extended-claim-expression">3.4.9. Extended Claim Expression</a></li>
+<li><a class="reference internal" href="#extended-justification-and-inference-rules">3.4.10. Extended Justification and Inference Rules</a><ul>
+<li><a class="reference internal" href="#fact-fact">3.4.10.1. Fact (fact)</a></li>
+<li><a class="reference internal" href="#invariant-invariant">3.4.10.2. Invariant (invariant)</a></li>
+<li><a class="reference internal" href="#substitutions-subst1-and-subst2">3.4.10.3. Substitutions (subst1 and subst2)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#well-formed-ness">3.4.10. Well-formed-ness</a></li>
-<li><a class="reference internal" href="#programming-logic-input-language-grammar">3.4.11. Programming Logic Input Language Grammar</a></li>
+<li><a class="reference internal" href="#summonings">3.4.11. Summonings</a><ul>
+<li><a class="reference internal" href="#algebra-algebra">3.4.11.1. Algebra (algebra)</a></li>
+<li><a class="reference internal" href="#auto-auto">3.4.11.2. Auto (auto)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#well-formed-ness">3.4.12. Well-formed-ness</a></li>
+<li><a class="reference internal" href="#programming-logic-input-language-grammar">3.4.13. Programming Logic Input Language Grammar</a></li>
 </ul>
 </li>
 </ul>
@@ -156,6 +157,54 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </b></big></big></big></big>
 </font><div class="section" id="programming-logic">
 <span id="programming-language"></span><h1>3.4. Programming Logic<a class="headerlink" href="#programming-logic" title="Permalink to this headline">¶</a></h1>
+<p>Logika&#8217;s programming logic input language differs from its
+propositional and predicate logics&#8217; in one main characteristic:
+variable and function types have to be explicitly specified.</p>
+<p>It has three built-in types:
+(1) <code class="docutils literal"><span class="pre">B</span></code> &#8211; boolean type,
+(2) <code class="docutils literal"><span class="pre">Z</span></code> &#8211; arbitrary-precision integer type, and
+(3) <code class="docutils literal"><span class="pre">ZS</span></code> &#8211; mutable integer sequence (array) type
+(whose index and element type is <code class="docutils literal"><span class="pre">Z</span></code> with indices starting
+at <code class="docutils literal"><span class="pre">0</span></code>).</p>
+<p>In contrast to regular Scala,
+Logika&#8217;s programming language separates between
+commands (statements) and queries (expressions).
+(In Scala, commands are expressions whose return value is of
+<code class="docutils literal"><span class="pre">Unit</span></code> type.)
+Logika statements are evaluated for their side effect, and
+expressions are evaluated purely for their resulting value
+(side-effect free &#8211; they do not change values stored in variables).</p>
+<p>The following pattern notation is used to describe a statement&#8217;s side-effects:</p>
+<div class="literal-block-wrapper container" id="claim-transformation-notation">
+<div class="code-block-caption"><span class="caption-text"><strong>Statement Claim Transformation Rule Notation</strong></span><a class="headerlink" href="#claim-transformation-notation" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ // precondition</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">statement</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{ // postcondition</span>
+<span class="s">  …. R                                   premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal"><span class="pre">P</span></code> represents any claim that holds (is true) before the statement (precondition)
+and <code class="docutils literal"><span class="pre">R</span></code> represents any claim that holds after the statement (postcondition).
+The notation uses an identifier such as <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">R</span></code> to represent
+multiple claims.</p>
+<p>In essence, a statement is a claim transformer &#8211; a function that transforms
+its precondition to its postcondition.
+To relate to program execution,
+the precondition essentially characterizes the program state before the statement is executed,
+and the postcondition characterizes the program state after the statement is executed.
+Thus, the whole program execution can be characterized by composing the claim transformations
+done by each of the program statements.</p>
+<p>As a convention:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">Q</span></code>, and <code class="docutils literal"><span class="pre">R</span></code> are used to represent claims.</li>
+<li><code class="docutils literal"><span class="pre">X</span></code>, <code class="docutils literal"><span class="pre">Y</span></code>, and <code class="docutils literal"><span class="pre">Z</span></code> are used to represent variable identifiers.</li>
+<li><code class="docutils literal"><span class="pre">E</span></code> is used to represent a general expression.</li>
+<li><code class="docutils literal"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
+</ul>
 <div class="section" id="program">
 <h2>3.4.1. Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
@@ -165,36 +214,325 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 <span class="nv">import</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;import&#39;</span><span class="w"> </span><span class="s">&#39;org&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;sireum&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;logika&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;_&#39;</span><span class="w"></span>
 
 <span class="nv">programElement</span><span class="w"></span>
-<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nv">fact</span><span class="w"></span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nv">stmt</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invariant</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">methodDecl</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">stmt</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">fact</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">import</span><span class="w">                       </span><span class="c">// redundant; to allow concatenation of program files into one file</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A Logika program can be empty, or
+it consists of an import statement followed
+by a zero or more program elements.
+A program element can be either
+a <a class="reference internal" href="#prog-statement"><span>Statement</span></a>,
+an <a class="reference internal" href="#prog-invariant"><span>Invariant</span></a>,
+a <a class="reference internal" href="#prog-method-decl"><span>Method Declaration</span></a>,
+or a <a class="reference internal" href="#prog-fact"><span>Fact</span></a> (axiom or proof function).</p>
+<p>Similar to Java or Scala, methods can be forward-referenced
+(referenced before their declaration).
+In addition, axioms and proof functions defined in
+<a class="reference internal" href="#prog-fact"><span>Fact</span></a> can also be forward-referenced.</p>
 </div>
-<div class="section" id="fact">
-<h2>3.4.2. Fact<a class="headerlink" href="#fact" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">fact</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="nv">axiom</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">proofFunction</span><span class="w"> </span><span class="o">)+</span><span class="w"> </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
-
-<span class="nv">axiom</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
-
-<span class="nv">proofFunction</span><span class="w"></span>
-<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;def&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">paramList</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
-
-<span class="nv">paramList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">param</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">param</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-
-<span class="nv">param</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
+<div class="section" id="statement">
+<span id="prog-statement"></span><h2>3.4.2. Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
+<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
+<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A Logika statement can be either
+a <a class="reference internal" href="#prog-var-assign"><span>Variable Declaration and Assignment</span></a>,
+an <a class="reference internal" href="#prog-assert"><span>Assertion and Assumption</span></a>,
+an <a class="reference internal" href="#prog-conditional"><span>If-Else Conditional</span></a>,
+a <a class="reference internal" href="#prog-while-loop"><span>While-Loop</span></a>,
+a <a class="reference internal" href="#prog-seq-assign"><span>Sequence Element Assignment</span></a>,
+a <a class="reference internal" href="#prog-print"><span>Print</span></a> statement,
+a <a class="reference internal" href="#prog-proof"><span>Proof</span></a>, or
+a <a class="reference internal" href="#prog-sequent"><span>Sequent</span></a>.
+Method invocation <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span>Method Invocation</span></a>.</p>
+<div class="section" id="variable-declaration-and-assignment">
+<span id="prog-var-assign"></span><h3>3.4.2.1. Variable Declaration and Assignment<a class="headerlink" href="#variable-declaration-and-assignment" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
+<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
+<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
 
 <span class="nv">type</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;B&#39;</span><span class="w">                          </span><span class="c">// boolean type</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w">                          </span><span class="c">// integer type</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w">                         </span><span class="c">// integer sequence type</span><span class="w"></span>
+
+<span class="nv">rhs</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w">                          </span><span class="c">// expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;clone&#39;</span><span class="w">               </span><span class="c">// sequence cloning</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;randomInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">          </span><span class="c">// returns a random integer</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;readInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">    </span><span class="c">// reads an integer from console input, STRING is an optional prompt message</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
+
+<span class="nv">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+
+<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A variable declaration is a special assignment form that also declares
+the variable that it assigns at the same time.
+The variable has to be declared as either read-only (using the <code class="docutils literal"><span class="pre">val</span></code> keyword) &#8211;
+which cannot be reassigned later on, or read/write (using the <code class="docutils literal"><span class="pre">var</span></code> keyword).
+Note a variable cannot be forward-referenced.</p>
+<p>The claim transformation rule for a variable declaration is the same as for
+assignment. Below are the claim transformation rules for an assignment based on
+the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>);
+note that <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span>Method Invocation</span></a>.</p>
+<div class="literal-block-wrapper container" id="var-assign-exp-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Variable Assignment Rule</strong></span><a class="headerlink" href="#var-assign-exp-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">X</span> <span class="k">=</span> <span class="n">E</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. [X_old/X]P                          premise</span>
+<span class="s">  …. X == E                              premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="var-assign-clone-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Sequence Cloning Rule</strong></span><a class="headerlink" href="#var-assign-clone-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">X</span> <span class="k">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">clone</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. [X_old/Y]P                          premise</span>
+<span class="s">  …. X == Y                              premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="var-assign-readint-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>readInt Rule</strong></span><a class="headerlink" href="#var-assign-readint-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">X</span> <span class="k">=</span> <span class="n">readInt</span><span class="o">()</span>  <span class="c1">// also applies when a STRING prompt message is provided</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. [X_old/Y]P                          premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="var-assign-randomint-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>randomInt Rule</strong></span><a class="headerlink" href="#var-assign-randomint-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">X</span> <span class="k">=</span> <span class="n">randomInt</span><span class="o">()</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. [X_old/Y]P                          …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="assertion-and-assumption">
+<span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="assert-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Assertion Rule</strong></span><a class="headerlink" href="#assert-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">  …. E                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">assert</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   premise</span>
+<span class="s">  …. E                                   premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="assume-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>Assumption Rule</strong></span><a class="headerlink" href="#assume-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">assume</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   premise</span>
+<span class="s">  …. E                                   premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="if-else-conditional">
+<span id="prog-conditional"></span><h3>3.4.2.3. If-Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
+
+<span class="nv">conditional</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">         </span><span class="c">// conditional</span><span class="w"></span>
+<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;else&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper container" id="if-else-rule">
+<div class="code-block-caption"><span class="caption-text"><strong>If-Else Conditional Rule</strong></span><a class="headerlink" href="#if-else-rule" title="Permalink to this code">¶</a></div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. P                                   …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. P                                 premise</span>
+<span class="s">    …. E                                 premise</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C1</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. R1                                …</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. P                                 premise</span>
+<span class="s">    …. ¬E                                premise</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C2</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    …. R2                                …</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+<span class="o">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  …. R1 ∨ R2                             …</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="while-loop">
+<span id="prog-while-loop"></span><h3>3.4.2.4. While-Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
+
+<span class="nv">whileLoop</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;while&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">      </span><span class="c">// while-loop</span><span class="w"></span>
+<span class="w">                </span><span class="nv">loopInvariant</span><span class="o">?</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">loopInvariant</span><span class="w"></span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="nv">claim</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">                </span><span class="o">)?</span><span class="w"></span>
+<span class="w">                </span><span class="nv">modifies</span><span class="o">?</span><span class="w">                  </span><span class="c">// note: either invariant or modifies has to be present</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
+
+<span class="nv">modifies</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;modifies&#39;</span><span class="w"> </span><span class="nv">idList</span><span class="w"></span>
+
+<span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sequence-element-assignment">
+<span id="prog-seq-assign"></span><h3>3.4.2.5. Sequence Element Assignment<a class="headerlink" href="#sequence-element-assignment" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="print">
+<span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
+
+<span class="nv">print</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;print&#39;</span><span class="w">                    </span><span class="c">// print without a newline appended</span><span class="w"></span>
+<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;println&#39;</span><span class="w">                  </span><span class="c">// print with a newline appended</span><span class="w"></span>
+<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">printArgList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+
+<span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="proof">
+<span id="prog-proof"></span><h3>3.4.2.7. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
+
+<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
+
+<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">          </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+
+<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">                     </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="nv">assumeStep</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sequent">
+<span id="prog-sequent"></span><h3>3.4.2.8. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
+
+<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nv">claimList</span><span class="w">                    </span><span class="c">// conclusions</span><span class="w"></span>
+
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                       </span><span class="c">// premises</span><span class="w"></span>
+<span class="w">              </span><span class="no">HLINE</span><span class="w">                        </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
+
+<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="expression">
+<h2>3.4.3. Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w">                       </span><span class="c">// true literal, can also use &#39;T&#39; for &#39;true&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w">                      </span><span class="c">// false literal, can also use &#39;F&#39; for for &#39;false&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// variable reference</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">NUM</span><span class="w">                          </span><span class="c">// integer literal</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">           </span><span class="c">// integer literal</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// sequence literal</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">size</span><span class="w">                  </span><span class="c">// sequence size</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">                  </span><span class="c">// parenthesized expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">            </span><span class="c">// negative and negation expressions</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">  </span><span class="c">// multiplicative expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;+&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;+:&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="c">// additive expression ( &#39;+:&#39; is sequence prepend )</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;:+&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                 </span><span class="c">// sequence append</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;&gt;&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&gt;=&#39;</span><span class="w"></span>
+<span class="w">                  </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&lt;&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&lt;=&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// integer comparison</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;==&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!=&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">      </span><span class="c">// equality expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;&amp;&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-and (non short-circuit) expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;|&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-or (non short-circuit) expression</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="invariant">
-<h2>3.4.3. Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h2>
+<span id="prog-invariant"></span><h2>3.4.4. Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">invariant</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">claim</span><span class="o">+</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
@@ -202,7 +540,7 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </div>
 </div>
 <div class="section" id="method-declaration">
-<h2>3.4.4. Method Declaration<a class="headerlink" href="#method-declaration" title="Permalink to this headline">¶</a></h2>
+<span id="prog-method-decl"></span><h2>3.4.5. Method Declaration<a class="headerlink" href="#method-declaration" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">methodDecl</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;@&#39;</span><span class="w"> </span><span class="s">&#39;helper&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;def&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">paramList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Unit&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">methodContract</span><span class="o">?</span><span class="w"></span>
@@ -230,194 +568,37 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </pre></div>
 </div>
 </div>
-<div class="section" id="statement">
-<h2>3.4.5. Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
-<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
-<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
+<div class="section" id="method-invocation">
+<span id="prog-invoke"></span><h2>3.4.6. Method Invocation<a class="headerlink" href="#method-invocation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+
+<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="section" id="variable-declaration-and-assignment">
-<h3>3.4.5.1. Variable Declaration and Assignment<a class="headerlink" href="#variable-declaration-and-assignment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
-<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
-<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
+</div>
+<div class="section" id="fact">
+<span id="prog-fact"></span><h2>3.4.7. Fact<a class="headerlink" href="#fact" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">fact</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="nv">axiom</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">proofFunction</span><span class="w"> </span><span class="o">)+</span><span class="w"> </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
+
+<span class="nv">axiom</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
+
+<span class="nv">proofFunction</span><span class="w"></span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;def&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">paramList</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
+
+<span class="nv">paramList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">param</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">param</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+
+<span class="nv">param</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
 
 <span class="nv">type</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;B&#39;</span><span class="w">                          </span><span class="c">// boolean type</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w">                          </span><span class="c">// integer type</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w">                         </span><span class="c">// integer sequence type</span><span class="w"></span>
-
-<span class="nv">rhs</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;clone&#39;</span><span class="w">               </span><span class="c">// sequence cloning</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;randomInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">          </span><span class="c">// returns a random integer</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;readInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">    </span><span class="c">// reads an integer from console input</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w">                          </span><span class="c">// expression</span><span class="w"></span>
-
-<span class="nv">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
-
-<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="assumption">
-<h3>3.4.5.2. Assumption<a class="headerlink" href="#assumption" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="assertion">
-<h3>3.4.5.3. Assertion<a class="headerlink" href="#assertion" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="if-else-conditional">
-<h3>3.4.5.4. If-Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
-
-<span class="nv">conditional</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">         </span><span class="c">// conditional</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;else&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="while-loop">
-<h3>3.4.5.5. While-Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
-
-<span class="nv">whileLoop</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;while&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">      </span><span class="c">// while-loop</span><span class="w"></span>
-<span class="w">                </span><span class="nv">loopInvariant</span><span class="o">?</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-
-<span class="nv">loopInvariant</span><span class="w"></span>
-<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
-<span class="w">                    </span><span class="nv">claim</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="o">)?</span><span class="w"></span>
-<span class="w">                </span><span class="nv">modifies</span><span class="o">?</span><span class="w">                  </span><span class="c">// note: either invariant or modifies has to be present</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
-
-<span class="nv">modifies</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;modifies&#39;</span><span class="w"> </span><span class="nv">idList</span><span class="w"></span>
-
-<span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="method-invocation">
-<h3>3.4.5.6. Method Invocation<a class="headerlink" href="#method-invocation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
-
-<span class="nv">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
-
-<span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="sequence-element-assigment">
-<h3>3.4.5.7. Sequence Element Assigment<a class="headerlink" href="#sequence-element-assigment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="print">
-<h3>3.4.5.8. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
-
-<span class="nv">print</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;print&#39;</span><span class="w">                    </span><span class="c">// print without a newline appended</span><span class="w"></span>
-<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;println&#39;</span><span class="w">                  </span><span class="c">// print with a newline appended</span><span class="w"></span>
-<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">printArgList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
-
-<span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="sequent">
-<h3>3.4.5.9. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
-
-<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claimList</span><span class="w">                    </span><span class="c">// conclusions</span><span class="w"></span>
-
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                       </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="no">HLINE</span><span class="w">                        </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="proof">
-<span id="proof-statement"></span><h3>3.4.5.10. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
-
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-
-<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
-
-<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">          </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
-
-<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">                     </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">assumeStep</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="expression">
-<h2>3.4.6. Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w">                       </span><span class="c">// true literal, can also use &#39;T&#39; for &#39;true&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w">                      </span><span class="c">// false literal, can also use &#39;F&#39; for for &#39;false&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// variable reference</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">NUM</span><span class="w">                          </span><span class="c">// integer literal</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">           </span><span class="c">// integer literal</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// sequence literal</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">size</span><span class="w">                  </span><span class="c">// sequence size</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">                  </span><span class="c">// parenthesized expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">            </span><span class="c">// negative and negation expressions</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">  </span><span class="c">// multiplicative expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;+&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;+:&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="c">// additive expression ( &#39;+:&#39; is sequence prepend )</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;:+&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                 </span><span class="c">// sequence append</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;&gt;&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&gt;=&#39;</span><span class="w"></span>
-<span class="w">                  </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&lt;&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;&lt;=&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// integer comparison</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;==&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!=&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">      </span><span class="c">// equality expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;&amp;&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-and (non short-circuit) expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;|&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-or (non short-circuit) expression</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="extended-assume-step">
-<h2>3.4.7. Extended Assume Step<a class="headerlink" href="#extended-assume-step" title="Permalink to this headline">¶</a></h2>
+<h2>3.4.8. Extended Assume Step<a class="headerlink" href="#extended-assume-step" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w">         </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
@@ -426,7 +607,7 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </div>
 </div>
 <div class="section" id="extended-claim-expression">
-<h2>3.4.8. Extended Claim Expression<a class="headerlink" href="#extended-claim-expression" title="Permalink to this headline">¶</a></h2>
+<h2>3.4.9. Extended Claim Expression<a class="headerlink" href="#extended-claim-expression" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                          </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                          </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// identifier</span><span class="w"></span>
@@ -466,7 +647,7 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </div>
 </div>
 <div class="section" id="extended-justification-and-inference-rules">
-<h2>3.4.9. Extended Justification and Inference Rules<a class="headerlink" href="#extended-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
+<h2>3.4.10. Extended Justification and Inference Rules<a class="headerlink" href="#extended-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// And-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// And-Elimination1</span><span class="w"></span>
@@ -491,43 +672,40 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </span></pre></div>
 </div>
-<div class="section" id="id1">
-<h3>3.4.9.1. Fact<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fact-fact">
+<h3>3.4.10.1. Fact (fact)<a class="headerlink" href="#fact-fact" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h3>3.4.9.2. Invariant<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="invariant-invariant">
+<h3>3.4.10.2. Invariant (invariant)<a class="headerlink" href="#invariant-invariant" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="subst1">
-<h3>3.4.9.3. Subst1<a class="headerlink" href="#subst1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="substitutions-subst1-and-subst2">
+<h3>3.4.10.3. Substitutions (subst1 and subst2)<a class="headerlink" href="#substitutions-subst1-and-subst2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst1&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="subst2">
-<h3>3.4.9.4. Subst2<a class="headerlink" href="#subst2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="algebra">
-<h3>3.4.9.5. Algebra<a class="headerlink" href="#algebra" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="summonings">
+<h2>3.4.11. Summonings<a class="headerlink" href="#summonings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="algebra-algebra">
+<h3>3.4.11.1. Algebra (algebra)<a class="headerlink" href="#algebra-algebra" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="auto">
-<span id="id3"></span><h3>3.4.9.6. Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="auto-auto">
+<span id="prog-auto"></span><h3>3.4.11.2. Auto (auto)<a class="headerlink" href="#auto-auto" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;auto&#39;</span><span class="w">    </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
@@ -535,10 +713,10 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </div>
 </div>
 <div class="section" id="well-formed-ness">
-<h2>3.4.10. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
+<h2>3.4.12. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="programming-logic-input-language-grammar">
-<h2>3.4.11. Programming Logic Input Language Grammar<a class="headerlink" href="#programming-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
+<h2>3.4.13. Programming Logic Input Language Grammar<a class="headerlink" href="#programming-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <p>Note that extended language elements from
 that of the <a class="reference internal" href="../predicate/index.html#pred-grammar"><span>Predicate Logic Input Language Grammar</span></a> are highlighted.</p>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
@@ -548,10 +726,10 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="nv">import</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;import&#39;</span><span class="w"> </span><span class="s">&#39;org&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;sireum&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;logika&#39;</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;_&#39;</span><span class="w"></span>
 
 <span class="nv">programElement</span><span class="w"></span>
-<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nv">fact</span><span class="w"></span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="nv">stmt</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invariant</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">methodDecl</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">stmt</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">fact</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">import</span><span class="w">                       </span><span class="c">// redundant; to allow concatenation of program files into one file</span><span class="w"></span>
 
 <span class="nv">fact</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w"></span>
@@ -604,21 +782,21 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
 <span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
-
-<span class="nv">rhs</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;clone&#39;</span><span class="w">               </span><span class="c">// sequence cloning</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;randomInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">          </span><span class="c">// returns a random integer</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;readInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">    </span><span class="c">// reads an integer from console input</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w">                          </span><span class="c">// expression</span><span class="w"></span>
+
+<span class="nv">rhs</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w">                          </span><span class="c">// expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="s">&#39;clone&#39;</span><span class="w">               </span><span class="c">// sequence cloning</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;randomInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">          </span><span class="c">// returns a random integer</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;readInt&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">    </span><span class="c">// reads an integer from console input, STRING is an optional prompt message</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">invoke</span><span class="w">                       </span><span class="c">// method invocation</span><span class="w"></span>
 
 <span class="nv">conditional</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">         </span><span class="c">// conditional</span><span class="w"></span>
 <span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
@@ -667,16 +845,6 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;&amp;&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-and (non short-circuit) expression</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;|&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">                  </span><span class="c">// logical-or (non short-circuit) expression</span><span class="w"></span>
 
-<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claimList</span><span class="w">                    </span><span class="c">// conclusions</span><span class="w"></span>
-
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                       </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="no">HLINE</span><span class="w">                        </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
-
-<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
-
 <span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
@@ -695,6 +863,16 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="w">                </span><span class="nv">assumeStep</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+
+<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
+<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nv">claimList</span><span class="w">                    </span><span class="c">// conclusions</span><span class="w"></span>
+
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                       </span><span class="c">// premises</span><span class="w"></span>
+<span class="w">              </span><span class="no">HLINE</span><span class="w">                        </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
+
+<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 
 <span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w">         </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>

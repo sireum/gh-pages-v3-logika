@@ -68,8 +68,7 @@ language is a subset of the predicate logic language, which in turn, is a subset
 programming logic language).
 The programming logic language itself is a subset of the `Scala <http://scala-lang.org>`__
 programming language, whose programs can be run by using the regular Scala interpreter
-equipped with the
-`Logika runtime library <https://github.com/sireum/v3/blob/master/logika/jvm/src/main/scala/org/sireum/logika/package.scala>`__.
+equipped with the |LogikaRuntime|.
 
 .. raw:: html
 

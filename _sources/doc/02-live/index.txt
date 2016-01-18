@@ -116,7 +116,7 @@ Worksheet editors, it is best to configure IntelliJ's Scala
 `Inspection <intellij inspections slow>`__ settings.
 
 * Logika does not accept margin characters that can be stripped for its
-  :ref:`proof statements <proof-statement>` that use multi-line strings.
+  :ref:`proof statements <prog-proof>` that use multi-line strings.
   By default, IntelliJ is configured to insert margin characters and
   strip/insert margin on copy and paste.
   It is best to disable these features when working with Logika
