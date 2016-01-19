@@ -77,6 +77,10 @@ As a convention:
 
 * ``C`` is used to represent a command/statement or a sequence of statements.
 
+The subsequent sections describe Logika's renditions of programming
+logic rules that are described in
+:ref:`algebra`, :ref:`programming-logic`, :ref:`functions-procedures`,
+and :ref:`loops-invariants-induction`.
 
 Program
 =======
@@ -469,9 +473,11 @@ existing one.
 
 Unlike a sequence element update, ``:+`` and ``+:`` are
 are directly represented in the proof context.
-For example::
+For example,
 
-    X = Y :+ 2
+.. code-block:: scala
+
+   X = Y :+ 2
 
 generates a postcondition claim ``X == Y :+ 2`` instead of::
 
@@ -502,9 +508,9 @@ Runtime Checks
 Some operators such as ``/`` and ``%`` are not defined
 on certain argument values (i.e., when the divisor is
 zero).
-Such situations are typically checked at runtime (
-e.g., in Java, the VM throws an ``ArithmeticException``
-for division by zero).
+Such situations are typically checked at runtime
+(e.g., in Java, the VM throws an ``ArithmeticException``
+for a division by zero).
 
 Instead, Logika requires precondition claims to avoid such
 issue when certain expressions are used in the programming
@@ -519,6 +525,9 @@ precondition related to runtime errors:
 
 * ``X(E)`` requires ``0 ≤ E`` and ``E < X.size``.
 
+When :ref:`auto-mode` is enabled,
+:ref:`auto <prog-auto>` is implicitly used to satisfy
+all the above preconditions whenever possible.
 
 .. _prog-invariant:
 
@@ -528,6 +537,20 @@ Invariant
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 31 - 33
+
+The invariant statement declares global invariants
+that the program's :ref:`methods <prog-method-decl>`
+have to maintain.
+Similar to a :ref:`loop invariant <prog-while-loop>`,
+the invariant claim expression conjuncts can be
+specified separately.
+
+The claim expressions have to be proven true before
+the invariant statements.
+When :ref:`auto-mode` is enabled,
+:ref:`auto <prog-auto>` is implicitly used to satisfy
+all the invariant claims whenever possible.
+
 
 .. _prog-method-decl:
 

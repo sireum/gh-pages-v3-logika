@@ -216,6 +216,10 @@ done by each of the program statements.</p>
 <li><code class="docutils literal"><span class="pre">E</span></code> is used to represent a general expression.</li>
 <li><code class="docutils literal"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
 </ul>
+<p>The subsequent sections describe Logika&#8217;s renditions of programming
+logic rules that are described in
+<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span>Circuits that Compute on Numbers: Algebra</span></a>, <a class="reference internal" href="../../../dschmidt/04-programming-logic/index.html#programming-logic"><span>Programming Logic for Assignments and Conditionals</span></a>, <a class="reference internal" href="../../../dschmidt/05-functions-procedures/index.html#functions-procedures"><span>Functions and Procedures</span></a>,
+and <a class="reference internal" href="../../../dschmidt/06-loops-invariants-induction/index.html#loops-invariants-induction"><span>Loops, Invariants, Induction</span></a>.</p>
 <div class="section" id="program">
 <h2>3.4.1. Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
@@ -775,8 +779,8 @@ size is 3 and the element 2 at index 0, 5 at index 1, and
 existing one.</p>
 <p>Unlike a sequence element update, <code class="docutils literal"><span class="pre">:+</span></code> and <code class="docutils literal"><span class="pre">+:</span></code> are
 are directly represented in the proof context.
-For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>X = Y :+ 2
+For example,</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">X</span> <span class="k">=</span> <span class="n">Y</span> <span class="o">:+</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>generates a postcondition claim <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code> instead of:</p>
@@ -804,9 +808,9 @@ other programming languages.</p>
 <p>Some operators such as <code class="docutils literal"><span class="pre">/</span></code> and <code class="docutils literal"><span class="pre">%</span></code> are not defined
 on certain argument values (i.e., when the divisor is
 zero).
-Such situations are typically checked at runtime (
-e.g., in Java, the VM throws an <code class="docutils literal"><span class="pre">ArithmeticException</span></code>
-for division by zero).</p>
+Such situations are typically checked at runtime
+(e.g., in Java, the VM throws an <code class="docutils literal"><span class="pre">ArithmeticException</span></code>
+for a division by zero).</p>
 <p>Instead, Logika requires precondition claims to avoid such
 issue when certain expressions are used in the programming
 context.</p>
@@ -817,6 +821,9 @@ precondition related to runtime errors:</p>
 <li><code class="docutils literal"><span class="pre">E1</span> <span class="pre">%</span> <span class="pre">E2</span></code> requires <code class="docutils literal"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">X(E)</span></code> requires <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E</span></code> and <code class="docutils literal"><span class="pre">E</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>.</li>
 </ul>
+<p>When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a> is enabled,
+<a class="reference internal" href="#prog-auto"><span>auto</span></a> is implicitly used to satisfy
+all the above preconditions whenever possible.</p>
 </div>
 </div>
 <div class="section" id="invariant">
@@ -826,6 +833,17 @@ precondition related to runtime errors:</p>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
 </pre></div>
 </div>
+<p>The invariant statement declares global invariants
+that the program&#8217;s <a class="reference internal" href="#prog-method-decl"><span>methods</span></a>
+have to maintain.
+Similar to a <a class="reference internal" href="#prog-while-loop"><span>loop invariant</span></a>,
+the invariant claim expression conjuncts can be
+specified separately.</p>
+<p>The claim expressions have to be proven true before
+the invariant statements.
+When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a> is enabled,
+<a class="reference internal" href="#prog-auto"><span>auto</span></a> is implicitly used to satisfy
+all the invariant claims whenever possible.</p>
 </div>
 <div class="section" id="method-declaration">
 <span id="prog-method-decl"></span><h2>3.4.5. Method Declaration<a class="headerlink" href="#method-declaration" title="Permalink to this headline">¶</a></h2>
