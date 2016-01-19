@@ -375,7 +375,7 @@ Proof
 
 A proof statement contains a natural deduction proof similar to a proof in
 :ref:`predicate-language` and :ref:`propositional-language`.
-It can be used to deduce new claims from other (transient) claims
+It can be used to deduce new claims from existing/transient claims
 (e.g., to satisfy the next statement's precondition).
 
 The behavior of a proof statement differs on whether the :ref:`auto-mode` is
@@ -437,11 +437,11 @@ Expression
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 109 - 125, 100 - 101
+   :lines: 109 - 126, 100 - 101
 
-Logika's programming language expression is a subset of
-its claim expression language in that it does not support
-math symbols and quantifications.
+Logika's expression in the programming context is a subset of
+its claim expression language in the proof context
+in that it does not support math symbols and quantifications.
 
 It supports typical operators on integer values.
 The integer literal form ``NUM`` can only be used for
@@ -455,13 +455,69 @@ Logika detects the erroneous situation when
 ``NUM`` is used for integers that cannot fit into 32-bit.
 It also detects expressions involving 32-bit integer literal
 that result in values that do not fit into 32-bit such
-as ``1 + 2147483647`` and signal errors; this is because
+as ``1 + 2147483647`` and signal an error; this is because
 such expression can be optimized to a 32-bit integer value
-when compiled.
+when compiled (but overflows/underflows).
 
+The ``ZS(`` … ``)`` literal form is used to create a ``ZS``
+object whose elements are listed.
+For example ``ZS(2, 5, 3)`` creates a ``ZS`` object whose
+size is 3 and the element 2 at index 0, 5 at index 1, and
+3 at index 2. The ``ZS`` append (``:+``) and prepend
+(``+:``) operations create a new ``ZS`` object from an
+existing one.
+
+Unlike a sequence element update, ``:+`` and ``+:`` are
+are directly represented in the proof context.
+For example::
+
+    X = Y :+ 2
+
+generates a postcondition claim ``X == Y :+ 2`` instead of::
+
+    X.size == Y.size + 1
+    X(Y.size) == 2
+    ∀q_i: (0 ..< Y.size)  X(q_i) == Y(q_i)
+
+The first two claims can be "extracted" using ``algebra``
+and the last claim can only be extracted using ``auto``.
+This means fully reasoning about ``:+`` and ``+:`` can
+only be done by enabling :ref:`auto-mode`.
+This is done by design instead of due to the Logika's
+limitation; at some point, it is best to switch to
+a more automatic/machine-assisted approach in order not
+overwhelm oneself with mundane details.
+
+One last thing to note is that ``&`` and ``|`` operators
+are logical-and and logical-or operators instead of
+the short-circuit ``&&`` and ``||`` operators used in
+many languages such as Java.
+
+The rest of the operatoions have similar meaning to
+other programming languages.
 
 Runtime Checks
 --------------
+
+Some operators such as ``/`` and ``%`` are not defined
+on certain argument values (i.e., when the divisor is
+zero).
+Such situations are typically checked at runtime (
+e.g., in Java, the VM throws an ``ArithmeticException``
+for division by zero).
+
+Instead, Logika requires precondition claims to avoid such
+issue when certain expressions are used in the programming
+context.
+
+Below are the list of expressions that require some
+precondition related to runtime errors:
+
+* ``E1 / E2`` requires ``E2 ≠ 0``.
+
+* ``E1 % E2`` requires ``E2 ≠ 0``.
+
+* ``X(E)`` requires ``0 ≤ E`` and ``E < X.size``.
 
 
 .. _prog-invariant:
@@ -525,7 +581,7 @@ Extended Assume Step
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 156 - 159
+   :lines: 157 - 160
    :emphasize-lines: 2 - 4
 
 Extended Claim Expression
@@ -533,7 +589,7 @@ Extended Claim Expression
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 161 - 195
+   :lines: 162 - 196
    :emphasize-lines: 4 - 8, 11, 13 - 23, 27 - 29
 
 Extended Justification and Inference Rules
@@ -541,7 +597,7 @@ Extended Justification and Inference Rules
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 197 - 219
+   :lines: 198 - 220
    :emphasize-lines: 7, 14 - 23
 
 Or-Elimination (∨e)
@@ -567,7 +623,7 @@ Fact (fact)
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 215
+   :lines: 227, 216
 
 .. literalinclude:: fact-rule.txt
    :language: scala
@@ -579,7 +635,7 @@ Invariant (invariant)
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 216
+   :lines: 227, 217
 
 .. literalinclude:: invariant-rule.txt
    :language: scala
@@ -591,7 +647,7 @@ Substitutions (subst1 and subst2)
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 217 - 218
+   :lines: 227, 218 - 219
 
 .. literalinclude:: subst1-rule.txt
    :language: scala
@@ -621,7 +677,7 @@ Algebra (algebra)
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 219
+   :lines: 227, 220
 
 .. literalinclude:: algebra-rule.txt
    :language: scala
@@ -640,7 +696,7 @@ Auto (auto)
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 226, 220
+   :lines: 227, 221
 
 .. literalinclude:: auto-rule.txt
    :language: scala
@@ -665,5 +721,5 @@ that of the :ref:`pred-grammar` are highlighted.
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 1 - 220
-   :emphasize-lines: 157 - 159, 164 - 168, 171, 173 - 183, 187 - 189, 204, 211 - 220
+   :lines: 1 - 221
+   :emphasize-lines: 158 - 160, 165 - 169, 172, 174 - 184, 188 - 190, 205, 212 - 221

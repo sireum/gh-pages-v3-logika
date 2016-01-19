@@ -13,10 +13,79 @@
    </b></big></big></big></big>
    </font>
 
+.. include:: ../../def.rst
+
 .. _language:
 
 The Logika Formal Input Language
 ################################
+
+.. raw:: html
+
+   <h2>Design Rationale</h2>
+
+There are many ways one can take when designing a language
+for introducing logics in computer science.
+Below are the main design criteria for Logika's:
+
+1. Based on a real, popular, and modern statically-typed
+   programming language.
+
+   This criterion helps with making the case that logics
+   are applicable in real-world settings.
+
+   The "statically-typed" part of the criterion is of
+   a personal opinion (i.e., static typing is one showcase
+   of widely-successful applications of logics
+   in computer science, which was introduced to avoid
+   commonly made mistakes; unfortunately, history seems to
+   repeat itself recently)
+   and preference (e.g., it enables various analyses for
+   better IDE support).
+
+2. Small, yet sufficiently interesting.
+
+   Having a large set of well-designed language features are
+   definitely preferable when developing realistic software.
+   However, a small set is desirable in this context to avoid
+   becoming too overwhelming.
+   Yet, the feature set should be sufficiently large to enable
+   case studies on interesting problems.
+   When larger sets are needed, they should be introduced
+   gradually.
+
+3. Has a "clean" semantic.
+
+   "Clean" here really means that the language
+   semantic does not complicate reasoning.
+   For example, 32-bit or 64-bit integers are typically used
+   in most programming languages for efficiency sake.
+   However, they complicate reasoning because one has to
+   worry about underflows/overflows.
+   Such concerns should be separated and considered later
+   once reasoning basics have been grasped.
+   In this particular case, "clean" translates
+   to using arbitrary-precision integers; reasoning
+   to handle ranged or modulo integers can be exposed as
+   additional learning modules.
+
+The above criteria conflict with each other.
+For example, using arbitrary-precision integers
+(with arrays indexed by arbitrary-precision index values) often
+complicates usage and requires a larger set of programming
+language features (or a library).
+
+The `Scala <http://scala-lang.org>`__ programming language
+is chosen as the basis due to its customizability to provide
+a clean sandbox for a small, yet interesting language features
+(i.e., by leveraging advanced Scala features such as implicits,
+macro, and "magic" functions such as ``apply`` and ``update``;
+see |LogikaRuntime|).
+
+.. raw:: html
+
+   <h2>Language Overview</h2>
+
 
 The Logika input formal language are generally categorized into two:
 
@@ -42,14 +111,14 @@ Here is an example to ponder:
 .. literalinclude:: example.logika
    :language: scala
 
+----
+
 Let us first discuss the
 :ref:`basic language elements<basic-language>` that are common to the two categories,
 before proceeding to discuss the
 :ref:`propositional <propositional-language>`,
 :ref:`predicate <predicate-language>`, and
 :ref:`programming <programming-language>` logic input languages.
-
-----
 
 .. toctree::
    :maxdepth: 3
@@ -58,3 +127,4 @@ before proceeding to discuss the
    propositional/index.rst
    predicate/index.rst
    programming/index.rst
+

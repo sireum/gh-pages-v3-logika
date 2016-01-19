@@ -147,7 +147,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       
   <br/>
 <font color="darkgray">
@@ -388,9 +388,8 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 </div>
 <div class="section" id="assertion-and-assumption">
 <span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;assert&#39; &#39;(&#39; exp &#39;)&#39;         // assertion
+            | &#39;assume&#39; &#39;(&#39; exp &#39;)&#39;         // assumption
 </pre></div>
 </div>
 <p>In Scala, both assertion and assumption check whether
@@ -437,14 +436,13 @@ safely erased.</p>
 </div>
 <div class="section" id="if-else-conditional">
 <span id="prog-conditional"></span><h3>3.4.2.3. If-Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | conditional
 
-<span class="nv">conditional</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">         </span><span class="c">// conditional</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;else&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
+conditional : &#39;if&#39; &#39;(&#39; exp &#39;)&#39; &#39;{&#39;         // conditional
+                stmt*                      // separated by newline(s)
+              &#39;}&#39; ( &#39;else&#39; &#39;{&#39;
+                stmt*                      // separated by newline(s)
+              &#39;}&#39; )?
 </pre></div>
 </div>
 <p>Logika&#8217;s conditional can omit the else-branch, in which case
@@ -492,25 +490,24 @@ If <code class="docutils literal"><span class="pre">R1</span> <span class="pre">
 </div>
 <div class="section" id="while-loop">
 <span id="prog-while-loop"></span><h3>3.4.2.4. While-Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | whileLoop
 
-<span class="nv">whileLoop</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;while&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">      </span><span class="c">// while-loop</span><span class="w"></span>
-<span class="w">                </span><span class="nv">loopInvariant</span><span class="o">?</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w">                      </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+whileLoop   : &#39;while&#39; &#39;(&#39; exp &#39;)&#39; &#39;{&#39;      // while-loop
+                loopInvariant?             // separated by newline(s)
+                stmt*                      // separated by newline(s)
+              &#39;}&#39;
 
-<span class="nv">loopInvariant</span><span class="w"></span>
-<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
-<span class="w">                    </span><span class="nv">claim</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="o">)?</span><span class="w"></span>
-<span class="w">                </span><span class="nv">modifies</span><span class="o">?</span><span class="w">                  </span><span class="c">// note: either invariant or modifies has to be present</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
+loopInvariant
+            : &#39;l&quot;&quot;&quot;&#39; &#39;{&#39;
+                ( &#39;invariant&#39;
+                    claim*                 // separated by newline(s)
+                )?
+                modifies?                  // note: either invariant or modifies has to be present
+              &#39;}&#39; &#39;&quot;&quot;&quot;&#39;
 
-<span class="nv">modifies</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;modifies&#39;</span><span class="w"> </span><span class="nv">idList</span><span class="w"></span>
+modifies    : &#39;modifies&#39; idList
 
-<span class="nv">idList</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+idList      : ID ( &#39;,&#39; ID )*
 </pre></div>
 </div>
 <p>While-loops in Logika can include a loop invariant and a modifies clause
@@ -564,8 +561,7 @@ postcondition of loop.</p>
 </div>
 <div class="section" id="sequence-element-assignment">
 <span id="prog-seq-assign"></span><h3>3.4.2.5. Sequence Element Assignment<a class="headerlink" href="#sequence-element-assignment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | ID &#39;(&#39; exp &#39;)&#39; &#39;=&#39; exp       // sequence element assignment
 </pre></div>
 </div>
 <p>A <code class="docutils literal"><span class="pre">ZS</span></code> sequence value stored in a variable <code class="docutils literal"><span class="pre">X</span></code> can be mutated by updating
@@ -602,14 +598,13 @@ Furthermore, only the updated element got changed to the new value.</p>
 </div>
 <div class="section" id="print">
 <span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | print
 
-<span class="nv">print</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;print&#39;</span><span class="w">                    </span><span class="c">// print without a newline appended</span><span class="w"></span>
-<span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;println&#39;</span><span class="w">                  </span><span class="c">// print with a newline appended</span><span class="w"></span>
-<span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">printArgList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+print       : ( &#39;print&#39;                    // print without a newline appended
+              | &#39;println&#39;                  // print with a newline appended
+              ) &#39;(&#39; printArgList? &#39;)&#39;
 
-<span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+printArgList: ( STRING | exp ) ( &#39;,&#39; ( STRING | exp ) )*
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">print</span></code> and <code class="docutils literal"><span class="pre">println</span></code> built-in methods are
@@ -642,32 +637,31 @@ the postcondition.</p>
 </div>
 <div class="section" id="proof">
 <span id="prog-proof"></span><h3>3.4.2.7. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; proof &#39;}&#39; &#39;&quot;&quot;&quot;&#39;   // proof
+            | exp &#39;|&#39; exp                  // logical-or (non short-circuit) expression
 
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+proof       : &#39;{&#39;
+                proofStep+                 // separated by newline(s)
+              &#39;}&#39;
 
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+proof       : &#39;{&#39;
+                proofStep+                 // separated by newline(s)
+              &#39;}&#39;
 
-<span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
+proofStep   : regularStep
+            | subProof
 
-<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">          </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+regularStep : rNUM &#39;.&#39; claim just          // rNUM is NUM, distinguished for readability of just arguments later
 
-<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">                     </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
-<span class="w">                </span><span class="nv">assumeStep</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">                 </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+subProof    : sNUM &#39;.&#39;                     // sNUM is NUM, distinguished for readability of just arguments later
+              &#39;{&#39;
+                assumeStep                 // separated by newline(s)
+                proofStep*                 // separated by newline(s)
 </pre></div>
 </div>
 <p>A proof statement contains a natural deduction proof similar to a proof in
 <a class="reference internal" href="../predicate/index.html#predicate-language"><span>Predicate Logic</span></a> and <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>.
-It can be used to deduce new claims from other (transient) claims
+It can be used to deduce new claims from existing/transient claims
 (e.g., to satisfy the next statement&#8217;s precondition).</p>
 <p>The behavior of a proof statement differs on whether the <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a> is
 enabled.
@@ -681,18 +675,16 @@ proof steps at the proof-level (i.e., claims in sub-proofs are excluded).</p>
 </div>
 <div class="section" id="sequent">
 <span id="prog-sequent"></span><h3>3.4.2.8. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; sequent &#39;}&#39; &#39;&quot;&quot;&quot;&#39; // sequent (auto mode only)
+              &#39;}&#39;
 
-<span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claimList</span><span class="w">                    </span><span class="c">// conclusions</span><span class="w"></span>
+sequent     : claimList?                   // premises
+              &#39;⊢&#39;                          // turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;
+              claimList                    // conclusions
 
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                       </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="no">HLINE</span><span class="w">                        </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
-<span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                       </span><span class="c">// conclusions</span><span class="w"></span>
-
-<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+            | claim*                       // premises
+              HLINE                        // HLINE is three or more dashes &#39;-&#39;
+              claim+                       // conclusions
 </pre></div>
 </div>
 <p>A sequent statement can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a>.
@@ -741,6 +733,7 @@ with or without premises.</p>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">           </span><span class="c">// integer literal</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// sequence literal</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">size</span><span class="w">                  </span><span class="c">// sequence size</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">               </span><span class="c">// sequence indexing</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">                  </span><span class="c">// parenthesized expression</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">            </span><span class="c">// negative and negation expressions</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">  </span><span class="c">// multiplicative expression</span><span class="w"></span>
@@ -755,9 +748,9 @@ with or without premises.</p>
 <span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Logika&#8217;s programming language expression is a subset of
-its claim expression language in that it does not support
-math symbols and quantifications.</p>
+<p>Logika&#8217;s expression in the programming context is a subset of
+its claim expression language in the proof context
+in that it does not support math symbols and quantifications.</p>
 <p>It supports typical operators on integer values.
 The integer literal form <code class="docutils literal"><span class="pre">NUM</span></code> can only be used for
 value up to 2` <sup>31</sup> - 1;
@@ -770,11 +763,60 @@ Logika detects the erroneous situation when
 <code class="docutils literal"><span class="pre">NUM</span></code> is used for integers that cannot fit into 32-bit.
 It also detects expressions involving 32-bit integer literal
 that result in values that do not fit into 32-bit such
-as <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal errors; this is because
+as <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal an error; this is because
 such expression can be optimized to a 32-bit integer value
-when compiled.</p>
+when compiled (but overflows/underflows).</p>
+<p>The <code class="docutils literal"><span class="pre">ZS(</span></code> … <code class="docutils literal"><span class="pre">)</span></code> literal form is used to create a <code class="docutils literal"><span class="pre">ZS</span></code>
+object whose elements are listed.
+For example <code class="docutils literal"><span class="pre">ZS(2,</span> <span class="pre">5,</span> <span class="pre">3)</span></code> creates a <code class="docutils literal"><span class="pre">ZS</span></code> object whose
+size is 3 and the element 2 at index 0, 5 at index 1, and
+3 at index 2. The <code class="docutils literal"><span class="pre">ZS</span></code> append (<code class="docutils literal"><span class="pre">:+</span></code>) and prepend
+(<code class="docutils literal"><span class="pre">+:</span></code>) operations create a new <code class="docutils literal"><span class="pre">ZS</span></code> object from an
+existing one.</p>
+<p>Unlike a sequence element update, <code class="docutils literal"><span class="pre">:+</span></code> and <code class="docutils literal"><span class="pre">+:</span></code> are
+are directly represented in the proof context.
+For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>X = Y :+ 2
+</pre></div>
+</div>
+<p>generates a postcondition claim <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code> instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre>X.size == Y.size + 1
+X(Y.size) == 2
+∀q_i: (0 ..&lt; Y.size)  X(q_i) == Y(q_i)
+</pre></div>
+</div>
+<p>The first two claims can be &#8220;extracted&#8221; using <code class="docutils literal"><span class="pre">algebra</span></code>
+and the last claim can only be extracted using <code class="docutils literal"><span class="pre">auto</span></code>.
+This means fully reasoning about <code class="docutils literal"><span class="pre">:+</span></code> and <code class="docutils literal"><span class="pre">+:</span></code> can
+only be done by enabling <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a>.
+This is done by design instead of due to the Logika&#8217;s
+limitation; at some point, it is best to switch to
+a more automatic/machine-assisted approach in order not
+overwhelm oneself with mundane details.</p>
+<p>One last thing to note is that <code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> operators
+are logical-and and logical-or operators instead of
+the short-circuit <code class="docutils literal"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal"><span class="pre">||</span></code> operators used in
+many languages such as Java.</p>
+<p>The rest of the operatoions have similar meaning to
+other programming languages.</p>
 <div class="section" id="runtime-checks">
 <h3>3.4.3.1. Runtime Checks<a class="headerlink" href="#runtime-checks" title="Permalink to this headline">¶</a></h3>
+<p>Some operators such as <code class="docutils literal"><span class="pre">/</span></code> and <code class="docutils literal"><span class="pre">%</span></code> are not defined
+on certain argument values (i.e., when the divisor is
+zero).
+Such situations are typically checked at runtime (
+e.g., in Java, the VM throws an <code class="docutils literal"><span class="pre">ArithmeticException</span></code>
+for division by zero).</p>
+<p>Instead, Logika requires precondition claims to avoid such
+issue when certain expressions are used in the programming
+context.</p>
+<p>Below are the list of expressions that require some
+precondition related to runtime errors:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">E1</span> <span class="pre">/</span> <span class="pre">E2</span></code> requires <code class="docutils literal"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">E1</span> <span class="pre">%</span> <span class="pre">E2</span></code> requires <code class="docutils literal"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">X(E)</span></code> requires <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E</span></code> and <code class="docutils literal"><span class="pre">E</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="invariant">
@@ -1304,6 +1346,7 @@ that of the <a class="reference internal" href="../predicate/index.html#pred-gra
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Z&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">           </span><span class="c">// integer literal</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;ZS&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// sequence literal</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">size</span><span class="w">                  </span><span class="c">// sequence size</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">               </span><span class="c">// sequence indexing</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">                  </span><span class="c">// parenthesized expression</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;!&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">            </span><span class="c">// negative and negation expressions</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="nv">exp</span><span class="w">  </span><span class="c">// multiplicative expression</span><span class="w"></span>
