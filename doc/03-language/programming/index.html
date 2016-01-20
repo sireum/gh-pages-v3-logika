@@ -147,7 +147,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -392,7 +392,8 @@ identifier <code class="docutils literal"><span class="pre">X</span></code>).</p
 </div>
 <div class="section" id="assertion-and-assumption">
 <span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;assert&#39; &#39;(&#39; exp &#39;)&#39;         // assertion
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | &#39;assert&#39; &#39;(&#39; exp &#39;)&#39;         // assertion
             | &#39;assume&#39; &#39;(&#39; exp &#39;)&#39;         // assumption
 </pre></div>
 </div>
@@ -440,7 +441,8 @@ safely erased.</p>
 </div>
 <div class="section" id="if-else-conditional">
 <span id="prog-conditional"></span><h3>3.4.2.3. If-Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | conditional
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | conditional
 
 conditional : &#39;if&#39; &#39;(&#39; exp &#39;)&#39; &#39;{&#39;         // conditional
                 stmt*                      // separated by newline(s)
@@ -494,7 +496,8 @@ If <code class="docutils literal"><span class="pre">R1</span> <span class="pre">
 </div>
 <div class="section" id="while-loop">
 <span id="prog-while-loop"></span><h3>3.4.2.4. While-Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | whileLoop
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | whileLoop
 
 whileLoop   : &#39;while&#39; &#39;(&#39; exp &#39;)&#39; &#39;{&#39;      // while-loop
                 loopInvariant?             // separated by newline(s)
@@ -565,7 +568,8 @@ postcondition of loop.</p>
 </div>
 <div class="section" id="sequence-element-assignment">
 <span id="prog-seq-assign"></span><h3>3.4.2.5. Sequence Element Assignment<a class="headerlink" href="#sequence-element-assignment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | ID &#39;(&#39; exp &#39;)&#39; &#39;=&#39; exp       // sequence element assignment
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | ID &#39;(&#39; exp &#39;)&#39; &#39;=&#39; exp       // sequence element assignment
 </pre></div>
 </div>
 <p>A <code class="docutils literal"><span class="pre">ZS</span></code> sequence value stored in a variable <code class="docutils literal"><span class="pre">X</span></code> can be mutated by updating
@@ -602,7 +606,8 @@ Furthermore, only the updated element got changed to the new value.</p>
 </div>
 <div class="section" id="print">
 <span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | print
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | print
 
 print       : ( &#39;print&#39;                    // print without a newline appended
               | &#39;println&#39;                  // print with a newline appended
@@ -641,7 +646,8 @@ the postcondition.</p>
 </div>
 <div class="section" id="proof">
 <span id="prog-proof"></span><h3>3.4.2.7. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; proof &#39;}&#39; &#39;&quot;&quot;&quot;&#39;   // proof
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; proof &#39;}&#39; &#39;&quot;&quot;&quot;&#39;   // proof
             | exp &#39;|&#39; exp                  // logical-or (non short-circuit) expression
 
 proof       : &#39;{&#39;
@@ -679,7 +685,8 @@ proof steps at the proof-level (i.e., claims in sub-proofs are excluded).</p>
 </div>
 <div class="section" id="sequent">
 <span id="prog-sequent"></span><h3>3.4.2.8. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre>            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; sequent &#39;}&#39; &#39;&quot;&quot;&quot;&#39; // sequent (auto mode only)
+<div class="highlight-antlr"><div class="highlight"><pre>
+            | &#39;l&quot;&quot;&quot;&#39; &#39;{&#39; sequent &#39;}&#39; &#39;&quot;&quot;&quot;&#39; // sequent (auto mode only)
               &#39;}&#39;
 
 sequent     : claimList?                   // premises
@@ -689,6 +696,7 @@ sequent     : claimList?                   // premises
             | claim*                       // premises
               HLINE                        // HLINE is three or more dashes &#39;-&#39;
               claim+                       // conclusions
+
 </pre></div>
 </div>
 <p>A sequent statement can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a>.

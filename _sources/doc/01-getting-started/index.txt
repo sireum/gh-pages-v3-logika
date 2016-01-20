@@ -171,7 +171,7 @@ which will show::
 If one introduced a typo in the proof, such as using ∨i1 instead of ∨i2 in step #10 in the above example,
 Logika will instead output::
 
-    [13, 10] The disjunction's left sub-expression in step #9 does not match #8 for Or-intro1.
+    [13, 10] The disjunction's left sub-expression in step #10 does not match #9 for Or-intro1.
     Propositional logic proof is rejected.
 
 One can specify the sequent to prove as a command line to ensure that the proof in the file is
