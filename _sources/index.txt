@@ -40,7 +40,8 @@ pedagogical tool being developed at
 `Kansas State University <http://k-state.edu>`_
 to aid in teaching an introductory logics course in computer science (e.g.,
 `CIS 301: Logical Foundations of Programming <http://proglogics.santoslab.org>`__).
-Moreover, it also serves as a research vehicle on program verification techniques.
+In addition, Logika also serves as a research vehicle for investigating
+program verification techniques.
 
 The tool is accompanied by:
 (1) a set of :ref:`course notes <course-notes>`,
@@ -100,6 +101,7 @@ equipped with the |LogikaRuntime|.
              <br/>
              <br/>
              <p/>
+             <br/>
              <br/>
              <br/>
            </div>
