@@ -208,7 +208,7 @@ Assertion and Assumption
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 64 - 65
+   :lines: 229, 64 - 65
 
 In Scala, both assertion and assumption check whether
 the specified boolean expression is true;
@@ -244,7 +244,7 @@ If-Else Conditional
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 66, 79 - 84
+   :lines: 229, 66, 79 - 84
 
 Logika's conditional can omit the else-branch, in which case
 it is treated as an empty statement block.
@@ -273,7 +273,7 @@ While-Loop
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 67, 85 - 97, 51 - 54
+   :lines: 229, 67, 85 - 97, 51 - 54
 
 While-loops in Logika can include a loop invariant and a modifies clause
 (verified programs most likely include loop invariants and modifies clauses).
@@ -310,7 +310,7 @@ Sequence Element Assignment
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 68
+   :lines: 229, 68
 
 A ``ZS`` sequence value stored in a variable ``X`` can be mutated by updating
 one of its elements at a certain index expressed by ``E1`` with a new value
@@ -341,7 +341,7 @@ Print
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 69, 102 - 107
+   :lines: 229, 69, 102 - 107
 
 The ``print`` and ``println`` built-in methods are
 provided for logging purposes (albeit primitive ones).
@@ -375,7 +375,7 @@ Proof
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 70, 126 - 144
+   :lines: 229, 70, 127 - 145
 
 A proof statement contains a natural deduction proof similar to a proof in
 :ref:`predicate-language` and :ref:`propositional-language`.
@@ -400,7 +400,7 @@ Sequent
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 228, 71, 145 - 154
+   :lines: 229, 71, 146 - 155
 
 A sequent statement can only be used in :ref:`auto-mode`.
 While the form is similar to the ones in :ref:`predicate-language`
@@ -571,9 +571,15 @@ If the precondition or the postcondition are not specified, then they are treate
 as ``⊤``. Moreover, if the modifies clause is not specified, that means the
 method does not modify any variable (pure).
 
-There are two kinds of methods in Logika: helper and regular (non-helper) methods;
-helper methods are declared by using the ``@helper`` annotation, and regular
-ones are those without the annotation.
+Note that Logika method parameter variables cannot be assigned (read-only); but,
+any parameter variable of type ``ZS`` can have its element assigned as ``ZS``
+is a mutable sequence. A method whose return type is ``Unit`` does not return
+a value; otherwise, the resulting value is captured in a special variable named
+``result``, which can be referred to in the method's postcondition.
+
+In general, there are two kinds of methods in Logika:
+helper and regular (non-helper) methods; helper methods are declared by using the
+``@helper`` annotation, and regular ones are those without the annotation.
 Regular methods maintain the program global :ref:`prog-invariant`,
 while helper methods do not have to.
 
@@ -613,8 +619,8 @@ B. For any modified variable ``XI``, it can assume ``XI == XI_in`` before
 
 C. The method has to establish ``POST``.
    If the method's return type is not ``Unit``, it has to ``return`` a value,
-   expressed by ``E`` and stored in the special variable ``result``.
-   The variable ``result`` can be used on ``POST``;
+   expressed by ``E`` and stored in the special variable ``result`` as mentioned
+   previously. The variable ``result`` can be used on ``POST``;
    hence, at the end of the method ``[E/result]POST`` has to be established.
 
 .. _prog-invoke:
