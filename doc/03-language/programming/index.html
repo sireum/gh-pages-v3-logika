@@ -1013,12 +1013,20 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. I                                   premise</span>
-<span class="s">  …. POST3                               premise  // POST1   ≡ [F_result/result]POST</span>
-<span class="s">                                                  // POST2-1 ≡ [ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
-<span class="s">                                                  //         ≡ POST1, otherwise</span>
-<span class="s">                                                  // POST2-I ≡ [ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
-<span class="s">                                                  //         ≡ POST2-(I-1), otherwise</span>
-<span class="s">                                                  // POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
+<span class="s">  …. P3                                  premise</span>
+<span class="s">  …. POST3                               premise</span>
+<span class="s">     // For 1 &lt; I ≤ N,</span>
+<span class="s">     //   P2-1    ≡ [ZS1/X1][ZS1_old/ZS1]P, if E1 is a variable ZS1 (of type ZS) and X1 is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ P, otherwise</span>
+<span class="s">     //   P2-I    ≡ [ZSI/XI][ZSI_old/ZSI]P2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ P2-(I-1), otherwise</span>
+<span class="s">     //   P3      ≡ [YM_old/YM_in]…[Y1_old/Y1_in]P2-N</span>
+<span class="s">     //   POST1   ≡ [F_result/result]POST</span>
+<span class="s">     //   POST2-1 ≡ [ZS1/X1][ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ POST1, otherwise</span>
+<span class="s">     //   POST2-I ≡ [ZSI/XI][ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ POST2-(I-1), otherwise</span>
+<span class="s">     //   POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -1042,12 +1050,20 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  …. POST3                               premise  // POST1   ≡ [F_result/result]POST</span>
-<span class="s">                                                  // POST2-1 ≡ [ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
-<span class="s">                                                  //         ≡ POST1, otherwise</span>
-<span class="s">                                                  // POST2-I ≡ [ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
-<span class="s">                                                  //         ≡ POST2-(I-1), otherwise</span>
-<span class="s">                                                  // POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
+<span class="s">  …. P3                                  premise</span>
+<span class="s">  …. POST3                               premise</span>
+<span class="s">     // For 1 &lt; I ≤ N,</span>
+<span class="s">     //   P2-1    ≡ [ZS1/X1][ZS1_old/ZS1]P, if E1 is a variable ZS1 (of type ZS) and X1 is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ P, otherwise</span>
+<span class="s">     //   P2-I    ≡ [ZSI/XI][ZSI_old/ZSI]P2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ P2-(I-1), otherwise</span>
+<span class="s">     //   P3      ≡ [YM_old/YM_in]…[Y1_old/Y1_in]P2-N</span>
+<span class="s">     //   POST1   ≡ [F_result/result]POST</span>
+<span class="s">     //   POST2-1 ≡ [ZS1/X1][ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ POST1, otherwise</span>
+<span class="s">     //   POST2-I ≡ [ZSI/XI][ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //           ≡ POST2-(I-1), otherwise</span>
+<span class="s">     //   POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
