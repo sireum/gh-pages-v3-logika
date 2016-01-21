@@ -539,8 +539,8 @@ Invariant
    :lines: 31 - 33
 
 The invariant statement declares global invariants
-that the program's :ref:`methods <prog-method-decl>`
-have to maintain.
+that the program's (non-helper)
+:ref:`methods <prog-method-decl>` have to maintain.
 Similar to a :ref:`loop invariant <prog-while-loop>`,
 the invariant claim expression conjuncts can be
 specified separately.
@@ -561,15 +561,61 @@ Method Declaration
    :language: antlr
    :lines: 35 - 58
 
+A Logika method can have an associated contract that specifies its ``precondition``
+(claims that have to be true in order for the method to properly function),
+``modifies`` clause (that comprehensively lists all variables that will be modified
+by the method during its execution, similar to the modifies clause in
+the modifies clause in :ref:`loop invariants <prog-while-loop>`), and
+``postcondition`` (claims that the method has to satisfy once it finishes executing).
+If the precondition or the postcondition are not specified, then they are treated
+as ``⊤``. Moreover, if the modifies clause is not specified, that means the
+method does not modify any variable (pure).
+
+There are two kinds of methods in Logika: helper and regular (non-helper) methods;
+helper methods are declared by using the ``@helper`` annotation, and regular
+ones are those without the annotation.
+Regular methods maintain the program global :ref:`prog-invariant`,
+while helper methods do not have to.
+
+That is, a regular method:
+(1) can assume the program global invariant when it starts to execute,
+(2) do not have to maintain the invariant during its execution, and
+(3) have to re-establish the invariant by the end of its execution;
+these are reflected in :ref:`method-decl-rule`.
+In essence, the invariant claims are both precondition claims and postcondition claims
+of regular methods.
+
 .. literalinclude:: method-decl-rule.txt
    :language: scala
    :caption: **Method Declaration Rule**
    :name: method-decl-rule
 
+On the other hand, helper methods:
+(1) cannot assume the program global invariant when it starts to execute,
+(2) do not have to maintain the invariant during its execution, and
+(3) do not have to establish the invariant by the end of its execution;
+these are reflected in :ref:`method-decl-helper-rule`.
+
 .. literalinclude:: method-decl-helper-rule.txt
    :language: scala
    :caption: **Helper Method Declaration Rule**
    :name: method-decl-helper-rule
+
+Helper and regular methods have some similarities. That is:
+
+A. Each of them can assume ``PRE`` before it starts executing.
+
+B. For any modified variable ``XI``, it can assume ``XI == XI_in`` before
+   it starts executing. The ``_in`` variables represent the corresponding
+   variable values before they are modified during the execution, and they
+   can be referred in claim expressions (in proof context) throughout the
+   method's body and in its postcondition claims.
+
+C. The method has to establish ``POST``.
+   If the method's return type is not ``Unit``, it has to ``return`` a value,
+   expressed by ``E`` and stored in the special variable ``result``.
+   The variable ``result`` can be used on ``POST``;
+   hence, at the end of the method ``[E/result]POST`` has to be established.
 
 .. _prog-invoke:
 

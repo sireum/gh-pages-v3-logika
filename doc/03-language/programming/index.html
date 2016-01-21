@@ -842,8 +842,8 @@ all the above preconditions whenever possible.</p>
 </pre></div>
 </div>
 <p>The invariant statement declares global invariants
-that the program&#8217;s <a class="reference internal" href="#prog-method-decl"><span>methods</span></a>
-have to maintain.
+that the program&#8217;s (non-helper)
+<a class="reference internal" href="#prog-method-decl"><span>methods</span></a> have to maintain.
 Similar to a <a class="reference internal" href="#prog-while-loop"><span>loop invariant</span></a>,
 the invariant claim expression conjuncts can be
 specified separately.</p>
@@ -881,60 +881,101 @@ all the invariant claims whenever possible.</p>
 <span class="w">                </span><span class="nv">claim</span><span class="o">+</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A Logika method can have an associated contract that specifies its <code class="docutils literal"><span class="pre">precondition</span></code>
+(claims that have to be true in order for the method to properly function),
+<code class="docutils literal"><span class="pre">modifies</span></code> clause (that comprehensively lists all variables that will be modified
+by the method during its execution, similar to the modifies clause in
+the modifies clause in <a class="reference internal" href="#prog-while-loop"><span>loop invariants</span></a>), and
+<code class="docutils literal"><span class="pre">postcondition</span></code> (claims that the method has to satisfy once it finishes executing).
+If the precondition or the postcondition are not specified, then they are treated
+as <code class="docutils literal"><span class="pre">⊤</span></code>. Moreover, if the modifies clause is not specified, that means the
+method does not modify any variable (pure).</p>
+<p>There are two kinds of methods in Logika: helper and regular (non-helper) methods;
+helper methods are declared by using the <code class="docutils literal"><span class="pre">&#64;helper</span></code> annotation, and regular
+ones are those without the annotation.
+Regular methods maintain the program global <a class="reference internal" href="#prog-invariant"><span>Invariant</span></a>,
+while helper methods do not have to.</p>
+<p>That is, a regular method:
+(1) can assume the program global invariant when it starts to execute,
+(2) do not have to maintain the invariant during its execution, and
+(3) have to re-establish the invariant by the end of its execution;
+these are reflected in <a class="reference internal" href="#method-decl-rule"><span>Method Declaration Rule</span></a>.
+In essence, the invariant claims are both precondition claims and postcondition claims
+of regular methods.</p>
 <div class="literal-block-wrapper container" id="method-decl-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  invariant I</span>
+<span class="s">  invariant I                                     // I can be represented by multiple claims</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
 <span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    requires  PRE</span>
-<span class="s">    modifies  X1, …, XN</span>
-<span class="s">    ensures   POST</span>
+<span class="s">    requires  PRE                                 // precondition</span>
+<span class="s">    modifies  X1, …, XN                           // modifies clause</span>
+<span class="s">    ensures   POST                                // postcondition</span>
 <span class="s">  }&quot;&quot;&quot;</span>
 
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …. I                                 premise</span>
-<span class="s">    …. PRE                               premise</span>
-<span class="s">    …. X1 == X1_in                       premise</span>
+<span class="s">    …. I                                 premise  // (1) can assume I</span>
+<span class="s">    …. PRE                               premise  // (A) can assume PRE</span>
+<span class="s">    …. X1 == X1_in                       premise  // (B) for any modified variable XI, XI == XI_in</span>
 <span class="s">    …</span>
-<span class="s">    …. XN == XN_in                       premise</span>
+<span class="s">    …. XN == XN_in                       premise  // (B)</span>
 <span class="s">  }&quot;&quot;&quot;</span>
-  <span class="n">C</span>
+  <span class="n">C</span>                                               <span class="c1">// (2) statements C do not need to maintain I during its execution</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …. I                                 …</span>
-<span class="s">    …. [E/result]POST                    …</span>
+<span class="s">    …. I                                 …        // (3) have to re-establish I</span>
+<span class="s">    …. [E/result]POST                    …        // (C) have establish POST</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="o">(</span> <span class="k">return</span> <span class="n">E</span><span class="o">?</span> <span class="o">)?</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 </div>
+<p>On the other hand, helper methods:
+(1) cannot assume the program global invariant when it starts to execute,
+(2) do not have to maintain the invariant during its execution, and
+(3) do not have to establish the invariant by the end of its execution;
+these are reflected in <a class="reference internal" href="#method-decl-helper-rule"><span>Helper Method Declaration Rule</span></a>.</p>
 <div class="literal-block-wrapper container" id="method-decl-helper-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Helper Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-helper-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="nd">@helper</span>
 <span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    requires  PRE</span>
-<span class="s">    modifies  X1, …, XN</span>
-<span class="s">    ensures   POST</span>
+<span class="s">    requires  PRE                                 // precondition</span>
+<span class="s">    modifies  X1, …, XN                           // modifies clause</span>
+<span class="s">    ensures   POST                                // postcondition</span>
 <span class="s">  }&quot;&quot;&quot;</span>
 
-  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …. PRE                               premise</span>
-<span class="s">    …. X1 == X1_in                       premise</span>
-<span class="s">    …. XN == XN_in                       premise</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{                                           // (1) cannot assume the program global invariant I</span>
+<span class="s">    …. PRE                               premise  // (A) can assume PRE</span>
+<span class="s">    …. X1 == X1_in                       premise  // (B) for any modified variable XI, XI == XI_in</span>
+<span class="s">    …</span>
+<span class="s">    …. XN == XN_in                       premise  // (B)</span>
 <span class="s">  }&quot;&quot;&quot;</span>
-  <span class="n">C</span>
-  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …. [E/result]POST                    …</span>
+  <span class="n">C</span>                                               <span class="c1">// (2) statements C do not need to maintain I the during its execution</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{                                           // (3) do not have to establish I</span>
+<span class="s">    …. [E/result]POST                    …        // (C) have establish POST</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="o">(</span> <span class="k">return</span> <span class="n">E</span><span class="o">?</span> <span class="o">)?</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 </div>
+<p>Helper and regular methods have some similarities. That is:</p>
+<ol class="upperalpha simple">
+<li>Each of them can assume <code class="docutils literal"><span class="pre">PRE</span></code> before it starts executing.</li>
+<li>For any modified variable <code class="docutils literal"><span class="pre">XI</span></code>, it can assume <code class="docutils literal"><span class="pre">XI</span> <span class="pre">==</span> <span class="pre">XI_in</span></code> before
+it starts executing. The <code class="docutils literal"><span class="pre">_in</span></code> variables represent the corresponding
+variable values before they are modified during the execution, and they
+can be referred in claim expressions (in proof context) throughout the
+method&#8217;s body and in its postcondition claims.</li>
+<li>The method has to establish <code class="docutils literal"><span class="pre">POST</span></code>.
+If the method&#8217;s return type is not <code class="docutils literal"><span class="pre">Unit</span></code>, it has to <code class="docutils literal"><span class="pre">return</span></code> a value,
+expressed by <code class="docutils literal"><span class="pre">E</span></code> and stored in the special variable <code class="docutils literal"><span class="pre">result</span></code>.
+The variable <code class="docutils literal"><span class="pre">result</span></code> can be used on <code class="docutils literal"><span class="pre">POST</span></code>;
+hence, at the end of the method <code class="docutils literal"><span class="pre">[E/result]POST</span></code> has to be established.</li>
+</ol>
 </div>
 <div class="section" id="method-invocation">
 <span id="prog-invoke"></span><h2>3.4.6. Method Invocation<a class="headerlink" href="#method-invocation" title="Permalink to this headline">¶</a></h2>
