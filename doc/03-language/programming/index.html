@@ -1021,7 +1021,7 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 <span class="s">  …. I                                   …        // global invariant I has to be established since F requires it</span>
 <span class="s">  …. [EN/YN]…[E1/Y1]PRE                  …</span>
 <span class="s">}&quot;&quot;&quot;</span>
-<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
+<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>                                <span class="c1">// invoke regular method F with arguments E1, …, EN for parameters X1, …, XN</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. I                                   premise  // global invariant I is available since F ensures it</span>
 <span class="s">  …. P3                                  premise</span>
@@ -1060,7 +1060,7 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 <span class="s">  …. P                                   …</span>
 <span class="s">  …. [EN/YN]…[E1/Y1]PRE                  …</span>
 <span class="s">}&quot;&quot;&quot;</span>
-<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
+<span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>                                <span class="c1">// invoke helper method F with arguments E1, …, EN for parameters X1, …, XN</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P3                                  premise</span>
 <span class="s">  …. POST3                               premise</span>
