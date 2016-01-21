@@ -586,7 +586,9 @@ while helper methods do not have to.
 That is, a regular method:
 (1) can assume the program global invariant when it starts to execute,
 (2) do not have to maintain the invariant during its execution, and
-(3) have to re-establish the invariant by the end of its execution;
+(3) have to re-establish the invariant by the end of its execution
+(only for invariant claims that refer to modified global variables as the
+other claims are not affected);
 these are reflected in :ref:`method-decl-rule`.
 In essence, the invariant claims are both precondition claims and postcondition claims
 of regular methods.
@@ -632,6 +634,16 @@ Method Invocation
    :language: antlr
    :lines: 98 - 101
 
+Method invocations for regular and helper methods also differ slightly.
+First, helper methods can only be invoked from other methods.
+Invoking a regular method requires the program global invariant, while
+it is not required when invoking a helper method.
+After the invocation of a regular method, the global invariant is available
+because the method ensures it, which is not the case when invoking a helper
+method.
+These are reflected in :ref:`method-invoke-rule` and
+:ref:`method-invoke-helper-rule`.
+
 .. literalinclude:: method-invoke-rule.txt
    :language: scala
    :caption: **Method Invocation Rule**
@@ -641,6 +653,42 @@ Method Invocation
    :language: scala
    :caption: **Helper Method Invocation Rule**
    :name: method-invoke-helper-rule
+
+The result and side-effects of invoking a regular or a helper method ``F`` are
+as follows:
+
+1. Any reference to ``result`` in the method's postcondition is substituted
+   with ``F_result`` (``POST1`` in :ref:`method-invoke-rule` or :ref:`method-invoke-helper-rule`).
+   ``F_result`` is a transient variable similar to ``_old`` variables.
+   As described in :ref:`prog-var-assign`, if the result is assigned to
+   a variable ``X``, then ``F_result`` is further substituted with ``X``
+   (not shown in :ref:`method-invoke-rule` or :ref:`method-invoke-helper-rule`).
+   ``P`` cannot refer to ``result``, thus, ``P1 ≡ P``.
+
+2. ``F`` might modify ``ZS`` values which are passed as parameters.
+   The effects of the modifications can only be observed after the call
+   if the arguments for the parameters are variables of type ``ZS`` because
+   other expressions that give rise to ``ZS`` (i.e., ``ZS(`` … ``)``,
+   ``:+``, and ``+:``) produce a new ``ZS`` object that cannot be referred after
+   the invocation.
+
+   For ``POST1`` and any claim ``P`` before the method is executed,
+   ``POST2-J`` and ``P2-J`` (for 1 ≤ ``J`` ≤ ``N``)
+   capture the effects of modifications of ``ZS`` values
+   passed as parameters whose arguments are variables.
+   More specifically, for each parameter ``XJ`` of type ``ZS``,
+   if ``XJ`` is modified and the argument ``EJ`` for ``XJ`` is a variable
+   ``ZSJ``, then, any occurrence of ``ZSJ`` is substituted with ``ZSJ_old``
+   in ``P2-(J-1)`` and ``POST2-(J-1)``;
+   otherwise ``P2-J ≡ P2-(J-1)`` and ``POST2-J ≡ POST2-(J-1)``.
+   Additionally, ``XJ_in`` is substituted with ``ZSJ_old`` in ``POST2-J``.
+
+3. ``F`` might modify global variables.
+   The effects of the modifications are captured in ``P3`` and ``POST3``.
+   More specifically, for any modified variable ``YK`` (for 1 ≤ K ≤ M),
+   ``YK_in`` is substituted with ``YK_old`` in ``P2-N`` and ``POST2-N``.
+   Note that ``YK`` could actually be a parameter, in which case the substitution
+   is harmless because the parameter has been substituted in the previous step.
 
 .. _prog-fact:
 

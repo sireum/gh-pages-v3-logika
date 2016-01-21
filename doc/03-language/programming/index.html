@@ -903,7 +903,9 @@ while helper methods do not have to.</p>
 <p>That is, a regular method:
 (1) can assume the program global invariant when it starts to execute,
 (2) do not have to maintain the invariant during its execution, and
-(3) have to re-establish the invariant by the end of its execution;
+(3) have to re-establish the invariant by the end of its execution
+(only for invariant claims that refer to modified global variables as the
+other claims are not affected);
 these are reflected in <a class="reference internal" href="#method-decl-rule"><span>Method Declaration Rule</span></a>.
 In essence, the invariant claims are both precondition claims and postcondition claims
 of regular methods.</p>
@@ -929,7 +931,7 @@ of regular methods.</p>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="n">C</span>                                               <span class="c1">// (2) statements C do not need to maintain I during its execution</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">    …. I                                 …        // (3) have to re-establish I</span>
+<span class="s">    …. I                                 …        // (3) have to re-establish I (only claims referring to X1, …, XN)</span>
 <span class="s">    …. [E/result]POST                    …        // (C) have establish POST</span>
 <span class="s">  }&quot;&quot;&quot;</span>
   <span class="o">(</span> <span class="k">return</span> <span class="n">E</span><span class="o">?</span> <span class="o">)?</span>
@@ -989,10 +991,19 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Method invocations for regular and helper methods also differ slightly.
+First, helper methods can only be invoked from other methods.
+Invoking a regular method requires the program global invariant, while
+it is not required when invoking a helper method.
+After the invocation of a regular method, the global invariant is available
+because the method ensures it, which is not the case when invoking a helper
+method.
+These are reflected in <a class="reference internal" href="#method-invoke-rule"><span>Method Invocation Rule</span></a> and
+<a class="reference internal" href="#method-invoke-helper-rule"><span>Helper Method Invocation Rule</span></a>.</p>
 <div class="literal-block-wrapper container" id="method-invoke-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Method Invocation Rule</strong></span><a class="headerlink" href="#method-invoke-rule" title="Permalink to this code">¶</a></div>
 <div class="highlight-scala"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  invariant I // I refers to Y1, …, or YN</span>
+<span class="s">  invariant I</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
 <span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="n">X1</span><span class="k">:</span> <span class="kt">T1</span><span class="o">,</span> <span class="cm">/* … */</span><span class="o">,</span> <span class="nc">XN</span><span class="k">:</span> <span class="kt">TN</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
@@ -1007,12 +1018,12 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="c1">// …</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
-<span class="s">  …. I                                   …</span>
+<span class="s">  …. I                                   …        // global invariant I has to be established since F requires it</span>
 <span class="s">  …. [EN/YN]…[E1/Y1]PRE                  …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">F</span><span class="o">(</span><span class="n">E1</span><span class="o">,</span> <span class="cm">/* …, */</span> <span class="nc">EN</span><span class="o">)</span>
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
-<span class="s">  …. I                                   premise</span>
+<span class="s">  …. I                                   premise  // global invariant I is available since F ensures it</span>
 <span class="s">  …. P3                                  premise</span>
 <span class="s">  …. POST3                               premise</span>
 <span class="s">     // For 1 &lt; I ≤ N,</span>
@@ -1022,9 +1033,9 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="s">     //           ≡ P2-(I-1), otherwise</span>
 <span class="s">     //   P3      ≡ [YM_old/YM_in]…[Y1_old/Y1_in]P2-N</span>
 <span class="s">     //   POST1   ≡ [F_result/result]POST</span>
-<span class="s">     //   POST2-1 ≡ [ZS1/X1][ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">     //   POST2-1 ≡ [ZS1_old/X1_in][ZS1/X1][ZS1_old/ZS1]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ POST1, otherwise</span>
-<span class="s">     //   POST2-I ≡ [ZSI/XI][ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //   POST2-I ≡ [ZSI_old/XI_in][ZSI/XI][ZSI_old/ZSI]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ POST2-(I-1), otherwise</span>
 <span class="s">     //   POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
 <span class="s">}&quot;&quot;&quot;</span>
@@ -1053,21 +1064,58 @@ hence, at the end of the method <code class="docutils literal"><span class="pre"
 <span class="s">  …. P3                                  premise</span>
 <span class="s">  …. POST3                               premise</span>
 <span class="s">     // For 1 &lt; I ≤ N,</span>
+<span class="s">     //   P1      ≡ P</span>
 <span class="s">     //   P2-1    ≡ [ZS1/X1][ZS1_old/ZS1]P, if E1 is a variable ZS1 (of type ZS) and X1 is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ P, otherwise</span>
 <span class="s">     //   P2-I    ≡ [ZSI/XI][ZSI_old/ZSI]P2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ P2-(I-1), otherwise</span>
 <span class="s">     //   P3      ≡ [YM_old/YM_in]…[Y1_old/Y1_in]P2-N</span>
 <span class="s">     //   POST1   ≡ [F_result/result]POST</span>
-<span class="s">     //   POST2-1 ≡ [ZS1/X1][ZS1_old/X1_in]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
+<span class="s">     //   POST2-1 ≡ [ZS1_old/X1_in][ZS1/X1][ZS1_old/ZS1]POST1, if E1 is a variable ZS1 and X1 is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ POST1, otherwise</span>
-<span class="s">     //   POST2-I ≡ [ZSI/XI][ZSI_old/XI_in]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
+<span class="s">     //   POST2-I ≡ [ZSI_old/XI_in][ZSI/XI][ZSI_old/ZSI]POST2-(I-1), if EI is a variable ZSI and XI is in {Y1, …, YM}</span>
 <span class="s">     //           ≡ POST2-(I-1), otherwise</span>
 <span class="s">     //   POST3   ≡ [YM_old/YM_in]…[Y1_old/Y1_in]POST2-N</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
+<p>The result and side-effects of invoking a regular or a helper method <code class="docutils literal"><span class="pre">F</span></code> are
+as follows:</p>
+<ol class="arabic">
+<li><p class="first">Any reference to <code class="docutils literal"><span class="pre">result</span></code> in the method&#8217;s postcondition is substituted
+with <code class="docutils literal"><span class="pre">F_result</span></code> (<code class="docutils literal"><span class="pre">POST1</span></code> in <a class="reference internal" href="#method-invoke-rule"><span>Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span>Helper Method Invocation Rule</span></a>).
+<code class="docutils literal"><span class="pre">F_result</span></code> is a transient variable similar to <code class="docutils literal"><span class="pre">_old</span></code> variables.
+As described in <a class="reference internal" href="#prog-var-assign"><span>Variable Declaration and Assignment</span></a>, if the result is assigned to
+a variable <code class="docutils literal"><span class="pre">X</span></code>, then <code class="docutils literal"><span class="pre">F_result</span></code> is further substituted with <code class="docutils literal"><span class="pre">X</span></code>
+(not shown in <a class="reference internal" href="#method-invoke-rule"><span>Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span>Helper Method Invocation Rule</span></a>).
+<code class="docutils literal"><span class="pre">P</span></code> cannot refer to <code class="docutils literal"><span class="pre">result</span></code>, thus, <code class="docutils literal"><span class="pre">P1</span> <span class="pre">≡</span> <span class="pre">P</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">F</span></code> might modify <code class="docutils literal"><span class="pre">ZS</span></code> values which are passed as parameters.
+The effects of the modifications can only be observed after the call
+if the arguments for the parameters are variables of type <code class="docutils literal"><span class="pre">ZS</span></code> because
+other expressions that give rise to <code class="docutils literal"><span class="pre">ZS</span></code> (i.e., <code class="docutils literal"><span class="pre">ZS(</span></code> … <code class="docutils literal"><span class="pre">)</span></code>,
+<code class="docutils literal"><span class="pre">:+</span></code>, and <code class="docutils literal"><span class="pre">+:</span></code>) produce a new <code class="docutils literal"><span class="pre">ZS</span></code> object that cannot be referred after
+the invocation.</p>
+<p>For <code class="docutils literal"><span class="pre">POST1</span></code> and any claim <code class="docutils literal"><span class="pre">P</span></code> before the method is executed,
+<code class="docutils literal"><span class="pre">POST2-J</span></code> and <code class="docutils literal"><span class="pre">P2-J</span></code> (for 1 ≤ <code class="docutils literal"><span class="pre">J</span></code> ≤ <code class="docutils literal"><span class="pre">N</span></code>)
+capture the effects of modifications of <code class="docutils literal"><span class="pre">ZS</span></code> values
+passed as parameters whose arguments are variables.
+More specifically, for each parameter <code class="docutils literal"><span class="pre">XJ</span></code> of type <code class="docutils literal"><span class="pre">ZS</span></code>,
+if <code class="docutils literal"><span class="pre">XJ</span></code> is modified and the argument <code class="docutils literal"><span class="pre">EJ</span></code> for <code class="docutils literal"><span class="pre">XJ</span></code> is a variable
+<code class="docutils literal"><span class="pre">ZSJ</span></code>, then, any occurrence of <code class="docutils literal"><span class="pre">ZSJ</span></code> is substituted with <code class="docutils literal"><span class="pre">ZSJ_old</span></code>
+in <code class="docutils literal"><span class="pre">P2-(J-1)</span></code> and <code class="docutils literal"><span class="pre">POST2-(J-1)</span></code>;
+otherwise <code class="docutils literal"><span class="pre">P2-J</span> <span class="pre">≡</span> <span class="pre">P2-(J-1)</span></code> and <code class="docutils literal"><span class="pre">POST2-J</span> <span class="pre">≡</span> <span class="pre">POST2-(J-1)</span></code>.
+Additionally, <code class="docutils literal"><span class="pre">XJ_in</span></code> is substituted with <code class="docutils literal"><span class="pre">ZSJ_old</span></code> in <code class="docutils literal"><span class="pre">POST2-J</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">F</span></code> might modify global variables.
+The effects of the modifications are captured in <code class="docutils literal"><span class="pre">P3</span></code> and <code class="docutils literal"><span class="pre">POST3</span></code>.
+More specifically, for any modified variable <code class="docutils literal"><span class="pre">YK</span></code> (for 1 ≤ K ≤ M),
+<code class="docutils literal"><span class="pre">YK_in</span></code> is substituted with <code class="docutils literal"><span class="pre">YK_old</span></code> in <code class="docutils literal"><span class="pre">P2-N</span></code> and <code class="docutils literal"><span class="pre">POST2-N</span></code>.
+Note that <code class="docutils literal"><span class="pre">YK</span></code> could actually be a parameter, in which case the substitution
+is harmless because the parameter has been substituted in the previous step.</p>
+</li>
+</ol>
 </div>
 <div class="section" id="fact">
 <span id="prog-fact"></span><h2>3.4.7. Fact<a class="headerlink" href="#fact" title="Permalink to this headline">¶</a></h2>
