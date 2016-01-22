@@ -263,7 +263,7 @@ will result::
     p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 
 
-For a better experience, consider using :ref:`live`.
+For a better experience, consider using the :ref:`live`.
 
 .. _cli-configuration:
 
