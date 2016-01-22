@@ -81,22 +81,29 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
-<li><a class="reference internal" href="#prerequisites">1.1. Prerequisites</a><ul>
-<li><a class="reference internal" href="#mac-os-x">1.1.1. Mac OS X</a></li>
-<li><a class="reference internal" href="#linux">1.1.2. Linux</a></li>
-<li><a class="reference internal" href="#windows">1.1.3. Windows</a></li>
+<li><a class="reference internal" href="#using-sireum-binary-distribution">1.1. Using Sireum Binary Distribution</a><ul>
+<li><a class="reference internal" href="#installing-running-and-updating-logika">1.1.1. Installing, Running, and Updating Logika</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installing-and-running-logika">1.2. Installing and Running Logika</a></li>
-<li><a class="reference internal" href="#updating-logika">1.3. Updating Logika</a></li>
-<li><a class="reference internal" href="#verifying-examples">1.4. Verifying Examples</a></li>
-<li><a class="reference internal" href="#logika-command-line-configuration">1.5. Logika Command-Line Configuration</a><ul>
-<li><a class="reference internal" href="#auto-mode">1.5.1. Auto Mode</a></li>
-<li><a class="reference internal" href="#last-mode">1.5.2. Last Mode</a></li>
-<li><a class="reference internal" href="#sequent">1.5.3. Sequent</a></li>
-<li><a class="reference internal" href="#timeout">1.5.4. Timeout</a></li>
-<li><a class="reference internal" href="#satisfiability-checking-mode">1.5.5. Satisfiability Checking Mode</a></li>
-<li><a class="reference internal" href="#server-mode">1.5.6. Server Mode</a></li>
+<li><a class="reference internal" href="#using-sireum-source-distribution">1.2. Using Sireum Source Distribution</a><ul>
+<li><a class="reference internal" href="#prerequisites">1.2.1. Prerequisites</a><ul>
+<li><a class="reference internal" href="#mac-os-x">1.2.1.1. Mac OS X</a></li>
+<li><a class="reference internal" href="#linux">1.2.1.2. Linux</a></li>
+<li><a class="reference internal" href="#windows">1.2.1.3. Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-and-running-logika">1.2.2. Installing and Running Logika</a></li>
+<li><a class="reference internal" href="#updating-logika">1.2.3. Updating Logika</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verifying-examples">1.3. Verifying Examples</a></li>
+<li><a class="reference internal" href="#logika-command-line-configuration">1.4. Logika Command-Line Configuration</a><ul>
+<li><a class="reference internal" href="#auto-mode">1.4.1. Auto Mode</a></li>
+<li><a class="reference internal" href="#last-mode">1.4.2. Last Mode</a></li>
+<li><a class="reference internal" href="#sequent">1.4.3. Sequent</a></li>
+<li><a class="reference internal" href="#timeout">1.4.4. Timeout</a></li>
+<li><a class="reference internal" href="#satisfiability-checking-mode">1.4.5. Satisfiability Checking Mode</a></li>
+<li><a class="reference internal" href="#server-mode">1.4.6. Server Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -128,7 +135,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       
   <br/>
 <font color="darkgray">
@@ -143,14 +150,88 @@ Sireum Logika Documentation
 </b></big></big></big></big>
 </font><div class="section" id="getting-started">
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Logika runs on x64 Mac OS X, Linux, and Windows operating systems
+(tested on OS X 10.11, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
+<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span>Using Sireum Binary Distribution</span></a> or
+<a class="reference internal" href="#using-source"><span>Using Sireum Source Distribution</span></a>.</p>
+<div class="section" id="using-sireum-binary-distribution">
+<span id="using-binary"></span><h2>1.1. Using Sireum Binary Distribution<a class="headerlink" href="#using-sireum-binary-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-running-and-updating-logika">
+<span id="binary-installing-running"></span><h3>1.1.1. Installing, Running, and Updating Logika<a class="headerlink" href="#installing-running-and-updating-logika" title="Permalink to this headline">¶</a></h3>
+<p>First, download the binary distribution zip file for your platform
+and uncompress it:</p>
+<ul>
+<li><p class="first"><a class="reference external" href="http://files.sireum.org/sireum-v3-mac64.zip">OS X</a></p>
+<p>To uncompress it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>unzip sireum-v3-mac64.zip
+</pre></div>
+</div>
+</li>
+<li><p class="first"><a class="reference external" href="http://files.sireum.org/sireum-v3-linux64.zip">Linux</a></p>
+<p>To uncompress it:</p>
+<div class="highlight-bash"><div class="highlight"><pre>unzip sireum-v3-linux64.zip
+</pre></div>
+</div>
+</li>
+<li><p class="first"><a class="reference external" href="http://files.sireum.org/sireum-v3-win64.zip">Windows</a></p>
+<p>Follow the instructions
+<a class="reference external" href="http://windows.microsoft.com/en-us/windows-10/zip-and-unzip-files">here</a>
+to uncompress <code class="docutils literal"><span class="pre">sireum-v3-win64.zip</span></code>.</p>
+</li>
+</ul>
+<p>Once uncompressed, it creates a <code class="docutils literal"><span class="pre">sireum-v3</span></code> folder, which contains
+the Sireum script (<code class="docutils literal"><span class="pre">sireum</span></code> in OS X/Linux, or <code class="docutils literal"><span class="pre">sireum.bat</span></code> in Windows).</p>
+<p>To run Logika:</p>
+<ul>
+<li><p class="first">In OS X and Linux,</p>
+<div class="highlight-bash"><div class="highlight"><pre>sireum-v3/sireum logika
+</pre></div>
+</div>
+</li>
+<li><p class="first">In Windows,</p>
+<div class="highlight-batch"><div class="highlight"><pre>sireum-v<span class="m">3</span>\sireum logika
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Logika will display its usage information:</p>
+<div class="highlight-none"><div class="highlight"><pre>Sireum Logika -- A Natural Deduction Proof Checker
+... for Propositional, Predicate, and Programming Logic
+
+Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
+
+Options:
+-a, --auto       Enable auto mode (programming logic)
+-l, --last       Check last program only
+-s, --sequent    Sequent matching the propositional/predicate logic input file&#39;s
+-t, --timeout    Timeout for algebra and auto (in milliseconds)
+                   Default: 2000
+    --sat        Enable sat checking of facts and contracts
+    --server     Enable server mode
+-h, --help       Display usage information
+</pre></div>
+</div>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
+the Logika command above.</p>
+<p class="last">In addition, replace <code class="docutils literal"><span class="pre">/</span></code> with <code class="docutils literal"><span class="pre">\</span></code> when entering paths in
+a Windows shell/command prompt.</p>
+</div>
+<p>To update Logika, simply re-download/install according to the
+above instructions.</p>
+<p>Next, see <a class="reference internal" href="#logika-examples"><span>Verifying Examples</span></a>.</p>
+</div>
+</div>
+<div class="section" id="using-sireum-source-distribution">
+<span id="using-source"></span><h2>1.2. Using Sireum Source Distribution<a class="headerlink" href="#using-sireum-source-distribution" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="prerequisites">
-<h2>1.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>Logika runs on <strong>64-bit</strong> Mac OS X, Linux, and Windows operating systems
-(tested on OS X 10.11, Ubuntu 14.04, and Windows 10).</p>
-<p>On all systems, it requires the following tools:
+<h3>1.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>On all systems, the following tools are required:
 <a class="reference external" href="https://git-scm.com">git</a>, <code class="docutils literal"><span class="pre">bash</span></code>, <code class="docutils literal"><span class="pre">unzip</span></code>, <code class="docutils literal"><span class="pre">wget</span></code>.</p>
 <div class="section" id="mac-os-x">
-<h3>1.1.1. Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<h4>1.2.1.1. Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h4>
 <p>On OS X, you can install <code class="docutils literal"><span class="pre">wget</span></code> using:</p>
 <ul>
 <li><p class="first"><a class="reference external" href="https://www.macports.org">MacPorts</a>:</p>
@@ -167,12 +248,12 @@ Sireum Logika Documentation
 </ul>
 </div>
 <div class="section" id="linux">
-<h3>1.1.2. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<h4>1.2.1.2. Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h4>
 <p>These tools are available on most Linux distributions either by default or
 through the distribution package manager.</p>
 </div>
 <div class="section" id="windows">
-<h3>1.1.3. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<h4>1.2.1.3. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
 <p>On Windows, it is best to install <a class="reference external" href="https://msys2.github.io">MSYS2</a> (64-bit)
 and use its MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell to install the above tools.
 First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell from the Windows start menu&#8217;s MSYS2 64bit group):</p>
@@ -182,7 +263,7 @@ First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></
 </div>
 </div>
 <div class="section" id="installing-and-running-logika">
-<span id="installing-logika"></span><h2>1.2. Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h2>
+<span id="source-installing-running"></span><h3>1.2.2. Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To install Logika, enter the following commands under <code class="docutils literal"><span class="pre">bash</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/sireum/v3.git sireum-v3
 sireum-v3/sireum logika
@@ -200,7 +281,7 @@ itself.</p>
 <p>The process may take a while depending on your internet connection speed and
 your machine&#8217;s computational prowess.
 When it finishes, Logika will display its usage information:</p>
-<div class="highlight-bash"><div class="highlight"><pre>Sireum Logika -- A Natural Deduction Proof Checker
+<div class="highlight-none"><div class="highlight"><pre>Sireum Logika -- A Natural Deduction Proof Checker
 ... for Propositional, Predicate, and Programming Logic
 
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
@@ -227,7 +308,7 @@ Options:
 </div>
 </div>
 <div class="section" id="updating-logika">
-<span id="update"></span><h2>1.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h2>
+<span id="source-update"></span><h3>1.2.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h3>
 <p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>sireum-v3
 git pull
@@ -235,13 +316,22 @@ logika
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="verifying-examples">
-<span id="logika-examples"></span><h2>1.4. Verifying Examples<a class="headerlink" href="#verifying-examples" title="Permalink to this headline">¶</a></h2>
+<span id="logika-examples"></span><h2>1.3. Verifying Examples<a class="headerlink" href="#verifying-examples" title="Permalink to this headline">¶</a></h2>
 <p>Some Logika examples are available at <a class="reference external" href="https://github.com/sireum/v3-logika-examples">https://github.com/sireum/v3-logika-examples</a></p>
+<p>There are two ways to retrieve the examples:</p>
+<ul>
+<li><p class="first">Using git</p>
 <p>Clone the repository to try out some of the examples:</p>
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
 </pre></div>
 </div>
+</li>
+<li><p class="first">Downloading the <a class="reference external" href="https://github.com/sireum/v3-logika-examples/archive/master.zip">zip file</a></p>
+<p>Uncompress it and rename <code class="docutils literal"><span class="pre">v3-logika-examples-master</span></code> to <code class="docutils literal"><span class="pre">logika-examples</span></code>.</p>
+</li>
+</ul>
 <p>Then run Logika on, e.g., <code class="docutils literal"><span class="pre">logika-examples/src/propositional/intro-nat-ded.logika</span></code>,
 whose content is as follows:</p>
 <div class="highlight-none"><div class="highlight"><pre>p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
@@ -283,7 +373,7 @@ the one that is expected as follows (if you introduced the typo, revert it back 
 </div>
 <p>If the provided sequent is different than the one in the file, the tool rejects it.
 For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre>logika -s -s <span class="s2">&quot;p, q ⊢ p ∧ q&quot;</span> logika-examples/src/propositional/intro-nat-ded.logika
+<div class="highlight-bash"><div class="highlight"><pre>logika -s <span class="s2">&quot;p, q ⊢ p ∧ q&quot;</span> logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>will result:</p>
@@ -294,17 +384,14 @@ File:
 p ∨ q, r  ⊢  <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>
 </pre></div>
 </div>
-<p>You can run all of the programming logic examples as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="k">for</span> i in logika-examples/src/programming/*.logika<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="s2">&quot;Checking </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> logika <span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">done</span>
-</pre></div>
-</div>
+<p>For a better experience, consider using <a class="reference internal" href="../02-live/index.html#live"><span>IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
 </div>
 <div class="section" id="logika-command-line-configuration">
-<span id="cli-configuration"></span><h2>1.5. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="cli-configuration"></span><h2>1.4. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.</p>
 <div class="section" id="auto-mode">
-<span id="id2"></span><h3>1.5.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>1.4.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
 <p>The auto mode enables claim justifications using the
 <a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>auto</span></a> summoning.
@@ -331,7 +418,7 @@ For more information with examples, please refer to the
 <a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span>proof statement</span></a> section.</p>
 </div>
 <div class="section" id="last-mode">
-<h3>1.5.2. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
+<h3>1.4.2. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>.</p>
 <p>Logika supports checking multiple files at the same time.</p>
 <p>For propositional/predicate logics, it treats each file
@@ -345,7 +432,7 @@ This is handy for proof management by separating a program
 of a system into multiple files.</p>
 </div>
 <div class="section" id="sequent">
-<h3>1.5.3. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
+<h3>1.4.3. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>, followed by the sequent string to check.</p>
 <p>The sequent option is use to provide the sequent
 (as the following string argument to the option switch)
@@ -354,7 +441,7 @@ This provides a redundancy check at the command-line level to
 ensure some sort of consistency.</p>
 </div>
 <div class="section" id="timeout">
-<span id="id3"></span><h3>1.5.4. Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>1.4.4. Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>, followed by the timeout integer (non-positive means unbounded).</p>
 <p>Logika uses the Z3 theorem prover to automatically prove
 some formulae (e.g., arithmetic).
@@ -363,7 +450,7 @@ the timeout option specifies how long Z3 can spend to
 prove a claim.</p>
 </div>
 <div class="section" id="satisfiability-checking-mode">
-<span id="check-sat"></span><h3>1.5.5. Satisfiability Checking Mode<a class="headerlink" href="#satisfiability-checking-mode" title="Permalink to this headline">¶</a></h3>
+<span id="check-sat"></span><h3>1.4.5. Satisfiability Checking Mode<a class="headerlink" href="#satisfiability-checking-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--sat</span></code></p>
 <p>If enabled, Logika will check the satisfiability of
 contracts and facts (axioms) to ensure that
@@ -371,7 +458,7 @@ the system is implementable (or not broken by
 assuming untrue facts).</p>
 </div>
 <div class="section" id="server-mode">
-<span id="server"></span><h3>1.5.6. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
+<span id="server"></span><h3>1.4.6. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--server</span></code></p>
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.

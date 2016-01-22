@@ -20,17 +20,94 @@
 Getting Started
 ###############
 
+Logika runs on x64 Mac OS X, Linux, and Windows operating systems
+(tested on OS X 10.11, Manjaro 15.02, Ubuntu 14.04, and Windows 10).
+
+There two ways one can install Logika: :ref:`using-binary` or
+:ref:`using-source`.
+
+.. _using-binary:
+
+Using Sireum Binary Distribution
+********************************
+
+.. _binary-installing-running:
+
+Installing, Running, and Updating Logika
+========================================
+
+First, download the binary distribution zip file for your platform
+and uncompress it:
+
+* `OS X <http://files.sireum.org/sireum-v3-mac64.zip>`__
+
+  To uncompress it::
+
+      unzip sireum-v3-mac64.zip
+
+* `Linux <http://files.sireum.org/sireum-v3-linux64.zip>`__
+
+  To uncompress it::
+
+      unzip sireum-v3-linux64.zip
+
+* `Windows <http://files.sireum.org/sireum-v3-win64.zip>`__
+
+  Follow the instructions
+  `here <http://windows.microsoft.com/en-us/windows-10/zip-and-unzip-files>`__
+  to uncompress ``sireum-v3-win64.zip``.
+
+Once uncompressed, it creates a ``sireum-v3`` folder, which contains
+the Sireum script (``sireum`` in OS X/Linux, or ``sireum.bat`` in Windows).
+
+To run Logika:
+
+* In OS X and Linux,
+
+  .. code-block:: bash
+
+     sireum-v3/sireum logika
+
+* In Windows,
+
+  .. code-block:: batch
+
+     sireum-v3\sireum logika
+
+Logika will display its usage information:
+
+.. literalinclude:: logika-usage.txt
+   :language: none
+
+(Please refer to :ref:`cli-configuration` for descriptions on the above option switches.)
+
+.. note::
+
+   For the remainder of this document, we use ``logika`` as a shorthand for
+   the Logika command above.
+
+   In addition, replace ``/`` with ``\`` when entering paths in
+   a Windows shell/command prompt.
+
+
+To update Logika, simply re-download/install according to the
+above instructions.
+
+Next, see :ref:`logika-examples`.
+
+.. _using-source:
+
+Using Sireum Source Distribution
+********************************
+
 Prerequisites
-*************
+=============
 
-Logika runs on **64-bit** Mac OS X, Linux, and Windows operating systems
-(tested on OS X 10.11, Ubuntu 14.04, and Windows 10).
-
-On all systems, it requires the following tools:
+On all systems, the following tools are required:
 `git <https://git-scm.com>`__, ``bash``, ``unzip``, ``wget``.
 
 Mac OS X
-========
+--------
 
 On OS X, you can install ``wget`` using:
 
@@ -44,15 +121,15 @@ On OS X, you can install ``wget`` using:
 
       brew install wget
 
+
 Linux
-=====
+-----
 
 These tools are available on most Linux distributions either by default or
 through the distribution package manager.
 
-
 Windows
-=======
+-------
 
 On Windows, it is best to install `MSYS2 <https://msys2.github.io>`__ (64-bit)
 and use its MSYS2 ``bash`` shell to install the above tools.
@@ -61,11 +138,10 @@ First, open MSYS2 ``bash`` shell from the Windows start menu's MSYS2 64bit group
    pacman -S git unzip wget
 
 
-
-.. _installing-logika:
+.. _source-installing-running:
 
 Installing and Running Logika
-*****************************
+=============================
 
 To install Logika, enter the following commands under ``bash``::
 
@@ -85,23 +161,10 @@ itself.
 
 The process may take a while depending on your internet connection speed and
 your machine's computational prowess.
-When it finishes, Logika will display its usage information::
+When it finishes, Logika will display its usage information:
 
-    Sireum Logika -- A Natural Deduction Proof Checker
-    ... for Propositional, Predicate, and Programming Logic
-
-    Usage: sireum logika [option] <filename-1> ... <filename-N>
-
-    Options:
-    -a, --auto       Enable auto mode (programming logic)
-    -l, --last       Check last program only
-    -s, --sequent    Sequent matching the propositional/predicate logic input file's
-    -t, --timeout    Timeout for algebra and auto (in milliseconds)
-                       Default: 2000
-        --sat        Enable sat checking of facts and contracts
-        --server     Enable server mode
-    -h, --help       Display usage information
-
+.. literalinclude:: logika-usage.txt
+   :language: none
 
 (Please refer to :ref:`cli-configuration` for descriptions on the above option switches.)
 
@@ -113,11 +176,10 @@ When it finishes, Logika will display its usage information::
        alias logika="$(cd "$(dirname sireum-v3/sireum)" && pwd)/$(basename sireum-v3/sireum) logika"
 
 
-
-.. _update:
+.. _source-update:
 
 Updating Logika
-***************
+===============
 
 To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run Logika again::
 
@@ -134,9 +196,17 @@ Verifying Examples
 
 Some Logika examples are available at https://github.com/sireum/v3-logika-examples
 
-Clone the repository to try out some of the examples::
+There are two ways to retrieve the examples:
 
-    git clone https://github.com/sireum/v3-logika-examples.git logika-examples
+* Using git
+
+  Clone the repository to try out some of the examples::
+
+      git clone https://github.com/sireum/v3-logika-examples.git logika-examples
+
+* Downloading the `zip file <https://github.com/sireum/v3-logika-examples/archive/master.zip>`__
+
+  Uncompress it and rename ``v3-logika-examples-master`` to ``logika-examples``.
 
 Then run Logika on, e.g., ``logika-examples/src/propositional/intro-nat-ded.logika``,
 whose content is as follows:
@@ -182,7 +252,7 @@ the one that is expected as follows (if you introduced the typo, revert it back 
 If the provided sequent is different than the one in the file, the tool rejects it.
 For example::
 
-    logika -s -s "p, q ⊢ p ∧ q" logika-examples/src/propositional/intro-nat-ded.logika
+    logika -s "p, q ⊢ p ∧ q" logika-examples/src/propositional/intro-nat-ded.logika
 
 will result::
 
@@ -192,9 +262,8 @@ will result::
     File:
     p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 
-You can run all of the programming logic examples as follows::
 
-    for i in logika-examples/src/programming/*.logika; do echo "Checking ${i}"; logika "${i}"; done
+For a better experience, consider using :ref:`live`.
 
 .. _cli-configuration:
 
