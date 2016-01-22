@@ -306,7 +306,8 @@ thus, there is no configuration switch needed for it.</p>
 <div class="section" id="auto-mode">
 <span id="id2"></span><h3>1.5.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
-<p>The auto mode enables <a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>automatic claim deduction</span></a>.
+<p>The auto mode enables claim justifications using the
+<a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>auto</span></a> summoning.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).</p>
@@ -362,7 +363,7 @@ the timeout option specifies how long Z3 can spend to
 prove a claim.</p>
 </div>
 <div class="section" id="satisfiability-checking-mode">
-<h3>1.5.5. Satisfiability Checking Mode<a class="headerlink" href="#satisfiability-checking-mode" title="Permalink to this headline">¶</a></h3>
+<span id="check-sat"></span><h3>1.5.5. Satisfiability Checking Mode<a class="headerlink" href="#satisfiability-checking-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--sat</span></code></p>
 <p>If enabled, Logika will check the satisfiability of
 contracts and facts (axioms) to ensure that

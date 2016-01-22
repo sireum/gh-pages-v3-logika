@@ -211,7 +211,8 @@ Auto Mode
 
 **Command-Line Option:** ``-a`` or ``--auto``.
 
-The auto mode enables :ref:`automatic claim deduction <prog-auto>`.
+The auto mode enables claim justifications using the
+:ref:`auto <prog-auto>` summoning.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).
@@ -277,6 +278,8 @@ some formulae (e.g., arithmetic).
 In some cases, Z3 might take a long time, thus,
 the timeout option specifies how long Z3 can spend to
 prove a claim.
+
+.. _check-sat:
 
 Satisfiability Checking Mode
 ============================

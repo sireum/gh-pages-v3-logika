@@ -22,22 +22,22 @@ Logika's programming logic input language differs from its
 propositional and predicate logics' in one main characteristic:
 variable and function types have to be explicitly specified.
 
-It has three built-in types:
+It currently has three built-in types:
 (1) ``B`` -- boolean type,
 (2) ``Z`` -- arbitrary-precision integer type, and
 (3) ``ZS`` -- mutable integer sequence (array) type
 (whose index and element type is ``Z`` with indices starting
-at ``0``). There is no ``null`` value in Logika, which simplifies
-reasoning.
+at ``0``). There is no ``null`` nor top (like Java's ``Object`` or Scala's ``Any``)
+values in Logika, which simplify reasonings.
 
-In addition, in contrast to regular Scala,
-Logika's programming language separates between
+In contrast to regular Scala, Logika's programming language separates between
 commands (statements) and queries (expressions).
-(In Scala, commands are simply expressions whose return value is of
-``Unit`` type.)
 Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
 (side-effect free -- they do not change values stored in variables).
+(In Scala, commands are simply expressions whose return value is
+empty tuple ``()``, which is *the* ``Unit`` type value.)
+These distinctions are also done to simplify reasonings.
 
 The following pattern notation is used to describe a statement's side-effects
 (similar to :ref:`schematic-pattern`, but enclosed in ``l"""`` … ``"""`` to
@@ -65,7 +65,8 @@ As a convention:
 
 * ``P``, ``Q``, and ``R`` are used to represent claims.
 
-* ``X`` and ``Y`` are used to represent variable identifiers.
+* ``X``, ``Y``, ``Z`` are used to represent variable identifiers and proof step numbers
+  (the two can be easily distinguished).
 
 * ``ZS`` (prefix) is used to represent variable identifiers of type ``ZS``.
 
@@ -76,6 +77,10 @@ As a convention:
 * ``E`` is used to represent a general expression.
 
 * ``C`` is used to represent a command/statement or a sequence of statements.
+
+The above can be numbered, for example, ``X1``, ``X2``, etc.
+In such case, they typically form a series, and ``N``, ``M``, ``I``, ``J``, and ``K``
+are used to represent some numbers in the series.
 
 The subsequent sections describe Logika's renditions of programming
 logic rules that are described in
@@ -89,8 +94,7 @@ Program
    :language: antlr
    :lines: 1 - 12
 
-A Logika program can be empty, or
-it consists of an import statement followed
+A Logika program can be empty, or it consists of an import statement followed
 by a zero or more program elements.
 A program element can be either
 a :ref:`prog-statement`,
@@ -120,8 +124,8 @@ a :ref:`prog-while-loop`,
 a :ref:`prog-seq-assign`,
 a :ref:`prog-print` statement,
 a :ref:`prog-proof`, or
-a :ref:`prog-sequent`.
-Method invocation ``invoke`` is discussed in :ref:`prog-invoke`.
+a :ref:`prog-sequent`
+(``invoke`` is discussed in :ref:`prog-invoke`).
 
 .. _prog-var-assign:
 
@@ -136,7 +140,7 @@ A variable declaration is a special assignment form that also declares
 the variable that it assigns at the same time.
 The variable has to be declared as either read-only (using the ``val`` keyword) --
 which cannot be reassigned later on, or read/write (using the ``var`` keyword).
-Note a variable cannot be forward-referenced.
+Note that, unlike methods, variables cannot be forward-referenced.
 
 The claim transformation rule for a variable declaration is the same as for
 assignment.
@@ -146,6 +150,8 @@ Note that any claim referring to the generated ``_old`` variable is *transient*;
 it does not survive the next (non-proof/sequent) statement. Thus,
 such claim has to be transformed in a :ref:`prog-proof`/:ref:`prog-sequent`
 statement in order for the information that it contains to be propagated.
+
+----
 
 .. literalinclude:: var-assign-exp-rule.txt
    :language: scala
@@ -159,10 +165,13 @@ assignment, and the value of ``X`` is now equal to the value of expression
 ``E`` (which leverages the fact that any Logika expression is pure --
 side-effect free).
 
+----
+
 To avoid aliasing issues of mutable objects that complicate reasoning,
 Logika forces ``ZS`` to be cloned (resulting in a new object copy of the sequence)
 when assigned to a different variable.
 That is, ``X = Y`` are ill-formed if ``X`` and ``Y`` are of type ``ZS``.
+It has to be ``X == Y.clone`` instead.
 The ``ZS`` cloning rule is as follows.
 
 .. literalinclude:: var-assign-clone-rule.txt
@@ -170,35 +179,43 @@ The ``ZS`` cloning rule is as follows.
    :caption: **ZS Cloning Rule**
    :name: var-assign-clone-rule
 
+----
+
 ``ZS`` variable can also be assigned as a result of ``ZS``
 appending operation
 (``E ≡ E1 :+ E2``, where ``E1`` is of type ``ZS`` and ``E2`` is of type ``Z``)
 or prepending operation
 (``E ≡ E1 +: E2``, where ``E1`` is of type ``Z`` and ``E2`` is of type ``ZS``),
-both of which also produce a new ``ZS`` object.
+both of which also produce a new ``ZS`` object (see :ref:`prog-exp`).
+
+----
 
 The ``readInt`` built-in function asks for an integer input through the program
 console input (an optional string literal prompt ``STRING`` can be provided to
 display a custom message). Since the resulting integer value depends on
 the user input, which cannot be predicted, there is no claim that can be stated
-regarding the value the can be deduced,
-which is reflected in :ref:`var-assign-readint-rule`.
+regarding the value that can be deduced, which is reflected below.
 
 .. literalinclude:: var-assign-readint-rule.txt
    :language: scala
    :caption: **readInt Rule**
    :name: var-assign-readint-rule
 
+----
+
 The ``randomInt`` built-in function generates a random integer value.
-Similar to ``readInt``, there is no claim that can be stated regarding the value.
+Similar to ``readInt``, there is no claim that can be stated regarding the
+resulting value.
 
 .. literalinclude:: var-assign-randomint-rule.txt
    :language: scala
    :caption: **randomInt Rule**
    :name: var-assign-randomint-rule
 
+----
+
 The rule for ``invoke`` is discussed in :ref:`prog-invoke`
-(just replace occurrence of ``F_result`` in the rules with the assigned variable
+(substitute occurrence of ``F_result`` in the rules with the assigned variable
 identifier ``X``).
 
 .. _prog-assert:
@@ -210,13 +227,13 @@ Assertion and Assumption
    :language: antlr
    :lines: 229, 64 - 65
 
-In Scala, both assertion and assumption check whether
+In Scala, both assertion and assumption methods check whether
 the specified boolean expression is true;
 if not, it throws an ``AssertionError`` (if assertion
 checking is enabled).
 
-The two differ in the intention behind it for verification
-purposes.
+The two differ in the intention behind them, which are
+geared for verification purposes.
 Assertion's expression has to be proven (i.e.,
 ``E`` is required as a precondition of :ref:`assert-rule`),
 while assumption's expression can be taken as an axiom
@@ -224,7 +241,8 @@ while assumption's expression can be taken as an axiom
 a precondition of :ref:`assume-rule`, but can be concluded
 in the postcondition).
 When a program has been verified, all assertions can be
-safely erased.
+safely erased (to be safe, assumptions should still be
+runtime checked).
 
 .. literalinclude:: assert-rule.txt
    :language: scala
@@ -246,14 +264,16 @@ If-Else Conditional
    :language: antlr
    :lines: 229, 66, 79 - 84
 
-Logika's conditional can omit the else-branch, in which case
+Statements in both Logika if-else conditional branches have to
+be contained in a code block ``{`` … ``}``.
+A conditional can be without the else/false-branch, in which case
 it is treated as an empty statement block.
 
-The :ref:`if-else-rule` specifies that
-its precondition ``P`` hold in the beginning of
-both branches. In the true-branch, the conditional
-test expression ``E`` can be deduced, while
-its negation ``¬E`` can be deduced in the false-branch.
+The :ref:`if-else-rule` specifies that its precondition ``P`` holds in the beginning of
+both branches.
+In the beginning of the true-branch,
+the conditional test expression ``E`` can be deduced, while its negation ``¬E`` can be
+deduced in the beginning of the false-branch.
 At the end of the conditional,
 the claim ``R1 ∨ R2`` can be deduced, where ``R1`` is
 the postcondition of ``C1`` and ``R2`` is the postcondition
@@ -276,7 +296,7 @@ While-Loop
    :lines: 229, 67, 85 - 97, 51 - 54
 
 While-loops in Logika can include a loop invariant and a modifies clause
-(verified programs most likely include loop invariants and modifies clauses).
+(verified programs most likely would include loop invariants and modifies clauses).
 
 The loop invariant specifies the condition that has to be true before (hence, at the beginning of the loop body)
 and after the statement. At the end of the loop body, the invariant has to be proven to be true.
@@ -303,6 +323,9 @@ postcondition of loop.
    :caption: **While-Loop Rule**
    :name: while-loop-rule
 
+When :ref:`auto-mode` is enabled, :ref:`auto <prog-auto>` is implicitly
+used to satisfy loop invariants whenever possible.
+
 .. _prog-seq-assign:
 
 Sequence Element Assignment
@@ -314,11 +337,13 @@ Sequence Element Assignment
 
 A ``ZS`` sequence value stored in a variable ``X`` can be mutated by updating
 one of its elements at a certain index expressed by ``E1`` with a new value
-expressed by an expression ``E2`` (see :ref:`seq-assign-rule`).
+expressed by an expression ``E2`` (i.e., ``X(E1) = E2``; see :ref:`seq-assign-rule`).
 
 The avoid runtime errors, ``E1`` has to be within the bound of
 ``X``'s indices, i.e., ``0 ≤ E1`` and ``E1 < X.size``; thus,
 they are required as the statement's precondition.
+When :ref:`auto-mode` is enabled, :ref:`auto <prog-auto>` is implicitly
+used to satisfy the precondition whenever possible.
 
 At the postcondition, ``E1`` and ``E2`` and all precondition claims are rewritten to refer to
 ``X_old`` if they refer to ``X``.
@@ -343,14 +368,13 @@ Print
    :language: antlr
    :lines: 229, 69, 102 - 107
 
-The ``print`` and ``println`` built-in methods are
-provided for logging purposes (albeit primitive ones).
-They are n-ary methods accepting any number of arguments,
-which can be string literals, and
+The ``print`` and ``println`` built-in methods are provided for logging purposes
+(albeit primitive ones).
+They accept any number of arguments, which can be string literals, and
 ``B``,  ``Z``, and ``ZS`` values.
 
 Logika does not reason about their side-effects as they are
-tangential to Logika's verification focus.
+tangential to Logika's functional verification focus.
 
 For example, a Logika verified program may still be unsafe
 if the program console output is piped through a disk and
@@ -358,9 +382,9 @@ as it turns out, the disk does not have enough space for the
 printed text. (Similarly, Logika does not guarantee that
 a program cannot be out of memory.)
 
-At any rate, the two methods do not change program states so
-any claim in the precondition can be deduced in
-the postcondition.
+At any rate, the two methods do not change program states from
+Logika's functional verification perspective, thus,
+any claim in the precondition can be deduced in the postcondition.
 
 .. literalinclude:: print-rule.txt
    :language: scala
@@ -378,9 +402,9 @@ Proof
    :lines: 229, 70, 127 - 145
 
 A proof statement contains a natural deduction proof similar to a proof in
-:ref:`predicate-language` and :ref:`propositional-language`.
+the :ref:`predicate-language` and the :ref:`propositional-language` languages.
 It can be used to deduce new claims from existing/transient claims
-(e.g., to satisfy the next statement's precondition).
+(e.g., to satisfy the subsequent statement's precondition).
 
 The behavior of a proof statement differs on whether the :ref:`auto-mode` is
 enabled.
@@ -388,10 +412,10 @@ When enabled, the proof statement *adds* its deduced claims to existing ones.
 Otherwise, it *replaces* existing ones with its deduce claims, which
 results in a Logika program where all deductions necessary to verify the program
 are forced to be explicitly written (and proof statements intermingled with
-non-proof/sequent statements as a side-effect).
+non-proof/sequent statements as a consequence).
 
-Note that the deduced claims of a proof statement consists of all claims in regular
-proof steps at the proof-level (i.e., claims in sub-proofs are excluded).
+Note that the deduced claims of a proof statement only consists of all claims
+in regular proof steps at the proof-level (i.e., claims in sub-proofs are excluded).
 
 .. _prog-sequent:
 
@@ -402,39 +426,38 @@ Sequent
    :language: antlr
    :lines: 229, 71, 146 - 155
 
-A sequent statement can only be used in :ref:`auto-mode`.
-While the form is similar to the ones in :ref:`predicate-language`
-and :ref:`propositional-language`, it has a different purpose in
-Logika's programming logic.
-That is, it serves as a convenient syntactic sugar for
-:ref:`prog-auto`.
+A sequent statement is also similar to the one in the :ref:`predicate-language` and
+:ref:`propositional-language` languages.
+However, it has a different purpose in Logika's programming logic.
+That is, it serves as a convenient syntactic sugar for a :ref:`prog-proof` statement using
+:ref:`auto <prog-auto>` summonings; thus, it can only be used in :ref:`auto-mode`.
 
-There are two ways the form can be used:
-with or without premises.
+There are two ways the form can be used: with or without premises.
 
-When some premises are specified to automatically conclusions, such as:
+When the sequent premises are specified to automatically deduce its
+conclusions, i.e.,:
 
 .. code-block:: scala
 
-   l"""premise1,  …,  premiseN  ⊢  conclusion1,  …, conclusionM"""
+   l"""P1,  …,  PN  ⊢  R1,  …, RM"""
 
 it desugars to the following proof statement:
 
 .. literalinclude:: sequent-premise-sugar.txt
    :language: scala
 
-When no premise is specified, such as:
+When no premise is specified in the sequent, such as:
 
 .. code-block:: scala
 
-   l"""⊢  conclusion1,  …, conclusionM"""
+   l"""⊢  R1,  …, RM"""
 
 it desugars to the following proof statement:
 
 .. literalinclude:: sequent-no-premise-sugar.txt
    :language: scala
 
-
+.. _prog-exp:
 
 Expression
 ==========
@@ -447,9 +470,9 @@ Logika's expression in the programming context is a subset of
 its claim expression language in the proof context
 in that it does not support math symbols and quantifications.
 
-It supports typical operators on integer values.
+It supports typical operators on integer values, albeit arbitrary-precision.
 The integer literal form ``NUM`` can only be used for
-value up to 2` :sup:`31` - 1;
+value up to 2\ :sup:`31` - 1;
 otherwise the ``Z(STRING)`` form
 (e.g., ``Z("2147483648")``, ``Z("-2147483649")``)
 has to be used instead.
@@ -460,11 +483,11 @@ Logika detects the erroneous situation when
 It also detects expressions involving 32-bit integer literal
 that result in values that do not fit into 32-bit such
 as ``1 + 2147483647`` and signal an error; this is because
-such expression can be optimized to a 32-bit integer value
-when compiled (but overflows/underflows).
+such expressions can be optimized to 32-bit integer values
+when compiled, but they silently overflows/underflows.
 
 The ``ZS(`` … ``)`` literal form is used to create a ``ZS``
-object whose elements are listed.
+object whose elements are listed as arguments.
 For example ``ZS(2, 5, 3)`` creates a ``ZS`` object whose
 size is 3 and the element 2 at index 0, 5 at index 1, and
 3 at index 2. The ``ZS`` append (``:+``) and prepend
@@ -472,7 +495,7 @@ size is 3 and the element 2 at index 0, 5 at index 1, and
 existing one.
 
 Unlike a sequence element update, ``:+`` and ``+:`` are
-are directly represented in the proof context.
+directly represented in the proof context.
 For example,
 
 .. code-block:: scala
@@ -485,39 +508,55 @@ generates a postcondition claim ``X == Y :+ 2`` instead of::
     X(Y.size) == 2
     ∀q_i: (0 ..< Y.size)  X(q_i) == Y(q_i)
 
-The first two claims can be "extracted" using ``algebra``
-and the last claim can only be extracted using ``auto``.
-This means fully reasoning about ``:+`` and ``+:`` can
-only be done by enabling :ref:`auto-mode`.
+The first two claims can be "extracted" using ``algebra`` from
+``X == Y :+ 2``, but the last claim can only be extracted using
+``auto`` (see :ref:`prog-algebra` and :ref:`prog-auto`).
+
+Another example,
+
+.. code-block:: scala
+
+   X = 1 +: X
+
+generates a postcondition claim ``X == 1 +: X_old``,
+which holds the knowledge::
+
+    X.size == X_old.size + 1
+    X(0) == 1
+    ∀q_i: (1 ..< X.size)  X(q_i) == X_old(q_i - 1)
+
+The direct representations mean fully reasoning about ``:+``
+and ``+:`` can only be done by enabling :ref:`auto-mode`.
 This is done by design instead of due to the Logika's
 limitation; at some point, it is best to switch to
 a more automatic/machine-assisted approach in order not
-overwhelm oneself with mundane details.
+overwhelm oneself with mundane details (and save one's
+braincells for solving more interesting problems).
 
 One last thing to note is that ``&`` and ``|`` operators
 are logical-and and logical-or operators instead of
 the short-circuit ``&&`` and ``||`` operators used in
 many languages such as Java.
+This is a simplification because short-circuit operators
+are conditionals; ``&&`` and ``||`` may be added in the
+future.
 
-The rest of the operatoions have similar meaning to
+The rest of the operations have the typical meaning used in
 other programming languages.
 
 Runtime Checks
 --------------
 
-Some operators such as ``/`` and ``%`` are not defined
-on certain argument values (i.e., when the divisor is
-zero).
-Such situations are typically checked at runtime
-(e.g., in Java, the VM throws an ``ArithmeticException``
-for a division by zero).
+Some operators such as ``/`` and ``%`` are not defined on certain argument values
+(i.e., when the divisor is zero).
+Such situations are typically checked at runtime (e.g., in Java, the VM throws
+an ``ArithmeticException`` for a division by zero).
 
-Instead, Logika requires precondition claims to avoid such
-issue when certain expressions are used in the programming
-context.
+Instead, Logika requires precondition claims to avoid runtime exceptions/errors
+when certain expressions are used in the programming context.
 
-Below are the list of expressions that require some
-precondition related to runtime errors:
+Below are the list of expressions that require some precondition related to
+runtime checks:
 
 * ``E1 / E2`` requires ``E2 ≠ 0``.
 
@@ -525,9 +564,8 @@ precondition related to runtime errors:
 
 * ``X(E)`` requires ``0 ≤ E`` and ``E < X.size``.
 
-When :ref:`auto-mode` is enabled,
-:ref:`auto <prog-auto>` is implicitly used to satisfy
-all the above preconditions whenever possible.
+When :ref:`auto-mode` is enabled, :ref:`auto <prog-auto>` is implicitly used to
+satisfy the above preconditions whenever possible.
 
 .. _prog-invariant:
 
@@ -538,19 +576,19 @@ Invariant
    :language: antlr
    :lines: 31 - 33
 
-The invariant statement declares global invariants
-that the program's (non-helper)
+The invariant statement declares global invariants that the program's (non-helper)
 :ref:`methods <prog-method-decl>` have to maintain.
-Similar to a :ref:`loop invariant <prog-while-loop>`,
-the invariant claim expression conjuncts can be
-specified separately.
+Similar to a :ref:`loop invariant <prog-while-loop>`, the invariant claim
+expression conjuncts can be specified separately.
 
-The claim expressions have to be proven true before
-the invariant statements.
-When :ref:`auto-mode` is enabled,
-:ref:`auto <prog-auto>` is implicitly used to satisfy
-all the invariant claims whenever possible.
+The claim expressions have to be proven true before the invariant statements
+(i.e., precondition of the statement).
+When :ref:`auto-mode` is enabled, :ref:`auto <prog-auto>` is implicitly used
+to satisfy all the invariant claims whenever possible.
 
+When :ref:`check-sat` is enabled, Logika checks the satisfiability of global
+invariants to ensure that the program's specification is useful and
+implementable.
 
 .. _prog-method-decl:
 
@@ -564,8 +602,8 @@ Method Declaration
 A Logika method can have an associated contract that specifies its ``precondition``
 (claims that have to be true in order for the method to properly function),
 ``modifies`` clause (that comprehensively lists all variables that will be modified
-by the method during its execution, similar to the modifies clause in
-the modifies clause in :ref:`loop invariants <prog-while-loop>`), and
+by the method, similar to the modifies clause in the modifies clause in
+:ref:`loop invariants <prog-while-loop>`), and
 ``postcondition`` (claims that the method has to satisfy once it finishes executing).
 If the precondition or the postcondition are not specified, then they are treated
 as ``⊤``. Moreover, if the modifies clause is not specified, that means the
@@ -573,8 +611,9 @@ method does not modify any variable (pure).
 
 Note that Logika method parameter variables cannot be assigned (read-only); but,
 any parameter variable of type ``ZS`` can have its element assigned as ``ZS``
-is a mutable sequence. A method whose return type is ``Unit`` does not return
-a value; otherwise, the resulting value is captured in a special variable named
+is a mutable sequence. A method whose return type is ``Unit`` is considered as
+not returning a value;
+otherwise, the resulting value is captured in a special variable named
 ``result``, which can be referred to in the method's postcondition.
 
 In general, there are two kinds of methods in Logika:
@@ -582,6 +621,8 @@ helper and regular (non-helper) methods; helper methods are declared by using th
 ``@helper`` annotation, and regular ones are those without the annotation.
 Regular methods maintain the program global :ref:`prog-invariant`,
 while helper methods do not have to.
+
+----
 
 That is, a regular method:
 (1) can assume the program global invariant when it starts to execute,
@@ -591,12 +632,16 @@ That is, a regular method:
 other claims are not affected);
 these are reflected in :ref:`method-decl-rule`.
 In essence, the invariant claims are both precondition claims and postcondition claims
-of regular methods.
+of regular methods; *effective precondition* and *effective postcondition* are used
+to refer to precondition and postcondition that include global :ref:`prog-invariant` claims,
+respectively.
 
 .. literalinclude:: method-decl-rule.txt
    :language: scala
    :caption: **Method Declaration Rule**
    :name: method-decl-rule
+
+----
 
 On the other hand, helper methods:
 (1) cannot assume the program global invariant when it starts to execute,
@@ -608,6 +653,8 @@ these are reflected in :ref:`method-decl-helper-rule`.
    :language: scala
    :caption: **Helper Method Declaration Rule**
    :name: method-decl-helper-rule
+
+----
 
 Helper and regular methods have some similarities. That is:
 
@@ -621,9 +668,15 @@ B. For any modified variable ``XI``, it can assume ``XI == XI_in`` before
 
 C. The method has to establish ``POST``.
    If the method's return type is not ``Unit``, it has to ``return`` a value,
-   expressed by ``E`` and stored in the special variable ``result`` as mentioned
-   previously. The variable ``result`` can be used on ``POST``;
-   hence, at the end of the method ``[E/result]POST`` has to be established.
+   expressed by ``E`` and stored in the special variable ``result`` as
+   previously mentioned.
+   The variable ``result`` can be used on ``POST``; hence, at the end of
+   the method ``[E/result]POST`` has to be established.
+
+When :ref:`auto-mode` is enabled, :ref:`auto <prog-auto>` is implicitly
+used to satisfy postcondition (and invariant) whenever possible.
+Moreover, when :ref:`check-sat` is enabled, Logika checks the
+satisfiability of the method contract.
 
 .. _prog-invoke:
 
@@ -659,20 +712,19 @@ as follows:
 
 1. Any reference to ``result`` in the method's postcondition is substituted
    with ``F_result`` (``POST1`` in :ref:`method-invoke-rule` or :ref:`method-invoke-helper-rule`).
-   ``F_result`` is a transient variable similar to ``_old`` variables.
+   Note that any claim referring to ``F_result`` is transient similar to ``_old`` variables.
    As described in :ref:`prog-var-assign`, if the result is assigned to
    a variable ``X``, then ``F_result`` is further substituted with ``X``
    (not shown in :ref:`method-invoke-rule` or :ref:`method-invoke-helper-rule`).
    ``P`` cannot refer to ``result``, thus, ``P1 ≡ P``.
 
 2. ``F`` might modify ``ZS`` values which are passed as parameters.
-   The effects of the modifications can only be observed after the call
+   The effects of the modifications can only be observed after the invocation
    if the arguments for the parameters are variables of type ``ZS`` because
-   other expressions that give rise to ``ZS`` (i.e., ``ZS(`` … ``)``,
+   other expression forms that of type ``ZS`` (i.e., ``ZS(`` … ``)``,
    ``:+``, and ``+:``) produce a new ``ZS`` object that cannot be referred after
    the invocation.
 
-   For ``POST1`` and any claim ``P`` before the method is executed,
    ``POST2-J`` and ``P2-J`` (for 1 ≤ ``J`` ≤ ``N``)
    capture the effects of modifications of ``ZS`` values
    passed as parameters whose arguments are variables.
@@ -681,11 +733,12 @@ as follows:
    ``ZSJ``, then, any occurrence of ``ZSJ`` is substituted with ``ZSJ_old``
    in ``P2-(J-1)`` and ``POST2-(J-1)``;
    otherwise ``P2-J ≡ P2-(J-1)`` and ``POST2-J ≡ POST2-(J-1)``.
-   Additionally, ``XJ_in`` is substituted with ``ZSJ_old`` in ``POST2-J``.
+   Additionally, ``XJ`` is substituted with ``ZSJ`` and
+   ``XJ_in`` is substituted with ``ZSJ_old`` in ``POST2-J``.
 
 3. ``F`` might modify global variables.
    The effects of the modifications are captured in ``P3`` and ``POST3``.
-   More specifically, for any modified variable ``YK`` (for 1 ≤ K ≤ M),
+   More specifically, for any modified variable ``YK`` (for 1 ≤ ``K`` ≤ ``M``),
    ``YK_in`` is substituted with ``YK_old`` in ``P2-N`` and ``POST2-N``.
    Note that ``YK`` could actually be a parameter, in which case the substitution
    is harmless because the parameter has been substituted in the previous step.
@@ -699,6 +752,18 @@ Fact
    :language: antlr
    :lines: 13 - 29
 
+A fact statement can be used to introduce global (named) axioms and (pure)
+proof functions (whose behaviors are specified via axioms) to help with
+specifying contracts.
+
+While axioms are assumed to hold, Logika can check their satisfiability
+to ensure their consistency by enabling :ref:`check-sat`;
+an unsatisfiable axiom claim reduces to ``⊥``, thus, it can render any
+specification to be proven by using :ref:`bottom-elim`.
+
+In :ref:`auto-mode`, all axioms are implicitly used to help deduce claims
+in :ref:`auto summoning without arguments <prog-auto>`.
+
 Extended Assume Step
 ====================
 
@@ -706,6 +771,10 @@ Extended Assume Step
    :language: antlr
    :lines: 157 - 160
    :emphasize-lines: 2 - 4
+
+The assume step in programming logic differs slightly than the one in
+:ref:`predicate-language` where fresh variables now have to be explicitly
+typed.
 
 Extended Claim Expression
 =========================
@@ -715,30 +784,47 @@ Extended Claim Expression
    :lines: 162 - 196
    :emphasize-lines: 4 - 8, 11, 13 - 23, 27 - 29
 
+The claim expression language is extended from the one in
+:ref:`predicate-language` that adds ``Z`` and ``ZS`` literals,
+in/equality tests, and arithmetic and ``ZS`` operations,
+as highlighted above.
+
+In addition to having an explicit type for quantified variables
+(*type domain*), Logika allows an *integer range domain* of the form
+``(`` integer low bound ``..`` integer high bound ``)``;
+by default, the range is inclusive; ``<`` can be used to in either
+side of ``..`` to indicate exclusive range for the low and/or high
+bounds, respectively.
+
 Extended Justification and Inference Rules
 ==========================================
 
 .. literalinclude:: programming.txt
    :language: antlr
-   :lines: 198 - 220
-   :emphasize-lines: 7, 14 - 23
+   :lines: 198 - 219
+   :emphasize-lines: 7, 14 - 21
+
+The justification form in Logika's programming logic extends
+:ref:`propositional-language`'s :ref:`or-elim` and
+:ref:`predicate-language`'s :ref:`pred-rules`, as well as
+adding new ones as highlighted above.
 
 Or-Elimination (∨e)
 -------------------
 
-The ∨e patterns now work for ``≤`` and ``≥``,
-where ``E1 ≤ E2`` is treated as ``E1 < E2  ∨  E1 == E2`` and
+The :ref:`or-elim-pattern` and :ref:`or-elim-alt-pattern`
+are extended to also work for ``≤`` and ``≥``,
+where ``E1 ≤ E2`` is treated as ``E1 < E2  ∨  E1 == E2``, and
 ``E1 ≥ E2`` is tread as ``E1 > E2  ∨  E1 == E2``.
 
 Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)
 -------------------------------------------------
 
 Quantifications using the integer range domain form
-are simplified first before applying quantified
-claim inference rules.
+are simplified first before applying :ref:`pred-rules`.
 
-For example, the claim ``∀x: (0 ..< 3) P{x}`` is
-simplified first to ``∀x: Z  0 ≤ x ∧ x < 3  →  P{x}``
+For example, the claim ``∀x: (0 ..< 3)  P{x}`` is
+simplified first to ``∀x: Z  0 ≤ x ∧ x < 3 → P{x}``
 before applying any of the ∀-quantified claim rules.
 
 Fact (fact)
@@ -747,6 +833,9 @@ Fact (fact)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 227, 216
+
+The ``fact`` justification can be used to bring in an axiom
+by its identifier in a :ref:`prog-proof` statement.
 
 .. literalinclude:: fact-rule.txt
    :language: scala
@@ -760,6 +849,13 @@ Invariant (invariant)
    :language: antlr
    :lines: 227, 217
 
+Similar to the ``fact`` justification, ``invariant`` can be used
+to bring in an invariant claim.
+Since invariant claims are unnamed, the justification does not
+require an argument (unlike ``fact``).
+Note that ``invariant`` can only be used in a :ref:`prog-proof`
+statement that is outside of a method (top-level).
+
 .. literalinclude:: invariant-rule.txt
    :language: scala
    :caption: **Invariant Schematic Pattern**
@@ -771,6 +867,12 @@ Substitutions (subst1 and subst2)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 227, 218 - 219
+
+The two substitution justifications can be used to substitute
+claim expressions ``E1`` and ``E2`` that are equal to each other
+(``E1 == E2``);
+``subst1`` substitutes ``E1`` with ``E2``,
+while ``subst2`` substitutes ``E2`` with ``E1``.
 
 .. literalinclude:: subst1-rule.txt
    :language: scala
@@ -786,14 +888,32 @@ Substitutions (subst1 and subst2)
 Summonings
 ==========
 
-Logika summonings are special justifications;
-they are distinguished because the deduction is checked by
-leveraging the work of giants such as using Z3
-(see
-`a classical example <https://www.youtube.com/embed/gb2zIR2rvRQ?rel=0&autoplay=1&start=30>`__ or
+.. literalinclude:: programming.txt
+   :language: antlr
+   :lines: 227, 220 - 221
+   :emphasize-lines: 2 - 3
+
+Logika summonings are special justifications.
+Up until now, all deduction justifications are directly checked by Logika.
+Summoning justifications are distinguished because the deductions are
+checked by leveraging the work of giants,
+such as by employing Z3's powerful automatic satisfiability checking
+(the reader might be interested to see
+`a classical example <https://www.youtube.com/embed/gb2zIR2rvRQ?rel=0&autoplay=1&start=30>`__
+and/or
 `a modern example <https://www.youtube.com/embed/Qs51cQUuEOM?rel=0&autoplay=1&start=280>`__
 on how summoning works).
 
+Currently, there are two summonings in Logika: ``algebra`` and ``auto``, both of which
+use Z3 to check the deductions.
+Note that although Z3 is quite powerful,
+Z3 cannot always automatically deduce claims, for example, when they involve
+non-linear integer arithmetic, which no automated technique can always solve.
+As a consequence, there are programs that cannot be verified by Logika.
+Other summonings involving more elaborate incantations will be added in the
+future to address this.
+
+.. _prog-algebra:
 
 Algebra (algebra)
 -----------------
@@ -801,6 +921,17 @@ Algebra (algebra)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 227, 220
+
+The ``algebra`` summoning can be used to automatically deduce
+algebraic arithmetic claims.
+It cannot be used to reason about claims that contain
+a conjunction, a disjunction, an implication, or a quantification.
+This is by design and it is done to force reasoning about claims involving
+propositional and predicate logic operators using their respective
+inference rules.
+
+The ``algebra`` summoning can be used with or without arguments;
+its usages are depicted in :ref:`algebra-rule` and :ref:`algebra-empty-rule`.
 
 .. literalinclude:: algebra-rule.txt
    :language: scala
@@ -812,6 +943,10 @@ Algebra (algebra)
    :caption: **Algebra Schematic Pattern (without argument)**
    :name: algebra-empty-rule
 
+The ``algebra`` summoning is available regardless of whether
+the :ref:`auto-mode` is enabled; however, it is subsumed by the
+:ref:`auto <prog-auto>` summoning, which is described next.
+
 .. _prog-auto:
 
 Auto (auto)
@@ -820,6 +955,12 @@ Auto (auto)
 .. literalinclude:: programming.txt
    :language: antlr
    :lines: 227, 221
+
+The ``auto`` summoning can only be used in :ref:`auto-mode`.
+It is similar to ``algebra``, but without its restrictions.
+That is, it can be used to reason about any claim expression form.
+Moreover, in contrast to ``algebra``, ``auto`` uses all axioms and
+premises when used without arguments.
 
 .. literalinclude:: auto-rule.txt
    :language: scala
@@ -835,6 +976,11 @@ Auto (auto)
 Well-formed-ness
 ================
 
+The well-formed-ness rules for Logika's programming language
+are similar to that of statically typed languages such as
+identifiers cannot be re-declared, expressions cannot refer to
+undeclared variables, and expressions are well-typed (do not have
+a type mismatch).
 
 Programming Logic Input Language Grammar
 ========================================

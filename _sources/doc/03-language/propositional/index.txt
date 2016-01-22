@@ -376,6 +376,7 @@ Or-Introduction1 (∨i2)
    :caption: **Or-Introduction2 (∨i2) Schematic Pattern**
    :name: or-intro2-pattern
 
+.. _or-elim:
 
 Or-Elimination (∨e)
 -------------------
@@ -471,6 +472,7 @@ Negation-Elimination (¬e)
    :caption: **Negation-Elimination (¬e) Schematic Pattern**
    :name: neg-elim-pattern
 
+.. _bottom-elim:
 
 ⊥-Elimination  (⊥e)
 -------------------
