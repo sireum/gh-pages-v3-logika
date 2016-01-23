@@ -884,6 +884,7 @@ while ``subst2`` substitutes ``E2`` with ``E1``.
    :caption: **Substitution2 (subst1) Schematic Pattern**
    :name: subst2-rule
 
+.. _summonings:
 
 Summonings
 ==========

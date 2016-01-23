@@ -81,11 +81,11 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
-<li><a class="reference internal" href="#using-sireum-binary-distribution">1.1. Using Sireum Binary Distribution</a><ul>
+<li><a class="reference internal" href="#using-sireum-v3-binary-distribution">1.1. Using Sireum v3 Binary Distribution</a><ul>
 <li><a class="reference internal" href="#installing-running-and-updating-logika">1.1.1. Installing, Running, and Updating Logika</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#using-sireum-source-distribution">1.2. Using Sireum Source Distribution</a><ul>
+<li><a class="reference internal" href="#using-sireum-v3-source-distribution">1.2. Using Sireum v3 Source Distribution</a><ul>
 <li><a class="reference internal" href="#prerequisites">1.2.1. Prerequisites</a><ul>
 <li><a class="reference internal" href="#mac-os-x">1.2.1.1. Mac OS X</a></li>
 <li><a class="reference internal" href="#linux">1.2.1.2. Linux</a></li>
@@ -135,7 +135,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -152,10 +152,10 @@ Sireum Logika Documentation
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Logika runs on x64 Mac OS X, Linux, and Windows operating systems
 (tested on OS X 10.11, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
-<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span>Using Sireum Binary Distribution</span></a> or
-<a class="reference internal" href="#using-source"><span>Using Sireum Source Distribution</span></a>.</p>
-<div class="section" id="using-sireum-binary-distribution">
-<span id="using-binary"></span><h2>1.1. Using Sireum Binary Distribution<a class="headerlink" href="#using-sireum-binary-distribution" title="Permalink to this headline">¶</a></h2>
+<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span>Using Sireum v3 Binary Distribution</span></a> or
+<a class="reference internal" href="#using-source"><span>Using Sireum v3 Source Distribution</span></a>.</p>
+<div class="section" id="using-sireum-v3-binary-distribution">
+<span id="using-binary"></span><h2>1.1. Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="installing-running-and-updating-logika">
 <span id="binary-installing-running"></span><h3>1.1.1. Installing, Running, and Updating Logika<a class="headerlink" href="#installing-running-and-updating-logika" title="Permalink to this headline">¶</a></h3>
 <p>First, download the binary distribution zip file for your platform
@@ -224,8 +224,8 @@ above instructions.</p>
 <p>Next, see <a class="reference internal" href="#logika-examples"><span>Verifying Examples</span></a>.</p>
 </div>
 </div>
-<div class="section" id="using-sireum-source-distribution">
-<span id="using-source"></span><h2>1.2. Using Sireum Source Distribution<a class="headerlink" href="#using-sireum-source-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-sireum-v3-source-distribution">
+<span id="using-source"></span><h2>1.2. Using Sireum v3 Source Distribution<a class="headerlink" href="#using-sireum-v3-source-distribution" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="prerequisites">
 <h3>1.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>On all systems, the following tools are required:
@@ -277,10 +277,12 @@ and the second command runs Sireum Logika from the local repository.</p>
 that it depends on, and then
 <a class="reference external" href="https://github.com/sireum/v3#building-and-testing-sireum-using-sbt">builds</a>
 and <a class="reference external" href="https://github.com/sireum/v3#assembling-sireum-jar">assembles</a>
-itself.</p>
+itself.
+If the build somehow fails, please see
+[troubleshooting](<a class="reference external" href="https://github.com/sireum/v3#troubleshooting">https://github.com/sireum/v3#troubleshooting</a>).</p>
 <p>The process may take a while depending on your internet connection speed and
-your machine&#8217;s computational prowess.
-When it finishes, Logika will display its usage information:</p>
+your machine&#8217;s computational prowess.</p>
+<p>When it finishes, Logika will display its usage information:</p>
 <div class="highlight-none"><div class="highlight"><pre>Sireum Logika -- A Natural Deduction Proof Checker
 ... for Propositional, Predicate, and Programming Logic
 
@@ -476,7 +478,6 @@ and
 <p class="first admonition-title">Note</p>
 <p class="last">All other options are ignored when the server mode is enabled.</p>
 </div>
-<hr class="docutils" />
 </div>
 </div>
 </div>

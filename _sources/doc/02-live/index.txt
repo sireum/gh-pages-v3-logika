@@ -24,7 +24,7 @@ Here is a screenshot:
 
 .. image:: syntax-message.png
    :align: center
-   :width: 80%
+   :width: 100%
 
 LIVE Features
 *************
@@ -58,16 +58,28 @@ LIVE features mimic the typical features one would expect in a modern IDE.
 LIVE Install
 ************
 
-**Requirement:** LIVE requires **IntelliJ 15**.
+Prerequisites
+=============
+
+LIVE requires `IntelliJ 15 <https://www.jetbrains.com/idea/download/>`__;
+please take a look at its system requirements and follow the installation instructions
+for your respective operating system.
 
 .. note::
 
+   In OS X, IntelliJ is shipped with a custom JDK that simplifies its installation.
+   In Linux and Windows, it requires JDK 1.6 or higher.
+   The ``sireum-v3`` directory (installed in :ref:`getting-started`)
+   contains a JDK 1.8 that can be used for running IntelliJ under ``sireum-v3/platform/java``;
+   to use that, set the ``JAVA_HOME`` environment variable to the absolute path of
+   ``sireum-v3/platform/java`` and add the absolute path of ``sireum-v3/platform/java/bin``
+   to the ``PATH`` environment variable.
 
+Installing Sireum v3 Plugin
+===========================
 
-   After installing/updating LIVE, please update Logika as well
-   (see :ref:`update`).
-
-This step is optional as opening any Logika files during :ref:`live-examples` will cause
+This step is optional as opening any Logika files retrieved during
+:ref:`live-examples` will cause
 IntelliJ to suggest you to install the Sireum v3 IntelliJ plugin.
 Thus, you can choose to skip directly to :ref:`live-examples`
 (but you might want to take a look at :ref:`optional-settings` first).
@@ -162,17 +174,32 @@ LIVE Update
 ***********
 
 IntelliJ will notify you whenever there is a newer version of LIVE.
-If accepted and LIVE is updated, you may also need to update Sireum v3's
-command-line interface (see :ref:`update`).
-LIVE tries to detect when Sireum v3 has not been updated and it would present
-a nice reminder that you need to update Sireum.
+If accepted and LIVE is updated, you may also need to update Sireum v3.
+
+Using Sireum v3 Binary Distribution
+===================================
+
+LIVE detects when there is a new version of Sireum v3 when IntelliJ
+is launched.
+In such case, it displays the following notification:
+
+.. image:: sireum-update.png
+   :width: 50%
+
+To update, see :ref:`binary-installing-running`.
+
+Using Sireum v3 Source Distribution
+===================================
+
+LIVE tries to detect when Sireum v3 has not been updated after
+LIVE is updated.
+In such case, it would present a one-time reminder that you need
+to update Sireum.
 
 .. image:: sireum-needs-updating.png
    :width: 30%
 
-(In the future, this might be changed to a more automatic approach, e.g.,
-by having LIVE to do the git pull and rebuild Sireum v3, or even removing
-the manual step of setting up Sireum v3 via command-line first.)
+For more information, see :ref:`source-update`.
 
 
 .. _live-examples:
@@ -483,20 +510,48 @@ Below are the additional settings for LIVE.
 
 ----
 
+.. |hintIcon| image:: logika-gutter-hint_dark.png
+
 * **Hint Generation**
 
   Verifying programs can be challenging.
   To help with the process, Logika can generate some hints on the kind
   of program state claims can be made.
   If the hint generation is enabled, LIVE will mark locations
-  where hints are available by using a bulb gutter editor icon.
-  If clicked, it will open a view that gives the before/pre and
+  where hints are available by using a |hintIcon| bulb gutter editor icon.
+  If clicked, it will open a view that presents the before/pre and
   after/post claims of the corresponding program location.
   For example,
 
   .. image:: live-hint.png
-     :scale: 75
+     :width: 100%
 
-  when the bulb gutter icon associated with ``a(3) = 5`` is clicked,
+  when the |hintIcon| bulb gutter icon associated with
+  ``a(3) = 5`` is clicked,
   LIVE opens a window on the right hand side of the editor that displays
   the available pre/post claims that can be used as premises.
+
+----
+
+.. |summoningIcon| image:: logika-gutter-summoning_dark.png
+
+* **Summoning Incriptions**
+
+  Logika :ref:`summons <summonings>` external tools (e.g., Z3) for
+  verifying the program when checking satisfiability is enabled, :ref:`prog-algebra`
+  or :ref:`prog-auto` are used, and/or :ref:`auto-mode` is enabled.
+
+  When incription is enabled, LIVE will mark locations where external tools are employed
+  by using a |summoningIcon| bolt gutter editor icon.
+  If clicked, it will open a view that presents the incantations used for the
+  corresponding summoning.
+  For `example <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/square-auto.logika>`__
+  (using :ref:`auto-mode`),
+
+  .. image:: live-summoning.png
+     :width: 100%
+
+  when the second |summoningIcon| bolt gutter icon associated with the
+  first invariant claim ``∀i (0 ..< x)  a(i) == a_in(i) * a_in(i)``,
+  LIVE opens a window on the right hand side of the editor that displays
+  the Z3 input to check validity of the loop invariant at the end of the method.

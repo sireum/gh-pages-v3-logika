@@ -28,8 +28,8 @@ There two ways one can install Logika: :ref:`using-binary` or
 
 .. _using-binary:
 
-Using Sireum Binary Distribution
-********************************
+Using Sireum v3 Binary Distribution
+***********************************
 
 .. _binary-installing-running:
 
@@ -97,8 +97,8 @@ Next, see :ref:`logika-examples`.
 
 .. _using-source:
 
-Using Sireum Source Distribution
-********************************
+Using Sireum v3 Source Distribution
+***********************************
 
 Prerequisites
 =============
@@ -158,9 +158,12 @@ that it depends on, and then
 `builds <https://github.com/sireum/v3#building-and-testing-sireum-using-sbt>`__
 and `assembles <https://github.com/sireum/v3#assembling-sireum-jar>`__
 itself.
+If the build somehow fails, please see
+[troubleshooting](https://github.com/sireum/v3#troubleshooting).
 
 The process may take a while depending on your internet connection speed and
 your machine's computational prowess.
+
 When it finishes, Logika will display its usage information:
 
 .. literalinclude:: logika-usage.txt
@@ -383,6 +386,3 @@ and
 .. note::
 
    All other options are ignored when the server mode is enabled.
-
-
-----
