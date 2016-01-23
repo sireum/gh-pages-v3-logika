@@ -19,7 +19,8 @@ IntelliJ-based Logika Integrated Verification Environment (LIVE)
 ################################################################
 
 To aid the development of Logika proofs, you can use
-the Sireum v3 IntelliJ plugin that includes LIVE.
+the `Sireum v3 IntelliJ plugin <https://plugins.jetbrains.com/plugin/8148>`__
+that includes LIVE.
 Here is a screenshot:
 
 .. image:: syntax-message.png
