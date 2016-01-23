@@ -101,8 +101,21 @@
 <li><a class="reference internal" href="#live-actions">2.6. LIVE Actions</a></li>
 <li><a class="reference internal" href="#live-shortcuts">2.7. LIVE Shortcuts</a></li>
 <li><a class="reference internal" href="#sireum-live-configuration">2.8. Sireum LIVE Configuration</a><ul>
-<li><a class="reference internal" href="#sireum-settings">2.8.1. Sireum Settings</a></li>
-<li><a class="reference internal" href="#live-settings">2.8.2. LIVE Settings</a></li>
+<li><a class="reference internal" href="#sireum-settings">2.8.1. Sireum Settings</a><ul>
+<li><a class="reference internal" href="#sireum-v3-directory">2.8.1.1. Sireum v3 Directory</a></li>
+<li><a class="reference internal" href="#vm-arguments">2.8.1.2. VM Arguments</a></li>
+<li><a class="reference internal" href="#environment-variables">2.8.1.3. Environment Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#live-settings">2.8.2. LIVE Settings</a><ul>
+<li><a class="reference internal" href="#syntax-highlighting">2.8.2.1. Syntax Highlighting</a></li>
+<li><a class="reference internal" href="#file-extensions">2.8.2.2. File Extensions</a></li>
+<li><a class="reference internal" href="#effects">2.8.2.3. Effects</a></li>
+<li><a class="reference internal" href="#background-analysis-and-idle-time">2.8.2.4. Background Analysis and Idle Time</a></li>
+<li><a class="reference internal" href="#hint-generation">2.8.2.5. Hint Generation</a></li>
+<li><a class="reference internal" href="#summoning-incriptions">2.8.2.6. Summoning Incriptions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -513,19 +526,16 @@ the expected format.</p>
 <div class="section" id="sireum-settings">
 <h3>2.8.1. Sireum Settings<a class="headerlink" href="#sireum-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/sireum-settings.png"><img alt="../../_images/sireum-settings.png" src="../../_images/sireum-settings.png" style="width: 647.4px; height: 252.0px;" /></a>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Sireum v3 Directory</strong></p>
+<div class="section" id="sireum-v3-directory">
+<h4>2.8.1.1. Sireum v3 Directory<a class="headerlink" href="#sireum-v3-directory" title="Permalink to this headline">¶</a></h4>
 <p>This setting can be used to (re-) enter the Sireum v3 directory, either
 by typing the absolute path to the directory or by using a file browser dialog
 that can be opened by clicking the <code class="docutils literal"><span class="pre">...</span></code> button.</p>
 <p>The entered path is checked to see whether it contains a working Sireum v3
 installation.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>VM Arguments</strong></p>
+</div>
+<div class="section" id="vm-arguments">
+<h4>2.8.1.2. VM Arguments<a class="headerlink" href="#vm-arguments" title="Permalink to this headline">¶</a></h4>
 <p>Sireum tools such as Logika does not run directly inside the Java Virtual Machine
 (VM) instance that IntelliJ runs on.
 Instead, a VM is spawned, for example, for the Logika server in the background.</p>
@@ -535,11 +545,9 @@ By default, no VM arguments are specified.</p>
 <p>In the case where invalid VM arguments are specified, it would prevent
 spawning the Logika server; the plugin detects this situation and will revert
 the configuration to previous settings.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Environment Variables</strong></p>
+</div>
+<div class="section" id="environment-variables">
+<h4>2.8.1.3. Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h4>
 <p>Additional environment variables can be specified in the text area.
 By default, <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> is set to the Sireum v3 directory and cannot be overriden;
 it is required by Sireum tools to work properly
@@ -547,36 +555,29 @@ it is required by Sireum tools to work properly
 <p>The expected format is a key-value pair separated by an equal sign (<code class="docutils literal"><span class="pre">=</span></code>) per line.
 The key has to satisfy the following regular expression <code class="docutils literal"><span class="pre">[a-zA-Z_][a-zA-Z0-9_]*</span></code>
 (i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).</p>
-</li>
-</ul>
 </div>
-<hr class="docutils" />
+</div>
 <div class="section" id="live-settings">
 <h3>2.8.2. LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 590.4px; height: 235.79999999999998px;" /></a>
 <p>Some of the options such as auto mode, checking satisfiability, and timeout are
 described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span>Logika Command-Line Configuration</span></a>.
 Below are the additional settings for LIVE.</p>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Syntax Highlighting</strong></p>
+<div class="section" id="syntax-highlighting">
+<h4>2.8.2.1. Syntax Highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
 <p>The checkbox indicates whether LIVE should syntax highlight file documents.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>File Extensions</strong></p>
+</div>
+<div class="section" id="file-extensions">
+<h4>2.8.2.2. File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this headline">¶</a></h4>
 <p>The text field provides a way to configure which file types
 (based on their extension name) that LIVE actions should be enabled.</p>
 <p>By default, only Scala Worksheet <code class="docutils literal"><span class="pre">.sc</span></code> files are configured.
 One can add other files such as <code class="docutils literal"><span class="pre">.scala</span></code> and <code class="docutils literal"><span class="pre">.txt</span></code> files.</p>
 <p>The expected format is the file extension names separated by semicolon
 (whitespaces are ignored).</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul id="effect">
-<li><p class="first"><strong>Effects</strong></p>
+</div>
+<div class="section" id="effects">
+<span id="effect"></span><h4>2.8.2.3. Effects<a class="headerlink" href="#effects" title="Permalink to this headline">¶</a></h4>
 <p>This underwave effect checkbox controls how location-aware errors and
 warnings are marked in the editor.
 When selected, it uses the (more subtle) underwave effect typically used by
@@ -590,11 +591,9 @@ of the editor to help accentuate the marking.</p>
 indicates the marking.</p>
 <p>Mouse hovering on any of the marker visualization will show a tooltip
 of the marker message.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Background Analysis and Idle Time</strong></p>
+</div>
+<div class="section" id="background-analysis-and-idle-time">
+<h4>2.8.2.4. Background Analysis and Idle Time<a class="headerlink" href="#background-analysis-and-idle-time" title="Permalink to this headline">¶</a></h4>
 <p>This setting is used to turn on/off the Logika automatic background
 analysis as file documents are modified.</p>
 <p>When turned off, the idle time is disabled (ignored), and one has to
@@ -602,11 +601,9 @@ explicitly invoke Logika manually to verify file documents.</p>
 <p>If selected, the idle time can be configured on how many milliseconds
 LIVE should wait after a file document is modified before sending it
 to the background Logika server for analysis.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Hint Generation</strong></p>
+</div>
+<div class="section" id="hint-generation">
+<h4>2.8.2.5. Hint Generation<a class="headerlink" href="#hint-generation" title="Permalink to this headline">¶</a></h4>
 <p>Verifying programs can be challenging.
 To help with the process, Logika can generate some hints on the kind
 of program state claims can be made.
@@ -615,16 +612,14 @@ where hints are available by using a <img alt="hintIcon" src="../../_images/logi
 If clicked, it will open a view that presents the before/pre and
 after/post claims of the corresponding program location.
 For example,</p>
-<a class="reference internal image-reference" href="../../_images/live-hint.png"><img alt="../../_images/live-hint.png" src="../../_images/live-hint.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/live-hint.png"><img alt="../../_images/live-hint.png" src="../../_images/live-hint.png" style="width: 1178.0px; height: 294.0px;" /></a>
 <p>when the <img alt="hintIcon" src="../../_images/logika-gutter-hint_dark.png" /> bulb gutter icon associated with
 <code class="docutils literal"><span class="pre">a(3)</span> <span class="pre">=</span> <span class="pre">5</span></code> is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 the available pre/post claims that can be used as premises.</p>
-</li>
-</ul>
-<hr class="docutils" />
-<ul>
-<li><p class="first"><strong>Summoning Incriptions</strong></p>
+</div>
+<div class="section" id="summoning-incriptions">
+<h4>2.8.2.6. Summoning Incriptions<a class="headerlink" href="#summoning-incriptions" title="Permalink to this headline">¶</a></h4>
 <p>Logika <a class="reference internal" href="../03-language/programming/index.html#summonings"><span>summons</span></a> external tools (e.g., Z3) for
 verifying the program when checking satisfiability is enabled, <a class="reference internal" href="../03-language/programming/index.html#prog-algebra"><span>Algebra (algebra)</span></a>
 or <a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>Auto (auto)</span></a> are used, and/or <a class="reference internal" href="../01-getting-started/index.html#auto-mode"><span>Auto Mode</span></a> is enabled.</p>
@@ -639,8 +634,7 @@ For <a class="reference external" href="https://github.com/sireum/v3-logika-exam
 first invariant claim <code class="docutils literal"><span class="pre">∀i</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">x)</span>&nbsp; <span class="pre">a(i)</span> <span class="pre">==</span> <span class="pre">a_in(i)</span> <span class="pre">*</span> <span class="pre">a_in(i)</span></code>,
 LIVE opens a window on the right hand side of the editor that displays
 the Z3 input to check validity of the loop invariant at the end of the method.</p>
-</li>
-</ul>
+</div>
 </div>
 </div>
 </div>

@@ -398,47 +398,43 @@ Sireum Settings
 .. image:: sireum-settings.png
    :scale: 60
 
-----
+Sireum v3 Directory
+-------------------
 
-* **Sireum v3 Directory**
+This setting can be used to (re-) enter the Sireum v3 directory, either
+by typing the absolute path to the directory or by using a file browser dialog
+that can be opened by clicking the ``...`` button.
 
-  This setting can be used to (re-) enter the Sireum v3 directory, either
-  by typing the absolute path to the directory or by using a file browser dialog
-  that can be opened by clicking the ``...`` button.
+The entered path is checked to see whether it contains a working Sireum v3
+installation.
 
-  The entered path is checked to see whether it contains a working Sireum v3
-  installation.
+VM Arguments
+------------
 
-----
+Sireum tools such as Logika does not run directly inside the Java Virtual Machine
+(VM) instance that IntelliJ runs on.
+Instead, a VM is spawned, for example, for the Logika server in the background.
 
-* **VM Arguments**
+This setting can be used to provide some VM arguments when spawning the VM.
+Each argument is separated by space(s) and each should start with a dash (``-``).
+By default, no VM arguments are specified.
 
-  Sireum tools such as Logika does not run directly inside the Java Virtual Machine
-  (VM) instance that IntelliJ runs on.
-  Instead, a VM is spawned, for example, for the Logika server in the background.
+In the case where invalid VM arguments are specified, it would prevent
+spawning the Logika server; the plugin detects this situation and will revert
+the configuration to previous settings.
 
-  This setting can be used to provide some VM arguments when spawning the VM.
-  Each argument is separated by space(s) and each should start with a dash (``-``).
-  By default, no VM arguments are specified.
 
-  In the case where invalid VM arguments are specified, it would prevent
-  spawning the Logika server; the plugin detects this situation and will revert
-  the configuration to previous settings.
+Environment Variables
+---------------------
 
-----
+Additional environment variables can be specified in the text area.
+By default, ``SIREUM_HOME`` is set to the Sireum v3 directory and cannot be overriden;
+it is required by Sireum tools to work properly
+(e.g., it is how Logika finds where Z3 is installed).
 
-* **Environment Variables**
-
-  Additional environment variables can be specified in the text area.
-  By default, ``SIREUM_HOME`` is set to the Sireum v3 directory and cannot be overriden;
-  it is required by Sireum tools to work properly
-  (e.g., it is how Logika finds where Z3 is installed).
-
-  The expected format is a key-value pair separated by an equal sign (``=``) per line.
-  The key has to satisfy the following regular expression ``[a-zA-Z_][a-zA-Z0-9_]*``
-  (i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).
-
-----
+The expected format is a key-value pair separated by an equal sign (``=``) per line.
+The key has to satisfy the following regular expression ``[a-zA-Z_][a-zA-Z0-9_]*``
+(i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).
 
 LIVE Settings
 =============
@@ -450,108 +446,103 @@ Some of the options such as auto mode, checking satisfiability, and timeout are
 described in :ref:`cli-configuration`.
 Below are the additional settings for LIVE.
 
-----
 
-* **Syntax Highlighting**
+Syntax Highlighting
+-------------------
 
-  The checkbox indicates whether LIVE should syntax highlight file documents.
+The checkbox indicates whether LIVE should syntax highlight file documents.
 
-----
+File Extensions
+---------------
 
-* **File Extensions**
+The text field provides a way to configure which file types
+(based on their extension name) that LIVE actions should be enabled.
 
-  The text field provides a way to configure which file types
-  (based on their extension name) that LIVE actions should be enabled.
+By default, only Scala Worksheet ``.sc`` files are configured.
+One can add other files such as ``.scala`` and ``.txt`` files.
 
-  By default, only Scala Worksheet ``.sc`` files are configured.
-  One can add other files such as ``.scala`` and ``.txt`` files.
-
-  The expected format is the file extension names separated by semicolon
-  (whitespaces are ignored).
-
-----
+The expected format is the file extension names separated by semicolon
+(whitespaces are ignored).
 
 .. _effect:
 
-* **Effects**
+Effects
+-------
 
-  This underwave effect checkbox controls how location-aware errors and
-  warnings are marked in the editor.
-  When selected, it uses the (more subtle) underwave effect typically used by
-  IDEs to indicate ill-formed programs such as the following (compare it
-  with the LIVE screenshot at :ref:`the top of this page <live>` that does
-  not use the underwave effect):
+This underwave effect checkbox controls how location-aware errors and
+warnings are marked in the editor.
+When selected, it uses the (more subtle) underwave effect typically used by
+IDEs to indicate ill-formed programs such as the following (compare it
+with the LIVE screenshot at :ref:`the top of this page <live>` that does
+not use the underwave effect):
 
-  .. image:: error-underwave.png
-     :scale: 70
+.. image:: error-underwave.png
+   :scale: 70
 
-  While more subtle, it comes with a red gutter icon on left hand side
-  of the editor to help accentuate the marking.
+While more subtle, it comes with a red gutter icon on left hand side
+of the editor to help accentuate the marking.
 
-  Regardless of which one, the error stripe on the right hand side also
-  indicates the marking.
+Regardless of which one, the error stripe on the right hand side also
+indicates the marking.
 
-  Mouse hovering on any of the marker visualization will show a tooltip
-  of the marker message.
+Mouse hovering on any of the marker visualization will show a tooltip
+of the marker message.
 
-----
+Background Analysis and Idle Time
+---------------------------------
 
-* **Background Analysis and Idle Time**
+This setting is used to turn on/off the Logika automatic background
+analysis as file documents are modified.
 
-  This setting is used to turn on/off the Logika automatic background
-  analysis as file documents are modified.
+When turned off, the idle time is disabled (ignored), and one has to
+explicitly invoke Logika manually to verify file documents.
 
-  When turned off, the idle time is disabled (ignored), and one has to
-  explicitly invoke Logika manually to verify file documents.
+If selected, the idle time can be configured on how many milliseconds
+LIVE should wait after a file document is modified before sending it
+to the background Logika server for analysis.
 
-  If selected, the idle time can be configured on how many milliseconds
-  LIVE should wait after a file document is modified before sending it
-  to the background Logika server for analysis.
-
-----
+Hint Generation
+---------------
 
 .. |hintIcon| image:: logika-gutter-hint_dark.png
 
-* **Hint Generation**
+Verifying programs can be challenging.
+To help with the process, Logika can generate some hints on the kind
+of program state claims can be made.
+If the hint generation is enabled, LIVE will mark locations
+where hints are available by using a |hintIcon| bulb gutter editor icon.
+If clicked, it will open a view that presents the before/pre and
+after/post claims of the corresponding program location.
+For example,
 
-  Verifying programs can be challenging.
-  To help with the process, Logika can generate some hints on the kind
-  of program state claims can be made.
-  If the hint generation is enabled, LIVE will mark locations
-  where hints are available by using a |hintIcon| bulb gutter editor icon.
-  If clicked, it will open a view that presents the before/pre and
-  after/post claims of the corresponding program location.
-  For example,
+.. image:: live-hint.png
+   :scale: 100
 
-  .. image:: live-hint.png
-     :width: 100%
+when the |hintIcon| bulb gutter icon associated with
+``a(3) = 5`` is clicked,
+LIVE opens a window on the right hand side of the editor that displays
+the available pre/post claims that can be used as premises.
 
-  when the |hintIcon| bulb gutter icon associated with
-  ``a(3) = 5`` is clicked,
-  LIVE opens a window on the right hand side of the editor that displays
-  the available pre/post claims that can be used as premises.
-
-----
+Summoning Incriptions
+---------------------
 
 .. |summoningIcon| image:: logika-gutter-summoning_dark.png
 
-* **Summoning Incriptions**
+Logika :ref:`summons <summonings>` external tools (e.g., Z3) for
+verifying the program when checking satisfiability is enabled, :ref:`prog-algebra`
+or :ref:`prog-auto` are used, and/or :ref:`auto-mode` is enabled.
 
-  Logika :ref:`summons <summonings>` external tools (e.g., Z3) for
-  verifying the program when checking satisfiability is enabled, :ref:`prog-algebra`
-  or :ref:`prog-auto` are used, and/or :ref:`auto-mode` is enabled.
+When incription is enabled, LIVE will mark locations where external tools are employed
+by using a |summoningIcon| bolt gutter editor icon.
+If clicked, it will open a view that presents the incantations used for the
+corresponding summoning.
+For `example <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/square-auto.logika>`__
+(using :ref:`auto-mode`),
 
-  When incription is enabled, LIVE will mark locations where external tools are employed
-  by using a |summoningIcon| bolt gutter editor icon.
-  If clicked, it will open a view that presents the incantations used for the
-  corresponding summoning.
-  For `example <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/square-auto.logika>`__
-  (using :ref:`auto-mode`),
+.. image:: live-summoning.png
+   :width: 100%
 
-  .. image:: live-summoning.png
-     :width: 100%
-
-  when the second |summoningIcon| bolt gutter icon associated with the
-  first invariant claim ``∀i (0 ..< x)  a(i) == a_in(i) * a_in(i)``,
-  LIVE opens a window on the right hand side of the editor that displays
-  the Z3 input to check validity of the loop invariant at the end of the method.
+when the second |summoningIcon| bolt gutter icon associated with the
+first invariant claim ``∀i (0 ..< x)  a(i) == a_in(i) * a_in(i)``,
+LIVE opens a window on the right hand side of the editor that displays
+the Z3 input to check validity of the loop invariant at the end of the method.
