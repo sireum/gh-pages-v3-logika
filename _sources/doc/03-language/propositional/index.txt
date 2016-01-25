@@ -401,11 +401,11 @@ their corresponding sub-proof.
 However, ``Y1K`` and ``Y2K`` do not have to be the last proof
 step. This allows the same sub-proofs to be used to "extract"
 different claims (for example, see
-`logika-examples/src/programming/conditional-1.logika's lines#43-44 <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/conditional-1.logika#L43-L44>`__;
+`logika-examples/src/programming/conditional-1.logika's lines#43-44 <https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L43-L44>`__;
 note that "ore" is an alias for ∨e).
 
 Justification of
-`conditional-1.logika's line#44 <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/conditional-1.logika#L44>`__
+`conditional-1.logika's line#44 <https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L44>`__
 leverages the following Logika alternative pattern for ∨e.
 
 .. literalinclude:: or-elim-alt-pattern.txt

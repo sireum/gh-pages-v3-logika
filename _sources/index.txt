@@ -34,7 +34,7 @@ Home
            <div class="panel-body">
 
 `Sireum <http://sireum.org>`__ Logika is an
-`open source <https://github.com/sireum/v3/tree/master/logika>`__
+`open source <https://github.com/sireum/v3>`__
 pedagogical tool being developed at
 `SAnToS Laboratory <http://santoslab.org>`__,
 `Kansas State University <http://k-state.edu>`_

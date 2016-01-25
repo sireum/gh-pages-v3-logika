@@ -140,7 +140,7 @@ even inside proof context (e.g., proof steps have to be separated by newlines).
 For clarity sake, instead of explicitly listing newlines in the Logika context-free grammars
 that go beyond Scala's, special situations are described in the relevant sections.
 Interested readers are referred to the full
-`Logika's ANTLR4 grammar <https://github.com/sireum/v3/blob/master/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4>`__
+`Logika's ANTLR4 grammar <https://github.com/sireum/v3/blob/release/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4>`__
 (``NL`` token) if such details are preferred.
 (A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
 to implement Scala's newline rules, thus, it is not directly specified in the ANTLR4 grammar.)

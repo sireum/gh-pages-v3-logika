@@ -377,11 +377,11 @@ the :ref:`live`.
 Each request/respond message is in the (restricted)
 form of a line JSON serialization string whose schema are
 derived from the Scala case classes defined in the
-`org.sireum.logika.message <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/Message.scala>`__
+`org.sireum.logika.message <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/Message.scala>`__
 package; the actual serialization mechanisms are defined in
-`InputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/InputMessageJson.scala>`__
+`InputMessageJson <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/InputMessageJson.scala>`__
 and
-`OutputMessageJson <https://github.com/sireum/v3/blob/master/logika/shared/src/main/scala/org/sireum/logika/message/OutputMessageJson.scala>`__.
+`OutputMessageJson <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/OutputMessageJson.scala>`__.
 
 .. note::
 

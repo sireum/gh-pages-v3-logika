@@ -11,7 +11,7 @@ Sireum Logika Documentation
 ###########################
 
 The Sireum Logika tool is distributed under the
-`Simplified BSD <https://github.com/sireum/v3/blob/master/license.md>`__
+`Simplified BSD <https://github.com/sireum/v3/blob/release/license.md>`__
 License.
 
 ----

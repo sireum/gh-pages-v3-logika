@@ -170,6 +170,8 @@ Follow the
 and then set `IntelliJ's editor font <https://www.jetbrains.com/idea/help/configuring-colors-and-fonts.html>`__
 to use it.
 
+Another font (that works well in Mac OS X, Linux, and Windows) is
+`Meslo <https://github.com/andreberg/Meslo-Font>`__
 
 LIVE Update
 ***********
@@ -537,7 +539,7 @@ When incription is enabled, LIVE will mark locations where external tools are em
 by using a |summoningIcon| bolt gutter editor icon.
 If clicked, it will open a view that presents the incantations used for the
 corresponding summoning.
-For `example <https://github.com/sireum/v3-logika-examples/blob/master/src/programming/square-auto.logika>`__
+For `example <https://github.com/sireum/v3-logika-examples/blob/release/src/programming/square-auto.logika>`__
 (using :ref:`auto-mode`),
 
 .. image:: live-summoning.png
