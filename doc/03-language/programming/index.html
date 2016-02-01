@@ -793,8 +793,7 @@ that result in values that do not fit into 32-bit such
 as <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal an error; this is because
 such (static) expressions can be optimized to 32-bit integer
 values when compiled, but they silently overflows/underflows.</p>
-<p>Moreover, in the programming context,
-Logika rejects <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> where
+<p>Moreover, Logika rejects <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> where
 the left-hand side is a 32-bit static expression, and the
 right hand side is not.
 For example, <code class="docutils literal"><span class="pre">5</span> <span class="pre">==</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">x</span></code> are not allowed;
@@ -802,7 +801,7 @@ instead, they have to be written as <code class="docutils literal"><span class="
 respectively.
 (This is due to Scala&#8217;s <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> that accept any
 type value, which prevents implicit type conversion to <code class="docutils literal"><span class="pre">Z</span></code>.)
-In proof context, one can use the alternative forms for <code class="docutils literal"><span class="pre">==</span></code>
+In proof context, one can use the alternative forms of <code class="docutils literal"><span class="pre">==</span></code>
 (<code class="docutils literal"><span class="pre">=</span></code>) and <code class="docutils literal"><span class="pre">!=</span></code> (<code class="docutils literal"><span class="pre">≠</span></code>) such as <code class="docutils literal"><span class="pre">5</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">≠</span> <span class="pre">x</span></code>.
 Note that 32-bit static expressions on both sides are allowed
 such as <code class="docutils literal"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">0</span></code>.</p>
