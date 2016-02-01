@@ -26,6 +26,12 @@ Logika runs on x64 Mac OS X, Linux, and Windows operating systems
 There two ways one can install Logika: :ref:`using-binary` or
 :ref:`using-source`.
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="http://files.sireum.org/media/logika-cli.mp4" type="video/mp4">
+   </video>
+
 .. _using-binary:
 
 Using Sireum v3 Binary Distribution

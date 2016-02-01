@@ -59,6 +59,12 @@ LIVE features mimic the typical features one would expect in a modern IDE.
 LIVE Install
 ************
 
+.. raw:: html
+
+   <video width="100%" controls>
+     <source src="http://files.sireum.org/media/logika-ive.mp4" type="video/mp4">
+   </video>
+
 Prerequisites
 =============
 
@@ -68,13 +74,19 @@ for your respective operating system.
 
 .. note::
 
-   In OS X, IntelliJ is shipped with a custom JDK that simplifies its installation.
-   In Linux and Windows, it requires JDK 1.6 or higher.
+   For OS X and Windows, IntelliJ is shipped with a custom JDK that simplifies its installation.
+   For Linux, it requires JDK 1.6 or higher.
+
    The ``sireum-v3`` directory (installed in :ref:`getting-started`)
    contains a JDK 1.8 that can be used for running IntelliJ under ``sireum-v3/platform/java``;
    to use that, set the ``JAVA_HOME`` environment variable to the absolute path of
    ``sireum-v3/platform/java`` and add the absolute path of ``sireum-v3/platform/java/bin``
    to the ``PATH`` environment variable.
+
+.. important::
+
+   In Windows, you need to add ``-Dfile.encoding=UTF-8`` in IntelliJ
+   `.vmoption <https://www.jetbrains.com/idea/help/tuning-intellij-idea.html#copy1>`__ file.
 
 Installing Sireum v3 Plugin
 ===========================

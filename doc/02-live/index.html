@@ -196,20 +196,27 @@ for any editor file types.</li>
 <hr class="docutils" />
 <div class="section" id="live-install">
 <h2>2.2. LIVE Install<a class="headerlink" href="#live-install" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="prerequisites">
+<video width="100%" controls>
+  <source src="http://files.sireum.org/media/logika-ive.mp4" type="video/mp4">
+</video><div class="section" id="prerequisites">
 <h3>2.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>LIVE requires <a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ 15</a>;
 please take a look at its system requirements and follow the installation instructions
 for your respective operating system.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In OS X, IntelliJ is shipped with a custom JDK that simplifies its installation.
-In Linux and Windows, it requires JDK 1.6 or higher.
-The <code class="docutils literal"><span class="pre">sireum-v3</span></code> directory (installed in <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span>Getting Started</span></a>)
+<p>For OS X and Windows, IntelliJ is shipped with a custom JDK that simplifies its installation.
+For Linux, it requires JDK 1.6 or higher.</p>
+<p class="last">The <code class="docutils literal"><span class="pre">sireum-v3</span></code> directory (installed in <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span>Getting Started</span></a>)
 contains a JDK 1.8 that can be used for running IntelliJ under <code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code>;
 to use that, set the <code class="docutils literal"><span class="pre">JAVA_HOME</span></code> environment variable to the absolute path of
 <code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code> and add the absolute path of <code class="docutils literal"><span class="pre">sireum-v3/platform/java/bin</span></code>
 to the <code class="docutils literal"><span class="pre">PATH</span></code> environment variable.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">In Windows, you need to add <code class="docutils literal"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
+<a class="reference external" href="https://www.jetbrains.com/idea/help/tuning-intellij-idea.html#copy1">.vmoption</a> file.</p>
 </div>
 </div>
 <div class="section" id="installing-sireum-v3-plugin">
