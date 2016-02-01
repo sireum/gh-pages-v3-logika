@@ -493,7 +493,9 @@ For example, ``5 == x`` and ``5 != x`` are not allowed;
 instead, they have to be written as ``x == 5`` and ``x != 5``,
 respectively.
 (This is due to Scala's ``==`` and ``!=`` that accept any
-type value, which prevents implicit type conversion to ``Z``.)
+type value, which
+`prevents implicit type conversion <http://stackoverflow.com/questions/3565456/scala-implicit-type-conversion-and>`__
+to ``Z``.)
 In proof context, one can use the alternative forms of ``==``
 (``=``) and ``!=`` (``≠``) such as ``5 = x`` and ``5 ≠ x``.
 Note that 32-bit static expressions on both sides are allowed
