@@ -218,7 +218,7 @@ as an `IntelliJ project <https://www.jetbrains.com/idea/help/opening-reopening-a
 If this is your first time opening the project, you need to
 `configure the project SDK <https://www.jetbrains.com/idea/help/configuring-global-project-and-module-sdks.html>`__
 (note: the SDK Type should be Java SDK), and point it to the ``sireum-v3/platform/java`` directory
-(which was created during the process of :ref:`installing-logika`).
+(which was created during the process of :ref:` installing Logika <getting-started>`).
 
 Opening any of the ``.logika`` files would:
 
@@ -234,7 +234,7 @@ Opening any of the ``.logika`` files would:
 
 * Cause LIVE to ask for the Sireum v3 installation directory (if this is the first time).
 
-  Just point it to ``sireum-v3`` (see :ref:`installing-logika`).
+  Just point it to ``sireum-v3`` (see :ref:`getting-started`).
 
   If LIVE cannot confirm that the selected directory contains a working Sireum v3
   installation, it will display the following:

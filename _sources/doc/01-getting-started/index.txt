@@ -37,7 +37,7 @@ Installing, Running, and Updating Logika
 ========================================
 
 First, download the binary distribution zip file for your platform
-and uncompress it:
+and uncompress it (*in a directory whose path does not contain whitespaces*):
 
 * `OS X <http://files.sireum.org/sireum-v3-mac64.zip>`__
 
@@ -143,7 +143,8 @@ First, open MSYS2 ``bash`` shell from the Windows start menu's MSYS2 64bit group
 Installing and Running Logika
 =============================
 
-To install Logika, enter the following commands under ``bash``::
+To install Logika, enter the following commands under ``bash``
+(*in a directory whose path does not contain whitespaces*)::
 
    git clone https://github.com/sireum/v3.git sireum-v3
    sireum-v3/sireum logika

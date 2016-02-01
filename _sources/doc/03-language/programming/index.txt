@@ -483,8 +483,22 @@ Logika detects the erroneous situation when
 It also detects expressions involving 32-bit integer literal
 that result in values that do not fit into 32-bit such
 as ``1 + 2147483647`` and signal an error; this is because
-such expressions can be optimized to 32-bit integer values
-when compiled, but they silently overflows/underflows.
+such (static) expressions can be optimized to 32-bit integer
+values when compiled, but they silently overflows/underflows.
+
+Moreover, in the programming context,
+Logika rejects ``==`` and ``!=`` where
+the left-hand side is a 32-bit static expression, and the
+right hand side is not.
+For example, ``5 == x`` and ``5 != x`` are not allowed;
+instead, they have to be written as ``x == 5`` and ``x != 5``,
+respectively.
+(This is due to Scala's ``==`` and ``!=`` that accept any
+type value, which prevents implicit type conversion to ``Z``.)
+In proof context, one can use the alternative forms for ``==``
+(``=``) and ``!=`` (``≠``) such as ``5 = x`` and ``5 ≠ x``.
+Note that 32-bit static expressions on both sides are allowed
+such as ``5 != 0``.
 
 The ``ZS(`` … ``)`` literal form is used to create a ``ZS``
 object whose elements are listed as arguments.
