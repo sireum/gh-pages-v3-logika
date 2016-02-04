@@ -117,7 +117,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -335,7 +335,7 @@ We might embed the above assignment equations into a function, like this:</p>
 Now, every time we must manufacture a <code class="docutils literal"><span class="pre">MyGate</span></code> for a chip, we use the name,
 <code class="docutils literal"><span class="pre">MyGate</span></code>.
 Here is an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># say that the inputs to this circuit are  X, Y, and Z,  and the output is  OUT:</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># say that the inputs to this circuit are  X, Y, and Z,  and the output is  OUT:</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">MyGate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">MyGate</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
 <span class="n">OUT</span> <span class="o">=</span> <span class="o">~</span><span class="n">N</span>
@@ -398,7 +398,7 @@ We can define the adder, <code class="docutils literal"><span class="pre">ADD4</
    <span class="sd">&quot;&quot;&quot;ADD4  reads the t-f values in arrays/registers P and Q and deposits</span>
 <span class="sd">      its answer into a register, R, that holds the sum of P and Q.&quot;&quot;&quot;</span>
 
-   <span class="n">R</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>   <span class="c"># no carry when we start</span>
+   <span class="n">R</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># no carry when we start</span>
    <span class="n">C3</span> <span class="o">=</span> <span class="n">CARRY</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 
    <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="n">C3</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -407,7 +407,7 @@ We can define the adder, <code class="docutils literal"><span class="pre">ADD4</
    <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="n">C2</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
    <span class="n">C1</span> <span class="o">=</span> <span class="n">CARRY</span><span class="p">(</span><span class="n">C2</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-   <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c"># and we lose (forget) the carry bit</span>
+   <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ADDONE</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># and we lose (forget) the carry bit</span>
 </pre></div>
 </div>
 <p>We can try it:</p>
@@ -425,7 +425,7 @@ connection points to alter the values in the registers&#8217; cells.</p>
 <p>A true hardware description language would let us use loop code to define the
 adder&#8217;s wiring.
 Here is a coding for an 8-bit adder that uses a loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">size</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c"># how many bits are held by a register</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">size</span> <span class="o">=</span> <span class="mi">8</span>   <span class="c1"># how many bits are held by a register</span>
 
 <span class="k">def</span> <span class="nf">ADD</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
    <span class="sd">&quot;&quot;&quot;ADD  reads the t-f values in registers P and Q and deposits the</span>
