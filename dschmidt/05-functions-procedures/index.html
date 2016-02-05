@@ -130,7 +130,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+    <div class="col-md-12">
       
   <br/>
 <font color="darkgray">
@@ -158,14 +158,14 @@ it has inputs, namely the arguments assigned to its parameters, and
 it has outputs, namely the information returned as the function&#8217;s answer.
 It acts like a logic gate or chip, with &#8220;input wires&#8221; and &#8220;output wires&#8221;.</p>
 <p>Here is an example that shows the format we use for writing a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>              <span class="c1"># HEADER LINE : LISTS NAME AND PARAMETERS</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>              <span class="c"># HEADER LINE : LISTS NAME AND PARAMETERS</span>
     <span class="sd">&quot;&quot;&quot;recip  computes the reciprocal for  n&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre   n != 0          # PRECONDITION : REQUIRED PROPERTY OF ARGUMENTS</span>
 <span class="sd">      post  ans == 1.0 / n  # POSTCONDITION : THE GENERATED KNOWLEDGE</span>
 <span class="sd">      return ans            # VARIABLE USED TO RETURN THE RESULT }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ans</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">n</span>           <span class="c1"># BODY  (no assignment to parameter  n  allowed)</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">n</span>           <span class="c"># BODY  (no assignment to parameter  n  allowed)</span>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
@@ -219,8 +219,8 @@ Once again, for this specification:</p>
 <span class="sd">      2. a != 0              algebra 1 }    # this proves  recip&#39;s  precondition</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-    <span class="sd">&quot;&quot;&quot;{ 1.   b == 1.0 / a   premise  }&quot;&quot;&quot;</span>  <span class="c1"># in return, we presume its postcondition</span>
-    <span class="k">print</span> <span class="s2">&quot;the reciprocal of&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">b</span>
+    <span class="sd">&quot;&quot;&quot;{ 1.   b == 1.0 / a   premise  }&quot;&quot;&quot;</span>  <span class="c"># in return, we presume its postcondition</span>
+    <span class="k">print</span> <span class="s">&quot;the reciprocal of&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">&quot;is&quot;</span><span class="p">,</span> <span class="n">b</span>
 <span class="k">else</span> <span class="p">:</span>
     <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
@@ -235,7 +235,7 @@ function&#8217;s answer does not appear in the function&#8217;s arguments</em>, 
 argument to <code class="docutils literal"><span class="pre">recip</span></code> with the <code class="docutils literal"><span class="pre">b</span></code> in the answer.</p>
 <p>In contrast, we cannot presume <code class="docutils literal"><span class="pre">recip</span></code>&#8216;s postcondition in this situation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
-<span class="c1"># We do not know if  x  is nonzero....</span>
+<span class="c"># We do not know if  x  is nonzero....</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{  ??? }&quot;&quot;&quot;</span>
 </pre></div>
@@ -257,7 +257,7 @@ prove the postcondition at the end of the body:</p>
 <span class="sd">       return ans  (the name of the answer variable) }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  Q     premise  }&quot;&quot;&quot;</span>
-    <span class="n">BODY</span>  <span class="c1"># does not assign to  x</span>
+    <span class="n">BODY</span>  <span class="c"># does not assign to  x</span>
     <span class="sd">&quot;&quot;&quot;{ ... prove  R  here, that is,  ans  and  x  have property  R }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -265,8 +265,8 @@ prove the postcondition at the end of the body:</p>
 <code class="docutils literal"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function.
 It is a variation of the assignment law:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>               <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                            <span class="c1"># y  does not appear in  e</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>               <span class="c"># prove the precondition, where  e  binds to parameter x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                            <span class="c"># y  does not appear in  e</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x]f_post   premise   # presume the postcondition,</span>
 <span class="sd">                                    # where  y  gets  ans&#39;s  value</span>
@@ -324,7 +324,7 @@ knowledge in the postcondition:</p>
 <span class="sd">          4.  ans == x or ans == 0 - x           algebra 1</span>
 <span class="sd">          5.  return 3 4 }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-    <span class="c1"># in each arm, we proved  ans == x or ans == 0 - x  and also  ans &gt; 0</span>
+    <span class="c"># in each arm, we proved  ans == x or ans == 0 - x  and also  ans &gt; 0</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1. ans == x or ans == 0 - x                premise</span>
 <span class="sd">      2. ans &gt; 0                                 premise</span>
@@ -448,7 +448,7 @@ First, given the specification,</p>
 <p>If a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards from
 <code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]f_pre  ^  ([e/x][y/ans]f_post --&gt; G)  }&quot;&quot;&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># y  does not appear in argument  e</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c"># y  does not appear in argument  e</span>
 <span class="sd">&quot;&quot;&quot;{ goal: G }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -506,9 +506,9 @@ For example, <code class="docutils literal"><span class="pre">pi</span></code> i
     <span class="k">return</span> <span class="n">answer</span>
 
   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">readFloat</span><span class="p">(</span><span class="s2">&quot;Type radius of a circle: &quot;</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">circumference</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>          <span class="c1"># compute circumference of circle</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">pi</span>                 <span class="c1"># compute circle&#39;s area</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">readFloat</span><span class="p">(</span><span class="s">&quot;Type radius of a circle: &quot;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">circumference</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>          <span class="c"># compute circumference of circle</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">pi</span>                 <span class="c"># compute circle&#39;s area</span>
 </pre></div>
 </div>
 <p>A global variable &#8220;lives&#8221; before a function is called and lives after the
@@ -517,15 +517,15 @@ In the above example, <code class="docutils literal"><span class="pre">pi</span>
 it exists after the function finishes.
 In contrast, <code class="docutils literal"><span class="pre">pi</span></code> is local here:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">circ</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>   <span class="c1"># pi is created each time  circ  is called</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>   <span class="c"># pi is created each time  circ  is called</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span>
     <span class="k">return</span> <span class="n">answer</span>
 
   <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">readFloat</span><span class="p">(</span><span class="s2">&quot;Type radius of a circle: &quot;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">readFloat</span><span class="p">(</span><span class="s">&quot;Type radius of a circle: &quot;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">circumference</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>
-<span class="c1"># pi  does not exist here; it cannot be referenced:</span>
-<span class="n">area</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">pi</span>   <span class="c1"># ???!</span>
+<span class="c"># pi  does not exist here; it cannot be referenced:</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">pi</span>   <span class="c"># ???!</span>
 </pre></div>
 </div>
 <p>A global variable that is read (but <em>not updated</em>) by a function body can be
@@ -570,7 +570,7 @@ The <code class="docutils literal"><span class="pre">init</span></code> and <cod
 <span class="sd">      post   time &gt;= 0</span>
 <span class="sd">      return ans }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">time</span>                      <span class="c1"># this line says the function can update time</span>
+    <span class="k">global</span> <span class="n">time</span>                      <span class="c"># this line says the function can update time</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0               premise }&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">time</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="n">time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">-</span> <span class="mi">1</span>
@@ -582,7 +582,7 @@ The <code class="docutils literal"><span class="pre">init</span></code> and <cod
 <span class="sd">          5. time &gt;= 0               algebra 3 4 }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;RING RING RING&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;RING RING RING&quot;</span>
         <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0           premise }&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;{ 1. time &gt;= 0  premise  }&quot;&quot;&quot;</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="n">time</span>
@@ -602,7 +602,7 @@ The <code class="docutils literal"><span class="pre">init</span></code> and <cod
 <span class="sd">      3.  time &gt;= 0                  algebra 1 2 }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="c1"># Driver code starts here: run the timer</span>
+<span class="c"># Driver code starts here: run the timer</span>
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   premise  }&quot;&quot;&quot;</span>
 <span class="n">novar</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   premise  }&quot;&quot;&quot;</span>
@@ -621,7 +621,7 @@ Here, it is invariant that <code class="docutils literal"><span class="pre">time
 This next example is similar and important:
 The procedure that withdraws money from a bank account must never let the
 balance go negative:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c1"># global variable in the module for the bank account</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c"># global variable in the module for the bank account</span>
 
 <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">howmuch</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;withdraw  removes  howmuch  from  balance&quot;&quot;&quot;</span>
@@ -649,7 +649,7 @@ We will return to both these examples shortly.</p>
 <div class="section" id="deduction-law-for-procedures">
 <h2>5.3. Deduction Law for Procedures<a class="headerlink" href="#deduction-law-for-procedures" title="Permalink to this headline">¶</a></h2>
 <p>Here is a precise statement of the law we use for procedures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c"># the global variable</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -657,14 +657,14 @@ We will return to both these examples shortly.</p>
 <span class="sd">      post   R    (where  R  mentions  ans, x, g, and g_in)   This is  f_post.</span>
 <span class="sd">      return ans  (this line is optional) }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">g</span>      <span class="c1"># notes that  g  can be updated by  f</span>
-    <span class="n">BODY</span>          <span class="c1"># does not assign to  x  but may assign to  g</span>
-    <span class="k">return</span> <span class="n">ans</span>    <span class="c1"># this line is optional</span>
+    <span class="k">global</span> <span class="n">g</span>      <span class="c"># notes that  g  can be updated by  f</span>
+    <span class="n">BODY</span>          <span class="c"># does not assign to  x  but may assign to  g</span>
+    <span class="k">return</span> <span class="n">ans</span>    <span class="c"># this line is optional</span>
 </pre></div>
 </div>
 <p>To invoke the function, we prove the precondition:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                             <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                             <span class="c"># y and g  do not appear in  e,  and  y and g  are distinct</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post  premise</span>
 <span class="sd">  2. [y_old/y][g_old/g][e/x]f_pre    premise</span>
@@ -687,14 +687,14 @@ Then, each of the two functions can assume the invariant when they execute.
 (And, each function must ensure the invariant is still holding true when they
 exit!)</p>
 <p>Here&#8217;s the timer example, reworked:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1">### simple example of a global variable invariant</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">### simple example of a global variable invariant</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="c1"># we maintain this invariant property:</span>
+<span class="c"># we maintain this invariant property:</span>
 <span class="sd">&quot;&quot;&quot;{ globalinv   time &gt;= 0 }&quot;&quot;&quot;</span>
 
-<span class="c1"># the function can use the invariant on entry, and the function</span>
-<span class="c1"># must ensure that the invariant holds on exit:</span>
+<span class="c"># the function can use the invariant on entry, and the function</span>
+<span class="c"># must ensure that the invariant holds on exit:</span>
 <span class="k">def</span> <span class="nf">tick</span><span class="p">()</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    True</span>
@@ -702,7 +702,7 @@ exit!)</p>
 <span class="sd">      return ans }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">time</span>
-    <span class="c1"># as needed, we introduce the globalinv in a proof:</span>
+    <span class="c"># as needed, we introduce the globalinv in a proof:</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0               premise   }&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">time</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span>
         <span class="n">time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">-</span> <span class="mi">1</span>
@@ -713,7 +713,7 @@ exit!)</p>
 <span class="sd">          5. time &gt;= 0               algebra 3 4</span>
 <span class="sd">        }&quot;&quot;&quot;</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;RING RING RING&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;RING RING RING&quot;</span>
         <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0           premise  }&quot;&quot;&quot;</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="n">time</span>
     <span class="k">return</span> <span class="n">ans</span>
@@ -727,19 +727,19 @@ exit!)</p>
     <span class="n">time</span> <span class="o">=</span> <span class="n">starttime</span>
 
 
-<span class="c1">### Driver code starts here: run the timer</span>
-<span class="c1"># global invariant holds true</span>
+<span class="c">### Driver code starts here: run the timer</span>
+<span class="c"># global invariant holds true</span>
 <span class="n">novar</span> <span class="o">=</span> <span class="n">init</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># invariant holds true:</span>
+<span class="c"># invariant holds true:</span>
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   globalinv   }&quot;&quot;&quot;</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">tick</span><span class="p">()</span>
-<span class="c1"># invariant holds true:</span>
+<span class="c"># invariant holds true:</span>
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   globalinv   }&quot;&quot;&quot;</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">tick</span><span class="p">()</span>
-<span class="c1"># invariant holds true:</span>
+<span class="c"># invariant holds true:</span>
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   globalinv   }&quot;&quot;&quot;</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">tick</span><span class="p">()</span>
-<span class="c1"># and so on ...</span>
+<span class="c"># and so on ...</span>
 </pre></div>
 </div>
 <p>In an object-oriented language, when a global variable and its procedures
@@ -749,17 +749,17 @@ the <em>class invariant</em>.</p>
 inserts ten-cent coins.
 (The bank is a &#8220;reactive system&#8221; that processes &#8220;coin-insertion events&#8221;!)
 The class enforces its invariant &#8211; that&#8217;s its mission.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DimesBank</span> <span class="p">{</span>   <span class="c1"># MAINTAINS A TOY BANK</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">DimesBank</span> <span class="p">{</span>   <span class="c"># MAINTAINS A TOY BANK</span>
 
-<span class="c1"># fields in the class:</span>
-<span class="n">dimes</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># how many coins inserted so far into the bank</span>
-<span class="n">money</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># how much the coins are worth</span>
+<span class="c"># fields in the class:</span>
+<span class="n">dimes</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c"># how many coins inserted so far into the bank</span>
+<span class="n">money</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c"># how much the coins are worth</span>
 
-<span class="c1"># the class maintains this invariant property:</span>
+<span class="c"># the class maintains this invariant property:</span>
 <span class="sd">&quot;&quot;&quot;{ globalinv  money == dimes * 10  }&quot;&quot;&quot;</span>
 
-<span class="c1"># the handler method below can assume the invariant on entry,</span>
-<span class="c1"># and the method must ensure that the invariant holds on exit:</span>
+<span class="c"># the handler method below can assume the invariant on entry,</span>
+<span class="c"># and the method must ensure that the invariant holds on exit:</span>
 <span class="k">def</span> <span class="nf">handleCoinInsertion</span><span class="p">(</span><span class="n">howmany</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;called when a child inserts  howmany  dimes into the bank&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -767,7 +767,7 @@ The class enforces its invariant &#8211; that&#8217;s its mission.</p>
 <span class="sd">      post  True }                                   # the method enforces the invariant, that&#39;s it.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">dimes</span><span class="p">,</span> <span class="n">money</span>
-    <span class="c1"># we introduce the invariant as a premise when needed:</span>
+    <span class="c"># we introduce the invariant as a premise when needed:</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  money == dimes * 10                     premise   }&quot;&quot;&quot;</span>
     <span class="n">dimes</span> <span class="o">=</span> <span class="n">dimes</span> <span class="o">+</span> <span class="n">howmany</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -775,21 +775,21 @@ The class enforces its invariant &#8211; that&#8217;s its mission.</p>
 <span class="sd">      2.  dimes == dimesold + howmany                premise</span>
 <span class="sd">      3.  money + (howmany * 10) == dimes * 10       algebra  1 2</span>
 <span class="sd">    }&quot;&quot;&quot;</span>
-    <span class="c1"># the invariant is broken here, but the next command restores it:</span>
+    <span class="c"># the invariant is broken here, but the next command restores it:</span>
     <span class="n">money</span> <span class="o">=</span> <span class="n">money</span> <span class="o">+</span> <span class="p">(</span><span class="n">howmany</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1.  money_old + (howmany * 10) == dimes * 10   premise</span>
 <span class="sd">      2.  money == moneyold + (howmany * 10)         premise</span>
 <span class="sd">      3.  money == dimes * 10                        subst 2 1 }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<span class="c1"># } END CLASS</span>
+<span class="c"># } END CLASS</span>
 
-<span class="c1"># the following code might be in a controller component that</span>
-<span class="c1">#   accepts input events and calls event handlers:</span>
-<span class="n">coins</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;insert your coins and press the button!&quot;</span><span class="p">)</span>
+<span class="c"># the following code might be in a controller component that</span>
+<span class="c">#   accepts input events and calls event handlers:</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;insert your coins and press the button!&quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">coins</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="n">novar</span> <span class="o">=</span> <span class="n">handleCoinInsertion</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>                   <span class="c1"># see the method above</span>
-<span class="k">print</span> <span class="n">money</span>                                          <span class="c1"># on the toy bank&#39;s GUI</span>
+<span class="n">novar</span> <span class="o">=</span> <span class="n">handleCoinInsertion</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>                   <span class="c"># see the method above</span>
+<span class="k">print</span> <span class="n">money</span>                                          <span class="c"># on the toy bank&#39;s GUI</span>
 </pre></div>
 </div>
 <p><em>When you code a class, first decide on the class&#8217;s fields (its &#8220;attributes&#8221;)
@@ -797,19 +797,19 @@ and write down the class invariant</em>.
 Then, define and code the methods so that they maintain the invariant.</p>
 <p>Here is a second example, a class that models a bank account.
 The account&#8217;s balance should always be kept nonnegative:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># A bank-account &quot;class&quot; and its maintenance methods.</span>
-<span class="c1"># The balance balance must be kept nonnegative.</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># A bank-account &quot;class&quot; and its maintenance methods.</span>
+<span class="c"># The balance balance must be kept nonnegative.</span>
 <span class="k">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
 
-<span class="c1"># The global variable, the money in a bank balance:</span>
+<span class="c"># The global variable, the money in a bank balance:</span>
 <span class="n">balance</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1.  balance == 0       premise</span>
 <span class="sd">  2.  balance &gt;= 0       algebra 1 }</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1"># the global invariant:</span>
-<span class="sd">&quot;&quot;&quot;{ globalinv  balance &gt;= 0  }&quot;&quot;&quot;</span>  <span class="c1"># this property is currently true, and</span>
-                                    <span class="c1">#  we want the methods to preserve it</span>
+<span class="c"># the global invariant:</span>
+<span class="sd">&quot;&quot;&quot;{ globalinv  balance &gt;= 0  }&quot;&quot;&quot;</span>  <span class="c"># this property is currently true, and</span>
+                                    <span class="c">#  we want the methods to preserve it</span>
 
 <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">howmuch</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;deposit adds  howmuch  to  balance&quot;&quot;&quot;</span>
@@ -817,7 +817,7 @@ The account&#8217;s balance should always be kept nonnegative:</p>
 <span class="sd">    { pre   howmuch &gt;= 0</span>
 <span class="sd">      post  balance == balance_in + howmuch  }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># balance_in  is the value of balance when the method was entered</span>
+    <span class="c"># balance_in  is the value of balance when the method was entered</span>
     <span class="k">global</span> <span class="n">balance</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1.  balance &gt;= 0                                         premise  # the globalinv holds on entry</span>
@@ -834,8 +834,8 @@ The account&#8217;s balance should always be kept nonnegative:</p>
 <span class="sd">      6. balance &gt;= 0                                          algebra 1 2 3</span>
 <span class="sd">      7. return 5 6 }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># The last line asserts that the global invariant is preserved</span>
-    <span class="c1"># at the exit, and the postcondition is proved, too.</span>
+    <span class="c"># The last line asserts that the global invariant is preserved</span>
+    <span class="c"># at the exit, and the postcondition is proved, too.</span>
 
 <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">howmuch</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;withdraw  removes  howmuch  from  balance&quot;&quot;&quot;</span>
@@ -872,7 +872,7 @@ The account&#8217;s balance should always be kept nonnegative:</p>
     <span class="sd">&quot;&quot;&quot;{ 1. ans == balance                                     premise  }&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ans</span>
 
-<span class="p">}</span> <span class="c1"># END CLASS</span>
+<span class="p">}</span> <span class="c"># END CLASS</span>
 </pre></div>
 </div>
 <p>All the class&#8217;s methods pledge to keep <code class="docutils literal"><span class="pre">balance</span></code> nonnegative.
@@ -893,8 +893,8 @@ to hold true
 <div class="section" id="law-for-global-invariants-and-procedure-calls">
 <h3>5.3.2. Law for Global Invariants and Procedure Calls<a class="headerlink" href="#law-for-global-invariants-and-procedure-calls" title="Permalink to this headline">¶</a></h3>
 <p>Here is the law used in the above example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
-<span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c1"># must be proved true here</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c"># the global variable</span>
+<span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c"># must be proved true here</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -902,14 +902,14 @@ to hold true
 <span class="sd">      post   R  (where  R  mentions  ans, x, g, and  g_in)   This is  f_post.</span>
 <span class="sd">      return ans }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">g</span>    <span class="c1"># g  can be updated by  f</span>
+    <span class="k">global</span> <span class="n">g</span>    <span class="c"># g  can be updated by  f</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1. Q      premise</span>
 <span class="sd">      2. I_g    premise</span>
 <span class="sd">      ... }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">BODY</span>        <span class="c1"># does not assign to  x  but may assign to  g</span>
-    <span class="sd">&quot;&quot;&quot;{ R ^ I_g }&quot;&quot;&quot;</span>  <span class="c1"># we must prove both  R  and  I_g  on exit</span>
+    <span class="n">BODY</span>        <span class="c"># does not assign to  x  but may assign to  g</span>
+    <span class="sd">&quot;&quot;&quot;{ R ^ I_g }&quot;&quot;&quot;</span>  <span class="c"># we must prove both  R  and  I_g  on exit</span>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
@@ -917,7 +917,7 @@ to hold true
 Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
 appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post      premise</span>
 <span class="sd">  2. [y_old/y][g_old/g][e/x]f_pre        premise</span>
@@ -1007,17 +1007,17 @@ and finally,
 <code class="docutils literal"><span class="pre">0!</span></code> and assembling the answer as <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code> can be programmed as a
 function that repeatedly calls <em>itself</em> for the answers to <code class="docutils literal"><span class="pre">3!</span></code>, <code class="docutils literal"><span class="pre">2!</span></code>,
 <code class="docutils literal"><span class="pre">1!</span></code>, etc.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>  <span class="c1"># returns  n!</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>  <span class="c"># returns  n!</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre     n &gt;= 0</span>
 <span class="sd">      post    (to come)</span>
 <span class="sd">      return  ans }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>        <span class="c1"># this computes  0! = 1</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>        <span class="c"># this computes  0! = 1</span>
     <span class="k">else</span> <span class="p">:</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># this computes  (n-1)!</span>
-        <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="c1"># this computes  n! = (n-1)! * n</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># this computes  (n-1)!</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="c"># this computes  n! = (n-1)! * n</span>
 <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
@@ -1176,7 +1176,7 @@ n! == (n-1)! * n,  for  n &gt; 0
 <span class="sd">          3. n - 1 &gt;= 0               algebra 1 2 } # this proves  pre_fac</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">sub</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="sd">&quot;&quot;&quot;{ 1.  sub == (n-1)!        premise }&quot;&quot;&quot;</span>  <span class="c1"># post_fac</span>
+        <span class="sd">&quot;&quot;&quot;{ 1.  sub == (n-1)!        premise }&quot;&quot;&quot;</span>  <span class="c"># post_fac</span>
         <span class="n">ans</span> <span class="o">=</span> <span class="n">sub</span> <span class="o">*</span> <span class="n">n</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        { 1.  ans == sub * n          premise</span>
@@ -1218,15 +1218,15 @@ global variables:</p>
 <span class="sd">       return ans  (the name of the answer variable) }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  Q     premise  }&quot;&quot;&quot;</span>
-    <span class="n">BODY</span>  <span class="c1"># does not assign to  x</span>
+    <span class="n">BODY</span>  <span class="c"># does not assign to  x</span>
     <span class="sd">&quot;&quot;&quot;{ ... prove  R  here, that is,  ans  and  x  have property  R }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Outside of the function, <code class="docutils literal"><span class="pre">f</span></code>, we write <code class="docutils literal"><span class="pre">f_pre</span></code> for <code class="docutils literal"><span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">f_post</span></code>
 for <code class="docutils literal"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>                  <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                               <span class="c1"># y  does not appear in  e</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>                  <span class="c"># prove the precondition, where  e  binds to parameter x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                               <span class="c"># y  does not appear in  e</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x]f_post      premise   # presume the postcondition where</span>
 <span class="sd">                                       # y  receives the  ans  value</span>
@@ -1247,8 +1247,8 @@ answer from the function.
 Every global variable should have an invariant property, and every function
 that uses the global variable should pledge to preserve that invariant
 property:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="c1"># the global variable</span>
-<span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c1"># must be proved true here</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="c"># the global variable</span>
+<span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c"># must be proved true here</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1256,14 +1256,14 @@ property:</p>
 <span class="sd">      post   R  (where  R  mentions  ans, x, g, and  g_in)   This is  f_post.</span>
 <span class="sd">      return ans</span>
 <span class="sd">    }&quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">g</span>               <span class="c1"># g  can be updated by  f</span>
+    <span class="k">global</span> <span class="n">g</span>               <span class="c"># g  can be updated by  f</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1. Q                 premise</span>
 <span class="sd">      2. I_g               premise</span>
 <span class="sd">      ... }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">BODY</span>                   <span class="c1"># does not assign to  x  but may assign to  g</span>
-    <span class="sd">&quot;&quot;&quot;{ R ^ I_g }&quot;&quot;&quot;</span>      <span class="c1"># we must prove both  R  and  I_g  on exit</span>
+    <span class="n">BODY</span>                   <span class="c"># does not assign to  x  but may assign to  g</span>
+    <span class="sd">&quot;&quot;&quot;{ R ^ I_g }&quot;&quot;&quot;</span>      <span class="c"># we must prove both  R  and  I_g  on exit</span>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
@@ -1271,7 +1271,7 @@ property:</p>
 Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
 appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post      premise</span>
 <span class="sd">  2. [y_old/y][g_old/g][e/x]f_pre        premise</span>
@@ -1299,7 +1299,7 @@ For the specification,</p>
 <p>if a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards
 from <code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]pre_f  ^  ([e/x][y/ans]post_f --&gt; G)  }&quot;&quot;&quot;</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># y  does not appear in argument  e</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c"># y  does not appear in argument  e</span>
 <span class="sd">&quot;&quot;&quot;{ goal: G }&quot;&quot;&quot;</span>
 </pre></div>
 </div>

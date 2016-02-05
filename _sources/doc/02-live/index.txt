@@ -173,18 +173,19 @@ Using A Fixed-Width Font
 When working with Logika math Unicode symbols (see :ref:`shortcuts`),
 it is best to use a font that is also (mostly) fixed-width for those symbols.
 
-For Mac OS X and Linux,
+In Mac OS X, the Menlo font is fixed-width for Logika math symbols.
+
+For Linux (and Mac OS X),
 `Adobe's Source Code Pro <https://github.com/adobe-fonts/source-code-pro>`__
 is a good font to use (it is also an excellent font for programming or other
 purposes where a fixed-width font is desirable).
-
 Follow the
 `download and install instructions <https://github.com/adobe-fonts/source-code-pro/blob/master/README.md>`__,
 and then set `IntelliJ's editor font <https://www.jetbrains.com/idea/help/configuring-colors-and-fonts.html>`__
 to use it.
 
-Another font (that works well in Mac OS X, Linux, and Windows) is
-`Meslo <https://github.com/andreberg/Meslo-Font>`__
+Another font that works well in Mac OS X, Linux, and Windows is
+`Meslo <https://github.com/andreberg/Meslo-Font>`__.
 
 LIVE Update
 ***********
