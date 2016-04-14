@@ -142,7 +142,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -158,7 +158,7 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </font><div class="section" id="propositional-logic">
 <span id="propositional-language"></span><h1>3.2. Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h1>
 <p><strong>Propositional Logic Input Language Grammar</strong></p>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The propositional logic input language consists of two main parts:
@@ -168,7 +168,7 @@ sequent.</p>
 in the <a class="reference internal" href="../../01-getting-started/index.html#logika-examples"><span>Verifying Examples</span></a> section.</p>
 <div class="section" id="sequent">
 <h2>3.2.1. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
 <span class="w">              </span><span class="nv">claimList</span><span class="w">                </span><span class="c">// conclusions</span><span class="w"></span>
 
@@ -187,12 +187,12 @@ separated by a comma <code class="docutils literal"><span class="pre">,</span></
 whitespaces (newlines are considered as whitespaces inside
 sequents).</p>
 <p>Here is an example sequent written using the turnstile notation.</p>
-<div class="highlight-none"><div class="highlight"><pre>p → r,  q → r  ⊢  (p ∨ q) → r
+<div class="highlight-none"><div class="highlight"><pre><span></span>p → r,  q → r  ⊢  (p ∨ q) → r
 </pre></div>
 </div>
 <p>An equivalent sequent to that written using the horizontal line
 notation is as follows.</p>
-<div class="highlight-none"><div class="highlight"><pre> p → r     q → r
+<div class="highlight-none"><div class="highlight"><pre><span></span> p → r     q → r
 -----------------
    (p ∨ q) → r
 </pre></div>
@@ -201,7 +201,7 @@ notation is as follows.</p>
 </div>
 <div class="section" id="proof">
 <h2>3.2.2. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
 
@@ -238,7 +238,7 @@ followed by zero or more proof steps (they are delimited inside
 <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> similar to a proof); the steps, including the assumption,
 should be separated by newline(s).</p>
 <p>Here is an example proof of the above sequent: <code class="docutils literal"><span class="pre">p</span> <span class="pre">→</span> <span class="pre">r,</span>&nbsp; <span class="pre">q</span> <span class="pre">→</span> <span class="pre">r</span>&nbsp; <span class="pre">⊢</span>&nbsp; <span class="pre">(p</span> <span class="pre">∨</span> <span class="pre">q)</span> <span class="pre">→</span> <span class="pre">r</span></code>.</p>
-<div class="highlight-none"><div class="highlight"><pre>{
+<div class="highlight-none"><div class="highlight"><pre><span></span>{
   1. p → r                    premise
   2. q → r                    premise
   3. {
@@ -286,7 +286,7 @@ where <code class="docutils literal"><span class="pre">Z</span></code> applies a
 and <code class="docutils literal"><span class="pre">I</span></code> requires some claim arguments that can be retrieved from
 other proof steps, say, numbered <code class="docutils literal"><span class="pre">Y</span></code> and <code class="docutils literal"><span class="pre">Z</span></code>.
 The notation is as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre>X. …
+<div class="highlight-python"><div class="highlight"><pre><span></span>X. …
 Y. …
 Z. R    I X Y
 </pre></div>
@@ -297,7 +297,7 @@ and/or in the same or outer <a class="reference internal" href="#scoping"><span>
 <p>When curly braces are explicitly listed, however,
 it means that the scope of proof steps are the same.
 For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>X. {
+<div class="highlight-python"><div class="highlight"><pre><span></span>X. {
      X1. …
      …
      XK. …
@@ -311,7 +311,7 @@ proof steps of <code class="docutils literal"><span class="pre">X</span></code>.
 </div>
 <div class="section" id="claim-expression">
 <span id="prop-claim"></span><h2>3.2.5. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                         </span><span class="c">// identifier</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">              </span><span class="c">// parenthesized claim expression</span><span class="w"></span>
@@ -333,12 +333,12 @@ in the propositional input language.</p>
 <h3>3.2.5.1. Newlines in Expression<a class="headerlink" href="#newlines-in-expression" title="Permalink to this headline">¶</a></h3>
 <p>One newline separator can be inserted after a binary expression operator.
 For example, <code class="docutils literal"><span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code> is the same as:</p>
-<div class="highlight-python"><div class="highlight"><pre>P ∧
+<div class="highlight-python"><div class="highlight"><pre><span></span>P ∧
   Q
 </pre></div>
 </div>
 <p>but:</p>
-<div class="highlight-python"><div class="highlight"><pre>P ∧
+<div class="highlight-python"><div class="highlight"><pre><span></span>P ∧
 
   Q
 </pre></div>
@@ -347,7 +347,7 @@ For example, <code class="docutils literal"><span class="pre">P</span> <span cla
 because they considered as two separate expressions.</p>
 <p>However, newlines are ignored when they appear inside parenthesis.
 That is:</p>
-<div class="highlight-python"><div class="highlight"><pre>(P ∧
+<div class="highlight-python"><div class="highlight"><pre><span></span>(P ∧
 
    Q)
 </pre></div>
@@ -371,7 +371,7 @@ This equivalence holds even for programming logic expressions.</p>
 </div>
 <div class="section" id="justification-and-inference-rules">
 <span id="prop-rules"></span><h2>3.2.6. Justification and Inference Rules<a class="headerlink" href="#justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
@@ -396,14 +396,14 @@ it is being applied at a regular proof step numbered <code class="docutils liter
 and whose claim expression that it deduces is <code class="docutils literal"><span class="pre">R</span></code>.</p>
 <div class="section" id="premise">
 <h3>3.2.6.1. Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can be used to call on one of the
 sequent&#8217;s premises associated with the proof.
 That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent&#8217;s premises.
 For example,</p>
-<div class="highlight-none"><div class="highlight"><pre>p,  q  ⊢  q
+<div class="highlight-none"><div class="highlight"><pre><span></span>p,  q  ⊢  q
 {
   1. q    premise
 }
@@ -414,7 +414,7 @@ proof step <code class="docutils literal"><span class="pre">1</span></code> (<co
 claim <code class="docutils literal"><span class="pre">q</span></code>, which is exactly the second sequent&#8217;s premise.</p>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can also be used to conjure <code class="docutils literal"><span class="pre">⊤</span></code> (true).
 For example, here is the shortest sequent proof in Logika.</p>
-<div class="highlight-none"><div class="highlight"><pre>⊢  ⊤
+<div class="highlight-none"><div class="highlight"><pre><span></span>⊢  ⊤
 {
   1. ⊤   premise
 }
@@ -427,7 +427,7 @@ to its true self.</p>
 </div>
 <div class="section" id="and-introduction-i">
 <h3>3.2.6.2. And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
@@ -436,14 +436,14 @@ numbers (<code class="docutils literal"><span class="pre">rNUM</span></code>s).<
 <p>Here is a schematic pattern for valid inference using ∧i:</p>
 <div class="literal-block-wrapper container" id="and-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Introduction (∧i) Schematic Pattern</strong></span><a class="headerlink" href="#and-intro-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P          … // justification for P
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          … // justification for P
 Y.  Q          … // justification for Q
 Z.  P ∧ Q      ∧i X Y      // R ≡ P ∧ Q
 </pre></div>
 </div>
 </div>
 <p>For example,</p>
-<div class="highlight-none"><div class="highlight"><pre>⊢ ⊤ ∧ ⊤
+<div class="highlight-none"><div class="highlight"><pre><span></span>⊢ ⊤ ∧ ⊤
 {
   2. ⊤       premise  // out of order proof step numbering is fine, which is
   1. ⊤ ∧ ⊤   ∧i 2 2   // handy to insert unforeseen proof steps in between others
@@ -453,7 +453,7 @@ Z.  P ∧ Q      ∧i X Y      // R ≡ P ∧ Q
 <p>In this case, the pattern is instantiated with
 <code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">⊤</span></code>, <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">⊤</span> <span class="pre">∧</span> <span class="pre">⊤</span></code>.</p>
 <p>Another example,</p>
-<div class="highlight-none"><div class="highlight"><pre>p, q ⊢ p ∧ q
+<div class="highlight-none"><div class="highlight"><pre><span></span>p, q ⊢ p ∧ q
 {
   1. q       premise
   2. p       premise
@@ -464,7 +464,7 @@ Z.  P ∧ Q      ∧i X Y      // R ≡ P ∧ Q
 <p>In this example, <code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">p</span></code>, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">q</span></code>,
 <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">3</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>.</p>
 <p>One last example,</p>
-<div class="highlight-none"><div class="highlight"><pre>p, q ⊢ p ∧ q
+<div class="highlight-none"><div class="highlight"><pre><span></span>p, q ⊢ p ∧ q
 {
   1. q       premise
   2. p       premise
@@ -485,13 +485,13 @@ in <a class="reference internal" href="../../../dschmidt/07-propositional-logic/
 <h3>3.2.6.3. And-Eliminations (∧e1, ∧e2)<a class="headerlink" href="#and-eliminations-e1-e2" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="and-elimination1-e1">
 <h4>And-Elimination1 (∧e1)<a class="headerlink" href="#and-elimination1-e1" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="and-elim1-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Elimination1 (∧e1) Schematic Pattern</strong></span><a class="headerlink" href="#and-elim1-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  R ∧ Q      …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  R ∧ Q      …
 Z.  R          ∧e1 X
 </pre></div>
 </div>
@@ -499,13 +499,13 @@ Z.  R          ∧e1 X
 </div>
 <div class="section" id="and-elimination2-e2">
 <h4>And-Elimination2 (∧e2)<a class="headerlink" href="#and-elimination2-e2" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="and-elim2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Elimination2 (∧e2) Schematic Pattern</strong></span><a class="headerlink" href="#and-elim2-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P ∧ R      …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∧ R      …
 Z.  R          ∧e2 X
 </pre></div>
 </div>
@@ -516,13 +516,13 @@ Z.  R          ∧e2 X
 <h3>3.2.6.4. Or-Introductions (∨i1, ∨i2)<a class="headerlink" href="#or-introductions-i1-i2" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="or-introduction1-i1">
 <h4>Or-Introduction1 (∨i1)<a class="headerlink" href="#or-introduction1-i1" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="or-intro1-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Introduction1 (∨i1) Schematic Pattern</strong></span><a class="headerlink" href="#or-intro1-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P          …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          …
 Z.  P ∨ Q      ∨i1 X       // R ≡ P ∨ Q
 </pre></div>
 </div>
@@ -530,13 +530,13 @@ Z.  P ∨ Q      ∨i1 X       // R ≡ P ∨ Q
 </div>
 <div class="section" id="or-introduction1-i2">
 <h4>Or-Introduction1 (∨i2)<a class="headerlink" href="#or-introduction1-i2" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="or-intro2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Introduction2 (∨i2) Schematic Pattern</strong></span><a class="headerlink" href="#or-intro2-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  Q          …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  Q          …
 Z.  P ∨ Q      ∨i2 X       // R ≡ P ∨ Q
 </pre></div>
 </div>
@@ -545,7 +545,7 @@ Z.  P ∨ Q      ∨i2 X       // R ≡ P ∨ Q
 </div>
 <div class="section" id="or-elimination-e">
 <span id="or-elim"></span><h3>3.2.6.5. Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
@@ -554,7 +554,7 @@ and third arguments (referred by using their
 proof step <code class="docutils literal"><span class="pre">sNUM</span></code>ber).</p>
 <div class="literal-block-wrapper container" id="or-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Elimination (∨e) Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P ∨ Q      …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∨ Q      …
 Y1. {
       Y11. P   assume
       …
@@ -584,7 +584,7 @@ note that &#8220;ore&#8221; is an alias for ∨e).</p>
 leverages the following Logika alternative pattern for ∨e.</p>
 <div class="literal-block-wrapper container" id="or-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Or-Elimination (∨e) Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-alt-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P ∨ Q      …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∨ Q      …
 Y1. {
       Y11. P   assume
       …
@@ -597,7 +597,8 @@ Y2. {
       Y2K. R2  …
       …
     }
-Z.  R1 ∨ R2    ∨e X Y1 Y2  // R ≡ R1 ∨ R2s
+Z.  R          ∨e X Y1 Y2  // R ≡ R1,       if R1 ≡ R2
+                           // R ≡ R1 ∨ R2,  otherwise
 </pre></div>
 </div>
 </div>
@@ -611,13 +612,13 @@ because then <code class="docutils literal"><span class="pre">R</span> <span cla
 </div>
 <div class="section" id="implication-introduction-i">
 <h3>3.2.6.6. Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="imply-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Implication-Introduction (→i) Schematic Pattern</strong></span><a class="headerlink" href="#imply-intro-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  {
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. P    assume
       …
       XK. Q    …
@@ -630,13 +631,13 @@ Z.  P → Q      →i X        // R ≡ P → Q
 </div>
 <div class="section" id="implication-elimination-e">
 <h3>3.2.6.7. Implication-Elimination (→e)<a class="headerlink" href="#implication-elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="imply-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Implication-Elimination (→e) Schematic Pattern</strong></span><a class="headerlink" href="#imply-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P → R      …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P → R      …
 Y.  P          …
 Z.  R          →e X Y
 </pre></div>
@@ -645,13 +646,13 @@ Z.  R          →e X Y
 </div>
 <div class="section" id="negation-introduction-i">
 <h3>3.2.6.8. Negation-Introduction (¬i)<a class="headerlink" href="#negation-introduction-i" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="neg-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Negation-Introduction (¬i) Schematic Pattern</strong></span><a class="headerlink" href="#neg-intro-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  {
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. P    assume
       …
       XK. ⊥    …
@@ -664,13 +665,13 @@ Z.  ¬P         ¬i X        // R ≡ ¬P
 </div>
 <div class="section" id="negation-elimination-e">
 <h3>3.2.6.9. Negation-Elimination (¬e)<a class="headerlink" href="#negation-elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="neg-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Negation-Elimination (¬e) Schematic Pattern</strong></span><a class="headerlink" href="#neg-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  P          …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          …
 Y.  ¬P         …
 Z.  ⊥          ¬e X Y      // R ≡ ⊥
 </pre></div>
@@ -679,13 +680,13 @@ Z.  ⊥          ¬e X Y      // R ≡ ⊥
 </div>
 <div class="section" id="elimination-e">
 <span id="bottom-elim"></span><h3>3.2.6.10. ⊥-Elimination  (⊥e)<a class="headerlink" href="#elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="bottom-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>⊥-Elimination (⊥e) Schematic Pattern</strong></span><a class="headerlink" href="#bottom-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  ⊥          …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  ⊥          …
 Z.  R          ⊥e X        // R  can be anything
 </pre></div>
 </div>
@@ -693,13 +694,13 @@ Z.  R          ⊥e X        // R  can be anything
 </div>
 <div class="section" id="proof-by-contradiction-pbc">
 <h3>3.2.6.11. Proof-by-Contradiction (pbc)<a class="headerlink" href="#proof-by-contradiction-pbc" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper container" id="pbc-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Proof-by-Contradiction (pbc) Schematic Pattern</strong></span><a class="headerlink" href="#pbc-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none"><div class="highlight"><pre>X.  {
+<div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. ¬R   assume
       …
       XK. ⊥    …
@@ -713,7 +714,7 @@ Z.  R          pbc
 </div>
 <div class="section" id="propositional-logic-input-language-grammar">
 <span id="prop-grammar"></span><h2>3.2.7. Propositional Logic Input Language Grammar<a class="headerlink" href="#propositional-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr"><div class="highlight"><pre><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>

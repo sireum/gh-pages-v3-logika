@@ -162,7 +162,8 @@ The :ref:`var-assign-exp-rule` indicates that any claim in its precondition
 is rewritten by substituting the assigned variable ``X`` with the newly
 introduced variable ``X_old`` that stores the value of ``X`` before the
 assignment, and the value of ``X`` is now equal to the value of expression
-``E`` (which leverages the fact that any Logika expression is pure --
+``E`` where any occurence of ``X`` in ``E`` is replaced with ``X_old``
+(which leverages the fact that any Logika expression is pure --
 side-effect free).
 
 ----
@@ -841,6 +842,10 @@ are simplified first before applying :ref:`pred-rules`.
 For example, the claim ``∀x: (0 ..< 3)  P{x}`` is
 simplified first to ``∀x: Z  0 ≤ x ∧ x < 3 → P{x}``
 before applying any of the ∀-quantified claim rules.
+
+Another example, the claim ``∃x: (0 ..< 3)  P{x}`` is
+simplified first to ``∃x: Z  (0 ≤ x ∧ x < 3) ∧ P{x}``
+before applying any of the ∃-quantified claim rules.
 
 Fact (fact)
 -----------

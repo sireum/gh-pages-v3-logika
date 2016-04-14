@@ -434,7 +434,7 @@ Instead, a VM is spawned, for example, for the Logika server in the background.
 
 This setting can be used to provide some VM arguments when spawning the VM.
 Each argument is separated by space(s) and each should start with a dash (``-``).
-By default, no VM arguments are specified.
+By default, the JVM stack size is set to 2Mb.
 
 In the case where invalid VM arguments are specified, it would prevent
 spawning the Logika server; the plugin detects this situation and will revert

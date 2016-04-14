@@ -108,7 +108,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -216,7 +216,7 @@ and prints it:</p>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
 <span class="c1">// the above imports, for example, type Z,</span>
 <span class="c1">// which is an arbitrary-precision integer type (i.e., scala.BigInt)</span>
 <span class="c1">// for the remaining examples, we&#39;ll elide it</span>
@@ -260,7 +260,7 @@ enclosed by set braces, <code class="docutils literal"><span class="pre">l&quot;
 22
 23
 24
-25</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">val</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="o">()</span>
+25</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="o">()</span>
 <span class="k">val</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="o">()</span>
 <span class="k">var</span> <span class="n">max</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
@@ -445,7 +445,7 @@ integers in an array that is passed to it as its argument:</p>
 154
 155
 156
-157</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1">// Updates parameter a, which is of type array of integers (ZS),</span>
+157</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Updates parameter a, which is of type array of integers (ZS),</span>
 <span class="c1">// in place so that each of its ints are squared</span>
 <span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ modifies     a</span>
@@ -631,7 +631,7 @@ engineer analyzes a circuit.</p>
 21
 22
 23
-24</pre></div></td><td class="code"><div class="highlight"><pre><span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ modifies     a</span>
 <span class="s">        post         ∀i: (0 ..&lt; a.size)  a(i) == a_in(i) * a_in(i)              }&quot;&quot;&quot;</span>
 

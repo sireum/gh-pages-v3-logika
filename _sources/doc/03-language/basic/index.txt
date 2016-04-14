@@ -41,6 +41,8 @@ Note that the proof context operators and literals include the ones in the progr
 context, ``NUM`` is either ``0`` or ``[1-9][0-9]*``, ``STRING`` is
 `Java's string literal <https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5>`__
 without the octal escape.
+The prepend (``+:``) and implication operators (``->``, ``implies``, ``→``)
+are right-associative.
 
 ----
 

@@ -149,7 +149,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -209,7 +209,7 @@ structures.</p>
 in a domain.
 Say we consider the domain of animals.
 The sentence, &#8220;All humans are mortal&#8221; is written like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (isHuman(x) --&gt; isMortal(x))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt; isMortal(x))
 </pre></div>
 </div>
 <p>That is, if an individual, <code class="docutils literal"><span class="pre">x</span></code>, is human, then <code class="docutils literal"><span class="pre">x</span></code> is mortal also.
@@ -219,48 +219,48 @@ human.
 Sadly, dogs are nonetheless mortal.)</p>
 <p>An arithmetic example looks like this: for the domain of ints, &#8220;every value is
 less-than-or-equal to its square&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A data-structure example looks like this: For array, <code class="docutils literal"><span class="pre">r</span></code>, we can assert that
 every element of <code class="docutils literal"><span class="pre">r</span></code> is positive:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLi ((i &gt;= 0 ^ i &lt; len(r)) --&gt; r[i] &gt; 0)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLi ((i &gt;= 0 ^ i &lt; len(r)) --&gt; r[i] &gt; 0)
 </pre></div>
 </div>
 <p>That is, for every index int, <code class="docutils literal"><span class="pre">i</span></code>, in the range of <code class="docutils literal"><span class="pre">0</span></code> up to (but not
 including) <code class="docutils literal"><span class="pre">len(r)</span></code> (the length of <code class="docutils literal"><span class="pre">r</span></code>), the indexed element <code class="docutils literal"><span class="pre">r[i]</span></code> is
 greater than <code class="docutils literal"><span class="pre">0</span></code>.
 The previous statement is often written in a &#8220;shorthand&#8221; like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALL 0 &lt;= i &lt; len(r), r[i] &gt; 0
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= i &lt; len(r), r[i] &gt; 0
 </pre></div>
 </div>
 <p>which we later use in many of our programming examples.</p>
 <p>The <code class="docutils literal"><span class="pre">EXIST</span></code> quantifier helps us write propositions about specific individuals
 in a domain, where the name of the individual is unimportant or unknown.
 For example, we can say that <code class="docutils literal"><span class="pre">Lassie</span></code> has a mother like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx isMotherOf(x, Lassie)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx isMotherOf(x, Lassie)
 </pre></div>
 </div>
 <p>(&#8220;There exists some <code class="docutils literal"><span class="pre">x</span></code> such that <code class="docutils literal"><span class="pre">x</span></code> is the mother of <code class="docutils literal"><span class="pre">Lassie</span></code>&#8221;.)
 Here is how we write that every individual in the domain has a mother:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLxEXISTy isMotherOf(y, x)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLxEXISTy isMotherOf(y, x)
 </pre></div>
 </div>
 <p>For the domain of integers, we can make assertions like these:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx (x * x = x)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx (x * x = x)
 EXISTy (y + 2 = 9)
 FORALLx (x &gt; 1) --&gt; (EXISTy (y &gt; 0 and y + 1 = x))
 </pre></div>
 </div>
 <p>For array <code class="docutils literal"><span class="pre">r</span></code>, we can say that <code class="docutils literal"><span class="pre">r</span></code> holds at least one negative int like
 this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">EXISTi</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">EXISTi</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(The shorthand version is <code class="docutils literal"><span class="pre">EXIST</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">len(r),</span> <span class="pre">r[i]</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>.)
 Lots more examples will follow.</p>
 <p>With the new format of primitive propositions, we can write proofs like before:</p>
-<div class="highlight-python"><div class="highlight"><pre>isHuman(Socrates) --&gt; isMortal(Socrates), isHuman(Socrates)  |-  isMortal(Socrates) ^ isHuman(Socrates)
+<div class="highlight-python"><div class="highlight"><pre><span></span>isHuman(Socrates) --&gt; isMortal(Socrates), isHuman(Socrates)  |-  isMortal(Socrates) ^ isHuman(Socrates)
 
 1.   isHuman(Socrates) --&gt; isMortal(Socrates)   premise
 2.   isHuman(Socrates)                          premise
@@ -269,7 +269,7 @@ Lots more examples will follow.</p>
 </pre></div>
 </div>
 <p>But more importantly, we will learn to prove claims like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx(isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates)  |-  isMortal(Socrates)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx(isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates)  |-  isMortal(Socrates)
 </pre></div>
 </div>
 <div class="section" id="the-universal-quantifier-and-its-deduction-rules">
@@ -278,19 +278,19 @@ Lots more examples will follow.</p>
 elimination rule.
 It works best to introduce the rules via examples.
 First, here is the most famous claim in logic:</p>
-<div class="highlight-python"><div class="highlight"><pre>All humans are mortal.
+<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal.
 Socrates is human.
 Therefore, Socrates is mortal.
 </pre></div>
 </div>
 <p>We express this ancient claim like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates) |- isMortal(Socrates)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates) |- isMortal(Socrates)
 </pre></div>
 </div>
 <p>Clearly, we require a kind of matching/binding rule to prove that the human
 individual, <code class="docutils literal"><span class="pre">Socrates</span></code>, is mortal. The rule is <code class="docutils literal"><span class="pre">FORALLe</span></code>
 (&#8220;all elimination&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre>1. FORALLx (isHuman(x) --&gt; isMortal(x))      premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. FORALLx (isHuman(x) --&gt; isMortal(x))      premise
 2. isHuman(Socrates)                         premise
 3. isHuman(Socrates) --&gt; isMortal(Socrates)  FORALLe 1
 4. isMortal(Socrates)                        --&gt;e 3,2
@@ -304,7 +304,7 @@ We use the new knowledge on Line 3 to reach the conclusion on Line 4.</p>
 element (who replaces the <code class="docutils literal"><span class="pre">x</span></code>).
 We see this in Line 3 above.
 Here is the rule&#8217;s schematic:</p>
-<div class="highlight-python"><div class="highlight"><pre>         FORALLx P_x
+<div class="highlight-python"><div class="highlight"><pre><span></span>         FORALLx P_x
 FORALLe: ------------
            P_v        that is, [v/x]P_x,  where  v  is an individual in the domain
 </pre></div>
@@ -317,7 +317,7 @@ deduce <code class="docutils literal"><span class="pre">[3/i](i</span> <span cla
 <p>The other deduction rule, <code class="docutils literal"><span class="pre">FORALLi</span></code> (&#8220;all-introduction&#8221;), deduces propositions
 that are prefixed by <code class="docutils literal"><span class="pre">FORALL</span></code>.
 Here is a motivating example, in the domain of integers:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">),</span>  <span class="n">FORALLn</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">|-</span>  <span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">),</span>  <span class="n">FORALLn</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">|-</span>  <span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>That is, we wish to prove that for every possible int, the int is smaller than
@@ -331,7 +331,7 @@ Instead, we write a single, generic, general-purpose argument &#8212; a
 consider.
 Let <code class="docutils literal"><span class="pre">a</span></code> stand for the arbitrary int we will discuss.
 The case analysis appears in the proof like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLn ((n + 1) &gt; n),  FORALLn (n &gt; (n - 1))  |-  FORALLn ((n + 1) &gt; n ^ n &gt; (n - 1))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLn ((n + 1) &gt; n),  FORALLn (n &gt; (n - 1))  |-  FORALLn ((n + 1) &gt; n ^ n &gt; (n - 1))
 
 1.  FORALLn ((n + 1) &gt; n)                premise
 2.  FORALLn (n &gt; (n - 1))                premise
@@ -354,7 +354,7 @@ we can substitute <code class="docutils literal"><span class="pre">0</span></cod
 <p>Line 7 is justified by the new deduction rule, <code class="docutils literal"><span class="pre">FORALLi</span></code>, which asserts that
 the generic case analysis in Lines 3-6 applies to all the individual integers.
 Here is the rule&#8217;s schematic:</p>
-<div class="highlight-python"><div class="highlight"><pre>         ... a            (a  must be a brand new name)
+<div class="highlight-python"><div class="highlight"><pre><span></span>         ... a            (a  must be a brand new name)
          ... P_a
 FORALLi: ------------
          FORALLx P_x      (That is,  P_x  is  [x/a]P_a.
@@ -375,7 +375,7 @@ In this way, we have proofs of <code class="docutils literal"><span class="pre">
 <p>Here is the same idea, used in a proof about a domain of people:
 &#8220;Everyone is healthy; everyone is happy.
 Therefore, everyone is both healthy and happy&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx isHealthy(x),  FORALLy isHappy(y)  |-  FORALLz(isHealthy(z) ^ isHappy(z))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isHealthy(x),  FORALLy isHappy(y)  |-  FORALLz(isHealthy(z) ^ isHappy(z))
 
 1. FORALLx isHealthy(x)                 premise
 2. FORALLy isHappy(y)                   premise
@@ -388,12 +388,12 @@ Therefore, everyone is both healthy and happy&#8221;:</p>
 </div>
 <p>Say that we have a domain of living beings.
 This next example requires nested cases:</p>
-<div class="highlight-python"><div class="highlight"><pre>All humans are mortal
+<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
 All mortals have soul
 Therefore, all humans have soul
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (isHuman(x) --&gt;  isMortal(x)),
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt;  isMortal(x)),
 FORALLy (isMortal(y) --&gt; hasSoul(y))
 |-  FORALLx (isHuman(x) --&gt; hasSoul(x))
 
@@ -419,11 +419,11 @@ Since the outer case is stated in terms of the arbitrary, anonymous individual,
 <p>Here is a last, important example.
 Let the domain be the members of one family.
 We can prove this truism:</p>
-<div class="highlight-python"><div class="highlight"><pre>Every (individual) family member who is healthy is also happy.
+<div class="highlight-python"><div class="highlight"><pre><span></span>Every (individual) family member who is healthy is also happy.
 Therefore, if all the family members are healthy, then all the members are happy.
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (healthy(x) --&gt; happy(x))  |-  (FORALLy healthy(y)) --&gt; (FORALLx happy(x))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (healthy(x) --&gt; happy(x))  |-  (FORALLy healthy(y)) --&gt; (FORALLx happy(x))
 
 1. FORALLx healthy(x) --&gt; happy(x)              premise
 ... 2. FORALLy healthy(y)                       assumption
@@ -443,7 +443,7 @@ Since <code class="docutils literal"><span class="pre">a</span></code> stands fo
 conclude on Line 7 that all family members are happy.
 Line 8 finishes.</p>
 <p>Consider the converse claim; is it valid?</p>
-<div class="highlight-python"><div class="highlight"><pre>If all the family members are healthy, then all are happy.
+<div class="highlight-python"><div class="highlight"><pre><span></span>If all the family members are healthy, then all are happy.
 Therefore, for every (individual) family member, if (s)he is healthy then
 (s)he is also happy.
 </pre></div>
@@ -453,7 +453,7 @@ is unhealthy; then other, healthy, family members might well be unhappy with
 worry.
 This is a subtle point, so take a moment and think about it!</p>
 <p>Let&#8217;s try to prove the dubious claim and see where we get stuck:</p>
-<div class="highlight-python"><div class="highlight"><pre>(FORALLy healthy(y)) --&gt; (FORALLx happy(x)) |-
+<div class="highlight-python"><div class="highlight"><pre><span></span>(FORALLy healthy(y)) --&gt; (FORALLx happy(x)) |-
     FORALLx (healthy(x) --&gt; happy(x))
 
 1. (FORALLy healthy(y)) --&gt; (FORALLx happy(x))  premise
@@ -470,7 +470,7 @@ It is impossible to prove this claim.</p>
 <h3>8.1.1. More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h3>
 <p>We state some standard exercises with <code class="docutils literal"><span class="pre">FORALL</span></code>, where the domains and
 predicates are unimportant:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx F(x) |- FORALLy F(y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx F(x) |- FORALLy F(y)
 
 1. FORALLx F(x)    premise
 ... 2. a
@@ -478,7 +478,7 @@ predicates are unimportant:</p>
 4. FORALLy F(y)    FORALLi 2-3
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>FORALLz (F(z) ^ G(z)  |- (FORALLx F(x)) ^ (FORALLy G(y))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLz (F(z) ^ G(z)  |- (FORALLx F(x)) ^ (FORALLy G(y))
 
 1. FORALLz (F(z) ^ G(z)              premise
 ... 2.  a
@@ -496,13 +496,13 @@ predicates are unimportant:</p>
 </div>
 <p>The earlier example about healthy and happy families illustrates an important
 structural relationship between <code class="docutils literal"><span class="pre">FORALL</span></code> and <code class="docutils literal"><span class="pre">--&gt;</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (F(x) --&gt; G(x)) |- (FORALLx F(x)) --&gt; (FORALLx G(x))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (F(x) --&gt; G(x)) |- (FORALLx F(x)) --&gt; (FORALLx G(x))
 </pre></div>
 </div>
 <p>can be proved, but the converse cannot.</p>
 <p>This last one is reasonable but the proof is a bit tricky because of the nested
 subproofs:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx FORALLy F(x,y)  |-  FORALLy FORALLx F(x,y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx FORALLy F(x,y)  |-  FORALLy FORALLx F(x,y)
 
 1. FORALLx FORALLy F(x,y)   premise
 ... 2.  b
@@ -527,7 +527,7 @@ To prove <code class="docutils literal"><span class="pre">Premises</span> <span 
 <li>finish with <code class="docutils literal"><span class="pre">FORALLi</span></code>.</li>
 </ol>
 <p>The proof structure looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises         premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises         premise
 ... i.  a
          (fill in)
 ... j.  P_a
@@ -542,7 +542,7 @@ proof.
 To prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">FORALLx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, then for an individual, <code class="docutils literal"><span class="pre">i</span></code>, that
 appears in the proof so far, use the <code class="docutils literal"><span class="pre">FORALLe</span></code> rule to deduce the new fact,
 <code class="docutils literal"><span class="pre">P_i</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  FORALLx P_x     premise
   . . .
 j.  P_i             FORALLe 2
@@ -569,12 +569,12 @@ domain we use:</p>
 <code class="docutils literal"><span class="pre">{sun,</span> <span class="pre">mon,</span> <span class="pre">tues,</span> <span class="pre">weds,</span> <span class="pre">thurs,</span> <span class="pre">fri,</span> <span class="pre">sat}</span></code>.)</p>
 <p>This makes <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span></code> just an abbreviation itself of this much-longer
 assertion:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">P_e0</span> <span class="o">^</span> <span class="n">P_e1</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_ek</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P_e0</span> <span class="o">^</span> <span class="n">P_e1</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_ek</span>
 </pre></div>
 </div>
 <p>For example, when the domain is the days of the week, the assertion,
 <code class="docutils literal"><span class="pre">FORALLd</span> <span class="pre">isBurgerKingDay(d)</span></code>, abbreviates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sun</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">tues</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sat</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sun</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">tues</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sat</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To prove such a <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span></code> for a finite domain <code class="docutils literal"><span class="pre">D</span></code>, we must prove
@@ -604,7 +604,7 @@ variable name</li>
 invariants of the form, <code class="docutils literal"><span class="pre">FORALL</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">k</span> <span class="pre">&lt;</span> <span class="pre">count,</span> <span class="pre">P_k</span></code>:</p>
 <ul>
 <li><p class="first">We start with this assertion, at point <code class="docutils literal"><span class="pre">(a)</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALL 0 &lt;= k &lt; 0, P_k
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; 0, P_k
 </pre></div>
 </div>
 <p>This assertion is <em>true</em> because it defines an empty range of integers &#8211;
@@ -619,16 +619,16 @@ This proves the Basis case.</p>
 <p>P_count</p>
 <p>That is, <code class="docutils literal"><span class="pre">P</span></code> holds for the value, <code class="docutils literal"><span class="pre">count</span></code>.
 Using <code class="docutils literal"><span class="pre">^i</span></code> we get:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALL 0 &lt;= k &lt; count, P_k  ^  P_count
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; count, P_k  ^  P_count
 </pre></div>
 </div>
 <p>This can be understood as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">P_0</span> <span class="o">^</span> <span class="n">P_1</span> <span class="o">^</span> <span class="n">P_2</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="n">P_count</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">P_0</span> <span class="o">^</span> <span class="n">P_1</span> <span class="o">^</span> <span class="n">P_2</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="n">P_count</span>
 </pre></div>
 </div>
 <p>Based on what we read in Approach 1 earlier, we combine the facts into this
 one:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALL 0 &lt;= k &lt; count + 1, P_k
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; count + 1, P_k
 </pre></div>
 </div>
 <p>Since the loop&#8217;s body ends with the assignment, <code class="docutils literal"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">count</span> <span class="pre">+</span> <span class="pre">1</span></code>, we
@@ -666,7 +666,7 @@ function.
 A function&#8217;s parameter names are like the variables <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> in
 <code class="docutils literal"><span class="pre">FORALLx</span></code> and <code class="docutils literal"><span class="pre">FORALLy</span></code>.
 Here is an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fac</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    n &gt;= 0</span>
 <span class="sd">      post   ans == n!</span>
@@ -676,20 +676,20 @@ Here is an example:</p>
 </div>
 <p>We saw in the previous chapter that the pre- and post-condition can be combined
 into this compound proposition:</p>
-<div class="highlight-python"><div class="highlight"><pre>(n &gt;= 0)  --&gt; (fac(n) == n!)
+<div class="highlight-python"><div class="highlight"><pre><span></span>(n &gt;= 0)  --&gt; (fac(n) == n!)
 </pre></div>
 </div>
 <p>which describes <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s behavior in terms of name <code class="docutils literal"><span class="pre">n</span></code>.</p>
 <p>But <code class="docutils literal"><span class="pre">n</span></code> is a parameter name that is <em>internal</em> to <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s code.
 A more proper specification, one that makes sense to <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s caller, is:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLn ((n &gt;= 0)  --&gt; (fac(n) == n!))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLn ((n &gt;= 0)  --&gt; (fac(n) == n!))
 </pre></div>
 </div>
 <p>That is, &#8220;for all possible int arguments, if the argument is nonnegative, then
 <code class="docutils literal"><span class="pre">fac</span></code> computes the argument&#8217;s factorial&#8221;.</p>
 <p>We use this logical propery when we call the function.
 Here is the proof of it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">fac</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">fac</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. FORALLn((n &gt;= 0)  --&gt; (fac(n) == n!))    premise (about  fac )</span>
 <span class="sd">  2. 6 &gt;= 0                                   algebra</span>
@@ -727,32 +727,32 @@ are inserted and removed from the data structure.</p>
 First, recall these Python operators for arrays:</p>
 <ul>
 <li><p class="first">For array <code class="docutils literal"><span class="pre">r</span></code>, <code class="docutils literal"><span class="pre">r.append(e)</span></code> adds element <code class="docutils literal"><span class="pre">e</span></code> to the end of <code class="docutils literal"><span class="pre">r</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">a</span>      <span class="c"># prints  [2, 3, 5, 7]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">a</span>      <span class="c1"># prints  [2, 3, 5, 7]</span>
 <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">a</span>      <span class="c"># prints  [2, 3, 5, 7, 11]</span>
+<span class="k">print</span> <span class="n">a</span>      <span class="c1"># prints  [2, 3, 5, 7, 11]</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">For array <code class="docutils literal"><span class="pre">r</span></code>, <code class="docutils literal"><span class="pre">r[:index]</span></code> computes a new array that is the &#8220;slice&#8221; of
 <code class="docutils literal"><span class="pre">r</span></code> up to and not including <code class="docutils literal"><span class="pre">r[index]</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">e</span>      <span class="c"># prints  [2, 3, 5, 7, 11, 13]</span>
+<span class="k">print</span> <span class="n">e</span>      <span class="c1"># prints  [2, 3, 5, 7, 11, 13]</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">f</span>      <span class="c"># prints []</span>
-<span class="k">print</span> <span class="n">c</span>      <span class="c"># prints [2, 3, 5, 7, 11, 13, 17, 19]</span>
+<span class="k">print</span> <span class="n">f</span>      <span class="c1"># prints []</span>
+<span class="k">print</span> <span class="n">c</span>      <span class="c1"># prints [2, 3, 5, 7, 11, 13, 17, 19]</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">For array, <code class="docutils literal"><span class="pre">r</span></code>, <code class="docutils literal"><span class="pre">r[index;]</span></code> computes a new array that is the &#8220;slice&#8221; of
 <code class="docutils literal"><span class="pre">r</span></code> from <code class="docutils literal"><span class="pre">r[index]</span></code> to the end of <code class="docutils literal"><span class="pre">r</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
-<span class="k">print</span> <span class="n">g</span>      <span class="c"># prints  [11, 13, 17, 19]</span>
+<span class="k">print</span> <span class="n">g</span>      <span class="c1"># prints  [11, 13, 17, 19]</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">c</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">h</span>      <span class="c"># prints []</span>
-<span class="k">print</span> <span class="n">c</span>      <span class="c"># prints [2, 3, 5, 7, 11, 13, 17, 19]</span>
+<span class="k">print</span> <span class="n">h</span>      <span class="c1"># prints []</span>
+<span class="k">print</span> <span class="n">c</span>      <span class="c1"># prints [2, 3, 5, 7, 11, 13, 17, 19]</span>
 </pre></div>
 </div>
 </li>
@@ -760,7 +760,7 @@ First, recall these Python operators for arrays:</p>
 <p>Here is an example; it is math-induction-like (&#8220;Approach 2&#8221; mentioned earlier).
 We outline below how a procedure resets all the elements of an array (list) to
 zeros:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">zeroOut</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zeroOut</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre  isIntArray(a)</span>
 <span class="sd">      post FORALL 0 &lt;= i &lt; len(a),  a[i] == 0 }</span>
@@ -775,7 +775,7 @@ zeros:</p>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="sd">&quot;&quot;&quot;{ assert  FORALL 0 &lt;= i &lt; j,  a[i] == 0 }&quot;&quot;&quot;</span>
-    <span class="c">#END LOOP</span>
+    <span class="c1">#END LOOP</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   { assert      j == len(a)  ^  (FORALL 0 &lt;= i &lt; len(a),  a[i] == 0)</span>
 <span class="sd">     therefore,  FORALL 0 &lt;= i &lt; len(a),  a[i] == 0  }</span>
@@ -784,14 +784,14 @@ zeros:</p>
 </div>
 <p>We state that the range of elements from <code class="docutils literal"><span class="pre">0</span></code> up to (and not including) <code class="docutils literal"><span class="pre">j</span></code>
 are reset to <code class="docutils literal"><span class="pre">0</span></code> by stating:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALL 0 &lt;= i &lt; j,  a[i] == 0
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= i &lt; j,  a[i] == 0
 </pre></div>
 </div>
 <p>This loop invariant leads to the goal as <code class="docutils literal"><span class="pre">j</span></code> counts through the range of <code class="docutils literal"><span class="pre">0</span></code>
 up to the length of array <code class="docutils literal"><span class="pre">a</span></code>.
 At the point marked (*), there is an informal use of <code class="docutils literal"><span class="pre">FORALLi</span></code>.
 Here is a second, similar example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">doubleArray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">doubleArray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;doubleArray builds a new array that holds array  a&#39;s  values *2&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    {  pre:  isIntArray(a)</span>
@@ -810,7 +810,7 @@ Here is a second, similar example:</p>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        {  assert:   invariant ^  answer[index] == 2 * a[index]</span>
 <span class="sd">           implies:  FORALL 0 &lt;= i &lt; index+1, answer[i] == 2 * a[i]  }</span>
-<span class="sd">        &quot;&quot;&quot;</span>   <span class="c"># (see Approach 2)</span>
+<span class="sd">        &quot;&quot;&quot;</span>   <span class="c1"># (see Approach 2)</span>
         <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="sd">&quot;&quot;&quot;{  assert: invariant }&quot;&quot;&quot;</span>
 
@@ -836,7 +836,7 @@ the answer array.</p>
 We use this phrase when we do not care about the name of the individual involved
 in our claim.
 Here are examples:</p>
-<div class="highlight-python"><div class="highlight"><pre>There is a mouse in the house:  EXISTm (isMouse(m) ^ inHouse(m))
+<div class="highlight-python"><div class="highlight"><pre><span></span>There is a mouse in the house:  EXISTm (isMouse(m) ^ inHouse(m))
     (We don&#39;t care about the mouse&#39;s name.)
 
 Someone ate my cookie:   EXISTx ateMyCookie(x)
@@ -849,11 +849,11 @@ For every int, there is an int that is smaller:  FORALLx EXISTy y &lt; x
 <p>If we have a fact about an individual in a domain, we can use the fact to deduce
 a fact that begins with an existential quantifier.
 For example, if we know that:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>surely we can conclude that:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>that is, &#8220;there is someone who is human and mortal&#8221;.
@@ -866,14 +866,14 @@ Consider these Pat Sajack musings from a typical game of Wheel of Fortune:</p>
 <ul>
 <li><p class="first">Pat thinks: &#8220;There is an &#8216;E&#8217; covered over on Square 14 of the game board&#8221;.
 In predicate logic, this can be written:</p>
-<div class="highlight-python"><div class="highlight"><pre>isCovered(Square14) ^ holds(Square14,&#39;E&#39;).
+<div class="highlight-python"><div class="highlight"><pre><span></span>isCovered(Square14) ^ holds(Square14,&#39;E&#39;).
 </pre></div>
 </div>
 </li>
 <li><p class="first">Pat thinks: &#8220;Wait &#8211; I can&#8217;t say that on TV! Perhaps I can say,
 There is a vowel covered on Square 14 of the game board&#8221;.
 In predicate logic, this is written:</p>
-<div class="highlight-python"><div class="highlight"><pre>isCovered(Square14) ^ (EXISTc isVowel(c) ^ holds(Square14,c)).
+<div class="highlight-python"><div class="highlight"><pre><span></span>isCovered(Square14) ^ (EXISTc isVowel(c) ^ holds(Square14,c)).
 </pre></div>
 </div>
 <p>In this way, Pat does not reveal the letter to the game players and TV
@@ -882,7 +882,7 @@ viewers.</p>
 <li><p class="first">Because it isn&#8217;t fair to tell the players which squares hold vowels, Pat
 announces on the air,
 &#8220;There is a vowel that is still covered on the game board&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTs (isSquare(s) ^ isCovered(s) ^ (EXISTc isVowel(c) ^ holds(s,c)))
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTs (isSquare(s) ^ isCovered(s) ^ (EXISTc isVowel(c) ^ holds(s,c)))
 </pre></div>
 </div>
 <p>This statement hides the specific square and letter that Pat is thinking
@@ -900,7 +900,7 @@ A player might deduce these useful facts:</p>
 </li>
 <li><p class="first">There is a covered letter, <code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">O</span></code>, <code class="docutils literal"><span class="pre">U</span></code> (assuming the
 vowels are exactly <code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">O</span></code>, <code class="docutils literal"><span class="pre">U</span></code>):</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTs isSquare(s) ^ isCovered(s) ^ (holds(s,&#39;A&#39;) v holds(s,&#39;E&#39;) v holds(s,&#39;I&#39;) v holds(s,&#39;O&#39;) v holds(s,&#39;U&#39;))
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTs isSquare(s) ^ isCovered(s) ^ (holds(s,&#39;A&#39;) v holds(s,&#39;E&#39;) v holds(s,&#39;I&#39;) v holds(s,&#39;O&#39;) v holds(s,&#39;U&#39;))
 </pre></div>
 </div>
 </li>
@@ -911,7 +911,7 @@ We will use the <code class="docutils literal"><span class="pre">EXISTe</span></
 <div class="section" id="exist-introduction-rule">
 <h4>EXIST-Introduction Rule<a class="headerlink" href="#exist-introduction-rule" title="Permalink to this headline">¶</a></h4>
 <p>The rule for <code class="docutils literal"><span class="pre">EXISTi</span></code> has this format:</p>
-<div class="highlight-python"><div class="highlight"><pre>            P_d         where  d  is an individual in the domain D
+<div class="highlight-python"><div class="highlight"><pre><span></span>            P_d         where  d  is an individual in the domain D
 EXISTi: ------------
          EXISTx P_x
 </pre></div>
@@ -920,7 +920,7 @@ EXISTi: ------------
 is called by logicians) that makes <code class="docutils literal"><span class="pre">P</span></code> true, then surely we can say there
 exists <em>someone</em> that has <code class="docutils literal"><span class="pre">P</span></code> and hide the identity of the individual/witness.</p>
 <p>The rule was used in the previous section in a tiny example:</p>
-<div class="highlight-python"><div class="highlight"><pre>isHuman(Socrates), isMortal(Socrates) |- EXISTh (isHuman(h) ^ isMortal(h))
+<div class="highlight-python"><div class="highlight"><pre><span></span>isHuman(Socrates), isMortal(Socrates) |- EXISTh (isHuman(h) ^ isMortal(h))
 
 1. isHuman(Socrates)                        premise
 2. isMortal(Socrates)                       premise
@@ -933,7 +933,7 @@ Line 3.
 Line 4 &#8220;hides&#8221; <code class="docutils literal"><span class="pre">Socrates</span></code>&#8216; name.</p>
 <p>Let&#8217;s do a Wheel-Of-Fortune example: Pat Sajak uses two premises and the
 <code class="docutils literal"><span class="pre">EXISTi</span></code> rule to deduce a new conclusion:</p>
-<div class="highlight-python"><div class="highlight"><pre>isVowel(&#39;E&#39;), holds(Square14,&#39;E&#39;) |- EXISTc(isVowel(c) ^ EXISTs holds(s,c))
+<div class="highlight-python"><div class="highlight"><pre><span></span>isVowel(&#39;E&#39;), holds(Square14,&#39;E&#39;) |- EXISTc(isVowel(c) ^ EXISTs holds(s,c))
 
 1. isVowel(&#39;E&#39;)                             premise
 2. holds(Square14,&#39;E&#39;)                      premise
@@ -946,7 +946,7 @@ Line 4 &#8220;hides&#8221; <code class="docutils literal"><span class="pre">Socr
 Line 5 hides the &#8216;E&#8217; (&#8220;there is a letter that is a vowel and there is a square
 that holds the letter&#8221;).</p>
 <p>From the same two premises we can also prove this:</p>
-<div class="highlight-python"><div class="highlight"><pre>1. isVowel(&#39;E&#39;)                             premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. isVowel(&#39;E&#39;)                             premise
 2. holds(Square14,&#39;E&#39;)                      premise
 3. isVowel(&#39;E&#39;) ^ holds(Square14,&#39;E&#39;)       ^i 1,3
 4. EXISTs(isVowel(&#39;E&#39;) ^ holds(s,&#39;E&#39;))      EXISTi 3
@@ -967,7 +967,7 @@ identical content.)</p>
 The new rule employs a subtle case analysis.</p>
 <p>Here is a quick example (in the universe of things on planet Earth), to get our
 bearings:</p>
-<div class="highlight-python"><div class="highlight"><pre>All humans are mortal
+<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
 Someone is human
 Therefore, someone is mortal
 </pre></div>
@@ -975,7 +975,7 @@ Therefore, someone is mortal
 <p>We don&#8217;t know the name of the individual human, but it does not matter &#8211;
 we can still conclude someone is mortal.
 The steps we will take go like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>* Since &quot;someone is human&quot; and since we don&#39;t know his/her name, we&#39;ll just make
+<div class="highlight-python"><div class="highlight"><pre><span></span>* Since &quot;someone is human&quot; and since we don&#39;t know his/her name, we&#39;ll just make
 </pre></div>
 </div>
 <blockquote>
@@ -991,7 +991,7 @@ Since we <em>do not know the name</em> of the individual &#8220;hidden&#8221; be
 <code class="docutils literal"><span class="pre">EXISTx</span></code>,
 we make up a name for it, say <code class="docutils literal"><span class="pre">a</span></code>, and discuss what must follow from the
 assumption that <code class="docutils literal"><span class="pre">P_a</span></code> holds true:</p>
-<div class="highlight-python"><div class="highlight"><pre>                       ... a  P_a   assumption  (where  a  is a new, fresh name)
+<div class="highlight-python"><div class="highlight"><pre><span></span>                       ... a  P_a   assumption  (where  a  is a new, fresh name)
         EXISTx P_x     ...    Q
 EXISTe: -------------------------   (a  MUST NOT appear in  Q)
                Q
@@ -1002,14 +1002,14 @@ EXISTe: -------------------------   (a  MUST NOT appear in  Q)
 individual has.
 So, <code class="docutils literal"><span class="pre">Q</span></code> follows from <code class="docutils literal"><span class="pre">EXISTx</span> <span class="pre">P_x</span></code>.</p>
 <p>We can work the previous example, with <code class="docutils literal"><span class="pre">EXISTe</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>All humans are mortal
+<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
 Someone is human
 Therefore, someone is mortal
 </pre></div>
 </div>
 <p>We make up the name, <code class="docutils literal"><span class="pre">a</span></code>, for the individual whose name we do not know, and
 do a case analysis:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLh(isHuman(h) --&gt; isMortal(h)), EXISTx isHuman(x) |- EXISTy isMortal(y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLh(isHuman(h) --&gt; isMortal(h)), EXISTx isHuman(x) |- EXISTy isMortal(y)
 
 1.  FORALLh(isHuman(h) --&gt; isMortal(h))    premise
 2.  EXISTx isHuman(x)                      premise
@@ -1037,7 +1037,7 @@ The restriction on the <code class="docutils literal"><span class="pre">EXISTe</
 that we have no extra information about the identity of Mister <code class="docutils literal"><span class="pre">a</span></code> &#8211; the name
 <code class="docutils literal"><span class="pre">a</span></code> must not leave the subproof.</p>
 <p>Here is a Wheel-of-Fortune example that uses <code class="docutils literal"><span class="pre">EXISTe</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTc (isVowel(c) ^ EXISTs holds(s,c)) |-  EXISTy isVowel(y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTc (isVowel(c) ^ EXISTs holds(s,c)) |-  EXISTy isVowel(y)
 
 1. EXISTc (isVowel(c) ^ EXISTs holds(s,c))    premise
 ... 2.  a   isVowel(a) ^ EXISTs holds(s,a)    assumption
@@ -1052,7 +1052,7 @@ does not prevent us from concluding that there is a vowel.</p>
 <div class="section" id="standard-examples">
 <h4>Standard Examples<a class="headerlink" href="#standard-examples" title="Permalink to this headline">¶</a></h4>
 <p>For practice, we do some standard examples:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx P(x) |- EXISTy P(y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx P(x) |- EXISTy P(y)
 
 1. EXISTx P(x)             premise
 ... 2. a    P(a)           assumption
@@ -1060,7 +1060,7 @@ does not prevent us from concluding that there is a vowel.</p>
 4. EXISTy P(y)             EXISTe 1,2-3
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx(F(x) ^ G(x)) |- (EXISTy F(y)) ^ (EXISTz G(z))
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx(F(x) ^ G(x)) |- (EXISTy F(y)) ^ (EXISTz G(z))
 
 1. EXISTx(F(x) ^ G(x))                      premise
 ... 2.  a    F(a) ^ G(a)                    assumption
@@ -1073,7 +1073,7 @@ does not prevent us from concluding that there is a vowel.</p>
 </pre></div>
 </div>
 <p>Notice that you cannot prove the converse:</p>
-<div class="highlight-python"><div class="highlight"><pre>(EXISTy F(y)) ^ (EXISTz G(z)) |- EXISTx(F(x) ^ G(x)).
+<div class="highlight-python"><div class="highlight"><pre><span></span>(EXISTy F(y)) ^ (EXISTz G(z)) |- EXISTx(F(x) ^ G(x)).
 </pre></div>
 </div>
 <p>For example, say that the universe of discussion is the cast of Wheel of
@@ -1083,7 +1083,7 @@ Clearly, Pat Sajak is male and Vanna White is female, so
 But <code class="docutils literal"><span class="pre">EXISTx(F(x)</span> <span class="pre">^</span> <span class="pre">G(x))</span></code> does not follow.</p>
 <p>The following proof uses the <code class="docutils literal"><span class="pre">ve</span></code>-tactic &#8211; a cases analysis.
 See the assumptions at lines 3 and 6, based on Line 2:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx (P(x) v Q(x))  |-  (EXISTx P(x))  v  (EXISTx Q(x))
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx (P(x) v Q(x))  |-  (EXISTx P(x))  v  (EXISTx Q(x))
 
 1. EXISTx (P(x) v Q(x))                           premise
 ... 2. a   P(a) v Q(a)                            assumption
@@ -1100,7 +1100,7 @@ See the assumptions at lines 3 and 6, based on Line 2:</p>
 </pre></div>
 </div>
 <p>As an exercise, prove the converse of the above:</p>
-<div class="highlight-python"><div class="highlight"><pre>(EXISTx P(x)) v (EXISTx Q(x)) |- EXISTx (P(x) v Q(x)).
+<div class="highlight-python"><div class="highlight"><pre><span></span>(EXISTx P(x)) v (EXISTx Q(x)) |- EXISTx (P(x) v Q(x)).
 </pre></div>
 </div>
 </div>
@@ -1108,13 +1108,13 @@ See the assumptions at lines 3 and 6, based on Line 2:</p>
 <h4>An Important Example<a class="headerlink" href="#an-important-example" title="Permalink to this headline">¶</a></h4>
 <p>We finish with this crucial example.
 We use the domain of people:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTx FORALLy isBossOf(x,y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx FORALLy isBossOf(x,y)
 </pre></div>
 </div>
 <p>Read this as, &#8220;there is someone who is the boss of everyone&#8221;.
 From this strong fact we can prove that everyone has a boss, that is,
 <code class="docutils literal"><span class="pre">FORALLuEXISTv</span> <span class="pre">isBossOf(v,u)</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
 
 1. EXISTxFORALLy isBossOf(x,y)          premise
 ... 2. b   FORALLy isBossOf(b,y)        assumption
@@ -1133,7 +1133,7 @@ The proof exposes that the boss of &#8220;anybody at all&#8221; in the domain mu
 <code class="docutils literal"><span class="pre">b</span></code>.
 <code class="docutils literal"><span class="pre">FORALLi</span></code> and then <code class="docutils literal"><span class="pre">EXISTi</span></code> finish the proof.</p>
 <p>Here is the proof worked again, with the subproofs swapped:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
 
 1. EXISTxFORALLy isBossOf(x,y)               premise
 ... 2. a
@@ -1147,11 +1147,11 @@ The proof exposes that the boss of &#8220;anybody at all&#8221; in the domain mu
 <p>Can we prove the converse?
 That is, if everyone has a boss, then there is one boss who is the boss of
 everyone?</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLuEXISTv isBossOf(v,u) |- EXISTxFORALLy isBossOf(x,y) ???
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLuEXISTv isBossOf(v,u) |- EXISTxFORALLy isBossOf(x,y) ???
 </pre></div>
 </div>
 <p>No &#8211; we can try, but we get stuck:</p>
-<div class="highlight-python"><div class="highlight"><pre>1. FORALLuEXISTv isBossOf(v,u)    premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. FORALLuEXISTv isBossOf(v,u)    premise
 ... 2. a
 ... 3. EXISTv isBossOf(v,a)       FORALLe 1
 ... ... 4. b    isBossOf(b,a)     assumption
@@ -1165,7 +1165,7 @@ invalid deductions.</p>
 <blockquote>
 <div>EXISTxFORALLy isBossOf(x,y) <a href="#id7"><span class="problematic" id="id8">|</span></a>- EXISTz isBossOf(z,z)</div></blockquote>
 <p>(&#8220;if someone is the boss of everyone, then someone is their own boss&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
 
 1. EXISTxFORALLy isBossOf(x,y)     premise
 ... 2. b    FORALLy isBossOf(b,y)  assumption
@@ -1228,7 +1228,7 @@ bosses the person to their right:</p>
 </ol>
 <p>The third example domain is famous &#8211; it is just the integer domain, where
 <code class="docutils literal"><span class="pre">isBossOf</span></code> is actually <code class="docutils literal"><span class="pre">&gt;</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>. . . &lt; -3 &lt; -2 &lt; -1 &lt; 0 &lt; 1 &lt; 2 &lt; 3 &lt; . . .
+<div class="highlight-python"><div class="highlight"><pre><span></span>. . . &lt; -3 &lt; -2 &lt; -1 &lt; 0 &lt; 1 &lt; 2 &lt; 3 &lt; . . .
 </pre></div>
 </div>
 <p>Indeed, one of the main applications of logic is proving properties of numbers.
@@ -1258,7 +1258,7 @@ To prove <code class="docutils literal"><span class="pre">Premises,</span> <span
 <li>apply <code class="docutils literal"><span class="pre">EXISTe</span></code></li>
 </ol>
 <p>The proof looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  EXISTx P_x      premise
 ... i. a   P_a      assumption
         (fill in)
@@ -1271,7 +1271,7 @@ k.  Q               EXISTe 2,i-j
 To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span></code>, try to prove <code class="docutils literal"><span class="pre">P_e</span></code> for some <code class="docutils literal"><span class="pre">e</span></code> that
 already appears in the partially completed proof.
 Finish with <code class="docutils literal"><span class="pre">EXISTi</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
   . . .
 i.  ...e...
       (fill in)
@@ -1291,7 +1291,7 @@ applied.</p>
 function that returns some but not all the information that the function
 computes.
 Here is a simple example, for a computerized Wheel-of-Fortune game:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">board</span> <span class="o">=</span> <span class="o">...</span>   <span class="s">&quot;&quot;&quot;{ invariant: isStringArray(board) ^  len(board) &gt; 0  }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">board</span> <span class="o">=</span> <span class="o">...</span>   <span class="s2">&quot;&quot;&quot;{ invariant: isStringArray(board) ^  len(board) &gt; 0  }&quot;&quot;&quot;</span>
 
 <span class="k">def</span> <span class="nf">gameOver</span><span class="p">()</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;examines  board  to see if all squares uncovered.  Returns  True  if so,</span>
@@ -1303,22 +1303,22 @@ Here is a simple example, for a computerized Wheel-of-Fortune game:</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="bp">True</span>
 
-    <span class="o">...</span> <span class="k">while</span> <span class="n">loop</span> <span class="n">that</span> <span class="n">searches</span> <span class="n">board</span> <span class="k">for</span> <span class="n">a</span>  <span class="n">board</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;covered&quot;</span><span class="p">;</span>
+    <span class="o">...</span> <span class="k">while</span> <span class="n">loop</span> <span class="n">that</span> <span class="n">searches</span> <span class="n">board</span> <span class="k">for</span> <span class="n">a</span>  <span class="n">board</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;covered&quot;</span><span class="p">;</span>
           <span class="k">if</span> <span class="n">it</span> <span class="n">finds</span> <span class="n">one</span><span class="p">,</span> <span class="n">it</span> <span class="n">resets</span>  <span class="n">answer</span> <span class="o">=</span> <span class="bp">False</span> <span class="o">...</span>
 
     <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
 </div>
 <p>The computerized Pat Sajak would use this function like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">done</span> <span class="o">=</span> <span class="n">gameOver</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">done</span> <span class="o">=</span> <span class="n">gameOver</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">done</span> <span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;We have a winner!  Time for a commercial!&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;We have a winner!  Time for a commercial!&quot;</span>
 <span class="k">else</span> <span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;There is still a letter that is covered. Let&#39;s continue!&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;There is still a letter that is covered. Let&#39;s continue!&quot;</span>
 </pre></div>
 </div>
 <p>Here is the relevant deduction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">done</span> <span class="o">=</span> <span class="n">gameOver</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">done</span> <span class="o">=</span> <span class="n">gameOver</span><span class="p">()</span>
 <span class="sd">&quot;&quot;&quot;{  assert:  [done/answer]gameOver_post  }&quot;&quot;&quot;</span>
 <span class="k">if</span> <span class="n">done</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1327,7 +1327,7 @@ Here is a simple example, for a computerized Wheel-of-Fortune game:</p>
 <span class="sd">       3. done --&gt; ~(EXIST 0 &lt; i &lt; len(board), board[i] == &quot;covered&quot;)   ^e 2</span>
 <span class="sd">       4. ~(EXIST 0 &lt; i &lt; len(board), board[i] == &quot;covered&quot;)            --&gt;e 3,1 }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;We have a winner!  Time for a commercial!&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;We have a winner!  Time for a commercial!&quot;</span>
 <span class="k">else</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    {  1. ~done                                                         premise</span>
@@ -1335,14 +1335,14 @@ Here is a simple example, for a computerized Wheel-of-Fortune game:</p>
 <span class="sd">       3. ~done --&gt; (EXIST 0 &lt; i &lt; len(board), board[i] == &quot;covered&quot;)   ^e 2</span>
 <span class="sd">       4. EXIST 0 &lt; i &lt; len(board), board[i] == &quot;covered&quot;               --&gt;e 3,1 }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;There is still a letter that is covered. Let&#39;s continue!&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;There is still a letter that is covered. Let&#39;s continue!&quot;</span>
 </pre></div>
 </div>
 <p>Notice that the answer returned by <code class="docutils literal"><span class="pre">gameOver</span></code> hides which square on the
 <code class="docutils literal"><span class="pre">board</span></code> is still covered (<code class="docutils literal"><span class="pre">==</span> <span class="pre">&quot;covered&quot;</span></code>).</p>
 <p>We repeat an example from a previous chapter to show another use of the
 existential:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;delete locates an occurrence of  c  in  s  and</span>
 <span class="sd">       removes it and returns the resulting string.</span>
 <span class="sd">       If  c  is not in  s, a copy of  s  is returned, unchanged.</span>
@@ -1396,9 +1396,9 @@ existential:</p>
 shown above.</p>
 <p>It is important that <code class="docutils literal"><span class="pre">delete</span></code> hide the value of its local variable, <code class="docutils literal"><span class="pre">index</span></code>,
 from appearing in its postcondition, because we do not want confusion like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">t</span> <span class="o">=</span> <span class="s">&quot;abcd&quot;</span>
-<span class="n">u</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{ at this point, we certainly cannot assert that t[2] = &quot;a&quot;! }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
@@ -1406,7 +1406,7 @@ from appearing in its postcondition, because we do not want confusion like this:
 <div class="section" id="the-forwards-assignment-law-uses-an-existential-quantifier">
 <h3>8.2.3. The Forwards Assignment Law Uses an Existential Quantifier<a class="headerlink" href="#the-forwards-assignment-law-uses-an-existential-quantifier" title="Permalink to this headline">¶</a></h3>
 <p>The original, proper statement of the forwards assignment law reads like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
 <span class="sd">&quot;&quot;&quot;{ assert: EXISTx_old ( (x == [x_old/x]e)  ^  [x_old/x]P )  }&quot;&quot;&quot;</span>
 </pre></div>
@@ -1414,7 +1414,7 @@ from appearing in its postcondition, because we do not want confusion like this:
 <p>Our use of <code class="docutils literal"><span class="pre">x_old</span></code> was hiding the quantifier.
 Using <code class="docutils literal"><span class="pre">EXIST</span></code>, we can retain an assertion that uses the old value of <code class="docutils literal"><span class="pre">x</span></code>.
 In the earlier chapters, we worked examples like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ x &gt; 0 }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ x &gt; 0 }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. x_old &gt; 0        premise</span>
@@ -1427,7 +1427,7 @@ In the earlier chapters, we worked examples like this:</p>
 <p>The above proof is actually the subproof of a proof that finishes with
 <code class="docutils literal"><span class="pre">EXISTe</span></code>!
 Here is the proper proof:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ x &gt; 0 }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ x &gt; 0 }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. EXISTx_old(x_old &gt; 0  ^  x == x_old + 1)     premise</span>
@@ -1445,7 +1445,7 @@ Here is the proper proof:</p>
 reason about the old, overwritten value of an updated variable.</p>
 <p>Also, when we introduce dummy names, like <code class="docutils literal"><span class="pre">x_in</span></code> and <code class="docutils literal"><span class="pre">y_in</span></code>, to stand for
 specific values, as an example like this,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: x == x_in  ^  y == y_in }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: x == x_in  ^  y == y_in }&quot;&quot;&quot;</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">temp</span>
@@ -1453,7 +1453,7 @@ specific values, as an example like this,</p>
 </pre></div>
 </div>
 <p>we are implicitly using existential quantifiers, again, like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: EXISTx_in EXISTy_in(x == x_in  ^  y == y_in) }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: EXISTx_in EXISTy_in(x == x_in  ^  y == y_in) }&quot;&quot;&quot;</span>
 <span class="n">temp</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">temp</span>
@@ -1471,12 +1471,12 @@ The same principle holds for assignment to an individual array element:
 <code class="docutils literal"><span class="pre">a[e]</span> <span class="pre">=</span> <span class="pre">e'</span></code> &#8211; the &#8220;old&#8221; value of <code class="docutils literal"><span class="pre">a[e]</span></code> cannot appear in the assertion that
 results from the assignment.</p>
 <p>For example, if we have</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: len(a) &gt; 0 ^ FORALL 0 &lt;= i &lt; len(a), a[i] &gt; 0 }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: len(a) &gt; 0 ^ FORALL 0 &lt;= i &lt; len(a), a[i] &gt; 0 }&quot;&quot;&quot;</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>we should be able to deduce that</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ assert:   a[0] == 0</span>
 <span class="sd">            ^  len(a) &gt; 0</span>
 <span class="sd">            ^  FORALL 0 &lt; i &lt; len(a), a[i] &gt; 0</span>
@@ -1493,16 +1493,16 @@ Unless we can prove otherwise, the assignment has essentially updated &#8220;all
 <code class="docutils literal"><span class="pre">a</span></code>!</p>
 <p>Here is an example of a situation where we know nothing about which cell was
 updated:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type an int between 0 and len(a)-1: &quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an int between 0 and len(a)-1: &quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n</span>  <span class="ow">and</span>  <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>Clearly only one element of a is decremented. Let&#8217;s try to reason about this
 situation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: FORALL 0 &lt;= i &lt; len(a), a[i] &gt; 0 }&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: FORALL 0 &lt;= i &lt; len(a), a[i] &gt; 0 }&quot;&quot;&quot;</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Type an int between 0 and len(a)-1: &quot;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an int between 0 and len(a)-1: &quot;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">n</span>  <span class="ow">and</span>  <span class="n">n</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{ assert: 0 &lt;= n ^ n &lt; len(a)  ^  FORALL 0 &lt;= i &lt; len(a), a[i] &gt; 0 }&quot;&quot;&quot;</span>
 
@@ -1516,7 +1516,7 @@ situation:</p>
 </div>
 <p>To move forwards, we must assert that all those variables <code class="docutils literal"><span class="pre">a[i]</span></code>, such that
 <code class="docutils literal"><span class="pre">i</span> <span class="pre">!=</span> <span class="pre">n</span></code>, retain their old values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. a[n] == a_old[n] - 1                                  premise</span>
 <span class="sd">  2. FORALL 0 &lt;= i &lt; len(a), (i!=n) --&gt; a[i] == a_old[i]   premise  NEW!</span>
@@ -1530,8 +1530,8 @@ situation:</p>
 assignment law for arrays includes this fact &#8220;for free&#8221; as part of its
 postcondition.</p>
 <p>Here is the law for array assignment:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
-<span class="n">a</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="s">&#39;    # where  e  contains _no mention_ of  a</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
+<span class="n">a</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="s1">&#39;    # where  e  contains _no mention_ of  a</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. a[e] == [a_old/a]e&#39;                                     premise</span>
 <span class="sd">  2. [a_old/a]P                                              premise</span>
@@ -1547,7 +1547,7 @@ postcondition.</p>
 Line 2 is used with <code class="docutils literal"><span class="pre">FORALLe</span></code> to extract information about array elements that
 were not affected by the assignment to <code class="docutils literal"><span class="pre">a[e]</span></code>.</p>
 <p>Now we have enough knowledge to make a useful deduction:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. a[n] == a_old[n] - 1                                      premise</span>
 <span class="sd">  2. FORALL 0 &lt;= i &lt; len(a), (i!=n) --&gt; a[i] == a_old[i]       premise</span>
@@ -1576,11 +1576,11 @@ the <code class="docutils literal"><span class="pre">n``th</span> <span class="p
 For this reason, some researchers use a picture notation to encode the
 assertions.
 For example, the assertion,</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Might be drawn like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>      0  1  ... len(a)-1
+<div class="highlight-python"><div class="highlight"><pre><span></span>      0  1  ... len(a)-1
     +--+--+-- --+--+
 a = |&gt;0|&gt;0| ... |&gt;0|
     +--+--+-- --+--+
@@ -1588,7 +1588,7 @@ a = |&gt;0|&gt;0| ... |&gt;0|
 </div>
 <p>so that after the assignment, a[n] = a[n]-1, we deduce this new pictorial
 assertion:</p>
-<div class="highlight-python"><div class="highlight"><pre>      0  1 ...    n  ...  len(a)-1
+<div class="highlight-python"><div class="highlight"><pre><span></span>      0  1 ...    n  ...  len(a)-1
     +--+--+-   -+---+    -+--+
 a = |&gt;0|&gt;0| ... |&gt;=0| ... |&gt;0|
     +--+--+-   -+---+    -+--+
@@ -1603,8 +1603,8 @@ What if <code class="docutils literal"><span class="pre">n</span> <span class="p
 Use such drawings with caution.</p>
 <p>To summarize, the forwards assignment law for individual array elements reads as
 follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
-<span class="n">a</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="s">&#39;    # where  e  contains _no mention_ of  a</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ assert: P }&quot;&quot;&quot;</span>
+<span class="n">a</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="s1">&#39;    # where  e  contains _no mention_ of  a</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ assert:  a[e] == [a_old/a]e&#39;</span>
 <span class="sd">           ^  FORALL 0 &lt;= i &lt; len(a), (i != e) --&gt; a[i] == a_old[i]</span>
@@ -1626,7 +1626,7 @@ that is, move them around within the array until the array is sorted.</p>
 segment of the array is repeatedly scanned for the smallest element therein,
 which is extracted at moved to the end of the array&#8217;s sorted segment.</p>
 <p>A trace of a selection sort would look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>  (sorted segment) | (unsorted segment)
+<div class="highlight-python"><div class="highlight"><pre><span></span>  (sorted segment) | (unsorted segment)
                    v
               a == [&quot;f&quot;, &quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;e&quot;]
                    v
@@ -1643,7 +1643,7 @@ a ==  [&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;
 </div>
 <p>We require a function that searches the unsorted segment of the array and
 locates the position of the least element therein:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">,</span> <span class="s">&quot;a&quot;</span><span class="p">]</span>   <span class="c"># data structure managed by this module</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">]</span>   <span class="c1"># data structure managed by this module</span>
 
 <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="p">:</span>
    <span class="sd">&quot;&quot;&quot;select returns the index of the smallest element in array  a&#39;s</span>
@@ -1665,7 +1665,7 @@ locates the position of the least element therein:</p>
 </div>
 <p>The pre-postconditions tell us the knowledge the function computes.</p>
 <p>Next, define these notions of &#8220;ordered&#8221; and &#8220;permuted&#8221; for arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre>ordered(a) =  FORALL 0 &lt; i &lt; len(a), a[i-1] &lt;= a[i]
+<div class="highlight-python"><div class="highlight"><pre><span></span>ordered(a) =  FORALL 0 &lt; i &lt; len(a), a[i-1] &lt;= a[i]
 perm(a, b) =  (len(a) = len(b))  ^  (elements of  a  ==  elements of b)
 </pre></div>
 </div>
@@ -1678,7 +1678,7 @@ It is a little informal but good enough for us to use here.</p>
 The loop invariant is key &#8211; the elements that have been already selected are
 moved to the front of <code class="docutils literal"><span class="pre">a</span></code> are all guaranteed to be less-than-or-equal-to the
 elements in <code class="docutils literal"><span class="pre">a</span></code>&#8216;s rear that have not yet been selected:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">selectionSort</span><span class="p">()</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selectionSort</span><span class="p">()</span> <span class="p">:</span>
    <span class="sd">&quot;&quot;&quot;does an in-place sort on global array  a,  using  select.&quot;&quot;&quot;</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   { pre  true</span>
@@ -1698,8 +1698,8 @@ elements in <code class="docutils literal"><span class="pre">a</span></code>&#82
 <span class="sd">                FORALL index &lt;= i &lt; len(a), a[x] &lt;= a[i]</span>
 <span class="sd">                ^  invariant  }</span>
 <span class="sd">      &quot;&quot;&quot;</span>
-      <span class="n">least</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>       <span class="c"># exchange the least element with the one at the</span>
-      <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>    <span class="c">#  front of the unsorted segment</span>
+      <span class="n">least</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>       <span class="c1"># exchange the least element with the one at the</span>
+      <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>    <span class="c1">#  front of the unsorted segment</span>
       <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">least</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      {  assert: ordered(a[:index])  ^  perm(a, a_in) ^</span>
@@ -1715,7 +1715,7 @@ elements in <code class="docutils literal"><span class="pre">a</span></code>&#82
 </pre></div>
 </div>
 <p>The key accomplishment of</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">least</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">least</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
 <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">least</span>
 </pre></div>
@@ -1746,7 +1746,7 @@ Eventually, we find the value (if it is there).</p>
 <p>Here is the function, which is famous for its difficulty to write correctly.
 Glance at it, then read the paragraph underneath it, then return to the function
 and study its assertions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span> <span class="p">:</span>
    <span class="sd">&quot;&quot;&quot;searches for value  v  within array  a  in the range  a[lower]...a[upper].</span>
 <span class="sd">      If found, returns the index where  v  is; if not found, returns -1&quot;&quot;&quot;</span>
    <span class="sd">&quot;&quot;&quot;</span>
@@ -1758,7 +1758,7 @@ and study its assertions:</p>
 <span class="sd">                      (answer = -1  ^  FORALL 0 &lt;= i &lt; len(a), v != a[i]) }</span>
 <span class="sd">   &quot;&quot;&quot;</span>
 
-   <span class="k">if</span>  <span class="n">upper</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="ow">or</span>  <span class="n">lower</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>  <span class="ow">or</span>  <span class="n">lower</span> <span class="o">&gt;</span> <span class="n">upper</span> <span class="p">:</span>  <span class="c"># empty range to search?</span>
+   <span class="k">if</span>  <span class="n">upper</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="ow">or</span>  <span class="n">lower</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>  <span class="ow">or</span>  <span class="n">lower</span> <span class="o">&gt;</span> <span class="n">upper</span> <span class="p">:</span>  <span class="c1"># empty range to search?</span>
       <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      {  assert:  (upper &lt; 0  v  lower &gt; len(a)-1  v  lower &gt; upper)  ^</span>
 <span class="sd">                  search_pre</span>
@@ -1771,7 +1771,7 @@ and study its assertions:</p>
 <span class="sd">      &quot;&quot;&quot;</span>
    <span class="k">else</span> <span class="p">:</span>
       <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">lower</span> <span class="o">+</span> <span class="n">upper</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-      <span class="k">if</span>  <span class="n">v</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">:</span>  <span class="c"># found v at a[index] ?</span>
+      <span class="k">if</span>  <span class="n">v</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">:</span>  <span class="c1"># found v at a[index] ?</span>
          <span class="n">answer</span> <span class="o">=</span> <span class="n">index</span>
          <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">         {  assert:  a[answer] == v</span>
@@ -1785,7 +1785,7 @@ and study its assertions:</p>
 <span class="sd">         &quot;&quot;&quot;</span>
          <span class="n">answer</span> <span class="o">=</span> <span class="n">searchFor</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
          <span class="sd">&quot;&quot;&quot;{  assert:  search_post  }&quot;&quot;&quot;</span>
-      <span class="k">else</span> <span class="p">:</span>  <span class="c"># a[index] &lt; v</span>
+      <span class="k">else</span> <span class="p">:</span>  <span class="c1"># a[index] &lt; v</span>
          <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">         {  assert:   a[index] &lt; v  ^  search_pre</span>
 <span class="sd">            implies:  FORALL index &lt;= j &lt; len(a), v &lt; a[j]</span>
@@ -1798,7 +1798,7 @@ and study its assertions:</p>
 </pre></div>
 </div>
 <p>To search array, <code class="docutils literal"><span class="pre">a</span></code>, for <code class="docutils literal"><span class="pre">v</span></code>, we start the function like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">search</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">search</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The precondition is the key: to use correctly <code class="docutils literal"><span class="pre">search(v,</span> <span class="pre">lower,</span> <span class="pre">upper)</span></code>,
@@ -1845,7 +1845,7 @@ Both data structures are documented with their invariants.
 (If you are programming in an object-oriented language and have written a class
 to model the game board, you call the data-structure invariants, class
 invariants.)</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">module GameBoard  models a Tic-Tac-Toe board.</span>
 
 <span class="sd">There are two key data structures:</span>
@@ -1856,17 +1856,17 @@ invariants.)</p>
 <span class="sd">in this module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c"># The game players:</span>
-<span class="n">X</span> <span class="o">=</span> <span class="s">&quot;X&quot;</span>
-<span class="n">O</span> <span class="o">=</span> <span class="s">&quot;O&quot;</span>
-<span class="n">NOBODY</span> <span class="o">=</span> <span class="s">&quot;neither player&quot;</span>
+<span class="c1"># The game players:</span>
+<span class="n">X</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
+<span class="n">O</span> <span class="o">=</span> <span class="s2">&quot;O&quot;</span>
+<span class="n">NOBODY</span> <span class="o">=</span> <span class="s2">&quot;neither player&quot;</span>
 
-<span class="c">###### The game board, a matrix sized  dimension x dimension:</span>
-<span class="n">EMPTY</span> <span class="o">=</span> <span class="s">&quot;_&quot;</span>     <span class="c"># marks an empty square on the board</span>
+<span class="c1">###### The game board, a matrix sized  dimension x dimension:</span>
+<span class="n">EMPTY</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span>     <span class="c1"># marks an empty square on the board</span>
 <span class="n">dimension</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">BOARDSIZE</span> <span class="o">=</span> <span class="n">dimension</span> <span class="o">*</span> <span class="n">dimension</span>
-<span class="c"># the board itself:</span>
-<span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c"># construct the board with this loop:</span>
+<span class="c1"># the board itself:</span>
+<span class="n">board</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># construct the board with this loop:</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">dimension</span> <span class="p">:</span>
     <span class="n">board</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dimension</span> <span class="o">*</span> <span class="p">[</span><span class="n">EMPTY</span><span class="p">])</span>
@@ -1877,14 +1877,14 @@ invariants.)</p>
 <span class="sd">          board[i][j] == X  v  board[i][j] == O  v  board[i][j] == EMPTY }</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c">#### A history log of all the moves:  it is a list of  Marker, Row, Col  tuples:</span>
+<span class="c1">#### A history log of all the moves:  it is a list of  Marker, Row, Col  tuples:</span>
 <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ global invariant for history:  All moves in  history  recorded in  board</span>
 <span class="sd">      forall 0 &lt; i &lt; len(history), history[i]==(m,r,c)  and  board[r,c] == m }</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c">### Functions that manage the  board  and  history:</span>
+<span class="c1">### Functions that manage the  board  and  history:</span>
 
 <span class="k">def</span> <span class="nf">printBoard</span><span class="p">()</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;prints the board on the display&quot;&quot;&quot;</span>
@@ -1902,7 +1902,7 @@ invariants.)</p>
             <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">print</span>
     <span class="k">print</span>
-    <span class="c">#print history</span>
+    <span class="c1">#print history</span>
 
 
 <span class="k">def</span> <span class="nf">emptyAt</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="p">:</span>
@@ -1935,8 +1935,8 @@ invariants.)</p>
 <span class="sd">    {  pre   ((marker == X) v (marker == O)) &amp;  (0 &lt;= position &lt; BOARDSIZE)</span>
 <span class="sd">       post  invariants for board and history are maintained }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">history</span><span class="p">,</span> <span class="n">board</span>   <span class="c"># because we update these global variabes,</span>
-                            <span class="c"># we are OBLIGATED to maintain their invariants!</span>
+    <span class="k">global</span> <span class="n">history</span><span class="p">,</span> <span class="n">board</span>   <span class="c1"># because we update these global variabes,</span>
+                            <span class="c1"># we are OBLIGATED to maintain their invariants!</span>
     <span class="k">if</span> <span class="n">emptyAt</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="p">:</span>
         <span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">position</span><span class="o">/</span><span class="n">dimension</span><span class="p">,</span> <span class="n">position</span><span class="o">%</span><span class="n">dimension</span><span class="p">)</span>
         <span class="n">board</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">marker</span>
@@ -1965,7 +1965,7 @@ invariants.)</p>
             <span class="n">check</span> <span class="o">=</span> <span class="n">check</span> <span class="ow">and</span> <span class="p">(</span><span class="n">vector</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">mark</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">check</span>
 
-    <span class="c"># check  row i  and  column i  for  i in 0,1,...,dimension-1:</span>
+    <span class="c1"># check  row i  and  column i  for  i in 0,1,...,dimension-1:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span> <span class="p">:</span>
         <span class="n">columni</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">):</span>
@@ -1973,7 +1973,7 @@ invariants.)</p>
         <span class="k">if</span> <span class="n">winnerAlong</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">or</span> <span class="n">winnerAlong</span><span class="p">(</span><span class="n">columni</span><span class="p">)</span> <span class="p">:</span>
             <span class="k">return</span> <span class="n">mark</span>
 
-    <span class="c"># check the left and right diagonals:</span>
+    <span class="c1"># check the left and right diagonals:</span>
     <span class="n">ldiag</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">rdiag</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">):</span>
@@ -1981,7 +1981,7 @@ invariants.)</p>
         <span class="n">rdiag</span> <span class="o">=</span> <span class="n">rdiag</span> <span class="o">+</span> <span class="p">[</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][(</span><span class="n">dimension</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">i</span><span class="p">]]</span>
     <span class="k">if</span> <span class="n">winnerAlong</span><span class="p">(</span><span class="n">ldiag</span><span class="p">)</span> <span class="ow">or</span> <span class="n">winnerAlong</span><span class="p">(</span><span class="n">rdiag</span><span class="p">)</span> <span class="p">:</span>
         <span class="k">return</span> <span class="n">mark</span>
-    <span class="c"># else, no winner, so</span>
+    <span class="c1"># else, no winner, so</span>
     <span class="k">return</span> <span class="n">NOBODY</span>
 </pre></div>
 </div>
@@ -2007,7 +2007,7 @@ The loop</p>
 <li>implements the move on the board</li>
 </ol>
 <p>Study the loop invariant first before you study anything else.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;The Main module controls the tic-tac-toe game.&quot;&quot;&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;The Main module controls the tic-tac-toe game.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">GameBoard</span>
 <span class="kn">from</span> <span class="nn">GameBoard</span> <span class="kn">import</span> <span class="o">*</span>
@@ -2026,7 +2026,7 @@ The loop</p>
 <span class="sd">       post: answer:int  }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">needInput</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">while</span> <span class="n">needInput</span> <span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">text</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="p">:</span>
@@ -2034,9 +2034,9 @@ The loop</p>
             <span class="n">needInput</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="k">return</span> <span class="n">answer</span>
 
-<span class="n">player</span> <span class="o">=</span> <span class="n">X</span>       <span class="c"># whose turn is it?  who goes first?</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c"># how many moves have been made?</span>
-<span class="n">winner</span> <span class="o">=</span> <span class="n">NOBODY</span>  <span class="c"># who is the winner?</span>
+<span class="n">player</span> <span class="o">=</span> <span class="n">X</span>       <span class="c1"># whose turn is it?  who goes first?</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># how many moves have been made?</span>
+<span class="n">winner</span> <span class="o">=</span> <span class="n">NOBODY</span>  <span class="c1"># who is the winner?</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{  loop invariant:  The rules of the tic-tac-toe game are enforced:</span>
@@ -2055,20 +2055,20 @@ The loop</p>
 
     <span class="n">printBoard</span><span class="p">()</span>
 
-    <span class="c"># get the next move:</span>
+    <span class="c1"># get the next move:</span>
     <span class="n">awaitingMove</span> <span class="o">=</span> <span class="bp">True</span>
     <span class="k">while</span> <span class="n">awaitingMove</span> <span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        { invariant</span>
 <span class="sd">                  awaitingMove --&gt; (0 &lt;= m &lt; BOARDSIZE) and emptyAt(m) }</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s">&quot;Player &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span>  \
-                    <span class="s">&quot;: type next move (0..&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">BOARDSIZE</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;): &quot;</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Player &quot;</span> <span class="o">+</span> <span class="n">player</span> <span class="o">+</span>  \
+                    <span class="s2">&quot;: type next move (0..&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">BOARDSIZE</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;): &quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">m</span> <span class="o">&lt;</span> <span class="n">BOARDSIZE</span><span class="p">)</span> <span class="ow">and</span> <span class="n">emptyAt</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">:</span>
             <span class="n">awaitingMove</span> <span class="o">=</span> <span class="bp">False</span>
 
-    <span class="c"># we have received a legal move:</span>
+    <span class="c1"># we have received a legal move:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { assert: ((player == X) v (player == O))</span>
 <span class="sd">              and (0 &lt;= m &lt; BOARDSIZE) and  emptyAt(m)</span>
@@ -2080,10 +2080,10 @@ The loop</p>
 <span class="sd">       invariants for  board  and   history  are maintained }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c"># determine whether this player is the winner:</span>
+    <span class="c1"># determine whether this player is the winner:</span>
     <span class="n">winner</span> <span class="o">=</span> <span class="n">winnerIs</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
 
-    <span class="c"># switch players for the next round:</span>
+    <span class="c1"># switch players for the next round:</span>
     <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">X</span> <span class="p">:</span>
         <span class="n">player</span> <span class="o">=</span> <span class="n">O</span>
     <span class="k">else</span> <span class="p">:</span>
@@ -2092,8 +2092,8 @@ The loop</p>
 
     <span class="sd">&quot;&quot;&quot;{ assert: loop invariant, all 3 parts, holds }&quot;&quot;&quot;</span>
 
-<span class="c"># the loop quit, and the game&#39;s over:</span>
-<span class="k">print</span> <span class="n">winner</span> <span class="o">+</span> <span class="s">&quot; won!&quot;</span>
+<span class="c1"># the loop quit, and the game&#39;s over:</span>
+<span class="k">print</span> <span class="n">winner</span> <span class="o">+</span> <span class="s2">&quot; won!&quot;</span>
 <span class="n">printBoard</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2135,7 +2135,7 @@ represented by each <code class="docutils literal"><span class="pre">EXISTy</spa
 A Skolem function is a function name that is used to designate where an
 existential quantifier should appear.
 Examples explain the idea best:</p>
-<div class="highlight-python"><div class="highlight"><pre>Everyone has a boss:                     FORALLx EXISTy P(x,y)
+<div class="highlight-python"><div class="highlight"><pre><span></span>Everyone has a boss:                     FORALLx EXISTy P(x,y)
 (expressed with a Skolem function,
   named  boss:)                          FORALLx P(x, boss(x))
 
@@ -2168,7 +2168,7 @@ the second one makes clear that the boss is independent of all the individuals
 in the domain.</p>
 <p>It is possible to work proofs in predicate logic with Skolem functions.
 Here are two examples:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx isMortal(x) --&gt; hasSoul(x),  isMortal(socrates()) |- hasSoul(t())
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isMortal(x) --&gt; hasSoul(x),  isMortal(socrates()) |- hasSoul(t())
 
 1. FORALLx isMortal(x) --&gt; hasSoul(x)              premise
 2. isMortal(socrates())                            premise
@@ -2181,7 +2181,7 @@ Here are two examples:</p>
 function, <code class="docutils literal"><span class="pre">socrates()</span></code>.
 The key step is the last one, where the desired Skolem function, <code class="docutils literal"><span class="pre">t()</span></code>, is
 defined in terms of <code class="docutils literal"><span class="pre">socrates()</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">t</span><span class="p">()</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">t</span><span class="p">()</span> <span class="p">:</span>
     <span class="k">return</span> <span class="n">socrates</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2191,7 +2191,7 @@ shorthand for <code class="docutils literal"><span class="pre">EXISTsocrates</sp
 Now, there is no practical difference.</p>
 <p>Here is the boss-worker example (&#8220;if someone is the boss of everyone, then
 everyone has a boss&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx isBossOf(x, big()) |- FORALLx isBossOf(x, b(x))
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isBossOf(x, big()) |- FORALLx isBossOf(x, b(x))
 
 1. FORALLx isBossOf(x, big())     premise
 ... 2. a
@@ -2234,13 +2234,13 @@ We achieve clause form in these steps:</p>
 with a unique variable name.</p>
 </li>
 <li><p class="first">Remove all implications, <code class="docutils literal"><span class="pre">A</span> <span class="pre">--&gt;</span> <span class="pre">B</span></code>, with this equivalence:</p>
-<div class="highlight-python"><div class="highlight"><pre>A --&gt; B  -||-  ~A v B
+<div class="highlight-python"><div class="highlight"><pre><span></span>A --&gt; B  -||-  ~A v B
 </pre></div>
 </div>
 </li>
 <li><p class="first">Next, move all remaining negation operators inwards, by repeatedly applying
 these equivalences:</p>
-<div class="highlight-python"><div class="highlight"><pre>~(A ^ B)  -||-  ~A v ~B
+<div class="highlight-python"><div class="highlight"><pre><span></span>~(A ^ B)  -||-  ~A v ~B
 ~(A v B)  -||-  ~A ^ ~B
 ~(FORALLx A) -||- EXISTx ~A
 ~(EXISTx A) -||- FORALLx ~A
@@ -2253,7 +2253,7 @@ functions.</p>
 </li>
 <li><p class="first">Use these equivalences to move all occurrences of universal quantifiers to
 the leftmost position of the proposition:</p>
-<div class="highlight-python"><div class="highlight"><pre>Q ^ (FORALLx P_x) -||- FORALLx (Q ^ P_x)
+<div class="highlight-python"><div class="highlight"><pre><span></span>Q ^ (FORALLx P_x) -||- FORALLx (Q ^ P_x)
 Q v (FORALLx P_x) -||- FORALLx (Q v P_x)
 </pre></div>
 </div>
@@ -2264,14 +2264,14 @@ Now, <em>remove the quantifiers</em> because they are no longer needed (!).</p>
 combination of conjunctions, disjunctions, and negations attached to
 primitive propositions that hold Skolem functions.
 To finish, apply this equivalence to move all disjunction operators inward:</p>
-<div class="highlight-python"><div class="highlight"><pre>(A ^ B) v C  -||-  (A v C)  ^  (B v C)
+<div class="highlight-python"><div class="highlight"><pre><span></span>(A ^ B) v C  -||-  (A v C)  ^  (B v C)
 </pre></div>
 </div>
 </li>
 </ol>
 <p>Here is an example conversion:
 <code class="docutils literal"><span class="pre">(EXISTy</span> <span class="pre">FORALLx</span> <span class="pre">isBossOf(y,x))</span> <span class="pre">--&gt;</span> <span class="pre">(EXISTx</span> <span class="pre">isBossOf(x,x))</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre>1. (EXISTy FORALLx isBossOf(y,x)) --&gt; (EXISTz isBossOf(z,z))
+<div class="highlight-python"><div class="highlight"><pre><span></span>1. (EXISTy FORALLx isBossOf(y,x)) --&gt; (EXISTz isBossOf(z,z))
 
 2. ~(EXISTy FORALLx isBossOf(y,x))  v (EXISTz isBossOf(z,z))
 
@@ -2291,7 +2291,7 @@ To finish, apply this equivalence to move all disjunction operators inward:</p>
 The resolution rule is slightly modified to handle the variables and Skolem
 functions: a form of two-way matching, called <em>unification</em>, is used to apply
 the <code class="docutils literal"><span class="pre">FORALLe</span></code> rule to variables and Skolem functions:</p>
-<div class="highlight-python"><div class="highlight"><pre>        A v P(E1)    ~P(E2) v B    matches = unify(E1,E2)
+<div class="highlight-python"><div class="highlight"><pre><span></span>        A v P(E1)    ~P(E2) v B    matches = unify(E1,E2)
 res:  ---------------------------------------------------------
              [matches](A v B)
 </pre></div>
@@ -2300,7 +2300,7 @@ res:  ---------------------------------------------------------
 we must unify the arguments <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> in <code class="docutils literal"><span class="pre">P(E1)</span></code> and <code class="docutils literal"><span class="pre">P(E2)</span></code> so that
 they become one and the same.
 It works like this: For example,</p>
-<div class="highlight-python"><div class="highlight"><pre>for  isMortal(soc())   ~isMortal(z),      unify(soc(),z) =  [z=soc()]
+<div class="highlight-python"><div class="highlight"><pre><span></span>for  isMortal(soc())   ~isMortal(z),      unify(soc(),z) =  [z=soc()]
 
 for  isMortal(x)       ~isMortal(y),      unify(x,y) = [x=y]
 
@@ -2311,7 +2311,7 @@ for  isBoss(a(),x)     ~isBoss(b(),b()),  unify((a(),x), (b(),b())) = FAILURE
 </div>
 <p>The matches that are computed are applied to the remaining clauses.
 For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>~P(x) v Q(x)        P(a())
+<div class="highlight-python"><div class="highlight"><pre><span></span>~P(x) v Q(x)        P(a())
 -------------------------------
              Q(a())
 </pre></div>
@@ -2321,7 +2321,7 @@ For example:</p>
 propositional logic.
 The resolution rule plus unification searches for a witness to a contradiction.</p>
 <p>Here are two examples of resolution proofs conducted with unification:</p>
-<div class="highlight-python"><div class="highlight"><pre>FORALLx (P(x) --&gt; Q(x)),  EXISTy P(y)  |-  EXISTz Q(z)
+<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (P(x) --&gt; Q(x)),  EXISTy P(y)  |-  EXISTz Q(z)
 
 The clauses resulting from the two premises and negated goal are
    ~P(x) v Q(x),   P(y()),   ~Q(z)
@@ -2340,7 +2340,7 @@ The resolution proof goes
 </pre></div>
 </div>
 <p>Here is another example, the workers-and-bosses proof:</p>
-<div class="highlight-python"><div class="highlight"><pre>EXISTy FORALLx isBossOf(y,x)  |-  FORALLu EXISTv isBossOf(v,u)
+<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTy FORALLx isBossOf(y,x)  |-  FORALLu EXISTv isBossOf(v,u)
 
       isBossOf(y(),x)              ~isBossOf(v, u())
            |                        |
@@ -2495,7 +2495,7 @@ and the <em>parametric polymorphic function</em> and extend the Heyting interpre
 <p>Here are the rules for the quantifiers, stated in terms of their tactics:</p>
 <ul>
 <li><p class="first">(<a href="#id15"><span class="problematic" id="id16">**</span></a><a href="#id17"><span class="problematic" id="id18">*</span></a>) <code class="docutils literal"><span class="pre">FORALLi</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">FORALLx</span> <span class="pre">P_x</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
 ... i.  a
          (fill in)
 ... j.  P_a
@@ -2504,7 +2504,7 @@ k. FORALLx P_x      FORALLi i-j
 </div>
 </li>
 <li><p class="first">(<a href="#id19"><span class="problematic" id="id20">**</span></a><a href="#id21"><span class="problematic" id="id22">*</span></a>) <code class="docutils literal"><span class="pre">EXISTe</span></code>-tactic: use to prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  EXISTx P_x      premise
 ... i. a   P_a      assumption
       (fill in)
@@ -2514,7 +2514,7 @@ k.  Q               EXISTe 2,i-j
 </div>
 </li>
 <li><p class="first">(*) <code class="docutils literal"><span class="pre">FORALLe</span></code>-tactic: use to prove Premises, <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  FORALLx P_x     premise
   . . .
 j.  P_i             FORALLe 2  (where individual  i  appears earlier in the proof)
@@ -2524,7 +2524,7 @@ k.  Q
 </div>
 </li>
 <li><p class="first">(*) <code class="docutils literal"><span class="pre">EXISTi</span></code>-tactic: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>1.  Premises        premise
+<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
       (fill in)
 j.  P_e
 k.  EXISTx P_x      EXISTi j

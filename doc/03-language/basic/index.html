@@ -123,7 +123,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 content">
       
   <br/>
 <font color="darkgray">
@@ -154,7 +154,9 @@ listed with a decreasing precedence order (first is highest) along with Math Uni
 Note that the proof context operators and literals include the ones in the programming
 context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
 <a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java&#8217;s string literal</a>
-without the octal escape.</p>
+without the octal escape.
+The prepend (<code class="docutils literal"><span class="pre">+:</span></code>) and implication operators (<code class="docutils literal"><span class="pre">-&gt;</span></code>, <code class="docutils literal"><span class="pre">implies</span></code>, <code class="docutils literal"><span class="pre">→</span></code>)
+are right-associative.</p>
 <hr class="docutils" />
 <table border="1" class="docutils">
 <colgroup>
@@ -236,7 +238,7 @@ without the octal escape.</p>
 justification keywords, and type keywords.</p>
 <div class="section" id="scala-keywords">
 <h3>3.1.3.1. Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>abstract       case           catch          class          def
+<div class="highlight-python"><div class="highlight"><pre><span></span>abstract       case           catch          class          def
 do             else           extends        false          final
 finally        for            forSome        if             implicit
 import         lazy           macro          match          new
@@ -249,26 +251,26 @@ val            var            while          with           yield
 </div>
 <div class="section" id="types">
 <h3>3.1.3.2. Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>B              Z              ZS
+<div class="highlight-python"><div class="highlight"><pre><span></span>B              Z              ZS
 </pre></div>
 </div>
 </div>
 <div class="section" id="built-in-functions">
 <h3>3.1.3.3. Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>readInt        randomInt      print          println
+<div class="highlight-python"><div class="highlight"><pre><span></span>readInt        randomInt      print          println
 </pre></div>
 </div>
 </div>
 <div class="section" id="contracts">
 <h3>3.1.3.4. Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>pre            requires       modifies       post           ensures
+<div class="highlight-python"><div class="highlight"><pre><span></span>pre            requires       modifies       post           ensures
 fact           invariant      assert         assume
 </pre></div>
 </div>
 </div>
 <div class="section" id="justifications">
 <h3>3.1.3.5. Justifications<a class="headerlink" href="#justifications" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>premise        andi           ande1          ande2          ori1
+<div class="highlight-python"><div class="highlight"><pre><span></span>premise        andi           ande1          ande2          ori1
 Vi1            ori2           Vi2            ore            Ve
 impliesi       impliese       noti           negi           note
 nege           bottome        falsee         pbc
