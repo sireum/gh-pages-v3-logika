@@ -209,7 +209,7 @@ structures.</p>
 in a domain.
 Say we consider the domain of animals.
 The sentence, &#8220;All humans are mortal&#8221; is written like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt; isMortal(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>That is, if an individual, <code class="docutils literal"><span class="pre">x</span></code>, is human, then <code class="docutils literal"><span class="pre">x</span></code> is mortal also.
@@ -219,57 +219,57 @@ human.
 Sadly, dogs are nonetheless mortal.)</p>
 <p>An arithmetic example looks like this: for the domain of ints, &#8220;every value is
 less-than-or-equal to its square&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A data-structure example looks like this: For array, <code class="docutils literal"><span class="pre">r</span></code>, we can assert that
 every element of <code class="docutils literal"><span class="pre">r</span></code> is positive:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLi ((i &gt;= 0 ^ i &lt; len(r)) --&gt; r[i] &gt; 0)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLi</span> <span class="p">((</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">))</span> <span class="o">--&gt;</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>That is, for every index int, <code class="docutils literal"><span class="pre">i</span></code>, in the range of <code class="docutils literal"><span class="pre">0</span></code> up to (but not
 including) <code class="docutils literal"><span class="pre">len(r)</span></code> (the length of <code class="docutils literal"><span class="pre">r</span></code>), the indexed element <code class="docutils literal"><span class="pre">r[i]</span></code> is
 greater than <code class="docutils literal"><span class="pre">0</span></code>.
 The previous statement is often written in a &#8220;shorthand&#8221; like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= i &lt; len(r), r[i] &gt; 0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>which we later use in many of our programming examples.</p>
 <p>The <code class="docutils literal"><span class="pre">EXIST</span></code> quantifier helps us write propositions about specific individuals
 in a domain, where the name of the individual is unimportant or unknown.
 For example, we can say that <code class="docutils literal"><span class="pre">Lassie</span></code> has a mother like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx isMotherOf(x, Lassie)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span> <span class="n">isMotherOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Lassie</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(&#8220;There exists some <code class="docutils literal"><span class="pre">x</span></code> such that <code class="docutils literal"><span class="pre">x</span></code> is the mother of <code class="docutils literal"><span class="pre">Lassie</span></code>&#8221;.)
 Here is how we write that every individual in the domain has a mother:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLxEXISTy isMotherOf(y, x)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLxEXISTy</span> <span class="n">isMotherOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For the domain of integers, we can make assertions like these:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx (x * x = x)
-EXISTy (y + 2 = 9)
-FORALLx (x &gt; 1) --&gt; (EXISTy (y &gt; 0 and y + 1 = x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">EXISTy</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">FORALLx</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="p">(</span><span class="n">EXISTy</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>For array <code class="docutils literal"><span class="pre">r</span></code>, we can say that <code class="docutils literal"><span class="pre">r</span></code> holds at least one negative int like
 this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">EXISTi</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTi</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">^</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(The shorthand version is <code class="docutils literal"><span class="pre">EXIST</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">len(r),</span> <span class="pre">r[i]</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>.)
 Lots more examples will follow.</p>
 <p>With the new format of primitive propositions, we can write proofs like before:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>isHuman(Socrates) --&gt; isMortal(Socrates), isHuman(Socrates)  |-  isMortal(Socrates) ^ isHuman(Socrates)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">),</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
 
-1.   isHuman(Socrates) --&gt; isMortal(Socrates)   premise
-2.   isHuman(Socrates)                          premise
-3.   isMortal(Socrates)                         --&gt;e 1,2
-4.   isMortal(Socrates) ^ isHuman(Socrates)     ^i 3,2
+<span class="mf">1.</span>   <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>   <span class="n">premise</span>
+<span class="mf">2.</span>   <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                          <span class="n">premise</span>
+<span class="mf">3.</span>   <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                         <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="mf">4.</span>   <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>     <span class="o">^</span><span class="n">i</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>But more importantly, we will learn to prove claims like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx(isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates)  |-  isMortal(Socrates)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span><span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>  <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="the-universal-quantifier-and-its-deduction-rules">
@@ -278,22 +278,22 @@ Lots more examples will follow.</p>
 elimination rule.
 It works best to introduce the rules via examples.
 First, here is the most famous claim in logic:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal.
-Socrates is human.
-Therefore, Socrates is mortal.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">All</span> <span class="n">humans</span> <span class="n">are</span> <span class="n">mortal</span><span class="o">.</span>
+<span class="n">Socrates</span> <span class="ow">is</span> <span class="n">human</span><span class="o">.</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="n">Socrates</span> <span class="ow">is</span> <span class="n">mortal</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>We express this ancient claim like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt; isMortal(x)),  isHuman(Socrates) |- isMortal(Socrates)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>  <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">|-</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Clearly, we require a kind of matching/binding rule to prove that the human
 individual, <code class="docutils literal"><span class="pre">Socrates</span></code>, is mortal. The rule is <code class="docutils literal"><span class="pre">FORALLe</span></code>
 (&#8220;all elimination&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. FORALLx (isHuman(x) --&gt; isMortal(x))      premise
-2. isHuman(Socrates)                         premise
-3. isHuman(Socrates) --&gt; isMortal(Socrates)  FORALLe 1
-4. isMortal(Socrates)                        --&gt;e 3,2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>      <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                         <span class="n">premise</span>
+<span class="mf">3.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>  <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="mf">4.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                        <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>Line 3 shows that the claim on Line 1, <em>which holds for all individuals in the
@@ -304,9 +304,9 @@ We use the new knowledge on Line 3 to reach the conclusion on Line 4.</p>
 element (who replaces the <code class="docutils literal"><span class="pre">x</span></code>).
 We see this in Line 3 above.
 Here is the rule&#8217;s schematic:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>         FORALLx P_x
-FORALLe: ------------
-           P_v        that is, [v/x]P_x,  where  v  is an individual in the domain
+<div class="highlight-default"><div class="highlight"><pre><span></span>         <span class="n">FORALLx</span> <span class="n">P_x</span>
+<span class="n">FORALLe</span><span class="p">:</span> <span class="o">------------</span>
+           <span class="n">P_v</span>        <span class="n">that</span> <span class="ow">is</span><span class="p">,</span> <span class="p">[</span><span class="n">v</span><span class="o">/</span><span class="n">x</span><span class="p">]</span><span class="n">P_x</span><span class="p">,</span>  <span class="n">where</span>  <span class="n">v</span>  <span class="ow">is</span> <span class="n">an</span> <span class="n">individual</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">domain</span>
 </pre></div>
 </div>
 <p>(Here, <code class="docutils literal"><span class="pre">P_x</span></code> stands for a proposition that contains some occurrences of <code class="docutils literal"><span class="pre">x</span></code>.
@@ -317,7 +317,7 @@ deduce <code class="docutils literal"><span class="pre">[3/i](i</span> <span cla
 <p>The other deduction rule, <code class="docutils literal"><span class="pre">FORALLi</span></code> (&#8220;all-introduction&#8221;), deduces propositions
 that are prefixed by <code class="docutils literal"><span class="pre">FORALL</span></code>.
 Here is a motivating example, in the domain of integers:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">),</span>  <span class="n">FORALLn</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">|-</span>  <span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">),</span>  <span class="n">FORALLn</span><span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">|-</span>  <span class="n">FORALLn</span><span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>That is, we wish to prove that for every possible int, the int is smaller than
@@ -331,15 +331,15 @@ Instead, we write a single, generic, general-purpose argument &#8212; a
 consider.
 Let <code class="docutils literal"><span class="pre">a</span></code> stand for the arbitrary int we will discuss.
 The case analysis appears in the proof like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLn ((n + 1) &gt; n),  FORALLn (n &gt; (n - 1))  |-  FORALLn ((n + 1) &gt; n ^ n &gt; (n - 1))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLn</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">),</span>  <span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">|-</span>  <span class="n">FORALLn</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
-1.  FORALLn ((n + 1) &gt; n)                premise
-2.  FORALLn (n &gt; (n - 1))                premise
-... 3.  a
-... 4.  (a + 1) &gt; a                      FORALLe 1
-... 5.  a &gt; (a - 1)                      FORALLe 2
-... 6.  (a + 1) &gt; a  ^  a &gt; (a - 1)      ^i 4,5
-7.  FORALLn ((n + 1) &gt; n ^ n &gt; (n - 1))  FORALLi 3-6
+<span class="mf">1.</span>  <span class="n">FORALLn</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">)</span>                <span class="n">premise</span>
+<span class="mf">2.</span>  <span class="n">FORALLn</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>                <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">3.</span>  <span class="n">a</span>
+<span class="o">...</span> <span class="mf">4.</span>  <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">a</span>                      <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">5.</span>  <span class="n">a</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>                      <span class="n">FORALLe</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">6.</span>  <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">a</span>  <span class="o">^</span>  <span class="n">a</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>      <span class="o">^</span><span class="n">i</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span>
+<span class="mf">7.</span>  <span class="n">FORALLn</span> <span class="p">((</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">^</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>  <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>Lines 3-6 are the generic argument: let <code class="docutils literal"><span class="pre">a</span></code> be the arbitrary/anybody integer
@@ -354,13 +354,13 @@ we can substitute <code class="docutils literal"><span class="pre">0</span></cod
 <p>Line 7 is justified by the new deduction rule, <code class="docutils literal"><span class="pre">FORALLi</span></code>, which asserts that
 the generic case analysis in Lines 3-6 applies to all the individual integers.
 Here is the rule&#8217;s schematic:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>         ... a            (a  must be a brand new name)
-         ... P_a
-FORALLi: ------------
-         FORALLx P_x      (That is,  P_x  is  [x/a]P_a.
-                           Thus,  a  _does not appear_ in  P_x,  and
-                           every premise and assumption visible
-                           to  FORALLx P_x   _does not mention_  a)
+<div class="highlight-default"><div class="highlight"><pre><span></span>         <span class="o">...</span> <span class="n">a</span>            <span class="p">(</span><span class="n">a</span>  <span class="n">must</span> <span class="n">be</span> <span class="n">a</span> <span class="n">brand</span> <span class="n">new</span> <span class="n">name</span><span class="p">)</span>
+         <span class="o">...</span> <span class="n">P_a</span>
+<span class="n">FORALLi</span><span class="p">:</span> <span class="o">------------</span>
+         <span class="n">FORALLx</span> <span class="n">P_x</span>      <span class="p">(</span><span class="n">That</span> <span class="ow">is</span><span class="p">,</span>  <span class="n">P_x</span>  <span class="ow">is</span>  <span class="p">[</span><span class="n">x</span><span class="o">/</span><span class="n">a</span><span class="p">]</span><span class="n">P_a</span><span class="o">.</span>
+                           <span class="n">Thus</span><span class="p">,</span>  <span class="n">a</span>  <span class="n">_does</span> <span class="ow">not</span> <span class="n">appear_</span> <span class="ow">in</span>  <span class="n">P_x</span><span class="p">,</span>  <span class="ow">and</span>
+                           <span class="n">every</span> <span class="n">premise</span> <span class="ow">and</span> <span class="n">assumption</span> <span class="n">visible</span>
+                           <span class="n">to</span>  <span class="n">FORALLx</span> <span class="n">P_x</span>   <span class="n">_does</span> <span class="ow">not</span> <span class="n">mention_</span>  <span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To repeat this important idea: The rule says, to prove a claim of form,
@@ -375,38 +375,38 @@ In this way, we have proofs of <code class="docutils literal"><span class="pre">
 <p>Here is the same idea, used in a proof about a domain of people:
 &#8220;Everyone is healthy; everyone is happy.
 Therefore, everyone is both healthy and happy&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isHealthy(x),  FORALLy isHappy(y)  |-  FORALLz(isHealthy(z) ^ isHappy(z))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="n">isHealthy</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>  <span class="n">FORALLy</span> <span class="n">isHappy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">FORALLz</span><span class="p">(</span><span class="n">isHealthy</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">^</span> <span class="n">isHappy</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
-1. FORALLx isHealthy(x)                 premise
-2. FORALLy isHappy(y)                   premise
-... 3.  a
-... 4.  isHealthy(a)                    FORALLe 1
-... 5.  isHappy(a)                      FORALLe 2
-... 6.  isHealthy(a) ^ isHappy(a)       ^i 4,5
-7. FORALLz(isHealthy(z) ^ isHappy(z))   FORALLi 3-6
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">isHealthy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                 <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">FORALLy</span> <span class="n">isHappy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                   <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">3.</span>  <span class="n">a</span>
+<span class="o">...</span> <span class="mf">4.</span>  <span class="n">isHealthy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                    <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">5.</span>  <span class="n">isHappy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                      <span class="n">FORALLe</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">6.</span>  <span class="n">isHealthy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">^</span> <span class="n">isHappy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>       <span class="o">^</span><span class="n">i</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span>
+<span class="mf">7.</span> <span class="n">FORALLz</span><span class="p">(</span><span class="n">isHealthy</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">^</span> <span class="n">isHappy</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>   <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>Say that we have a domain of living beings.
 This next example requires nested cases:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
-All mortals have soul
-Therefore, all humans have soul
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">All</span> <span class="n">humans</span> <span class="n">are</span> <span class="n">mortal</span>
+<span class="n">All</span> <span class="n">mortals</span> <span class="n">have</span> <span class="n">soul</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="nb">all</span> <span class="n">humans</span> <span class="n">have</span> <span class="n">soul</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (isHuman(x) --&gt;  isMortal(x)),
-FORALLy (isMortal(y) --&gt; hasSoul(y))
-|-  FORALLx (isHuman(x) --&gt; hasSoul(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+<span class="n">FORALLy</span> <span class="p">(</span><span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="o">|-</span>  <span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-1. FORALLx (isHuman(x) --&gt; isMortal(x))      premise
-2. FORALLy (isMortal(y) --&gt; hasSoul(y))      premise
-... 3. a
-... ... 4. isHuman(a)                        assumption
-... ... 5. isHuman(a) --&gt; isMortal(a)        FORALLe 1
-... ... 6. isMortal(a)                       --&gt;e 4,3
-... ... 7. isMortal(a) --&gt; hasSoul(a)        FORALLe 2
-... ... 8. hasSoul(a)                        --&gt;e 6,5
-... 9.  isHuman(a) --&gt; hasSoul(a)            --&gt;i 4-8
-10.  FORALLx (isHuman(x) --&gt; hasSoul(x))     FORALLi 3-9
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>      <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">FORALLy</span> <span class="p">(</span><span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>      <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">3.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">4.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                        <span class="n">assumption</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">5.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>        <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">6.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                       <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">7.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>        <span class="n">FORALLe</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">8.</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                        <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">6</span><span class="p">,</span><span class="mi">5</span>
+<span class="o">...</span> <span class="mf">9.</span>  <span class="n">isHuman</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>            <span class="o">--&gt;</span><span class="n">i</span> <span class="mi">4</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">10.</span>  <span class="n">FORALLx</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>     <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">9</span>
 </pre></div>
 </div>
 <p>Line 3 states that we use <code class="docutils literal"><span class="pre">a</span></code> to stand for an arbitrary individual of the
@@ -419,20 +419,20 @@ Since the outer case is stated in terms of the arbitrary, anonymous individual,
 <p>Here is a last, important example.
 Let the domain be the members of one family.
 We can prove this truism:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Every (individual) family member who is healthy is also happy.
-Therefore, if all the family members are healthy, then all the members are happy.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Every</span> <span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="n">family</span> <span class="n">member</span> <span class="n">who</span> <span class="ow">is</span> <span class="n">healthy</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">happy</span><span class="o">.</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="k">if</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">family</span> <span class="n">members</span> <span class="n">are</span> <span class="n">healthy</span><span class="p">,</span> <span class="n">then</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">members</span> <span class="n">are</span> <span class="n">happy</span><span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (healthy(x) --&gt; happy(x))  |-  (FORALLy healthy(y)) --&gt; (FORALLx happy(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">healthy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="o">|-</span>  <span class="p">(</span><span class="n">FORALLy</span> <span class="n">healthy</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">--&gt;</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-1. FORALLx healthy(x) --&gt; happy(x)              premise
-... 2. FORALLy healthy(y)                       assumption
-... ... 3. a
-... ... 4. healthy(a)                           FORALLe 4
-... ... 5. healthy(a) --&gt; happy(a)              FORALLe 1
-... ... 6. happy(a)                             --&gt;e 5,4
-... 7. FORALL x happy(x)                        FORALLi 3-6
-8. (FORALLy healthy(y)) --&gt; (FORALLx happy(x))  --&gt;i 2-7
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">healthy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>              <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">FORALLy</span> <span class="n">healthy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                       <span class="n">assumption</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">3.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">4.</span> <span class="n">healthy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                           <span class="n">FORALLe</span> <span class="mi">4</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">5.</span> <span class="n">healthy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">happy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>              <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">6.</span> <span class="n">happy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                             <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">5</span><span class="p">,</span><span class="mi">4</span>
+<span class="o">...</span> <span class="mf">7.</span> <span class="n">FORALL</span> <span class="n">x</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                        <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">6</span>
+<span class="mf">8.</span> <span class="p">(</span><span class="n">FORALLy</span> <span class="n">healthy</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">--&gt;</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">happy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="o">--&gt;</span><span class="n">i</span> <span class="mi">2</span><span class="o">-</span><span class="mi">7</span>
 </pre></div>
 </div>
 <p>We commence by assuming all the family is healthy (Line 2).
@@ -443,9 +443,9 @@ Since <code class="docutils literal"><span class="pre">a</span></code> stands fo
 conclude on Line 7 that all family members are happy.
 Line 8 finishes.</p>
 <p>Consider the converse claim; is it valid?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>If all the family members are healthy, then all are happy.
-Therefore, for every (individual) family member, if (s)he is healthy then
-(s)he is also happy.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">If</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">family</span> <span class="n">members</span> <span class="n">are</span> <span class="n">healthy</span><span class="p">,</span> <span class="n">then</span> <span class="nb">all</span> <span class="n">are</span> <span class="n">happy</span><span class="o">.</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="k">for</span> <span class="n">every</span> <span class="p">(</span><span class="n">individual</span><span class="p">)</span> <span class="n">family</span> <span class="n">member</span><span class="p">,</span> <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="n">he</span> <span class="ow">is</span> <span class="n">healthy</span> <span class="n">then</span>
+<span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="n">he</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">happy</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>Well, no &#8211; perhaps the family is so close-knit that, if one one family member
@@ -453,7 +453,7 @@ is unhealthy; then other, healthy, family members might well be unhappy with
 worry.
 This is a subtle point, so take a moment and think about it!</p>
 <p>Let&#8217;s try to prove the dubious claim and see where we get stuck:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(FORALLy healthy(y)) --&gt; (FORALLx happy(x)) |-
+<div class="highlight-default"><div class="highlight"><pre><span></span>(FORALLy healthy(y)) --&gt; (FORALLx happy(x)) |-
     FORALLx (healthy(x) --&gt; happy(x))
 
 1. (FORALLy healthy(y)) --&gt; (FORALLx happy(x))  premise
@@ -470,47 +470,47 @@ It is impossible to prove this claim.</p>
 <h3>8.1.1. More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h3>
 <p>We state some standard exercises with <code class="docutils literal"><span class="pre">FORALL</span></code>, where the domains and
 predicates are unimportant:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx F(x) |- FORALLy F(y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|-</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-1. FORALLx F(x)    premise
-... 2. a
-... 3. F(a)        FORALLe 1
-4. FORALLy F(y)    FORALLi 2-3
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="mf">3.</span> <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>        <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="mf">4.</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLz (F(z) ^ G(z)  |- (FORALLx F(x)) ^ (FORALLy G(y))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLz</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>  <span class="o">|-</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">FORALLy</span> <span class="n">G</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 
-1. FORALLz (F(z) ^ G(z)              premise
-... 2.  a
-... 3.  F(a) ^ G(z)                  FORALLe 1
-... 4.  F(a)                         ^e1 3
-5. FORALLx F(x)                      FORALLi 2-4
+<span class="mf">1.</span> <span class="n">FORALLz</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>              <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span>  <span class="n">a</span>
+<span class="o">...</span> <span class="mf">3.</span>  <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>                  <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">4.</span>  <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                         <span class="o">^</span><span class="n">e1</span> <span class="mi">3</span>
+<span class="mf">5.</span> <span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">4</span>
 
-... 6.  b
-... 7.  F(b) ^ G(b)                  FORALLe 1
-... 8.  G(b)                         ^e2 7
-9. FORALLy F(y)                      FORALLi 6-8
+<span class="o">...</span> <span class="mf">6.</span>  <span class="n">b</span>
+<span class="o">...</span> <span class="mf">7.</span>  <span class="n">F</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>                  <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">8.</span>  <span class="n">G</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>                         <span class="o">^</span><span class="n">e2</span> <span class="mi">7</span>
+<span class="mf">9.</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                      <span class="n">FORALLi</span> <span class="mi">6</span><span class="o">-</span><span class="mi">8</span>
 
-10. (FORALLx F(x)) ^ (FORALLy G(y))  ^i 5,9
+<span class="mf">10.</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">FORALLy</span> <span class="n">G</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>  <span class="o">^</span><span class="n">i</span> <span class="mi">5</span><span class="p">,</span><span class="mi">9</span>
 </pre></div>
 </div>
 <p>The earlier example about healthy and happy families illustrates an important
 structural relationship between <code class="docutils literal"><span class="pre">FORALL</span></code> and <code class="docutils literal"><span class="pre">--&gt;</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (F(x) --&gt; G(x)) |- (FORALLx F(x)) --&gt; (FORALLx G(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">|-</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">--&gt;</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>can be proved, but the converse cannot.</p>
 <p>This last one is reasonable but the proof is a bit tricky because of the nested
 subproofs:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx FORALLy F(x,y)  |-  FORALLy FORALLx F(x,y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">FORALLy</span> <span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
-1. FORALLx FORALLy F(x,y)   premise
-... 2.  b
-... ... 3. a
-... ... 4. FORALLy F(a,y)   FORALLe 1
-... ... 5. F(a,b)           FORALLe 4
-... 6. FORALLx F(x,y)       FORALLi 3-5
-7. FORALLy FORALLx F(x,y)   FORALLi 2-6
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span>  <span class="n">b</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">3.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">4.</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">5.</span> <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>           <span class="n">FORALLe</span> <span class="mi">4</span>
+<span class="o">...</span> <span class="mf">6.</span> <span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>       <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">5</span>
+<span class="mf">7.</span> <span class="n">FORALLy</span> <span class="n">FORALLx</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>   <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">6</span>
 </pre></div>
 </div>
 </div>
@@ -527,14 +527,14 @@ To prove <code class="docutils literal"><span class="pre">Premises</span> <span 
 <li>finish with <code class="docutils literal"><span class="pre">FORALLi</span></code>.</li>
 </ol>
 <p>The proof structure looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises         premise
-... i.  a
-         (fill in)
-... j.  P_a
-k. FORALLx P_x       FORALLi i-j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>         <span class="n">premise</span>
+<span class="o">...</span> <span class="n">i</span><span class="o">.</span>  <span class="n">a</span>
+         <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="o">...</span> <span class="n">j</span><span class="o">.</span>  <span class="n">P_a</span>
+<span class="n">k</span><span class="o">.</span> <span class="n">FORALLx</span> <span class="n">P_x</span>       <span class="n">FORALLi</span> <span class="n">i</span><span class="o">-</span><span class="n">j</span>
 
-This tactic was applied in Lines 2-7 of the previous (correct) example
-proof.
+<span class="n">This</span> <span class="n">tactic</span> <span class="n">was</span> <span class="n">applied</span> <span class="ow">in</span> <span class="n">Lines</span> <span class="mi">2</span><span class="o">-</span><span class="mi">7</span> <span class="n">of</span> <span class="n">the</span> <span class="n">previous</span> <span class="p">(</span><span class="n">correct</span><span class="p">)</span> <span class="n">example</span>
+<span class="n">proof</span><span class="o">.</span>
 </pre></div>
 </div>
 </li>
@@ -542,12 +542,12 @@ proof.
 To prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">FORALLx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, then for an individual, <code class="docutils literal"><span class="pre">i</span></code>, that
 appears in the proof so far, use the <code class="docutils literal"><span class="pre">FORALLe</span></code> rule to deduce the new fact,
 <code class="docutils literal"><span class="pre">P_i</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
-2.  FORALLx P_x     premise
-  . . .
-j.  P_i             FORALLe 2
-         (fill in)
-k.  Q
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>        <span class="n">premise</span>
+<span class="mf">2.</span>  <span class="n">FORALLx</span> <span class="n">P_x</span>     <span class="n">premise</span>
+  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">j</span><span class="o">.</span>  <span class="n">P_i</span>             <span class="n">FORALLe</span> <span class="mi">2</span>
+         <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="n">k</span><span class="o">.</span>  <span class="n">Q</span>
 </pre></div>
 </div>
 <p>This tactic should be used only when it is clear that the new fact makes a
@@ -569,12 +569,12 @@ domain we use:</p>
 <code class="docutils literal"><span class="pre">{sun,</span> <span class="pre">mon,</span> <span class="pre">tues,</span> <span class="pre">weds,</span> <span class="pre">thurs,</span> <span class="pre">fri,</span> <span class="pre">sat}</span></code>.)</p>
 <p>This makes <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span></code> just an abbreviation itself of this much-longer
 assertion:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P_e0</span> <span class="o">^</span> <span class="n">P_e1</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_ek</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P_e0</span> <span class="o">^</span> <span class="n">P_e1</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_ek</span>
 </pre></div>
 </div>
 <p>For example, when the domain is the days of the week, the assertion,
 <code class="docutils literal"><span class="pre">FORALLd</span> <span class="pre">isBurgerKingDay(d)</span></code>, abbreviates:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sun</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">tues</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sat</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sun</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">mon</span><span class="p">)</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">tues</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">isBurgerKingDay</span><span class="p">(</span><span class="n">sat</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To prove such a <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span></code> for a finite domain <code class="docutils literal"><span class="pre">D</span></code>, we must prove
@@ -599,12 +599,12 @@ Remember how it works: we write two proofs:</p>
 variable name</li>
 </ul>
 <p>(At this point, it would be a very good idea for you to review the Section on
-<a class="reference internal" href="../06-loops-invariants-induction/index.html#induction"><span>An Introduction to Mathematical Induction</span></a>.)</p>
+<a class="reference internal" href="../06-loops-invariants-induction/index.html#induction"><span class="std std-ref">An Introduction to Mathematical Induction</span></a>.)</p>
 <p>There is a variation of mathematical induction that we use when proving loop
 invariants of the form, <code class="docutils literal"><span class="pre">FORALL</span> <span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">k</span> <span class="pre">&lt;</span> <span class="pre">count,</span> <span class="pre">P_k</span></code>:</p>
 <ul>
 <li><p class="first">We start with this assertion, at point <code class="docutils literal"><span class="pre">(a)</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; 0, P_k
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">P_k</span>
 </pre></div>
 </div>
 <p>This assertion is <em>true</em> because it defines an empty range of integers &#8211;
@@ -619,16 +619,16 @@ This proves the Basis case.</p>
 <p>P_count</p>
 <p>That is, <code class="docutils literal"><span class="pre">P</span></code> holds for the value, <code class="docutils literal"><span class="pre">count</span></code>.
 Using <code class="docutils literal"><span class="pre">^i</span></code> we get:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; count, P_k  ^  P_count
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">,</span> <span class="n">P_k</span>  <span class="o">^</span>  <span class="n">P_count</span>
 </pre></div>
 </div>
 <p>This can be understood as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">P_0</span> <span class="o">^</span> <span class="n">P_1</span> <span class="o">^</span> <span class="n">P_2</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="n">P_count</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">P_0</span> <span class="o">^</span> <span class="n">P_1</span> <span class="o">^</span> <span class="n">P_2</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="n">P_count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="n">P_count</span>
 </pre></div>
 </div>
 <p>Based on what we read in Approach 1 earlier, we combine the facts into this
 one:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= k &lt; count + 1, P_k
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">P_k</span>
 </pre></div>
 </div>
 <p>Since the loop&#8217;s body ends with the assignment, <code class="docutils literal"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">count</span> <span class="pre">+</span> <span class="pre">1</span></code>, we
@@ -676,13 +676,13 @@ Here is an example:</p>
 </div>
 <p>We saw in the previous chapter that the pre- and post-condition can be combined
 into this compound proposition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(n &gt;= 0)  --&gt; (fac(n) == n!)
+<div class="highlight-default"><div class="highlight"><pre><span></span>(n &gt;= 0)  --&gt; (fac(n) == n!)
 </pre></div>
 </div>
 <p>which describes <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s behavior in terms of name <code class="docutils literal"><span class="pre">n</span></code>.</p>
 <p>But <code class="docutils literal"><span class="pre">n</span></code> is a parameter name that is <em>internal</em> to <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s code.
 A more proper specification, one that makes sense to <code class="docutils literal"><span class="pre">fac</span></code>&#8216;s caller, is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLn ((n &gt;= 0)  --&gt; (fac(n) == n!))
+<div class="highlight-default"><div class="highlight"><pre><span></span>FORALLn ((n &gt;= 0)  --&gt; (fac(n) == n!))
 </pre></div>
 </div>
 <p>That is, &#8220;for all possible int arguments, if the argument is nonnegative, then
@@ -701,7 +701,7 @@ Here is the proof of it:</p>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">FORALLe</span></code> <em>applies the function&#8217;s logical property to its argument</em>.
-The function-call law we learned in the Chapter on <a class="reference internal" href="../05-functions-procedures/index.html#functions-procedures"><span>Functions and Procedures</span></a>
+The function-call law we learned in the Chapter on <a class="reference internal" href="../05-functions-procedures/index.html#functions-procedures"><span class="std std-ref">Functions and Procedures</span></a>
 hid the <code class="docutils literal"><span class="pre">FORALL</span></code> &#8211; we weren&#8217;t ready for it yet!
 But the universal quantifier is implicit in the description of every function we
 call.</p>
@@ -712,7 +712,7 @@ it <code class="docutils literal"><span class="pre">n</span></code> and work wit
 This is just a &#8220;Mr. anybody&#8221;, exactly as we have been using in our case analyses
 that finish with <code class="docutils literal"><span class="pre">FORALLi</span></code>.
 <em>The rule for function building hides the use of</em> <code class="docutils literal"><span class="pre">FORALLi</span></code> &#8211; we were not
-ready for it in the <a class="reference internal" href="../05-functions-procedures/index.html#functions-procedures"><span>Functions and Procedures</span></a> chapter.
+ready for it in the <a class="reference internal" href="../05-functions-procedures/index.html#functions-procedures"><span class="std std-ref">Functions and Procedures</span></a> chapter.
 But writing a function is the same thing as writing a proof that finishes with
 <code class="docutils literal"><span class="pre">FORALLi</span></code>.</p>
 </div>
@@ -784,7 +784,7 @@ zeros:</p>
 </div>
 <p>We state that the range of elements from <code class="docutils literal"><span class="pre">0</span></code> up to (and not including) <code class="docutils literal"><span class="pre">j</span></code>
 are reset to <code class="docutils literal"><span class="pre">0</span></code> by stating:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALL 0 &lt;= i &lt; j,  a[i] == 0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">,</span>  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>This loop invariant leads to the goal as <code class="docutils literal"><span class="pre">j</span></code> counts through the range of <code class="docutils literal"><span class="pre">0</span></code>
@@ -836,24 +836,24 @@ the answer array.</p>
 We use this phrase when we do not care about the name of the individual involved
 in our claim.
 Here are examples:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>There is a mouse in the house:  EXISTm (isMouse(m) ^ inHouse(m))
-    (We don&#39;t care about the mouse&#39;s name.)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">mouse</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">house</span><span class="p">:</span>  <span class="n">EXISTm</span> <span class="p">(</span><span class="n">isMouse</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">^</span> <span class="n">inHouse</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">We</span> <span class="n">don</span><span class="s1">&#39;t care about the mouse&#39;</span><span class="n">s</span> <span class="n">name</span><span class="o">.</span><span class="p">)</span>
 
-Someone ate my cookie:   EXISTx ateMyCookie(x)
+<span class="n">Someone</span> <span class="n">ate</span> <span class="n">my</span> <span class="n">cookie</span><span class="p">:</span>   <span class="n">EXISTx</span> <span class="n">ateMyCookie</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-There is a number that equals its own square:  EXISTn  n == n*n
+<span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">number</span> <span class="n">that</span> <span class="n">equals</span> <span class="n">its</span> <span class="n">own</span> <span class="n">square</span><span class="p">:</span>  <span class="n">EXISTn</span>  <span class="n">n</span> <span class="o">==</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span>
 
-For every int, there is an int that is smaller:  FORALLx EXISTy y &lt; x
+<span class="n">For</span> <span class="n">every</span> <span class="nb">int</span><span class="p">,</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">an</span> <span class="nb">int</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">smaller</span><span class="p">:</span>  <span class="n">FORALLx</span> <span class="n">EXISTy</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>If we have a fact about an individual in a domain, we can use the fact to deduce
 a fact that begins with an existential quantifier.
 For example, if we know that:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>surely we can conclude that:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>that is, &#8220;there is someone who is human and mortal&#8221;.
@@ -866,14 +866,14 @@ Consider these Pat Sajack musings from a typical game of Wheel of Fortune:</p>
 <ul>
 <li><p class="first">Pat thinks: &#8220;There is an &#8216;E&#8217; covered over on Square 14 of the game board&#8221;.
 In predicate logic, this can be written:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>isCovered(Square14) ^ holds(Square14,&#39;E&#39;).
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isCovered</span><span class="p">(</span><span class="n">Square14</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Pat thinks: &#8220;Wait &#8211; I can&#8217;t say that on TV! Perhaps I can say,
 There is a vowel covered on Square 14 of the game board&#8221;.
 In predicate logic, this is written:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>isCovered(Square14) ^ (EXISTc isVowel(c) ^ holds(Square14,c)).
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isCovered</span><span class="p">(</span><span class="n">Square14</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTc</span> <span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="n">c</span><span class="p">))</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>In this way, Pat does not reveal the letter to the game players and TV
@@ -882,7 +882,7 @@ viewers.</p>
 <li><p class="first">Because it isn&#8217;t fair to tell the players which squares hold vowels, Pat
 announces on the air,
 &#8220;There is a vowel that is still covered on the game board&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTs (isSquare(s) ^ isCovered(s) ^ (EXISTc isVowel(c) ^ holds(s,c)))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTs</span> <span class="p">(</span><span class="n">isSquare</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">^</span> <span class="n">isCovered</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTc</span> <span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">)))</span>
 </pre></div>
 </div>
 <p>This statement hides the specific square and letter that Pat is thinking
@@ -900,7 +900,7 @@ A player might deduce these useful facts:</p>
 </li>
 <li><p class="first">There is a covered letter, <code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">O</span></code>, <code class="docutils literal"><span class="pre">U</span></code> (assuming the
 vowels are exactly <code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">O</span></code>, <code class="docutils literal"><span class="pre">U</span></code>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTs isSquare(s) ^ isCovered(s) ^ (holds(s,&#39;A&#39;) v holds(s,&#39;E&#39;) v holds(s,&#39;I&#39;) v holds(s,&#39;O&#39;) v holds(s,&#39;U&#39;))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTs</span> <span class="n">isSquare</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">^</span> <span class="n">isCovered</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="n">v</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="n">v</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;I&#39;</span><span class="p">)</span> <span class="n">v</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">)</span> <span class="n">v</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;U&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </li>
@@ -911,21 +911,21 @@ We will use the <code class="docutils literal"><span class="pre">EXISTe</span></
 <div class="section" id="exist-introduction-rule">
 <h4>EXIST-Introduction Rule<a class="headerlink" href="#exist-introduction-rule" title="Permalink to this headline">¶</a></h4>
 <p>The rule for <code class="docutils literal"><span class="pre">EXISTi</span></code> has this format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>            P_d         where  d  is an individual in the domain D
-EXISTi: ------------
-         EXISTx P_x
+<div class="highlight-default"><div class="highlight"><pre><span></span>            <span class="n">P_d</span>         <span class="n">where</span>  <span class="n">d</span>  <span class="ow">is</span> <span class="n">an</span> <span class="n">individual</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">domain</span> <span class="n">D</span>
+<span class="n">EXISTi</span><span class="p">:</span> <span class="o">------------</span>
+         <span class="n">EXISTx</span> <span class="n">P_x</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">EXISTi</span></code> rule says, if we locate an individual <code class="docutils literal"><span class="pre">d</span></code> (a &#8220;witness&#8221;, as it
 is called by logicians) that makes <code class="docutils literal"><span class="pre">P</span></code> true, then surely we can say there
 exists <em>someone</em> that has <code class="docutils literal"><span class="pre">P</span></code> and hide the identity of the individual/witness.</p>
 <p>The rule was used in the previous section in a tiny example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>isHuman(Socrates), isMortal(Socrates) |- EXISTh (isHuman(h) ^ isMortal(h))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">),</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">|-</span> <span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
 
-1. isHuman(Socrates)                        premise
-2. isMortal(Socrates)                       premise
-3. isHuman(Socrates) ^ isMortal(Socrates)   ^i 1,2
-4. EXISTh (isHuman(h) ^ isMortal(h))        EXISTi 3
+<span class="mf">1.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                        <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>                       <span class="n">premise</span>
+<span class="mf">3.</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">Socrates</span><span class="p">)</span>   <span class="o">^</span><span class="n">i</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="mf">4.</span> <span class="n">EXISTh</span> <span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">^</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>        <span class="n">EXISTi</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Since <code class="docutils literal"><span class="pre">Socrates</span></code> is an individual that is both human and mortal, we deduce
@@ -933,24 +933,24 @@ Line 3.
 Line 4 &#8220;hides&#8221; <code class="docutils literal"><span class="pre">Socrates</span></code>&#8216; name.</p>
 <p>Let&#8217;s do a Wheel-Of-Fortune example: Pat Sajak uses two premises and the
 <code class="docutils literal"><span class="pre">EXISTi</span></code> rule to deduce a new conclusion:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>isVowel(&#39;E&#39;), holds(Square14,&#39;E&#39;) |- EXISTc(isVowel(c) ^ EXISTs holds(s,c))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">),</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">|-</span> <span class="n">EXISTc</span><span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
 
-1. isVowel(&#39;E&#39;)                             premise
-2. holds(Square14,&#39;E&#39;)                      premise
-3. EXISTs holds(s,&#39;E&#39;)                      EXISTi 2
-4. isVowel(&#39;E&#39;) ^ EXISTs holds(s,&#39;E&#39;)       ^i 1,3
-5. EXISTc(isVowel(c) ^ EXISTs holds(s,c))   EXISTi 4
+<span class="mf">1.</span> <span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>                             <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>                      <span class="n">premise</span>
+<span class="mf">3.</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>                      <span class="n">EXISTi</span> <span class="mi">2</span>
+<span class="mf">4.</span> <span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>       <span class="o">^</span><span class="n">i</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="mf">5.</span> <span class="n">EXISTc</span><span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>   <span class="n">EXISTi</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>Line 3 hides the number of the square (&#8220;there is a square that holds &#8216;E&#8217;&#8221;), and
 Line 5 hides the &#8216;E&#8217; (&#8220;there is a letter that is a vowel and there is a square
 that holds the letter&#8221;).</p>
 <p>From the same two premises we can also prove this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. isVowel(&#39;E&#39;)                             premise
-2. holds(Square14,&#39;E&#39;)                      premise
-3. isVowel(&#39;E&#39;) ^ holds(Square14,&#39;E&#39;)       ^i 1,3
-4. EXISTs(isVowel(&#39;E&#39;) ^ holds(s,&#39;E&#39;))      EXISTi 3
-5. EXISTcEXISTs(isVowel(s) ^ holds(s,c))    EXISTi 4
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>                             <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>                      <span class="n">premise</span>
+<span class="mf">3.</span> <span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>       <span class="o">^</span><span class="n">i</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="mf">4.</span> <span class="n">EXISTs</span><span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">))</span>      <span class="n">EXISTi</span> <span class="mi">3</span>
+<span class="mf">5.</span> <span class="n">EXISTcEXISTs</span><span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>    <span class="n">EXISTi</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>This reads, &#8220;there are a letter and square such that the letter is a vowel and
@@ -967,15 +967,15 @@ identical content.)</p>
 The new rule employs a subtle case analysis.</p>
 <p>Here is a quick example (in the universe of things on planet Earth), to get our
 bearings:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
-Someone is human
-Therefore, someone is mortal
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">All</span> <span class="n">humans</span> <span class="n">are</span> <span class="n">mortal</span>
+<span class="n">Someone</span> <span class="ow">is</span> <span class="n">human</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="n">someone</span> <span class="ow">is</span> <span class="n">mortal</span>
 </pre></div>
 </div>
 <p>We don&#8217;t know the name of the individual human, but it does not matter &#8211;
 we can still conclude someone is mortal.
 The steps we will take go like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>* Since &quot;someone is human&quot; and since we don&#39;t know his/her name, we&#39;ll just make
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Since</span> <span class="s2">&quot;someone is human&quot;</span> <span class="ow">and</span> <span class="n">since</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t know his/her name, we&#39;</span><span class="n">ll</span> <span class="n">just</span> <span class="n">make</span>
 </pre></div>
 </div>
 <blockquote>
@@ -991,10 +991,10 @@ Since we <em>do not know the name</em> of the individual &#8220;hidden&#8221; be
 <code class="docutils literal"><span class="pre">EXISTx</span></code>,
 we make up a name for it, say <code class="docutils literal"><span class="pre">a</span></code>, and discuss what must follow from the
 assumption that <code class="docutils literal"><span class="pre">P_a</span></code> holds true:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                       ... a  P_a   assumption  (where  a  is a new, fresh name)
-        EXISTx P_x     ...    Q
-EXISTe: -------------------------   (a  MUST NOT appear in  Q)
-               Q
+<div class="highlight-default"><div class="highlight"><pre><span></span>                       <span class="o">...</span> <span class="n">a</span>  <span class="n">P_a</span>   <span class="n">assumption</span>  <span class="p">(</span><span class="n">where</span>  <span class="n">a</span>  <span class="ow">is</span> <span class="n">a</span> <span class="n">new</span><span class="p">,</span> <span class="n">fresh</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">EXISTx</span> <span class="n">P_x</span>     <span class="o">...</span>    <span class="n">Q</span>
+<span class="n">EXISTe</span><span class="p">:</span> <span class="o">-------------------------</span>   <span class="p">(</span><span class="n">a</span>  <span class="n">MUST</span> <span class="n">NOT</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">Q</span><span class="p">)</span>
+               <span class="n">Q</span>
 </pre></div>
 </div>
 <p>That is, if we can deduce <code class="docutils literal"><span class="pre">Q</span></code> from <code class="docutils literal"><span class="pre">P_a</span></code>, and we do not mention a within
@@ -1002,22 +1002,22 @@ EXISTe: -------------------------   (a  MUST NOT appear in  Q)
 individual has.
 So, <code class="docutils literal"><span class="pre">Q</span></code> follows from <code class="docutils literal"><span class="pre">EXISTx</span> <span class="pre">P_x</span></code>.</p>
 <p>We can work the previous example, with <code class="docutils literal"><span class="pre">EXISTe</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>All humans are mortal
-Someone is human
-Therefore, someone is mortal
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">All</span> <span class="n">humans</span> <span class="n">are</span> <span class="n">mortal</span>
+<span class="n">Someone</span> <span class="ow">is</span> <span class="n">human</span>
+<span class="n">Therefore</span><span class="p">,</span> <span class="n">someone</span> <span class="ow">is</span> <span class="n">mortal</span>
 </pre></div>
 </div>
 <p>We make up the name, <code class="docutils literal"><span class="pre">a</span></code>, for the individual whose name we do not know, and
 do a case analysis:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLh(isHuman(h) --&gt; isMortal(h)), EXISTx isHuman(x) |- EXISTy isMortal(y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLh</span><span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">)),</span> <span class="n">EXISTx</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|-</span> <span class="n">EXISTy</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-1.  FORALLh(isHuman(h) --&gt; isMortal(h))    premise
-2.  EXISTx isHuman(x)                      premise
-... 3.  a   isHuman(a)                     assumption
-... 4.      isHuman(a) --&gt; isMortal(a)     FORALLe 1
-... 5.      isMortal(a)                    --&gt;e 4,3
-... 6.      EXISTy isMortal(y)             EXISTi 5
-7.  EXISTy isMortal(y)                     EXISTe 2, 3-6
+<span class="mf">1.</span>  <span class="n">FORALLh</span><span class="p">(</span><span class="n">isHuman</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>    <span class="n">premise</span>
+<span class="mf">2.</span>  <span class="n">EXISTx</span> <span class="n">isHuman</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">3.</span>  <span class="n">a</span>   <span class="n">isHuman</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                     <span class="n">assumption</span>
+<span class="o">...</span> <span class="mf">4.</span>      <span class="n">isHuman</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">5.</span>      <span class="n">isMortal</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                    <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span>
+<span class="o">...</span> <span class="mf">6.</span>      <span class="n">EXISTy</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>             <span class="n">EXISTi</span> <span class="mi">5</span>
+<span class="mf">7.</span>  <span class="n">EXISTy</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                     <span class="n">EXISTe</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">-</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>Line 3 proposes the name <code class="docutils literal"><span class="pre">a</span></code> and the assumption that <code class="docutils literal"><span class="pre">isHuman(a)</span></code>.
@@ -1037,13 +1037,13 @@ The restriction on the <code class="docutils literal"><span class="pre">EXISTe</
 that we have no extra information about the identity of Mister <code class="docutils literal"><span class="pre">a</span></code> &#8211; the name
 <code class="docutils literal"><span class="pre">a</span></code> must not leave the subproof.</p>
 <p>Here is a Wheel-of-Fortune example that uses <code class="docutils literal"><span class="pre">EXISTe</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTc (isVowel(c) ^ EXISTs holds(s,c)) |-  EXISTy isVowel(y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTc</span> <span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="o">|-</span>  <span class="n">EXISTy</span> <span class="n">isVowel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-1. EXISTc (isVowel(c) ^ EXISTs holds(s,c))    premise
-... 2.  a   isVowel(a) ^ EXISTs holds(s,a)    assumption
-... 3.      isVowel(a)                        ^e1 2
-... 4.      EXISTy isVowel(y)                 EXISTi 3
-5. EXISTy  EXISTy isVowel(y)                  EXISTe 1,2-4
+<span class="mf">1.</span> <span class="n">EXISTc</span> <span class="p">(</span><span class="n">isVowel</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>    <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span>  <span class="n">a</span>   <span class="n">isVowel</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">^</span> <span class="n">EXISTs</span> <span class="n">holds</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>    <span class="n">assumption</span>
+<span class="o">...</span> <span class="mf">3.</span>      <span class="n">isVowel</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                        <span class="o">^</span><span class="n">e1</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">4.</span>      <span class="n">EXISTy</span> <span class="n">isVowel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                 <span class="n">EXISTi</span> <span class="mi">3</span>
+<span class="mf">5.</span> <span class="n">EXISTy</span>  <span class="n">EXISTy</span> <span class="n">isVowel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                  <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>We do not know the identity of the vowel held in an unknown square, but this
@@ -1052,28 +1052,28 @@ does not prevent us from concluding that there is a vowel.</p>
 <div class="section" id="standard-examples">
 <h4>Standard Examples<a class="headerlink" href="#standard-examples" title="Permalink to this headline">¶</a></h4>
 <p>For practice, we do some standard examples:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx P(x) |- EXISTy P(y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">|-</span> <span class="n">EXISTy</span> <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-1. EXISTx P(x)             premise
-... 2. a    P(a)           assumption
-... 3.      EXISTy P(y)    EXISTi 2
-4. EXISTy P(y)             EXISTe 1,2-3
+<span class="mf">1.</span> <span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>             <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>    <span class="n">P</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>           <span class="n">assumption</span>
+<span class="o">...</span> <span class="mf">3.</span>      <span class="n">EXISTy</span> <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="n">EXISTi</span> <span class="mi">2</span>
+<span class="mf">4.</span> <span class="n">EXISTy</span> <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>             <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx(F(x) ^ G(x)) |- (EXISTy F(y)) ^ (EXISTz G(z))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">|-</span> <span class="p">(</span><span class="n">EXISTy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
-1. EXISTx(F(x) ^ G(x))                      premise
-... 2.  a    F(a) ^ G(a)                    assumption
-... 3.       F(a)                           ^e1 2
-... 4.       EXISTy F(y)                    EXISTi 3
-... 5.       G(a)                           ^e2 2
-... 6.       EXISTz G(z)                    EXISTi 5
-... 7.       (EXISTy F(y)) ^ (EXISTz G(z))  ^i 4,6
-8.  (EXISTy F(y)) ^ (EXISTz G(z))           EXISTe 1, 2-7
+<span class="mf">1.</span> <span class="n">EXISTx</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>                      <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span>  <span class="n">a</span>    <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                    <span class="n">assumption</span>
+<span class="o">...</span> <span class="mf">3.</span>       <span class="n">F</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                           <span class="o">^</span><span class="n">e1</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">4.</span>       <span class="n">EXISTy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                    <span class="n">EXISTi</span> <span class="mi">3</span>
+<span class="o">...</span> <span class="mf">5.</span>       <span class="n">G</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                           <span class="o">^</span><span class="n">e2</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">6.</span>       <span class="n">EXISTz</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>                    <span class="n">EXISTi</span> <span class="mi">5</span>
+<span class="o">...</span> <span class="mf">7.</span>       <span class="p">(</span><span class="n">EXISTy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>  <span class="o">^</span><span class="n">i</span> <span class="mi">4</span><span class="p">,</span><span class="mi">6</span>
+<span class="mf">8.</span>  <span class="p">(</span><span class="n">EXISTy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>           <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="mi">7</span>
 </pre></div>
 </div>
 <p>Notice that you cannot prove the converse:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(EXISTy F(y)) ^ (EXISTz G(z)) |- EXISTx(F(x) ^ G(x)).
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">EXISTy</span> <span class="n">F</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">^</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">))</span> <span class="o">|-</span> <span class="n">EXISTx</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">^</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>For example, say that the universe of discussion is the cast of Wheel of
@@ -1083,24 +1083,24 @@ Clearly, Pat Sajak is male and Vanna White is female, so
 But <code class="docutils literal"><span class="pre">EXISTx(F(x)</span> <span class="pre">^</span> <span class="pre">G(x))</span></code> does not follow.</p>
 <p>The following proof uses the <code class="docutils literal"><span class="pre">ve</span></code>-tactic &#8211; a cases analysis.
 See the assumptions at lines 3 and 6, based on Line 2:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx (P(x) v Q(x))  |-  (EXISTx P(x))  v  (EXISTx Q(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span> <span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="o">|-</span>  <span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="n">v</span>  <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-1. EXISTx (P(x) v Q(x))                           premise
-... 2. a   P(a) v Q(a)                            assumption
-...        ... 3. P(a)                            assumption
-...        ... 4. EXISTx P(x)                     EXISTi 3
-...        ... 5. (EXISTx P(x)) v (EXISTx Q(x))   vi1 4
+<span class="mf">1.</span> <span class="n">EXISTx</span> <span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>                           <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>   <span class="n">P</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                            <span class="n">assumption</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">3.</span> <span class="n">P</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                            <span class="n">assumption</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">4.</span> <span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="n">EXISTi</span> <span class="mi">3</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">5.</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="n">v</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>   <span class="n">vi1</span> <span class="mi">4</span>
 
-...        ... 6. Q(a)                            assumption
-...        ... 7. EXISTx Q(x)                     EXISTi 6
-...        ... 8. (EXISTx P(x)) v (EXISTx Q(x))   vi2 7
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">6.</span> <span class="n">Q</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>                            <span class="n">assumption</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">7.</span> <span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="n">EXISTi</span> <span class="mi">6</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">8.</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="n">v</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>   <span class="n">vi2</span> <span class="mi">7</span>
 
-... 9.    (EXISTx P(x)) v (EXISTx Q(x))           ve 2,3-5,6-8
-11. (EXISTx P(x)) v (EXISTx Q(x))                 EXISTe 1,2-9
+<span class="o">...</span> <span class="mf">9.</span>    <span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="n">v</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>           <span class="n">ve</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="o">-</span><span class="mi">8</span>
+<span class="mf">11.</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="n">v</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>                 <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="mi">9</span>
 </pre></div>
 </div>
 <p>As an exercise, prove the converse of the above:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(EXISTx P(x)) v (EXISTx Q(x)) |- EXISTx (P(x) v Q(x)).
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">EXISTx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="n">v</span> <span class="p">(</span><span class="n">EXISTx</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">|-</span> <span class="n">EXISTx</span> <span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -1108,21 +1108,21 @@ See the assumptions at lines 3 and 6, based on Line 2:</p>
 <h4>An Important Example<a class="headerlink" href="#an-important-example" title="Permalink to this headline">¶</a></h4>
 <p>We finish with this crucial example.
 We use the domain of people:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTx FORALLy isBossOf(x,y)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTx</span> <span class="n">FORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Read this as, &#8220;there is someone who is the boss of everyone&#8221;.
 From this strong fact we can prove that everyone has a boss, that is,
 <code class="docutils literal"><span class="pre">FORALLuEXISTv</span> <span class="pre">isBossOf(v,u)</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">|-</span> <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
 
-1. EXISTxFORALLy isBossOf(x,y)          premise
-... 2. b   FORALLy isBossOf(b,y)        assumption
-...        ... 3. a
-...        ... 4. isBossOf(b,a)         FORALLe 2
-...        ... 5. EXISTv isBossOf(v,a)  EXISTi 4
-... 6.     FORALLuEXISTv isBossOf(v,u)  FORALLi 3-5
-7.  FORALLuEXISTv bossOf(v,u)           EXISTe 1,3-5
+<span class="mf">1.</span> <span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>          <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">b</span>   <span class="n">FORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>        <span class="n">assumption</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">3.</span> <span class="n">a</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">4.</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>         <span class="n">FORALLe</span> <span class="mi">2</span>
+<span class="o">...</span>        <span class="o">...</span> <span class="mf">5.</span> <span class="n">EXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>  <span class="n">EXISTi</span> <span class="mi">4</span>
+<span class="o">...</span> <span class="mf">6.</span>     <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>  <span class="n">FORALLi</span> <span class="mi">3</span><span class="o">-</span><span class="mi">5</span>
+<span class="mf">7.</span>  <span class="n">FORALLuEXISTv</span> <span class="n">bossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>           <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span>
 </pre></div>
 </div>
 <p>In the above proof, we let <code class="docutils literal"><span class="pre">b</span></code> be our made-up name for the boss-of-everyone.
@@ -1133,30 +1133,30 @@ The proof exposes that the boss of &#8220;anybody at all&#8221; in the domain mu
 <code class="docutils literal"><span class="pre">b</span></code>.
 <code class="docutils literal"><span class="pre">FORALLi</span></code> and then <code class="docutils literal"><span class="pre">EXISTi</span></code> finish the proof.</p>
 <p>Here is the proof worked again, with the subproofs swapped:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">|-</span> <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
 
-1. EXISTxFORALLy isBossOf(x,y)               premise
-... 2. a
-... ... 3. b     FORALLy isBossOf(b,y)       assumption
-... ... 4.       isBossOf(b,a)               FORALLe 3
-... ... 5.       EXISTv isBossOf(v,a)        EXISTi 4
-... 6. EXISTv bossOf(v,a)                    EXISTe 1,3-5
-7. FORALLuEXISTv isBossOf(v,u)               FORALLi 2-6
+<span class="mf">1.</span> <span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>               <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">3.</span> <span class="n">b</span>     <span class="n">FORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>       <span class="n">assumption</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">4.</span>       <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>               <span class="n">FORALLe</span> <span class="mi">3</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">5.</span>       <span class="n">EXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>        <span class="n">EXISTi</span> <span class="mi">4</span>
+<span class="o">...</span> <span class="mf">6.</span> <span class="n">EXISTv</span> <span class="n">bossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>                    <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">-</span><span class="mi">5</span>
+<span class="mf">7.</span> <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>               <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">6</span>
 </pre></div>
 </div>
 <p>Can we prove the converse?
 That is, if everyone has a boss, then there is one boss who is the boss of
 everyone?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLuEXISTv isBossOf(v,u) |- EXISTxFORALLy isBossOf(x,y) ???
+<div class="highlight-default"><div class="highlight"><pre><span></span>FORALLuEXISTv isBossOf(v,u) |- EXISTxFORALLy isBossOf(x,y) ???
 </pre></div>
 </div>
 <p>No &#8211; we can try, but we get stuck:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. FORALLuEXISTv isBossOf(v,u)    premise
-... 2. a
-... 3. EXISTv isBossOf(v,a)       FORALLe 1
-... ... 4. b    isBossOf(b,a)     assumption
-5. FORALLy isBoss(b,y)            FORALLi 2-5  NO --- THIS PROOF IS TRYING TO FINISH
-                                  THE OUTER SUBPROOF WITHOUT FINISHING THE INNER ONE FIRST.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>    <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="mf">3.</span> <span class="n">EXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>       <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="o">...</span> <span class="mf">4.</span> <span class="n">b</span>    <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>     <span class="n">assumption</span>
+<span class="mf">5.</span> <span class="n">FORALLy</span> <span class="n">isBoss</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>            <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">5</span>  <span class="n">NO</span> <span class="o">---</span> <span class="n">THIS</span> <span class="n">PROOF</span> <span class="n">IS</span> <span class="n">TRYING</span> <span class="n">TO</span> <span class="n">FINISH</span>
+                                  <span class="n">THE</span> <span class="n">OUTER</span> <span class="n">SUBPROOF</span> <span class="n">WITHOUT</span> <span class="n">FINISHING</span> <span class="n">THE</span> <span class="n">INNER</span> <span class="n">ONE</span> <span class="n">FIRST</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>We see that the &#8220;block structure&#8221; of the proofs warns us when we are making
@@ -1165,13 +1165,13 @@ invalid deductions.</p>
 <blockquote>
 <div>EXISTxFORALLy isBossOf(x,y) <a href="#id7"><span class="problematic" id="id8">|</span></a>- EXISTz isBossOf(z,z)</div></blockquote>
 <p>(&#8220;if someone is the boss of everyone, then someone is their own boss&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTxFORALLy isBossOf(x,y) |- FORALLuEXISTv isBossOf(v,u)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">|-</span> <span class="n">FORALLuEXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
 
-1. EXISTxFORALLy isBossOf(x,y)     premise
-... 2. b    FORALLy isBossOf(b,y)  assumption
-... 3.      isBossOf(b,b)          FORALLe 2
-... 4.      EXISTz isBossOf(z,z)   EXISTi 4
-5. EXISTz bossOf(z,z)              EXISTe 1,2-4
+<span class="mf">1.</span> <span class="n">EXISTxFORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>     <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">b</span>    <span class="n">FORALLy</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>  <span class="n">assumption</span>
+<span class="o">...</span> <span class="mf">3.</span>      <span class="n">isBossOf</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>          <span class="n">FORALLe</span> <span class="mi">2</span>
+<span class="o">...</span> <span class="mf">4.</span>      <span class="n">EXISTz</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>   <span class="n">EXISTi</span> <span class="mi">4</span>
+<span class="mf">5.</span> <span class="n">EXISTz</span> <span class="n">bossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>              <span class="n">EXISTe</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>Line 3 exposes that the &#8220;big boss&#8221;, <code class="docutils literal"><span class="pre">b</span></code>, <em>must</em> be its own boss.</p>
@@ -1228,7 +1228,7 @@ bosses the person to their right:</p>
 </ol>
 <p>The third example domain is famous &#8211; it is just the integer domain, where
 <code class="docutils literal"><span class="pre">isBossOf</span></code> is actually <code class="docutils literal"><span class="pre">&gt;</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>. . . &lt; -3 &lt; -2 &lt; -1 &lt; 0 &lt; 1 &lt; 2 &lt; 3 &lt; . . .
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Indeed, one of the main applications of logic is proving properties of numbers.
@@ -1258,7 +1258,7 @@ To prove <code class="docutils literal"><span class="pre">Premises,</span> <span
 <li>apply <code class="docutils literal"><span class="pre">EXISTe</span></code></li>
 </ol>
 <p>The proof looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  EXISTx P_x      premise
 ... i. a   P_a      assumption
         (fill in)
@@ -1271,12 +1271,12 @@ k.  Q               EXISTe 2,i-j
 To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span></code>, try to prove <code class="docutils literal"><span class="pre">P_e</span></code> for some <code class="docutils literal"><span class="pre">e</span></code> that
 already appears in the partially completed proof.
 Finish with <code class="docutils literal"><span class="pre">EXISTi</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
-  . . .
-i.  ...e...
-      (fill in)
-j.  P_e
-k.  EXISTx P_x      EXISTi j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>        <span class="n">premise</span>
+  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">i</span><span class="o">.</span>  <span class="o">...</span><span class="n">e</span><span class="o">...</span>
+      <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="n">j</span><span class="o">.</span>  <span class="n">P_e</span>
+<span class="n">k</span><span class="o">.</span>  <span class="n">EXISTx</span> <span class="n">P_x</span>      <span class="n">EXISTi</span> <span class="n">j</span>
 </pre></div>
 </div>
 </li>
@@ -1580,18 +1580,18 @@ For example, the assertion,</p>
 </pre></div>
 </div>
 <p>Might be drawn like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>      0  1  ... len(a)-1
-    +--+--+-- --+--+
-a = |&gt;0|&gt;0| ... |&gt;0|
-    +--+--+-- --+--+
+<div class="highlight-default"><div class="highlight"><pre><span></span>      <span class="mi">0</span>  <span class="mi">1</span>  <span class="o">...</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="o">+--+--+--</span> <span class="o">--+--+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">|&gt;</span><span class="mi">0</span><span class="o">|&gt;</span><span class="mi">0</span><span class="o">|</span> <span class="o">...</span> <span class="o">|&gt;</span><span class="mi">0</span><span class="o">|</span>
+    <span class="o">+--+--+--</span> <span class="o">--+--+</span>
 </pre></div>
 </div>
 <p>so that after the assignment, a[n] = a[n]-1, we deduce this new pictorial
 assertion:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>      0  1 ...    n  ...  len(a)-1
-    +--+--+-   -+---+    -+--+
-a = |&gt;0|&gt;0| ... |&gt;=0| ... |&gt;0|
-    +--+--+-   -+---+    -+--+
+<div class="highlight-default"><div class="highlight"><pre><span></span>      <span class="mi">0</span>  <span class="mi">1</span> <span class="o">...</span>    <span class="n">n</span>  <span class="o">...</span>  <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="o">+--+--+-</span>   <span class="o">-+---+</span>    <span class="o">-+--+</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">|&gt;</span><span class="mi">0</span><span class="o">|&gt;</span><span class="mi">0</span><span class="o">|</span> <span class="o">...</span> <span class="o">|&gt;=</span><span class="mi">0</span><span class="o">|</span> <span class="o">...</span> <span class="o">|&gt;</span><span class="mi">0</span><span class="o">|</span>
+    <span class="o">+--+--+-</span>   <span class="o">-+---+</span>    <span class="o">-+--+</span>
 </pre></div>
 </div>
 <p>which is meant to portray
@@ -1626,19 +1626,19 @@ that is, move them around within the array until the array is sorted.</p>
 segment of the array is repeatedly scanned for the smallest element therein,
 which is extracted at moved to the end of the array&#8217;s sorted segment.</p>
 <p>A trace of a selection sort would look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>  (sorted segment) | (unsorted segment)
-                   v
-              a == [&quot;f&quot;, &quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;e&quot;]
-                   v
-          a == [&quot;b&quot;, &quot;d&quot;, &quot;c&quot;, &quot;f&quot;, &quot;e&quot;]   (&quot;b&quot; selected and moved to front
-                   v                            by exchanging it with &quot;f&quot;)
-     a == [&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;f&quot;, &quot;e&quot;,]   (&quot;c&quot; selected and moved to front
-                   v                        by exchanging it with &quot;d&quot;)
-a == [&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;f&quot;, &quot;e&quot;]   (&quot;d&quot; selected and moved to front
-                                      by exchanging it with itself)
-(etc.)                       |
-                             v
-a ==  [&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;]   (finished)
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="p">(</span><span class="nb">sorted</span> <span class="n">segment</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">unsorted</span> <span class="n">segment</span><span class="p">)</span>
+                   <span class="n">v</span>
+              <span class="n">a</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">]</span>
+                   <span class="n">v</span>
+          <span class="n">a</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">]</span>   <span class="p">(</span><span class="s2">&quot;b&quot;</span> <span class="n">selected</span> <span class="ow">and</span> <span class="n">moved</span> <span class="n">to</span> <span class="n">front</span>
+                   <span class="n">v</span>                            <span class="n">by</span> <span class="n">exchanging</span> <span class="n">it</span> <span class="k">with</span> <span class="s2">&quot;f&quot;</span><span class="p">)</span>
+     <span class="n">a</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,]</span>   <span class="p">(</span><span class="s2">&quot;c&quot;</span> <span class="n">selected</span> <span class="ow">and</span> <span class="n">moved</span> <span class="n">to</span> <span class="n">front</span>
+                   <span class="n">v</span>                        <span class="n">by</span> <span class="n">exchanging</span> <span class="n">it</span> <span class="k">with</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">]</span>   <span class="p">(</span><span class="s2">&quot;d&quot;</span> <span class="n">selected</span> <span class="ow">and</span> <span class="n">moved</span> <span class="n">to</span> <span class="n">front</span>
+                                      <span class="n">by</span> <span class="n">exchanging</span> <span class="n">it</span> <span class="k">with</span> <span class="n">itself</span><span class="p">)</span>
+<span class="p">(</span><span class="n">etc</span><span class="o">.</span><span class="p">)</span>                       <span class="o">|</span>
+                             <span class="n">v</span>
+<span class="n">a</span> <span class="o">==</span>  <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">]</span>   <span class="p">(</span><span class="n">finished</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We require a function that searches the unsorted segment of the array and
@@ -1665,8 +1665,8 @@ locates the position of the least element therein:</p>
 </div>
 <p>The pre-postconditions tell us the knowledge the function computes.</p>
 <p>Next, define these notions of &#8220;ordered&#8221; and &#8220;permuted&#8221; for arrays:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>ordered(a) =  FORALL 0 &lt; i &lt; len(a), a[i-1] &lt;= a[i]
-perm(a, b) =  (len(a) = len(b))  ^  (elements of  a  ==  elements of b)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ordered</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span>  <span class="n">FORALL</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">perm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span>  <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>  <span class="o">^</span>  <span class="p">(</span><span class="n">elements</span> <span class="n">of</span>  <span class="n">a</span>  <span class="o">==</span>  <span class="n">elements</span> <span class="n">of</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The second predicate states what it means for one array, <code class="docutils literal"><span class="pre">a</span></code>, to have the same
@@ -2135,28 +2135,28 @@ represented by each <code class="docutils literal"><span class="pre">EXISTy</spa
 A Skolem function is a function name that is used to designate where an
 existential quantifier should appear.
 Examples explain the idea best:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Everyone has a boss:                     FORALLx EXISTy P(x,y)
-(expressed with a Skolem function,
-  named  boss:)                          FORALLx P(x, boss(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Everyone</span> <span class="n">has</span> <span class="n">a</span> <span class="n">boss</span><span class="p">:</span>                     <span class="n">FORALLx</span> <span class="n">EXISTy</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="n">expressed</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Skolem</span> <span class="n">function</span><span class="p">,</span>
+  <span class="n">named</span>  <span class="n">boss</span><span class="p">:)</span>                          <span class="n">FORALLx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">boss</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-There is a single boss of everyone:      EXISTy FORALLx P(x,y)
-(expressed with a Skolem function,
-  named  bigb:)                          FORALLx P(x, bigb())
+<span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">single</span> <span class="n">boss</span> <span class="n">of</span> <span class="n">everyone</span><span class="p">:</span>      <span class="n">EXISTy</span> <span class="n">FORALLx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="n">expressed</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Skolem</span> <span class="n">function</span><span class="p">,</span>
+  <span class="n">named</span>  <span class="n">bigb</span><span class="p">:)</span>                          <span class="n">FORALLx</span> <span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bigb</span><span class="p">())</span>
 
-For every husband and wife, there
-is a minister who married them:          FORALLx FORALLy EXISTz M(z,x,y)
-(expressed with a Skolem function,
-named minister:)                         FORALLx FORALLy M(minister(x,y),x,y)
+<span class="n">For</span> <span class="n">every</span> <span class="n">husband</span> <span class="ow">and</span> <span class="n">wife</span><span class="p">,</span> <span class="n">there</span>
+<span class="ow">is</span> <span class="n">a</span> <span class="n">minister</span> <span class="n">who</span> <span class="n">married</span> <span class="n">them</span><span class="p">:</span>          <span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">EXISTz</span> <span class="n">M</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="n">expressed</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Skolem</span> <span class="n">function</span><span class="p">,</span>
+<span class="n">named</span> <span class="n">minister</span><span class="p">:)</span>                         <span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">M</span><span class="p">(</span><span class="n">minister</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
-Every two ints can be added into
-a sum:                                   FORALLx FORALLy EXISTz F(x,y,z)
-(expressed with a Skolem function,
-named sum:)                              FORALLx FORALLy F(x,y,sum(x,y))
+<span class="n">Every</span> <span class="n">two</span> <span class="n">ints</span> <span class="n">can</span> <span class="n">be</span> <span class="n">added</span> <span class="n">into</span>
+<span class="n">a</span> <span class="nb">sum</span><span class="p">:</span>                                   <span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">EXISTz</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="p">(</span><span class="n">expressed</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Skolem</span> <span class="n">function</span><span class="p">,</span>
+<span class="n">named</span> <span class="nb">sum</span><span class="p">:)</span>                              <span class="n">FORALLx</span> <span class="n">FORALLy</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
 
-Every boss has a secretary,
-who talks with everyone:                 FORALLx EXISTy (isSec(y) ^ FORALLz talks(x,z))
-(expressed with a Skolem function,
-named  s:)                               FORALLx (isSec(s(x)) ^ FORALLz talks(s(x),z))
+<span class="n">Every</span> <span class="n">boss</span> <span class="n">has</span> <span class="n">a</span> <span class="n">secretary</span><span class="p">,</span>
+<span class="n">who</span> <span class="n">talks</span> <span class="k">with</span> <span class="n">everyone</span><span class="p">:</span>                 <span class="n">FORALLx</span> <span class="n">EXISTy</span> <span class="p">(</span><span class="n">isSec</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">^</span> <span class="n">FORALLz</span> <span class="n">talks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
+<span class="p">(</span><span class="n">expressed</span> <span class="k">with</span> <span class="n">a</span> <span class="n">Skolem</span> <span class="n">function</span><span class="p">,</span>
+<span class="n">named</span>  <span class="n">s</span><span class="p">:)</span>                               <span class="n">FORALLx</span> <span class="p">(</span><span class="n">isSec</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">^</span> <span class="n">FORALLz</span> <span class="n">talks</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">z</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>The examples show how the Skolem function acts as a &#8220;witness&#8221; to the missing
@@ -2168,13 +2168,13 @@ the second one makes clear that the boss is independent of all the individuals
 in the domain.</p>
 <p>It is possible to work proofs in predicate logic with Skolem functions.
 Here are two examples:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isMortal(x) --&gt; hasSoul(x),  isMortal(socrates()) |- hasSoul(t())
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">socrates</span><span class="p">())</span> <span class="o">|-</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">t</span><span class="p">())</span>
 
-1. FORALLx isMortal(x) --&gt; hasSoul(x)              premise
-2. isMortal(socrates())                            premise
-3. isMortal(socrates()) --&gt; hasSoul(socrates())     FORALLe 1
-4. hasSoul(socrates())                             --&gt;e 3,2
-6. hasSoul(t())                                    def t(): return socrates()
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>              <span class="n">premise</span>
+<span class="mf">2.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">socrates</span><span class="p">())</span>                            <span class="n">premise</span>
+<span class="mf">3.</span> <span class="n">isMortal</span><span class="p">(</span><span class="n">socrates</span><span class="p">())</span> <span class="o">--&gt;</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">socrates</span><span class="p">())</span>     <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="mf">4.</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">socrates</span><span class="p">())</span>                             <span class="o">--&gt;</span><span class="n">e</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span>
+<span class="mf">6.</span> <span class="n">hasSoul</span><span class="p">(</span><span class="n">t</span><span class="p">())</span>                                    <span class="k">def</span> <span class="nf">t</span><span class="p">():</span> <span class="k">return</span> <span class="n">socrates</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Here, the individual, <code class="docutils literal"><span class="pre">Socrates</span></code>, is represented as a constant Skolem
@@ -2191,13 +2191,13 @@ shorthand for <code class="docutils literal"><span class="pre">EXISTsocrates</sp
 Now, there is no practical difference.</p>
 <p>Here is the boss-worker example (&#8220;if someone is the boss of everyone, then
 everyone has a boss&#8221;):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx isBossOf(x, big()) |- FORALLx isBossOf(x, b(x))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">big</span><span class="p">())</span> <span class="o">|-</span> <span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-1. FORALLx isBossOf(x, big())     premise
-... 2. a
-... 3. isBossOf(a, big())         FORALLe 1
-... 4. hasBoss(a, b(a))           def b(a): return big()
-5. FORALLx is BossOf(x, b(x))     FORALLi 2-4
+<span class="mf">1.</span> <span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">big</span><span class="p">())</span>     <span class="n">premise</span>
+<span class="o">...</span> <span class="mf">2.</span> <span class="n">a</span>
+<span class="o">...</span> <span class="mf">3.</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">big</span><span class="p">())</span>         <span class="n">FORALLe</span> <span class="mi">1</span>
+<span class="o">...</span> <span class="mf">4.</span> <span class="n">hasBoss</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>           <span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="k">return</span> <span class="n">big</span><span class="p">()</span>
+<span class="mf">5.</span> <span class="n">FORALLx</span> <span class="ow">is</span> <span class="n">BossOf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>     <span class="n">FORALLi</span> <span class="mi">2</span><span class="o">-</span><span class="mi">4</span>
 </pre></div>
 </div>
 <p>Notice how the defined Skolem function, <code class="docutils literal"><span class="pre">b(a)</span></code>, disregards its argument and
@@ -2234,16 +2234,16 @@ We achieve clause form in these steps:</p>
 with a unique variable name.</p>
 </li>
 <li><p class="first">Remove all implications, <code class="docutils literal"><span class="pre">A</span> <span class="pre">--&gt;</span> <span class="pre">B</span></code>, with this equivalence:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>A --&gt; B  -||-  ~A v B
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">--&gt;</span> <span class="n">B</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="n">v</span> <span class="n">B</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Next, move all remaining negation operators inwards, by repeatedly applying
 these equivalences:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>~(A ^ B)  -||-  ~A v ~B
-~(A v B)  -||-  ~A ^ ~B
-~(FORALLx A) -||- EXISTx ~A
-~(EXISTx A) -||- FORALLx ~A
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">~</span><span class="p">(</span><span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="n">v</span> <span class="o">~</span><span class="n">B</span>
+<span class="o">~</span><span class="p">(</span><span class="n">A</span> <span class="n">v</span> <span class="n">B</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="o">^</span> <span class="o">~</span><span class="n">B</span>
+<span class="o">~</span><span class="p">(</span><span class="n">FORALLx</span> <span class="n">A</span><span class="p">)</span> <span class="o">-||-</span> <span class="n">EXISTx</span> <span class="o">~</span><span class="n">A</span>
+<span class="o">~</span><span class="p">(</span><span class="n">EXISTx</span> <span class="n">A</span><span class="p">)</span> <span class="o">-||-</span> <span class="n">FORALLx</span> <span class="o">~</span><span class="n">A</span>
 </pre></div>
 </div>
 <p>and wherever it appears, replace <code class="docutils literal"><span class="pre">~~A</span></code> by <code class="docutils literal"><span class="pre">A</span></code>.</p>
@@ -2253,8 +2253,8 @@ functions.</p>
 </li>
 <li><p class="first">Use these equivalences to move all occurrences of universal quantifiers to
 the leftmost position of the proposition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Q ^ (FORALLx P_x) -||- FORALLx (Q ^ P_x)
-Q v (FORALLx P_x) -||- FORALLx (Q v P_x)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">^</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">P_x</span><span class="p">)</span> <span class="o">-||-</span> <span class="n">FORALLx</span> <span class="p">(</span><span class="n">Q</span> <span class="o">^</span> <span class="n">P_x</span><span class="p">)</span>
+<span class="n">Q</span> <span class="n">v</span> <span class="p">(</span><span class="n">FORALLx</span> <span class="n">P_x</span><span class="p">)</span> <span class="o">-||-</span> <span class="n">FORALLx</span> <span class="p">(</span><span class="n">Q</span> <span class="n">v</span> <span class="n">P_x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>(This is called <em>prenex form</em>.)
@@ -2264,56 +2264,56 @@ Now, <em>remove the quantifiers</em> because they are no longer needed (!).</p>
 combination of conjunctions, disjunctions, and negations attached to
 primitive propositions that hold Skolem functions.
 To finish, apply this equivalence to move all disjunction operators inward:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(A ^ B) v C  -||-  (A v C)  ^  (B v C)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span> <span class="n">v</span> <span class="n">C</span>  <span class="o">-||-</span>  <span class="p">(</span><span class="n">A</span> <span class="n">v</span> <span class="n">C</span><span class="p">)</span>  <span class="o">^</span>  <span class="p">(</span><span class="n">B</span> <span class="n">v</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>Here is an example conversion:
 <code class="docutils literal"><span class="pre">(EXISTy</span> <span class="pre">FORALLx</span> <span class="pre">isBossOf(y,x))</span> <span class="pre">--&gt;</span> <span class="pre">(EXISTx</span> <span class="pre">isBossOf(x,x))</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1. (EXISTy FORALLx isBossOf(y,x)) --&gt; (EXISTz isBossOf(z,z))
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="p">(</span><span class="n">EXISTy</span> <span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">))</span> <span class="o">--&gt;</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
 
-2. ~(EXISTy FORALLx isBossOf(y,x))  v (EXISTz isBossOf(z,z))
+<span class="mf">2.</span> <span class="o">~</span><span class="p">(</span><span class="n">EXISTy</span> <span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>  <span class="n">v</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
 
-3. (FORALLy ~FORALLx isBossOf(y,x))  v (EXISTz isBossOf(z,z))
-   (FORALLy EXISTx ~isBossOf(y,x))  v (EXISTz isBossOf(z,z))
+<span class="mf">3.</span> <span class="p">(</span><span class="n">FORALLy</span> <span class="o">~</span><span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>  <span class="n">v</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
+   <span class="p">(</span><span class="n">FORALLy</span> <span class="n">EXISTx</span> <span class="o">~</span><span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>  <span class="n">v</span> <span class="p">(</span><span class="n">EXISTz</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">z</span><span class="p">))</span>
 
-4. (FORALLy ~isBossOf(y, x(y))   v  isBossOf(z(),z())
+<span class="mf">4.</span> <span class="p">(</span><span class="n">FORALLy</span> <span class="o">~</span><span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>   <span class="n">v</span>  <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">(),</span><span class="n">z</span><span class="p">())</span>
 
-5. FORALLy ( ~isBossOf(y, x(y))   v  isBossOf(z(),z()) )
+<span class="mf">5.</span> <span class="n">FORALLy</span> <span class="p">(</span> <span class="o">~</span><span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>   <span class="n">v</span>  <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">(),</span><span class="n">z</span><span class="p">())</span> <span class="p">)</span>
 
-   (~isBossOf(y, x(y)))  v  isBossOf(z(),z())
+   <span class="p">(</span><span class="o">~</span><span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span>  <span class="n">v</span>  <span class="n">isBossOf</span><span class="p">(</span><span class="n">z</span><span class="p">(),</span><span class="n">z</span><span class="p">())</span>
 
-6. (no need to rearrange any ^s and vs)
+<span class="mf">6.</span> <span class="p">(</span><span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">rearrange</span> <span class="nb">any</span> <span class="o">^</span><span class="n">s</span> <span class="ow">and</span> <span class="n">vs</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>At this point, we can apply the resolution algorithm.
 The resolution rule is slightly modified to handle the variables and Skolem
 functions: a form of two-way matching, called <em>unification</em>, is used to apply
 the <code class="docutils literal"><span class="pre">FORALLe</span></code> rule to variables and Skolem functions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>        A v P(E1)    ~P(E2) v B    matches = unify(E1,E2)
-res:  ---------------------------------------------------------
-             [matches](A v B)
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">A</span> <span class="n">v</span> <span class="n">P</span><span class="p">(</span><span class="n">E1</span><span class="p">)</span>    <span class="o">~</span><span class="n">P</span><span class="p">(</span><span class="n">E2</span><span class="p">)</span> <span class="n">v</span> <span class="n">B</span>    <span class="n">matches</span> <span class="o">=</span> <span class="n">unify</span><span class="p">(</span><span class="n">E1</span><span class="p">,</span><span class="n">E2</span><span class="p">)</span>
+<span class="n">res</span><span class="p">:</span>  <span class="o">---------------------------------------------------------</span>
+             <span class="p">[</span><span class="n">matches</span><span class="p">](</span><span class="n">A</span> <span class="n">v</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Since <code class="docutils literal"><span class="pre">P</span></code> is now a predicate (like <code class="docutils literal"><span class="pre">isBossOf</span></code> or <code class="docutils literal"><span class="pre">isMortal</span></code> or <code class="docutils literal"><span class="pre">&gt;</span></code>),
 we must unify the arguments <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> in <code class="docutils literal"><span class="pre">P(E1)</span></code> and <code class="docutils literal"><span class="pre">P(E2)</span></code> so that
 they become one and the same.
 It works like this: For example,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>for  isMortal(soc())   ~isMortal(z),      unify(soc(),z) =  [z=soc()]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">soc</span><span class="p">())</span>   <span class="o">~</span><span class="n">isMortal</span><span class="p">(</span><span class="n">z</span><span class="p">),</span>      <span class="n">unify</span><span class="p">(</span><span class="n">soc</span><span class="p">(),</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span>  <span class="p">[</span><span class="n">z</span><span class="o">=</span><span class="n">soc</span><span class="p">()]</span>
 
-for  isMortal(x)       ~isMortal(y),      unify(x,y) = [x=y]
+<span class="k">for</span>  <span class="n">isMortal</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>       <span class="o">~</span><span class="n">isMortal</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>      <span class="n">unify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">]</span>
 
-for  isBoss(a(),x)     ~isBoss(y,b()),    unify((a(),x), (y,b())) = [y=a(), x=b()]
+<span class="k">for</span>  <span class="n">isBoss</span><span class="p">(</span><span class="n">a</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>     <span class="o">~</span><span class="n">isBoss</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">b</span><span class="p">()),</span>    <span class="n">unify</span><span class="p">((</span><span class="n">a</span><span class="p">(),</span><span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">b</span><span class="p">()))</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="o">=</span><span class="n">a</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">b</span><span class="p">()]</span>
 
-for  isBoss(a(),x)     ~isBoss(b(),b()),  unify((a(),x), (b(),b())) = FAILURE
+<span class="k">for</span>  <span class="n">isBoss</span><span class="p">(</span><span class="n">a</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>     <span class="o">~</span><span class="n">isBoss</span><span class="p">(</span><span class="n">b</span><span class="p">(),</span><span class="n">b</span><span class="p">()),</span>  <span class="n">unify</span><span class="p">((</span><span class="n">a</span><span class="p">(),</span><span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="p">(),</span><span class="n">b</span><span class="p">()))</span> <span class="o">=</span> <span class="n">FAILURE</span>
 </pre></div>
 </div>
 <p>The matches that are computed are applied to the remaining clauses.
 For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>~P(x) v Q(x)        P(a())
--------------------------------
-             Q(a())
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">~</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>        <span class="n">P</span><span class="p">(</span><span class="n">a</span><span class="p">())</span>
+<span class="o">-------------------------------</span>
+             <span class="n">Q</span><span class="p">(</span><span class="n">a</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>because <code class="docutils literal"><span class="pre">matches(x,a())</span> <span class="pre">=</span> <span class="pre">[x=a()],</span> <span class="pre">so</span> <span class="pre">[x=a()]Q(x)</span></code> is <code class="docutils literal"><span class="pre">Q(a())</span></code>.</p>
@@ -2321,32 +2321,32 @@ For example:</p>
 propositional logic.
 The resolution rule plus unification searches for a witness to a contradiction.</p>
 <p>Here are two examples of resolution proofs conducted with unification:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>FORALLx (P(x) --&gt; Q(x)),  EXISTy P(y)  |-  EXISTz Q(z)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FORALLx</span> <span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">--&gt;</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>  <span class="n">EXISTy</span> <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">EXISTz</span> <span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 
-The clauses resulting from the two premises and negated goal are
-   ~P(x) v Q(x),   P(y()),   ~Q(z)
+<span class="n">The</span> <span class="n">clauses</span> <span class="n">resulting</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">two</span> <span class="n">premises</span> <span class="ow">and</span> <span class="n">negated</span> <span class="n">goal</span> <span class="n">are</span>
+   <span class="o">~</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>   <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">()),</span>   <span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 
-The resolution proof goes
+<span class="n">The</span> <span class="n">resolution</span> <span class="n">proof</span> <span class="n">goes</span>
 
-~P(x) v Q(x)    P(y())    ~Q(z)
-      |              |         |
-      +--------------+         |
-            | [x=y()]          |
-           Q(y())              |
-            |                  |
-            +------------------+
-                    | [z=y()]
-                   []
+<span class="o">~</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">v</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="n">P</span><span class="p">(</span><span class="n">y</span><span class="p">())</span>    <span class="o">~</span><span class="n">Q</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+      <span class="o">|</span>              <span class="o">|</span>         <span class="o">|</span>
+      <span class="o">+--------------+</span>         <span class="o">|</span>
+            <span class="o">|</span> <span class="p">[</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">()]</span>          <span class="o">|</span>
+           <span class="n">Q</span><span class="p">(</span><span class="n">y</span><span class="p">())</span>              <span class="o">|</span>
+            <span class="o">|</span>                  <span class="o">|</span>
+            <span class="o">+------------------+</span>
+                    <span class="o">|</span> <span class="p">[</span><span class="n">z</span><span class="o">=</span><span class="n">y</span><span class="p">()]</span>
+                   <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Here is another example, the workers-and-bosses proof:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>EXISTy FORALLx isBossOf(y,x)  |-  FORALLu EXISTv isBossOf(v,u)
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXISTy</span> <span class="n">FORALLx</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>  <span class="o">|-</span>  <span class="n">FORALLu</span> <span class="n">EXISTv</span> <span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
 
-      isBossOf(y(),x)              ~isBossOf(v, u())
-           |                        |
-           +------------------------+
-                      | [v=y(), x=u()]
-                     []
+      <span class="n">isBossOf</span><span class="p">(</span><span class="n">y</span><span class="p">(),</span><span class="n">x</span><span class="p">)</span>              <span class="o">~</span><span class="n">isBossOf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">())</span>
+           <span class="o">|</span>                        <span class="o">|</span>
+           <span class="o">+------------------------+</span>
+                      <span class="o">|</span> <span class="p">[</span><span class="n">v</span><span class="o">=</span><span class="n">y</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">u</span><span class="p">()]</span>
+                     <span class="p">[]</span>
 </pre></div>
 </div>
 <p>Because a clause can be used more than once in a proof, and because a variable
@@ -2363,7 +2363,7 @@ Resolution is about as good as we can do in this regard.</p>
 <p>Once again, it is time to consider what propositions mean and how it is that
 <code class="docutils literal"><span class="pre">FORALLi</span></code>, <code class="docutils literal"><span class="pre">FORALLe</span></code>, <code class="docutils literal"><span class="pre">EXISTi</span></code>, <code class="docutils literal"><span class="pre">EXISTe</span></code> preserve meaning.</p>
 <p>At this point, it would be good to review the section on models for
-<a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span>Applications of Propositional Logic to Program Proving</span></a>.
+<a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a>.
 There, we saw that the connectives, <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">v</span></code>, <code class="docutils literal"><span class="pre">~</span></code>, <code class="docutils literal"><span class="pre">--&gt;</span></code> were understood
 in terms of truth tables.
 Also, the primitive propositions were just letters like <code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">Q</span></code>, and <code class="docutils literal"><span class="pre">R</span></code>,
@@ -2415,7 +2415,7 @@ and <code class="docutils literal"><span class="pre">&gt;</span></code> is defin
 </ul>
 <p>These three examples show that the symbols in a logic can be interpreted in
 multiple different ways.
-(In the Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span>Applications of Propositional Logic to Program Proving</span></a>, we called an interpretation a
+(In the Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a>, we called an interpretation a
 &#8220;context&#8221;.
 In this chapter, we see that a &#8220;context&#8221; is quite complex &#8211; domain, functions,
 and predicates.)</p>
@@ -2479,7 +2479,7 @@ complexity theory, that studies what can be solved and how fast an algorithm can
 solve it.</p>
 <p>Given an interpretation of a predicate logic, we can say that the &#8220;meaning&#8221; of a
 proposition is exactly the set of interpretations
-(cf. Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span>Applications of Propositional Logic to Program Proving</span></a> &#8211; &#8220;contexts&#8221;) in which the
+(cf. Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a> &#8211; &#8220;contexts&#8221;) in which the
 proposition is True.
 This returns us to the Boolean-algebra model of logic.
 Or, we can organize the interpretations so that an interpretation grows in its
@@ -2495,16 +2495,16 @@ and the <em>parametric polymorphic function</em> and extend the Heyting interpre
 <p>Here are the rules for the quantifiers, stated in terms of their tactics:</p>
 <ul>
 <li><p class="first">(<a href="#id15"><span class="problematic" id="id16">**</span></a><a href="#id17"><span class="problematic" id="id18">*</span></a>) <code class="docutils literal"><span class="pre">FORALLi</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">FORALLx</span> <span class="pre">P_x</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
-... i.  a
-         (fill in)
-... j.  P_a
-k. FORALLx P_x      FORALLi i-j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>        <span class="n">premise</span>
+<span class="o">...</span> <span class="n">i</span><span class="o">.</span>  <span class="n">a</span>
+         <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="o">...</span> <span class="n">j</span><span class="o">.</span>  <span class="n">P_a</span>
+<span class="n">k</span><span class="o">.</span> <span class="n">FORALLx</span> <span class="n">P_x</span>      <span class="n">FORALLi</span> <span class="n">i</span><span class="o">-</span><span class="n">j</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">(<a href="#id19"><span class="problematic" id="id20">**</span></a><a href="#id21"><span class="problematic" id="id22">*</span></a>) <code class="docutils literal"><span class="pre">EXISTe</span></code>-tactic: use to prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.  Premises        premise
 2.  EXISTx P_x      premise
 ... i. a   P_a      assumption
       (fill in)
@@ -2514,20 +2514,20 @@ k.  Q               EXISTe 2,i-j
 </div>
 </li>
 <li><p class="first">(*) <code class="docutils literal"><span class="pre">FORALLe</span></code>-tactic: use to prove Premises, <code class="docutils literal"><span class="pre">FORALLx</span> <span class="pre">P_x</span> <span class="pre">|-</span> <span class="pre">Q</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
-2.  FORALLx P_x     premise
-  . . .
-j.  P_i             FORALLe 2  (where individual  i  appears earlier in the proof)
-       (fill in)
-k.  Q
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>        <span class="n">premise</span>
+<span class="mf">2.</span>  <span class="n">FORALLx</span> <span class="n">P_x</span>     <span class="n">premise</span>
+  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">j</span><span class="o">.</span>  <span class="n">P_i</span>             <span class="n">FORALLe</span> <span class="mi">2</span>  <span class="p">(</span><span class="n">where</span> <span class="n">individual</span>  <span class="n">i</span>  <span class="n">appears</span> <span class="n">earlier</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">proof</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="n">k</span><span class="o">.</span>  <span class="n">Q</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">(*) <code class="docutils literal"><span class="pre">EXISTi</span></code>-tactic: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">EXISTx</span> <span class="pre">P_x</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1.  Premises        premise
-      (fill in)
-j.  P_e
-k.  EXISTx P_x      EXISTi j
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Premises</span>        <span class="n">premise</span>
+      <span class="p">(</span><span class="n">fill</span> <span class="ow">in</span><span class="p">)</span>
+<span class="n">j</span><span class="o">.</span>  <span class="n">P_e</span>
+<span class="n">k</span><span class="o">.</span>  <span class="n">EXISTx</span> <span class="n">P_x</span>      <span class="n">EXISTi</span> <span class="n">j</span>
 </pre></div>
 </div>
 </li>

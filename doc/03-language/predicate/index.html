@@ -142,23 +142,23 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </font><div class="section" id="predicate-logic">
 <span id="predicate-language"></span><h1>3.3. Predicate Logic<a class="headerlink" href="#predicate-logic" title="Permalink to this headline">¶</a></h1>
 <p>The Logika predicate logic input language is a small
-extension of its <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>
+extension of its <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>
 that adds the following language elements:
-(1) <a class="reference internal" href="#extended-assumptions"><span>Extended Sub-Proof Assumption Step</span></a>,
-(2) <a class="reference internal" href="#uninterpreted-functions"><span>First-Order Uninterpreted Predicate and Function Applications</span></a>,
-(3) <a class="reference internal" href="#quantified-claims"><span>Universally and Existensially Quantified Claims</span></a>, and
-(4) <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>.</p>
-<p>Similar to the discussion in <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>,
+(1) <a class="reference internal" href="#extended-assumptions"><span class="std std-ref">Extended Sub-Proof Assumption Step</span></a>,
+(2) <a class="reference internal" href="#uninterpreted-functions"><span class="std std-ref">First-Order Uninterpreted Predicate and Function Applications</span></a>,
+(3) <a class="reference internal" href="#quantified-claims"><span class="std std-ref">Universally and Existensially Quantified Claims</span></a>, and
+(4) <a class="reference internal" href="#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>.</p>
+<p>Similar to the discussion in <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>,
 this section only discusses Logika&#8217;s rendition of predicate
 logic natural deductions;
-the reader is referred to <a class="reference internal" href="../../../dschmidt/08-predicate-logic/index.html#predicate-logic"><span>The Predicate-Logic Quantifiers</span></a> for more intuitive
+the reader is referred to <a class="reference internal" href="../../../dschmidt/08-predicate-logic/index.html#predicate-logic"><span class="std std-ref">The Predicate-Logic Quantifiers</span></a> for more intuitive
 and general discussion on predicate logic.</p>
 <p><strong>Predicate Logic Input Language Grammar</strong></p>
 <div class="highlight-antlr" id="predicate-1"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Logika&#8217;s predicate logic input language is similar to that of
-<a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a>, where it consists of a sequent and the sequent&#8217;s proof.
+<a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>, where it consists of a sequent and the sequent&#8217;s proof.
 Here is an example that is also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogism">syllogism</a>:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  ∃y human(y)  ⊢  ∃z mortal(z)
 {
@@ -175,9 +175,9 @@ Here is an example that is also a <a class="reference external" href="https://en
 </pre></div>
 </div>
 <p>In the subsequent description, only language elements that are new
-or extend <a class="reference internal" href="../propositional/index.html#propositional-language"><span>Propositional Logic</span></a> are discussed.
+or extend <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a> are discussed.
 As a reference, the complete predicate logic input language is specified in
-<a class="reference internal" href="#pred-grammar"><span>Predicate Logic Input Language Grammar</span></a>.</p>
+<a class="reference internal" href="#pred-grammar"><span class="std std-ref">Predicate Logic Input Language Grammar</span></a>.</p>
 <div class="section" id="extended-sub-proof-assumption-step">
 <span id="extended-assumptions"></span><h2>3.3.1. Extended Sub-Proof Assumption Step<a class="headerlink" href="#extended-sub-proof-assumption-step" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
@@ -185,16 +185,16 @@ As a reference, the complete predicate logic input language is specified in
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w">   </span><span class="c">// ID must be &quot;fresh&quot;; used for Exists-Elimination</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>To support <a class="reference internal" href="#pred-rules"><span>Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
+<p>To support <a class="reference internal" href="#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
 enhanced.</p>
 <p>The first highlighted enhancement is to introduce a &#8220;fresh&#8221; variable
-suitable for <a class="reference internal" href="#forall-intro"><span>Forall-Introduction (∀i)</span></a>;
+suitable for <a class="reference internal" href="#forall-intro"><span class="std std-ref">Forall-Introduction (∀i)</span></a>;
 here, &#8220;fresh&#8221; means that the identifier is not used in the
-<a class="reference internal" href="../propositional/index.html#scoping"><span>scope</span></a> of the variable; this form is a special one
+<a class="reference internal" href="../propositional/index.html#scoping"><span class="std std-ref">scope</span></a> of the variable; this form is a special one
 because it is not a regular proof step which has a claim associated with it.</p>
 <p>The second highlighted form also introduces a fresh variable, but also
 has an associated claim assumption that refers to the fresh variable.
-This form is used for <a class="reference internal" href="#exists-elim"><span>Exists-Elimination (∃e)</span></a>.</p>
+This form is used for <a class="reference internal" href="#exists-elim"><span class="std std-ref">Exists-Elimination (∃e)</span></a>.</p>
 </div>
 <div class="section" id="extended-claim-expression">
 <h2>3.3.2. Extended Claim Expression<a class="headerlink" href="#extended-claim-expression" title="Permalink to this headline">¶</a></h2>
@@ -212,7 +212,7 @@ This form is used for <a class="reference internal" href="#exists-elim"><span>Ex
 </span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>Similar to propositional logic&#8217;s <a class="reference internal" href="../propositional/index.html#prop-claim"><span>Claim Expression</span></a>,
+<p>Similar to propositional logic&#8217;s <a class="reference internal" href="../propositional/index.html#prop-claim"><span class="std std-ref">Claim Expression</span></a>,
 the predicate logic claim expressions are untyped.
 One can take the view that all variables in Logika&#8217;s predicate logic
 language are of integer type and
@@ -238,8 +238,8 @@ In predicate logic, the meaning of each function is unspecified,
 thus, uninterpreted.</p>
 <p>Instead of depending on function interpretations,
 Logika&#8217;s predicate logic reasoning uses
-<a class="reference internal" href="#subst-notation"><span>rewriting/substitution</span></a>, in addition to
-<a class="reference internal" href="../propositional/index.html#structural-eq"><span>structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
+<a class="reference internal" href="#subst-notation"><span class="std std-ref">rewriting/substitution</span></a>, in addition to
+<a class="reference internal" href="../propositional/index.html#structural-eq"><span class="std std-ref">structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
 that is used in propositional logic.
 The rewriting technique depends on the inherent property that
 each function is pure &#8211; meaning that it produces the same result
@@ -249,7 +249,7 @@ it is applied (invoked/called).</p>
 identifier followed by some ordered arguments (optional)
 which are separated by a comma (<code class="docutils literal"><span class="pre">,</span></code>) and delimited by a
 parenthesis, such as shown in the
-<a class="reference internal" href="#predicate-1"><span>syllogism</span></a> example above (and below) for
+<a class="reference internal" href="#predicate-1"><span class="std std-ref">syllogism</span></a> example above (and below) for
 <code class="docutils literal"><span class="pre">human</span></code> and <code class="docutils literal"><span class="pre">mortal</span></code>.</p>
 <p>Functions have to always be supplied with arguments whenever
 referred (i.e., they have to always be applied).
@@ -295,8 +295,8 @@ applying functions <code class="docutils literal"><span class="pre">inc</span></
 (By the way, the example uses uninterpreted functions/predicates
 to model properties of integer arithmetic operators
 due to the lack for
-<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span>algebra</span></a> support in Logika&#8217;s predicate logic;
-instead, it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span>programming logic</span></a>
+<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span class="std std-ref">algebra</span></a> support in Logika&#8217;s predicate logic;
+instead, it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span class="std std-ref">programming logic</span></a>
 later.)</p>
 <p>Furthermore, Logika functions cannot be overloaded;
 each identifier is only associated with exactly
@@ -394,7 +394,7 @@ logic &#8211; one introduction rule and one elimination rule for
 both universal and existensial quantifications.</p>
 <p>The subsequent sections assume that
 each rule is being applied at a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>
-and they use the <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span>Proof Schematic Pattern</span></a> to characterize valid
+and they use the <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span class="std std-ref">Proof Schematic Pattern</span></a> to characterize valid
 inference rule applications.</p>
 <div class="section" id="forall-introduction-i">
 <span id="forall-intro"></span><h3>3.3.5.1. Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h3>
@@ -415,7 +415,7 @@ Z. ∀x P{x}                                   ∀i X            // P{x} ≡ [x/
 </div>
 </div>
 <p>Note that <code class="docutils literal"><span class="pre">x</span></code> cannot appear in <code class="docutils literal"><span class="pre">P{a}</span></code>; otherwise,
-the proof violates the <a class="reference internal" href="#pred-well-formed"><span>Well-Formed-Ness</span></a> rules
+the proof violates the <a class="reference internal" href="#pred-well-formed"><span class="std std-ref">Well-Formed-Ness</span></a> rules
 (i.e., such <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P{a}</span></code> can only either be a free variable or
 defined in an enclosing sub-proof, both of which are disallowed).</p>
 <p>The following alternative pattern is used grouping multiple
@@ -534,7 +534,7 @@ Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]
 <div class="section" id="predicate-logic-input-language-grammar">
 <span id="pred-grammar"></span><h2>3.3.6. Predicate Logic Input Language Grammar<a class="headerlink" href="#predicate-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <p>Note that extended language elements from
-that of the <a class="reference internal" href="../propositional/index.html#prop-grammar"><span>Propositional Logic Input Language Grammar</span></a> are highlighted.</p>
+that of the <a class="reference internal" href="../propositional/index.html#prop-grammar"><span class="std std-ref">Propositional Logic Input Language Grammar</span></a> are highlighted.</p>
 <div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>

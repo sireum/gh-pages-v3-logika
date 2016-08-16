@@ -975,7 +975,7 @@ do not exist.</p>
 <p>Factorial lists the number of permutations (combinations or &#8220;shuffles&#8221;), e.g.,
 <code class="docutils literal"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
 <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, and <code class="docutils literal"><span class="pre">c</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">abc</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">abc</span>
 <span class="n">bac</span>
 <span class="n">bca</span>
 <span class="n">acb</span>
@@ -984,12 +984,12 @@ do not exist.</p>
 </pre></div>
 </div>
 <p>There is a profound recursive definition of factorial:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,   for  n &gt; 0
 </pre></div>
 </div>
 <p>For example, we calculate <code class="docutils literal"><span class="pre">4!</span></code> like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>4! == 3! * 4
+<div class="highlight-default"><div class="highlight"><pre><span></span>4! == 3! * 4
    where 3! == 2! * 3
             where 2! == 1! * 2
                      where 1! == 0! * 1
@@ -1024,107 +1024,107 @@ function that repeatedly calls <em>itself</em> for the answers to <code class="d
 <p>The easiest way to understand the computation of, say, <code class="docutils literal"><span class="pre">fact(3)</span></code>, is to draw
 out the function calls, making a new copy of the called function each time it is
 restarted, like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt;  n = 3
-            if n == 0 :
-              ans = 1
-            else :
-              a = fact(n-1)
-              ans = a * n
-            return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+              <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span> <span class="p">:</span>
+              <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>Notice how the <em>binding</em> of argument <code class="docutils literal"><span class="pre">3</span></code> to parameter <code class="docutils literal"><span class="pre">n</span></code> is enacted with
 the assignment, <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>.
 (This is how it is implemented within a computer, too.)
 The code for <code class="docutils literal"><span class="pre">fact(3)</span></code> activates a fresh copy of <code class="docutils literal"><span class="pre">fact</span></code> with argument 2:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-                           if n == 0 :
-           ans = a * n        ans = 1
-           return ans      else :
-                              a = fact(n-1)
-                              ans = a * n
-                           return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+                           <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>        <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="k">else</span> <span class="p">:</span>
+                              <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+                           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>This generates another call (fresh copy of) fact:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * n     a = fact(1) =&gt; n = 1
-                                          if n == 0 :
-           return ans      ans = a * 2       ans = 1
-                           return ans     else :
-                                             a = fact(n-1)
-                                             ans = a * n
-                                          return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+                                          <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>       <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
+                           <span class="k">return</span> <span class="n">ans</span>     <span class="k">else</span> <span class="p">:</span>
+                                             <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                                             <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+                                          <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>This expands to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * n     a = fact(1) =&gt; n = 1
-           return ans      ans = a * n    a = fact(0) =&gt;  n = 0
-                                                          if n == 0 :
-                           return ans     ans = a * n       ans = 1
-                                          return ans     else :
-                                                            . . .
-                                                         return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+                                                          <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+                           <span class="k">return</span> <span class="n">ans</span>     <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>       <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
+                                          <span class="k">return</span> <span class="n">ans</span>     <span class="k">else</span> <span class="p">:</span>
+                                                            <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+                                                         <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>We see a sequence, or &#8220;stack&#8221;, of activations of <code class="docutils literal"><span class="pre">fact</span></code>, one per call.
 Within a computer, an <em>activation-record stack</em> remembers the activations.
 The call to <code class="docutils literal"><span class="pre">fact(0)</span></code> returns an answer &#8211; 1:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * n     a = fact(1) =&gt; n = 1
-           return ans      ans = a * n    a = fact(0) =&gt; return 1
-                           return ans     ans = a * n
-                                          return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
+                           <span class="k">return</span> <span class="n">ans</span>     <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+                                          <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>This makes the most recent activation (copy) of <code class="docutils literal"><span class="pre">fact</span></code> disappear, and the
 returned answer is assigned to <code class="docutils literal"><span class="pre">ans</span></code> in the previous call:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * 3     a = fact(1) =&gt; n = 1
-           return ans      ans = a * 2    a = 1
-                           return ans     ans = a * n
-                                          return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+                           <span class="k">return</span> <span class="n">ans</span>     <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+                                          <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>allowing the previous call to return <em>its</em> answer to <em>its</em> caller:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * 3     a = fact(1) =&gt; return 1
-           return ans      ans = a * 2
-                           return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
+                           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>You see the pattern &#8211; the calls are finishing in reverse order, returning the
 partial answers, <code class="docutils literal"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  n = 2
-           ans = a * n     a = 1
-           return ans      ans = a * n
-                           return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+                           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and then:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = fact(2) =&gt;  return 2
-           ans = a * n
-           return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="k">return</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; n = 3
-           a = 2
-           ans = a * n
-           return ans
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+           <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+           <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
+           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and finally:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>fact(3) =&gt; return 6
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p>Within the computer, the code for <code class="docutils literal"><span class="pre">fact</span></code> is not copied at each call &#8211;
@@ -1150,7 +1150,7 @@ what happens.
 In the process, we deduce that the completed coding of <code class="docutils literal"><span class="pre">fact</span></code> possesses
 exactly these same pre- and post-conditions!</p>
 <p>Recall again the &#8220;official definition&#8221; of <code class="docutils literal"><span class="pre">n!</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
 </div>

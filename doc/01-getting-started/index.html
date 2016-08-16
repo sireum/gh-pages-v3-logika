@@ -152,8 +152,8 @@ Sireum Logika Documentation
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Logika runs on x64 Mac OS X, Linux, and Windows operating systems
 (tested on OS X 10.11, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
-<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span>Using Sireum v3 Binary Distribution</span></a> or
-<a class="reference internal" href="#using-source"><span>Using Sireum v3 Source Distribution</span></a>.</p>
+<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span class="std std-ref">Using Sireum v3 Binary Distribution</span></a> or
+<a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
 <video width="100%" controls>
   <source src="http://files.sireum.org/media/logika-cli.mp4" type="video/mp4">
 </video><div class="section" id="using-sireum-v3-binary-distribution">
@@ -218,7 +218,7 @@ Programming Logic Options:
     --sat         Enable sat checking of facts and contracts
 </pre></div>
 </div>
-<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
@@ -228,7 +228,7 @@ a Windows shell/command prompt.</p>
 </div>
 <p>To update Logika, simply re-download/install according to the
 above instructions.</p>
-<p>Next, see <a class="reference internal" href="#logika-examples"><span>Verifying Examples</span></a>.</p>
+<p>Next, see <a class="reference internal" href="#logika-examples"><span class="std std-ref">Verifying Examples</span></a>.</p>
 </div>
 </div>
 <div class="section" id="using-sireum-v3-source-distribution">
@@ -312,7 +312,7 @@ Programming Logic Options:
     --sat         Enable sat checking of facts and contracts
 </pre></div>
 </div>
-<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
@@ -399,7 +399,7 @@ File:
 p ∨ q, r  ⊢  <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>
 </pre></div>
 </div>
-<p>For a better experience, consider using the <a class="reference internal" href="../02-live/index.html#live"><span>IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
+<p>For a better experience, consider using the <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
 </div>
 <div class="section" id="logika-command-line-configuration">
 <span id="cli-configuration"></span><h2>1.4. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
@@ -409,7 +409,7 @@ thus, there is no configuration switch needed for it.</p>
 <span id="id2"></span><h3>1.4.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
 <p>The auto mode enables claim justifications using the
-<a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>auto</span></a> summoning.
+<a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span class="std std-ref">auto</span></a> summoning.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).</p>
@@ -417,11 +417,11 @@ runtime error checks (e.g., division by zero, sequence indexing).</p>
 enabling this mode.
 Moreover, Logika will produce an error message if it cannot
 automatically prove a contract or a runtime error check
-(in which case, one can increase the <a class="reference internal" href="#timeout"><span>timeout</span></a>
+(in which case, one can increase the <a class="reference internal" href="#timeout"><span class="std std-ref">timeout</span></a>
 for automatic proving, or guide Logika by establishing more
 claims to help with making the necessary deduction).</p>
 <p>Furthermore, auto mode changes the way
-<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span>proof statement</span></a> works.
+<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> works.
 By default, a proof statement only propagates the proven
 claims inside that statement.
 This essentially resets the premises that are available
@@ -430,7 +430,7 @@ has proven.
 If auto is enabled, proof statements also
 propagate their premises along with their proven claims.
 For more information with examples, please refer to the
-<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span>proof statement</span></a> section.</p>
+<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> section.</p>
 </div>
 <div class="section" id="last-mode">
 <h3>1.4.2. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
@@ -478,7 +478,7 @@ assuming untrue facts).</p>
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.
 This is designed for integration with other tools such as
-the <a class="reference internal" href="../02-live/index.html#live"><span>IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.
+the <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.
 Each request/respond message is in the (restricted)
 form of a line JSON serialization string whose schema are
 derived from the Scala case classes defined in the

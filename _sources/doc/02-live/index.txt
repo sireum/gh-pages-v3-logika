@@ -68,7 +68,7 @@ LIVE Install
 Prerequisites
 =============
 
-LIVE requires `IntelliJ 15 <https://www.jetbrains.com/idea/download/>`__ (it is
+LIVE requires `IntelliJ (15 or above) <https://www.jetbrains.com/idea/download/>`__; it is
 recommended to install the `Scala plugin <http://plugins.jetbrains.com/plugin/1347>`__);
 please take a look at its system requirements and follow the installation instructions
 for your respective operating system.

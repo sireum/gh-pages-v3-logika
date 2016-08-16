@@ -174,12 +174,12 @@ We will develop this idea and other important ideas in this chapter.</p>
 <div class="section" id="while-loops">
 <h2>6.1. While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
 <p>In the previous chapter, we saw how factorial is defined as a recurrence:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,   for  n &gt; 0
 </pre></div>
 </div>
 <p>But we can understand factorial as a repeated product: for integer <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
+<div class="highlight-default"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
 </pre></div>
 </div>
 <p>It is easy to write a loop program that computes the repeated product:</p>
@@ -198,7 +198,7 @@ n! == (n-1)! * n,   for  n &gt; 0
 <p>The loop adjoins the multiplications, <code class="docutils literal"><span class="pre">*1</span></code>, <code class="docutils literal"><span class="pre">*2</span></code>, <code class="docutils literal"><span class="pre">*3</span></code>, etc., to the
 running total, <code class="docutils literal"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 Consider some execution cases:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+<div class="highlight-default"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
 n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
 n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
 n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
@@ -264,14 +264,14 @@ documentation, whether it is stated in English words or in algebra symbols.</p>
 <p>If we think of a program as an electronic circuit, where knowledge flows along
 the wires instead of voltage, then a loop program is a feedback circuit, where
 a voltage, <code class="docutils literal"><span class="pre">I</span></code>, is forced backwards into the circuit&#8217;s entry:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>     I|
-       v         I
- +-&gt;while B : ----&gt;
- |   I|
- |    v
- |    C
-I|    |
- +----+
+<div class="highlight-default"><div class="highlight"><pre><span></span>     <span class="n">I</span><span class="o">|</span>
+       <span class="n">v</span>         <span class="n">I</span>
+ <span class="o">+-&gt;</span><span class="k">while</span> <span class="n">B</span> <span class="p">:</span> <span class="o">----&gt;</span>
+ <span class="o">|</span>   <span class="n">I</span><span class="o">|</span>
+ <span class="o">|</span>    <span class="n">v</span>
+ <span class="o">|</span>    <span class="n">C</span>
+<span class="n">I</span><span class="o">|</span>    <span class="o">|</span>
+ <span class="o">+----+</span>
 </pre></div>
 </div>
 <p>The voltage (knowledge) level, <code class="docutils literal"><span class="pre">I</span></code>, must be stable along the back arc of the
@@ -509,12 +509,12 @@ What is the loop&#8217;s invariant?
 </div>
 <p>Apparently, this program computes <code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> and saves it in <code class="docutils literal"><span class="pre">z</span></code>.
 To understand, we execute a test case and watch what is printed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Type an int: 3
-Type another: 4
-(a) x = 3  y = 4  count = 0  z = 0
-(a) x = 3  y = 4  count = 1  z = 4
-(a) x = 3  y = 4  count = 2  z = 8
-(b) x = 3  y = 4  count = 3  z = 12
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Type</span> <span class="n">another</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">2</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">12</span>
 </pre></div>
 </div>
 <p>The trace information in each row shows this pattern between the values of the
@@ -850,14 +850,14 @@ e.g., &#8220;how many times can you subtract 4 from 20?
 </pre></div>
 </div>
 <p>Here is a sample execution with trace information printed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Type an nonegative int: 14
-Type a positive int: 3
-(a) n = 14  d = 3  q = 0  r = 14
-(a) n = 14  d = 3  q = 1  r = 11
-(a) n = 14  d = 3  q = 2  r = 8
-(a) n = 14  d = 3  q = 3  r = 5
-(b) n = 14  d = 3  q = 4  r = 2
-14 divided by 3 is 4 with remainder 2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="n">nonegative</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">14</span>
+<span class="n">Type</span> <span class="n">a</span> <span class="n">positive</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">2</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">14</span> <span class="n">divided</span> <span class="n">by</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">4</span> <span class="k">with</span> <span class="n">remainder</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>This is a &#8220;numbers game&#8221;, where we are allowed to use only <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">-</span></code> on
@@ -937,11 +937,11 @@ to the front of variable string <code class="docutils literal"><span class="pre"
 </pre></div>
 </div>
 <p>When we apply this repeatedly, we get the desired behavior &#8211; we win the game:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>after 0 iterations:  w = &quot;abcd&quot;   i = 0   ans = &quot;&quot;
-after 1 iteration:   w = &quot;abcd&quot;   i = 1   ans = &quot;a&quot;
-after 2 iterations:  w = &quot;abcd&quot;   i = 2   ans = &quot;ba&quot;
-after 3 iterations:  w = &quot;abcd&quot;   i = 3   ans = &quot;cba&quot;
-after 4 iterations:  w = &quot;abcd&quot;   i = 4   ans = &quot;dcba&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">after</span> <span class="mi">0</span> <span class="n">iterations</span><span class="p">:</span>  <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>   <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>   <span class="n">ans</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">after</span> <span class="mi">1</span> <span class="n">iteration</span><span class="p">:</span>   <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>   <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>   <span class="n">ans</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span>
+<span class="n">after</span> <span class="mi">2</span> <span class="n">iterations</span><span class="p">:</span>  <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>   <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span>   <span class="n">ans</span> <span class="o">=</span> <span class="s2">&quot;ba&quot;</span>
+<span class="n">after</span> <span class="mi">3</span> <span class="n">iterations</span><span class="p">:</span>  <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>   <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>   <span class="n">ans</span> <span class="o">=</span> <span class="s2">&quot;cba&quot;</span>
+<span class="n">after</span> <span class="mi">4</span> <span class="n">iterations</span><span class="p">:</span>  <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;abcd&quot;</span>   <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>   <span class="n">ans</span> <span class="o">=</span> <span class="s2">&quot;dcba&quot;</span>
 </pre></div>
 </div>
 <p>The strategy for playing the rounds of the game is exactly the loop&#8217;s invariant:
@@ -999,8 +999,8 @@ This completes the function:</p>
 we can construct the proof more precisely with the assistance of these two
 recurrences, which we write in the same style that we used to define factorial
 (<code class="docutils literal"><span class="pre">n!</span></code>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>rev(w, ans, 0)    if  ans == &quot;&quot;
-rev(w, ans, k+1)  if  rev(w, a&#39;, k) and  ans == w[k] + a&#39;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rev</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="k">if</span>  <span class="n">ans</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+<span class="n">rev</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">ans</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>  <span class="k">if</span>  <span class="n">rev</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="s1">&#39;, k) and  ans == w[k] + a&#39;</span>
 </pre></div>
 </div>
 <p>That is, <code class="docutils literal"><span class="pre">rev(w,</span> <span class="pre">a,</span> <span class="pre">i)</span></code> says that the first <code class="docutils literal"><span class="pre">i</span></code> letters of string <code class="docutils literal"><span class="pre">w</span></code> are
@@ -1598,12 +1598,12 @@ It is called mathematical induction.
 We will introduce mathematical induction by examples seen earlier.</p>
 <p>Go back to the first section in this chapter. It says this:</p>
 <p>. . . factorial is defined as a recurrence:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,   for  n &gt; 0
 </pre></div>
 </div>
 <p>But we can understand factorial as a repeated product: for integer n &gt; 0:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
+<div class="highlight-default"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
 </pre></div>
 </div>
 <p>Now, <em>why</em> is it that <code class="docutils literal"><span class="pre">k!</span></code> <em>must</em> equal <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">k</span></code>,
@@ -1611,14 +1611,14 @@ for any nonnegative <code class="docutils literal"><span class="pre">k</span></c
 <p>A typical computer programmer would pretend that the definition of <code class="docutils literal"><span class="pre">!</span></code> is
 &#8220;computer code&#8221; and would invent some test cases to try out this claim.
 For example, we can test <code class="docutils literal"><span class="pre">5!</span></code> like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>5! == (5-1)! * 5 == 4! * 5
+<div class="highlight-default"><div class="highlight"><pre><span></span>5! == (5-1)! * 5 == 4! * 5
 </pre></div>
 </div>
 <p>To finish this test, we must write out the test case for <code class="docutils literal"><span class="pre">4!</span></code>.
 Before we grind out <code class="docutils literal"><span class="pre">4!</span></code> (and <code class="docutils literal"><span class="pre">3!</span></code> and <code class="docutils literal"><span class="pre">2!</span></code> and ...), we can make an
 important observation: if the test case for <code class="docutils literal"><span class="pre">4!</span></code> works out correctly, so will
 the test case for <code class="docutils literal"><span class="pre">5!</span></code>, because:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>5! == 4! * 5
+<div class="highlight-default"><div class="highlight"><pre><span></span>5! == 4! * 5
   and if  4! == 1 * 2 * 3 * 4
   this means
 5! == (1 * 2 * 3 * 4) * 5
@@ -1639,7 +1639,7 @@ There is this quote after the loop code:</p>
 <div><p>The loop adjoins the multiplications, <code class="docutils literal"><span class="pre">*1</span></code>, <code class="docutils literal"><span class="pre">*2</span></code>, <code class="docutils literal"><span class="pre">*3</span></code>, etc., to the
 running total, <code class="docutils literal"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 Consider some execution cases:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+<div class="highlight-default"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
 n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
 n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
 n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
@@ -1729,12 +1729,12 @@ assume the induction hypothesis, that is,
 Now, consider <code class="docutils literal"><span class="pre">n!</span> <span class="pre">==</span> <span class="pre">(n-1)!</span> <span class="pre">*</span> <span class="pre">n</span></code>.
 We substitute the induction hypothesis into the previous definition, giving
 us:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n! == (1 * 2 *...up to... * (n-1)) * n.
+<div class="highlight-default"><div class="highlight"><pre><span></span>n! == (1 * 2 *...up to... * (n-1)) * n.
 </pre></div>
 </div>
 <p>But multiplication is associative, meaning that we have proved the result in
 this case, too:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>n! == 1 * 2 * ...up to... * n
+<div class="highlight-default"><div class="highlight"><pre><span></span>n! == 1 * 2 * ...up to... * n
 </pre></div>
 </div>
 <p>This claim is proved.</p>
@@ -2011,7 +2011,7 @@ algebra and numbers.</p>
 <code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">n</span></code>, always totals up to <code class="docutils literal"><span class="pre">((n*n)+n)/2</span></code>, no matter what
 value nonnegative integer, <code class="docutils literal"><span class="pre">n</span></code>, might be.
 Try some examples, and you will see this happen, e.g.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>0 + 1 + 2 + 3 + 4 + 5 + 6  = 21  equals  (6*6)+6 / 2,  that is,  42/2 = 21
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span>  <span class="o">=</span> <span class="mi">21</span>  <span class="n">equals</span>  <span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">that</span> <span class="ow">is</span><span class="p">,</span>  <span class="mi">42</span><span class="o">/</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">21</span>
 </pre></div>
 </div>
 <p>How do we know this formula, <code class="docutils literal"><span class="pre">((n*n)+n)/2</span></code>, works for all possible nonnegative
@@ -2020,9 +2020,9 @@ Should we try them all?
 We can use the mathematical induction technique to prove, once and for all,
 that the formula works correctly for all nonnegatives.</p>
 <p>Here is what we want to prove:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>                                                     n2 + n
-For all integers,  n &gt;= 0,   0 + 1 + 2 + ... + n  =  -------
-                                                        2
+<div class="highlight-default"><div class="highlight"><pre><span></span>                                                     <span class="n">n2</span> <span class="o">+</span> <span class="n">n</span>
+<span class="n">For</span> <span class="nb">all</span> <span class="n">integers</span><span class="p">,</span>  <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">n</span>  <span class="o">=</span>  <span class="o">-------</span>
+                                                        <span class="mi">2</span>
 </pre></div>
 </div>
 <p>(If you wish, you can think of <code class="docutils literal"><span class="pre">n</span></code> as the &#8220;input&#8221;, and think of
@@ -2040,27 +2040,27 @@ So, the formula works correctly for the starting case, when <code class="docutil
 <code class="docutils literal"><span class="pre">k</span></code>:
 We assume the induction hypothesis that the formula works correctly for the
 integer just before <code class="docutils literal"><span class="pre">n</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">k</span>  <span class="o">=</span>  <span class="p">((</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">k</span>  <span class="o">=</span>  <span class="p">((</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>We must show that <code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">...</span> <span class="pre">+</span> <span class="pre">k</span> <span class="pre">+</span> <span class="pre">(k+1)</span></code> equals
 <code class="docutils literal"><span class="pre">(((k+1)*(k+1))</span> <span class="pre">+</span> <span class="pre">(k+1))</span> <span class="pre">/</span> <span class="pre">2</span></code>.
 We do algebra on the second expression, like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span> (k+1)*(k+1) + (k+1)     (k*k) + 2k + 1 + (k+1)    (k*k) + k + 2k + 2
---------------------- =  ----------------------- = ------------------
-          2                        2                      2
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>     <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>    <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">2</span><span class="n">k</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="o">---------------------</span> <span class="o">=</span>  <span class="o">-----------------------</span> <span class="o">=</span> <span class="o">------------------</span>
+          <span class="mi">2</span>                        <span class="mi">2</span>                      <span class="mi">2</span>
 </pre></div>
 </div>
 <p>and we can split this fraction into two pieces:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>(k*k) + k + 2k + 2       (k*k) + k     2k + 2       (k*k) + k
--------------------  =  ----------- + --------  =  ----------- + (k + 1)
-         2                    2           2              2
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">2</span><span class="n">k</span> <span class="o">+</span> <span class="mi">2</span>       <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span>     <span class="mi">2</span><span class="n">k</span> <span class="o">+</span> <span class="mi">2</span>       <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span>
+<span class="o">-------------------</span>  <span class="o">=</span>  <span class="o">-----------</span> <span class="o">+</span> <span class="o">--------</span>  <span class="o">=</span>  <span class="o">-----------</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="mi">2</span>                    <span class="mi">2</span>           <span class="mi">2</span>              <span class="mi">2</span>
 </pre></div>
 </div>
 <p>But we recall the induction hypothesis, which we use to substitute:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span> (k*k) + k
------------ + (k + 1)  =  (0 + 1 + 2 + ... + k) + (k + 1)
-      2
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span>
+<span class="o">-----------</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="o">=</span>  <span class="p">(</span><span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="mi">2</span>
 </pre></div>
 </div>
 <p>This proves the desired result.</p>
