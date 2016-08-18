@@ -316,6 +316,17 @@ propagate their premises along with their proven claims.
 For more information with examples, please refer to the
 :ref:`proof statement <prog-proof>` section.
 
+Formula
+=======
+
+**Command-Line Option**: ``-f`` or ``--formula``, followed by the formula or sequent string to check.
+
+The formula option is use to provide the formula
+(as the following string argument to the option switch)
+that a file should provide a truth table or a proof for.
+This provides a redundancy check at the command-line level to
+ensure some sort of consistency.
+
 Last Mode
 =========
 
@@ -333,17 +344,6 @@ last specified file (note that it still, for example,
 type checks all the files).
 This is handy for proof management by separating a program
 of a system into multiple files.
-
-Sequent
-=======
-
-**Command-Line Option**: ``-s`` or ``--sequent``, followed by the sequent string to check.
-
-The sequent option is use to provide the sequent
-(as the following string argument to the option switch)
-that a file should provide a proof for.
-This provides a redundancy check at the command-line level to
-ensure some sort of consistency.
 
 .. _timeout:
 

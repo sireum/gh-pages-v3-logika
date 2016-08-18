@@ -99,8 +99,8 @@
 <li><a class="reference internal" href="#verifying-examples">1.3. Verifying Examples</a></li>
 <li><a class="reference internal" href="#logika-command-line-configuration">1.4. Logika Command-Line Configuration</a><ul>
 <li><a class="reference internal" href="#auto-mode">1.4.1. Auto Mode</a></li>
-<li><a class="reference internal" href="#last-mode">1.4.2. Last Mode</a></li>
-<li><a class="reference internal" href="#sequent">1.4.3. Sequent</a></li>
+<li><a class="reference internal" href="#formula">1.4.2. Formula</a></li>
+<li><a class="reference internal" href="#last-mode">1.4.3. Last Mode</a></li>
 <li><a class="reference internal" href="#timeout">1.4.4. Timeout</a></li>
 <li><a class="reference internal" href="#satisfiability-checking-mode">1.4.5. Satisfiability Checking Mode</a></li>
 <li><a class="reference internal" href="#server-mode">1.4.6. Server Mode</a></li>
@@ -203,7 +203,7 @@ the Sireum script (<code class="docutils literal"><span class="pre">sireum</span
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
 Options:
--s, --sequent    Sequent matching the propositional/predicate logic input file&#39;s
+-f, --formula    Formula/sequent matching the truth table/logic input file&#39;s
     --server     Enable server mode
 -h, --help       Display usage information
 
@@ -297,7 +297,7 @@ your machine&#8217;s computational prowess.</p>
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
 Options:
--s, --sequent    Sequent matching the propositional/predicate logic input file&#39;s
+-f, --formula    Formula/sequent matching the truth table/logic input file&#39;s
     --server     Enable server mode
 -h, --help       Display usage information
 
@@ -432,8 +432,17 @@ propagate their premises along with their proven claims.
 For more information with examples, please refer to the
 <a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> section.</p>
 </div>
+<div class="section" id="formula">
+<h3>1.4.2. Formula<a class="headerlink" href="#formula" title="Permalink to this headline">¶</a></h3>
+<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-f</span></code> or <code class="docutils literal"><span class="pre">--formula</span></code>, followed by the formula or sequent string to check.</p>
+<p>The formula option is use to provide the formula
+(as the following string argument to the option switch)
+that a file should provide a truth table or a proof for.
+This provides a redundancy check at the command-line level to
+ensure some sort of consistency.</p>
+</div>
 <div class="section" id="last-mode">
-<h3>1.4.2. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
+<h3>1.4.3. Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">--last</span></code>.</p>
 <p>Logika supports checking multiple files at the same time.</p>
 <p>For propositional/predicate logics, it treats each file
@@ -445,15 +454,6 @@ last specified file (note that it still, for example,
 type checks all the files).
 This is handy for proof management by separating a program
 of a system into multiple files.</p>
-</div>
-<div class="section" id="sequent">
-<h3>1.4.3. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
-<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-s</span></code> or <code class="docutils literal"><span class="pre">--sequent</span></code>, followed by the sequent string to check.</p>
-<p>The sequent option is use to provide the sequent
-(as the following string argument to the option switch)
-that a file should provide a proof for.
-This provides a redundancy check at the command-line level to
-ensure some sort of consistency.</p>
 </div>
 <div class="section" id="timeout">
 <span id="id3"></span><h3>1.4.4. Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
