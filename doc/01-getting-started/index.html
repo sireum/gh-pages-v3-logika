@@ -103,7 +103,9 @@
 <li><a class="reference internal" href="#last-mode">1.4.3. Last Mode</a></li>
 <li><a class="reference internal" href="#timeout">1.4.4. Timeout</a></li>
 <li><a class="reference internal" href="#satisfiability-checking-mode">1.4.5. Satisfiability Checking Mode</a></li>
-<li><a class="reference internal" href="#server-mode">1.4.6. Server Mode</a></li>
+<li><a class="reference internal" href="#symbolic-execution-mode">1.4.6. Symbolic Execution Mode</a></li>
+<li><a class="reference internal" href="#integer-bit-width">1.4.7. Integer Bit-Width</a></li>
+<li><a class="reference internal" href="#server-mode">1.4.8. Server Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -472,8 +474,28 @@ contracts and facts (axioms) to ensure that
 the system is implementable (or not broken by
 assuming untrue facts).</p>
 </div>
+<div class="section" id="symbolic-execution-mode">
+<span id="symexe"></span><h3>1.4.6. Symbolic Execution Mode<a class="headerlink" href="#symbolic-execution-mode" title="Permalink to this headline">¶</a></h3>
+<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-x</span></code> or <code class="docutils literal"><span class="pre">--symexe</span></code>.</p>
+<p>This mode enables a more automated verification technique called
+symbolic execution (summarizing, i.e., it is compositional and
+it requires loop invariants).
+Many program contracts can be proved using symbolic execution;
+manual proof steps can be provided in cases where the contracts
+cannot be proved automatically.</p>
+</div>
+<div class="section" id="integer-bit-width">
+<span id="bitwidth"></span><h3>1.4.7. Integer Bit-Width<a class="headerlink" href="#integer-bit-width" title="Permalink to this headline">¶</a></h3>
+<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-b</span></code> or <code class="docutils literal"><span class="pre">--bitwidth</span></code>, followed by
+either 0, 8, 16, 32, or 64.
+By default, Logika uses arbitrary-precision (big) integer for
+its integer (<code class="docutils literal"><span class="pre">Z</span></code>) type.
+When supplied with a non-zero parameter in <a class="reference internal" href="#symexe"><span class="std std-ref">Symbolic Execution Mode</span></a>,
+say <code class="docutils literal"><span class="pre">N</span></code>, Logika uses the ranged integer from -2 <sup>N - 1</sup>
+to 2 <sup>N -1</sup> - 1 for <code class="docutils literal"><span class="pre">Z</span></code> where over/under-flows are checked.</p>
+</div>
 <div class="section" id="server-mode">
-<span id="server"></span><h3>1.4.6. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
+<span id="server"></span><h3>1.4.8. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--server</span></code></p>
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.

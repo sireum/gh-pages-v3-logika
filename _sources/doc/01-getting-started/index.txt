@@ -370,6 +370,33 @@ contracts and facts (axioms) to ensure that
 the system is implementable (or not broken by
 assuming untrue facts).
 
+.. _symexe:
+
+Symbolic Execution Mode
+=======================
+
+**Command-Line Option**: ``-x`` or ``--symexe``.
+
+This mode enables a more automated verification technique called
+symbolic execution (summarizing, i.e., it is compositional and
+it requires loop invariants).
+Many program contracts can be proved using symbolic execution;
+manual proof steps can be provided in cases where the contracts
+cannot be proved automatically.
+
+.. _bitwidth:
+
+Integer Bit-Width
+=================
+
+**Command-Line Option**: ``-b`` or ``--bitwidth``, followed by
+either 0, 8, 16, 32, or 64.
+By default, Logika uses arbitrary-precision (big) integer for
+its integer (``Z``) type.
+When supplied with a non-zero parameter in :ref:`symexe`,
+say ``N``, Logika uses the ranged integer from -2 :sup:`N - 1`
+to 2 :sup:`N -1` - 1 for ``Z`` where over/under-flows are checked.
+
 .. _server:
 
 Server Mode

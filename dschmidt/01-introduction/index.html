@@ -655,6 +655,45 @@ engineer analyzes a circuit.</p>
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
+<p>Even better, using symbolic execution, it can be automatically proved without
+proof annotations:</p>
+<div class="highlight-scala"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ modifies     a</span>
+<span class="s">        post         ∀i: (0 ..&lt; a.size)  a(i) == a_in(i) * a_in(i)              }&quot;&quot;&quot;</span>
+
+  <span class="k">var</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">while</span> <span class="o">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ invariant  ∀i: (0 ..&lt; x)  a(i) == a_in(i) * a_in(i)</span>
+<span class="s">                     ∀i: (x ..&lt; a.size)  a(i) == a_in(i)</span>
+<span class="s">                     0 ≤ x</span>
+<span class="s">                     x ≤ a.size</span>
+<span class="s">          modifies   x, a                                                       }&quot;&quot;&quot;</span>
+
+    <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">*</span> <span class="n">a</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+
+    <span class="n">x</span> <span class="k">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 <hr class="docutils" />
 <p align=right><small><em>
 This note was adapted from David Schmidt's CIS 301, 2008,

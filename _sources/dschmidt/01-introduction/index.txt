@@ -158,6 +158,15 @@ If the above somehow looks daunting, here is a shorter proof that leverages
    :lineno-start: 3
    :lines: 3-
 
+Even better, using symbolic execution, it can be automatically proved without
+proof annotations:
+
+.. literalinclude:: 01-example-5.logika
+   :linenos:
+   :lineno-start: 3
+   :lines: 3-
+
+
 ----
 
 .. raw:: html
