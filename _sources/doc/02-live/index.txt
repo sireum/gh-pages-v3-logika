@@ -563,3 +563,10 @@ when the second |summoningIcon| bolt gutter icon associated with the
 first invariant claim ``∀i (0 ..< x)  a(i) == a_in(i) * a_in(i)``,
 LIVE opens a window on the right hand side of the editor that displays
 the Z3 input to check validity of the loop invariant at the end of the method.
+
+
+Cone of Influence for Summonings
+--------------------------------
+
+Logika will attempt to simplify summonings by reducing the number of facts
+for proving a claim based on their relevance.

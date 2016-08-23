@@ -114,6 +114,7 @@
 <li><a class="reference internal" href="#background-analysis-and-idle-time">2.8.2.4. Background Analysis and Idle Time</a></li>
 <li><a class="reference internal" href="#hint-generation">2.8.2.5. Hint Generation</a></li>
 <li><a class="reference internal" href="#summoning-incriptions">2.8.2.6. Summoning Incriptions</a></li>
+<li><a class="reference internal" href="#cone-of-influence-for-summonings">2.8.2.7. Cone of Influence for Summonings</a></li>
 </ul>
 </li>
 </ul>
@@ -571,7 +572,7 @@ The key has to satisfy the following regular expression <code class="docutils li
 </div>
 <div class="section" id="live-settings">
 <h3>2.8.2. LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
-<a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 590.4px; height: 235.79999999999998px;" /></a>
+<a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 694.1999999999999px; height: 291.59999999999997px;" /></a>
 <p>Some of the options such as auto mode, checking satisfiability, and timeout are
 described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a>.
 Below are the additional settings for LIVE.</p>
@@ -646,6 +647,11 @@ For <a class="reference external" href="https://github.com/sireum/v3-logika-exam
 first invariant claim <code class="docutils literal"><span class="pre">∀i</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">x)</span>&nbsp; <span class="pre">a(i)</span> <span class="pre">==</span> <span class="pre">a_in(i)</span> <span class="pre">*</span> <span class="pre">a_in(i)</span></code>,
 LIVE opens a window on the right hand side of the editor that displays
 the Z3 input to check validity of the loop invariant at the end of the method.</p>
+</div>
+<div class="section" id="cone-of-influence-for-summonings">
+<h4>2.8.2.7. Cone of Influence for Summonings<a class="headerlink" href="#cone-of-influence-for-summonings" title="Permalink to this headline">¶</a></h4>
+<p>Logika will attempt to simplify summonings by reducing the number of facts
+for proving a claim based on their relevance.</p>
 </div>
 </div>
 </div>
