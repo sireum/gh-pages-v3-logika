@@ -282,13 +282,12 @@ the proof violates the :ref:`pred-well-formed` rules
 (i.e., such ``x`` in ``P{a}`` can only either be a free variable or
 defined in an enclosing sub-proof, both of which are disallowed).
 
-The following alternative pattern is used grouping multiple
-quantified variables in a single ∀-quantification.
-
-.. literalinclude:: forall-intro-alt-pattern.txt
-   :language: none
-   :caption: **Alternative Forall-Introduction (∀i) Schematic Pattern**
-   :name: forall-intro-alt-pattern
+.. The following alternative pattern is used grouping multiple
+   quantified variables in a single ∀-quantification.
+   .. literalinclude:: forall-intro-alt-pattern.txt
+      :language: none
+      :caption: **Alternative Forall-Introduction (∀i) Schematic Pattern**
+      :name: forall-intro-alt-pattern
 
 
 Forall-Elimination (∀e)
@@ -303,25 +302,21 @@ Forall-Elimination (∀e)
    :caption: **Forall-Elimination (∀e) Schematic Pattern**
    :name: forall-elim-pattern
 
-The following pattern is used for eliminating multiple quantified
-variables at once.
-
-.. literalinclude:: forall-elim-alt-pattern.txt
-   :language: none
-   :caption: **Alternative Forall-Elimination (∀e) Schematic Pattern**
-   :name: forall-elim-alt-pattern
-
-The following can be applied for nested ∀-quantifications.
-
-.. literalinclude:: forall-elim-alt2-pattern.txt
-   :language: none
-   :caption: **Alternative+1 Forall-Elimination (∀e) Schematic Pattern**
-   :name: forall-elim-alt2-pattern
-
-There are actually infinitely many of such patterns according to the level
-of ∀-quantification nesting that is implemented in Logika (i.e., there exists
-**Alternative+**\ ``M`` **Forall-Elimination (∀e) Schematic Pattern**
-for any positive ``M``).
+.. The following pattern is used for eliminating multiple quantified
+   variables at once.
+   .. literalinclude:: forall-elim-alt-pattern.txt
+      :language: none
+      :caption: **Alternative Forall-Elimination (∀e) Schematic Pattern**
+      :name: forall-elim-alt-pattern
+   The following can be applied for nested ∀-quantifications.
+   .. literalinclude:: forall-elim-alt2-pattern.txt
+      :language: none
+      :caption: **Alternative+1 Forall-Elimination (∀e) Schematic Pattern**
+      :name: forall-elim-alt2-pattern
+   There are actually infinitely many of such patterns according to the level
+   of ∀-quantification nesting that is implemented in Logika (i.e., there exists
+   **Alternative+**\ ``M`` **Forall-Elimination (∀e) Schematic Pattern**
+   for any positive ``M``).
 
 
 Exists-Introduction (∃i)
@@ -336,15 +331,14 @@ Exists-Introduction (∃i)
    :caption: **Exists-Introduction (∃i) Schematic Pattern**
    :name: exists-intro-pattern
 
-.. literalinclude:: exists-intro-alt-pattern.txt
-   :language: none
-   :caption: **Alternative Exists-Introduction (∃i) Schematic Pattern**
-   :name: exists-intro-alt-pattern
-
-.. literalinclude:: exists-intro-alt2-pattern.txt
-   :language: none
-   :caption: **Alternative+1 Exists-Introduction (∃i) Schematic Pattern**
-   :name: exists-intro-alt2-pattern
+.. .. literalinclude:: exists-intro-alt-pattern.txt
+      :language: none
+      :caption: **Alternative Exists-Introduction (∃i) Schematic Pattern**
+      :name: exists-intro-alt-pattern
+   .. literalinclude:: exists-intro-alt2-pattern.txt
+      :language: none
+      :caption: **Alternative+1 Exists-Introduction (∃i) Schematic Pattern**
+      :name: exists-intro-alt2-pattern
 
 .. _exists-elim:
 
@@ -360,7 +354,7 @@ Exists-Elimination (∃e)
    :caption: **Exists-Elimination (∃e) Schematic Pattern**
    :name: exists-elim-pattern
 
-.. literalinclude:: exists-elim-alt-pattern.txt
+.. .. literalinclude:: exists-elim-alt-pattern.txt
    :language: none
    :caption: **Alternative Exists-Elimination (∃e) Schematic Pattern**
    :name: exists-elim-alt-pattern
