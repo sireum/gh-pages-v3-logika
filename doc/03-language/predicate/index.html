@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.3. Predicate Logic &mdash; Sireum Logika</title>
+    <title>3.3. Predicate Logic &#8212; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -329,7 +329,7 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 which means that a variable cannot be quantified more than one time in the
 same scope.
 For example, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
-<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&nbsp; <span class="pre">∧</span>&nbsp; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
+<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&#160; <span class="pre">∧</span>&#160; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
 <p>In general, <code class="docutils literal"><span class="pre">x</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…</span></code> is well-formed, because the first variable <code class="docutils literal"><span class="pre">x</span></code> is
 different than the quantified variable <code class="docutils literal"><span class="pre">x</span></code>.
 The first <code class="docutils literal"><span class="pre">x</span></code> is a <em>free</em> variable because it is not
@@ -418,6 +418,20 @@ Z. ∀x P{x}                                   ∀i X            // P{x} ≡ [x/
 the proof violates the <a class="reference internal" href="#pred-well-formed"><span class="std std-ref">Well-Formed-Ness</span></a> rules
 (i.e., such <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P{a}</span></code> can only either be a free variable or
 defined in an enclosing sub-proof, both of which are disallowed).</p>
+<p>The following alternative pattern is used grouping multiple
+quantified variables in a single ∀-quantification.</p>
+<div class="literal-block-wrapper container" id="forall-intro-alt-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-alt-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. {
+     X1. a                                                   // variable  a  has to be fresh
+     …
+     XK. ∀y1,…,yN P{a}                       …               // N &gt; 0 (otherwise the previous applies)
+     …
+   }
+Z. ∀x,y1,…,yN P{x}                           ∀i X            // P{x} ≡ [x/a]P{a}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="forall-elimination-e">
 <h3>3.3.5.2. Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h3>
@@ -432,6 +446,27 @@ Z. [E/x]P{x}                                 ∀e X E
 </pre></div>
 </div>
 </div>
+<p>The following pattern is used for eliminating multiple quantified
+variables at once.</p>
+<div class="literal-block-wrapper container" id="forall-elim-alt-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xN P{x1,…,xN}                       …               // N &gt; 1 (otherwise the previous applies)
+Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &lt;= N
+</pre></div>
+</div>
+</div>
+<p>The following can be applied for nested ∀-quantifications.</p>
+<div class="literal-block-wrapper container" id="forall-elim-alt2-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt2-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xK ∀x(K+1),…,xN P{x1,…,xN}          …
+Z. ∀x(J+1),…,xN [E1/x1]…[EJ/xK]P{x1,…,xN}    ∀e X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
+</pre></div>
+</div>
+</div>
+<p>There are actually infinitely many of such patterns according to the level
+of ∀-quantification nesting that is implemented in Logika (i.e., there exists
+<strong>Alternative+</strong><code class="docutils literal"><span class="pre">M</span></code> <strong>Forall-Elimination (∀e) Schematic Pattern</strong>
+for any positive <code class="docutils literal"><span class="pre">M</span></code>).</p>
 </div>
 <div class="section" id="exists-introduction-i">
 <h3>3.3.5.3. Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h3>
@@ -443,6 +478,20 @@ Z. [E/x]P{x}                                 ∀e X E
 <div class="code-block-caption"><span class="caption-text"><strong>Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. [E/x]P{x}                                 …
 Z. ∃x P{x}                                   ∃i X E
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="exists-intro-alt-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EK/xK]P{x}                       …
+Z. ∃x1,…,xN P{x}                             ∃i X E1 … EK    // K &lt;= N, N &gt; 1 (otherwise the previous applies)
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="exists-intro-alt2-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt2-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EJ/xJ]P{x}                       …
+Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
 </pre></div>
 </div>
 </div>
@@ -462,6 +511,20 @@ Y. {
      XK. Q                                   …
      …
    }
+Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]P{a}
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="exists-elim-alt-pattern">
+<div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Elimination (∃e) Schematic Pattern</strong></span><a class="headerlink" href="#exists-elim-alt-pattern" title="Permalink to this code">¶</a></div>
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∃x,y1,…,yN P{x}                                           // N &gt; 0 (otherwise the previous applies)
+Y. {
+     X1. a  ∃y1,…,yN P{a}                                    // variable  a  has to be fresh
+     …
+     XK. Q                                   …
+     …
+   }
+…
 Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]P{a}
 </pre></div>
 </div>
