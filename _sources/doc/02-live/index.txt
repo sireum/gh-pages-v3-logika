@@ -337,6 +337,14 @@ There are three ways to explicitly bring Logika to LIVE:
 Note that these LIVE actions to verify file documents are only available for ``.logika``,
 ``.lgk`` and other file types that have been registered in :ref:`live-configuration`.
 
+----
+
+Logika symbols can be converted to ASCII or Unicode by triggering the menu items
+``Tools`` -> ``Sireum`` -> ``Logika`` -> ``Convert to ASCII``/``Convert to Unicode``
+or by right-clicking on the editor and selecting  ``Convert to ASCII``/``Convert to Unicode``
+as shown in the screenshots above.
+
+
 
 .. _shortcuts:
 
@@ -536,7 +544,7 @@ For example,
    :scale: 100
 
 when the |hintIcon| bulb gutter icon associated with
-``a(3) = 5`` is clicked,
+``a(x) = a(x) * a(x)`` at line 16 is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 the available pre/post claims that can be used as premises.
 
@@ -559,11 +567,13 @@ For `example <https://github.com/sireum/v3-logika-examples/blob/release/src/prog
 .. image:: live-summoning.png
    :width: 100%
 
-when the second |summoningIcon| bolt gutter icon associated with the
-first invariant claim ``∀i (0 ..< x)  a(i) == a_in(i) * a_in(i)``,
+when the second |summoningIcon| bolt gutter icon associated with
+``a(x) = a(x) * a(x - 1)`` at line 16 is clicked,
 LIVE opens a window on the right hand side of the editor that displays
-the Z3 input to check validity of the loop invariant at the end of the method.
-
+a list of proof obligations that were checked and then selects the third one
+where the run-time check verification condition (VC) cannot be deduced;
+the text area below the list displays the associated summoning incantations
+(i.e., Z3 script) for the failed deduction.
 
 Cone of Influence for Summonings
 --------------------------------

@@ -32,6 +32,8 @@
     <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="Sireum Logika" href="../../index.html" />
     <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
     <link rel="next" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
@@ -105,7 +107,8 @@
 <li><a class="reference internal" href="#satisfiability-checking-mode">1.4.5. Satisfiability Checking Mode</a></li>
 <li><a class="reference internal" href="#symbolic-execution-mode">1.4.6. Symbolic Execution Mode</a></li>
 <li><a class="reference internal" href="#integer-bit-width">1.4.7. Integer Bit-Width</a></li>
-<li><a class="reference internal" href="#server-mode">1.4.8. Server Mode</a></li>
+<li><a class="reference internal" href="#symbol-conversion">1.4.8. Symbol Conversion</a></li>
+<li><a class="reference internal" href="#server-mode">1.4.9. Server Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -199,8 +202,18 @@ the Sireum script (<code class="docutils literal"><span class="pre">sireum</span
 </li>
 </ul>
 <p>Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika -- A Natural Deduction Proof Checker
-... for Propositional, Predicate, and Programming Logic
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum: A Software Analysis Platform (v3)
+(c) 2011-2016, SAnToS Laboratory, Kansas State University
+http://sireum.org
+
+Usage: sireum &lt;mode&gt;
+
+Available mode(s):
+
+logika    Logika Program Verifier and Proof Checker
+util      Utility Tools
+robby-macpro:sireum-v3 robby$ ./sireum l
+Sireum Logika -- A Program Verifier and a Natural Deduction Proof Checker for Propositional, Predicate, and Programming Logic
 
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
@@ -218,6 +231,10 @@ Programming Logic Options:
                     Default: 2000
 -x, --symexe      Enable symbolic execution
     --sat         Enable sat checking of facts and contracts
+
+Symbol Conversion Options:
+    --ascii      Convert to ASCII
+    --unicode    Convert to Unicode
 </pre></div>
 </div>
 <p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
@@ -293,8 +310,18 @@ If the build somehow fails, please see
 <p>The process may take a while depending on your internet connection speed and
 your machine&#8217;s computational prowess.</p>
 <p>When it finishes, Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika -- A Natural Deduction Proof Checker
-... for Propositional, Predicate, and Programming Logic
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum: A Software Analysis Platform (v3)
+(c) 2011-2016, SAnToS Laboratory, Kansas State University
+http://sireum.org
+
+Usage: sireum &lt;mode&gt;
+
+Available mode(s):
+
+logika    Logika Program Verifier and Proof Checker
+util      Utility Tools
+robby-macpro:sireum-v3 robby$ ./sireum l
+Sireum Logika -- A Program Verifier and a Natural Deduction Proof Checker for Propositional, Predicate, and Programming Logic
 
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
@@ -312,6 +339,10 @@ Programming Logic Options:
                     Default: 2000
 -x, --symexe      Enable symbolic execution
     --sat         Enable sat checking of facts and contracts
+
+Symbol Conversion Options:
+    --ascii      Convert to ASCII
+    --unicode    Convert to Unicode
 </pre></div>
 </div>
 <p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
@@ -494,8 +525,16 @@ When supplied with a non-zero parameter in <a class="reference internal" href="#
 say <code class="docutils literal"><span class="pre">N</span></code>, Logika uses the ranged integer from -2 <sup>N - 1</sup>
 to 2 <sup>N -1</sup> - 1 for <code class="docutils literal"><span class="pre">Z</span></code> where over/under-flows are checked.</p>
 </div>
+<div class="section" id="symbol-conversion">
+<span id="conversion"></span><h3>1.4.8. Symbol Conversion<a class="headerlink" href="#symbol-conversion" title="Permalink to this headline">¶</a></h3>
+<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--ascii</span></code> and/or <code class="docutils literal"><span class="pre">--unicode</span></code>.
+If supplied, the input files will be converted to use ASCII and/or Unicode
+Logika symbols.
+Logika will then create new files at the same directory as the input files
+prefixed with <code class="docutils literal"><span class="pre">ascii-</span></code>/<code class="docutils literal"><span class="pre">unicode-</span></code>.</p>
+</div>
 <div class="section" id="server-mode">
-<span id="server"></span><h3>1.4.8. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
+<span id="server"></span><h3>1.4.9. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--server</span></code></p>
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.

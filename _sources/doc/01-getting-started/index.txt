@@ -397,6 +397,17 @@ When supplied with a non-zero parameter in :ref:`symexe`,
 say ``N``, Logika uses the ranged integer from -2 :sup:`N - 1`
 to 2 :sup:`N -1` - 1 for ``Z`` where over/under-flows are checked.
 
+
+.. _conversion:
+
+Symbol Conversion
+=================
+**Command-Line Option**: ``--ascii`` and/or ``--unicode``.
+If supplied, the input files will be converted to use ASCII and/or Unicode
+Logika symbols.
+Logika will then create new files at the same directory as the input files
+prefixed with ``ascii-``/``unicode-``.
+
 .. _server:
 
 Server Mode
