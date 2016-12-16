@@ -17,7 +17,14 @@ Home
        <div class="col-md-12">
          <div class = "cycle-slideshow" data-cycle-slides="> a">
            <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/sireum-logika.png" ></a>
-           <a href="doc/02-live/index.html"><img width="100%" src="_static/LIVE.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/truthtable.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/proplogic.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/curryhoward.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/predlogic.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/testprove.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/hint.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/summoning.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/symexe.png" ></a>
            <a href="dschmidt/index.html"><img width="100%" src="_static/dschmidt-notes.png" ></a>
          </div>
        </div>

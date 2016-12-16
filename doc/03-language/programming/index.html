@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.4. Programming Logic &#8212; Sireum Logika</title>
+    <title>3.4. Programming Logic &mdash; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -32,8 +32,6 @@
     <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="Sireum Logika" href="../../../index.html" />
     <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
     <link rel="next" title="Logika: Programming Logics" href="../../../dschmidt/index.html" />
@@ -1299,18 +1297,18 @@ adding new ones as highlighted above.</p>
 <h3>3.4.10.1. Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="../propositional/index.html#or-elim-pattern"><span class="std std-ref">Or-Elimination (∨e) Schematic Pattern</span></a> and <a class="reference internal" href="../propositional/index.html#or-elim-alt-pattern"><span class="std std-ref">Alternative Or-Elimination (∨e) Schematic Pattern</span></a>
 are extended to also work for <code class="docutils literal"><span class="pre">≤</span></code> and <code class="docutils literal"><span class="pre">≥</span></code>,
-where <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≤</span> <span class="pre">E2</span></code> is treated as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>, and
-<code class="docutils literal"><span class="pre">E1</span> <span class="pre">≥</span> <span class="pre">E2</span></code> is tread as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&gt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>.</p>
+where <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≤</span> <span class="pre">E2</span></code> is treated as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">E2</span>&nbsp; <span class="pre">∨</span>&nbsp; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>, and
+<code class="docutils literal"><span class="pre">E1</span> <span class="pre">≥</span> <span class="pre">E2</span></code> is tread as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&gt;</span> <span class="pre">E2</span>&nbsp; <span class="pre">∨</span>&nbsp; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>.</p>
 </div>
 <div class="section" id="quantified-claim-inference-rules-i-e-i-e">
 <h3>3.4.10.2. Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)<a class="headerlink" href="#quantified-claim-inference-rules-i-e-i-e" title="Permalink to this headline">¶</a></h3>
 <p>Quantifications using the integer range domain form
 are simplified first before applying <a class="reference internal" href="../predicate/index.html#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>.</p>
-<p>For example, the claim <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
-simplified first to <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">→</span> <span class="pre">P{x}</span></code>
+<p>For example, the claim <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&nbsp; <span class="pre">P{x}</span></code> is
+simplified first to <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&nbsp; <span class="pre">0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">→</span> <span class="pre">P{x}</span></code>
 before applying any of the ∀-quantified claim rules.</p>
-<p>Another example, the claim <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
-simplified first to <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">Z</span>&#160; <span class="pre">(0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3)</span> <span class="pre">∧</span> <span class="pre">P{x}</span></code>
+<p>Another example, the claim <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&nbsp; <span class="pre">P{x}</span></code> is
+simplified first to <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">Z</span>&nbsp; <span class="pre">(0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3)</span> <span class="pre">∧</span> <span class="pre">P{x}</span></code>
 before applying any of the ∃-quantified claim rules.</p>
 </div>
 <div class="section" id="fact-fact">

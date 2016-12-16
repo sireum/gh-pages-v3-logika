@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.3. Predicate Logic &#8212; Sireum Logika</title>
+    <title>3.3. Predicate Logic &mdash; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -32,8 +32,6 @@
     <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="top" title="Sireum Logika" href="../../../index.html" />
     <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
     <link rel="next" title="3.4. Programming Logic" href="../programming/index.html" />
@@ -331,7 +329,7 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 which means that a variable cannot be quantified more than one time in the
 same scope.
 For example, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
-<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&#160; <span class="pre">∧</span>&#160; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
+<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&nbsp; <span class="pre">∧</span>&nbsp; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
 <p>In general, <code class="docutils literal"><span class="pre">x</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…</span></code> is well-formed, because the first variable <code class="docutils literal"><span class="pre">x</span></code> is
 different than the quantified variable <code class="docutils literal"><span class="pre">x</span></code>.
 The first <code class="docutils literal"><span class="pre">x</span></code> is a <em>free</em> variable because it is not
