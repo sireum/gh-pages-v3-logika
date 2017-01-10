@@ -1,0 +1,552 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Sireum Logika Documentation
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   1. Getting Started
+   </b></big></big></big></big>
+   </font>
+
+.. highlight:: none
+
+.. _getting-started:
+
+Getting Started
+###############
+
+Logika runs on x64 macOS, Linux, and Windows operating systems
+(tested on macOS 10.12, Manjaro 15.02, Ubuntu 14.04, and Windows 10).
+
+There two ways one can install Logika: :ref:`using-binary` or
+:ref:`using-source`.
+
+.. _using-binary:
+
+Using Sireum v3 Binary Distribution
+***********************************
+
+.. _binary-installing-running:
+
+Installing Logika
+=================
+
+There are two kinds of Sireum v3 binary distributions:
+(1) :ref:`sireum-ive`,
+(2) :ref:`sireum-cli`.
+
+Sireum IVE includes a custom `IntelliJ IDEA <http://www.jetbrains.com/idea>`__ Community Edition
+with various plugins installed, along with the Sireum CLI.
+
+.. _sireum-ive:
+
+Sireum Integrated Verification Environment (IVE)
+------------------------------------------------
+
+Sireum IVE for macOS
+++++++++++++++++++++
+
+Execute the following in a bash terminal:
+
+.. code:: bash
+
+   curl -J -L -o sireum-v3-idea-mac64.dmg http://bit.ly/2i6jvbX && open sireum-v3-idea-mac64.dmg
+
+Once it is done, it should open a new window:
+
+.. image:: sireum-v3-idea-mac64.dmg.png
+
+Drag and drop the Sireum icon to the Applications folder.
+
+(Note: the above avoids `GateKeeper <https://support.apple.com/en-us/HT202491>`__;
+if it is instead downloaded using a browser,
+you need to remove Apple's quarantine extended attribute on the .dmg file before opening it as follows:
+``xattr -d com.apple.quarantine sireum-v3-idea-mac64.dmg``).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum.app/Contents/Resources/sireum-v3``.
+
+To run Sireum IVE, double-click ``Sireum`` inside ``/Applications`` (or, in a terminal: ``open /Applications/Sireum.app``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+Sireum IVE for Linux
+++++++++++++++++++++
+
+Download from: http://bit.ly/2ja1oic
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/Sireum`` (or ``~/Applications/Sireum``).
+
+To run Sireum IVE in a terminal: ``SIREUM_HOME/idea``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+Sireum IVE for Windows
+++++++++++++++++++++++
+
+Download from: http://bit.ly/2iw7hFN
+
+Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\Sireum\sireum.bat`` is present.
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\Sireum``.
+
+To run Sireum IVE:
+
+* double-click, either:
+
+  * 32-bit: ``SIREUM_HOME\apps\idea\bin\idea.exe``, or
+
+  * 64-bit: ``SIREUM_HOME\apps\idea\bin\idea64.exe``
+
+    This requires Java 8 64-bit, which is available in ``SIREUM_HOME\platform\java``;
+    to use that, add ``SIREUM_HOME\platform\java\bin`` to your ``PATH`` environment variable.
+
+* in a terminal: ``SIREUM_HOME\idea.bat`` or ``SIREUM_HOME\idea64.bat``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``
+
+
+.. _sireum-cli:
+
+Sireum Command-Line Interface (CLI)
+-----------------------------------
+
+Sireum CLI for macOS
+++++++++++++++++++++
+
+Download from: http://bit.ly/2jluudT
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or ``~/Applications/sireum-v3``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+Sireum CLI for Linux
+++++++++++++++++++++
+
+Download from: http://bit.ly/2j051Ks
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or ``~/Applications/sireum-v3``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+Sireum CLI for Windows
+++++++++++++++++++++++
+
+Download from: http://bit.ly/2i6llK8
+
+Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\sireum-v3\sireum.bat`` is present.
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\sireum-v3``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
+
+
+Running Logika
+==============
+
+To run Logika:
+
+* Under **macOS** or **Linux**:
+
+  .. code:: bash
+
+     SIREUM_HOME/sireum logika
+
+* Under **Windows**:
+
+  .. code:: batch
+
+     SIREUM_HOME\sireum logika
+
+Logika will display its usage information:
+
+.. literalinclude:: logika-usage.txt
+   :language: none
+
+(Please refer to :ref:`cli-configuration` for descriptions on the above option switches.)
+
+.. note::
+
+   For the remainder of this document, we use ``LOGIKA`` as a shorthand for
+   the Logika command above.
+
+   In addition, replace ``/`` with ``\`` when entering paths in
+   a Windows shell/command prompt.
+
+
+Updating Logika
+===============
+
+To update Logika, simply re-download/install/replace according to the
+above instructions.
+
+Next, see :ref:`logika-examples`.
+
+.. _using-source:
+
+Using Sireum v3 Source Distribution
+***********************************
+
+Prerequisites
+=============
+
+On all systems, the following tools are required:
+`git <https://git-scm.com>`__, ``bash``, ``unzip``, ``wget``.
+
+macOS
+-----
+
+On macOS, you can install ``wget`` using:
+
+* `MacPorts <https://www.macports.org>`__: ``sudo port install wget``
+
+  or
+
+* `Homebrew <http://brew.sh>`__: ``sudo port install wget``
+
+Linux
+-----
+
+These tools are available on most Linux distributions either by default or
+through the distribution package manager.
+
+Windows
+-------
+
+On Windows, it is best to install `MSYS2 <https://msys2.github.io>`__ (64-bit)
+and use its MSYS2 ``bash`` shell to install the above tools.
+First, open MSYS2 ``bash`` shell from the Windows start menu's MSYS2 64bit group):
+
+.. code:: bash
+
+   pacman -S git unzip wget
+
+.. _source-installing-running:
+
+Installing and Running Logika
+=============================
+
+To install Logika, enter the following commands under ``bash``
+(*in a directory whose path does not contain whitespaces*):
+
+.. code:: bash
+
+   git clone https://github.com/sireum/v3.git sireum-v3
+   sireum-v3/sireum logika
+
+The first command clones the `Sireum v3 Git repository <https://github.com/sireum/v3>`__
+locally to a directory named ``sireum-v3``,
+and the second command runs Sireum Logika from the local repository.
+
+If this is your first time running Logika, it first downloads
+`some software <https://github.com/sireum/v3#running-sireum>`__
+that it depends on, and then
+`builds <https://github.com/sireum/v3#building-and-testing-sireum-using-sbt>`__
+and `assembles <https://github.com/sireum/v3#assembling-sireum-jar>`__
+itself.
+If the build somehow fails, please see
+[troubleshooting](https://github.com/sireum/v3#troubleshooting).
+
+The process may take a while depending on your internet connection speed and
+your machine's computational prowess.
+
+When it finishes, Logika will display its usage information:
+
+.. literalinclude:: logika-usage.txt
+   :language: none
+
+(Please refer to :ref:`cli-configuration` for descriptions on the above option switches.)
+
+.. note::
+
+   For the remainder of this document, we use ``LOGIKA`` as a shorthand for
+   ``sireum-v3/sireum logika``. You can introduce a ``bash`` alias for it as follows:
+
+   .. code:: bash
+
+      alias LOGIKA="$(cd "$(dirname sireum-v3/sireum)" && pwd)/$(basename sireum-v3/sireum) logika"
+
+
+.. _source-update:
+
+Updating Logika
+===============
+
+To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run Logika again:
+
+.. code:: bash
+
+   cd sireum-v3
+   git pull
+   LOGIKA
+
+.. _logika-examples:
+
+Verifying Examples using Sireum CLI
+***********************************
+
+Some Logika examples are available at https://github.com/sireum/v3-logika-examples
+
+There are two ways to retrieve the examples:
+
+* Using git
+
+  Clone the repository to try out some of the examples:
+
+  .. code:: bash
+
+     git clone https://github.com/sireum/v3-logika-examples.git logika-examples
+
+* Downloading the `zip file <https://github.com/sireum/v3-logika-examples/archive/master.zip>`__
+
+  Uncompress it and rename ``v3-logika-examples-master`` to ``logika-examples``.
+
+Then run Logika on, e.g., ``logika-examples/src/propositional/intro-nat-ded.logika``,
+whose content is as follows:
+
+.. code-block:: none
+
+   p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
+   {
+     1. p ∨ q                    premise
+     2. r                        premise
+     3. {
+          4. p                   assume
+          5. p ∧ r               ∧i 4 2
+          6. (p ∧ r) ∨ (q ∧ r)   ∨i1 5
+        }
+     7. {
+          8. q                   assume
+          9. q ∧ r               ∧i 8 2
+         10. (p ∧ r) ∨ (q ∧ r)   ∨i2 9
+        }
+    11. (p ∧ r) ∨ (q ∧ r)        ∨e 1 3 7
+   }
+
+using the following command:
+
+.. code:: bash
+
+   LOGIKA logika-examples/src/propositional/intro-nat-ded.logika
+
+which will show::
+
+   Propositional logic proof is accepted.
+
+If one introduced a typo in the proof, such as using ∨i1 instead of ∨i2 in step #10 in the above example,
+Logika will instead output::
+
+   [13, 11] The disjunction's left sub-expression in step #10 does not match #9 for Or-intro1.
+   Propositional logic proof is rejected.
+
+One can specify the sequent to prove as a command line to ensure that the proof in the file is
+the one that is expected as follows (if you introduced the typo, revert it back first):
+
+.. code:: bash
+
+   LOGIKA -s "¬(¬p ∨ ¬q) ⊢ p ∧ q" logika-examples/src/propositional/intro-nat-ded.logika
+
+If the provided sequent is different than the one in the file, the tool rejects it.
+For example:
+
+.. code:: bash
+
+   LOGIKA -s "p, q ⊢ p ∧ q" logika-examples/src/propositional/intro-nat-ded.logika
+
+will result::
+
+   The specified sequent is different than the one in the file.
+   Specified:
+   p, q ⊢ p ∧ q
+   File:
+   p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
+
+
+For a better experience, consider using the Sireum IVE's :ref:`live`.
+
+.. _cli-configuration:
+
+Logika Command-Line Configuration
+*********************************
+
+Logika automatically detects which logic input it is being asked to check;
+thus, there is no configuration switch needed for it.
+
+.. _auto-mode:
+
+Auto Mode
+=========
+
+**Command-Line Option:** ``-a`` or ``--auto``.
+
+The auto mode enables claim justifications using the
+:ref:`auto <prog-auto>` summoning.
+It also enables Logika to try to automatically prove
+contracts (e.g., assertions, pre/post-conditions, invariants) and
+runtime error checks (e.g., division by zero, sequence indexing).
+
+An error message is produced when the auto tactic is used without
+enabling this mode.
+Moreover, Logika will produce an error message if it cannot
+automatically prove a contract or a runtime error check
+(in which case, one can increase the :ref:`timeout <timeout>`
+for automatic proving, or guide Logika by establishing more
+claims to help with making the necessary deduction).
+
+Furthermore, auto mode changes the way
+:ref:`proof statement <prog-proof>` works.
+By default, a proof statement only propagates the proven
+claims inside that statement.
+This essentially resets the premises that are available
+for the next statement to only what the proof statement
+has proven.
+If auto is enabled, proof statements also
+propagate their premises along with their proven claims.
+For more information with examples, please refer to the
+:ref:`proof statement <prog-proof>` section.
+
+Formula
+=======
+
+**Command-Line Option**: ``-f`` or ``--formula``, followed by the formula or sequent string to check.
+
+The formula option is use to provide the formula
+(as the following string argument to the option switch)
+that a file should provide a truth table or a proof for.
+This provides a redundancy check at the command-line level to
+ensure some sort of consistency.
+
+Last Mode
+=========
+
+**Command-Line Option:** ``-l`` or ``--last``.
+
+Logika supports checking multiple files at the same time.
+
+For propositional/predicate logics, it treats each file
+as a separate proof.
+
+For programming logic, it treats the specified input files
+as one input appended together in order.
+When last mode is enabled, it only checks the proof of the
+last specified file (note that it still, for example,
+type checks all the files).
+This is handy for proof management by separating a program
+of a system into multiple files.
+
+.. _timeout:
+
+Timeout
+=======
+
+**Command-Line Option**: ``-t`` or ``--timeout``, followed by the timeout integer (non-positive means unbounded).
+
+Logika uses the Z3 theorem prover to automatically prove
+some formulae (e.g., arithmetic).
+In some cases, Z3 might take a long time, thus,
+the timeout option specifies how long Z3 can spend to
+prove a claim.
+
+.. _check-sat:
+
+Satisfiability Checking Mode
+============================
+
+**Command-Line Option**: ``--sat``
+
+If enabled, Logika will check the satisfiability of
+contracts and facts (axioms) to ensure that
+the system is implementable (or not broken by
+assuming untrue facts).
+
+.. _symexe:
+
+Symbolic Execution Mode
+=======================
+
+**Command-Line Option**: ``-x`` or ``--symexe``.
+
+This mode enables a more automated verification technique called
+symbolic execution (summarizing, i.e., it is compositional and
+it requires loop invariants).
+Many program contracts can be proved using symbolic execution;
+manual proof steps can be provided in cases where the contracts
+cannot be proved automatically.
+
+.. _bitwidth:
+
+Integer Bit-Width
+=================
+
+**Command-Line Option**: ``-b`` or ``--bitwidth``, followed by
+either 0, 8, 16, 32, or 64.
+By default, Logika uses arbitrary-precision (big) integer for
+its integer (``Z``) type.
+When supplied with a non-zero parameter in :ref:`symexe`,
+say ``N``, Logika uses the ranged integer from -2 :sup:`N - 1`
+to 2 :sup:`N -1` - 1 for ``Z`` where over/under-flows are checked.
+
+
+.. _conversion:
+
+Symbol Conversion
+=================
+**Command-Line Option**: ``--ascii`` and/or ``--unicode``.
+If supplied, the input files will be converted to use ASCII and/or Unicode
+Logika symbols.
+Logika will then create new files at the same directory as the input files
+prefixed with ``ascii-``/``unicode-``.
+
+.. _ctranslation:
+
+C Translation
+=============
+**Command-Line Option**: ``--c``, followed by a directory or a file path.
+If supplied, the input files will be translated to C along with supporting
+header and source files, as well as a `CMake <https://cmake.org>`__ file
+(``CMakeLists.txt``).
+
+To compile the generated C code, go to the directory under which the files
+are generated and execute:
+
+.. code:: bash
+
+   cmake .
+   make
+
+.. _server:
+
+Server Mode
+===========
+
+**Command-Line Option**: ``--server``
+
+The server mode puts Logika to accepts requests through
+its console input and responds through its console output.
+This is designed for integration with other tools such as
+the :ref:`live`.
+Each request/respond message is in the (restricted)
+form of a line JSON serialization string whose schema are
+derived from the Scala case classes defined in the
+`org.sireum.logika.message <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/Message.scala>`__
+package; the actual serialization mechanisms are defined in
+`InputMessageJson <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/InputMessageJson.scala>`__
+and
+`OutputMessageJson <https://github.com/sireum/v3/blob/release/logika/shared/src/main/scala/org/sireum/logika/message/OutputMessageJson.scala>`__.
+
+.. note::
+
+   All other options are ignored when the server mode is enabled.

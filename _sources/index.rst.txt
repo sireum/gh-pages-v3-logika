@@ -1,0 +1,115 @@
+.. toctree::
+   :hidden:
+
+   doc/index.rst
+   dschmidt/index.rst
+
+.. include:: def.rst
+
+Home
+####
+
+.. raw:: html
+
+   <script src="_static/jquery.cycle2.js" ></script>
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-md-12">
+         <div class = "cycle-slideshow" data-cycle-slides="> a">
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/sireum-logika.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/truthtable.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/proplogic.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/curryhoward.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/predlogic.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/testprove.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/hint.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/summoning.png" ></a>
+           <a href="doc/01-getting-started/index.html"><img width="100%" src="_static/symexe.png" ></a>
+           <a href="dschmidt/index.html"><img width="100%" src="_static/dschmidt-notes.png" ></a>
+         </div>
+       </div>
+     </div>
+
+     <br/>
+
+     <div class="row">
+       <div class="col-md-8">
+         <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">About</h3>
+           </div>
+           <div class="panel-body">
+
+Sireum Logika is both a highly-automated program verifier and a
+natural deduction (manual) proof checker for propositional,
+predicate, and programming logics, where manual proof steps
+can be used to help automation.
+It uses the same input language for reasoning about the logics
+(i.e., the propositional logic language is a subset of the predicate logic language,
+which in turn, is embedded in the programming logic language).
+The Logika programming language itself is a subset of `Scala <http://scala-lang.org>`__.
+Thus, Logika programs can be developed/run/compiled by using the regular Scala language
+tooling and IDEs (equipped with the |LogikaRuntime|).
+Additionally, Logika programs can be translated to C and then compiled using
+the `CompCert Verified C Compiler <http://compcert.inria.fr>`__, thus
+providing high-assurance toolchain for program correctness down to machine code.
+
+The `IntelliJ <https://www.jetbrains.com/idea/>`__-based :ref:`sireum-ive`
+provides an all-in-one coding, testing, contracting, and proving environment for Logika, and
+`CLion <https://www.jetbrains.com/clion/>`__ can be used to test/debug and integrate
+Logika generated C code (Logika generates `CMake <https://cmake.org>`__ files suitable
+for CLion projects).
+For teaching, we are developing a set of :ref:`course notes <course-notes>`, which is an adaptation
+of the |ProgrammingLogics| lecture notes written by |Schmidt|.
+
+Logika is inspired by:
+
+* The `Natural Deduction Proof Checker (NDPC) <http://people.cis.ksu.edu/~schmidt/301s14/NDPC/ndpc-pe.jar>`__
+  tool (see its
+  `manual <http://people.cis.ksu.edu/~schmidt/301s14/NDPC/user_manual.pdf>`__)
+  for propositional and predicate logics developed by Brian Mulanda,
+  |Howell|, and James Thompson.
+
+* The `Floyd-Hoare Programming Logic Proof Checker <http://people.cis.ksu.edu/~schmidt/301s14/cis301.zip>`__
+  developed by Schmidt that accompanies his |ProgrammingLogics| lecture notes.
+
+Logika uses the `Z3 <https://github.com/Z3Prover/z3>`__ theorem prover for proof automation.
+
+.. raw:: html
+
+           </div>
+         </div>
+       </div>
+       <div class="col-md-4">
+         <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Contact</h3>
+           </div>
+           <div class="panel-body">
+             <a href="http://people.cis.ksu.edu/~robby">Robby</a><br/>
+             <a href="http://santoslab.org">SAnToS Laboratory</a><br/>
+             <a href="http://www.cis.ksu.edu">Computing &amp; Information Sciences Department</a><br/>
+             <a href="http://engg.ksu.edu">College of Engineering</a><br/>
+             <a href="http://www.ksu.edu">Kansas State University</a><br/>
+             2181 <a href="http://www.engg.ksu.edu/phaseiv/">Engineering Hall</a><br/>
+             <a href="https://goo.gl/maps/qHsXwu5XAhT2">1701D Platt Street</a><br/>
+             <a href="http://www.ci.manhattan.ks.us/">Manhattan</a>, <a href="http://www.kansas.gov/">KS</a> <a href="https://www.google.com/maps/place/Manhattan,+KS+66506">66506</a><br/>
+             Phone: (785) 532-6350<br/>
+             Fax: (785) 532-7353<br/>
+             Email: <a href="mailto:robby@k-state.edu">robby@k-state.edu</a>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <p/>
+             <br/>
+             <br/>
+             <br/>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>

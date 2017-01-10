@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Getting Started &mdash; Sireum Logika</title>
+    <title>1. Getting Started &#8212; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/journal/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
     
@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -29,11 +30,11 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
     <link rel="prev" title="Sireum Logika Documentation" href="../index.html" />
   </head>
@@ -82,21 +83,37 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
 <li><a class="reference internal" href="#using-sireum-v3-binary-distribution">1.1. Using Sireum v3 Binary Distribution</a><ul>
-<li><a class="reference internal" href="#installing-running-and-updating-logika">1.1.1. Installing, Running, and Updating Logika</a></li>
+<li><a class="reference internal" href="#installing-logika">1.1.1. Installing Logika</a><ul>
+<li><a class="reference internal" href="#sireum-integrated-verification-environment-ive">1.1.1.1. Sireum Integrated Verification Environment (IVE)</a><ul>
+<li><a class="reference internal" href="#sireum-ive-for-macos">Sireum IVE for macOS</a></li>
+<li><a class="reference internal" href="#sireum-ive-for-linux">Sireum IVE for Linux</a></li>
+<li><a class="reference internal" href="#sireum-ive-for-windows">Sireum IVE for Windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sireum-command-line-interface-cli">1.1.1.2. Sireum Command-Line Interface (CLI)</a><ul>
+<li><a class="reference internal" href="#sireum-cli-for-macos">Sireum CLI for macOS</a></li>
+<li><a class="reference internal" href="#sireum-cli-for-linux">Sireum CLI for Linux</a></li>
+<li><a class="reference internal" href="#sireum-cli-for-windows">Sireum CLI for Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-logika">1.1.2. Running Logika</a></li>
+<li><a class="reference internal" href="#updating-logika">1.1.3. Updating Logika</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#using-sireum-v3-source-distribution">1.2. Using Sireum v3 Source Distribution</a><ul>
 <li><a class="reference internal" href="#prerequisites">1.2.1. Prerequisites</a><ul>
-<li><a class="reference internal" href="#mac-os-x">1.2.1.1. Mac OS X</a></li>
+<li><a class="reference internal" href="#macos">1.2.1.1. macOS</a></li>
 <li><a class="reference internal" href="#linux">1.2.1.2. Linux</a></li>
 <li><a class="reference internal" href="#windows">1.2.1.3. Windows</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#installing-and-running-logika">1.2.2. Installing and Running Logika</a></li>
-<li><a class="reference internal" href="#updating-logika">1.2.3. Updating Logika</a></li>
+<li><a class="reference internal" href="#source-update">1.2.3. Updating Logika</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#verifying-examples">1.3. Verifying Examples</a></li>
+<li><a class="reference internal" href="#verifying-examples-using-sireum-cli">1.3. Verifying Examples using Sireum CLI</a></li>
 <li><a class="reference internal" href="#logika-command-line-configuration">1.4. Logika Command-Line Configuration</a><ul>
 <li><a class="reference internal" href="#auto-mode">1.4.1. Auto Mode</a></li>
 <li><a class="reference internal" href="#formula">1.4.2. Formula</a></li>
@@ -106,7 +123,8 @@
 <li><a class="reference internal" href="#symbolic-execution-mode">1.4.6. Symbolic Execution Mode</a></li>
 <li><a class="reference internal" href="#integer-bit-width">1.4.7. Integer Bit-Width</a></li>
 <li><a class="reference internal" href="#symbol-conversion">1.4.8. Symbol Conversion</a></li>
-<li><a class="reference internal" href="#server-mode">1.4.9. Server Mode</a></li>
+<li><a class="reference internal" href="#c-translation">1.4.9. C Translation</a></li>
+<li><a class="reference internal" href="#server-mode">1.4.10. Server Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -153,65 +171,116 @@ Sireum Logika Documentation
 </b></big></big></big></big>
 </font><div class="section" id="getting-started">
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Logika runs on x64 Mac OS X, Linux, and Windows operating systems
-(tested on OS X 10.11, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
+<p>Logika runs on x64 macOS, Linux, and Windows operating systems
+(tested on macOS 10.12, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
 <p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span class="std std-ref">Using Sireum v3 Binary Distribution</span></a> or
 <a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
-<video width="100%" controls>
-  <source src="http://files.sireum.org/media/logika-cli.mp4" type="video/mp4">
-</video><div class="section" id="using-sireum-v3-binary-distribution">
+<div class="section" id="using-sireum-v3-binary-distribution">
 <span id="using-binary"></span><h2>1.1. Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="installing-running-and-updating-logika">
-<span id="binary-installing-running"></span><h3>1.1.1. Installing, Running, and Updating Logika<a class="headerlink" href="#installing-running-and-updating-logika" title="Permalink to this headline">¶</a></h3>
-<p>First, download the binary distribution zip file for your platform
-and uncompress it (<em>in a directory whose path does not contain whitespaces</em>):</p>
+<div class="section" id="installing-logika">
+<span id="binary-installing-running"></span><h3>1.1.1. Installing Logika<a class="headerlink" href="#installing-logika" title="Permalink to this headline">¶</a></h3>
+<p>There are two kinds of Sireum v3 binary distributions:
+(1) <a class="reference internal" href="#sireum-ive"><span class="std std-ref">Sireum Integrated Verification Environment (IVE)</span></a>,
+(2) <a class="reference internal" href="#sireum-cli"><span class="std std-ref">Sireum Command-Line Interface (CLI)</span></a>.</p>
+<p>Sireum IVE includes a custom <a class="reference external" href="http://www.jetbrains.com/idea">IntelliJ IDEA</a> Community Edition
+with various plugins installed, along with the Sireum CLI.</p>
+<div class="section" id="sireum-integrated-verification-environment-ive">
+<span id="sireum-ive"></span><h4>1.1.1.1. Sireum Integrated Verification Environment (IVE)<a class="headerlink" href="#sireum-integrated-verification-environment-ive" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sireum-ive-for-macos">
+<h5>Sireum IVE for macOS<a class="headerlink" href="#sireum-ive-for-macos" title="Permalink to this headline">¶</a></h5>
+<p>Execute the following in a bash terminal:</p>
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-idea-mac64.dmg http://bit.ly/2i6jvbX &amp;&amp; open sireum-v3-idea-mac64.dmg
+</pre></div>
+</div>
+<p>Once it is done, it should open a new window:</p>
+<img alt="../../_images/sireum-v3-idea-mac64.dmg.png" src="../../_images/sireum-v3-idea-mac64.dmg.png" />
+<p>Drag and drop the Sireum icon to the Applications folder.</p>
+<p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
+if it is instead downloaded using a browser,
+you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
+<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-idea-mac64.dmg</span></code>).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
+<p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+</div>
+<div class="section" id="sireum-ive-for-linux">
+<h5>Sireum IVE for Linux<a class="headerlink" href="#sireum-ive-for-linux" title="Permalink to this headline">¶</a></h5>
+<p>Download from: <a class="reference external" href="http://bit.ly/2ja1oic">http://bit.ly/2ja1oic</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/Sireum</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/Sireum</span></code>).</p>
+<p>To run Sireum IVE in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/idea</span></code>.</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+</div>
+<div class="section" id="sireum-ive-for-windows">
+<h5>Sireum IVE for Windows<a class="headerlink" href="#sireum-ive-for-windows" title="Permalink to this headline">¶</a></h5>
+<p>Download from: <a class="reference external" href="http://bit.ly/2iw7hFN">http://bit.ly/2iw7hFN</a></p>
+<p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\Sireum\sireum.bat</span></code> is present.</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\Sireum</span></code>.</p>
+<p>To run Sireum IVE:</p>
 <ul>
-<li><p class="first">Download for OS X: <a class="reference external" href="http://files.sireum.org/sireum-v3-mac64.zip">sireum-v3-mac64.zip</a></p>
-<p>To uncompress it:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>unzip sireum-v3-mac64.zip
-</pre></div>
-</div>
+<li><p class="first">double-click, either:</p>
+<ul>
+<li><p class="first">32-bit: <code class="docutils literal"><span class="pre">SIREUM_HOME\apps\idea\bin\idea.exe</span></code>, or</p>
 </li>
-<li><p class="first">Download for Linux: <a class="reference external" href="http://files.sireum.org/sireum-v3-linux64.zip">sireum-v3-linux64.zip</a></p>
-<p>To uncompress it:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>unzip sireum-v3-linux64.zip
-</pre></div>
-</div>
-</li>
-<li><p class="first">Download for Windows: <a class="reference external" href="http://files.sireum.org/sireum-v3-win64.zip">sireum-v3-win64.zip</a></p>
-<p>Follow the instructions
-<a class="reference external" href="http://windows.microsoft.com/en-us/windows-10/zip-and-unzip-files">here</a>
-to uncompress <code class="docutils literal"><span class="pre">sireum-v3-win64.zip</span></code>.</p>
+<li><p class="first">64-bit: <code class="docutils literal"><span class="pre">SIREUM_HOME\apps\idea\bin\idea64.exe</span></code></p>
+<p>This requires Java 8 64-bit, which is available in <code class="docutils literal"><span class="pre">SIREUM_HOME\platform\java</span></code>;
+to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\platform\java\bin</span></code> to your <code class="docutils literal"><span class="pre">PATH</span></code> environment variable.</p>
 </li>
 </ul>
-<p>Once uncompressed, it creates a <code class="docutils literal"><span class="pre">sireum-v3</span></code> folder, which contains
-the Sireum script (<code class="docutils literal"><span class="pre">sireum</span></code> in OS X/Linux, or <code class="docutils literal"><span class="pre">sireum.bat</span></code> in Windows).</p>
+</li>
+<li><p class="first">in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\idea.bat</span></code> or <code class="docutils literal"><span class="pre">SIREUM_HOME\idea64.bat</span></code>.</p>
+</li>
+</ul>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code></p>
+</div>
+</div>
+<div class="section" id="sireum-command-line-interface-cli">
+<span id="sireum-cli"></span><h4>1.1.1.2. Sireum Command-Line Interface (CLI)<a class="headerlink" href="#sireum-command-line-interface-cli" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sireum-cli-for-macos">
+<h5>Sireum CLI for macOS<a class="headerlink" href="#sireum-cli-for-macos" title="Permalink to this headline">¶</a></h5>
+<p>Download from: <a class="reference external" href="http://bit.ly/2jluudT">http://bit.ly/2jluudT</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+</div>
+<div class="section" id="sireum-cli-for-linux">
+<h5>Sireum CLI for Linux<a class="headerlink" href="#sireum-cli-for-linux" title="Permalink to this headline">¶</a></h5>
+<p>Download from: <a class="reference external" href="http://bit.ly/2j051Ks">http://bit.ly/2j051Ks</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+</div>
+<div class="section" id="sireum-cli-for-windows">
+<h5>Sireum CLI for Windows<a class="headerlink" href="#sireum-cli-for-windows" title="Permalink to this headline">¶</a></h5>
+<p>Download from: <a class="reference external" href="http://bit.ly/2i6llK8">http://bit.ly/2i6llK8</a></p>
+<p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\sireum-v3\sireum.bat</span></code> is present.</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\sireum-v3</span></code>.</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="running-logika">
+<h3>1.1.2. Running Logika<a class="headerlink" href="#running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To run Logika:</p>
 <ul>
-<li><p class="first">In OS X and Linux,</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sireum-v3/sireum logika
+<li><p class="first">Under <strong>macOS</strong> or <strong>Linux</strong>:</p>
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>SIREUM_HOME/sireum logika
 </pre></div>
 </div>
 </li>
-<li><p class="first">In Windows,</p>
-<div class="highlight-batch"><div class="highlight"><pre><span></span>sireum-v3\sireum logika
+<li><p class="first">Under <strong>Windows</strong>:</p>
+<div class="code batch highlight-none"><div class="highlight"><pre><span></span>SIREUM_HOME\sireum logika
 </pre></div>
 </div>
 </li>
 </ul>
 <p>Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum: A Software Analysis Platform (v3)
-(c) 2011-2016, SAnToS Laboratory, Kansas State University
-http://sireum.org
-
-Usage: sireum &lt;mode&gt;
-
-Available mode(s):
-
-logika    Logika Program Verifier and Proof Checker
-util      Utility Tools
-robby-macpro:sireum-v3 robby$ ./sireum l
-Sireum Logika -- A Program Verifier and a Natural Deduction Proof Checker for Propositional, Predicate, and Programming Logic
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika:
+A Program Verifier and A Natural Deduction Proof Checker
+... for Propositional, Predicate, and Programming Logics
 
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
@@ -222,12 +291,15 @@ Options:
 
 Programming Logic Options:
 -a, --auto        Enable auto mode
--b, --bitwidth    Default integer bit-width for symbolic execution
+-b, --bitwidth    Default integer bit-width for symbolic execution &amp; translation
                     Default: 0
 -l, --last        Check last program only
 -t, --timeout     Timeout for algebra and auto (in milliseconds)
                     Default: 2000
 -x, --symexe      Enable symbolic execution
+    --c           File/directory path for C translation
+    --compare     Compare well-formed input program files (sans contracts/prints)
+    --run         Run input program file(s)
     --sat         Enable sat checking of facts and contracts
 
 Symbol Conversion Options:
@@ -238,14 +310,17 @@ Symbol Conversion Options:
 <p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
+<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
 the Logika command above.</p>
 <p class="last">In addition, replace <code class="docutils literal"><span class="pre">/</span></code> with <code class="docutils literal"><span class="pre">\</span></code> when entering paths in
 a Windows shell/command prompt.</p>
 </div>
-<p>To update Logika, simply re-download/install according to the
+</div>
+<div class="section" id="updating-logika">
+<h3>1.1.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h3>
+<p>To update Logika, simply re-download/install/replace according to the
 above instructions.</p>
-<p>Next, see <a class="reference internal" href="#logika-examples"><span class="std std-ref">Verifying Examples</span></a>.</p>
+<p>Next, see <a class="reference internal" href="#logika-examples"><span class="std std-ref">Verifying Examples using Sireum CLI</span></a>.</p>
 </div>
 </div>
 <div class="section" id="using-sireum-v3-source-distribution">
@@ -254,20 +329,14 @@ above instructions.</p>
 <h3>1.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>On all systems, the following tools are required:
 <a class="reference external" href="https://git-scm.com">git</a>, <code class="docutils literal"><span class="pre">bash</span></code>, <code class="docutils literal"><span class="pre">unzip</span></code>, <code class="docutils literal"><span class="pre">wget</span></code>.</p>
-<div class="section" id="mac-os-x">
-<h4>1.2.1.1. Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h4>
-<p>On OS X, you can install <code class="docutils literal"><span class="pre">wget</span></code> using:</p>
+<div class="section" id="macos">
+<h4>1.2.1.1. macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h4>
+<p>On macOS, you can install <code class="docutils literal"><span class="pre">wget</span></code> using:</p>
 <ul>
-<li><p class="first"><a class="reference external" href="https://www.macports.org">MacPorts</a>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo port install wget
-</pre></div>
-</div>
+<li><p class="first"><a class="reference external" href="https://www.macports.org">MacPorts</a>: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">port</span> <span class="pre">install</span> <span class="pre">wget</span></code></p>
 <p>or</p>
 </li>
-<li><p class="first"><a class="reference external" href="http://brew.sh">Homebrew</a>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>brew install wget
-</pre></div>
-</div>
+<li><p class="first"><a class="reference external" href="http://brew.sh">Homebrew</a>: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">port</span> <span class="pre">install</span> <span class="pre">wget</span></code></p>
 </li>
 </ul>
 </div>
@@ -281,7 +350,7 @@ through the distribution package manager.</p>
 <p>On Windows, it is best to install <a class="reference external" href="https://msys2.github.io">MSYS2</a> (64-bit)
 and use its MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell to install the above tools.
 First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell from the Windows start menu&#8217;s MSYS2 64bit group):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pacman -S git unzip wget
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>pacman -S git unzip wget
 </pre></div>
 </div>
 </div>
@@ -290,7 +359,7 @@ First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></
 <span id="source-installing-running"></span><h3>1.2.2. Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To install Logika, enter the following commands under <code class="docutils literal"><span class="pre">bash</span></code>
 (<em>in a directory whose path does not contain whitespaces</em>):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3.git sireum-v3
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3.git sireum-v3
 sireum-v3/sireum logika
 </pre></div>
 </div>
@@ -308,18 +377,9 @@ If the build somehow fails, please see
 <p>The process may take a while depending on your internet connection speed and
 your machine&#8217;s computational prowess.</p>
 <p>When it finishes, Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum: A Software Analysis Platform (v3)
-(c) 2011-2016, SAnToS Laboratory, Kansas State University
-http://sireum.org
-
-Usage: sireum &lt;mode&gt;
-
-Available mode(s):
-
-logika    Logika Program Verifier and Proof Checker
-util      Utility Tools
-robby-macpro:sireum-v3 robby$ ./sireum l
-Sireum Logika -- A Program Verifier and a Natural Deduction Proof Checker for Propositional, Predicate, and Programming Logic
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika:
+A Program Verifier and A Natural Deduction Proof Checker
+... for Propositional, Predicate, and Programming Logics
 
 Usage: sireum logika [option] &lt;filename-1&gt; ... &lt;filename-N&gt;
 
@@ -330,12 +390,15 @@ Options:
 
 Programming Logic Options:
 -a, --auto        Enable auto mode
--b, --bitwidth    Default integer bit-width for symbolic execution
+-b, --bitwidth    Default integer bit-width for symbolic execution &amp; translation
                     Default: 0
 -l, --last        Check last program only
 -t, --timeout     Timeout for algebra and auto (in milliseconds)
                     Default: 2000
 -x, --symexe      Enable symbolic execution
+    --c           File/directory path for C translation
+    --compare     Compare well-formed input program files (sans contracts/prints)
+    --run         Run input program file(s)
     --sat         Enable sat checking of facts and contracts
 
 Symbol Conversion Options:
@@ -346,31 +409,31 @@ Symbol Conversion Options:
 <p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">logika</span></code> as a shorthand for
+<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
 <code class="docutils literal"><span class="pre">sireum-v3/sireum</span> <span class="pre">logika</span></code>. You can introduce a <code class="docutils literal"><span class="pre">bash</span></code> alias for it as follows:</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">logika</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">&quot;</span><span class="k">$(</span>dirname sireum-v3/sireum<span class="k">)</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span><span class="s2">/</span><span class="k">$(</span>basename sireum-v3/sireum<span class="k">)</span><span class="s2"> logika&quot;</span>
+<div class="code bash last highlight-none"><div class="highlight"><pre><span></span>alias LOGIKA=&quot;$(cd &quot;$(dirname sireum-v3/sireum)&quot; &amp;&amp; pwd)/$(basename sireum-v3/sireum) logika&quot;
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="updating-logika">
-<span id="source-update"></span><h3>1.2.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="source-update">
+<span id="id2"></span><h3>1.2.3. Updating Logika<a class="headerlink" href="#source-update" title="Permalink to this headline">¶</a></h3>
 <p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> sireum-v3
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>cd sireum-v3
 git pull
-logika
+LOGIKA
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="verifying-examples">
-<span id="logika-examples"></span><h2>1.3. Verifying Examples<a class="headerlink" href="#verifying-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verifying-examples-using-sireum-cli">
+<span id="logika-examples"></span><h2>1.3. Verifying Examples using Sireum CLI<a class="headerlink" href="#verifying-examples-using-sireum-cli" title="Permalink to this headline">¶</a></h2>
 <p>Some Logika examples are available at <a class="reference external" href="https://github.com/sireum/v3-logika-examples">https://github.com/sireum/v3-logika-examples</a></p>
 <p>There are two ways to retrieve the examples:</p>
 <ul>
 <li><p class="first">Using git</p>
 <p>Clone the repository to try out some of the examples:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
 </pre></div>
 </div>
 </li>
@@ -399,45 +462,45 @@ whose content is as follows:</p>
 </pre></div>
 </div>
 <p>using the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>logika logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>which will show:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Propositional logic proof is accepted.
+<div class="highlight-none"><div class="highlight"><pre><span></span>Propositional logic proof is accepted.
 </pre></div>
 </div>
 <p>If one introduced a typo in the proof, such as using ∨i1 instead of ∨i2 in step #10 in the above example,
 Logika will instead output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>[13, 11] The disjunction&#39;s left sub-expression in step #10 does not match #9 for Or-intro1.
+<div class="highlight-none"><div class="highlight"><pre><span></span>[13, 11] The disjunction&#39;s left sub-expression in step #10 does not match #9 for Or-intro1.
 Propositional logic proof is rejected.
 </pre></div>
 </div>
 <p>One can specify the sequent to prove as a command line to ensure that the proof in the file is
 the one that is expected as follows (if you introduced the typo, revert it back first):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>logika -s <span class="s2">&quot;¬(¬p ∨ ¬q) ⊢ p ∧ q&quot;</span> logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA -s &quot;¬(¬p ∨ ¬q) ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>If the provided sequent is different than the one in the file, the tool rejects it.
 For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>logika -s <span class="s2">&quot;p, q ⊢ p ∧ q&quot;</span> logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA -s &quot;p, q ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>will result:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>The specified sequent is different than the one in the file.
+<div class="highlight-none"><div class="highlight"><pre><span></span>The specified sequent is different than the one in the file.
 Specified:
 p, q ⊢ p ∧ q
 File:
-p ∨ q, r  ⊢  <span class="o">(</span>p ∧ r<span class="o">)</span> ∨ <span class="o">(</span>q ∧ r<span class="o">)</span>
+p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 </pre></div>
 </div>
-<p>For a better experience, consider using the <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
+<p>For a better experience, consider using the Sireum IVE&#8217;s <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
 </div>
 <div class="section" id="logika-command-line-configuration">
 <span id="cli-configuration"></span><h2>1.4. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.</p>
 <div class="section" id="auto-mode">
-<span id="id2"></span><h3>1.4.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>1.4.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
 <p>The auto mode enables claim justifications using the
 <a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span class="std std-ref">auto</span></a> summoning.
@@ -487,7 +550,7 @@ This is handy for proof management by separating a program
 of a system into multiple files.</p>
 </div>
 <div class="section" id="timeout">
-<span id="id3"></span><h3>1.4.4. Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>1.4.4. Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">-t</span></code> or <code class="docutils literal"><span class="pre">--timeout</span></code>, followed by the timeout integer (non-positive means unbounded).</p>
 <p>Logika uses the Z3 theorem prover to automatically prove
 some formulae (e.g., arithmetic).
@@ -531,8 +594,21 @@ Logika symbols.
 Logika will then create new files at the same directory as the input files
 prefixed with <code class="docutils literal"><span class="pre">ascii-</span></code>/<code class="docutils literal"><span class="pre">unicode-</span></code>.</p>
 </div>
+<div class="section" id="c-translation">
+<span id="ctranslation"></span><h3>1.4.9. C Translation<a class="headerlink" href="#c-translation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--c</span></code>, followed by a directory or a file path.
+If supplied, the input files will be translated to C along with supporting
+header and source files, as well as a <a class="reference external" href="https://cmake.org">CMake</a> file
+(<code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>).</p>
+<p>To compile the generated C code, go to the directory under which the files
+are generated and execute:</p>
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>cmake .
+make
+</pre></div>
+</div>
+</div>
 <div class="section" id="server-mode">
-<span id="server"></span><h3>1.4.9. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
+<span id="server"></span><h3>1.4.10. Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal"><span class="pre">--server</span></code></p>
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.

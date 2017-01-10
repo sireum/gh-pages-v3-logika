@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Home &mdash; Sireum Logika</title>
+    <title>Home &#8212; Sireum Logika</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/journal/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/sireum.css" type="text/css" />
     
@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -29,10 +30,11 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Sireum Logika Documentation" href="doc/index.html" />
   </head>
   <body role="document">
@@ -139,23 +141,26 @@
         <div class="panel-heading">
           <h3 class="panel-title">About</h3>
         </div>
-        <div class="panel-body"><p><a class="reference external" href="http://sireum.org">Sireum</a> Logika is an
-<a class="reference external" href="https://github.com/sireum/v3">open source</a>
-pedagogical tool being developed at
-<a class="reference external" href="http://santoslab.org">SAnToS Laboratory</a>,
-<a class="reference external" href="http://k-state.edu">Kansas State University</a>
-to aid in teaching an introductory logics course in computer science (e.g.,
-<a class="reference external" href="http://proglogics.santoslab.org">CIS 301: Logical Foundations of Programming</a>).
-In addition, Logika also serves as a research vehicle for investigating
-program verification techniques.</p>
-<p>The tool is accompanied by:
-(1) a set of <a class="reference internal" href="dschmidt/index.html#course-notes"><span class="std std-ref">course notes</span></a>,
-which is an adaptation of the <a class="reference external" href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/home.html">Programming Logics</a> lecture notes written by <a class="reference external" href="http://people.cis.ksu.edu/~schmidt">David A. Schmidt</a>, and
-(2) an Integrated Verification Environment (IVE) for Logika &#8211; <a class="reference internal" href="doc/02-live/index.html#live"><span class="std std-ref">LIVE</span></a>, built on top of
-<a class="reference external" href="https://www.jetbrains.com">JetBrains</a>&#8216; <a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>.
-Logika uses the <a class="reference external" href="https://github.com/Z3Prover/z3">Z3</a> theorem prover to
-automatically solve algebraic formulae and to offer some level of automation suitable
-for an introductory logics course.</p>
+        <div class="panel-body"><p>Sireum Logika is both a highly-automated program verifier and a
+natural deduction (manual) proof checker for propositional,
+predicate, and programming logics, where manual proof steps
+can be used to help automation.
+It uses the same input language for reasoning about the logics
+(i.e., the propositional logic language is a subset of the predicate logic language,
+which in turn, is embedded in the programming logic language).
+The Logika programming language itself is a subset of <a class="reference external" href="http://scala-lang.org">Scala</a>.
+Thus, Logika programs can be developed/run/compiled by using the regular Scala language
+tooling and IDEs (equipped with the <a class="reference external" href="https://github.com/sireum/v3-logika-runtime/blob/release/src/main/scala/org/sireum/logika/package.scala">Logika runtime library</a> (<a class="reference external" href="http://search.maven.org/#search%7Cga%7C1%7Clogika-runtime">maven</a>)).
+Additionally, Logika programs can be translated to C and then compiled using
+the <a class="reference external" href="http://compcert.inria.fr">CompCert Verified C Compiler</a>, thus
+providing high-assurance toolchain for program correctness down to machine code.</p>
+<p>The <a class="reference external" href="https://www.jetbrains.com/idea/">IntelliJ</a>-based <a class="reference internal" href="doc/01-getting-started/index.html#sireum-ive"><span class="std std-ref">Sireum Integrated Verification Environment (IVE)</span></a>
+provides an all-in-one coding, testing, contracting, and proving environment for Logika, and
+<a class="reference external" href="https://www.jetbrains.com/clion/">CLion</a> can be used to test/debug and integrate
+Logika generated C code (Logika generates <a class="reference external" href="https://cmake.org">CMake</a> files suitable
+for CLion projects).
+For teaching, we are developing a set of <a class="reference internal" href="dschmidt/index.html#course-notes"><span class="std std-ref">course notes</span></a>, which is an adaptation
+of the <a class="reference external" href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/home.html">Programming Logics</a> lecture notes written by <a class="reference external" href="http://people.cis.ksu.edu/~schmidt">David A. Schmidt</a>.</p>
 <p>Logika is inspired by:</p>
 <ul class="simple">
 <li>The <a class="reference external" href="http://people.cis.ksu.edu/~schmidt/301s14/NDPC/ndpc-pe.jar">Natural Deduction Proof Checker (NDPC)</a>
@@ -166,13 +171,7 @@ for propositional and predicate logics developed by Brian Mulanda,
 <li>The <a class="reference external" href="http://people.cis.ksu.edu/~schmidt/301s14/cis301.zip">Floyd-Hoare Programming Logic Proof Checker</a>
 developed by Schmidt that accompanies his <a class="reference external" href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/home.html">Programming Logics</a> lecture notes.</li>
 </ul>
-<p>Logika is a combination of both tools (and much more); it uses the same input language for
-reasoning about propositional, predicate, and programming logics (i.e., the propositional logic
-language is a subset of the predicate logic language, which in turn, is a subset of the
-programming logic language).
-The programming logic language itself is a subset of the <a class="reference external" href="http://scala-lang.org">Scala</a>
-programming language, whose programs can be run by using the regular Scala interpreter
-equipped with the <a class="reference external" href="https://github.com/sireum/v3-logika-runtime/blob/release/src/main/scala/org/sireum/logika/package.scala">Logika runtime library</a> (<a class="reference external" href="http://search.maven.org/#search%7Cga%7C1%7Clogika-runtime">maven</a>).</p>
+<p>Logika uses the <a class="reference external" href="https://github.com/Z3Prover/z3">Z3</a> theorem prover for proof automation.</p>
         </div>
       </div>
     </div>

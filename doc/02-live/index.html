@@ -6,11 +6,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>2. IntelliJ-based Logika Integrated Verification Environment (LIVE) &mdash; Sireum Logika</title>
+    <title>2. IntelliJ-based Logika Integrated Verification Environment (LIVE) &#8212; Sireum Logika</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/journal/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
     
@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -29,11 +30,11 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3. The Logika Formal Input Language" href="../03-language/index.html" />
     <link rel="prev" title="1. Getting Started" href="../01-getting-started/index.html" />
   </head>
@@ -163,10 +164,6 @@ Sireum Logika Documentation
 </b></big></big></big></big>
 </font><div class="section" id="intellij-based-logika-integrated-verification-environment-live">
 <span id="live"></span><h1>2. IntelliJ-based Logika Integrated Verification Environment (LIVE)<a class="headerlink" href="#intellij-based-logika-integrated-verification-environment-live" title="Permalink to this headline">¶</a></h1>
-<p>To aid the development of Logika proofs, you can use
-the <a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">Sireum v3 IntelliJ plugin</a>
-that includes LIVE.
-Here is a screenshot:</p>
 <a class="reference internal image-reference" href="../../_images/syntax-message.png"><img alt="../../_images/syntax-message.png" class="align-center" src="../../_images/syntax-message.png" style="width: 100%;" /></a>
 <div class="section" id="live-features">
 <h2>2.1. LIVE Features<a class="headerlink" href="#live-features" title="Permalink to this headline">¶</a></h2>
@@ -197,27 +194,19 @@ for any editor file types.</li>
 <hr class="docutils" />
 <div class="section" id="live-install">
 <h2>2.2. LIVE Install<a class="headerlink" href="#live-install" title="Permalink to this headline">¶</a></h2>
-<video width="100%" controls>
-  <source src="http://files.sireum.org/media/logika-ive.mp4" type="video/mp4">
-</video><div class="section" id="prerequisites">
+<p>It is recommended to use the <a class="reference internal" href="../01-getting-started/index.html#sireum-ive"><span class="std std-ref">Sireum Integrated Verification Environment (IVE)</span></a> distribution, which includes LIVE; if you do skip to <a class="reference internal" href="#optional-settings"><span class="std std-ref">Optional Settings</span></a>.</p>
+<p>Alternatively, you can install the <a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">Sireum v3 IntelliJ plugin</a>
+in your IntelliJ installation (see
+<a class="reference external" href="https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html">Installing, Updating and Uninstalling Repository Plugins</a>).</p>
+<div class="section" id="prerequisites">
 <h3>2.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>LIVE requires <a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ (15 or above</a>; it is
 recommended to install the <a class="reference external" href="http://plugins.jetbrains.com/plugin/1347">Scala plugin</a>);
 please take a look at its system requirements and follow the installation instructions
 for your respective operating system.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>For OS X and Windows, IntelliJ is shipped with a custom JDK that simplifies its installation.
-For Linux, it requires JDK 1.6 or higher.</p>
-<p class="last">The <code class="docutils literal"><span class="pre">sireum-v3</span></code> directory (installed in <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>)
-contains a JDK 1.8 that can be used for running IntelliJ under <code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code>;
-to use that, set the <code class="docutils literal"><span class="pre">JAVA_HOME</span></code> environment variable to the absolute path of
-<code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code> and add the absolute path of <code class="docutils literal"><span class="pre">sireum-v3/platform/java/bin</span></code>
-to the <code class="docutils literal"><span class="pre">PATH</span></code> environment variable.</p>
-</div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">In Windows, you need to add <code class="docutils literal"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
+<p class="last">In Windows and some Linux distributions, you need to add <code class="docutils literal"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
 <a class="reference external" href="https://www.jetbrains.com/idea/help/tuning-intellij-idea.html#copy1">.vmoption</a> file.</p>
 </div>
 </div>
@@ -232,7 +221,7 @@ Thus, you can choose to skip directly to <a class="reference internal" href="#li
 <a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">JetBrains&#8217; plugin repositories</a>.</p>
 <p>First, open IntelliJ&#8217;s
 <a class="reference external" href="https://www.jetbrains.com/idea/help/settings-preferences-dialog.html">Preferences</a>
-(shortcut: <code class="docutils literal"><span class="pre">⌘,</span></code> in OS X):</p>
+(shortcut: <code class="docutils literal"><span class="pre">⌘,</span></code> in macOS):</p>
 <a class="reference internal image-reference" href="../../_images/install-from-jetbrains.png"><img alt="../../_images/install-from-jetbrains.png" src="../../_images/install-from-jetbrains.png" style="width: 529.6px; height: 334.40000000000003px;" /></a>
 <ol class="arabic simple">
 <li>Click on <code class="docutils literal"><span class="pre">Plugins</span></code>.</li>
@@ -290,17 +279,11 @@ can only be done at the end of the method, thus, in Scala, it is unnecessary).</
 <h3>2.3.2. Using A Fixed-Width Font<a class="headerlink" href="#using-a-fixed-width-font" title="Permalink to this headline">¶</a></h3>
 <p>When working with Logika math Unicode symbols (see <a class="reference internal" href="#shortcuts"><span class="std std-ref">LIVE Shortcuts</span></a>),
 it is best to use a font that is also (mostly) fixed-width for those symbols.</p>
-<p>In Mac OS X, the Menlo font is fixed-width for Logika math symbols.</p>
-<p>For Linux (and Mac OS X),
-<a class="reference external" href="https://github.com/adobe-fonts/source-code-pro">Adobe&#8217;s Source Code Pro</a>
-is a good font to use (it is also an excellent font for programming or other
-purposes where a fixed-width font is desirable).
-Follow the
-<a class="reference external" href="https://github.com/adobe-fonts/source-code-pro/blob/master/README.md">download and install instructions</a>,
-and then set <a class="reference external" href="https://www.jetbrains.com/idea/help/configuring-colors-and-fonts.html">IntelliJ&#8217;s editor font</a>
-to use it.</p>
-<p>Another font that works well in Mac OS X, Linux, and Windows is
-<a class="reference external" href="https://github.com/andreberg/Meslo-Font">Meslo</a>.</p>
+<p>In macOS, the Menlo font is fixed-width for Logika math symbols.</p>
+<p>For Linux and Windows (and even macOS),
+<a class="reference external" href="https://github.com/andreberg/Meslo-Font">Meslo</a>
+is a good font to use; it is also an excellent font for programming or other
+purposes where a fixed-width font is desirable.</p>
 </div>
 </div>
 <div class="section" id="live-update">
@@ -313,7 +296,7 @@ If accepted and LIVE is updated, you may also need to update Sireum v3.</p>
 is launched.
 In such case, it displays the following notification:</p>
 <a class="reference internal image-reference" href="../../_images/sireum-update.png"><img alt="../../_images/sireum-update.png" src="../../_images/sireum-update.png" style="width: 50%;" /></a>
-<p>To update, see <a class="reference internal" href="../01-getting-started/index.html#binary-installing-running"><span class="std std-ref">Installing, Running, and Updating Logika</span></a>.</p>
+<p>To update, see <a class="reference internal" href="../01-getting-started/index.html#binary-installing-running"><span class="std std-ref">Installing Logika</span></a>.</p>
 </div>
 <div class="section" id="using-sireum-v3-source-distribution">
 <h3>2.4.2. Using Sireum v3 Source Distribution<a class="headerlink" href="#using-sireum-v3-source-distribution" title="Permalink to this headline">¶</a></h3>
@@ -329,11 +312,11 @@ to update Sireum.</p>
 <span id="id2"></span><h2>2.5. LIVE Examples<a class="headerlink" href="#live-examples" title="Permalink to this headline">¶</a></h2>
 <p>To see how LIVE works,
 open the <a class="reference external" href="https://github.com/sireum/v3-logika-examples">Logika examples repository</a>
-(which was downloaded/cloned in <a class="reference internal" href="../01-getting-started/index.html#logika-examples"><span class="std std-ref">Verifying Examples</span></a>)
+(which was downloaded/cloned in <a class="reference internal" href="../01-getting-started/index.html#logika-examples"><span class="std std-ref">Verifying Examples using Sireum CLI</span></a>)
 as an <a class="reference external" href="https://www.jetbrains.com/idea/help/opening-reopening-and-closing-projects.html">IntelliJ project</a>.</p>
 <p>If this is your first time opening the project, you need to
 <a class="reference external" href="https://www.jetbrains.com/idea/help/configuring-global-project-and-module-sdks.html">configure the project SDK</a>
-(note: the SDK Type should be Java SDK), and point it to the <code class="docutils literal"><span class="pre">sireum-v3/platform/java</span></code> directory
+(note: the SDK Type should be Java SDK), and point it to the <code class="docutils literal"><span class="pre">SIREUM_HOME/platform/java</span></code> directory
 (which was created during the process of :ref:` installing Logika &lt;getting-started&gt;`).</p>
 <p>Opening any of the <code class="docutils literal"><span class="pre">.logika</span></code> files would:</p>
 <hr class="docutils" />
@@ -346,8 +329,8 @@ as an <a class="reference external" href="https://www.jetbrains.com/idea/help/op
 </ul>
 <hr class="docutils" />
 <ul>
-<li><p class="first">Cause LIVE to ask for the Sireum v3 installation directory (if this is the first time).</p>
-<p>Just point it to <code class="docutils literal"><span class="pre">sireum-v3</span></code> (see <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>).</p>
+<li><p class="first">Cause LIVE to ask for the Sireum v3 installation directory (if it cannot infer Sireum v3 location).</p>
+<p>Just point it to <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> (see <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>).</p>
 <p>If LIVE cannot confirm that the selected directory contains a working Sireum v3
 installation, it will display the following:</p>
 <a class="reference internal image-reference" href="../../_images/sireum-dir-invalid.png"><img alt="../../_images/sireum-dir-invalid.png" src="../../_images/sireum-dir-invalid.png" style="width: 300.0px; height: 139.5px;" /></a>
