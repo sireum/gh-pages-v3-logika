@@ -41,21 +41,21 @@ Home
            <div class="panel-body">
 
 Sireum Logika is both a highly-automated program verifier and a
-natural deduction (manual) proof checker for propositional,
+manual (natural deduction) proof checker for propositional,
 predicate, and programming logics, where manual proof steps
 can be used to help automation.
-It uses the same input language for reasoning about the logics
+It provides a hierarchical input languages for reasoning about the logics
 (i.e., the propositional logic language is a subset of the predicate logic language,
 which in turn, is embedded in the programming logic language).
 The Logika programming language itself is a subset of `Scala <http://scala-lang.org>`__.
 Thus, Logika programs can be developed/run/compiled by using the regular Scala language
-tooling and IDEs (equipped with the |LogikaRuntime|).
-Additionally, Logika programs can be translated to C and then compiled using
-the `CompCert Verified C Compiler <http://compcert.inria.fr>`__, thus
-providing high-assurance toolchain for program correctness down to machine code.
+tooling and IDEs.
+Additionally, Logika provides an automatic program translation to C, whose results
+can be compiled using the `CompCert Verified C Compiler <http://compcert.inria.fr>`__,
+thus providing a high-assurance toolchain for program correctness down to machine code.
 
-The `IntelliJ <https://www.jetbrains.com/idea/>`__-based :ref:`sireum-ive`
-provides an all-in-one coding, testing, contracting, and proving environment for Logika, and
+The :ref:`Sireum <sireum-ive>` :ref:`live`
+provides an all-in-one coding, testing, and proving environment for Logika, and
 `CLion <https://www.jetbrains.com/clion/>`__ can be used to test/debug and integrate
 Logika generated C code (Logika generates `CMake <https://cmake.org>`__ files suitable
 for CLion projects).
