@@ -44,20 +44,24 @@ Sireum Logika is both a highly-automated program verifier and a
 manual (natural deduction) proof checker for propositional,
 predicate, and programming logics, where manual proof steps
 can be used to help automation.
-The Logika programming language is a subset of `Scala <http://scala-lang.org>`__.
-Thus, Logika programs can be developed/run/compiled by using the regular Scala language
-tooling and IDEs.
+The Logika programming language is a subset of `Scala <http://scala-lang.org>`__
+that is designed for verification,
+i.e., language features are incrementally added along with supporting
+verification features.
+As Logika programs are Scala programs, they can be developed, compiled, and tested by
+using the regular Scala language tooling and IDEs.
 Additionally, Logika provides an automatic program translation to C, whose results
 can be compiled using the `CompCert Verified C Compiler <http://compcert.inria.fr>`__,
 thus providing a high-assurance toolchain for program correctness down to machine code.
 
-The :ref:`Sireum <sireum-ive>` :ref:`live`
+The IntelliJ-based :ref:`Sireum <sireum-ive>` :ref:`Integrated Verification Environment (IVE)<live>`
 provides an all-in-one coding, testing, and proving environment for Logika, and
-`CLion <https://www.jetbrains.com/clion/>`__ can be used to test/debug and integrate
+`CLion <https://www.jetbrains.com/clion/>`__ can be used to integrate, test, or debug
 Logika generated C code (Logika generates `CMake <https://cmake.org>`__ files suitable
 for CLion projects).
-For teaching, we are developing a set of :ref:`course notes <course-notes>`, which is an adaptation
-of the |ProgrammingLogics| lecture notes written by |Schmidt|.
+For teaching, we are developing a set of :ref:`course notes <course-notes>`,
+which is an adaptation of the |ProgrammingLogics| lecture notes written by
+|Schmidt|.
 
 Logika is inspired by:
 
@@ -70,7 +74,8 @@ Logika is inspired by:
 * The `Floyd-Hoare Programming Logic Proof Checker <http://people.cis.ksu.edu/~schmidt/301s14/cis301.zip>`__
   developed by Schmidt that accompanies his |ProgrammingLogics| lecture notes.
 
-Logika uses the `Z3 <https://github.com/Z3Prover/z3>`__ theorem prover for proof automation.
+Sireum Logika is an `open source <https://github.com/sireum/v3>`__ project released under
+a `BSD <https://github.com/sireum/v3/blob/release/license.md>`__ license.
 
 .. raw:: html
 
@@ -94,6 +99,7 @@ Logika uses the `Z3 <https://github.com/Z3Prover/z3>`__ theorem prover for proof
              Phone: (785) 532-6350<br/>
              Fax: (785) 532-7353<br/>
              Email: <a href="mailto:robby@k-state.edu">robby@ksu.edu</a>
+             <br/>
              <br/>
              <br/>
              <br/>
