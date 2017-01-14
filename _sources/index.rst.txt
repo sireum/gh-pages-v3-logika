@@ -50,13 +50,14 @@ i.e., language features are incrementally added along with supporting
 verification features.
 As Logika programs are Scala programs, they can be developed, compiled, and tested by
 using the regular Scala language tooling and IDEs.
-Additionally, Logika provides an automatic program translation to C, whose results
-can be compiled using the `CompCert Verified C Compiler <http://compcert.inria.fr>`__,
+Additionally, Logika provides an automatic program translation to human-readable and
+source-traceable C code, whose results can be compiled using the
+`CompCert Verified C Compiler <http://compcert.inria.fr>`__,
 thus providing a high-assurance toolchain for program correctness down to machine code.
 
 The IntelliJ-based :ref:`Sireum <sireum-ive>` :ref:`Integrated Verification Environment (IVE)<live>`
 provides an all-in-one coding, testing, and proving environment for Logika, and
-`CLion <https://www.jetbrains.com/clion/>`__ can be used to integrate, test, or debug
+`CLion <https://www.jetbrains.com/clion/>`__ can be used to integrate, test, and debug
 Logika generated C code (Logika generates `CMake <https://cmake.org>`__ files suitable
 for CLion projects).
 For teaching, we are developing a set of :ref:`course notes <course-notes>`,
@@ -106,6 +107,7 @@ a `BSD <https://github.com/sireum/v3/blob/release/license.md>`__ license.
              <br/>
              <br/>
              <p/>
+             <br/>
              <br/>
              <br/>
              <br/>
