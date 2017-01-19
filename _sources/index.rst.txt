@@ -109,7 +109,7 @@ a `BSD <https://github.com/sireum/v3/blob/release/license.md>`__ license.
            <div class="panel-body">
            <p></p>
 
-* :ref:`Installing Sireum IVE <sireum-ive>`
+* :ref:`Installing Sireum IVE <sireum-ive>` [`2 min. tutorial <http://files.sireum.org/media/sireum-ive-win64.mp4>`__]
 
 * `Example repository <https://github.com/sireum/v3-logika-examples>`__
 
