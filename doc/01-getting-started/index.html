@@ -177,6 +177,14 @@ Sireum Logika Documentation
 <a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
 <div class="section" id="using-sireum-v3-binary-distribution">
 <span id="using-binary"></span><h2>1.1. Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Sireum v3 binary distributions can be verified with the following
+<a class="reference external" href="https://jedisct1.github.io/minisign/">minisign</a>
+command:</p>
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm &lt;file&gt;
+</pre></div>
+</div>
+<hr class="docutils" />
 <div class="section" id="installing-logika">
 <span id="binary-installing-running"></span><h3>1.1.1. Installing Logika<a class="headerlink" href="#installing-logika" title="Permalink to this headline">¶</a></h3>
 <p>There are two kinds of Sireum v3 binary distributions:
@@ -196,6 +204,7 @@ with various plugins installed, along with the Sireum CLI.</p>
 <div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-idea-mac64.dmg http://bit.ly/2i6jvbX &amp;&amp; open sireum-v3-idea-mac64.dmg
 </pre></div>
 </div>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2jRUAGz">http://bit.ly/2jRUAGz</a></p>
 <p>Once it is done, it should open a new window:</p>
 <img alt="../../_images/sireum-v3-idea-mac64.dmg.png" src="../../_images/sireum-v3-idea-mac64.dmg.png" />
 <p>Drag and drop the Sireum icon to the Applications folder.</p>
@@ -210,6 +219,7 @@ you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file 
 <div class="section" id="sireum-ive-for-linux">
 <h5>Sireum IVE for Linux<a class="headerlink" href="#sireum-ive-for-linux" title="Permalink to this headline">¶</a></h5>
 <p>Download from: <a class="reference external" href="http://bit.ly/2ja1oic">http://bit.ly/2ja1oic</a></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2k62F9W">http://bit.ly/2k62F9W</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/Sireum</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/Sireum</span></code>).</p>
@@ -219,6 +229,7 @@ you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file 
 <div class="section" id="sireum-ive-for-windows">
 <h5>Sireum IVE for Windows<a class="headerlink" href="#sireum-ive-for-windows" title="Permalink to this headline">¶</a></h5>
 <p>Download from: <a class="reference external" href="http://bit.ly/2iw7hFN">http://bit.ly/2iw7hFN</a></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2iHq8So">http://bit.ly/2iHq8So</a></p>
 <p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\Sireum\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\Sireum</span></code>.</p>
 <p>To run Sireum IVE:</p>
@@ -244,6 +255,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 <div class="section" id="sireum-cli-for-macos">
 <h5>Sireum CLI for macOS<a class="headerlink" href="#sireum-cli-for-macos" title="Permalink to this headline">¶</a></h5>
 <p>Download from: <a class="reference external" href="http://bit.ly/2jluudT">http://bit.ly/2jluudT</a></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2jEelUz">http://bit.ly/2jEelUz</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
@@ -252,6 +264,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 <div class="section" id="sireum-cli-for-linux">
 <h5>Sireum CLI for Linux<a class="headerlink" href="#sireum-cli-for-linux" title="Permalink to this headline">¶</a></h5>
 <p>Download from: <a class="reference external" href="http://bit.ly/2j051Ks">http://bit.ly/2j051Ks</a></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2iPSUeU">http://bit.ly/2iPSUeU</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
@@ -260,6 +273,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 <div class="section" id="sireum-cli-for-windows">
 <h5>Sireum CLI for Windows<a class="headerlink" href="#sireum-cli-for-windows" title="Permalink to this headline">¶</a></h5>
 <p>Download from: <a class="reference external" href="http://bit.ly/2i6llK8">http://bit.ly/2i6llK8</a></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/2iYOPIN">http://bit.ly/2iYOPIN</a></p>
 <p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\sireum-v3\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\sireum-v3</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
