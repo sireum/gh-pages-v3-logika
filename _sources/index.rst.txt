@@ -76,7 +76,7 @@ Logika is inspired by:
   developed by Schmidt that accompanies his |ProgrammingLogics| lecture notes.
 
 Sireum Logika is an `open source <https://github.com/sireum/v3>`__ project released under
-a `BSD <https://github.com/sireum/v3/blob/release/license.md>`__ license.
+the `Simplified BSD <https://github.com/sireum/v3/blob/release/license.md>`__ license.
 
 .. raw:: html
 
