@@ -91,15 +91,15 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg
+   curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg
 
 .. raw:: html
 
       </td>
-      <td style="position: relative; top: 50%; transform: translateY(-10%);">
+      <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacRelease" data-clipboard-text="curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
-          <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+        <button id="copyMacRelease" data-clipboard-text="curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
+          <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
      </tr>
@@ -117,7 +117,7 @@ Drag and drop the Sireum icon to the Applications folder.
 (Note: the above avoids `GateKeeper <https://support.apple.com/en-us/HT202491>`__;
 if it is instead downloaded using a browser,
 you need to remove Apple's quarantine extended attribute on the .dmg file before opening it as follows:
-``xattr -d com.apple.quarantine sireum-v3-idea-mac64.dmg``).
+``xattr -d com.apple.quarantine sireum-v3-ive-mac64.dmg``).
 
 For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum.app/Contents/Resources/sireum-v3``.
 
@@ -250,15 +250,15 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg
+   curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg
 
 .. raw:: html
 
       </td>
-      <td style="position: relative; top: 50%; transform: translateY(-10%);">
+      <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacDevelopment" data-clipboard-text="curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
-          <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+        <button id="copyMacDevelopment" data-clipboard-text="curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
+          <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
      </tr>
@@ -276,7 +276,7 @@ Drag and drop the Sireum icon to the Applications folder.
 (Note: the above avoids `GateKeeper <https://support.apple.com/en-us/HT202491>`__;
 if it is instead downloaded using a browser,
 you need to remove Apple's quarantine extended attribute on the .dmg file before opening it as follows:
-``xattr -d com.apple.quarantine sireum-v3-idea-mac64.dmg``).
+``xattr -d com.apple.quarantine sireum-v3-dev-ive-mac64.dmg``).
 
 For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum.app/Contents/Resources/sireum-v3``.
 
@@ -389,8 +389,11 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
 .. note::
 
-   Sireum v3 binary distributions are cryptographically signed; the digital signature
-   can be verified using the following
+   Sireum v3 binary distributions are cryptographically-signed if you want ensure that
+   your copy is untampered
+   (`read more <https://www.openbsd.org/papers/bsdcan-signify.html>`__).
+
+   The digital signature can be verified using the following
    `minisign <https://jedisct1.github.io/minisign/>`__
    command:
 
@@ -407,18 +410,17 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
    .. raw:: html
 
          </td>
-         <td style="position: relative; top: 50%; transform: translateY(-10%);">
+         <td style="vertical-align: text-top;">
            &nbsp;&nbsp;
            <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
-             <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+             <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
            </button>
          </td>
         </tr>
       </table>
 
    Alternatively, you can use the following
-   `signify <https://www.openbsd.org/papers/bsdcan-signify.html>`__
-   command:
+   `signify <https://github.com/search?q=signify+OpenBSD>`__ command:
 
    .. raw:: html
 
@@ -428,17 +430,17 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
    .. code:: bash
 
-      signify -p key.pub -x <file>.minisig -Vm <file>
+      signify -p sireum-v3-key.pub -x <file>.minisig -Vm <file>
 
-   where the file ``key.pub`` stores the text ``RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu``.
+   where ``sireum-v3-key.pub`` can be downloaded from: http://bit.ly/sv3key
 
    .. raw:: html
 
          </td>
-         <td style="position: relative; top: 50%; transform: translateY(-25%);">
+         <td style="vertical-align: text-top;">
            &nbsp;&nbsp;
-           <button id="copySignify" data-clipboard-text="signify -p key.pub -x .minisig -Vm">
-             <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+           <button id="copySignify" data-clipboard-text="signify -p sireum-v3-key.pub -x .minisig -Vm">
+             <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
            </button>
          </td>
         </tr>
@@ -583,12 +585,7 @@ When it finishes, Logika will display its usage information:
 .. note::
 
    For the remainder of this document, we use ``LOGIKA`` as a shorthand for
-   ``sireum-v3/sireum logika``. You can introduce a ``bash`` alias for it as follows:
-
-   .. code:: bash
-
-      alias LOGIKA="$(cd "$(dirname sireum-v3/sireum)" && pwd)/$(basename sireum-v3/sireum) logika"
-
+   ``sireum-v3/sireum logika``.
 
 .. _source-update:
 

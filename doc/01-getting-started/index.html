@@ -200,14 +200,14 @@ experimental features.</p>
          <div class="tab-pane" id="birm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem &amp;&amp; open sireum-v3-ive-mac64.dmg
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem &amp;&amp; open sireum-v3-ive-mac64.dmg
 </pre></div>
 </div>
    </td>
-   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+   <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copyMacRelease" data-clipboard-text="curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
-       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     <button id="copyMacRelease" data-clipboard-text="curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
+       <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
   </tr>
@@ -220,7 +220,7 @@ experimental features.</p>
 <p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
 if it is instead downloaded using a browser,
 you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
-<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-idea-mac64.dmg</span></code>).</p>
+<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-ive-mac64.dmg</span></code>).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
@@ -292,14 +292,14 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
       <div class="tab-pane active" id="bidm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem &amp;&amp; open sireum-v3-dev-ive-mac64.dmg
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem &amp;&amp; open sireum-v3-dev-ive-mac64.dmg
 </pre></div>
 </div>
    </td>
-   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+   <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copyMacDevelopment" data-clipboard-text="curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
-       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     <button id="copyMacDevelopment" data-clipboard-text="curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
+       <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
   </tr>
@@ -312,7 +312,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 <p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
 if it is instead downloaded using a browser,
 you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
-<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-idea-mac64.dmg</span></code>).</p>
+<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-dev-ive-mac64.dmg</span></code>).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
@@ -372,8 +372,10 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
   </div>
 </div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Sireum v3 binary distributions are cryptographically signed; the digital signature
-can be verified using the following
+<p>Sireum v3 binary distributions are cryptographically-signed if you want ensure that
+your copy is untampered
+(<a class="reference external" href="https://www.openbsd.org/papers/bsdcan-signify.html">read more</a>).</p>
+<p>The digital signature can be verified using the following
 <a class="reference external" href="https://jedisct1.github.io/minisign/">minisign</a>
 command:</p>
 <table width="100%" >
@@ -382,27 +384,26 @@ command:</p>
 </pre></div>
 </div>
    </td>
-   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+   <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
      <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
-       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+       <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
   </tr>
 </table><p>Alternatively, you can use the following
-<a class="reference external" href="https://www.openbsd.org/papers/bsdcan-signify.html">signify</a>
-command:</p>
+<a class="reference external" href="https://github.com/search?q=signify+OpenBSD">signify</a> command:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>signify -p key.pub -x &lt;file&gt;.minisig -Vm &lt;file&gt;
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>signify -p sireum-v3-key.pub -x &lt;file&gt;.minisig -Vm &lt;file&gt;
 </pre></div>
 </div>
-<p>where the file <code class="docutils literal"><span class="pre">key.pub</span></code> stores the text <code class="docutils literal"><span class="pre">RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu</span></code>.</p>
+<p>where <code class="docutils literal"><span class="pre">sireum-v3-key.pub</span></code> can be downloaded from: <a class="reference external" href="http://bit.ly/sv3key">http://bit.ly/sv3key</a></p>
    </td>
-   <td style="position: relative; top: 50%; transform: translateY(-25%);">
+   <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copySignify" data-clipboard-text="signify -p key.pub -x .minisig -Vm">
-       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     <button id="copySignify" data-clipboard-text="signify -p sireum-v3-key.pub -x .minisig -Vm">
+       <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
   </tr>
@@ -571,11 +572,8 @@ Symbol Conversion Options:
 <p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
-<code class="docutils literal"><span class="pre">sireum-v3/sireum</span> <span class="pre">logika</span></code>. You can introduce a <code class="docutils literal"><span class="pre">bash</span></code> alias for it as follows:</p>
-<div class="code bash last highlight-none"><div class="highlight"><pre><span></span>alias LOGIKA=&quot;$(cd &quot;$(dirname sireum-v3/sireum)&quot; &amp;&amp; pwd)/$(basename sireum-v3/sireum) logika&quot;
-</pre></div>
-</div>
+<p class="last">For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
+<code class="docutils literal"><span class="pre">sireum-v3/sireum</span> <span class="pre">logika</span></code>.</p>
 </div>
 </div>
 <div class="section" id="source-update">
