@@ -452,7 +452,7 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
         addClass(document.getElementById('birmp'), 'active');
         addClass(document.getElementById('birm'), 'active');
       }
-      if (navigator.appVersion.indexOf("Linux")!=-1) {
+      if (navigator.appVersion.indexOf("Linux")!=-1 || navigator.appVersion.indexOf("X11")!=-1) {
         addClass(document.getElementById('birlp'), 'active');
         addClass(document.getElementById('birl'), 'active');
       }
