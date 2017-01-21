@@ -1,5 +1,7 @@
 .. raw:: html
 
+   <script src="../../_static/clipboard.min.js" ></script>
+   <script src="../../_static/class.js" ></script>
    <br/>
    <font color="darkgray">
    <big><big><b>
@@ -23,7 +25,7 @@ Getting Started
 ###############
 
 Logika runs on x64 macOS, Linux, and Windows operating systems
-(tested on macOS 10.12, Manjaro 15.02, Ubuntu 14.04, and Windows 10).
+(tested on macOS 10.12, Manjaro, Ubuntu 16.04, and Windows 10).
 
 There two ways one can install Logika: :ref:`using-binary` or
 :ref:`using-source`.
@@ -33,35 +35,6 @@ There two ways one can install Logika: :ref:`using-binary` or
 Using Sireum v3 Binary Distribution
 ***********************************
 
-----
-
-Sireum v3 binary distributions can be verified with the following
-`minisign <https://jedisct1.github.io/minisign/>`__
-command:
-
-.. code:: bash
-
-   minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm <file>
-
-----
-
-.. _binary-installing-running:
-
-Installing Logika
-=================
-
-There are two kinds of Sireum v3 binary distributions:
-(1) :ref:`sireum-ive`, and
-(2) :ref:`sireum-cli`.
-
-Sireum IVE includes a custom `IntelliJ IDEA <http://www.jetbrains.com/idea>`__ Community Edition
-with various plugins installed, along with the Sireum CLI.
-
-.. _sireum-ive:
-
-Sireum Integrated Verification Environment (IVE)
-------------------------------------------------
-
 .. raw:: html
 
    <hr/>
@@ -70,16 +43,70 @@ Sireum Integrated Verification Environment (IVE)
    </center>
    <hr/>
 
-Sireum IVE for macOS
-++++++++++++++++++++
+.. _binary-installing-running:
+
+Installation
+============
+
+There are two kinds of Sireum v3 binary distributions:
+(1) Sireum Integrated Verification Environment (IVE), and
+(2) Sireum Command-Line Interface (CLI).
+Sireum IVE includes a custom
+`IntelliJ IDEA <http://www.jetbrains.com/idea>`__
+Community Edition with various plugins installed, along with the Sireum CLI.
+
+In addition to the regular **Release** builds,
+we also provide **Development** builds for trying out Sireum v3
+experimental features.
+
+----
+
+.. raw:: html
+
+   <ul class="nav nav-tabs">
+     <li class="active"><a href="#br" data-toggle="tab">Release</a></li>
+     <li><a href="#bd" data-toggle="tab">Development</a></li>
+   </ul>
+   <div class="tab-content">
+  <div class="tab-pane active" id="br"><br/>
+       <div id="brt" class="container">
+         <ul class="nav nav-pills">
+           <li id="birmp"><a href="#birm" data-toggle="tab">IVE for macOS</a></li>
+           <li id="birlp"><a href="#birl" data-toggle="tab">IVE for Linux</a></li>
+           <li id="birlw"><a href="#birw" data-toggle="tab">IVE for Windows</a></li>
+           <li><a href="#bcrm" data-toggle="tab">CLI for macOS</a></li>
+           <li><a href="#bcrl" data-toggle="tab">CLI for Linux</a></li>
+           <li><a href="#bcrw" data-toggle="tab">CLI for Windows</a></li>
+         </ul>
+         <div class="tab-content ">
+    	   <div class="tab-pane" id="birm"><p></p><hr/>
 
 Execute the following in a bash terminal:
 
+.. raw:: html
+
+   <table width="100%" >
+     <tr>
+      <td>
+
 .. code:: bash
 
-   curl -J -L -o sireum-v3-idea-mac64.dmg http://bit.ly/2i6jvbX && open sireum-v3-idea-mac64.dmg
+   curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg
 
-|Minisign|: http://bit.ly/2jRUAGz
+.. raw:: html
+
+      </td>
+      <td style="position: relative; top: 50%; transform: translateY(-10%);">
+        &nbsp;&nbsp;
+        <button id="copyMacRelease" data-clipboard-text="curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
+          <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+        </button>
+      </td>
+     </tr>
+   </table>
+   <script>
+     new Clipboard(document.getElementById('copyMacRelease'));
+   </script>
 
 Once it is done, it should open a new window:
 
@@ -98,12 +125,14 @@ To run Sireum IVE, double-click ``Sireum`` inside ``/Applications`` (or, in a te
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-Sireum IVE for Linux
-++++++++++++++++++++
+|Minisign|: http://bit.ly/sv3ivems
 
-Download from: http://bit.ly/2ja1oic
+.. raw:: html
 
-|Minisign|: http://bit.ly/2k62F9W
+           </div>
+    	   <div class="tab-pane" id="birl"><p></p><hr/>
+
+Download from: http://bit.ly/sv3ivel
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -114,12 +143,14 @@ To run Sireum IVE in a terminal: ``SIREUM_HOME/idea``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-Sireum IVE for Windows
-++++++++++++++++++++++
+|Minisign|: http://bit.ly/sv3ivels
 
-Download from: http://bit.ly/2iw7hFN
+.. raw:: html
 
-|Minisign|: http://bit.ly/2iHq8So
+           </div>
+    	   <div class="tab-pane" id="birw"><p></p><hr/>
+
+Download from: http://bit.ly/sv3ivew
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\Sireum\sireum.bat`` is present.
 
@@ -140,18 +171,14 @@ To run Sireum IVE:
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``
 
+|Minisign|: http://bit.ly/sv3ivews
 
-.. _sireum-cli:
+.. raw:: html
 
-Sireum Command-Line Interface (CLI)
------------------------------------
+           </div>
+    	   <div class="tab-pane" id="bcrm"><p></p><hr/>
 
-Sireum CLI for macOS
-++++++++++++++++++++
-
-Download from: http://bit.ly/2jluudT
-
-|Minisign|: http://bit.ly/2jEelUz
+Download from: http://bit.ly/sv3clim
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -160,12 +187,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-Sireum CLI for Linux
-++++++++++++++++++++
+|Minisign|: http://bit.ly/sv3clims
 
-Download from: http://bit.ly/2j051Ks
+.. raw:: html
 
-|Minisign|: http://bit.ly/2iPSUeU
+           </div>
+    	   <div class="tab-pane" id="bcrl"><p></p><hr/>
+
+Download from: http://bit.ly/sv3clil
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -174,12 +203,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-Sireum CLI for Windows
-++++++++++++++++++++++
+|Minisign|: http://bit.ly/sv3clils
 
-Download from: http://bit.ly/2i6llK8
+.. raw:: html
 
-|Minisign|: http://bit.ly/2iYOPIN
+           </div>
+    	   <div class="tab-pane" id="bcrw"><p></p><hr/>
+
+Download from: http://bit.ly/sv3cliw
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\sireum-v3\sireum.bat`` is present.
 
@@ -187,9 +218,254 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\sireum-v3``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
+|Minisign|: http://bit.ly/sv3cliws
 
-Running Logika
-==============
+.. raw:: html
+
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="tab-pane" id="bd"><br/>
+       <div id="bdt" class="container">
+         <ul class="nav nav-pills">
+           <li class="active"><a href="#bidm" data-toggle="tab">IVE for macOS</a></li>
+           <li><a href="#bidl" data-toggle="tab">IVE for Linux</a></li>
+           <li><a href="#bidw" data-toggle="tab">IVE for Windows</a></li>
+           <li><a href="#bcdm" data-toggle="tab">CLI for macOS</a></li>
+           <li><a href="#bcdl" data-toggle="tab">CLI for Linux</a></li>
+           <li><a href="#bcdw" data-toggle="tab">CLI for Windows</a></li>
+         </ul>
+         <div class="tab-content ">
+    	   <div class="tab-pane active" id="bidm"><p></p><hr/>
+
+Execute the following in a bash terminal:
+
+.. raw:: html
+
+
+   <table width="100%" >
+     <tr>
+      <td>
+
+.. code:: bash
+
+   curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg
+
+.. raw:: html
+
+      </td>
+      <td style="position: relative; top: 50%; transform: translateY(-10%);">
+        &nbsp;&nbsp;
+        <button id="copyMacDevelopment" data-clipboard-text="curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
+          <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+        </button>
+      </td>
+     </tr>
+   </table>
+   <script>
+     new Clipboard(document.getElementById('copyMacDevelopment'));
+   </script>
+
+Once it is done, it should open a new window:
+
+.. image:: sireum-v3-idea-mac64.dmg.png
+
+Drag and drop the Sireum icon to the Applications folder.
+
+(Note: the above avoids `GateKeeper <https://support.apple.com/en-us/HT202491>`__;
+if it is instead downloaded using a browser,
+you need to remove Apple's quarantine extended attribute on the .dmg file before opening it as follows:
+``xattr -d com.apple.quarantine sireum-v3-idea-mac64.dmg``).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum.app/Contents/Resources/sireum-v3``.
+
+To run Sireum IVE, double-click ``Sireum`` inside ``/Applications`` (or, in a terminal: ``open /Applications/Sireum.app``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+|Minisign|: http://bit.ly/sv3divems
+
+.. raw:: html
+
+           </div>
+    	   <div class="tab-pane" id="bidl"><p></p><hr/>
+
+Download from: http://bit.ly/sv3divel
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/Sireum`` (or ``~/Applications/Sireum``).
+
+To run Sireum IVE in a terminal: ``SIREUM_HOME/idea``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+|Minisign|: http://bit.ly/sv3divels
+
+.. raw:: html
+
+           </div>
+    	   <div class="tab-pane" id="bidw"><p></p><hr/>
+
+Download from: http://bit.ly/sv3divew
+
+Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\Sireum\sireum.bat`` is present.
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\Sireum``.
+
+To run Sireum IVE:
+
+* double-click, either:
+
+  * 32-bit: ``SIREUM_HOME\apps\idea\bin\idea.exe``, or
+
+  * 64-bit: ``SIREUM_HOME\apps\idea\bin\idea64.exe``
+
+    This requires Java 8 64-bit, which is available in ``SIREUM_HOME\platform\java``;
+    to use that, add ``SIREUM_HOME\platform\java\bin`` to your ``PATH`` environment variable.
+
+* in a terminal: ``SIREUM_HOME\idea.bat`` or ``SIREUM_HOME\idea64.bat``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``
+
+|Minisign|: http://bit.ly/sv3divews
+
+.. raw:: html
+
+           </div>
+    	   <div class="tab-pane" id="bcdm"><p></p><hr/>
+
+Download from: http://bit.ly/sv3dclim
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or ``~/Applications/sireum-v3``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+|Minisign|: http://bit.ly/sv3dclims
+
+.. raw:: html
+
+           </div>
+    	   <div class="tab-pane" id="bcdl"><p></p><hr/>
+
+Download from: http://bit.ly/sv3dclil
+
+Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
+(or ``~/Applications``, if your home directory path does not contain a whitespace).
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or ``~/Applications/sireum-v3``).
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
+
+|Minisign|: http://bit.ly/sv3dclils
+
+.. raw:: html
+
+           </div>
+    	   <div class="tab-pane" id="bcdw"><p></p><hr/>
+
+Download from: http://bit.ly/sv3dcliw
+
+Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\sireum-v3\sireum.bat`` is present.
+
+For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\sireum-v3``.
+
+To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
+
+|Minisign|: http://bit.ly/sv3dcliws
+
+.. raw:: html
+
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+.. note::
+
+   Sireum v3 binary distributions are cryptographically signed; the digital signature
+   can be verified using the following
+   `minisign <https://jedisct1.github.io/minisign/>`__
+   command:
+
+   .. raw:: html
+
+      <table width="100%" >
+        <tr>
+         <td>
+
+   .. code:: bash
+
+      minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm <file>
+
+   .. raw:: html
+
+         </td>
+         <td style="position: relative; top: 50%; transform: translateY(-10%);">
+           &nbsp;&nbsp;
+           <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
+             <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+           </button>
+         </td>
+        </tr>
+      </table>
+
+   Alternatively, you can use the following
+   `signify <https://www.openbsd.org/papers/bsdcan-signify.html>`__
+   command:
+
+   .. raw:: html
+
+      <table width="100%" >
+        <tr>
+         <td>
+
+   .. code:: bash
+
+      signify -p key.pub -x <file>.minisig -Vm <file>
+
+   where the file ``key.pub`` stores the text ``RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu``.
+
+   .. raw:: html
+
+         </td>
+         <td style="position: relative; top: 50%; transform: translateY(-25%);">
+           &nbsp;&nbsp;
+           <button id="copySignify" data-clipboard-text="signify -p key.pub -x .minisig -Vm">
+             <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+           </button>
+         </td>
+        </tr>
+      </table>
+   .. raw:: html
+
+      <script>
+      new Clipboard(document.getElementById('copySignify'));
+
+      if (navigator.appVersion.indexOf("Mac")!=-1) {
+        addClass(document.getElementById('birmp'), 'active');
+        addClass(document.getElementById('birm'), 'active');
+      }
+      if (navigator.appVersion.indexOf("Linux")!=-1) {
+        addClass(document.getElementById('birlp'), 'active');
+        addClass(document.getElementById('birl'), 'active');
+      }
+      if (navigator.appVersion.indexOf("Win")!=-1) {
+        addClass(document.getElementById('birwp'), 'active');
+        addClass(document.getElementById('birw'), 'active');
+      }
+      </script>
+
+----
+
+Running Logika using Sireum CLI
+===============================
 
 To run Logika:
 
@@ -249,7 +525,7 @@ On macOS, you can install ``wget`` using:
 
   or
 
-* `Homebrew <http://brew.sh>`__: ``sudo port install wget``
+* `Homebrew <http://brew.sh>`__: ``brew install wget``
 
 Linux
 -----

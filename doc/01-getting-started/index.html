@@ -83,22 +83,8 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">1. Getting Started</a><ul>
 <li><a class="reference internal" href="#using-sireum-v3-binary-distribution">1.1. Using Sireum v3 Binary Distribution</a><ul>
-<li><a class="reference internal" href="#installing-logika">1.1.1. Installing Logika</a><ul>
-<li><a class="reference internal" href="#sireum-integrated-verification-environment-ive">1.1.1.1. Sireum Integrated Verification Environment (IVE)</a><ul>
-<li><a class="reference internal" href="#sireum-ive-for-macos">Sireum IVE for macOS</a></li>
-<li><a class="reference internal" href="#sireum-ive-for-linux">Sireum IVE for Linux</a></li>
-<li><a class="reference internal" href="#sireum-ive-for-windows">Sireum IVE for Windows</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#sireum-command-line-interface-cli">1.1.1.2. Sireum Command-Line Interface (CLI)</a><ul>
-<li><a class="reference internal" href="#sireum-cli-for-macos">Sireum CLI for macOS</a></li>
-<li><a class="reference internal" href="#sireum-cli-for-linux">Sireum CLI for Linux</a></li>
-<li><a class="reference internal" href="#sireum-cli-for-windows">Sireum CLI for Windows</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#running-logika">1.1.2. Running Logika</a></li>
+<li><a class="reference internal" href="#installation">1.1.1. Installation</a></li>
+<li><a class="reference internal" href="#running-logika-using-sireum-cli">1.1.2. Running Logika using Sireum CLI</a></li>
 <li><a class="reference internal" href="#updating-logika">1.1.3. Updating Logika</a></li>
 </ul>
 </li>
@@ -158,7 +144,9 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <br/>
+  <script src="../../_static/clipboard.min.js" ></script>
+<script src="../../_static/class.js" ></script>
+<br/>
 <font color="darkgray">
 <big><big><b>
 Sireum Logika Documentation
@@ -172,40 +160,61 @@ Sireum Logika Documentation
 </font><div class="section" id="getting-started">
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Logika runs on x64 macOS, Linux, and Windows operating systems
-(tested on macOS 10.12, Manjaro 15.02, Ubuntu 14.04, and Windows 10).</p>
+(tested on macOS 10.12, Manjaro, Ubuntu 16.04, and Windows 10).</p>
 <p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span class="std std-ref">Using Sireum v3 Binary Distribution</span></a> or
 <a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
 <div class="section" id="using-sireum-v3-binary-distribution">
 <span id="using-binary"></span><h2>1.1. Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
-<hr class="docutils" />
-<p>Sireum v3 binary distributions can be verified with the following
-<a class="reference external" href="https://jedisct1.github.io/minisign/">minisign</a>
-command:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre><span></span>minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm &lt;file&gt;
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="section" id="installing-logika">
-<span id="binary-installing-running"></span><h3>1.1.1. Installing Logika<a class="headerlink" href="#installing-logika" title="Permalink to this headline">¶</a></h3>
-<p>There are two kinds of Sireum v3 binary distributions:
-(1) <a class="reference internal" href="#sireum-ive"><span class="std std-ref">Sireum Integrated Verification Environment (IVE)</span></a>, and
-(2) <a class="reference internal" href="#sireum-cli"><span class="std std-ref">Sireum Command-Line Interface (CLI)</span></a>.</p>
-<p>Sireum IVE includes a custom <a class="reference external" href="http://www.jetbrains.com/idea">IntelliJ IDEA</a> Community Edition
-with various plugins installed, along with the Sireum CLI.</p>
-<div class="section" id="sireum-integrated-verification-environment-ive">
-<span id="sireum-ive"></span><h4>1.1.1.1. Sireum Integrated Verification Environment (IVE)<a class="headerlink" href="#sireum-integrated-verification-environment-ive" title="Permalink to this headline">¶</a></h4>
 <hr/>
 <center>
 <p>Video Tutorial: <a href="http://files.sireum.org/media/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a></p>
 </center>
-<hr/><div class="section" id="sireum-ive-for-macos">
-<h5>Sireum IVE for macOS<a class="headerlink" href="#sireum-ive-for-macos" title="Permalink to this headline">¶</a></h5>
-<p>Execute the following in a bash terminal:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-idea-mac64.dmg http://bit.ly/2i6jvbX &amp;&amp; open sireum-v3-idea-mac64.dmg
+<hr/><div class="section" id="installation">
+<span id="binary-installing-running"></span><h3>1.1.1. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>There are two kinds of Sireum v3 binary distributions:
+(1) Sireum Integrated Verification Environment (IVE), and
+(2) Sireum Command-Line Interface (CLI).
+Sireum IVE includes a custom
+<a class="reference external" href="http://www.jetbrains.com/idea">IntelliJ IDEA</a>
+Community Edition with various plugins installed, along with the Sireum CLI.</p>
+<p>In addition to the regular <strong>Release</strong> builds,
+we also provide <strong>Development</strong> builds for trying out Sireum v3
+experimental features.</p>
+<hr class="docutils" />
+ <ul class="nav nav-tabs">
+   <li class="active"><a href="#br" data-toggle="tab">Release</a></li>
+   <li><a href="#bd" data-toggle="tab">Development</a></li>
+ </ul>
+ <div class="tab-content">
+<div class="tab-pane active" id="br"><br/>
+     <div id="brt" class="container">
+       <ul class="nav nav-pills">
+         <li id="birmp"><a href="#birm" data-toggle="tab">IVE for macOS</a></li>
+         <li id="birlp"><a href="#birl" data-toggle="tab">IVE for Linux</a></li>
+         <li id="birlw"><a href="#birw" data-toggle="tab">IVE for Windows</a></li>
+         <li><a href="#bcrm" data-toggle="tab">CLI for macOS</a></li>
+         <li><a href="#bcrl" data-toggle="tab">CLI for Linux</a></li>
+         <li><a href="#bcrw" data-toggle="tab">CLI for Windows</a></li>
+       </ul>
+       <div class="tab-content ">
+         <div class="tab-pane" id="birm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
+<table width="100%" >
+  <tr>
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem &amp;&amp; open sireum-v3-ive-mac64.dmg
 </pre></div>
 </div>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2jRUAGz">http://bit.ly/2jRUAGz</a></p>
-<p>Once it is done, it should open a new window:</p>
+   </td>
+   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+     &nbsp;&nbsp;
+     <button id="copyMacRelease" data-clipboard-text="curl -J -L -o sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
+       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     </button>
+   </td>
+  </tr>
+</table>
+<script>
+  new Clipboard(document.getElementById('copyMacRelease'));
+</script><p>Once it is done, it should open a new window:</p>
 <img alt="../../_images/sireum-v3-idea-mac64.dmg.png" src="../../_images/sireum-v3-idea-mac64.dmg.png" />
 <p>Drag and drop the Sireum icon to the Applications folder.</p>
 <p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
@@ -215,21 +224,17 @@ you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file 
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivems">http://bit.ly/sv3ivems</a></p>
 </div>
-<div class="section" id="sireum-ive-for-linux">
-<h5>Sireum IVE for Linux<a class="headerlink" href="#sireum-ive-for-linux" title="Permalink to this headline">¶</a></h5>
-<p>Download from: <a class="reference external" href="http://bit.ly/2ja1oic">http://bit.ly/2ja1oic</a></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2k62F9W">http://bit.ly/2k62F9W</a></p>
+<div class="tab-pane" id="birl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3ivel">http://bit.ly/sv3ivel</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/Sireum</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/Sireum</span></code>).</p>
 <p>To run Sireum IVE in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/idea</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivels">http://bit.ly/sv3ivels</a></p>
 </div>
-<div class="section" id="sireum-ive-for-windows">
-<h5>Sireum IVE for Windows<a class="headerlink" href="#sireum-ive-for-windows" title="Permalink to this headline">¶</a></h5>
-<p>Download from: <a class="reference external" href="http://bit.ly/2iw7hFN">http://bit.ly/2iw7hFN</a></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2iHq8So">http://bit.ly/2iHq8So</a></p>
+<div class="tab-pane" id="birw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3ivew">http://bit.ly/sv3ivew</a></p>
 <p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\Sireum\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\Sireum</span></code>.</p>
 <p>To run Sireum IVE:</p>
@@ -248,40 +253,179 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 </li>
 </ul>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivews">http://bit.ly/sv3ivews</a></p>
 </div>
-</div>
-<div class="section" id="sireum-command-line-interface-cli">
-<span id="sireum-cli"></span><h4>1.1.1.2. Sireum Command-Line Interface (CLI)<a class="headerlink" href="#sireum-command-line-interface-cli" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="sireum-cli-for-macos">
-<h5>Sireum CLI for macOS<a class="headerlink" href="#sireum-cli-for-macos" title="Permalink to this headline">¶</a></h5>
-<p>Download from: <a class="reference external" href="http://bit.ly/2jluudT">http://bit.ly/2jluudT</a></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2jEelUz">http://bit.ly/2jEelUz</a></p>
+<div class="tab-pane" id="bcrm"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3clim">http://bit.ly/sv3clim</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3clims">http://bit.ly/sv3clims</a></p>
 </div>
-<div class="section" id="sireum-cli-for-linux">
-<h5>Sireum CLI for Linux<a class="headerlink" href="#sireum-cli-for-linux" title="Permalink to this headline">¶</a></h5>
-<p>Download from: <a class="reference external" href="http://bit.ly/2j051Ks">http://bit.ly/2j051Ks</a></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2iPSUeU">http://bit.ly/2iPSUeU</a></p>
+<div class="tab-pane" id="bcrl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3clil">http://bit.ly/sv3clil</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
 (or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3clils">http://bit.ly/sv3clils</a></p>
 </div>
-<div class="section" id="sireum-cli-for-windows">
-<h5>Sireum CLI for Windows<a class="headerlink" href="#sireum-cli-for-windows" title="Permalink to this headline">¶</a></h5>
-<p>Download from: <a class="reference external" href="http://bit.ly/2i6llK8">http://bit.ly/2i6llK8</a></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/2iYOPIN">http://bit.ly/2iYOPIN</a></p>
+<div class="tab-pane" id="bcrw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3cliw">http://bit.ly/sv3cliw</a></p>
 <p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\sireum-v3\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\sireum-v3</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3cliws">http://bit.ly/sv3cliws</a></p>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="tab-pane" id="bd"><br/>
+  <div id="bdt" class="container">
+    <ul class="nav nav-pills">
+      <li class="active"><a href="#bidm" data-toggle="tab">IVE for macOS</a></li>
+      <li><a href="#bidl" data-toggle="tab">IVE for Linux</a></li>
+      <li><a href="#bidw" data-toggle="tab">IVE for Windows</a></li>
+      <li><a href="#bcdm" data-toggle="tab">CLI for macOS</a></li>
+      <li><a href="#bcdl" data-toggle="tab">CLI for Linux</a></li>
+      <li><a href="#bcdw" data-toggle="tab">CLI for Windows</a></li>
+    </ul>
+    <div class="tab-content ">
+      <div class="tab-pane active" id="bidm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
+<table width="100%" >
+  <tr>
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem &amp;&amp; open sireum-v3-dev-ive-mac64.dmg
+</pre></div>
 </div>
+   </td>
+   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+     &nbsp;&nbsp;
+     <button id="copyMacDevelopment" data-clipboard-text="curl -J -L -o sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
+       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     </button>
+   </td>
+  </tr>
+</table>
+<script>
+  new Clipboard(document.getElementById('copyMacDevelopment'));
+</script><p>Once it is done, it should open a new window:</p>
+<img alt="../../_images/sireum-v3-idea-mac64.dmg.png" src="../../_images/sireum-v3-idea-mac64.dmg.png" />
+<p>Drag and drop the Sireum icon to the Applications folder.</p>
+<p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
+if it is instead downloaded using a browser,
+you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
+<code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-idea-mac64.dmg</span></code>).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
+<p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divems">http://bit.ly/sv3divems</a></p>
 </div>
-<div class="section" id="running-logika">
-<h3>1.1.2. Running Logika<a class="headerlink" href="#running-logika" title="Permalink to this headline">¶</a></h3>
+<div class="tab-pane" id="bidl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3divel">http://bit.ly/sv3divel</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/Sireum</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/Sireum</span></code>).</p>
+<p>To run Sireum IVE in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/idea</span></code>.</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divels">http://bit.ly/sv3divels</a></p>
+</div>
+<div class="tab-pane" id="bidw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3divew">http://bit.ly/sv3divew</a></p>
+<p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\Sireum\sireum.bat</span></code> is present.</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\Sireum</span></code>.</p>
+<p>To run Sireum IVE:</p>
+<ul>
+<li><p class="first">double-click, either:</p>
+<ul>
+<li><p class="first">32-bit: <code class="docutils literal"><span class="pre">SIREUM_HOME\apps\idea\bin\idea.exe</span></code>, or</p>
+</li>
+<li><p class="first">64-bit: <code class="docutils literal"><span class="pre">SIREUM_HOME\apps\idea\bin\idea64.exe</span></code></p>
+<p>This requires Java 8 64-bit, which is available in <code class="docutils literal"><span class="pre">SIREUM_HOME\platform\java</span></code>;
+to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\platform\java\bin</span></code> to your <code class="docutils literal"><span class="pre">PATH</span></code> environment variable.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\idea.bat</span></code> or <code class="docutils literal"><span class="pre">SIREUM_HOME\idea64.bat</span></code>.</p>
+</li>
+</ul>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code></p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divews">http://bit.ly/sv3divews</a></p>
+</div>
+<div class="tab-pane" id="bcdm"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dclim">http://bit.ly/sv3dclim</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dclims">http://bit.ly/sv3dclims</a></p>
+</div>
+<div class="tab-pane" id="bcdl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dclil">http://bit.ly/sv3dclil</a></p>
+<p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal"><span class="pre">/opt</span></code>
+(or <code class="docutils literal"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dclils">http://bit.ly/sv3dclils</a></p>
+</div>
+<div class="tab-pane" id="bcdw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dcliw">http://bit.ly/sv3dcliw</a></p>
+<p>Uncompress it to the <code class="docutils literal"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal"><span class="pre">C:\</span></code>) so the file <code class="docutils literal"><span class="pre">C:\sireum-v3\sireum.bat</span></code> is present.</p>
+<p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">C:\sireum-v3</span></code>.</p>
+<p>To run Sireum CLI in a terminal: <code class="docutils literal"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
+<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dcliws">http://bit.ly/sv3dcliws</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Sireum v3 binary distributions are cryptographically signed; the digital signature
+can be verified using the following
+<a class="reference external" href="https://jedisct1.github.io/minisign/">minisign</a>
+command:</p>
+<table width="100%" >
+  <tr>
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm &lt;file&gt;
+</pre></div>
+</div>
+   </td>
+   <td style="position: relative; top: 50%; transform: translateY(-10%);">
+     &nbsp;&nbsp;
+     <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
+       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     </button>
+   </td>
+  </tr>
+</table><p>Alternatively, you can use the following
+<a class="reference external" href="https://www.openbsd.org/papers/bsdcan-signify.html">signify</a>
+command:</p>
+<table width="100%" >
+  <tr>
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>signify -p key.pub -x &lt;file&gt;.minisig -Vm &lt;file&gt;
+</pre></div>
+</div>
+<p>where the file <code class="docutils literal"><span class="pre">key.pub</span></code> stores the text <code class="docutils literal"><span class="pre">RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu</span></code>.</p>
+   </td>
+   <td style="position: relative; top: 50%; transform: translateY(-25%);">
+     &nbsp;&nbsp;
+     <button id="copySignify" data-clipboard-text="signify -p key.pub -x .minisig -Vm">
+       <img height="24" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
+     </button>
+   </td>
+  </tr>
+</table><div class="last"><script>
+new Clipboard(document.getElementById('copySignify'));
+
+if (navigator.appVersion.indexOf("Mac")!=-1) {
+  addClass(document.getElementById('birmp'), 'active');
+  addClass(document.getElementById('birm'), 'active');
+}
+if (navigator.appVersion.indexOf("Linux")!=-1) {
+  addClass(document.getElementById('birlp'), 'active');
+  addClass(document.getElementById('birl'), 'active');
+}
+if (navigator.appVersion.indexOf("Win")!=-1) {
+  addClass(document.getElementById('birwp'), 'active');
+  addClass(document.getElementById('birw'), 'active');
+}
+</script></div></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="running-logika-using-sireum-cli">
+<h3>1.1.2. Running Logika using Sireum CLI<a class="headerlink" href="#running-logika-using-sireum-cli" title="Permalink to this headline">¶</a></h3>
 <p>To run Logika:</p>
 <ul>
 <li><p class="first">Under <strong>macOS</strong> or <strong>Linux</strong>:</p>
@@ -354,7 +498,7 @@ above instructions.</p>
 <li><p class="first"><a class="reference external" href="https://www.macports.org">MacPorts</a>: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">port</span> <span class="pre">install</span> <span class="pre">wget</span></code></p>
 <p>or</p>
 </li>
-<li><p class="first"><a class="reference external" href="http://brew.sh">Homebrew</a>: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">port</span> <span class="pre">install</span> <span class="pre">wget</span></code></p>
+<li><p class="first"><a class="reference external" href="http://brew.sh">Homebrew</a>: <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">wget</span></code></p>
 </li>
 </ul>
 </div>
