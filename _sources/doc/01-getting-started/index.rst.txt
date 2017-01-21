@@ -393,9 +393,8 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
    just in case you want ensure that your copy is untampered
    (`read more <https://www.openbsd.org/papers/bsdcan-signify.html>`__).
 
-   The accompanying Minisign digital signature can be verified using the following
-   `minisign <https://jedisct1.github.io/minisign/>`__
-   command:
+   The accompanying `Minisign <https://jedisct1.github.io/minisign/>`__
+   digital signature can be verified using the following command:
 
    .. raw:: html
 
