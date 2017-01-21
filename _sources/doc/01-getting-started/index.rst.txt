@@ -73,7 +73,7 @@ experimental features.
          <ul class="nav nav-pills">
            <li id="birmp"><a href="#birm" data-toggle="tab">IVE for macOS</a></li>
            <li id="birlp"><a href="#birl" data-toggle="tab">IVE for Linux</a></li>
-           <li id="birlw"><a href="#birw" data-toggle="tab">IVE for Windows</a></li>
+           <li id="birwp"><a href="#birw" data-toggle="tab">IVE for Windows</a></li>
            <li><a href="#bcrm" data-toggle="tab">CLI for macOS</a></li>
            <li><a href="#bcrl" data-toggle="tab">CLI for Linux</a></li>
            <li><a href="#bcrw" data-toggle="tab">CLI for Windows</a></li>
