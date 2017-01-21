@@ -389,8 +389,8 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
 .. note::
 
-   Sireum v3 binary distributions are cryptographically-signed if you want ensure that
-   your copy is untampered
+   Sireum v3 binary distributions that we provide are cryptographically-signed
+   just in case you want ensure that your copy is untampered
    (`read more <https://www.openbsd.org/papers/bsdcan-signify.html>`__).
 
    The digital signature can be verified using the following
