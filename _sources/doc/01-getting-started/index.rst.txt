@@ -278,7 +278,7 @@ if it is instead downloaded using a browser,
 you need to remove Apple's quarantine extended attribute on the .dmg file before opening it as follows:
 ``xattr -d com.apple.quarantine sireum-v3-dev-ive-mac64.dmg``).
 
-For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum-dev.app/Contents/Resources/sireum-v3``.
+For subsequent instructions, replace ``SIREUM_HOME`` with ``/Applications/Sireum-dev.app/Contents/Resources/sireum-v3-dev``.
 
 To run Sireum IVE, double-click ``Sireum-dev`` inside ``/Applications`` (or, in a terminal: ``open /Applications/Sireum-dev.app``).
 
