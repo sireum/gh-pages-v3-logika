@@ -519,7 +519,7 @@ after/post claims of the corresponding program location.
 For example,
 
 .. image:: live-hint.png
-   :scale: 100
+   :width: 100%
 
 when the |hintIcon| bulb gutter icon associated with
 ``a(x) = a(x) * a(x)`` at line 16 is clicked,
