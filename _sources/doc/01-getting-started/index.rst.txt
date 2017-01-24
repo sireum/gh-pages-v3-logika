@@ -39,7 +39,8 @@ Using Sireum v3 Binary Distribution
 
    <hr/>
    <center>
-   <p>Video Tutorial: <a href="http://files.sireum.org/media/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a></p>
+   <p>Video Tutorials: (1) <a href="http://files.sireum.org/media/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a>, and
+   (2) <a href="http://files.sireum.org/media/sireum-ive-examples.mp4">Verifying Logika Examples using Sireum IVE</a></p>
    </center>
    <hr/>
 
