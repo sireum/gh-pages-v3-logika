@@ -20,8 +20,7 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -35,6 +34,8 @@
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="Sireum Logika" href="../../../index.html" />
+    <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
     <link rel="next" title="3.4. Programming Logic" href="../programming/index.html" />
     <link rel="prev" title="3.2. Propositional Logic" href="../propositional/index.html" />
   </head>
@@ -403,7 +404,7 @@ inference rule applications.</p>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                   </span><span class="c">// Forall-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="forall-intro-pattern">
+<div class="literal-block-wrapper container" id="forall-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. {
      X1. a                                                   // variable  a  has to be fresh
@@ -421,7 +422,7 @@ the proof violates the <a class="reference internal" href="#pred-well-formed"><s
 defined in an enclosing sub-proof, both of which are disallowed).</p>
 <p>The following alternative pattern is used grouping multiple
 quantified variables in a single ∀-quantification.</p>
-<div class="literal-block-wrapper docutils container" id="forall-intro-alt-pattern">
+<div class="literal-block-wrapper container" id="forall-intro-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. {
      X1. a                                                   // variable  a  has to be fresh
@@ -440,7 +441,7 @@ Z. ∀x,y1,…,yN P{x}                           ∀i X            // P{x} ≡ [
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">            </span><span class="c">// Forall-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="forall-elim-pattern">
+<div class="literal-block-wrapper container" id="forall-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x P{x}                                   …
 Z. [E/x]P{x}                                 ∀e X E
@@ -449,7 +450,7 @@ Z. [E/x]P{x}                                 ∀e X E
 </div>
 <p>The following pattern is used for eliminating multiple quantified
 variables at once.</p>
-<div class="literal-block-wrapper docutils container" id="forall-elim-alt-pattern">
+<div class="literal-block-wrapper container" id="forall-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xN P{x1,…,xN}                       …               // N &gt; 1 (otherwise the previous applies)
 Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &lt;= N
@@ -457,7 +458,7 @@ Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &l
 </div>
 </div>
 <p>The following can be applied for nested ∀-quantifications.</p>
-<div class="literal-block-wrapper docutils container" id="forall-elim-alt2-pattern">
+<div class="literal-block-wrapper container" id="forall-elim-alt2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt2-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xK ∀x(K+1),…,xN P{x1,…,xN}          …
 Z. ∀x(J+1),…,xN [E1/x1]…[EJ/xK]P{x1,…,xN}    ∀e X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
@@ -475,21 +476,21 @@ for any positive <code class="docutils literal"><span class="pre">M</span></code
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">            </span><span class="c">// Exists-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="exists-intro-pattern">
+<div class="literal-block-wrapper container" id="exists-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. [E/x]P{x}                                 …
 Z. ∃x P{x}                                   ∃i X E
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="exists-intro-alt-pattern">
+<div class="literal-block-wrapper container" id="exists-intro-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EK/xK]P{x}                       …
 Z. ∃x1,…,xN P{x}                             ∃i X E1 … EK    // K &lt;= N, N &gt; 1 (otherwise the previous applies)
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="exists-intro-alt2-pattern">
+<div class="literal-block-wrapper container" id="exists-intro-alt2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt2-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EJ/xJ]P{x}                       …
 Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
@@ -503,7 +504,7 @@ Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &l
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">              </span><span class="c">// Exists-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="exists-elim-pattern">
+<div class="literal-block-wrapper container" id="exists-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Exists-Elimination (∃e) Schematic Pattern</strong></span><a class="headerlink" href="#exists-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. ∃x P{x}
 Y. {
@@ -516,7 +517,7 @@ Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="exists-elim-alt-pattern">
+<div class="literal-block-wrapper container" id="exists-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Elimination (∃e) Schematic Pattern</strong></span><a class="headerlink" href="#exists-elim-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X. ∃x,y1,…,yN P{x}                                           // N &gt; 0 (otherwise the previous applies)
 Y. {
