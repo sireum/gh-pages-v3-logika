@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -34,8 +35,6 @@
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="top" title="Sireum Logika" href="../../../index.html" />
-    <link rel="up" title="3. The Logika Formal Input Language" href="../index.html" />
     <link rel="next" title="3.3. Predicate Logic" href="../predicate/index.html" />
     <link rel="prev" title="3.1. Basic Language Elements" href="../basic/index.html" />
   </head>
@@ -436,7 +435,7 @@ to its true self.</p>
 <p>The ∧i rule requires two arguments, which are regular proof step
 numbers (<code class="docutils literal"><span class="pre">rNUM</span></code>s).</p>
 <p>Here is a schematic pattern for valid inference using ∧i:</p>
-<div class="literal-block-wrapper container" id="and-intro-pattern">
+<div class="literal-block-wrapper docutils container" id="and-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Introduction (∧i) Schematic Pattern</strong></span><a class="headerlink" href="#and-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          … // justification for P
 Y.  Q          … // justification for Q
@@ -491,7 +490,7 @@ in <a class="reference internal" href="../../../dschmidt/07-propositional-logic/
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="and-elim1-pattern">
+<div class="literal-block-wrapper docutils container" id="and-elim1-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Elimination1 (∧e1) Schematic Pattern</strong></span><a class="headerlink" href="#and-elim1-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  R ∧ Q      …
 Z.  R          ∧e1 X
@@ -505,7 +504,7 @@ Z.  R          ∧e1 X
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="and-elim2-pattern">
+<div class="literal-block-wrapper docutils container" id="and-elim2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>And-Elimination2 (∧e2) Schematic Pattern</strong></span><a class="headerlink" href="#and-elim2-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∧ R      …
 Z.  R          ∧e2 X
@@ -522,7 +521,7 @@ Z.  R          ∧e2 X
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="or-intro1-pattern">
+<div class="literal-block-wrapper docutils container" id="or-intro1-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Introduction1 (∨i1) Schematic Pattern</strong></span><a class="headerlink" href="#or-intro1-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          …
 Z.  P ∨ Q      ∨i1 X       // R ≡ P ∨ Q
@@ -536,7 +535,7 @@ Z.  P ∨ Q      ∨i1 X       // R ≡ P ∨ Q
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="or-intro2-pattern">
+<div class="literal-block-wrapper docutils container" id="or-intro2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Introduction2 (∨i2) Schematic Pattern</strong></span><a class="headerlink" href="#or-intro2-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  Q          …
 Z.  P ∨ Q      ∨i2 X       // R ≡ P ∨ Q
@@ -554,7 +553,7 @@ Z.  P ∨ Q      ∨i2 X       // R ≡ P ∨ Q
 <p>The ∨e justification requires two sub-proofs as its second
 and third arguments (referred by using their
 proof step <code class="docutils literal"><span class="pre">sNUM</span></code>ber).</p>
-<div class="literal-block-wrapper container" id="or-elim-pattern">
+<div class="literal-block-wrapper docutils container" id="or-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Or-Elimination (∨e) Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∨ Q      …
 Y1. {
@@ -584,7 +583,7 @@ note that &#8220;ore&#8221; is an alias for ∨e).</p>
 <p>Justification of
 <a class="reference external" href="https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L44">conditional-1.logika&#8217;s line#44</a>
 leverages the following Logika alternative pattern for ∨e.</p>
-<div class="literal-block-wrapper container" id="or-elim-alt-pattern">
+<div class="literal-block-wrapper docutils container" id="or-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Or-Elimination (∨e) Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-alt-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P ∨ Q      …
 Y1. {
@@ -618,7 +617,7 @@ because then <code class="docutils literal"><span class="pre">R</span> <span cla
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="imply-intro-pattern">
+<div class="literal-block-wrapper docutils container" id="imply-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Implication-Introduction (→i) Schematic Pattern</strong></span><a class="headerlink" href="#imply-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. P    assume
@@ -637,7 +636,7 @@ Z.  P → Q      →i X        // R ≡ P → Q
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="imply-elim-pattern">
+<div class="literal-block-wrapper docutils container" id="imply-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Implication-Elimination (→e) Schematic Pattern</strong></span><a class="headerlink" href="#imply-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P → R      …
 Y.  P          …
@@ -652,7 +651,7 @@ Z.  R          →e X Y
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="neg-intro-pattern">
+<div class="literal-block-wrapper docutils container" id="neg-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Negation-Introduction (¬i) Schematic Pattern</strong></span><a class="headerlink" href="#neg-intro-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. P    assume
@@ -671,7 +670,7 @@ Z.  ¬P         ¬i X        // R ≡ ¬P
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="neg-elim-pattern">
+<div class="literal-block-wrapper docutils container" id="neg-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Negation-Elimination (¬e) Schematic Pattern</strong></span><a class="headerlink" href="#neg-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  P          …
 Y.  ¬P         …
@@ -686,7 +685,7 @@ Z.  ⊥          ¬e X Y      // R ≡ ⊥
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="bottom-elim-pattern">
+<div class="literal-block-wrapper docutils container" id="bottom-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>⊥-Elimination (⊥e) Schematic Pattern</strong></span><a class="headerlink" href="#bottom-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  ⊥          …
 Z.  R          ⊥e X        // R  can be anything
@@ -700,7 +699,7 @@ Z.  R          ⊥e X        // R  can be anything
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper container" id="pbc-elim-pattern">
+<div class="literal-block-wrapper docutils container" id="pbc-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Proof-by-Contradiction (pbc) Schematic Pattern</strong></span><a class="headerlink" href="#pbc-elim-pattern" title="Permalink to this code">¶</a></div>
 <div class="highlight-none"><div class="highlight"><pre><span></span>X.  {
       X1. ¬R   assume

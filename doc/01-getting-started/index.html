@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -34,8 +35,6 @@
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
     <link rel="next" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
     <link rel="prev" title="Sireum Logika Documentation" href="../index.html" />
   </head>
@@ -523,7 +522,7 @@ First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></
 <span id="source-installing-running"></span><h3>1.2.2. Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To install Logika, enter the following commands under <code class="docutils literal"><span class="pre">bash</span></code>
 (<em>in a directory whose path does not contain whitespaces</em>):</p>
-<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3.git sireum-v3
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/sireum/v3.git sireum-v3
 sireum-v3/sireum logika
 </pre></div>
 </div>
@@ -579,9 +578,9 @@ Symbol Conversion Options:
 </div>
 <div class="section" id="source-update">
 <span id="id2"></span><h3>1.2.3. Updating Logika<a class="headerlink" href="#source-update" title="Permalink to this headline">¶</a></h3>
-<p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
+<p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--recurse-submodules</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
 <div class="code bash highlight-none"><div class="highlight"><pre><span></span>cd sireum-v3
-git pull
+git pull --recurse-submodules
 LOGIKA
 </pre></div>
 </div>

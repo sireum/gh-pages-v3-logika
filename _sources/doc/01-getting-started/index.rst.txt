@@ -556,7 +556,7 @@ To install Logika, enter the following commands under ``bash``
 
 .. code:: bash
 
-   git clone https://github.com/sireum/v3.git sireum-v3
+   git clone --recursive https://github.com/sireum/v3.git sireum-v3
    sireum-v3/sireum logika
 
 The first command clones the `Sireum v3 Git repository <https://github.com/sireum/v3>`__
@@ -592,12 +592,12 @@ When it finishes, Logika will display its usage information:
 Updating Logika
 ===============
 
-To get updates, simply do a ``git pull`` inside ``sireum-v3`` and run Logika again:
+To get updates, simply do a ``git pull --recurse-submodules`` inside ``sireum-v3`` and run Logika again:
 
 .. code:: bash
 
    cd sireum-v3
-   git pull
+   git pull --recurse-submodules
    LOGIKA
 
 .. _logika-examples:

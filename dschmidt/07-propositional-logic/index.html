@@ -20,7 +20,8 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -34,8 +35,6 @@
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Logika: Programming Logics" href="../index.html" />
     <link rel="next" title="8. The Predicate-Logic Quantifiers" href="../08-predicate-logic/index.html" />
     <link rel="prev" title="6. Loops, Invariants, Induction" href="../06-loops-invariants-induction/index.html" />
   </head>
@@ -92,30 +91,30 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#or-introduction-and-or-elimination">7.4. Or-Introduction and Or-Elimination</a><ul>
-<li><a class="reference internal" href="#id13">7.4.1. Rules</a></li>
-<li><a class="reference internal" href="#id14">7.4.2. Examples</a></li>
-<li><a class="reference internal" href="#id15">7.4.3. Tactics</a></li>
+<li><a class="reference internal" href="#id1">7.4.1. Rules</a></li>
+<li><a class="reference internal" href="#id2">7.4.2. Examples</a></li>
+<li><a class="reference internal" href="#id3">7.4.3. Tactics</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#implies-introduction-and-implies-elimination">7.5. Implies-Introduction and Implies-Elimination</a><ul>
-<li><a class="reference internal" href="#id20">7.5.1. Rules</a></li>
-<li><a class="reference internal" href="#id21">7.5.2. Examples</a></li>
-<li><a class="reference internal" href="#id22">7.5.3. Tactics</a></li>
+<li><a class="reference internal" href="#id4">7.5.1. Rules</a></li>
+<li><a class="reference internal" href="#id5">7.5.2. Examples</a></li>
+<li><a class="reference internal" href="#id6">7.5.3. Tactics</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#negation">7.6. Negation</a><ul>
-<li><a class="reference internal" href="#id31">7.6.1. Rules</a></li>
-<li><a class="reference internal" href="#id32">7.6.2. Examples</a></li>
+<li><a class="reference internal" href="#id7">7.6.1. Rules</a></li>
+<li><a class="reference internal" href="#id8">7.6.2. Examples</a></li>
 <li><a class="reference internal" href="#tactic">7.6.3. Tactic</a></li>
 <li><a class="reference internal" href="#negation-introduction">7.6.4. Negation Introduction</a><ul>
 <li><a class="reference internal" href="#rule">Rule</a></li>
-<li><a class="reference internal" href="#id37">Examples</a></li>
-<li><a class="reference internal" href="#id38">Tactic</a></li>
+<li><a class="reference internal" href="#id9">Examples</a></li>
+<li><a class="reference internal" href="#id10">Tactic</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#proof-by-contradiction">7.6.5. Proof by Contradiction</a><ul>
-<li><a class="reference internal" href="#id43">Rule</a></li>
-<li><a class="reference internal" href="#id44">Examples</a></li>
+<li><a class="reference internal" href="#id11">Rule</a></li>
+<li><a class="reference internal" href="#id12">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -359,9 +358,9 @@ knowledge&#8221;.</p>
 <h3>7.3.3. Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
 <p>A <em>tactic</em> is a useful step towards proving a goal.
 The rules for conjunction come with these two tactics, which we rate from
-(*) to (<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>) based on their utility:</p>
+(*) to (***) based on their utility:</p>
 <ul>
-<li><p class="first">(<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>) <code class="docutils literal"><span class="pre">^i</span></code>-tactic: If your task is to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then</p>
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">^i</span></code>-tactic: If your task is to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then</p>
 <ol class="arabic simple">
 <li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
 <li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
@@ -393,7 +392,7 @@ j.   R
 </ul>
 <p>Let&#8217;s apply the tactics to one of the previous examples:</p>
 <ol class="arabic">
-<li><p class="first">Prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span> <span class="pre">^</span> <span class="pre">P</span></code>: Use the (<a href="#id9"><span class="problematic" id="id10">**</span></a><a href="#id11"><span class="problematic" id="id12">*</span></a>)-<code class="docutils literal"><span class="pre">^i</span></code> tactic to generate two
+<li><p class="first">Prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span> <span class="pre">^</span> <span class="pre">P</span></code>: Use the (***)-<code class="docutils literal"><span class="pre">^i</span></code> tactic to generate two
 subgoals, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span></code> and also <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">P</span></code></p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premises
        (fill in)
@@ -450,8 +449,8 @@ coffee.</li>
 </ol>
 <p>So, in both cases, you can buy the coffee.</p>
 <p>This pattern of deduction is formalized in the <code class="docutils literal"><span class="pre">Ve</span></code>-rule below.</p>
-<div class="section" id="id13">
-<h3>7.4.1. Rules<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>7.4.1. Rules<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>                                                      { P assume    { Q assume
          P                  Q                 P V Q     ... R    }    ... R    }
 Vi1 : --------    Vi2 :  --------        Ve: ------------------------------------
@@ -464,8 +463,8 @@ sequence of deductions to reprove <code class="docutils literal"><span class="pr
 Each case is a &#8220;subproof&#8221; that is indented with braces.
 Once both cases are proved, you conclude <code class="docutils literal"><span class="pre">R</span></code> no matter what.</p>
 </div>
-<div class="section" id="id14">
-<h3>7.4.2. Examples<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>7.4.2. Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>p |- q V p
 
 {
@@ -555,11 +554,11 @@ sake of discussion of the case.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h3>7.4.3. Tactics<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>7.4.3. Tactics<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>There is one good tactic, and one not-so-good:</p>
 <ul>
-<li><p class="first">(<a href="#id16"><span class="problematic" id="id17">**</span></a><a href="#id18"><span class="problematic" id="id19">*</span></a>) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
 premise or proved fact in the partial proof, then</p>
 <ol class="arabic simple">
 <li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
@@ -624,8 +623,8 @@ In this sense, <code class="docutils literal"><span class="pre">R</span></code>,
 <p>Stated more precisely, the situation where <code class="docutils literal"><span class="pre">P,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">Q</span></code> lets us
 conclude that <code class="docutils literal"><span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>.
 These two ideas, which go hand in hand, are formalized below.</p>
-<div class="section" id="id20">
-<h3>7.5.1. Rules<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>7.5.1. Rules<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none"><div class="highlight"><pre><span></span>       { P assume
          ... Q    }                P -&gt; Q   P
 -&gt;i : --------------       -&gt;e :  ------------
@@ -638,8 +637,8 @@ a fact.
 If assuming <code class="docutils literal"><span class="pre">P</span></code> (plus using other facts we already have) leads to a proof of
 <code class="docutils literal"><span class="pre">Q</span></code>, then we conclude that <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is a fact.</p>
 </div>
-<div class="section" id="id21">
-<h3>7.5.2. Examples<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>7.5.2. Examples<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Here are two simple uses of <code class="docutils literal"><span class="pre">-&gt;e</span></code></p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>(p ^ q) -&gt; r,  p -&gt; q,  p  |-  r
 
@@ -739,11 +738,11 @@ We employ a similar tactic in this example</p>
 This example shows how mastery of basic deduction rules allows one to reason far
 more precisely than ordinary people do in real life.</p>
 </div>
-<div class="section" id="id22">
-<h3>7.5.3. Tactics<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>7.5.3. Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Implication comes with two good tactics:</p>
 <ul>
-<li><p class="first">(<a href="#id23"><span class="problematic" id="id24">**</span></a><a href="#id25"><span class="problematic" id="id26">*</span></a>) <code class="docutils literal"><span class="pre">-&gt;i</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>,</p>
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">-&gt;i</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>,</p>
 <ol class="arabic simple">
 <li>assume <code class="docutils literal"><span class="pre">P</span></code></li>
 <li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
@@ -782,7 +781,7 @@ k.  R
 </div>
 </li>
 </ul>
-<p>In an earlier proof example, you see an immediate use of the (<a href="#id27"><span class="problematic" id="id28">**</span></a><a href="#id29"><span class="problematic" id="id30">*</span></a>)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
+<p>In an earlier proof example, you see an immediate use of the (***)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
 tactic to the new subgoal</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>P -&gt; (Q -&gt; R), Q ^ P |- R
 </pre></div>
@@ -807,8 +806,8 @@ for some proposition, <code class="docutils literal"><span class="pre">P</span><
 A contradiction states an impossible situation, that is, <code class="docutils literal"><span class="pre">P</span></code> is a fact at the
 same time that it is not a fact.
 It is a &#8220;crash&#8221;, &#8220;the end of the world (or at least of the proof!)&#8221;.</p>
-<div class="section" id="id31">
-<h3>7.6.1. Rules<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>7.6.1. Rules<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>We use this symbol &#8212; <code class="docutils literal"><span class="pre">_|_</span></code> (math: ⊥) &#8212; to stand for a
 contradiction.
 There is an extra rule to deduce you have proved a contradiction</p>
@@ -838,8 +837,8 @@ _|_e :  ------  for any proposition, Q, at all
 </pre></div>
 </div>
 </div>
-<div class="section" id="id32">
-<h3>7.6.2. Examples<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>7.6.2. Examples<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">_|_e</span></code>-rule works well with case analysis, where we discover that one case
 is impossible.
 Here is the classic example</p>
@@ -928,7 +927,7 @@ l.   Q            _|_e k
 </pre></div>
 </div>
 <p>In the previous proof example, we see that <code class="docutils literal"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is proved quickly
-once we obtain as a new fact (via an assumption, thanks to the (<a href="#id33"><span class="problematic" id="id34">**</span></a><a href="#id35"><span class="problematic" id="id36">*</span></a>)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
+once we obtain as a new fact (via an assumption, thanks to the (***)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
 tactic!).</p>
 </div>
 <div class="section" id="negation-introduction">
@@ -953,8 +952,8 @@ fact &#8211; we have <code class="docutils literal"><span class="pre">Q,</span> 
 results, then it is impossible for <code class="docutils literal"><span class="pre">P</span></code> to ever be a fact &#8211; indeed, <code class="docutils literal"><span class="pre">~P</span></code> is
 the fact that holds.</p>
 </div>
-<div class="section" id="id37">
-<h4>Examples<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>Examples<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-none"><div class="highlight"><pre><span></span>p,  q -&gt; ~p  |-  ~q
 
 {
@@ -1004,9 +1003,9 @@ But no one yet knows exactly what the solution is!)</p>
 <p>The three rules, <code class="docutils literal"><span class="pre">_|_e</span></code>, <code class="docutils literal"><span class="pre">~i</span></code>, and <code class="docutils literal"><span class="pre">~e</span></code>, give the meaning of
 &#8220;is impossible&#8221; to the operator, <code class="docutils literal"><span class="pre">~</span></code>.</p>
 </div>
-<div class="section" id="id38">
-<h4>Tactic<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
-<p>The (<a href="#id39"><span class="problematic" id="id40">**</span></a><a href="#id41"><span class="problematic" id="id42">*</span></a>)-<code class="docutils literal"><span class="pre">~i</span></code> tactic says, to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code>,</p>
+<div class="section" id="id10">
+<h4>Tactic<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>The (***)-<code class="docutils literal"><span class="pre">~i</span></code> tactic says, to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code>,</p>
 <ol class="arabic simple">
 <li>assume <code class="docutils literal"><span class="pre">P</span></code></li>
 <li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code></li>
@@ -1041,8 +1040,8 @@ Some concepts have no natural opposite.</p>
 <p>If we work with circuits or similar True/False or &#8220;opposite&#8221; systems, then we
 should be able to prove <code class="docutils literal"><span class="pre">~~P</span> <span class="pre">|-</span> <span class="pre">P</span></code>.
 Here is the rule that lets us do so:</p>
-<div class="section" id="id43">
-<h4>Rule<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>Rule<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-none"><div class="highlight"><pre><span></span>        { ~P assume
           ... _|_   }
 pbc:   ---------------
@@ -1059,8 +1058,8 @@ from an argument that says <code class="docutils literal"><span class="pre">~P</
 But does this mean we have &#8220;built&#8221; <code class="docutils literal"><span class="pre">P</span></code>?
 In a world where the word &#8220;not&#8221; means the &#8220;opposite of&#8221;, we have.</p>
 </div>
-<div class="section" id="id44">
-<h4>Examples<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-none"><div class="highlight"><pre><span></span>~~p |- p
 
 {
@@ -1473,7 +1472,7 @@ goal.
 The inference rules in this chapter are reviewed below in the order in which
 they should be tactically applied:</p>
 <ul>
-<li><p class="first">(<a href="#id45"><span class="problematic" id="id46">**</span></a><a href="#id47"><span class="problematic" id="id48">*</span></a>) <code class="docutils literal"><span class="pre">^i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>:</p>
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">^i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises     premise
      (fill in)
 j. P
@@ -1483,7 +1482,7 @@ l. P ^ Q       ^i j k
 </pre></div>
 </div>
 </li>
-<li><p class="first">(<a href="#id49"><span class="problematic" id="id50">**</span></a><a href="#id51"><span class="problematic" id="id52">*</span></a>) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
 premise or proved fact in the partial proof, then</p>
 <ol class="arabic simple">
 <li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
@@ -1508,7 +1507,7 @@ q. R                 Ve j k n
 </pre></div>
 </div>
 </li>
-<li><p class="first">(<a href="#id53"><span class="problematic" id="id54">**</span></a><a href="#id55"><span class="problematic" id="id56">*</span></a>) <code class="docutils literal"><span class="pre">-&gt;i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></p>
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">-&gt;i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises          premise
      . . .
 j. {
@@ -1520,7 +1519,7 @@ m. P -&gt; Q           -&gt;i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">(<a href="#id57"><span class="problematic" id="id58">**</span></a><a href="#id59"><span class="problematic" id="id60">*</span></a>) <code class="docutils literal"><span class="pre">~i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code></p>
+<li><p class="first">(***) <code class="docutils literal"><span class="pre">~i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code></p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises         premises
       . . .
 j. {

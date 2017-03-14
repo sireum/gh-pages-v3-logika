@@ -247,9 +247,9 @@ Tactics
 
 A *tactic* is a useful step towards proving a goal.
 The rules for conjunction come with these two tactics, which we rate from
-(*) to (***) based on their utility:
+(*) to (\*\*\*) based on their utility:
 
-* (***) ``^i``-tactic: If your task is to prove ``Premises |- P ^ Q``, then
+* (\*\*\*) ``^i``-tactic: If your task is to prove ``Premises |- P ^ Q``, then
 
   1. prove ``Premises |- P``
   2. prove ``Premises |- Q``
@@ -266,7 +266,7 @@ The rules for conjunction come with these two tactics, which we rate from
     j. Q
     k. P ^  Q       ^i i j
 
-* (**) ``^e``-tactic: If your task is to prove ``Premises |- R`` and you have as
+* (\*\*) ``^e``-tactic: If your task is to prove ``Premises |- R`` and you have as
   a premise or proved fact in your partial proof, ``P ^ Q``, then apply ``^e``
   to extract ``P`` and ``Q`` to use in the proof
 
@@ -282,7 +282,7 @@ The rules for conjunction come with these two tactics, which we rate from
 
 Let's apply the tactics to one of the previous examples:
 
-1. Prove ``P ^ (Q ^ R) |- R ^ P``: Use the (***)-``^i`` tactic to generate two
+1. Prove ``P ^ (Q ^ R) |- R ^ P``: Use the (\*\*\*)-``^i`` tactic to generate two
    subgoals, ``P ^ (Q ^ R) |- R`` and also ``P ^ (Q ^ R) |- P``
 
    .. code-block:: none
@@ -294,7 +294,7 @@ Let's apply the tactics to one of the previous examples:
      j.   P
      j+1. R ^ P         ^i i j
 
-2. Since the (\***)-tactic can't be used on either subgoal, apply the (**)-``^e``-tactic to the premise
+2. Since the (\*\*\*)-tactic can't be used on either subgoal, apply the (\*\*)-``^e``-tactic to the premise
 
    .. code-block:: none
 
@@ -518,7 +518,7 @@ Tactics
 
 There is one good tactic, and one not-so-good:
 
-* (***) ``Ve``-tactic: To prove ``Premises |- R``, if ``P V Q`` appears as a
+* (\*\*\*) ``Ve``-tactic: To prove ``Premises |- R``, if ``P V Q`` appears as a
   premise or proved fact in the partial proof, then
   
   1. prove ``Premises, P |- R``
@@ -544,7 +544,7 @@ There is one good tactic, and one not-so-good:
     }
     p. R              Ve i j m
     
-* (*) ``Vi``-tactic: To prove ``Premises |- P V Q``, pick either of ``P`` or
+* (\*) ``Vi``-tactic: To prove ``Premises |- P V Q``, pick either of ``P`` or
   ``Q``, and try to prove it.
   Finish with ``Vi``
 
@@ -800,7 +800,7 @@ Tactics
 
 Implication comes with two good tactics:
 
-* (***) ``->i``-tactic: To prove ``Premises |- P -> Q``,
+* (\*\*\*) ``->i``-tactic: To prove ``Premises |- P -> Q``,
 
   1. assume ``P``
   2. prove ``Premises, P |- Q``
@@ -819,7 +819,7 @@ Implication comes with two good tactics:
     }
     m.  P -> Q            ->i j
 
-* (*) ``->e``-tactic: To prove ``Premises |- R``, if ``P -> Q`` appears as a
+* (\*) ``->e``-tactic: To prove ``Premises |- R``, if ``P -> Q`` appears as a
   premise or a proved fact in the partial proof, then
 
   1. prove ``Premises |- P``
@@ -840,7 +840,7 @@ Implication comes with two good tactics:
             (fill in)
     k.  R
     
-In an earlier proof example, you see an immediate use of the (***)-``->i``
+In an earlier proof example, you see an immediate use of the (\*\*\*)-``->i``
 tactic to the new subgoal
 
 .. code-block:: none
@@ -1109,7 +1109,7 @@ The structure is
   l.   Q            _|_e k
 
 In the previous proof example, we see that ``~P |- P -> Q`` is proved quickly
-once we obtain as a new fact (via an assumption, thanks to the (***)-``->i``
+once we obtain as a new fact (via an assumption, thanks to the (\*\*\*)-``->i``
 tactic!).
 
 .. Examples from Programming Logic
@@ -1269,7 +1269,7 @@ The three rules, ``_|_e``, ``~i``, and ``~e``, give the meaning of
 Tactic
 ------
 
-The (***)-``~i`` tactic says, to prove ``Premises |- ~P``,
+The (\*\*\*)-``~i`` tactic says, to prove ``Premises |- ~P``,
 
 1. assume ``P``
 
@@ -1425,10 +1425,9 @@ For this reason, some logicians (actually, not so many) refuse to accept the
 ..        """
 ..
 .. that mechanically decides whether ``propertyP(m,n)`` is True or False for every
-.. possible combination of integers, ``m`` and ``n``, then we can safely use the
-.. assertion::
+.. possible combination of integers, ``m`` and ``n``, then we can safely use the assertion::
 ..
-..   |- propertyP(m,n) v ~propertyP(m,n)
+..   ⊢ propertyP(m,n) v ~propertyP(m,n)
 ..
 .. for all choices of integers ``m`` and ``n``.
 .. The function, ``propertyP``, is called a *decision procedure*.
@@ -1807,8 +1806,7 @@ math: ∃).
 .. Implementing CNF and Resolution Theorem Proving with Nested Lists
 .. -----------------------------------------------------------------
 ..
-.. A formula in cnf has a simple computer representation as a list of lists, that
-.. is::
+.. A formula in cnf has a simple computer representation as a list of lists, that is::
 ..
 .. (A00 v A01 v ... A0n) ^ (A10 v A11 v ... A1n) ^ ... ^ (Am0 v Am1 v ... Amn)
 ..
@@ -2270,8 +2268,7 @@ symbolic logic that deduce assertions with those meanings.
 .. The previous paragraph suggests that whenever we write a proof in logic, we are
 .. building a program, and whenever we are building a program, we are writing a
 .. logic proof!
-.. Here's an example of a proof and the C# program that is constructed from the
-.. proof::
+.. Here's an example of a proof and the C# program that is constructed from the proof::
 ..
 .. (p ^ q) --> r,  q  |-   p --> r
 ..
@@ -2648,8 +2645,7 @@ symbolic logic that deduce assertions with those meanings.
 .. Also at ``a``, ``B --> G`` is a fact, because at all futures reachable from
 .. ``a``, whenever ``B`` appears, ``G`` does also.
 ..
-.. To summarize, here are the meanings of some propositions in the above Kripke
-.. model::
+.. To summarize, here are the meanings of some propositions in the above Kripke model::
 ..
 ..   [[ C ]]       = {b,c,d}
 ..
@@ -2696,7 +2692,7 @@ goal.
 The inference rules in this chapter are reviewed below in the order in which
 they should be tactically applied:
 
-* (***) ``^i``: use to prove ``Premises |- P ^ Q``:
+* (\*\*\*) ``^i``: use to prove ``Premises |- P ^ Q``:
 
   .. code-block:: none
 
@@ -2707,7 +2703,7 @@ they should be tactically applied:
     k. Q
     l. P ^ Q       ^i j k
 
-* (***) ``Ve``-tactic: To prove ``Premises |- R``, if ``P V Q`` appears as a
+* (\*\*\*) ``Ve``-tactic: To prove ``Premises |- R``, if ``P V Q`` appears as a
   premise or proved fact in the partial proof, then
   
   1. prove ``Premises, P |- R``
@@ -2735,7 +2731,7 @@ they should be tactically applied:
     }
     q. R                 Ve j k n
     
-* (***) ``->i``: use to prove ``Premises |- P -> Q``
+* (\*\*\*) ``->i``: use to prove ``Premises |- P -> Q``
 
   .. code-block:: none
 
@@ -2748,7 +2744,7 @@ they should be tactically applied:
     }
     m. P -> Q           ->i j
 
-* (***) ``~i``: use to prove ``Premises |- ~P``
+* (\*\*\*) ``~i``: use to prove ``Premises |- ~P``
 
   .. code-block:: none
 
@@ -2761,7 +2757,7 @@ they should be tactically applied:
     }
     m. ~P                ~i j
 
-* (**) ``^e``-tactic: If your task is to prove ``Premises |- R`` and you have as
+* (\*\*) ``^e``-tactic: If your task is to prove ``Premises |- R`` and you have as
   a premise or proved fact in your partial proof, ``P ^ Q``, then apply ``^e``
   to extract ``P`` and ``Q`` to use in the proof
 
@@ -2775,7 +2771,7 @@ they should be tactically applied:
            (fill in)
     j.   R
 
-* (*) ``->e``-tactic: To prove ``Premises |- R``, if ``P -> Q`` appears as a
+* (\*) ``->e``-tactic: To prove ``Premises |- R``, if ``P -> Q`` appears as a
   premise or a proved fact in the partial proof, then
   
   1. prove ``Premises |- P``
@@ -2798,7 +2794,7 @@ they should be tactically applied:
             (fill in)
     k.  R
 
-* (*) ``_|_``-tactic: To prove ``Premises |- Q``, if ``~P`` appears as a premise
+* (\*) ``_|_``-tactic: To prove ``Premises |- Q``, if ``~P`` appears as a premise
   or as a proved fact in our partial proof, then
   
   1. prove ``Premises |- P``
@@ -2819,7 +2815,7 @@ they should be tactically applied:
     k.   _|_          ~e j i
     l.   Q            _|_e k
 
-* (*) ``Vi``: use to prove ``Premises |- P V Q``
+* (\*) ``Vi``: use to prove ``Premises |- P V Q``
 
   .. code-block:: none
 
