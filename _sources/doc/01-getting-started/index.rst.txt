@@ -2,6 +2,23 @@
 
    <script src="../../_static/clipboard.min.js" ></script>
    <script src="../../_static/class.js" ></script>
+   <script src="../../_static/date.js" ></script>
+   <script>
+   var rel = $.ajax({
+     url: "http://files.sireum.org/sireum-v3-VER",
+     success: function(response) {
+        var timestamp = Date.parse(rel.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.") + response.substring(0, 7);
+        document.getElementById("release").innerHTML = "<big><b>Release</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href=\"https://github.com/sireum/v3/tree/" + response + "\" target=\"_blank\">v." + timestamp + "</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;"
+     }
+   });
+   var dev = $.ajax({
+     url: "http://files.sireum.org/sireum-v3-dev-VER",
+     success: function(response) {
+        var timestamp = Date.parse(dev.getResponseHeader("Last-Modified")).toString("yyyymmdd.") + response.substring(0, 7);
+        document.getElementById("development").innerHTML = "<big><b>Development</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href=\"https://github.com/sireum/v3/tree/" + response + "\" target=\"_blank\">v." + timestamp + "</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;"
+     }
+   });
+   </script>
    <br/>
    <font color="darkgray">
    <big><big><b>
@@ -65,8 +82,8 @@ experimental features.
 .. raw:: html
 
    <ul class="nav nav-tabs">
-     <li class="active"><a href="#br" data-toggle="tab">Release</a></li>
-     <li><a href="#bd" data-toggle="tab">Development</a></li>
+     <li class="active"><a href="#br" data-toggle="tab"><div id="release">Release</div></a></li>
+     <li><a href="#bd" data-toggle="tab"><div id="development">Development</div></a></li>
    </ul>
    <div class="tab-content">
   <div class="tab-pane active" id="br"><br/>
