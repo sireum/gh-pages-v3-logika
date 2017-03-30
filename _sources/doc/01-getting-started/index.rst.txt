@@ -4,20 +4,39 @@
    <script src="../../_static/class.js" ></script>
    <script src="../../_static/date.js" ></script>
    <script>
-   var rel = $.ajax({
-     url: "http://files.sireum.org/sireum-v3-VER",
-     success: function(response) {
-        var timestamp = Date.parse(rel.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.") + response.substring(0, 7);
-        document.getElementById("release").innerHTML = "<big><b>Release</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href=\"https://github.com/sireum/v3/tree/" + response + "\" target=\"_blank\">v." + timestamp + "</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;"
+   var createCORSRequest = function(method, url) {
+     var xhr = new XMLHttpRequest();
+     if ("withCredentials" in xhr) {
+       // Most browsers.
+       xhr.open(method, url, true);
+     } else if (typeof XDomainRequest != "undefined") {
+       // IE8 & IE9
+       xhr = new XDomainRequest();
+       xhr.open(method, url);
+     } else {
+       // CORS not supported.
+       xhr = null;
      }
-   });
-   var dev = $.ajax({
-     url: "http://files.sireum.org/sireum-v3-dev-VER",
-     success: function(response) {
-        var timestamp = Date.parse(dev.getResponseHeader("Last-Modified")).toString("yyyymmdd.") + response.substring(0, 7);
-        document.getElementById("development").innerHTML = "<big><b>Development</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href=\"https://github.com/sireum/v3/tree/" + response + "\" target=\"_blank\">v." + timestamp + "</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;"
-     }
-   });
+     return xhr;
+   };
+   var rel = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-VER');
+   if (rel != null) {
+     rel.onload = function() {
+       var response = rel.response
+       var timestamp = Date.parse(rel.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.") + response.substring(0, 7);
+       document.getElementById("release").innerHTML = '<big><b>Release</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href="https://github.com/sireum/v3/tree/' + response + '">v.' + timestamp + '</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;'
+     };
+     rel.send();
+   }
+   var dev = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-dev-VER');
+   if (dev != null) {
+     dev.onload = function() {
+       var response = dev.response
+       var timestamp = Date.parse(dev.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.") + response.substring(0, 7);
+       document.getElementById("development").innerHTML = '<big><b>Development</b></big>&nbsp;&nbsp;&nbsp;&nbsp;<small>(<a href="https://github.com/sireum/v3/tree/' + response + '">v.' + timestamp + '</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;'
+     };
+     dev.send();
+   }
    </script>
    <br/>
    <font color="darkgray">
