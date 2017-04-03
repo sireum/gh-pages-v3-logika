@@ -164,22 +164,22 @@ var createCORSRequest = function(method, url) {
   }
   return xhr;
 };
-var rel = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-VER');
+var rel = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-VER');
 if (rel != null) {
   rel.onload = function() {
     var response = rel.response;
-    //var timestamp = Date.parse(rel.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.");
-    var ver = response.substring(0, 7);
+    var timestamp = Date.parse(rel.getResponseHeader("Last-Modified")).toString("yyyy.MM.dd HH:mm");
+    var ver = response.substring(0, 7) + '&nbsp;&nbsp;' + timestamp;
     document.getElementById("release").innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;<big><b>Release</b></big>&nbsp;&nbsp;<small>(<a href="https://github.com/sireum/v3/tree/' + response + '">v.' + ver + '</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;'
   };
   rel.send();
 }
-var dev = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-dev-VER');
+var dev = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-dev-VER');
 if (dev != null) {
   dev.onload = function() {
     var response = dev.response;
-    //var timestamp = Date.parse(dev.getResponseHeader("Last-Modified")).toString("yyyymmdd.hhmm.");
-    var ver = response.substring(0, 7);
+    var timestamp = Date.parse(dev.getResponseHeader("Last-Modified")).toString("yyyy.MM.dd HH:mm");
+    var ver = response.substring(0, 7) + '&nbsp;&nbsp;' + timestamp;
     document.getElementById("development").innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;<big><b>Development</b></big>&nbsp;&nbsp;<small>(<a href="https://github.com/sireum/v3/tree/' + response + '">v.' + ver + '</a>)</small>&nbsp;&nbsp;&nbsp;&nbsp;'
   };
   dev.send();
