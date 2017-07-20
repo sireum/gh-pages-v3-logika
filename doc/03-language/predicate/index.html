@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,7 +37,7 @@
     <link rel="next" title="3.4. Programming Logic" href="../programming/index.html" />
     <link rel="prev" title="3.2. Propositional Logic" href="../propositional/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -151,7 +150,7 @@ that adds the following language elements:
 (3) <a class="reference internal" href="#quantified-claims"><span class="std std-ref">Universally and Existensially Quantified Claims</span></a>, and
 (4) <a class="reference internal" href="#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>.</p>
 <p>Similar to the discussion in <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>,
-this section only discusses Logika&#8217;s rendition of predicate
+this section only discusses Logika’s rendition of predicate
 logic natural deductions;
 the reader is referred to <a class="reference internal" href="../../../dschmidt/08-predicate-logic/index.html#predicate-logic"><span class="std std-ref">The Predicate-Logic Quantifiers</span></a> for more intuitive
 and general discussion on predicate logic.</p>
@@ -159,8 +158,8 @@ and general discussion on predicate logic.</p>
 <div class="highlight-antlr" id="predicate-1"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Logika&#8217;s predicate logic input language is similar to that of
-<a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>, where it consists of a sequent and the sequent&#8217;s proof.
+<p>Logika’s predicate logic input language is similar to that of
+<a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>, where it consists of a sequent and the sequent’s proof.
 Here is an example that is also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogism">syllogism</a>:</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  ∃y human(y)  ⊢  ∃z mortal(z)
 {
@@ -189,9 +188,9 @@ As a reference, the complete predicate logic input language is specified in
 </div>
 <p>To support <a class="reference internal" href="#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>, the sub-proof assumption form has to be
 enhanced.</p>
-<p>The first highlighted enhancement is to introduce a &#8220;fresh&#8221; variable
+<p>The first highlighted enhancement is to introduce a “fresh” variable
 suitable for <a class="reference internal" href="#forall-intro"><span class="std std-ref">Forall-Introduction (∀i)</span></a>;
-here, &#8220;fresh&#8221; means that the identifier is not used in the
+here, “fresh” means that the identifier is not used in the
 <a class="reference internal" href="../propositional/index.html#scoping"><span class="std std-ref">scope</span></a> of the variable; this form is a special one
 because it is not a regular proof step which has a claim associated with it.</p>
 <p>The second highlighted form also introduces a fresh variable, but also
@@ -214,16 +213,16 @@ This form is used for <a class="reference internal" href="#exists-elim"><span cl
 </span><span class="hll"><span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>Similar to propositional logic&#8217;s <a class="reference internal" href="../propositional/index.html#prop-claim"><span class="std std-ref">Claim Expression</span></a>,
+<p>Similar to propositional logic’s <a class="reference internal" href="../propositional/index.html#prop-claim"><span class="std std-ref">Claim Expression</span></a>,
 the predicate logic claim expressions are untyped.
-One can take the view that all variables in Logika&#8217;s predicate logic
+One can take the view that all variables in Logika’s predicate logic
 language are of integer type and
 all predicates/functions accepts only integers and returns an integer, where
 zero is treated as <code class="docutils literal"><span class="pre">⊥</span></code> and non-zero as <code class="docutils literal"><span class="pre">⊤</span></code>.
 Integers are desirable in this context instead of booleans because
 it allows one to quantify over (infinitely) many objects
 instead of only two.</p>
-<p>At any rate, the claim expression language in Logika&#8217;s
+<p>At any rate, the claim expression language in Logika’s
 predicate logic has two additional kinds of expression:
 (1) predicate/function applications, and (2) quantified claims,
 as highlighted above, and described next.</p>
@@ -239,12 +238,12 @@ as highlighted above, and described next.</p>
 In predicate logic, the meaning of each function is unspecified,
 thus, uninterpreted.</p>
 <p>Instead of depending on function interpretations,
-Logika&#8217;s predicate logic reasoning uses
+Logika’s predicate logic reasoning uses
 <a class="reference internal" href="#subst-notation"><span class="std std-ref">rewriting/substitution</span></a>, in addition to
 <a class="reference internal" href="../propositional/index.html#structural-eq"><span class="std std-ref">structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
 that is used in propositional logic.
 The rewriting technique depends on the inherent property that
-each function is pure &#8211; meaning that it produces the same result
+each function is pure – meaning that it produces the same result
 when given the same arguments regardless of how many times
 it is applied (invoked/called).</p>
 <p>A function is applied by referring to its
@@ -297,13 +296,13 @@ applying functions <code class="docutils literal"><span class="pre">inc</span></
 (By the way, the example uses uninterpreted functions/predicates
 to model properties of integer arithmetic operators
 due to the lack for
-<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span class="std std-ref">algebra</span></a> support in Logika&#8217;s predicate logic;
+<a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span class="std std-ref">algebra</span></a> support in Logika’s predicate logic;
 instead, it is supported in <a class="reference internal" href="../programming/index.html#programming-language"><span class="std std-ref">programming logic</span></a>
 later.)</p>
 <p>Furthermore, Logika functions cannot be overloaded;
 each identifier is only associated with exactly
 one signature.
-In Logika&#8217;s predicate logic, the signature is
+In Logika’s predicate logic, the signature is
 only determined by the number of its arguments; hence,
 each function has a fixed number of arguments.</p>
 </div>
@@ -315,7 +314,7 @@ each function has a fixed number of arguments.</p>
 <span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Logika&#8217;s quantification form can be used to quantify
+<p>Logika’s quantification form can be used to quantify
 over multiple variables at once (followed by the quantified
 claim expression), which means the same as if one
 quantifies over the variables one by one in the same order.
@@ -327,7 +326,7 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 </div>
 <div class="section" id="well-formed-ness">
 <span id="pred-well-formed"></span><h2>3.3.3. Well-Formed-Ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
-<p>For simplicity, Logika does not allow identifier &#8220;shadowing&#8221;,
+<p>For simplicity, Logika does not allow identifier “shadowing”,
 which means that a variable cannot be quantified more than one time in the
 same scope.
 For example, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
@@ -360,13 +359,13 @@ following forms:
 <p>Another notation is for expression substitution.
 The notation <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> means all occurences of expression
 <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code> is replaced with <code class="docutils literal"><span class="pre">E2</span></code>; an easy way to remember
-which one replaces which one is to read <code class="docutils literal"><span class="pre">/</span></code> as &#8220;steps over&#8221;,
+which one replaces which one is to read <code class="docutils literal"><span class="pre">/</span></code> as “steps over”,
 thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.
 Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
 Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
 <p>The substitution notation is right-associative.
 When multiple substitutions are done on an expression at the same time,
-notated as: <code class="docutils literal"><span class="pre">[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R</span></code>, for <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> &#8211;
+notated as: <code class="docutils literal"><span class="pre">[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R</span></code>, for <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> –
 it means, <code class="docutils literal"><span class="pre">[E2_N/E1_N]</span> <span class="pre">(…</span> <span class="pre">([E2_2/E1_2]</span> <span class="pre">([E2_1/E1_1]</span> <span class="pre">R)))</span></code>.
 For example, <code class="docutils literal"><span class="pre">[z/y][y/x]x</span> <span class="pre">≡</span> <span class="pre">[z/y]([y/x]x)</span> <span class="pre">≡</span> <span class="pre">[z/y]y</span> <span class="pre">≡</span> <span class="pre">z</span></code>.</p>
 </div>
@@ -391,8 +390,8 @@ For example, <code class="docutils literal"><span class="pre">[z/y][y/x]x</span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">              </span><span class="c">// Exists-Elimination</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>There are four new inference rules for Logika&#8217;s predicate
-logic &#8211; one introduction rule and one elimination rule for
+<p>There are four new inference rules for Logika’s predicate
+logic – one introduction rule and one elimination rule for
 both universal and existensial quantifications.</p>
 <p>The subsequent sections assume that
 each rule is being applied at a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>

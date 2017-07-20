@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,7 +37,7 @@
     <link rel="next" title="6. Loops, Invariants, Induction" href="../06-loops-invariants-induction/index.html" />
     <link rel="prev" title="4. Programming Logic for Assignments and Conditionals" href="../04-programming-logic/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -155,10 +154,10 @@ This is critical when we assemble a program from a collection of functions,
 because we connect functions together based on what they are capable of doing.</p>
 <div class="section" id="pre-and-post-conditions">
 <h2>5.1. Pre- and Post-conditions<a class="headerlink" href="#pre-and-post-conditions" title="Permalink to this headline">¶</a></h2>
-<p>A function is a &#8220;mini-program&#8221;:
+<p>A function is a “mini-program”:
 it has inputs, namely the arguments assigned to its parameters, and
-it has outputs, namely the information returned as the function&#8217;s answer.
-It acts like a logic gate or chip, with &#8220;input wires&#8221; and &#8220;output wires&#8221;.</p>
+it has outputs, namely the information returned as the function’s answer.
+It acts like a logic gate or chip, with “input wires” and “output wires”.</p>
 <p>Here is an example that shows the format we use for writing a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>              <span class="c1"># HEADER LINE : LISTS NAME AND PARAMETERS</span>
     <span class="sd">&quot;&quot;&quot;recip  computes the reciprocal for  n&quot;&quot;&quot;</span>
@@ -177,7 +176,7 @@ it terminates.
 For simplicity, we require that <em>no assignment is made to a parameter inside the
 body of the function</em>.
 In a call-by-value language like Python and Java, this is never a handicap.</p>
-<p>The functions&#8217;s <em>specification</em> consists of its header line and its <code class="docutils literal"><span class="pre">pre</span></code>-,
+<p>The functions’s <em>specification</em> consists of its header line and its <code class="docutils literal"><span class="pre">pre</span></code>-,
 <code class="docutils literal"><span class="pre">post</span></code>-condition, and <code class="docutils literal"><span class="pre">return</span></code> lines;
 it tells us how to use the function correctly:
 (The comment with the informal description is also nice to have.)
@@ -193,13 +192,13 @@ Here is the specification for the above function:</p>
 </div>
 <p>The specification tells us what we need to know to use the function correctly.
 <em>The person/program who calls the function is not supposed to read the
-function&#8217;s code to know how to use the function</em>.
+function’s code to know how to use the function</em>.
 This is especially crucial when you use a function from a library that was
-written by someone else &#8211; ideally, you should not read the library&#8217;s code to
-learn how to call the library&#8217;s functions!</p>
+written by someone else – ideally, you should not read the library’s code to
+learn how to call the library’s functions!</p>
 <p>Back to the example: Since we do not allow assignments to parameter <code class="docutils literal"><span class="pre">n</span></code> within
 the body of <code class="docutils literal"><span class="pre">recip</span></code>, we know that the value of <code class="docutils literal"><span class="pre">n</span></code> in the postcondition is
-the same as the value of <code class="docutils literal"><span class="pre">n</span></code> in the precondition &#8211;
+the same as the value of <code class="docutils literal"><span class="pre">n</span></code> in the precondition –
 this makes the postcondition meaningful.</p>
 <p>To call the function, we supply an argument that binds to (is assigned to) its
 parameter, and we supply a variable that is the target for the returned answer.
@@ -227,15 +226,15 @@ Once again, for this specification:</p>
     <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>To call the function, <em>we must prove the function&#8217;s precondition at the point of
+<p>To call the function, <em>we must prove the function’s precondition at the point of
 call for its argument</em>.
 As our reward for establishing the precondition, we receive in return the
 postcondition, stated in terms of <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>: <code class="docutils literal"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">a</span></code>.</p>
 <p>For simplicity, we require that <em>the target variable that receives the
-function&#8217;s answer does not appear in the function&#8217;s arguments</em>, e.g., the call,
+function’s answer does not appear in the function’s arguments</em>, e.g., the call,
 <code class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">recip(b+2)</span></code>, is not allowed, because it confuses the <code class="docutils literal"><span class="pre">b</span></code> in the
 argument to <code class="docutils literal"><span class="pre">recip</span></code> with the <code class="docutils literal"><span class="pre">b</span></code> in the answer.</p>
-<p>In contrast, we cannot presume <code class="docutils literal"><span class="pre">recip</span></code>&#8216;s postcondition in this situation:</p>
+<p>In contrast, we cannot presume <code class="docutils literal"><span class="pre">recip</span></code>’s postcondition in this situation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="c1"># We do not know if  x  is nonzero....</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -245,12 +244,12 @@ argument to <code class="docutils literal"><span class="pre">recip</span></code>
 <p>Since we did not prove <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> as a precondition for applying <code class="docutils literal"><span class="pre">recip</span></code>,
 we cannot assert the postcondition after the call.
 Literally, we have no knowledge of what the function produces in this situation
-&#8211; perhaps the call will &#8220;crash&#8221; (generate an exception)!</p>
+– perhaps the call will “crash” (generate an exception)!</p>
 <div class="section" id="forwards-law-for-function-definition-and-call">
 <h3>5.1.1. Forwards Law for Function Definition and Call<a class="headerlink" href="#forwards-law-for-function-definition-and-call" title="Permalink to this headline">¶</a></h3>
 <p>Here is a summary of what we have developed so far.
 Given a function, <code class="docutils literal"><span class="pre">f</span></code>, with a pre-post specification, we must show that the
-presumption of the precondition at the beginning of the function&#8217;s body lets us
+presumption of the precondition at the beginning of the function’s body lets us
 prove the postcondition at the end of the body:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -356,14 +355,14 @@ descriptions are the pre-postconditions illustrated in this section.</p>
 <h3>5.1.2. Optional Section: How to Work from Specifications To Code<a class="headerlink" href="#optional-section-how-to-work-from-specifications-to-code" title="Permalink to this headline">¶</a></h3>
 <p>When you call a function that someone else wrote, you rely on to tell you how
 the function behaves.
-(In many cases, you can&#8217;t read the code, e.g., .NET components)
+(In many cases, you can’t read the code, e.g., .NET components)
 If you the person <em>writing</em> the function for others to use, you supply the
-function&#8217;s specification.
+function’s specification.
 You can calculate the specification using the laws we studied in the previous
 chapter.
 But better still, you should <em>start with the specification and write the
 function so that it matches the specification</em>.</p>
-<p>You start by stating, in English or otherwise, the function&#8217;s goal.
+<p>You start by stating, in English or otherwise, the function’s goal.
 You study the goal and consider how to meet it; you write the code.
 You take note of the requirements your function needs on its entry parameters
 and global variables to reach the goal.
@@ -371,7 +370,7 @@ Finally, you apply the programming-logic laws to show that the coding matches
 the specification.</p>
 <p>Here is a simplistic example.
 Say you must write a function that receives two numbers as inputs and selects
-the maximum, or larger, of the two as the function&#8217;s output.
+the maximum, or larger, of the two as the function’s output.
 The specification of the function, <code class="docutils literal"><span class="pre">max</span></code>, might look like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;max  selects the larger of  x  and  y  and returns it as its answer&quot;&quot;&quot;</span>
@@ -388,10 +387,10 @@ solution to work.
 These would be listed in the precondition.</p>
 <p>The logical operators in the postcondition sometimes give us hints how to code
 the function.
-Here, we see that the function&#8217;s answer will be either <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code>,
+Here, we see that the function’s answer will be either <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code>,
 suggesting that the function will use assignment commands of the form,
 <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">y</span></code>.
-We also see that there is an &#8220;or&#8221; operator in the specification.
+We also see that there is an “or” operator in the specification.
 This suggests that we will require an if-command to choose which of the two
 assignments to use.
 Although it is not an exact science, we can move from the postcondition to this
@@ -430,7 +429,7 @@ For this reason, it seems safe to use this precondition:</p>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>Now, we have a function &#8212; a component &#8212; that others can insert into their
+<p>Now, we have a function — a component — that others can insert into their
 programs.</p>
 </div>
 <div class="section" id="optional-section-backwards-law-for-function-invocation">
@@ -455,7 +454,7 @@ First, given the specification,</p>
 </pre></div>
 </div>
 <p>That is, for the call, <code class="docutils literal"><span class="pre">f(e)</span></code>, to accomplish <code class="docutils literal"><span class="pre">G</span></code>, it must be the case that
-<code class="docutils literal"><span class="pre">f</span></code>&#8216;s postcondition implies <code class="docutils literal"><span class="pre">G</span></code> and that we can prove <code class="docutils literal"><span class="pre">f</span></code>&#8216;s precondition
+<code class="docutils literal"><span class="pre">f</span></code>’s postcondition implies <code class="docutils literal"><span class="pre">G</span></code> and that we can prove <code class="docutils literal"><span class="pre">f</span></code>’s precondition
 holds true (so that we can call <code class="docutils literal"><span class="pre">f</span></code>).
 An example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
@@ -491,14 +490,14 @@ we must supply an input int that is 4 or more.</p>
 </div>
 <div class="section" id="global-variables-and-procedures">
 <h2>5.2. Global Variables and Procedures<a class="headerlink" href="#global-variables-and-procedures" title="Permalink to this headline">¶</a></h2>
-<p>The term, &#8220;function&#8221;, suggests that the named body of commands will accept one
+<p>The term, “function”, suggests that the named body of commands will accept one
 or more arguments and return an answer.
 But we can have functions that return no answers and even receive no arguments,
 because they can read and update the values of non-local, <em>global</em> variables.
 We call a function that updates a global variable, a <em>procedure</em>.</p>
-<p>Say that a variable, <code class="docutils literal"><span class="pre">v</span></code>, is &#8220;global&#8221; to a function <code class="docutils literal"><span class="pre">f</span></code> if <code class="docutils literal"><span class="pre">v</span></code> exists
+<p>Say that a variable, <code class="docutils literal"><span class="pre">v</span></code>, is “global” to a function <code class="docutils literal"><span class="pre">f</span></code> if <code class="docutils literal"><span class="pre">v</span></code> exists
 prior to a call to <code class="docutils literal"><span class="pre">f</span></code>.
-(More precisely stated, <code class="docutils literal"><span class="pre">v</span></code>&#8216;s cell does not live in <code class="docutils literal"><span class="pre">f</span></code>&#8216;s
+(More precisely stated, <code class="docutils literal"><span class="pre">v</span></code>’s cell does not live in <code class="docutils literal"><span class="pre">f</span></code>’s
 namespace/activation-record.)
 For example, <code class="docutils literal"><span class="pre">pi</span></code> is global to <code class="docutils literal"><span class="pre">circumference</span></code> here:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
@@ -513,7 +512,7 @@ For example, <code class="docutils literal"><span class="pre">pi</span></code> i
 <span class="n">area</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">pi</span>                 <span class="c1"># compute circle&#39;s area</span>
 </pre></div>
 </div>
-<p>A global variable &#8220;lives&#8221; before a function is called and lives after the
+<p>A global variable “lives” before a function is called and lives after the
 function finishes.
 In the above example, <code class="docutils literal"><span class="pre">pi</span></code> is defined before the function is called, and
 it exists after the function finishes.
@@ -531,7 +530,7 @@ In contrast, <code class="docutils literal"><span class="pre">pi</span></code> i
 </pre></div>
 </div>
 <p>A global variable that is read (but <em>not updated</em>) by a function body can be
-safely used in the function&#8217;s pre- and post-conditions;
+safely used in the function’s pre- and post-conditions;
 it acts just like an extra parameter to the function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
 
@@ -546,7 +545,7 @@ it acts just like an extra parameter to the function:</p>
 </pre></div>
 </div>
 <p>We must restrict all calls to the function so that the call does <em>not</em> use the
-global variable as the target of the function&#8217;s answer.
+global variable as the target of the function’s answer.
 That is, <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> is ok, and so is <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(pi)</span></code>,
 but <code class="docutils literal"><span class="pre">pi</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> <em>is not</em>.</p>
 <div class="section" id="global-variables-that-are-updated">
@@ -555,7 +554,7 @@ but <code class="docutils literal"><span class="pre">pi</span> <span class="pre"
 A global variable that is updated by a function acts like an extra answer
 variable for the function.
 In the Python language, every global variable that is updated by a function must
-be listed in the <code class="docutils literal"><span class="pre">global</span></code> line that immediately follows the function&#8217;s header
+be listed in the <code class="docutils literal"><span class="pre">global</span></code> line that immediately follows the function’s header
 line.
 This is a good practice that we will follow.</p>
 <p>Here is a simple but important example: a timer that counts down to zero.
@@ -641,7 +640,7 @@ balance go negative:</p>
     <span class="k">return</span> <span class="n">cash</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">withdraw</span></code>&#8216;s pre- and post-conditions are carefully written to ensure that
+<p><code class="docutils literal"><span class="pre">withdraw</span></code>’s pre- and post-conditions are carefully written to ensure that
 the procedure is used correctly.
 Recall that <code class="docutils literal"><span class="pre">balance_in</span></code> means the value of global variable <code class="docutils literal"><span class="pre">balance</span></code> on
 procedure entry.
@@ -681,14 +680,14 @@ appear in argument <code class="docutils literal"><span class="pre">e</span></co
 <p>A global variable is often shared by more than one procedure, and the procedures
 must cooperate and keep the global variable in proper shape for shared use.
 For this reason, a global variable often has attached to it a
-<em>global-variable invariant</em> that asserts a property of the variable&#8217;s value that
+<em>global-variable invariant</em> that asserts a property of the variable’s value that
 must be preserved by every procedure that updates the variable.</p>
 <p>Earlier, we saw a timer module that maintained a nonnegative value for <code class="docutils literal"><span class="pre">time</span></code>.
 It is best to assert that <code class="docutils literal"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is a global invariant.
 Then, each of the two functions can assume the invariant when they execute.
 (And, each function must ensure the invariant is still holding true when they
 exit!)</p>
-<p>Here&#8217;s the timer example, reworked:</p>
+<p>Here’s the timer example, reworked:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">### simple example of a global variable invariant</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
@@ -745,12 +744,12 @@ exit!)</p>
 </pre></div>
 </div>
 <p>In an object-oriented language, when a global variable and its procedures
-(&#8220;methods&#8221;) are defined within a class, the global-variable invariant is called
+(“methods”) are defined within a class, the global-variable invariant is called
 the <em>class invariant</em>.</p>
-<p>Here&#8217;s an example, a class that is embedded in a toy bank into which a child
+<p>Here’s an example, a class that is embedded in a toy bank into which a child
 inserts ten-cent coins.
-(The bank is a &#8220;reactive system&#8221; that processes &#8220;coin-insertion events&#8221;!)
-The class enforces its invariant &#8211; that&#8217;s its mission.</p>
+(The bank is a “reactive system” that processes “coin-insertion events”!)
+The class enforces its invariant – that’s its mission.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DimesBank</span> <span class="p">{</span>   <span class="c1"># MAINTAINS A TOY BANK</span>
 
 <span class="c1"># fields in the class:</span>
@@ -794,11 +793,11 @@ The class enforces its invariant &#8211; that&#8217;s its mission.</p>
 <span class="k">print</span> <span class="n">money</span>                                          <span class="c1"># on the toy bank&#39;s GUI</span>
 </pre></div>
 </div>
-<p><em>When you code a class, first decide on the class&#8217;s fields (its &#8220;attributes&#8221;)
+<p><em>When you code a class, first decide on the class’s fields (its “attributes”)
 and write down the class invariant</em>.
 Then, define and code the methods so that they maintain the invariant.</p>
 <p>Here is a second example, a class that models a bank account.
-The account&#8217;s balance should always be kept nonnegative:</p>
+The account’s balance should always be kept nonnegative:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># A bank-account &quot;class&quot; and its maintenance methods.</span>
 <span class="c1"># The balance balance must be kept nonnegative.</span>
 <span class="k">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
@@ -877,15 +876,15 @@ The account&#8217;s balance should always be kept nonnegative:</p>
 <span class="p">}</span> <span class="c1"># END CLASS</span>
 </pre></div>
 </div>
-<p>All the class&#8217;s methods pledge to keep <code class="docutils literal"><span class="pre">balance</span></code> nonnegative.
+<p>All the class’s methods pledge to keep <code class="docutils literal"><span class="pre">balance</span></code> nonnegative.
 Assuming that no other program commands update the <code class="docutils literal"><span class="pre">balance</span></code>, the proofs
-ensure that <code class="docutils literal"><span class="pre">balance</span></code>&#8216;s global invariant holds always.</p>
+ensure that <code class="docutils literal"><span class="pre">balance</span></code>’s global invariant holds always.</p>
 <p>Whenever a module or class holds a data structure, there
 <em>always should be a global invariant that states the critical properties of the
 structure that must be maintained</em>.
 The procedures that maintain the data structure pledge to preserve its invariant.</p>
 <p>This is the technique used in modular and object-oriented programming, where
-a data structure, its global invariant, and the data structure&#8217;s maintenance
+a data structure, its global invariant, and the data structure’s maintenance
 procedures/methods are placed together.
 Since only the maintenance procedures update the global variable and preserve
 the invariant, the rest of the program can always rely on the global invariant
@@ -915,7 +914,7 @@ to hold true
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>For the function&#8217;s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
+<p>For the function’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
 Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
 appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
@@ -964,7 +963,7 @@ preserve the invariants.</p>
 <p>All the techniques apply when the code inside a procedure body calls another
 procedure: as long as we establish the precondition for the called procedure,
 we can call it, and we obtain the postcondition as new knowledge in return.
-In this way, procedures can build on each others&#8217; postconditions.</p>
+In this way, procedures can build on each others’ postconditions.</p>
 <div class="section" id="procedures-that-call-themselves">
 <h3>5.4.1. Procedures that Call Themselves<a class="headerlink" href="#procedures-that-call-themselves" title="Permalink to this headline">¶</a></h3>
 <p>It is interesting that a procedure can call <em>itself</em>, and we can reason about
@@ -974,7 +973,7 @@ Here is a detailed example.</p>
 <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">n</span></code>.
 It is the tradition to define <code class="docutils literal"><span class="pre">0!</span> <span class="pre">=</span> <span class="pre">1</span></code>, but factorials for negative integers
 do not exist.</p>
-<p>Factorial lists the number of permutations (combinations or &#8220;shuffles&#8221;), e.g.,
+<p>Factorial lists the number of permutations (combinations or “shuffles”), e.g.,
 <code class="docutils literal"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
 <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, and <code class="docutils literal"><span class="pre">c</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">abc</span>
@@ -1073,9 +1072,9 @@ The code for <code class="docutils literal"><span class="pre">fact(3)</span></co
                                                          <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>We see a sequence, or &#8220;stack&#8221;, of activations of <code class="docutils literal"><span class="pre">fact</span></code>, one per call.
+<p>We see a sequence, or “stack”, of activations of <code class="docutils literal"><span class="pre">fact</span></code>, one per call.
 Within a computer, an <em>activation-record stack</em> remembers the activations.
-The call to <code class="docutils literal"><span class="pre">fact(0)</span></code> returns an answer &#8211; 1:</p>
+The call to <code class="docutils literal"><span class="pre">fact(0)</span></code> returns an answer – 1:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1102,7 +1101,7 @@ returned answer is assigned to <code class="docutils literal"><span class="pre">
                            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>You see the pattern &#8211; the calls are finishing in reverse order, returning the
+<p>You see the pattern – the calls are finishing in reverse order, returning the
 partial answers, <code class="docutils literal"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
@@ -1129,7 +1128,7 @@ partial answers, <code class="docutils literal"><span class="pre">fact(0)</span>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>Within the computer, the code for <code class="docutils literal"><span class="pre">fact</span></code> is not copied at each call &#8211;
+<p>Within the computer, the code for <code class="docutils literal"><span class="pre">fact</span></code> is not copied at each call –
 instead, a new <em>namespace</em> (activation record) is generated for each call to
 <code class="docutils literal"><span class="pre">fact</span></code>.
 When a call finishes, its answer is returned and its namespace is erased
@@ -1151,7 +1150,7 @@ This is remarkable and exactly correct.</p>
 what happens.
 In the process, we deduce that the completed coding of <code class="docutils literal"><span class="pre">fact</span></code> possesses
 exactly these same pre- and post-conditions!</p>
-<p>Recall again the &#8220;official definition&#8221; of <code class="docutils literal"><span class="pre">n!</span></code>:</p>
+<p>Recall again the “official definition” of <code class="docutils literal"><span class="pre">n!</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
@@ -1191,8 +1190,8 @@ n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
 </div>
 <p>We did it!
-The proof is not magic or trickery &#8211; notice that the call, <code class="docutils literal"><span class="pre">fact(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
-uses an argument value that is different &#8212; one smaller than &#8212; argument <code class="docutils literal"><span class="pre">n</span></code>
+The proof is not magic or trickery – notice that the call, <code class="docutils literal"><span class="pre">fact(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
+uses an argument value that is different — one smaller than — argument <code class="docutils literal"><span class="pre">n</span></code>
 used with <code class="docutils literal"><span class="pre">fact(n)</span></code>.
 This style of recursion by counting-downward-by-ones-until-zero will be exposed
 in the next chapter as an instance of <em>mathematical induction</em>.</p>
@@ -1202,9 +1201,9 @@ in the next chapter as an instance of <em>mathematical induction</em>.</p>
 <span class="sd">&quot;&quot;&quot;{ [x/ans][200/n]post_fact,  that is,  x == 200! }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>In the next chapter, we will see a strong connection between a function&#8217;s
-self-call and a loop &#8211; in both cases, the construct reuses its very own
-&#8220;pre-post-condition&#8221; when repeating itself.</p>
+<p>In the next chapter, we will see a strong connection between a function’s
+self-call and a loop – in both cases, the construct reuses its very own
+“pre-post-condition” when repeating itself.</p>
 </div>
 </div>
 <div class="section" id="summary">
@@ -1269,7 +1268,7 @@ property:</p>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>For the function&#8217;s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
+<p>For the function’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
 Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
 appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>

@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,7 +37,7 @@
     <link rel="next" title="5. Functions and Procedures" href="../05-functions-procedures/index.html" />
     <link rel="prev" title="3. Circuits that Compute on Numbers: Algebra" href="../03-algebra/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -149,7 +148,7 @@ Logika: Programming Logics
 </font><div class="section" id="programming-logic-for-assignments-and-conditionals">
 <span id="programming-logic"></span><h1>4. Programming Logic for Assignments and Conditionals<a class="headerlink" href="#programming-logic-for-assignments-and-conditionals" title="Permalink to this headline">¶</a></h1>
 <p>The examples at the end of the previous chapter showed that assignment in
-computer language is different from equality in algebra &#8211; in algebra,
+computer language is different from equality in algebra – in algebra,
 <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> is a self-contradiction, whereas in computer language,
 it is a new assertion, <em>cancelling a previously known one</em>.
 In this chapter, we make precise the semantics of assignment for the knowledge
@@ -260,7 +259,7 @@ For the example, we might deduce:</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>But this isn&#8217;t good enough. Consider:</p>
+<p>But this isn’t good enough. Consider:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an int &gt; 0: &quot;</span><span class="p">)</span>
 <span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ 1. x &gt; 0                premise  }&quot;&quot;&quot;</span>
@@ -273,8 +272,8 @@ For the example, we might deduce:</p>
 </div>
 <div class="section" id="law-for-assignment-forwards-reasoning">
 <h3>4.1.1. Law for Assignment: Forwards Reasoning<a class="headerlink" href="#law-for-assignment-forwards-reasoning" title="Permalink to this headline">¶</a></h3>
-<p>In the assignment, <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>, we must distinguish between the &#8220;old&#8221; value of
-<code class="docutils literal"><span class="pre">x</span></code>, which appears on the assignment&#8217;s right-hand side, and its &#8220;new&#8221; value,
+<p>In the assignment, <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>, we must distinguish between the “old” value of
+<code class="docutils literal"><span class="pre">x</span></code>, which appears on the assignment’s right-hand side, and its “new” value,
 which appears on its left-hand side.
 With this distinction, we can reason correctly about <code class="docutils literal"><span class="pre">x</span></code>.
 Here is the example repeated, with the distinction made clear:</p>
@@ -303,10 +302,10 @@ occurrences of <code class="docutils literal"><span class="pre">x</span></code> 
 mention <code class="docutils literal"><span class="pre">x_old</span></code>.
 This assertion can be carried forwards as a premise for future deduction.</li>
 </ol>
-<p>This is what we did in the earlier example &#8211; we deduced <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, which we can
+<p>This is what we did in the earlier example – we deduced <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, which we can
 carry forwards.
 We then forget all the assertions that mentioned <code class="docutils literal"><span class="pre">x_old</span></code>.</p>
-<p>The rule&#8217;s schematic looks likes this:</p>
+<p>The rule’s schematic looks likes this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">  ...</span>
 <span class="s2">  m. P</span>
@@ -351,7 +350,7 @@ We can prove it with algebra:</p>
 <p>After each command, a proof segment begins with the premises and then <em>subst</em>
 and <em>algebra</em> steps lead to the last line, which states the knowledge that
 travels forwards to the next command.
-We must ensure that no &#8220;old&#8221; variables appear in the last line.</p>
+We must ensure that no “old” variables appear in the last line.</p>
 <p>Here is a third example, where we wish to show that the value within variable
 <code class="docutils literal"><span class="pre">x</span></code> falls in a certain range (perhaps <code class="docutils literal"><span class="pre">x</span></code> is used as an index to an array):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
@@ -377,16 +376,16 @@ We must ensure that no &#8220;old&#8221; variables appear in the last line.</p>
 it is the input property that the program requires to operate successfully.
 The goal of the program is its <em>postcondition</em>.
 The example uses new deduction laws that let us combine together and pull apart
-assertions connected by <code class="docutils literal"><span class="pre">^</span></code> (&#8220;and&#8221;).
+assertions connected by <code class="docutils literal"><span class="pre">^</span></code> (“and”).
 There is also an explicit use of substitution (<code class="docutils literal"><span class="pre">subst</span></code>), where the equality
 substituted and the formula substituted into are both listed as line numbers.</p>
 <p>Because our deductions often consist of multiple steps, it is convenient to use
-the <code class="docutils literal"><span class="pre">^i</span></code> law (&#8220;and-introduction&#8221;) to collect together the facts we wish to
-carry forwards as premises for future use &#8211; from here on, we will carry
+the <code class="docutils literal"><span class="pre">^i</span></code> law (“and-introduction”) to collect together the facts we wish to
+carry forwards as premises for future use – from here on, we will carry
 forwards only the <em>last line</em> of a proof as the premise for future use.
 If we want to carry forwards multiple facts, we connect them together with
 <code class="docutils literal"><span class="pre">^i</span></code>.
-Later, we use <code class="docutils literal"><span class="pre">^e</span></code> (&#8220;and-elimination&#8221;) to extract the facts as needed.</p>
+Later, we use <code class="docutils literal"><span class="pre">^e</span></code> (“and-elimination”) to extract the facts as needed.</p>
 </div>
 <div class="section" id="invariant-properties">
 <h3>4.1.2. Invariant Properties<a class="headerlink" href="#invariant-properties" title="Permalink to this headline">¶</a></h3>
@@ -394,8 +393,8 @@ Later, we use <code class="docutils literal"><span class="pre">^e</span></code> 
 it manipulates.
 Here is a simplistic example: perhaps we build an electronic piggy bank, which
 displays the value of the dimes inserted into it.
-The bank&#8217;s controller software must maintain the relationship between the
-quantity of dimes inserted in the bank and the dimes&#8217; monetary value:</p>
+The bank’s controller software must maintain the relationship between the
+quantity of dimes inserted in the bank and the dimes’ monetary value:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">dimes</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">var</span> <span class="n">money</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">dimes</span> <span class="o">*</span> <span class="mi">10</span>
 
@@ -422,7 +421,7 @@ quantity of dimes inserted in the bank and the dimes&#8217; monetary value:</p>
 <span class="o">//</span> <span class="n">The</span> <span class="n">invariant</span> <span class="nb">property</span> <span class="ow">is</span> <span class="n">restored</span><span class="p">:</span>  <span class="n">money</span> <span class="o">==</span> <span class="n">dimes</span> <span class="o">*</span> <span class="mi">10</span>
 </pre></div>
 </div>
-<p>The proof explains why we wrote the assignments that we did &#8211; we wanted to
+<p>The proof explains why we wrote the assignments that we did – we wanted to
 maintain the logical property that <code class="docutils literal"><span class="pre">money</span> <span class="pre">==</span> <span class="pre">dimes</span> <span class="pre">*</span> <span class="pre">10</span></code>.</p>
 <p>The above software is embedded in a chip within the piggy bank: when the child
 inserts a dime, this activates the above code, which resets <code class="docutils literal"><span class="pre">dimes</span></code> and
@@ -434,7 +433,7 @@ maintained.</p>
 iteratively monitors the values of input sensors and adjusts program variables
 so that invariants are maintained.
 This is the crucial concept within flight-control software, which uses inputs
-from a plane&#8217;s sensors to adjust rudders, joystick, and fuel intake so that
+from a plane’s sensors to adjust rudders, joystick, and fuel intake so that
 a plane flies stably and on course.</p>
 <p>The form of reasoning (invariant maintenance) just seen occurs automatically and
 unconsciously in seasoned programmers all the time, every time assignments are
@@ -444,7 +443,7 @@ private variables and methods that maintain invariant properties of the private
 variables.</p>
 <div class="section" id="properties-stated-in-terms-of-initial-input-values">
 <h4>Properties Stated in Terms of Initial Input Values<a class="headerlink" href="#properties-stated-in-terms-of-initial-input-values" title="Permalink to this headline">¶</a></h4>
-<p>Sometimes we really must discuss the &#8220;old&#8221; value of a variable after an
+<p>Sometimes we really must discuss the “old” value of a variable after an
 assignment completes.
 Here is a small but tricky program that swaps the values of the its two
 variables, <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>:</p>
@@ -456,8 +455,8 @@ variables, <code class="docutils literal"><span class="pre">x</span></code> and 
 <span class="o">//</span> <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 </div>
-<p>At the end of the program, we want to assert that <code class="docutils literal"><span class="pre">y</span></code> has <code class="docutils literal"><span class="pre">x</span></code>&#8216;s value and
-<code class="docutils literal"><span class="pre">x</span></code> has <code class="docutils literal"><span class="pre">y</span></code>&#8216;s.
+<p>At the end of the program, we want to assert that <code class="docutils literal"><span class="pre">y</span></code> has <code class="docutils literal"><span class="pre">x</span></code>’s value and
+<code class="docutils literal"><span class="pre">x</span></code> has <code class="docutils literal"><span class="pre">y</span></code>’s.
 To do this, we may invent dummy constants called <code class="docutils literal"><span class="pre">x_in</span></code> and <code class="docutils literal"><span class="pre">y_in</span></code> and
 pretend they are the input values to <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> respectively:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">x_in</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
@@ -506,7 +505,7 @@ through the deduction.</p>
 <h4>Mechanical Decidability of Properties of Assignment Code<a class="headerlink" href="#mechanical-decidability-of-properties-of-assignment-code" title="Permalink to this headline">¶</a></h4>
 <p>After several examples, we are tempted to conclude that deducing forwards
 knowledge is a mechanical activity, where we do an assignment and then eliminate
-occurrences of the &#8220;old&#8221; variable, like this:</p>
+occurrences of the “old” variable, like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{ P }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
@@ -521,7 +520,7 @@ occurrences of the &#8220;old&#8221; variable, like this:</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>We can apply this pattern to an earlier example &#8211; it works!</p>
+<p>We can apply this pattern to an earlier example – it works!</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
@@ -565,7 +564,7 @@ occurrences of the &#8220;old&#8221; variable, like this:</p>
 <p>Will the variable-elimination technique always lead us to the final goal?
 If so, perhaps we can write a proof generator that will automatically write the
 proofs for us!</p>
-<p>Unfortunately, the answer here is &#8220;no&#8221;.
+<p>Unfortunately, the answer here is “no”.
 The reason is that important intermediate knowledge can be lost, and here is
 a simple example that shows how:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
@@ -591,7 +590,7 @@ a simple example that shows how:</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>A human sees how to repair the above proof &#8211; extract new knowledge about <code class="docutils literal"><span class="pre">y</span></code>
+<p>A human sees how to repair the above proof – extract new knowledge about <code class="docutils literal"><span class="pre">y</span></code>
 from premise <code class="docutils literal"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x_old</span> <span class="pre">*</span> <span class="pre">2</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
@@ -618,14 +617,14 @@ automated checker tool to reach our goal.</p>
 When we analyze a program from start to finish, which facts should we try to
 deduce and carry forwards after each assignment?
 We cannot answer this question unless we know the <em>goal assertion</em> we are trying
-to prove at the program&#8217;s end.
+to prove at the program’s end.
 For this reason, we should learn how to reason <em>backwards</em> from the goal at the
 end of a program to the asserts at the beginning.
 This is called <em>goal-directed reasoning</em>, and there is a simple, beautiful
 deduction rule for assignments that takes the guesswork out of goal-directed
 reasoning.</p>
 <p>Here is an example.
-Say that at program&#8217;s end, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code> must hold, and the program ends like this:</p>
+Say that at program’s end, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code> must hold, and the program ends like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ subgoal: ??? }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
@@ -635,8 +634,8 @@ Say that at program&#8217;s end, <code class="docutils literal"><span class="pre
 <p>What is the subgoal needed for success?
 It appears that <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> must hold just before the assignment.
 How did we calculate this?
-Since the assignment &#8220;equates&#8221; <code class="docutils literal"><span class="pre">x</span></code> with <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code>, it must be <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> that
-is greater than 2 &#8211; we <em>substitute</em> <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> into the goal, for <code class="docutils literal"><span class="pre">x</span></code>,
+Since the assignment “equates” <code class="docutils literal"><span class="pre">x</span></code> with <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code>, it must be <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> that
+is greater than 2 – we <em>substitute</em> <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> into the goal, for <code class="docutils literal"><span class="pre">x</span></code>,
 that is, we compute the subgoal as:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">]</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>  <span class="o">=</span>  <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </pre></div>
@@ -648,19 +647,19 @@ that is, we compute the subgoal as:</p>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ goal: x &gt; 2 }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>This reasoning is the basis of a &#8220;backwards law&#8221; for assignment commands.</p>
+<p>This reasoning is the basis of a “backwards law” for assignment commands.</p>
 <p>The formal statement of the backwards-assignment law is this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{ subgoal:  [e/x]G }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ goal: G }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>The goal, <code class="docutils literal"><span class="pre">G</span></code>, is sometimes called the assignment&#8217;s <em>postcondition</em>, and
+<p>The goal, <code class="docutils literal"><span class="pre">G</span></code>, is sometimes called the assignment’s <em>postcondition</em>, and
 the subgoal, <code class="docutils literal"><span class="pre">[e/x]G</span></code>, is the <em>precondition</em>.
 It is a formal, proved result that every such precondition, postcondition pair
 calculated by the backwards-assignment law can be proved as a correct forwards
 deduction with the forwards-assignment law.
-Let&#8217;s use the backwards assignment law on an example from the previous section.</p>
+Let’s use the backwards assignment law on an example from the previous section.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{  ??? }&quot;&quot;&quot;</span>
@@ -763,7 +762,7 @@ A small algebra step completes the forwards proof of the backwards deduction:</p
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>By reasoning backwards, we avoid the need to work directly with <code class="docutils literal"><span class="pre">x_old</span></code> &#8211;
+<p>By reasoning backwards, we avoid the need to work directly with <code class="docutils literal"><span class="pre">x_old</span></code> –
 the subgoals we calculate by substitution are correctly expressed in terms of
 <code class="docutils literal"><span class="pre">x</span></code>.
 So, if your program has a clearly stated goal, you <em>can use backwards reasoning
@@ -817,7 +816,7 @@ extract useful knowledge.</p>
 the larger of <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.
 The assertion we proved so far does not imply the desired goal.
 This is because we ignored a critical feature of a conditional command:
-<em>By asking a question &#8212; the test &#8212; the conditional command generates new
+<em>By asking a question — the test — the conditional command generates new
 knowledge.</em></p>
 <p>For the then arm, we have the new knowledge that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>;
 for the else-arm, we have that <code class="docutils literal"><span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code>, that is, <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;=</span> <span class="pre">x</span></code>.
@@ -858,8 +857,8 @@ and <code class="docutils literal"><span class="pre">y</span></code>:</p>
 </div>
 <p>Each arm generates the assertion that <code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>.
 Now, in both cases of the or-formula, we can conclude merely
-<code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>, as listed in the proof&#8217;s last line.</p>
-<p>More precisely stated, the proof&#8217;s last line is
+<code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>, as listed in the proof’s last line.</p>
+<p>More precisely stated, the proof’s last line is
 <code class="docutils literal"><span class="pre">(max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y)</span> <span class="pre">v</span> <span class="pre">(max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y)</span></code>, but this is exactly the same
 as <code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>.</p>
 <p>We are not yet finished with this example; the desired goal is truly:</p>
@@ -890,10 +889,10 @@ proofs that we have already constructed.</p>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ 1. Q1 v Q2   premise }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>That is, given the assertion, <code class="docutils literal"><span class="pre">P</span></code>, at the conditional&#8217;s start, the then-arm,
+<p>That is, given the assertion, <code class="docutils literal"><span class="pre">P</span></code>, at the conditional’s start, the then-arm,
 <code class="docutils literal"><span class="pre">C1</span></code> uses <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">B</span></code> to generate assertion, <code class="docutils literal"><span class="pre">Q1</span></code>, and the else-arm,
 <code class="docutils literal"><span class="pre">C2</span></code>, uses <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">~B</span></code> to generate assertion <code class="docutils literal"><span class="pre">Q2</span></code>.
-These two conclusions are joined at the conditional&#8217;s conclusion.</p>
+These two conclusions are joined at the conditional’s conclusion.</p>
 <p>When a conditional command lacks an else-arm, e.g.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">x</span>
@@ -936,7 +935,7 @@ These two conclusions are joined at the conditional&#8217;s conclusion.</p>
 it is the case that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> implies <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> (and clearly, the other case,
 <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> implies <code class="docutils literal"><span class="pre">`x</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>, holds), so we conclude at the very last line
 that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>;
-the justification is <code class="docutils literal"><span class="pre">ore</span></code> &#8212; <a href="#id1"><span class="problematic" id="id2">``</span></a>or elimination&#8217;&#8217; &#8212; commonly known as
+the justification is <code class="docutils literal"><span class="pre">ore</span></code> — <a href="#id1"><span class="problematic" id="id2">``</span></a>or elimination” — commonly known as
 <em>proof by cases</em>.</p>
 <div class="section" id="optional-section-the-backwards-law-for-conditional-commands">
 <h3>4.2.1. Optional Section: The Backwards Law for Conditional Commands<a class="headerlink" href="#optional-section-the-backwards-law-for-conditional-commands" title="Permalink to this headline">¶</a></h3>
@@ -981,17 +980,17 @@ the else-arm:</p>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{  goal: max &gt;= x  ^  max &gt;= y }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Now, given the extra knowledge that the conditional&#8217;s test is <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>, we can
+<p>Now, given the extra knowledge that the conditional’s test is <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>, we can
 apply this knowledge to the subgoals.</p>
-<p>First, the then-arm will achieve the final goal if the conditional&#8217;s test
+<p>First, the then-arm will achieve the final goal if the conditional’s test
 provides enough extra information to achive the subgoal:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>  <span class="o">--&gt;</span>  <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span>
 </pre></div>
 </div>
-<p>The logical operator, <code class="docutils literal"><span class="pre">--&gt;</span></code> (read as &#8220;implies&#8221;), can be read as a
-&#8220;logical if-then&#8221;: &#8220;if <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> is assumed as a fact, then <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code> follows
-as a consequence&#8221;.
-Or, read it as, &#8220;when <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> holds true, then so must <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>&#8221;.</p>
+<p>The logical operator, <code class="docutils literal"><span class="pre">--&gt;</span></code> (read as “implies”), can be read as a
+“logical if-then”: “if <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> is assumed as a fact, then <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code> follows
+as a consequence”.
+Or, read it as, “when <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> holds true, then so must <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>”.</p>
 <p>Similarly, the else-arm will achieve the final goal if the test provides enough
 extra information to achive the subgoal:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">~</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span>  <span class="o">--&gt;</span>  <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">x</span>
@@ -1023,11 +1022,11 @@ extra information to achive the subgoal:</p>
 </div>
 <p>The implication operator, <code class="docutils literal"><span class="pre">--&gt;</span></code>, is new to us, and we must study it carefully,
 which we do in a later chapter.
-For now, pretend it is a &#8220;logical if&#8221;.</p>
-<p>Let&#8217;s analyze the subgoal we calculated for the if-command.
+For now, pretend it is a “logical if”.</p>
+<p>Let’s analyze the subgoal we calculated for the if-command.
 First, is <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span> <span class="pre">--&gt;</span> <span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code> a true fact?
 Well, whenever <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> holds true, then by algebra, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code> must hold true,
-too &#8211; the latter is a consequence of the assumption that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> holds true.
+too – the latter is a consequence of the assumption that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> holds true.
 Similarly, <code class="docutils literal"><span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span> <span class="pre">--&gt;</span> <span class="pre">y</span> <span class="pre">&gt;=</span> <span class="pre">x</span></code> is a true fact, because whenever <code class="docutils literal"><span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code>
 holds, then <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;=</span> <span class="pre">x</span></code> follows.
 So, the subgoal is true, that is, <code class="docutils literal"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">y</span> <span class="pre">--&gt;</span> <span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y)</span> <span class="pre">^</span> <span class="pre">(~(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span> <span class="pre">--&gt;</span> <span class="pre">y</span> <span class="pre">&gt;=</span> <span class="pre">x)</span></code>
@@ -1142,7 +1141,7 @@ The precise reasoning will be presented in a later chapter.</p>
 </pre></div>
 </div>
 <p>When the input number assigned to <code class="docutils literal"><span class="pre">x</span></code> is nonzero, then the output, <code class="docutils literal"><span class="pre">r</span></code>, will
-be <code class="docutils literal"><span class="pre">x</span></code>&#8216;s reciprocal.
+be <code class="docutils literal"><span class="pre">x</span></code>’s reciprocal.
 The forwards reasoning that asserts this fact goes as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">val</span> <span class="n">r</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
@@ -1159,7 +1158,7 @@ The forwards reasoning that asserts this fact goes as follows:</p>
 <span class="o">//</span> <span class="k">print</span> <span class="n">r</span>
 </pre></div>
 </div>
-<p>Once we learn better the deductive laws (the &#8220;algebra&#8221;) for <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">v</span></code> and
+<p>Once we learn better the deductive laws (the “algebra”) for <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">v</span></code> and
 <code class="docutils literal"><span class="pre">--&gt;</span></code>, we can prove that:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">^</span>  <span class="n">r</span> <span class="o">==</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">x</span><span class="p">)</span>  <span class="n">v</span>  <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span>  <span class="o">^</span>  <span class="n">r</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
