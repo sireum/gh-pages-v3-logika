@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +38,7 @@
     <link rel="next" title="3.2. Propositional Logic" href="../propositional/index.html" />
     <link rel="prev" title="3. The Logika Formal Input Language" href="../index.html" />
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -154,7 +155,7 @@ underscore cannot be a part of a user-declared variable/function identifier).</p
 listed with a decreasing precedence order (first is highest) along with Math Unicode <a class="reference internal" href="../../02-live/index.html#shortcuts"><span class="std std-ref">LIVE Shortcuts</span></a>.
 Note that the proof context operators and literals include the ones in the programming
 context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
-<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java’s string literal</a>
+<a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java&#8217;s string literal</a>
 without the octal escape.
 The prepend (<code class="docutils literal"><span class="pre">+:</span></code>) and implication operators (<code class="docutils literal"><span class="pre">-&gt;</span></code>, <code class="docutils literal"><span class="pre">implies</span></code>, <code class="docutils literal"><span class="pre">→</span></code>)
 are right-associative.</p>
@@ -235,7 +236,7 @@ are right-associative.</p>
 <hr class="docutils" />
 <div class="section" id="keywords">
 <h2>3.1.3. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
-<p>Logika keywords consists of Scala’s keywords, contract keywords,
+<p>Logika keywords consists of Scala&#8217;s keywords, contract keywords,
 justification keywords, and type keywords.</p>
 <div class="section" id="scala-keywords">
 <h3>3.1.3.1. Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
@@ -286,7 +287,7 @@ justification keywords, and type keywords.</p>
 <div class="section" id="comments">
 <h2>3.1.4. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>Logika comments are <a class="reference external" href="https://en.wikipedia.org/wiki/C_syntax#Comments">C99</a>
-line (<code class="docutils literal"><span class="pre">//</span></code> … until end of the line) and block (<code class="docutils literal"><span class="pre">/*</span></code> … <code class="docutils literal"><span class="pre">*/</span></code>) comments.</p>
+line (<code class="docutils literal"><span class="pre">//</span></code> ... until end of the line) and block (<code class="docutils literal"><span class="pre">/*</span></code> … <code class="docutils literal"><span class="pre">*/</span></code>) comments.</p>
 <p>Note that block comments are not allowed to appear inside Logika statements
 (<code class="docutils literal"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code>).</p>
 </div>
@@ -295,19 +296,19 @@ line (<code class="docutils literal"><span class="pre">//</span></code> … unti
 <p>Scala is a line-oriented language where newline characters are treated specially in some cases.
 For example, newline characters <em>can</em> separate expressions in a code block.
 The <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#newline-characters">actual rules of when newlines are treated specially</a>
-are not immediately obvious but they behave “intuitively” (resulting in rare surprises when
+are not immediately obvious but they behave &#8220;intuitively&#8221; (resulting in rare surprises when
 programming).</p>
-<p>Logika follows Scala’s line-orientation (otherwise, it is not a subset language),
+<p>Logika follows Scala&#8217;s line-orientation (otherwise, it is not a subset language),
 even inside proof context (e.g., proof steps have to be separated by newlines).
 For clarity sake, instead of explicitly listing newlines in the Logika context-free grammars
-that go beyond Scala’s, special situations are described in the relevant sections.
+that go beyond Scala&#8217;s, special situations are described in the relevant sections.
 Interested readers are referred to the full
-<a class="reference external" href="https://github.com/sireum/v3/blob/release/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4">Logika’s ANTLR4 grammar</a>
+<a class="reference external" href="https://github.com/sireum/v3/blob/release/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4">Logika&#8217;s ANTLR4 grammar</a>
 (<code class="docutils literal"><span class="pre">NL</span></code> token) if such details are preferred.
 (A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
-to implement Scala’s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
+to implement Scala&#8217;s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
 <p>Other than the special newline rules that Logika follows in proof context,
-Logika whitespaces are similar to Scala’s.</p>
+Logika whitespaces are similar to Scala&#8217;s.</p>
 </div>
 <div class="section" id="grammatical-rules">
 <h2>3.1.6. Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h2>

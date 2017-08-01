@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +38,7 @@
     <link rel="next" title="2. Circuits and Truth Tables" href="../02-circuits-truth-tables/index.html" />
     <link rel="prev" title="Logika: Programming Logics" href="../index.html" />
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -124,12 +125,12 @@ Logika: Programming Logics
 </b></big></big></big></big>
 </font><div class="section" id="introduction-why-bother">
 <span id="introduction"></span><h1>1. Introduction: Why bother?<a class="headerlink" href="#introduction-why-bother" title="Permalink to this headline">¶</a></h1>
-<p>That’s a good question!
+<p>That&#8217;s a good question!
 After all, you can hack a spreadsheet program or build an interactive game by
 writing a lot of code, experimenting with it, and patching it.
 After awhile, the program you wrote does more or less what you wanted.</p>
-<p>But imagine if the rest of the world worked that same way – would you want to
-drive a car or fly an airplane that was “hacked together”?
+<p>But imagine if the rest of the world worked that same way &#8211; would you want to
+drive a car or fly an airplane that was &#8220;hacked together&#8221;?
 How about travelling in a bus across a bridge that fell down a few times already
 and was repeatedly patched till it (seemed) to hold?</p>
 <p>Perhaps these analogies are a bit extreme, but professional scientists and
@@ -146,21 +147,21 @@ logic</li>
 </ul>
 <p>If you develop significant expertise in software engineering, perhaps you will
 work at a firm or lab that develops <em>safety-critical software</em>, that is,
-software upon which people’s money or safety or lives depend.
+software upon which people&#8217;s money or safety or lives depend.
 (An example is the flight-control software that lives in the nose of a jet and
 flies it.
 Another example is the navigation software in a satellite that talks to the GPS
-device in someone’s car.)
-Software of this nature has to be working correctly from the beginning –
+device in someone&#8217;s car.)
+Software of this nature has to be working correctly from the beginning &#8211;
 there is no freedom to hack-and-patch the code once it is in use.
 Software engineers must use algebra and logic to plan and calculate how the
 software will behave before the software is built and installed.</p>
 <p>This story is not an idle one: As you probably know, computer processor chips
 are planned out in a programming language that looks a lot like C.
 When Intel designed its first Pentium chip, there was a programming error in one
-of the chip’s coded hash tables.
+of the chip&#8217;s coded hash tables.
 The coding was burned into hardware, and millions of chips were manufactured.
-The error was quickly detected – the chip did not always perform multiplication
+The error was quickly detected &#8211; the chip did not always perform multiplication
 correctly.
 As a result, Intel lost a lot of money recalling the faulty chips and
 manufacturing a patched replacement.
@@ -168,13 +169,13 @@ These days, Intel uses techniques for validating chip designs much like the one
 you will learn in this course.</p>
 <p>If you have taken a software architecture course
 (e.g., <a class="reference external" href="http://softwarearch.santoslab.org">CIS 501: Software Architecture and Design</a>),
-you know that large systems can be drawn out, or “blueprinted,” with diagrams
+you know that large systems can be drawn out, or &#8220;blueprinted,&#8221; with diagrams
 that show the components and how they connect together by means of method calls,
 event broadcast, and message passing.
-What we will learn in this course is lower level and more basic – we will learn
+What we will learn in this course is lower level and more basic &#8211; we will learn
 how to calculate how the lines of coding in each component compute internal
 knowledge as they convert inputs into outputs.</p>
-<p>To understand the idea, let’s think about electronics.
+<p>To understand the idea, let&#8217;s think about electronics.
 When an electronic device, like a TV-set or radio, is designed, the parts of
 the device and their wirings are drawn out in a diagram called a schematic.
 Here is a schematic of a vacuum-tube guitar amplifier, the kind used by
@@ -183,24 +184,24 @@ recording studios to produce a warm sound with good sustain:</p>
 <p>Notice that the wires to the vacuum tubes (the globes labelled V1 through V5)
 are labelled with voltages, and there is a table in the lower left corner of the
 schematic that lists the correct resistances that will hold at each of the wires
-(“pins”) that connect to the tubes.</p>
+(&#8220;pins&#8221;) that connect to the tubes.</p>
 <p>The voltage and resistance calculations are both an <em>analysis</em> and a
 <em>prediction</em> of how the circuit should behave.
 The numbers were calculated with mathematics and algebra, and if the electronics
 parts are working correctly, <em>then these voltage, amperage, and resistance
-levels must occur</em> – the foundations of electronics (math and algebra) demand
+levels must occur</em> &#8211; the foundations of electronics (math and algebra) demand
 it.</p>
 <p>When the circuit is built, the actual levels are measured with a multimeter and
 compared to the calculations; if there is a discrepency, this is a signal that
 some part within the circuit is faulty.</p>
-<p>A computer program is a “circuit” that “runs on” knowledge, and when we
+<p>A computer program is a &#8220;circuit&#8221; that &#8220;runs on&#8221; knowledge, and when we
 design the parts (lines) of a computer program, we should include
-“knowledge checks” that assert the amount of knowledge computed by the program
+&#8220;knowledge checks&#8221; that assert the amount of knowledge computed by the program
 at various points.
 We will learn how to write and insert such knowledge checks, called
 <em>assertions</em>, into programs and use the laws of symbolic logic to prove that the
 assertions will hold true.</p>
-<p>You will see many examples of “program schematics” in the upcoming chapters.
+<p>You will see many examples of &#8220;program schematics&#8221; in the upcoming chapters.
 Here are two.
 First, this little code fragment apparently selects the larger of two integers
 and prints it:</p>
@@ -233,10 +234,10 @@ and prints it:</p>
 <span class="n">println</span><span class="o">(</span><span class="s">&quot;Maximum of &quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="s">&quot; and &quot;</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="s">&quot; is &quot;</span><span class="o">,</span> <span class="n">max</span><span class="o">,</span> <span class="s">&quot;.&quot;</span><span class="o">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Think of the program as a “circuit” whose lines are “wired” together in
+<p>Think of the program as a &#8220;circuit&#8221; whose lines are &#8220;wired&#8221; together in
 sequence.
-Instead of voltage, information or knowledge “flows” from one line to the next.
-Here is the program’s “schematic” where the internal “knowledge levels” are
+Instead of voltage, information or knowledge &#8220;flows&#8221; from one line to the next.
+Here is the program&#8217;s &#8220;schematic&#8221; where the internal &#8220;knowledge levels&#8221; are
 written in symbolic logic and are inserted within the lines of the program,
 enclosed by set braces, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span> <span class="pre">...</span> <span class="pre">}&quot;&quot;&quot;</span></code>:</p>
 <div class="highlight-scala"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 3
@@ -603,14 +604,14 @@ integers in an array that is passed to it as its argument:</p>
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
-<p>You are not expected to understand the above, but the function’s
+<p>You are not expected to understand the above, but the function&#8217;s
 <code class="docutils literal"><span class="pre">post</span></code>-condition list the guarantees of what goes out for any given
 array of integers.
-In this case, “what goes out” is an array whose elements are squared –
+In this case, &#8220;what goes out&#8221; is an array whose elements are squared &#8211;
 it is guaranteed to work, because it was analyzed the same way an electronics
 engineer analyzes a circuit.</p>
 <p>If the above somehow looks daunting, here is a shorter proof that leverages
-<a class="reference internal" href="../../doc/01-getting-started/index.html#auto-mode"><span class="std std-ref">Logika’s automation</span></a>:</p>
+<a class="reference internal" href="../../doc/01-getting-started/index.html#auto-mode"><span class="std std-ref">Logika&#8217;s automation</span></a>:</p>
 <div class="highlight-scala"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 3
  4
  5

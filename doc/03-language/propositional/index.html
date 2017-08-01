@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +38,7 @@
     <link rel="next" title="3.3. Predicate Logic" href="../predicate/index.html" />
     <link rel="prev" title="3.1. Basic Language Elements" href="../basic/index.html" />
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -221,7 +222,7 @@ notation is as follows.</p>
 </pre></div>
 </div>
 <p>A proof consists of a sequence of proof steps delimited by curly braces
-<code class="docutils literal"><span class="pre">{</span></code> … <code class="docutils literal"><span class="pre">}</span></code>; the proof steps should be separated by newline(s).</p>
+<code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code>; the proof steps should be separated by newline(s).</p>
 <p>Each proof step in the whole proof should be <em>uniquely</em>
 <code class="docutils literal"><span class="pre">NUM</span></code>bered (but can be out of order), and it is either:
 (a) a regular proof step (atomic), or (b) a sub-proof (composite).
@@ -230,13 +231,13 @@ notation is as follows.</p>
 increase readability of the
 <a class="reference internal" href="#prop-rules"><span class="std std-ref">justification grammar where one applies some inference rules later</span></a>.)</p>
 <p>In addition to its unique number, a regular proof step consists of a
-claim expression, followed by a <a class="reference internal" href="#prop-rules"><span class="std std-ref">justification</span></a> –
+claim expression, followed by a <a class="reference internal" href="#prop-rules"><span class="std std-ref">justification</span></a> &#8211;
 a valid application of one of propositional logic
 <a class="reference internal" href="#prop-rules"><span class="std std-ref">inference rules</span></a> to deduce the claim.
 A sub-proof in the propositional logic language starts with an assumption
 (<code class="docutils literal"><span class="pre">assume</span></code> justification) that is also a regular proof step with a claim expression,
 followed by zero or more proof steps (they are delimited inside
-<code class="docutils literal"><span class="pre">{</span></code> … <code class="docutils literal"><span class="pre">}</span></code> similar to a proof); the steps, including the assumption,
+<code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> similar to a proof); the steps, including the assumption,
 should be separated by newline(s).</p>
 <p>Here is an example proof of the above sequent: <code class="docutils literal"><span class="pre">p</span> <span class="pre">→</span> <span class="pre">r,</span>&#160; <span class="pre">q</span> <span class="pre">→</span> <span class="pre">r</span>&#160; <span class="pre">⊢</span>&#160; <span class="pre">(p</span> <span class="pre">∨</span> <span class="pre">q)</span> <span class="pre">→</span> <span class="pre">r</span></code>.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>{
@@ -267,9 +268,9 @@ sub-proofs, where <code class="docutils literal"><span class="pre">5</span></cod
 <p>When applying an <a class="reference internal" href="#prop-rules"><span class="std std-ref">inference rule</span></a> to justify a proof step,
 one can refer to proof step numbers preceeding it
 (i.e., in the order of appearance instead of by their number ordering)
-in the same level of <code class="docutils literal"><span class="pre">{</span></code> … <code class="docutils literal"><span class="pre">}</span></code>
+in the same level of <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code>
 (e.g., <code class="docutils literal"><span class="pre">11</span></code> refers to <code class="docutils literal"><span class="pre">4</span></code>, <code class="docutils literal"><span class="pre">5</span></code>, and <code class="docutils literal"><span class="pre">8</span></code>)
-or at the preeceding step numbers in any of its outer <code class="docutils literal"><span class="pre">{</span></code> … <code class="docutils literal"><span class="pre">}</span></code> layers
+or at the preeceding step numbers in any of its outer <code class="docutils literal"><span class="pre">{</span></code> ... <code class="docutils literal"><span class="pre">}</span></code> layers
 (e.g., <code class="docutils literal"><span class="pre">7</span></code> refers <code class="docutils literal"><span class="pre">1</span></code>).
 As a non-example, step <code class="docutils literal"><span class="pre">10</span></code> cannot refer to step <code class="docutils literal"><span class="pre">7</span></code> to deduce its claim.</p>
 <p>Hence, the scoping rules are similar to variable declaration-usage scoping rules
@@ -355,12 +356,12 @@ That is:</p>
 </div>
 <p>is the same as <code class="docutils literal"><span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code></p>
 <p>These rules follow
-<a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html">Scala’s line-orientation</a>
+<a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html">Scala&#8217;s line-orientation</a>
 (follow the link to see more examples).</p>
 </div>
 <div class="section" id="expression-equivalence">
 <span id="structural-eq"></span><h3>3.2.5.2. Expression Equivalence (<code class="docutils literal"><span class="pre">≡</span></code>)<a class="headerlink" href="#expression-equivalence" title="Permalink to this headline">¶</a></h3>
-<p>Logika’s propositional logic reasoning mainly uses structural equivalence
+<p>Logika&#8217;s propositional logic reasoning mainly uses structural equivalence
 (<code class="docutils literal"><span class="pre">≡</span></code>) that determines equality of two expressions <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code>
 (i.e., <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≡</span> <span class="pre">E2</span></code>) based on whether they have the same structure/form.</p>
 <p>A parenthesized expression is structurally (and semantically)
@@ -389,7 +390,7 @@ This equivalence holds even for programming logic expressions.</p>
 </div>
 <p>Each regular proof step should justify the deduction that it makes
 to derive its claim by applying some inference rules.
-This section summarizes Logika’s rendition of propositional logic
+This section summarizes Logika&#8217;s rendition of propositional logic
 natural deduction rules that are intuitively described in
 <a class="reference internal" href="../../../dschmidt/07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a>.</p>
 <p>The subsequent discussion for each inference rules assumes that
@@ -401,8 +402,8 @@ and whose claim expression that it deduces is <code class="docutils literal"><sp
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can be used to call on one of the
-sequent’s premises associated with the proof.
-That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent’s premises.
+sequent&#8217;s premises associated with the proof.
+That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent&#8217;s premises.
 For example,</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>p,  q  ⊢  q
 {
@@ -412,7 +413,7 @@ For example,</p>
 </div>
 <p>In this case, <code class="docutils literal"><span class="pre">R</span></code> is <code class="docutils literal"><span class="pre">q</span></code> (<code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">q</span></code>) and
 proof step <code class="docutils literal"><span class="pre">1</span></code> (<code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">1</span></code>) uses <code class="docutils literal"><span class="pre">premise</span></code> to deduce its
-claim <code class="docutils literal"><span class="pre">q</span></code>, which is exactly the second sequent’s premise.</p>
+claim <code class="docutils literal"><span class="pre">q</span></code>, which is exactly the second sequent&#8217;s premise.</p>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can also be used to conjure <code class="docutils literal"><span class="pre">⊤</span></code> (true).
 For example, here is the shortest sequent proof in Logika.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>⊢  ⊤
@@ -475,7 +476,7 @@ Z.  P ∧ Q      ∧i X Y      // R ≡ P ∧ Q
 </div>
 <p>In this case, <code class="docutils literal"><span class="pre">X</span> <span class="pre">≡</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">q</span></code>, <code class="docutils literal"><span class="pre">Y</span> <span class="pre">≡</span> <span class="pre">2</span></code>, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">p</span></code>,
 <code class="docutils literal"><span class="pre">Z</span> <span class="pre">≡</span> <span class="pre">3</span></code>, and <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">q</span> <span class="pre">∧</span> <span class="pre">p</span></code>.</p>
-<p>The rest of this section assumes that one already “groks”
+<p>The rest of this section assumes that one already &#8220;groks&#8221;
 the basics of schematic pattern by now.
 Hence, the subsequent is without examples and
 only discusses new concepts and Logika nuances that enhance
@@ -576,12 +577,12 @@ Z.  R          ∨e X Y1 Y2
 assumptions <code class="docutils literal"><span class="pre">Y11</span></code> and <code class="docutils literal"><span class="pre">Y21</span></code> must be the first proof step in
 their corresponding sub-proof.</p>
 <p>However, <code class="docutils literal"><span class="pre">Y1K</span></code> and <code class="docutils literal"><span class="pre">Y2K</span></code> do not have to be the last proof
-step. This allows the same sub-proofs to be used to “extract”
+step. This allows the same sub-proofs to be used to &#8220;extract&#8221;
 different claims (for example, see
-<a class="reference external" href="https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L43-L44">logika-examples/src/programming/conditional-1.logika’s lines#43-44</a>;
-note that “ore” is an alias for ∨e).</p>
+<a class="reference external" href="https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L43-L44">logika-examples/src/programming/conditional-1.logika&#8217;s lines#43-44</a>;
+note that &#8220;ore&#8221; is an alias for ∨e).</p>
 <p>Justification of
-<a class="reference external" href="https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L44">conditional-1.logika’s line#44</a>
+<a class="reference external" href="https://github.com/sireum/v3-logika-examples/blob/release/src/programming/conditional-1.logika#L44">conditional-1.logika&#8217;s line#44</a>
 leverages the following Logika alternative pattern for ∨e.</p>
 <div class="literal-block-wrapper docutils container" id="or-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Or-Elimination (∨e) Schematic Pattern</strong></span><a class="headerlink" href="#or-elim-alt-pattern" title="Permalink to this code">¶</a></div>
@@ -608,7 +609,7 @@ introduces a disjunction!</p>
 <p>Note that this pattern is not so useful if
 <code class="docutils literal"><span class="pre">Y11</span> <span class="pre">≡</span> <span class="pre">Y1K</span></code> (thus, <code class="docutils literal"><span class="pre">P</span> <span class="pre">≡</span> <span class="pre">R1</span></code>) and
 <code class="docutils literal"><span class="pre">Y21</span> <span class="pre">≡</span> <span class="pre">Y2K</span></code> (thus, <code class="docutils literal"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">R2</span></code>),
-because then <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">P</span> <span class="pre">∨</span> <span class="pre">Q</span></code>, which is <code class="docutils literal"><span class="pre">X</span></code>’s claim
+because then <code class="docutils literal"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">P</span> <span class="pre">∨</span> <span class="pre">Q</span></code>, which is <code class="docutils literal"><span class="pre">X</span></code>&#8216;s claim
 (however, it is still a valid deduction).</p>
 </div>
 <div class="section" id="implication-introduction-i">

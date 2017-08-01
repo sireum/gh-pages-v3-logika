@@ -19,7 +19,7 @@
      }
      return xhr;
    };
-   var rel = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-VER');
+   var rel = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-VER');
    if (rel != null) {
      rel.onload = function() {
        var response = rel.response;
@@ -29,7 +29,7 @@
      };
      rel.send();
    }
-   var dev = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-dev-VER');
+   var dev = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-dev-VER');
    if (dev != null) {
      dev.onload = function() {
        var response = dev.response;
@@ -130,14 +130,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -JLo $sim http://bit.ly/sv3ivem && open $sim)
+   curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -JLo $sim http://bit.ly/sv3ivem && open $sim)">
+        <button id="copyMacRelease" data-clipboard-text="curl -JLo sireum-v3-ive-mac64.dmg http://bit.ly/sv3ivem && open sireum-v3-ive-mac64.dmg">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
@@ -289,14 +289,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -JLo $sdim http://bit.ly/sv3divem && open $sdim)
+   curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -JLo $sdim http://bit.ly/sv3divem && open $sdim)">
+        <button id="copyMacDevelopment" data-clipboard-text="curl -JLo sireum-v3-dev-ive-mac64.dmg http://bit.ly/sv3divem && open sireum-v3-dev-ive-mac64.dmg">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
