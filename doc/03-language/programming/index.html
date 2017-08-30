@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,7 +37,7 @@
     <link rel="next" title="Logika: Programming Logics" href="../../../dschmidt/index.html" />
     <link rel="prev" title="3.3. Predicate Logic" href="../predicate/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -164,25 +163,25 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 </b></big></big></big></big>
 </font><div class="section" id="programming-logic">
 <span id="programming-language"></span><h1>3.4. Programming Logic<a class="headerlink" href="#programming-logic" title="Permalink to this headline">¶</a></h1>
-<p>Logika&#8217;s programming logic input language differs from its
-propositional and predicate logics&#8217; in one main characteristic:
+<p>Logika’s programming logic input language differs from its
+propositional and predicate logics’ in one main characteristic:
 variable and function types have to be explicitly specified.</p>
 <p>It currently has three built-in types:
-(1) <code class="docutils literal"><span class="pre">B</span></code> &#8211; boolean type,
-(2) <code class="docutils literal"><span class="pre">Z</span></code> &#8211; arbitrary-precision integer type, and
-(3) <code class="docutils literal"><span class="pre">ZS</span></code> &#8211; mutable integer sequence (array) type
+(1) <code class="docutils literal"><span class="pre">B</span></code> – boolean type,
+(2) <code class="docutils literal"><span class="pre">Z</span></code> – arbitrary-precision integer type, and
+(3) <code class="docutils literal"><span class="pre">ZS</span></code> – mutable integer sequence (array) type
 (whose index and element type is <code class="docutils literal"><span class="pre">Z</span></code> with indices starting
-at <code class="docutils literal"><span class="pre">0</span></code>). There is no <code class="docutils literal"><span class="pre">null</span></code> nor top (like Java&#8217;s <code class="docutils literal"><span class="pre">Object</span></code> or Scala&#8217;s <code class="docutils literal"><span class="pre">Any</span></code>)
+at <code class="docutils literal"><span class="pre">0</span></code>). There is no <code class="docutils literal"><span class="pre">null</span></code> nor top (like Java’s <code class="docutils literal"><span class="pre">Object</span></code> or Scala’s <code class="docutils literal"><span class="pre">Any</span></code>)
 values in Logika, which simplify reasonings.</p>
-<p>In contrast to regular Scala, Logika&#8217;s programming language separates between
+<p>In contrast to regular Scala, Logika’s programming language separates between
 commands (statements) and queries (expressions).
 Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
-(side-effect free &#8211; they do not change values stored in variables).
+(side-effect free – they do not change values stored in variables).
 (In Scala, commands are simply expressions whose return value is
 empty tuple <code class="docutils literal"><span class="pre">()</span></code>, which is <em>the</em> <code class="docutils literal"><span class="pre">Unit</span></code> type value.)
 These distinctions are also done to simplify reasonings.</p>
-<p>The following pattern notation is used to describe a statement&#8217;s side-effects
+<p>The following pattern notation is used to describe a statement’s side-effects
 (similar to <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span class="std std-ref">Proof Schematic Pattern</span></a>, but enclosed in <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code> to
 distinguish it from statement blocks):</p>
 <div class="literal-block-wrapper docutils container" id="claim-transformation-notation">
@@ -201,7 +200,7 @@ distinguish it from statement blocks):</p>
 and <code class="docutils literal"><span class="pre">R</span></code> represents any claim that holds after the statement (postcondition).
 The notation uses an identifier such as <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">R</span></code> to represent
 multiple claims.</p>
-<p>In essence, a statement is a claim transformer &#8211; a function that transforms
+<p>In essence, a statement is a claim transformer – a function that transforms
 its precondition to its postcondition.
 To relate to program execution,
 the precondition essentially characterizes the program state before the statement is executed,
@@ -222,7 +221,7 @@ done by each of the program statements.</p>
 <p>The above can be numbered, for example, <code class="docutils literal"><span class="pre">X1</span></code>, <code class="docutils literal"><span class="pre">X2</span></code>, etc.
 In such case, they typically form a series, and <code class="docutils literal"><span class="pre">N</span></code>, <code class="docutils literal"><span class="pre">M</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">J</span></code>, and <code class="docutils literal"><span class="pre">K</span></code>
 are used to represent some numbers in the series.</p>
-<p>The subsequent sections describe Logika&#8217;s renditions of programming
+<p>The subsequent sections describe Logika’s renditions of programming
 logic rules that are described in
 <a class="reference internal" href="../../../dschmidt/03-algebra/index.html#algebra"><span class="std std-ref">Circuits that Compute on Numbers: Algebra</span></a>, <a class="reference internal" href="../../../dschmidt/04-programming-logic/index.html#programming-logic"><span class="std std-ref">Programming Logic for Assignments and Conditionals</span></a>, <a class="reference internal" href="../../../dschmidt/05-functions-procedures/index.html#functions-procedures"><span class="std std-ref">Functions and Procedures</span></a>,
 and <a class="reference internal" href="../../../dschmidt/06-loops-invariants-induction/index.html#loops-invariants-induction"><span class="std std-ref">Loops, Invariants, Induction</span></a>.</p>
@@ -305,7 +304,7 @@ a <a class="reference internal" href="#prog-sequent"><span class="std std-ref">S
 </div>
 <p>A variable declaration is a special assignment form that also declares
 the variable that it assigns at the same time.
-The variable has to be declared as either read-only (using the <code class="docutils literal"><span class="pre">val</span></code> keyword) &#8211;
+The variable has to be declared as either read-only (using the <code class="docutils literal"><span class="pre">val</span></code> keyword) –
 which cannot be reassigned later on, or read/write (using the <code class="docutils literal"><span class="pre">var</span></code> keyword).
 Note that, unlike methods, variables cannot be forward-referenced.</p>
 <p>The claim transformation rule for a variable declaration is the same as for
@@ -335,7 +334,7 @@ is rewritten by substituting the assigned variable <code class="docutils literal
 introduced variable <code class="docutils literal"><span class="pre">X_old</span></code> that stores the value of <code class="docutils literal"><span class="pre">X</span></code> before the
 assignment, and the value of <code class="docutils literal"><span class="pre">X</span></code> is now equal to the value of expression
 <code class="docutils literal"><span class="pre">E</span></code> where any occurence of <code class="docutils literal"><span class="pre">X</span></code> in <code class="docutils literal"><span class="pre">E</span></code> is replaced with <code class="docutils literal"><span class="pre">X_old</span></code>
-(which leverages the fact that any Logika expression is pure &#8211;
+(which leverages the fact that any Logika expression is pure –
 side-effect free).</p>
 <hr class="docutils" />
 <p>To avoid aliasing issues of mutable objects that complicate reasoning,
@@ -416,9 +415,9 @@ if not, it throws an <code class="docutils literal"><span class="pre">AssertionE
 checking is enabled).</p>
 <p>The two differ in the intention behind them, which are
 geared for verification purposes.
-Assertion&#8217;s expression has to be proven (i.e.,
+Assertion’s expression has to be proven (i.e.,
 <code class="docutils literal"><span class="pre">E</span></code> is required as a precondition of <a class="reference internal" href="#assert-rule"><span class="std std-ref">Assertion Rule</span></a>),
-while assumption&#8217;s expression can be taken as an axiom
+while assumption’s expression can be taken as an axiom
 (i.e., <code class="docutils literal"><span class="pre">E</span></code> is not required as
 a precondition of <a class="reference internal" href="#assume-rule"><span class="std std-ref">Assumption Rule</span></a>, but can be concluded
 in the postcondition).
@@ -549,7 +548,7 @@ The program is ill-formed if the loop body modifies a variable, but it is not li
 The set of variables that are modified include variables that are assigned in the loop, modified by nested loops,
 and side-effects of method invocations.</p>
 <p>A loop precondition <code class="docutils literal"><span class="pre">P</span></code> is also treated as an invariant if it does not refer to any of the
-variables listed in the loop&#8217;s modifies clause.
+variables listed in the loop’s modifies clause.
 The loop test condition <code class="docutils literal"><span class="pre">E</span></code> holds at the beginning of the loop body, and its negation <code class="docutils literal"><span class="pre">¬E</span></code> is a
 postcondition of loop.</p>
 <div class="literal-block-wrapper docutils container" id="while-loop-rule">
@@ -595,8 +594,8 @@ used to satisfy loop invariants whenever possible.</p>
 one of its elements at a certain index expressed by <code class="docutils literal"><span class="pre">E1</span></code> with a new value
 expressed by an expression <code class="docutils literal"><span class="pre">E2</span></code> (i.e., <code class="docutils literal"><span class="pre">X(E1)</span> <span class="pre">=</span> <span class="pre">E2</span></code>; see <a class="reference internal" href="#seq-assign-rule"><span class="std std-ref">Sequence Element Assignment Rule</span></a>).</p>
 <p>The avoid runtime errors, <code class="docutils literal"><span class="pre">E1</span></code> has to be within the bound of
-<code class="docutils literal"><span class="pre">X</span></code>&#8216;s indices, i.e., <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>; thus,
-they are required as the statement&#8217;s precondition.
+<code class="docutils literal"><span class="pre">X</span></code>’s indices, i.e., <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>; thus,
+they are required as the statement’s precondition.
 When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled, <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> is implicitly
 used to satisfy the precondition whenever possible.</p>
 <p>At the postcondition, <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> and all precondition claims are rewritten to refer to
@@ -642,14 +641,14 @@ Furthermore, only the updated element got changed to the new value.</p>
 They accept any number of arguments, which can be string literals, and
 <code class="docutils literal"><span class="pre">B</span></code>,  <code class="docutils literal"><span class="pre">Z</span></code>, and <code class="docutils literal"><span class="pre">ZS</span></code> values.</p>
 <p>Logika does not reason about their side-effects as they are
-tangential to Logika&#8217;s functional verification focus.</p>
+tangential to Logika’s functional verification focus.</p>
 <p>For example, a Logika verified program may still be unsafe
 if the program console output is piped through a disk and
 as it turns out, the disk does not have enough space for the
 printed text. (Similarly, Logika does not guarantee that
 a program cannot be out of memory.)</p>
 <p>At any rate, the two methods do not change program states from
-Logika&#8217;s functional verification perspective, thus,
+Logika’s functional verification perspective, thus,
 any claim in the precondition can be deduced in the postcondition.</p>
 <div class="literal-block-wrapper docutils container" id="print-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Print Rule</strong></span><a class="headerlink" href="#print-rule" title="Permalink to this code">¶</a></div>
@@ -692,7 +691,7 @@ any claim in the precondition can be deduced in the postcondition.</p>
 <p>A proof statement contains a natural deduction proof similar to a proof in
 the <a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a> and the <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a> languages.
 It can be used to deduce new claims from existing/transient claims
-(e.g., to satisfy the subsequent statement&#8217;s precondition).</p>
+(e.g., to satisfy the subsequent statement’s precondition).</p>
 <p>The behavior of a proof statement differs on whether the <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is
 enabled.
 When enabled, the proof statement <em>adds</em> its deduced claims to existing ones.
@@ -721,7 +720,7 @@ in regular proof steps at the proof-level (i.e., claims in sub-proofs are exclud
 </div>
 <p>A sequent statement is also similar to the one in the <a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a> and
 <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a> languages.
-However, it has a different purpose in Logika&#8217;s programming logic.
+However, it has a different purpose in Logika’s programming logic.
 That is, it serves as a convenient syntactic sugar for a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a> statement using
 <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> summonings; thus, it can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.</p>
 <p>There are two ways the form can be used: with or without premises.</p>
@@ -779,7 +778,7 @@ conclusions, i.e.,:</p>
 <span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Logika&#8217;s expression in the programming context is a subset of
+<p>Logika’s expression in the programming context is a subset of
 its claim expression language in the proof context
 in that it does not support math symbols and quantifications.</p>
 <p>It supports typical operators on integer values, albeit arbitrary-precision.
@@ -788,7 +787,7 @@ value up to 2<sup>31</sup> - 1;
 otherwise the <code class="docutils literal"><span class="pre">Z(STRING)</span></code> form
 (e.g., <code class="docutils literal"><span class="pre">Z(&quot;2147483648&quot;)</span></code>, <code class="docutils literal"><span class="pre">Z(&quot;-2147483649&quot;)</span></code>)
 has to be used instead.
-This is because Scala&#8217;s integer literal by default is
+This is because Scala’s integer literal by default is
 a 32-bit signed integer.
 Logika detects the erroneous situation when
 <code class="docutils literal"><span class="pre">NUM</span></code> is used for integers that cannot fit into 32-bit.
@@ -803,7 +802,7 @@ right hand side is not.
 For example, <code class="docutils literal"><span class="pre">5</span> <span class="pre">==</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">x</span></code> are not allowed;
 instead, they have to be written as <code class="docutils literal"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">5</span></code> and <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">5</span></code>,
 respectively.
-(This is due to Scala&#8217;s <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> that accept any
+(This is due to Scala’s <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> that accept any
 type value, which
 <a class="reference external" href="http://stackoverflow.com/questions/3565456/scala-implicit-type-conversion-and">prevents implicit type conversion</a>
 to <code class="docutils literal"><span class="pre">Z</span></code>.)
@@ -830,7 +829,7 @@ X(Y.size) == 2
 ∀q_i: (0 ..&lt; Y.size)  X(q_i) == Y(q_i)
 </pre></div>
 </div>
-<p>The first two claims can be &#8220;extracted&#8221; using <code class="docutils literal"><span class="pre">algebra</span></code> from
+<p>The first two claims can be “extracted” using <code class="docutils literal"><span class="pre">algebra</span></code> from
 <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code>, but the last claim can only be extracted using
 <code class="docutils literal"><span class="pre">auto</span></code> (see <a class="reference internal" href="#prog-algebra"><span class="std std-ref">Algebra (algebra)</span></a> and <a class="reference internal" href="#prog-auto"><span class="std std-ref">Auto (auto)</span></a>).</p>
 <p>Another example,</p>
@@ -846,10 +845,10 @@ X(0) == 1
 </div>
 <p>The direct representations mean fully reasoning about <code class="docutils literal"><span class="pre">:+</span></code>
 and <code class="docutils literal"><span class="pre">+:</span></code> can only be done by enabling <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.
-This is done by design instead of due to the Logika&#8217;s
+This is done by design instead of due to the Logika’s
 limitation; at some point, it is best to switch to
 a more automatic/machine-assisted approach in order not
-overwhelm oneself with mundane details (and save one&#8217;s
+overwhelm oneself with mundane details (and save one’s
 braincells for solving more interesting problems).</p>
 <p>One last thing to note is that <code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> operators
 are logical-and and logical-or operators instead of
@@ -886,7 +885,7 @@ satisfy the above preconditions whenever possible.</p>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The invariant statement declares global invariants that the program&#8217;s (non-helper)
+<p>The invariant statement declares global invariants that the program’s (non-helper)
 <a class="reference internal" href="#prog-method-decl"><span class="std std-ref">methods</span></a> have to maintain.
 Similar to a <a class="reference internal" href="#prog-while-loop"><span class="std std-ref">loop invariant</span></a>, the invariant claim
 expression conjuncts can be specified separately.</p>
@@ -895,7 +894,7 @@ expression conjuncts can be specified separately.</p>
 When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled, <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> is implicitly used
 to satisfy all the invariant claims whenever possible.</p>
 <p>When <a class="reference internal" href="../../01-getting-started/index.html#check-sat"><span class="std std-ref">Satisfiability Checking Mode</span></a> is enabled, Logika checks the satisfiability of global
-invariants to ensure that the program&#8217;s specification is useful and
+invariants to ensure that the program’s specification is useful and
 implementable.</p>
 </div>
 <div class="section" id="method-declaration">
@@ -940,7 +939,7 @@ any parameter variable of type <code class="docutils literal"><span class="pre">
 is a mutable sequence. A method whose return type is <code class="docutils literal"><span class="pre">Unit</span></code> is considered as
 not returning a value;
 otherwise, the resulting value is captured in a special variable named
-<code class="docutils literal"><span class="pre">result</span></code>, which can be referred to in the method&#8217;s postcondition.</p>
+<code class="docutils literal"><span class="pre">result</span></code>, which can be referred to in the method’s postcondition.</p>
 <p>In general, there are two kinds of methods in Logika:
 helper and regular (non-helper) methods; helper methods are declared by using the
 <code class="docutils literal"><span class="pre">&#64;helper</span></code> annotation, and regular ones are those without the annotation.
@@ -1027,9 +1026,9 @@ these are reflected in <a class="reference internal" href="#method-decl-helper-r
 it starts executing. The <code class="docutils literal"><span class="pre">_in</span></code> variables represent the corresponding
 variable values before they are modified during the execution, and they
 can be referred in claim expressions (in proof context) throughout the
-method&#8217;s body and in its postcondition claims.</li>
+method’s body and in its postcondition claims.</li>
 <li>The method has to establish <code class="docutils literal"><span class="pre">POST</span></code>.
-If the method&#8217;s return type is not <code class="docutils literal"><span class="pre">Unit</span></code>, it has to <code class="docutils literal"><span class="pre">return</span></code> a value,
+If the method’s return type is not <code class="docutils literal"><span class="pre">Unit</span></code>, it has to <code class="docutils literal"><span class="pre">return</span></code> a value,
 expressed by <code class="docutils literal"><span class="pre">E</span></code> and stored in the special variable <code class="docutils literal"><span class="pre">result</span></code> as
 previously mentioned.
 The variable <code class="docutils literal"><span class="pre">result</span></code> can be used on <code class="docutils literal"><span class="pre">POST</span></code>; hence, at the end of
@@ -1140,7 +1139,7 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 <p>The result and side-effects of invoking a regular or a helper method <code class="docutils literal"><span class="pre">F</span></code> are
 as follows:</p>
 <ol class="arabic">
-<li><p class="first">Any reference to <code class="docutils literal"><span class="pre">result</span></code> in the method&#8217;s postcondition is substituted
+<li><p class="first">Any reference to <code class="docutils literal"><span class="pre">result</span></code> in the method’s postcondition is substituted
 with <code class="docutils literal"><span class="pre">F_result</span></code> (<code class="docutils literal"><span class="pre">POST1</span></code> in <a class="reference internal" href="#method-invoke-rule"><span class="std std-ref">Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span class="std std-ref">Helper Method Invocation Rule</span></a>).
 Note that any claim referring to <code class="docutils literal"><span class="pre">F_result</span></code> is transient similar to <code class="docutils literal"><span class="pre">_old</span></code> variables.
 As described in <a class="reference internal" href="#prog-var-assign"><span class="std std-ref">Variable Declaration and Assignment</span></a>, if the result is assigned to
@@ -1291,9 +1290,9 @@ bounds, respectively.</p>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </span></pre></div>
 </div>
-<p>The justification form in Logika&#8217;s programming logic extends
-<a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>&#8216;s <a class="reference internal" href="../propositional/index.html#or-elim"><span class="std std-ref">Or-Elimination (∨e)</span></a> and
-<a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a>&#8216;s <a class="reference internal" href="../predicate/index.html#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>, as well as
+<p>The justification form in Logika’s programming logic extends
+<a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>’s <a class="reference internal" href="../propositional/index.html#or-elim"><span class="std std-ref">Or-Elimination (∨e)</span></a> and
+<a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a>’s <a class="reference internal" href="../predicate/index.html#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>, as well as
 adding new ones as highlighted above.</p>
 <div class="section" id="or-elimination-e">
 <h3>3.4.10.1. Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
@@ -1405,7 +1404,7 @@ while <code class="docutils literal"><span class="pre">subst2</span></code> subs
 Up until now, all deduction justifications are directly checked by Logika.
 Summoning justifications are distinguished because the deductions are
 checked by leveraging the work of giants,
-such as by employing Z3&#8217;s powerful automatic satisfiability checking
+such as by employing Z3’s powerful automatic satisfiability checking
 (the reader might be interested to see
 <a class="reference external" href="https://www.youtube.com/embed/gb2zIR2rvRQ?rel=0&amp;autoplay=1&amp;start=30">a classical example</a>
 and/or
@@ -1496,7 +1495,7 @@ premises when used without arguments.</p>
 </div>
 <div class="section" id="well-formed-ness">
 <h2>3.4.12. Well-formed-ness<a class="headerlink" href="#well-formed-ness" title="Permalink to this headline">¶</a></h2>
-<p>The well-formed-ness rules for Logika&#8217;s programming language
+<p>The well-formed-ness rules for Logika’s programming language
 are similar to that of statically typed languages such as
 identifiers cannot be re-declared, expressions cannot refer to
 undeclared variables, and expressions are well-typed (do not have

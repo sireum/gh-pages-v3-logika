@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,7 +36,7 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="7. Applications of Propositional Logic to Program Proving" href="../07-propositional-logic/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -157,14 +156,14 @@ the operators,
 <code class="docutils literal"><span class="pre">-&gt;</span></code> (math: →), and
 <code class="docutils literal"><span class="pre">~</span></code> (math: ¬).
 When we wrote propositions like <code class="docutils literal"><span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">-&gt;</span> <span class="pre">r</span></code>, we pretended that <code class="docutils literal"><span class="pre">p</span></code>,
-<code class="docutils literal"><span class="pre">q</span></code>, and <code class="docutils literal"><span class="pre">r</span></code> stood for complete, primitive statements like &#8220;It is raining&#8221;
-or &#8220;<code class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>&#8221;.
+<code class="docutils literal"><span class="pre">q</span></code>, and <code class="docutils literal"><span class="pre">r</span></code> stood for complete, primitive statements like “It is raining”
+or “<code class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>”.
 We did not try to disassemble <code class="docutils literal"><span class="pre">p</span></code>, <code class="docutils literal"><span class="pre">q</span></code>, and <code class="docutils literal"><span class="pre">r</span></code>.</p>
 <p>Now it is time to decompose and analyze primitive propositions in terms of their
-&#8220;verbs&#8221; (called <em>predicates</em>) and their &#8220;nouns&#8221; (called <em>individuals</em>).
+“verbs” (called <em>predicates</em>) and their “nouns” (called <em>individuals</em>).
 This leads to predicate logic.</p>
-<p>First, some background: When we study a particular &#8220;universe&#8221; or &#8220;domain&#8221;
-consisting of &#8220;individuals&#8221;, we make assertions (propositions) about the
+<p>First, some background: When we study a particular “universe” or “domain”
+consisting of “individuals”, we make assertions (propositions) about the
 individuals in the domain.
 Example domains are: the domain of all animals, the domain of U.S. Presidents,
 the domain of days-of-the-week, the domain of crayon colors,
@@ -181,30 +180,30 @@ compute new individuals.</p>
 in a function-call style, like this: <code class="docutils literal"><span class="pre">hasFourLegs(_)</span></code>, <code class="docutils literal"><span class="pre">isTheMotherOf(_,_)</span></code>,
 <code class="docutils literal"><span class="pre">isHuman(_)</span></code>, <code class="docutils literal"><span class="pre">isOlderThan(_,_)</span></code>, etc.
 So, if <code class="docutils literal"><span class="pre">Lassie</span></code> is an individual animal, we write <code class="docutils literal"><span class="pre">hasFourLegs(Lassie)</span></code> to
-make the proposition, &#8220;Lassie has four legs&#8221;.
+make the proposition, “Lassie has four legs”.
 Another example is <code class="docutils literal"><span class="pre">isOlderThan(GeorgeWashington,</span> <span class="pre">AbrahamLincoln)</span></code>, which uses
 the individuals <code class="docutils literal"><span class="pre">GeorgeWashington</span></code> and <code class="docutils literal"><span class="pre">AbrahamLincoln</span></code>.</p>
 <p>Predicate logic has two important new operators that let us write stronger
 propositions than what we can do with mere predicates.
-These operators are called quantifiers. The quantifers are &#8220;for all&#8221;
-(math: ∀), and &#8220;exists&#8221;
+These operators are called quantifiers. The quantifers are “for all”
+(math: ∀), and “exists”
 (math: ∃).
 In this chapter, we will learn to use the quantifiers to reason about data
 structures.</p>
 <p>The <code class="docutils literal"><span class="pre">∀</span></code> quantifier helps us write propositions about all the individuals
 in a domain.
 Say we consider the domain of animals.
-The sentence, &#8220;All humans are mortal&#8221; is written like this:</p>
+The sentence, “All humans are mortal” is written like this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀x (isHuman(x) -&gt; isMortal(x))
 </pre></div>
 </div>
 <p>That is, if an individual, <code class="docutils literal"><span class="pre">x</span></code>, is human, then <code class="docutils literal"><span class="pre">x</span></code> is mortal also.
 (Notice that dogs like <code class="docutils literal"><span class="pre">Lassie</span></code> are individuals in the domain, but the above
-proposition cannot be used to show that <code class="docutils literal"><span class="pre">Lassie</span></code> is mortal, since dogs aren&#8217;t
+proposition cannot be used to show that <code class="docutils literal"><span class="pre">Lassie</span></code> is mortal, since dogs aren’t
 human.
 Sadly, dogs are nonetheless mortal.)</p>
-<p>An arithmetic example looks like this: for the domain of ints, &#8220;every value is
-less-than-or-equal to its square&#8221;:</p>
+<p>An arithmetic example looks like this: for the domain of ints, “every value is
+less-than-or-equal to its square”:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀n (n &lt;= n * n)
 </pre></div>
 </div>
@@ -216,7 +215,7 @@ every element of <code class="docutils literal"><span class="pre">r</span></code
 <p>That is, for every index int, <code class="docutils literal"><span class="pre">i</span></code>, in the range of <code class="docutils literal"><span class="pre">0</span></code> up to (but not
 including) <code class="docutils literal"><span class="pre">len(r)</span></code> (the length of <code class="docutils literal"><span class="pre">r</span></code>), the indexed element <code class="docutils literal"><span class="pre">r[i]</span></code> is
 greater than <code class="docutils literal"><span class="pre">0</span></code>.
-The previous statement is often written in a &#8220;shorthand&#8221; like this:</p>
+The previous statement is often written in a “shorthand” like this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀ 0 &lt;= i &lt; len(r), r[i] &gt; 0
 </pre></div>
 </div>
@@ -227,7 +226,7 @@ For example, we can say that <code class="docutils literal"><span class="pre">La
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x isMotherOf(x, Lassie)
 </pre></div>
 </div>
-<p>(&#8220;There exists some <code class="docutils literal"><span class="pre">x</span></code> such that <code class="docutils literal"><span class="pre">x</span></code> is the mother of <code class="docutils literal"><span class="pre">Lassie</span></code>&#8221;.)
+<p>(“There exists some <code class="docutils literal"><span class="pre">x</span></code> such that <code class="docutils literal"><span class="pre">x</span></code> is the mother of <code class="docutils literal"><span class="pre">Lassie</span></code>”.)
 Here is how we write that every individual in the domain has a mother:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀x∃y isMotherOf(y, x)
 </pre></div>
@@ -276,7 +275,7 @@ First, here is the most famous claim in logic:</p>
 </div>
 <p>Clearly, we require a kind of matching/binding rule to prove that the human
 individual, <code class="docutils literal"><span class="pre">Socrates</span></code>, is mortal. The rule is <code class="docutils literal"><span class="pre">∀e</span></code>
-(&#8220;all elimination&#8221;):</p>
+(“all elimination”):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀x (isHuman(x) -&gt; isMortal(x)),  isHuman(Socrates) |- isMortal(Socrates)
 {
   1. ∀x (isHuman(x) -&gt; isMortal(x))            premise
@@ -293,18 +292,18 @@ We use the new knowledge on Line 3 to reach the conclusion on Line 4.</p>
 <p><code class="docutils literal"><span class="pre">∀e</span></code> tailors a general claim, prefixed by <code class="docutils literal"><span class="pre">∀x</span></code>, to any individual
 element (who replaces the <code class="docutils literal"><span class="pre">x</span></code>).
 We see this in Line 3 above.
-Here is the rule&#8217;s schematic:</p>
+Here is the rule’s schematic:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>     ∀x P(x)
 ∀e: -----------
        P(v)        that is, [v/x]P(x),  where  v  is an individual in the domain
 </pre></div>
 </div>
 <p>(Here, <code class="docutils literal"><span class="pre">P(x)</span></code> stands for a proposition that contains some occurrences of <code class="docutils literal"><span class="pre">x</span></code>.
-Recall that <code class="docutils literal"><span class="pre">[v/x]P(x)</span></code> is &#8220;substitution notation&#8221;: substitute <code class="docutils literal"><span class="pre">v</span></code> for
+Recall that <code class="docutils literal"><span class="pre">[v/x]P(x)</span></code> is “substitution notation”: substitute <code class="docutils literal"><span class="pre">v</span></code> for
 occurrences of <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P(x)</span></code>.)
 For example, from the premise, <code class="docutils literal"><span class="pre">∀i</span> <span class="pre">(i</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">i)</span></code>, we apply <code class="docutils literal"><span class="pre">∀e</span></code> to
 deduce <code class="docutils literal"><span class="pre">[3/i](i</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">i)</span></code>, that is, <code class="docutils literal"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>.</p>
-<p>The other deduction rule, <code class="docutils literal"><span class="pre">∀i</span></code> (&#8220;all-introduction&#8221;), deduces propositions
+<p>The other deduction rule, <code class="docutils literal"><span class="pre">∀i</span></code> (“all-introduction”), deduces propositions
 that are prefixed by <code class="docutils literal"><span class="pre">∀</span></code>.
 Here is a motivating example, in the domain of integers:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀x((x + 1) &gt; x),  ∀x(n &gt; (x - 1))  |-  ∀x((x + 1) &gt; x ^ x &gt; (x - 1))
@@ -320,8 +319,8 @@ How do we do this?</p>
 <p>Clearly, we will not inspect all of <code class="docutils literal"><span class="pre">...,</span> <span class="pre">-2,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span></code> and verify that
 <code class="docutils literal"><span class="pre">(-2</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">-2</span> <span class="pre">^</span> <span class="pre">-2</span> <span class="pre">&lt;</span> <span class="pre">(-2</span> <span class="pre">-</span> <span class="pre">1),</span> <span class="pre">(-1</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">-1</span> <span class="pre">^</span> <span class="pre">-1</span> <span class="pre">&lt;</span> <span class="pre">(-1</span> <span class="pre">-</span> <span class="pre">1),</span> <span class="pre">(0</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">(0</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
 etc.!
-Instead, we write a single, generic, general-purpose argument &#8212; a
-&#8220;case analysis&#8221; &#8212; that applies to whichever, arbitrary int we would ever
+Instead, we write a single, generic, general-purpose argument — a
+“case analysis” — that applies to whichever, arbitrary int we would ever
 consider.
 Let <code class="docutils literal"><span class="pre">a</span></code> stand for the arbitrary int we will discuss.
 The case analysis appears in the proof like this:</p>
@@ -344,13 +343,13 @@ we discuss.
 By Lines 1 and 2, we must have that <code class="docutils literal"><span class="pre">(a</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">a</span></code> and that <code class="docutils literal"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">(a</span> <span class="pre">-</span> <span class="pre">1)</span></code>.
 Line 6 uses <code class="docutils literal"><span class="pre">^i</span></code> to show a has the property <code class="docutils literal"><span class="pre">(a</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">a</span> <span class="pre">^</span> <span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">(a</span> <span class="pre">-</span> <span class="pre">1)</span></code>.</p>
 <p>Since the argument in Lines 3-7 is not specific to any specific integer, we can
-use the argument on <em>all</em> the individual integers &#8211; that is, we can substitute
+use the argument on <em>all</em> the individual integers – that is, we can substitute
 <code class="docutils literal"><span class="pre">-2</span></code> for <code class="docutils literal"><span class="pre">a</span></code> and the argument holds;
 we can substitute <code class="docutils literal"><span class="pre">-1</span></code> for <code class="docutils literal"><span class="pre">a</span></code> and the argument holds;
 we can substitute <code class="docutils literal"><span class="pre">0</span></code> for <code class="docutils literal"><span class="pre">a</span></code> and the argument holds; and so on!</p>
 <p>Line 8 is justified by the new deduction rule, <code class="docutils literal"><span class="pre">∀i</span></code>, which asserts that
 the generic case analysis in Lines 3-7 applies to all the individual integers.
-Here is the rule&#8217;s schematic:</p>
+Here is the rule’s schematic:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>     { a              (a is fresh)
        . . . P(a) }
 ∀i: ---------------
@@ -363,15 +362,15 @@ Here is the rule&#8217;s schematic:</p>
 <p>To repeat this important idea: The rule says, to prove a claim of form,
 <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">P(x)</span></code>, we undertake a case analysis:
 we prove property <code class="docutils literal"><span class="pre">P(a)</span></code> for an <em>arbitrary member</em>, <code class="docutils literal"><span class="pre">a</span></code>, of domain <code class="docutils literal"><span class="pre">D</span></code>.
-(Call the element, &#8220;Mister <code class="docutils literal"><span class="pre">a</span></code>&#8221; &#8212; Mister arbitrary &#8212; Mister anybody &#8212;
+(Call the element, “Mister <code class="docutils literal"><span class="pre">a</span></code>” — Mister arbitrary — Mister anybody —
 Mister anonymous).
-Since Mister <code class="docutils literal"><span class="pre">a</span></code> is a complete unknown, it stands for &#8220;everyone&#8221; in doman D.
+Since Mister <code class="docutils literal"><span class="pre">a</span></code> is a complete unknown, it stands for “everyone” in doman D.
 <em>We know that we can substitute whichever domain element</em>, <code class="docutils literal"><span class="pre">d</span></code>, <em>from domain</em>
 <code class="docutils literal"><span class="pre">D</span></code> <em>we want into the proof and we get a proof of</em> <code class="docutils literal"><span class="pre">P(d)</span></code>.
 In this way, we have proofs of <code class="docutils literal"><span class="pre">P</span></code> <em>for all</em> elements of domain <code class="docutils literal"><span class="pre">D</span></code>.</p>
 <p>Here is the same idea, used in a proof about a domain of people:
-&#8220;Everyone is healthy; everyone is happy.
-Therefore, everyone is both healthy and happy&#8221;:</p>
+“Everyone is healthy; everyone is happy.
+Therefore, everyone is both healthy and happy”:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀x isHealthy(x), ∀y isHappy(y)  |-  ∀z(isHealthy(z) ^ isHappy(z))
 {
 
@@ -457,11 +456,11 @@ Therefore, for every (individual) family member, if (s)he is healthy then
 (s)he is also happy.
 </pre></div>
 </div>
-<p>Well, no &#8211; perhaps the family is so close-knit that, if one one family member
+<p>Well, no – perhaps the family is so close-knit that, if one one family member
 is unhealthy; then other, healthy, family members might well be unhappy with
 worry.
 This is a subtle point, so take a moment and think about it!</p>
-<p>Let&#8217;s try to prove the dubious claim and see where we get stuck:</p>
+<p>Let’s try to prove the dubious claim and see where we get stuck:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>(∀y healthy(y)) -&gt; (∀x happy(x)) |- ∀x (healthy(x) -&gt; happy(x))
 {
   1. (∀y healthy(y)) -&gt; (∀x happy(x))  premise
@@ -475,7 +474,7 @@ This is a subtle point, so take a moment and think about it!</p>
                                                   BLOCK BEFORE THE INNER ONE IS FINISHED!
 </pre></div>
 </div>
-<p>No matter how you might try, you will see that the &#8220;block structure&#8221; of the
+<p>No matter how you might try, you will see that the “block structure” of the
 proofs warns us when we are making invalid deductions.
 It is impossible to prove this claim.</p>
 <div class="section" id="more-examples">
@@ -546,7 +545,7 @@ and <code class="docutils literal"><span class="pre">∀e</span></code> rules.</
 <li><p class="first">(***) <code class="docutils literal"><span class="pre">∀i</span></code>-tactic:
 To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">∀x</span> <span class="pre">P(x)</span></code>,</p>
 <ol class="arabic simple">
-<li>assume <code class="docutils literal"><span class="pre">a</span></code>, for a new, anonymous &#8220;Mister <code class="docutils literal"><span class="pre">a</span></code>&#8220;</li>
+<li>assume <code class="docutils literal"><span class="pre">a</span></code>, for a new, anonymous “Mister <code class="docutils literal"><span class="pre">a</span></code>”</li>
 <li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P(a)</span></code></li>
 <li>finish with <code class="docutils literal"><span class="pre">∀i</span></code>.</li>
 </ol>
@@ -614,7 +613,7 @@ prove that <code class="docutils literal"><span class="pre">r[0]</span> <span cl
 </li>
 <li><p class="first">Approach 2: for the domain of nonnegative ints, use mathematical induction</p>
 <p>The domain, <code class="docutils literal"><span class="pre">Nat</span> <span class="pre">=</span> <span class="pre">{0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span> <span class="pre">}</span></code> is infinite, so we cannot use the
-previous technique to prove properties like <code class="docutils literal"><span class="pre">∀</span> <span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0,</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">n</span></code> &#8211;
+previous technique to prove properties like <code class="docutils literal"><span class="pre">∀</span> <span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0,</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">n</span></code> –
 we would have to write separate proofs that
 <code class="docutils literal"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">0,</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">1,</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">2,</span> <span class="pre">...</span></code>, forever.
 But we <em>can</em> use mathematical induction.
@@ -639,9 +638,9 @@ How can we prove <code class="docutils literal"><span class="pre">∀</span> <sp
 <p>To prove a claim of form, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">P(x)</span></code>, for an arbitrary domain, we
 undertake a kind of case analysis: we prove property <code class="docutils literal"><span class="pre">P(a)</span></code> for an
 <em>arbitrary member</em>, <code class="docutils literal"><span class="pre">a</span></code>, of domain <code class="docutils literal"><span class="pre">D</span></code>.
-(Call the element, &#8220;Mister <code class="docutils literal"><span class="pre">a</span></code>&#8221; &#8212; Mister arbitrary &#8212; Mister anybody &#8212;
+(Call the element, “Mister <code class="docutils literal"><span class="pre">a</span></code>” — Mister arbitrary — Mister anybody —
 Mister anonymous).
-Since Mister <code class="docutils literal"><span class="pre">a</span></code> is a complete unknown, it stands for &#8220;everyone&#8221; in doman
+Since Mister <code class="docutils literal"><span class="pre">a</span></code> is a complete unknown, it stands for “everyone” in doman
 <code class="docutils literal"><span class="pre">D</span></code>.
 <em>We know that we can substitute whichever domain element,</em> <code class="docutils literal"><span class="pre">d</span></code> <em>from domain</em>
 <code class="docutils literal"><span class="pre">D</span></code>, <em>we want into the proof and we get a proof of</em> <code class="docutils literal"><span class="pre">P(d)</span></code>.
@@ -654,7 +653,7 @@ In this way, we have proofs of <code class="docutils literal"><span class="pre">
 <div class="section" id="the-existential-quantifier">
 <h2>8.2. The Existential Quantifier<a class="headerlink" href="#the-existential-quantifier" title="Permalink to this headline">¶</a></h2>
 <p>The existential quantifier, <code class="docutils literal"><span class="pre">∃</span></code> (math: ∃), means
-&#8220;there exists&#8221; or &#8220;there is&#8221;.
+“there exists” or “there is”.
 We use this phrase when we do not care about the name of the individual involved
 in our claim.
 Here are examples:</p>
@@ -678,22 +677,22 @@ For example, if we know that:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃h (isHuman(h) ^ isMortal(h))
 </pre></div>
 </div>
-<p>that is, &#8220;there is someone who is human and mortal&#8221;.
+<p>that is, “there is someone who is human and mortal”.
 The identity of the human is no longer important to us.
 In the next section, we see that the <code class="docutils literal"><span class="pre">∃i</span></code>-rule makes such deductions.</p>
 <div class="section" id="the-existential-introduction-rule">
 <h3>8.2.1. The Existential-Introduction Rule<a class="headerlink" href="#the-existential-introduction-rule" title="Permalink to this headline">¶</a></h3>
-<p>Often <code class="docutils literal"><span class="pre">∃</span></code> is used to &#8220;hide&#8221; secret information.
+<p>Often <code class="docutils literal"><span class="pre">∃</span></code> is used to “hide” secret information.
 Consider these Pat Sajack musings from a typical game of Wheel of Fortune:</p>
 <ul>
-<li><p class="first">Pat thinks: &#8220;There is an &#8216;E&#8217; covered over on Square 14 of the game board&#8221;.
+<li><p class="first">Pat thinks: “There is an ‘E’ covered over on Square 14 of the game board”.
 In predicate logic, this can be written:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isCovered</span><span class="p">(</span><span class="n">Square14</span><span class="p">)</span> <span class="o">^</span> <span class="n">holds</span><span class="p">(</span><span class="n">Square14</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Pat thinks: &#8220;Wait &#8211; I can&#8217;t say that on TV! Perhaps I can say,
-There is a vowel covered on Square 14 of the game board&#8221;.
+<li><p class="first">Pat thinks: “Wait – I can’t say that on TV! Perhaps I can say,
+There is a vowel covered on Square 14 of the game board”.
 In predicate logic, this is written:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>isCovered(Square14) ^ (∃c isVowel(c) ^ holds(Square14,c)).
 </pre></div>
@@ -701,9 +700,9 @@ In predicate logic, this is written:</p>
 <p>In this way, Pat does not reveal the letter to the game players and TV
 viewers.</p>
 </li>
-<li><p class="first">Because it isn&#8217;t fair to tell the players which squares hold vowels, Pat
+<li><p class="first">Because it isn’t fair to tell the players which squares hold vowels, Pat
 announces on the air,
-&#8220;There is a vowel that is still covered on the game board&#8221;:</p>
+“There is a vowel that is still covered on the game board”:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃s (isSquare(s) ^ isCovered(s) ^ (∃c isVowel(c) ^ holds(s,c)))
 </pre></div>
 </div>
@@ -711,9 +710,9 @@ announces on the air,
 about.</p>
 </li>
 </ul>
-<p>Pat&#8217;s announcement was deduced from its predecessors by means of the
+<p>Pat’s announcement was deduced from its predecessors by means of the
 <code class="docutils literal"><span class="pre">∃i</span></code>-rule, which we see in a moment.</p>
-<p>What can a game player do with Pat&#8217;s uttered statement?
+<p>What can a game player do with Pat’s uttered statement?
 A player might deduce these useful facts:</p>
 <ul>
 <li><p class="first">There is a square still covered: <code class="docutils literal"><span class="pre">∃s</span> <span class="pre">isSquare(s)</span> <span class="pre">^</span> <span class="pre">isCovered(s)</span></code></p>
@@ -728,7 +727,7 @@ vowels are exactly <code class="docutils literal"><span class="pre">A</span></co
 </li>
 </ul>
 <p>Although the game player does not know the letter and square that Pat Sajak
-&#8220;hid&#8221; with his statement, the player can still make useful deductions.
+“hid” with his statement, the player can still make useful deductions.
 We will use the <code class="docutils literal"><span class="pre">∃e</span></code> rule to deduce these style of propositions.</p>
 <div class="section" id="introduction-rule">
 <h4>∃-Introduction Rule<a class="headerlink" href="#introduction-rule" title="Permalink to this headline">¶</a></h4>
@@ -738,7 +737,7 @@ We will use the <code class="docutils literal"><span class="pre">∃e</span></co
       ∃x P(x)
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">∃i</span></code> rule says, if we locate an individual <code class="docutils literal"><span class="pre">d</span></code> (a &#8220;witness&#8221;, as it
+<p>The <code class="docutils literal"><span class="pre">∃i</span></code> rule says, if we locate an individual <code class="docutils literal"><span class="pre">d</span></code> (a “witness”, as it
 is called by logicians) that makes <code class="docutils literal"><span class="pre">P</span></code> true, then surely we can say there
 exists <em>someone</em> that has <code class="docutils literal"><span class="pre">P</span></code> and hide the identity of the individual/witness.</p>
 <p>The rule was used in the previous section in a tiny example:</p>
@@ -753,8 +752,8 @@ exists <em>someone</em> that has <code class="docutils literal"><span class="pre
 </div>
 <p>Since <code class="docutils literal"><span class="pre">Socrates</span></code> is an individual that is both human and mortal, we deduce
 Line 3.
-Line 4 &#8220;hides&#8221; <code class="docutils literal"><span class="pre">Socrates</span></code>&#8216; name.</p>
-<p>Let&#8217;s do a Wheel-Of-Fortune example: Pat Sajak uses two premises and the
+Line 4 “hides” <code class="docutils literal"><span class="pre">Socrates</span></code>’ name.</p>
+<p>Let’s do a Wheel-Of-Fortune example: Pat Sajak uses two premises and the
 <code class="docutils literal"><span class="pre">∃i</span></code> rule to deduce a new conclusion:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>isVowel(e), holds(Square14,e) |- ∃c(isVowel(c) ^ ∃s holds(s,c))
 {
@@ -766,9 +765,9 @@ Line 4 &#8220;hides&#8221; <code class="docutils literal"><span class="pre">Socr
 }
 </pre></div>
 </div>
-<p>Line 3 hides the number of the square (&#8220;there is a square that holds &#8216;e&#8217;&#8221;), and
-Line 5 hides the &#8216;e&#8217; (&#8220;there is a letter that is a vowel and there is a square
-that holds the letter&#8221;).</p>
+<p>Line 3 hides the number of the square (“there is a square that holds ‘e’”), and
+Line 5 hides the ‘e’ (“there is a letter that is a vowel and there is a square
+that holds the letter”).</p>
 <p>From the same two premises we can also prove this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>isVowel(e), holds(Square14,e) |- ∃c∃s(isVowel(c) ^ holds(s,c))
 {
@@ -780,8 +779,8 @@ that holds the letter&#8221;).</p>
 }
 </pre></div>
 </div>
-<p>This reads, &#8220;there are a letter and square such that the letter is a vowel and
-the square holds the letter&#8221;.
+<p>This reads, “there are a letter and square such that the letter is a vowel and
+the square holds the letter”.
 The proposition differs slightly from the previous one, but the two seem to have
 identical information content.
 (When we learn the <code class="docutils literal"><span class="pre">∃e</span></code>-rule, we can prove the two conclusions have
@@ -799,18 +798,18 @@ bearings:</p>
 <span class="n">Therefore</span><span class="p">,</span> <span class="n">someone</span> <span class="ow">is</span> <span class="n">mortal</span>
 </pre></div>
 </div>
-<p>We don&#8217;t know the name of the individual human, but it does not matter &#8211;
+<p>We don’t know the name of the individual human, but it does not matter –
 we can still conclude someone is mortal.
 The steps we will take go like this</p>
 <ul class="simple">
-<li>Since &#8220;someone is human&#8221; and since we do not know his/her name, we will
-just make up our own name for them &#8211; &#8220;Mister A&#8221;. So, we assume that &#8220;Mr. A is human&#8221;</li>
-<li>We use the logic rules we already know to prove that &#8220;Mr. A is mortal&#8221;.</li>
-<li>Therefore <em>&#8220;someone is mortal&#8221; and their name does not matter</em>.</li>
+<li>Since “someone is human” and since we do not know his/her name, we will
+just make up our own name for them – “Mister A”. So, we assume that “Mr. A is human”</li>
+<li>We use the logic rules we already know to prove that “Mr. A is mortal”.</li>
+<li>Therefore <em>“someone is mortal” and their name does not matter</em>.</li>
 </ul>
 <p>This approach is coded into the last logic law, <code class="docutils literal"><span class="pre">∃e</span></code> (exists-elimination).</p>
 <p>Say we have a premise of the form, <code class="docutils literal"><span class="pre">∃x</span> <span class="pre">P(x)</span></code>.
-Since we <em>do not know the name</em> of the individual &#8220;hidden&#8221; behind the
+Since we <em>do not know the name</em> of the individual “hidden” behind the
 <code class="docutils literal"><span class="pre">∃x</span></code>,
 we make up a name for it, say <code class="docutils literal"><span class="pre">a</span></code>, and discuss what must follow from the
 assumption that <code class="docutils literal"><span class="pre">P(a)</span></code> holds true:</p>
@@ -848,19 +847,19 @@ do a case analysis:</p>
 </div>
 <p>Line 4 proposes the name <code class="docutils literal"><span class="pre">a</span></code> and the assumption that <code class="docutils literal"><span class="pre">isHuman(a)</span></code>.
 The case analysis leads to Line 7, which says that someone is mortal.
-(We never learned the individual&#8217;s name!)
+(We never learned the individual’s name!)
 Since Line 7 does not explicitly mention the made-up name, <code class="docutils literal"><span class="pre">a</span></code>, we use Line 8
-to repeat Line 7 &#8211; without knowing the name of the individual &#8220;hiding&#8221; inside
+to repeat Line 7 – without knowing the name of the individual “hiding” inside
 Line 2, we made a case analysis in Lines 4-7 that prove the result, anyway.
 This is how <code class="docutils literal"><span class="pre">∃e</span></code> works.</p>
 <p>To repeat: The <code class="docutils literal"><span class="pre">∃e</span></code> rule describes how to discuss an anonymous individual
 (a witness) without knowing/revealing its identity:
-Assume the witness&#8217;s name is Mister <code class="docutils literal"><span class="pre">a</span></code> (&#8220;Mister Anonymous&#8221;) and that
+Assume the witness’s name is Mister <code class="docutils literal"><span class="pre">a</span></code> (“Mister Anonymous”) and that
 Mister <code class="docutils literal"><span class="pre">a</span></code> makes <code class="docutils literal"><span class="pre">P</span></code> true.
-Then, we deduce some fact, <code class="docutils literal"><span class="pre">Q</span></code>, that holds <em>even though we don&#8217;t know who is
+Then, we deduce some fact, <code class="docutils literal"><span class="pre">Q</span></code>, that holds <em>even though we don’t know who is
 Mister</em> <code class="docutils literal"><span class="pre">a</span></code>.
 The restriction on the <code class="docutils literal"><span class="pre">∃e</span></code> rule (<code class="docutils literal"><span class="pre">Q</span></code> cannot mention <code class="docutils literal"><span class="pre">a</span></code>) enforces
-that we have no extra information about the identity of Mister <code class="docutils literal"><span class="pre">a</span></code> &#8211; the name
+that we have no extra information about the identity of Mister <code class="docutils literal"><span class="pre">a</span></code> – the name
 <code class="docutils literal"><span class="pre">a</span></code> must not leave the subproof.</p>
 <p>Here is a Wheel-of-Fortune example that uses <code class="docutils literal"><span class="pre">∃e</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃c (isVowel(c) ^ ∃s holds(s,c)) |-  ∃y isVowel(y)
@@ -916,7 +915,7 @@ Fortune, and <code class="docutils literal"><span class="pre">f</span> <span cla
 Clearly, Pat Sajak is male and Vanna White is female, so
 <code class="docutils literal"><span class="pre">(∃y</span> <span class="pre">f(y))</span> <span class="pre">^</span> <span class="pre">(∃z</span> <span class="pre">g(z))</span></code> is a true premise.
 But <code class="docutils literal"><span class="pre">∃x(f(x)</span> <span class="pre">^</span> <span class="pre">g(x))</span></code> does not follow.</p>
-<p>The following proof uses the <code class="docutils literal"><span class="pre">ve</span></code>-tactic &#8211; a cases analysis.
+<p>The following proof uses the <code class="docutils literal"><span class="pre">ve</span></code>-tactic – a cases analysis.
 See the assumptions at lines 3 and 6, based on Line 2:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x (p(x) V q(x))  |-  (∃x p(x)) V (∃x q(x))
 {
@@ -951,7 +950,7 @@ We use the domain of people:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x ∀y isBossOf(x,y)
 </pre></div>
 </div>
-<p>Read this as, &#8220;there is someone who is the boss of everyone&#8221;.
+<p>Read this as, “there is someone who is the boss of everyone”.
 From this strong fact we can prove that everyone has a boss, that is,
 <code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(v,u)</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x∀y isBossOf(x,y) |- ∀u∃v isBossOf(v,u)
@@ -972,9 +971,9 @@ From this strong fact we can prove that everyone has a boss, that is,
 </div>
 <p>In the above proof, we let <code class="docutils literal"><span class="pre">b</span></code> be our made-up name for the boss-of-everyone.
 So, we have the assumption that <code class="docutils literal"><span class="pre">∀y</span> <span class="pre">isBossOf(b,y)</span></code>.
-Next, we let <code class="docutils literal"><span class="pre">a</span></code> be &#8220;anybody at all&#8221; who we might examine in the domain of
+Next, we let <code class="docutils literal"><span class="pre">a</span></code> be “anybody at all” who we might examine in the domain of
 people.
-The proof exposes that the boss of &#8220;anybody at all&#8221; in the domain must always be
+The proof exposes that the boss of “anybody at all” in the domain must always be
 <code class="docutils literal"><span class="pre">b</span></code>.
 <code class="docutils literal"><span class="pre">∀i</span></code> and then <code class="docutils literal"><span class="pre">∃i</span></code> finish the proof.</p>
 <p>Here is the proof worked again, with the subproofs swapped:</p>
@@ -1000,7 +999,7 @@ everyone?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀u∃v isBossOf(v,u) |- ∃x∀y isBossOf(x,y) ???
 </pre></div>
 </div>
-<p>No &#8211; we can try, but we get stuck:</p>
+<p>No – we can try, but we get stuck:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∀u∃v isBossOf(v,u) |- ∃x∀y isBossOf(x,y)
 {
   1. ∀u∃v isBossOf(v,u)             premise
@@ -1014,13 +1013,13 @@ everyone?</p>
                                           SUBPROOF WITHOUT FINISHING THE INNER ONE FIRST.
 </pre></div>
 </div>
-<p>We see that the &#8220;block structure&#8221; of the proofs warns us when we are making
+<p>We see that the “block structure” of the proofs warns us when we are making
 invalid deductions.</p>
 <p>It is interesting that we <em>can</em> prove the following:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x∀y isBossOf(x,y) |- ∃z isBossOf(z,z)
 </pre></div>
 </div>
-<p>(&#8220;if someone is the boss of everyone, then someone is their own boss&#8221;):</p>
+<p>(“if someone is the boss of everyone, then someone is their own boss”):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>∃x∀y isBossOf(x,y) |- ∃z isBossOf(z,z)
 {
   1. ∃x∀y isBossOf(x,y)           premise
@@ -1033,7 +1032,7 @@ invalid deductions.</p>
 }
 </pre></div>
 </div>
-<p>Line 4 exposes that the &#8220;big boss&#8221;, <code class="docutils literal"><span class="pre">b</span></code>, <em>must</em> be its own boss.</p>
+<p>Line 4 exposes that the “big boss”, <code class="docutils literal"><span class="pre">b</span></code>, <em>must</em> be its own boss.</p>
 </div>
 <div class="section" id="domains-and-models">
 <h4>Domains and Models<a class="headerlink" href="#domains-and-models" title="Permalink to this headline">¶</a></h4>
@@ -1043,7 +1042,7 @@ invalid deductions.</p>
 In the bosses-workers examples, the domain is a collection of people.
 Both the bosses and the workers belong to that domain.
 Here are three drawings of possible different domains, where an arrow,
-<code class="docutils literal"><span class="pre">person1</span></code> &#8212;&gt; <code class="docutils literal"><span class="pre">person2</span></code>, means that <code class="docutils literal"><span class="pre">person1</span></code> is the boss of
+<code class="docutils literal"><span class="pre">person1</span></code> —&gt; <code class="docutils literal"><span class="pre">person2</span></code>, means that <code class="docutils literal"><span class="pre">person1</span></code> is the boss of
 <code class="docutils literal"><span class="pre">person2</span></code>:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1061,7 +1060,7 @@ Here are three drawings of possible different domains, where an arrow,
 </tr>
 </tbody>
 </table>
-<p>Notice that <code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(v,u)</span></code> (&#8220;everyone has a boss&#8221;) holds
+<p>Notice that <code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(v,u)</span></code> (“everyone has a boss”) holds
 true for the first two domains but not the third.
 <code class="docutils literal"><span class="pre">∃x∀y</span> <span class="pre">isBossOf(x,y)</span></code> holds true for only the second domain.</p>
 </li>
@@ -1081,11 +1080,11 @@ Here is a drawing of a domain of infinitely many people, where each person
 bosses the person to their right:</p>
 <img alt="../../_images/boss3.png" src="../../_images/boss3.png" />
 <p>In this domain, <code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(v,u)</span></code> holds true as does
-<code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(u,v)</span></code> (&#8220;everyone bosses someone&#8221;), but
+<code class="docutils literal"><span class="pre">∀u∃v</span> <span class="pre">isBossOf(u,v)</span></code> (“everyone bosses someone”), but
 <code class="docutils literal"><span class="pre">∃z</span> <span class="pre">isBossOf(z,z)</span></code> does not hold true.</p>
 </li>
 </ol>
-<p>The third example domain is famous &#8211; it is just the integer domain, where
+<p>The third example domain is famous – it is just the integer domain, where
 <code class="docutils literal"><span class="pre">isBossOf</span></code> is actually <code class="docutils literal"><span class="pre">&gt;</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="o">&lt;</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 </pre></div>
@@ -1100,10 +1099,10 @@ In the 1920s, Kurt Goedel, a German PhD student, proved that the integers, along
 with <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, are so complex that it is impossible to ever
 formulate a finite set (or even an algorithmically defined infinite set) of
 premises that generate all the true properties of the integers.
-Goedel&#8217;s result, known as the <em>First Incompleteness Theorem</em>, set mathematics
+Goedel’s result, known as the <em>First Incompleteness Theorem</em>, set mathematics
 back on its heels and directly led to the formulation of theoretical computer
 science (of which this course is one small part).
-There is more material about Goedel&#8217;s work at the end of this chapter.</p>
+There is more material about Goedel’s work at the end of this chapter.</p>
 </div>
 <div class="section" id="id1">
 <h4>Tactics for The ∃-Rules<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
@@ -1185,10 +1184,10 @@ The act of giving meanings to the predicates and functions is called an
 (e.g., <code class="docutils literal"><span class="pre">∀i</span> <span class="pre">(i*2)&gt;i</span></code>).
 An interpretation gives the meaning of</p>
 <ol class="arabic simple">
-<li>the underlying domain &#8211; what set of elements it names;</li>
-<li>each function symbol &#8211; what answers it computes from its arguments from the
+<li>the underlying domain – what set of elements it names;</li>
+<li>each function symbol – what answers it computes from its arguments from the
 domain; and</li>
-<li>each predicate &#8211; which combinations of arguments from the domain lead to
+<li>each predicate – which combinations of arguments from the domain lead to
 True answers and False answers.</li>
 </ol>
 <p>Here is an example.
@@ -1204,7 +1203,7 @@ comparison and integer less-than comparison.
 With this interpretation of arithmetic, we can interpret propositions.
 For example, <code class="docutils literal"><span class="pre">∀i</span> <span class="pre">(i*2)&gt;i</span></code> interprets to False, and
 <code class="docutils literal"><span class="pre">∃j</span> <span class="pre">(j*j)=j</span></code> interprets to True.
-If we use any extra, &#8220;constant names&#8221;, (e.g., <code class="docutils literal"><span class="pre">pi</span></code>), we must give meanings
+If we use any extra, “constant names”, (e.g., <code class="docutils literal"><span class="pre">pi</span></code>), we must give meanings
 to the constants, also.</li>
 <li>Now, given function names <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, and predicates, <code class="docutils literal"><span class="pre">=</span></code>,
 <code class="docutils literal"><span class="pre">&gt;</span></code>, we can choose to interpret them in another way.
@@ -1215,13 +1214,13 @@ ints, but we must give a different meaning to <code class="docutils literal"><sp
 We might define <code class="docutils literal"><span class="pre">m</span> <span class="pre">-</span> <span class="pre">n</span> <span class="pre">==</span> <span class="pre">0</span></code>, whenever <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">m</span></code>.</li>
 <li>Yet another interpretation is to say that the domain is just <code class="docutils literal"><span class="pre">{0,1}</span></code>;
 the functions are the usual arithmetic operations on 0,1, modulo 2;
-and <code class="docutils literal"><span class="pre">&gt;</span></code> is defined <code class="docutils literal"><span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> (and that&#8217;s it).</li>
+and <code class="docutils literal"><span class="pre">&gt;</span></code> is defined <code class="docutils literal"><span class="pre">1</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> (and that’s it).</li>
 </ul>
 <p>These three examples show that the symbols in a logic can be interpreted in
 multiple different ways.
 (In the Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a>, we called an interpretation a
-&#8220;context&#8221;.
-In this chapter, we see that a &#8220;context&#8221; is quite complex &#8211; domain, functions,
+“context”.
+In this chapter, we see that a “context” is quite complex – domain, functions,
 and predicates.)</p>
 <p>Here is a second example.
 There are no functions, and the predicates are <code class="docutils literal"><span class="pre">isMortal(_)</span></code>,
@@ -1233,7 +1232,7 @@ make <code class="docutils literal"><span class="pre">isLeftHanded(j)</span></co
 handed;
 and set <code class="docutils literal"><span class="pre">isMarriedTo(m,f)</span></code> True for all pairs of humans <code class="docutils literal"><span class="pre">m</span></code>, <code class="docutils literal"><span class="pre">f</span></code>, who have
 their marriage document in hand.</p>
-<p>You get the idea....</p>
+<p>You get the idea….</p>
 <p>We can ask whether a proposition is True within <em>one</em> specific interpretation,
 and we can ask whether a proposition is True within <em>all possible</em>
 interpretations.
@@ -1266,24 +1265,24 @@ Gödel showed this by formulating True propositions in arithmetic notation that
 talked about the computational power of the proof rules themselves, making it
 impossible for the proof rules to reason completely about themselves.
 The form of proposition he coded in logic+arithmetic stated
-&#8220;I cannot be proved&#8221;.
+“I cannot be proved”.
 If this proposition is False, it means the proposition can be proved.
 But this would make the rule set unsound, because it proved a False claim.
 The only possibility is that the proposition is True (and it cannot be proved).
 Hence, the proof rules remain sound but are incomplete.</p>
-<p>Gödel&#8217;s construction, called <em>diagonalization</em>, opened the door to the modern
+<p>Gödel’s construction, called <em>diagonalization</em>, opened the door to the modern
 theory of computer science, called computability theory, where techniques from
 logic are used to analyze computer programs.
 Computability theory tells us what problems computers cannot solve, and why, and
-so we shouldn&#8217;t try.
+so we shouldn’t try.
 (For example, it is impossible to build a program-termination checker that works
-on all programs &#8211; the checker won&#8217;t work on itself!)
+on all programs – the checker won’t work on itself!)
 There is also an offshoot of computability theory, called computational
 complexity theory, that studies what can be solved and how fast an algorithm can
 solve it.</p>
-<p>Given an interpretation of a predicate logic, we can say that the &#8220;meaning&#8221; of a
+<p>Given an interpretation of a predicate logic, we can say that the “meaning” of a
 proposition is exactly the set of interpretations
-(cf. Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a> &#8211; &#8220;contexts&#8221;) in which the
+(cf. Chapter on <a class="reference internal" href="../07-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Applications of Propositional Logic to Program Proving</span></a> – “contexts”) in which the
 proposition is True.
 This returns us to the Boolean-algebra model of logic.
 Or, we can organize the interpretations so that an interpretation grows in its

@@ -165,6 +165,8 @@ For Linux and Windows (and even macOS),
 is a good font to use; it is also an excellent font for programming or other
 purposes where a fixed-width font is desirable.
 
+See the `IntelliJ's doc <https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html>`__ for changing your editor font.
+
 LIVE Update
 ***********
 
