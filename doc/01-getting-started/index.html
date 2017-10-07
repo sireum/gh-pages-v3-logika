@@ -163,7 +163,7 @@ var createCORSRequest = function(method, url) {
   }
   return xhr;
 };
-var rel = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-VER');
+var rel = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-VER');
 if (rel != null) {
   rel.onload = function() {
     var response = rel.response;
@@ -173,7 +173,7 @@ if (rel != null) {
   };
   rel.send();
 }
-var dev = createCORSRequest('GET', 'http://logika.sireum.org/sireum-v3-dev-VER');
+var dev = createCORSRequest('GET', 'http://files.sireum.org/sireum-v3-dev-VER');
 if (dev != null) {
   dev.onload = function() {
     var response = dev.response;
