@@ -285,7 +285,7 @@ uses the following schematic pattern rule and notation.</p>
 claim expression is <code class="docutils literal"><span class="pre">R</span></code>,
 where <code class="docutils literal"><span class="pre">Z</span></code> applies an inference rule <code class="docutils literal"><span class="pre">I</span></code> to deduce <code class="docutils literal"><span class="pre">R</span></code>,
 and <code class="docutils literal"><span class="pre">I</span></code> requires some claim arguments that can be retrieved from
-other proof steps, say, numbered <code class="docutils literal"><span class="pre">Y</span></code> and <code class="docutils literal"><span class="pre">Z</span></code>.
+other proof steps, say, numbered <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">Y</span></code>.
 The notation is as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>X. …
 Y. …
@@ -308,7 +308,7 @@ Z. R    I X
 </pre></div>
 </div>
 <p>In this case, <code class="docutils literal"><span class="pre">X1</span></code> and <code class="docutils literal"><span class="pre">XK</span></code> have to be in same level and they indicate a prefix sequence of
-proof steps of <code class="docutils literal"><span class="pre">X</span></code>.</p>
+proof steps immediately inside <code class="docutils literal"><span class="pre">X</span></code>.</p>
 </div>
 <div class="section" id="claim-expression">
 <span id="prop-claim"></span><h2>3.2.5. Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
@@ -401,8 +401,8 @@ and whose claim expression that it deduces is <code class="docutils literal"><sp
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">premise</span></code> justification can be used to call on one of the
-sequent’s premises associated with the proof.
-That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent’s premises.
+sequent’s premises associated with the proof or some proved claims in earlier steps.
+That is, <code class="docutils literal"><span class="pre">R</span></code> has to be one of the sequent’s premises or previously proved claims.
 For example,</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>p,  q  ⊢  q
 {

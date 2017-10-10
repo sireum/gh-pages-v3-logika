@@ -131,7 +131,7 @@ Consider the situation at a regular proof step numbered ``Z`` whose
 claim expression is ``R``,
 where ``Z`` applies an inference rule ``I`` to deduce ``R``,
 and ``I`` requires some claim arguments that can be retrieved from
-other proof steps, say, numbered ``Y`` and ``Z``.
+other proof steps, say, numbered ``X`` and ``Y``.
 The notation is as follows::
 
     X. …
@@ -156,7 +156,7 @@ For example::
     Z. R    I X
 
 In this case, ``X1`` and ``XK`` have to be in same level and they indicate a prefix sequence of
-proof steps of ``X``.
+proof steps immediately inside ``X``.
 
 .. _prop-claim:
 
@@ -251,8 +251,8 @@ Premise
    :lines: 39
 
 The ``premise`` justification can be used to call on one of the
-sequent's premises associated with the proof.
-That is, ``R`` has to be one of the sequent's premises.
+sequent's premises associated with the proof or some proved claims in earlier steps.
+That is, ``R`` has to be one of the sequent's premises or previously proved claims.
 For example,
 
 .. literalinclude:: premise-1.logika
