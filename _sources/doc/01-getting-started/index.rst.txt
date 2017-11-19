@@ -63,7 +63,7 @@ Getting Started
 ###############
 
 Logika runs on x64 macOS, Linux, and Windows operating systems
-(tested on macOS 10.12, Manjaro, Ubuntu 16.04, and Windows 10).
+(tested on macOS 10.12 & 10.13, KDE Neon, Ubuntu 17.10, and Windows 10).
 
 There two ways one can install Logika: :ref:`using-binary` or
 :ref:`using-source`.
