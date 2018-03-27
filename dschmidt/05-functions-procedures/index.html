@@ -3,21 +3,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>5. Functions and Procedures &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -31,8 +23,7 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6. Loops, Invariants, Induction" href="../06-loops-invariants-induction/index.html" />
     <link rel="prev" title="4. Programming Logic for Assignments and Conditionals" href="../04-programming-logic/index.html" />
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -154,7 +145,7 @@ it has inputs, namely the arguments assigned to its parameters, and
 it has outputs, namely the information returned as the function’s answer.
 It acts like a logic gate or chip, with “input wires” and “output wires”.</p>
 <p>Here is an example that shows the format we use for writing a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>              <span class="c1"># HEADER LINE : LISTS NAME AND PARAMETERS</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>              <span class="c1"># HEADER LINE : LISTS NAME AND PARAMETERS</span>
     <span class="sd">&quot;&quot;&quot;recip  computes the reciprocal for  n&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre   n != 0          # PRECONDITION : REQUIRED PROPERTY OF ARGUMENTS</span>
@@ -171,12 +162,12 @@ it terminates.
 For simplicity, we require that <em>no assignment is made to a parameter inside the
 body of the function</em>.
 In a call-by-value language like Python and Java, this is never a handicap.</p>
-<p>The functions’s <em>specification</em> consists of its header line and its <code class="docutils literal"><span class="pre">pre</span></code>-,
-<code class="docutils literal"><span class="pre">post</span></code>-condition, and <code class="docutils literal"><span class="pre">return</span></code> lines;
+<p>The functions’s <em>specification</em> consists of its header line and its <code class="docutils literal notranslate"><span class="pre">pre</span></code>-,
+<code class="docutils literal notranslate"><span class="pre">post</span></code>-condition, and <code class="docutils literal notranslate"><span class="pre">return</span></code> lines;
 it tells us how to use the function correctly:
 (The comment with the informal description is also nice to have.)
 Here is the specification for the above function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;recip  computes the reciprocal for  n&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre   n != 0</span>
@@ -191,14 +182,14 @@ function’s code to know how to use the function</em>.
 This is especially crucial when you use a function from a library that was
 written by someone else – ideally, you should not read the library’s code to
 learn how to call the library’s functions!</p>
-<p>Back to the example: Since we do not allow assignments to parameter <code class="docutils literal"><span class="pre">n</span></code> within
-the body of <code class="docutils literal"><span class="pre">recip</span></code>, we know that the value of <code class="docutils literal"><span class="pre">n</span></code> in the postcondition is
-the same as the value of <code class="docutils literal"><span class="pre">n</span></code> in the precondition –
+<p>Back to the example: Since we do not allow assignments to parameter <code class="docutils literal notranslate"><span class="pre">n</span></code> within
+the body of <code class="docutils literal notranslate"><span class="pre">recip</span></code>, we know that the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> in the postcondition is
+the same as the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> in the precondition –
 this makes the postcondition meaningful.</p>
 <p>To call the function, we supply an argument that binds to (is assigned to) its
 parameter, and we supply a variable that is the target for the returned answer.
 Once again, for this specification:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;recip  computes the reciprocal for  n&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre   n != 0</span>
@@ -208,7 +199,7 @@ Once again, for this specification:</p>
 </pre></div>
 </div>
 <p>we correctly call the function like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { 1. a &gt; 0               premise</span>
@@ -224,29 +215,29 @@ Once again, for this specification:</p>
 <p>To call the function, <em>we must prove the function’s precondition at the point of
 call for its argument</em>.
 As our reward for establishing the precondition, we receive in return the
-postcondition, stated in terms of <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>: <code class="docutils literal"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">a</span></code>.</p>
+postcondition, stated in terms of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>: <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">==</span> <span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">a</span></code>.</p>
 <p>For simplicity, we require that <em>the target variable that receives the
 function’s answer does not appear in the function’s arguments</em>, e.g., the call,
-<code class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">recip(b+2)</span></code>, is not allowed, because it confuses the <code class="docutils literal"><span class="pre">b</span></code> in the
-argument to <code class="docutils literal"><span class="pre">recip</span></code> with the <code class="docutils literal"><span class="pre">b</span></code> in the answer.</p>
-<p>In contrast, we cannot presume <code class="docutils literal"><span class="pre">recip</span></code>’s postcondition in this situation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">recip(b+2)</span></code>, is not allowed, because it confuses the <code class="docutils literal notranslate"><span class="pre">b</span></code> in the
+argument to <code class="docutils literal notranslate"><span class="pre">recip</span></code> with the <code class="docutils literal notranslate"><span class="pre">b</span></code> in the answer.</p>
+<p>In contrast, we cannot presume <code class="docutils literal notranslate"><span class="pre">recip</span></code>’s postcondition in this situation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="c1"># We do not know if  x  is nonzero....</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{  ??? }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Since we did not prove <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> as a precondition for applying <code class="docutils literal"><span class="pre">recip</span></code>,
+<p>Since we did not prove <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> as a precondition for applying <code class="docutils literal notranslate"><span class="pre">recip</span></code>,
 we cannot assert the postcondition after the call.
 Literally, we have no knowledge of what the function produces in this situation
 – perhaps the call will “crash” (generate an exception)!</p>
 <div class="section" id="forwards-law-for-function-definition-and-call">
 <h3>5.1.1. Forwards Law for Function Definition and Call<a class="headerlink" href="#forwards-law-for-function-definition-and-call" title="Permalink to this headline">¶</a></h3>
 <p>Here is a summary of what we have developed so far.
-Given a function, <code class="docutils literal"><span class="pre">f</span></code>, with a pre-post specification, we must show that the
+Given a function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, with a pre-post specification, we must show that the
 presumption of the precondition at the beginning of the function’s body lets us
 prove the postcondition at the end of the body:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    {  pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.</span>
 <span class="sd">       post   R    (where assertion  R  can mention  ans and x)  Call this,  f_post.</span>
@@ -257,11 +248,11 @@ prove the postcondition at the end of the body:</p>
     <span class="sd">&quot;&quot;&quot;{ ... prove  R  here, that is,  ans  and  x  have property  R }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Outside of the function, <code class="docutils literal"><span class="pre">f</span></code>, we write <code class="docutils literal"><span class="pre">f_pre</span></code> for <code class="docutils literal"><span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">f_post</span></code> for
-<code class="docutils literal"><span class="pre">R</span></code>.
+<p>Outside of the function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, we write <code class="docutils literal notranslate"><span class="pre">f_pre</span></code> for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">f_post</span></code> for
+<code class="docutils literal notranslate"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function.
 It is a variation of the assignment law:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>               <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>               <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                            <span class="c1"># y  does not appear in  e</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x]f_post   premise   # presume the postcondition,</span>
@@ -271,10 +262,10 @@ It is a variation of the assignment law:</p>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Recall that <code class="docutils literal"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal"><span class="pre">e</span></code> for all occurrences
-of <code class="docutils literal"><span class="pre">x</span></code> within formula <code class="docutils literal"><span class="pre">f_pre</span></code>.</p>
+<p>Recall that <code class="docutils literal notranslate"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal notranslate"><span class="pre">e</span></code> for all occurrences
+of <code class="docutils literal notranslate"><span class="pre">x</span></code> within formula <code class="docutils literal notranslate"><span class="pre">f_pre</span></code>.</p>
 <p>Here is another example, an absolute-value function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absValue</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absValue</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    x != 0</span>
 <span class="sd">      post   ans &gt; 0 and (ans == x or ans == 0 - x)</span>
@@ -291,7 +282,7 @@ of <code class="docutils literal"><span class="pre">x</span></code> within formu
 is positive).
 We construct a proof that converts the knowledge in the precondition into the
 knowledge in the postcondition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absValue</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">absValue</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    x != 0</span>
 <span class="sd">      post   ans &gt; 0 and (ans == x or ans == 0 - x)</span>
@@ -330,7 +321,7 @@ knowledge in the postcondition:</p>
 </pre></div>
 </div>
 <p>Now that the function is certified to satisfy its specification, we can call it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;{ 1.  n != 0                               premise  }&quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">absValue</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -366,8 +357,8 @@ the specification.</p>
 <p>Here is a simplistic example.
 Say you must write a function that receives two numbers as inputs and selects
 the maximum, or larger, of the two as the function’s output.
-The specification of the function, <code class="docutils literal"><span class="pre">max</span></code>, might look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+The specification of the function, <code class="docutils literal notranslate"><span class="pre">max</span></code>, might look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;max  selects the larger of  x  and  y  and returns it as its answer&quot;&quot;&quot;</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ pre    ???</span>
@@ -377,20 +368,20 @@ The specification of the function, <code class="docutils literal"><span class="p
 </pre></div>
 </div>
 <p>You must write the code for function max so that it meets the postcondition.
-Along the way, you might require some restrictions on <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for your
+Along the way, you might require some restrictions on <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for your
 solution to work.
 These would be listed in the precondition.</p>
 <p>The logical operators in the postcondition sometimes give us hints how to code
 the function.
-Here, we see that the function’s answer will be either <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code>,
+Here, we see that the function’s answer will be either <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>,
 suggesting that the function will use assignment commands of the form,
-<code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">y</span></code>.
+<code class="docutils literal notranslate"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">y</span></code>.
 We also see that there is an “or” operator in the specification.
 This suggests that we will require an if-command to choose which of the two
 assignments to use.
 Although it is not an exact science, we can move from the postcondition to this
 possible coding:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    ???</span>
 <span class="sd">      post   (ans == x v ans == y) ^  (ans &gt;= x ^ ans &gt;= y)</span>
@@ -404,13 +395,13 @@ possible coding:</p>
 </pre></div>
 </div>
 <p>Now, we use the laws for assignments and conditionals to compute whether a
-precondition is needed that places restrictions on <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> so that the
+precondition is needed that places restrictions on <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> so that the
 function behaves properly.
 What we see here is that our coding works correctly with numbers
 (and with strings, too!).
-But it might not work correctly, say, if <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code> are arrays or pointers.
+But it might not work correctly, say, if <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> are arrays or pointers.
 For this reason, it seems safe to use this precondition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="sd">&quot;&quot;&quot;max  selects the larger of  x  and  y  and returns it as its answer&quot;&quot;&quot;</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    x and y are both numbers or both strings</span>
@@ -432,7 +423,7 @@ programs.</p>
 <p>Here is a precise statement of how to reason backwards from a goal across a
 function call.
 First, given the specification,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    Q</span>
 <span class="sd">      post   R</span>
@@ -441,18 +432,18 @@ First, given the specification,</p>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>If a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards from
-<code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]f_pre  ^  ([e/x][y/ans]f_post --&gt; G)  }&quot;&quot;&quot;</span>
+<p>If a call to <code class="docutils literal notranslate"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal notranslate"><span class="pre">G</span></code>, we reason backwards from
+<code class="docutils literal notranslate"><span class="pre">G</span></code> to its subgoal like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]f_pre  ^  ([e/x][y/ans]f_post --&gt; G)  }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># y  does not appear in argument  e</span>
 <span class="sd">&quot;&quot;&quot;{ goal: G }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>That is, for the call, <code class="docutils literal"><span class="pre">f(e)</span></code>, to accomplish <code class="docutils literal"><span class="pre">G</span></code>, it must be the case that
-<code class="docutils literal"><span class="pre">f</span></code>’s postcondition implies <code class="docutils literal"><span class="pre">G</span></code> and that we can prove <code class="docutils literal"><span class="pre">f</span></code>’s precondition
-holds true (so that we can call <code class="docutils literal"><span class="pre">f</span></code>).
+<p>That is, for the call, <code class="docutils literal notranslate"><span class="pre">f(e)</span></code>, to accomplish <code class="docutils literal notranslate"><span class="pre">G</span></code>, it must be the case that
+<code class="docutils literal notranslate"><span class="pre">f</span></code>’s postcondition implies <code class="docutils literal notranslate"><span class="pre">G</span></code> and that we can prove <code class="docutils literal notranslate"><span class="pre">f</span></code>’s precondition
+holds true (so that we can call <code class="docutils literal notranslate"><span class="pre">f</span></code>).
 An example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">recip</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   { pre    n != 0</span>
 <span class="sd">     post   ans == 1.0 / n</span>
@@ -462,17 +453,17 @@ An example:</p>
 </pre></div>
 </div>
 <p>and the program</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="sd">&quot;&quot;&quot;{  subgoal: ??? }&quot;&quot;&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{  goal: b &lt; 1.0/3 }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>we compute that the subgoal is <code class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">(b</span> <span class="pre">=</span> <span class="pre">1.0/a</span> <span class="pre">--&gt;</span> <span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">1.0/3)</span></code>.
-This simplifies to <code class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">(1.0/a</span> <span class="pre">&lt;</span> <span class="pre">1.0/3))</span></code>, which simplifies to
-<code class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>, which simplifies to <code class="docutils literal"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>.
-This tells us what <code class="docutils literal"><span class="pre">assert</span></code> or <code class="docutils literal"><span class="pre">if</span></code> command to add to our program:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<p>we compute that the subgoal is <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">(b</span> <span class="pre">=</span> <span class="pre">1.0/a</span> <span class="pre">--&gt;</span> <span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">1.0/3)</span></code>.
+This simplifies to <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">(1.0/a</span> <span class="pre">&lt;</span> <span class="pre">1.0/3))</span></code>, which simplifies to
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>, which simplifies to <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">3</span></code>.
+This tells us what <code class="docutils literal notranslate"><span class="pre">assert</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> command to add to our program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="k">assert</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">3</span>
 <span class="sd">&quot;&quot;&quot;{  subgoal: a &gt; 3 }&quot;&quot;&quot;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -490,12 +481,12 @@ or more arguments and return an answer.
 But we can have functions that return no answers and even receive no arguments,
 because they can read and update the values of non-local, <em>global</em> variables.
 We call a function that updates a global variable, a <em>procedure</em>.</p>
-<p>Say that a variable, <code class="docutils literal"><span class="pre">v</span></code>, is “global” to a function <code class="docutils literal"><span class="pre">f</span></code> if <code class="docutils literal"><span class="pre">v</span></code> exists
-prior to a call to <code class="docutils literal"><span class="pre">f</span></code>.
-(More precisely stated, <code class="docutils literal"><span class="pre">v</span></code>’s cell does not live in <code class="docutils literal"><span class="pre">f</span></code>’s
+<p>Say that a variable, <code class="docutils literal notranslate"><span class="pre">v</span></code>, is “global” to a function <code class="docutils literal notranslate"><span class="pre">f</span></code> if <code class="docutils literal notranslate"><span class="pre">v</span></code> exists
+prior to a call to <code class="docutils literal notranslate"><span class="pre">f</span></code>.
+(More precisely stated, <code class="docutils literal notranslate"><span class="pre">v</span></code>’s cell does not live in <code class="docutils literal notranslate"><span class="pre">f</span></code>’s
 namespace/activation-record.)
-For example, <code class="docutils literal"><span class="pre">pi</span></code> is global to <code class="docutils literal"><span class="pre">circumference</span></code> here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+For example, <code class="docutils literal notranslate"><span class="pre">pi</span></code> is global to <code class="docutils literal notranslate"><span class="pre">circumference</span></code> here:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
 
 <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="n">diameter</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span>
@@ -509,10 +500,10 @@ For example, <code class="docutils literal"><span class="pre">pi</span></code> i
 </div>
 <p>A global variable “lives” before a function is called and lives after the
 function finishes.
-In the above example, <code class="docutils literal"><span class="pre">pi</span></code> is defined before the function is called, and
+In the above example, <code class="docutils literal notranslate"><span class="pre">pi</span></code> is defined before the function is called, and
 it exists after the function finishes.
-In contrast, <code class="docutils literal"><span class="pre">pi</span></code> is local here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circ</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">:</span>
+In contrast, <code class="docutils literal notranslate"><span class="pre">pi</span></code> is local here:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circ</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">:</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>   <span class="c1"># pi is created each time  circ  is called</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">diameter</span>
     <span class="k">return</span> <span class="n">answer</span>
@@ -527,7 +518,7 @@ In contrast, <code class="docutils literal"><span class="pre">pi</span></code> i
 <p>A global variable that is read (but <em>not updated</em>) by a function body can be
 safely used in the function’s pre- and post-conditions;
 it acts just like an extra parameter to the function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
 
 <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="n">diameter</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -541,20 +532,20 @@ it acts just like an extra parameter to the function:</p>
 </div>
 <p>We must restrict all calls to the function so that the call does <em>not</em> use the
 global variable as the target of the function’s answer.
-That is, <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> is ok, and so is <code class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(pi)</span></code>,
-but <code class="docutils literal"><span class="pre">pi</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> <em>is not</em>.</p>
+That is, <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> is ok, and so is <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">circumference(pi)</span></code>,
+but <code class="docutils literal notranslate"><span class="pre">pi</span> <span class="pre">=</span> <span class="pre">circumference(5)</span></code> <em>is not</em>.</p>
 <div class="section" id="global-variables-that-are-updated">
 <h3>5.2.1. Global Variables that are Updated<a class="headerlink" href="#global-variables-that-are-updated" title="Permalink to this headline">¶</a></h3>
 <p>We use the name, <em>procedure</em>, for a function that updates a global variable.
 A global variable that is updated by a function acts like an extra answer
 variable for the function.
 In the Python language, every global variable that is updated by a function must
-be listed in the <code class="docutils literal"><span class="pre">global</span></code> line that immediately follows the function’s header
+be listed in the <code class="docutils literal notranslate"><span class="pre">global</span></code> line that immediately follows the function’s header
 line.
 This is a good practice that we will follow.</p>
 <p>Here is a simple but important example: a timer that counts down to zero.
-The <code class="docutils literal"><span class="pre">init</span></code> and <code class="docutils literal"><span class="pre">tick</span></code> methods maintain the global variable <code class="docutils literal"><span class="pre">time</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+The <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">tick</span></code> methods maintain the global variable <code class="docutils literal notranslate"><span class="pre">time</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1.  time == 0     premise</span>
 <span class="sd">  2.  time &gt;= 0     algebra 1 }      # time shouldn&#39;t be negative</span>
@@ -610,14 +601,14 @@ The <code class="docutils literal"><span class="pre">init</span></code> and <cod
 <span class="sd">&quot;&quot;&quot;{ 1.  time &gt;= 0                   premise  }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Each of the functions can change variable <code class="docutils literal"><span class="pre">time</span></code>, and each time a function
-finished, there is a postcondition that <code class="docutils literal"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.
+<p>Each of the functions can change variable <code class="docutils literal notranslate"><span class="pre">time</span></code>, and each time a function
+finished, there is a postcondition that <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.
 We will learn that a property that repeats over and over is <em>invariant</em>.
-Here, it is invariant that <code class="docutils literal"><span class="pre">time</span></code> stays nonnegative.
+Here, it is invariant that <code class="docutils literal notranslate"><span class="pre">time</span></code> stays nonnegative.
 This next example is similar and important:
 The procedure that withdraws money from a bank account must never let the
 balance go negative:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c1"># global variable in the module for the bank account</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">balance</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c1"># global variable in the module for the bank account</span>
 
 <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">howmuch</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;withdraw  removes  howmuch  from  balance&quot;&quot;&quot;</span>
@@ -635,9 +626,9 @@ balance go negative:</p>
     <span class="k">return</span> <span class="n">cash</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">withdraw</span></code>’s pre- and post-conditions are carefully written to ensure that
+<p><code class="docutils literal notranslate"><span class="pre">withdraw</span></code>’s pre- and post-conditions are carefully written to ensure that
 the procedure is used correctly.
-Recall that <code class="docutils literal"><span class="pre">balance_in</span></code> means the value of global variable <code class="docutils literal"><span class="pre">balance</span></code> on
+Recall that <code class="docutils literal notranslate"><span class="pre">balance_in</span></code> means the value of global variable <code class="docutils literal notranslate"><span class="pre">balance</span></code> on
 procedure entry.
 We will return to both these examples shortly.</p>
 </div>
@@ -645,7 +636,7 @@ We will return to both these examples shortly.</p>
 <div class="section" id="deduction-law-for-procedures">
 <h2>5.3. Deduction Law for Procedures<a class="headerlink" href="#deduction-law-for-procedures" title="Permalink to this headline">¶</a></h2>
 <p>Here is a precise statement of the law we use for procedures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -659,7 +650,7 @@ We will return to both these examples shortly.</p>
 </pre></div>
 </div>
 <p>To invoke the function, we prove the precondition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                             <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post  premise</span>
@@ -668,8 +659,8 @@ We will return to both these examples shortly.</p>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
+<p>Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="section" id="global-variable-invariants">
 <h3>5.3.1. Global-Variable Invariants<a class="headerlink" href="#global-variable-invariants" title="Permalink to this headline">¶</a></h3>
 <p>A global variable is often shared by more than one procedure, and the procedures
@@ -677,13 +668,13 @@ must cooperate and keep the global variable in proper shape for shared use.
 For this reason, a global variable often has attached to it a
 <em>global-variable invariant</em> that asserts a property of the variable’s value that
 must be preserved by every procedure that updates the variable.</p>
-<p>Earlier, we saw a timer module that maintained a nonnegative value for <code class="docutils literal"><span class="pre">time</span></code>.
-It is best to assert that <code class="docutils literal"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is a global invariant.
+<p>Earlier, we saw a timer module that maintained a nonnegative value for <code class="docutils literal notranslate"><span class="pre">time</span></code>.
+It is best to assert that <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is a global invariant.
 Then, each of the two functions can assume the invariant when they execute.
 (And, each function must ensure the invariant is still holding true when they
 exit!)</p>
 <p>Here’s the timer example, reworked:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">### simple example of a global variable invariant</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### simple example of a global variable invariant</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="c1"># we maintain this invariant property:</span>
@@ -745,7 +736,7 @@ the <em>class invariant</em>.</p>
 inserts ten-cent coins.
 (The bank is a “reactive system” that processes “coin-insertion events”!)
 The class enforces its invariant – that’s its mission.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DimesBank</span> <span class="p">{</span>   <span class="c1"># MAINTAINS A TOY BANK</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DimesBank</span> <span class="p">{</span>   <span class="c1"># MAINTAINS A TOY BANK</span>
 
 <span class="c1"># fields in the class:</span>
 <span class="n">dimes</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># how many coins inserted so far into the bank</span>
@@ -793,7 +784,7 @@ and write down the class invariant</em>.
 Then, define and code the methods so that they maintain the invariant.</p>
 <p>Here is a second example, a class that models a bank account.
 The account’s balance should always be kept nonnegative:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># A bank-account &quot;class&quot; and its maintenance methods.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A bank-account &quot;class&quot; and its maintenance methods.</span>
 <span class="c1"># The balance balance must be kept nonnegative.</span>
 <span class="k">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
 
@@ -871,9 +862,9 @@ The account’s balance should always be kept nonnegative:</p>
 <span class="p">}</span> <span class="c1"># END CLASS</span>
 </pre></div>
 </div>
-<p>All the class’s methods pledge to keep <code class="docutils literal"><span class="pre">balance</span></code> nonnegative.
-Assuming that no other program commands update the <code class="docutils literal"><span class="pre">balance</span></code>, the proofs
-ensure that <code class="docutils literal"><span class="pre">balance</span></code>’s global invariant holds always.</p>
+<p>All the class’s methods pledge to keep <code class="docutils literal notranslate"><span class="pre">balance</span></code> nonnegative.
+Assuming that no other program commands update the <code class="docutils literal notranslate"><span class="pre">balance</span></code>, the proofs
+ensure that <code class="docutils literal notranslate"><span class="pre">balance</span></code>’s global invariant holds always.</p>
 <p>Whenever a module or class holds a data structure, there
 <em>always should be a global invariant that states the critical properties of the
 structure that must be maintained</em>.
@@ -889,7 +880,7 @@ to hold true
 <div class="section" id="law-for-global-invariants-and-procedure-calls">
 <h3>5.3.2. Law for Global Invariants and Procedure Calls<a class="headerlink" href="#law-for-global-invariants-and-procedure-calls" title="Permalink to this headline">¶</a></h3>
 <p>Here is the law used in the above example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
 <span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c1"># must be proved true here</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -909,10 +900,10 @@ to hold true
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>For the function’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
-Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
+<p>For the function’s invocation, we deduce <code class="docutils literal notranslate"><span class="pre">[e/x]pre_f</span></code> to get the result.
+Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post      premise</span>
@@ -922,8 +913,8 @@ appear in argument <code class="docutils literal"><span class="pre">e</span></co
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Further, provided that all assignments to global variable <code class="docutils literal"><span class="pre">g</span></code> occur only
-within functions that preserve its <code class="docutils literal"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal"><span class="pre">I_g</span></code> as
+<p>Further, provided that all assignments to global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> occur only
+within functions that preserve its <code class="docutils literal notranslate"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal notranslate"><span class="pre">I_g</span></code> as
 needed in the main program.</p>
 <p>There are many other examples of modules/classes that use global invariants.
 Here are three obvious ones:</p>
@@ -964,14 +955,14 @@ In this way, procedures can build on each others’ postconditions.</p>
 <p>It is interesting that a procedure can call <em>itself</em>, and we can reason about
 this in the same way that we use for any other procedure call.
 Here is a detailed example.</p>
-<p>For integer <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the <em>factorial</em> of <code class="docutils literal"><span class="pre">n</span></code>, written <code class="docutils literal"><span class="pre">n!</span></code> is defined as
-<code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">n</span></code>.
-It is the tradition to define <code class="docutils literal"><span class="pre">0!</span> <span class="pre">=</span> <span class="pre">1</span></code>, but factorials for negative integers
+<p>For integer <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the <em>factorial</em> of <code class="docutils literal notranslate"><span class="pre">n</span></code>, written <code class="docutils literal notranslate"><span class="pre">n!</span></code> is defined as
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">n</span></code>.
+It is the tradition to define <code class="docutils literal notranslate"><span class="pre">0!</span> <span class="pre">=</span> <span class="pre">1</span></code>, but factorials for negative integers
 do not exist.</p>
 <p>Factorial lists the number of permutations (combinations or “shuffles”), e.g.,
-<code class="docutils literal"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
-<code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, and <code class="docutils literal"><span class="pre">c</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">abc</span>
+<code class="docutils literal notranslate"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
+<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span>
 <span class="n">bac</span>
 <span class="n">bca</span>
 <span class="n">acb</span>
@@ -980,12 +971,12 @@ do not exist.</p>
 </pre></div>
 </div>
 <p>There is a profound recursive definition of factorial:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,   for  n &gt; 0
 </pre></div>
 </div>
-<p>For example, we calculate <code class="docutils literal"><span class="pre">4!</span></code> like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>4! == 3! * 4
+<p>For example, we calculate <code class="docutils literal notranslate"><span class="pre">4!</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>4! == 3! * 4
    where 3! == 2! * 3
             where 2! == 1! * 2
                      where 1! == 0! * 1
@@ -999,11 +990,11 @@ and finally,
    4! == 3! * 4 = 24
 </pre></div>
 </div>
-<p>The process of counting downwards from <code class="docutils literal"><span class="pre">4!</span></code> to <code class="docutils literal"><span class="pre">3!</span></code> to <code class="docutils literal"><span class="pre">2!</span></code> to <code class="docutils literal"><span class="pre">1!</span></code> to
-<code class="docutils literal"><span class="pre">0!</span></code> and assembling the answer as <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code> can be programmed as a
-function that repeatedly calls <em>itself</em> for the answers to <code class="docutils literal"><span class="pre">3!</span></code>, <code class="docutils literal"><span class="pre">2!</span></code>,
-<code class="docutils literal"><span class="pre">1!</span></code>, etc.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>  <span class="c1"># returns  n!</span>
+<p>The process of counting downwards from <code class="docutils literal notranslate"><span class="pre">4!</span></code> to <code class="docutils literal notranslate"><span class="pre">3!</span></code> to <code class="docutils literal notranslate"><span class="pre">2!</span></code> to <code class="docutils literal notranslate"><span class="pre">1!</span></code> to
+<code class="docutils literal notranslate"><span class="pre">0!</span></code> and assembling the answer as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code> can be programmed as a
+function that repeatedly calls <em>itself</em> for the answers to <code class="docutils literal notranslate"><span class="pre">3!</span></code>, <code class="docutils literal notranslate"><span class="pre">2!</span></code>,
+<code class="docutils literal notranslate"><span class="pre">1!</span></code>, etc.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>  <span class="c1"># returns  n!</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre     n &gt;= 0</span>
 <span class="sd">      post    (to come)</span>
@@ -1017,10 +1008,10 @@ function that repeatedly calls <em>itself</em> for the answers to <code class="d
 <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>The easiest way to understand the computation of, say, <code class="docutils literal"><span class="pre">fact(3)</span></code>, is to draw
+<p>The easiest way to understand the computation of, say, <code class="docutils literal notranslate"><span class="pre">fact(3)</span></code>, is to draw
 out the function calls, making a new copy of the called function each time it is
 restarted, like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
             <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
               <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">else</span> <span class="p">:</span>
@@ -1029,11 +1020,11 @@ restarted, like this:</p>
             <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>Notice how the <em>binding</em> of argument <code class="docutils literal"><span class="pre">3</span></code> to parameter <code class="docutils literal"><span class="pre">n</span></code> is enacted with
-the assignment, <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>.
+<p>Notice how the <em>binding</em> of argument <code class="docutils literal notranslate"><span class="pre">3</span></code> to parameter <code class="docutils literal notranslate"><span class="pre">n</span></code> is enacted with
+the assignment, <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>.
 (This is how it is implemented within a computer, too.)
-The code for <code class="docutils literal"><span class="pre">fact(3)</span></code> activates a fresh copy of <code class="docutils literal"><span class="pre">fact</span></code> with argument 2:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+The code for <code class="docutils literal notranslate"><span class="pre">fact(3)</span></code> activates a fresh copy of <code class="docutils literal notranslate"><span class="pre">fact</span></code> with argument 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>        <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1044,7 +1035,7 @@ The code for <code class="docutils literal"><span class="pre">fact(3)</span></co
 </pre></div>
 </div>
 <p>This generates another call (fresh copy of) fact:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
                                           <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
@@ -1056,7 +1047,7 @@ The code for <code class="docutils literal"><span class="pre">fact(3)</span></co
 </pre></div>
 </div>
 <p>This expands to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
            <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1067,10 +1058,10 @@ The code for <code class="docutils literal"><span class="pre">fact(3)</span></co
                                                          <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>We see a sequence, or “stack”, of activations of <code class="docutils literal"><span class="pre">fact</span></code>, one per call.
+<p>We see a sequence, or “stack”, of activations of <code class="docutils literal notranslate"><span class="pre">fact</span></code>, one per call.
 Within a computer, an <em>activation-record stack</em> remembers the activations.
-The call to <code class="docutils literal"><span class="pre">fact(0)</span></code> returns an answer – 1:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+The call to <code class="docutils literal notranslate"><span class="pre">fact(0)</span></code> returns an answer – 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
            <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>    <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
@@ -1078,9 +1069,9 @@ The call to <code class="docutils literal"><span class="pre">fact(0)</span></cod
                                           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>This makes the most recent activation (copy) of <code class="docutils literal"><span class="pre">fact</span></code> disappear, and the
-returned answer is assigned to <code class="docutils literal"><span class="pre">ans</span></code> in the previous call:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<p>This makes the most recent activation (copy) of <code class="docutils literal notranslate"><span class="pre">fact</span></code> disappear, and the
+returned answer is assigned to <code class="docutils literal notranslate"><span class="pre">ans</span></code> in the previous call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
            <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1089,7 +1080,7 @@ returned answer is assigned to <code class="docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>allowing the previous call to return <em>its</em> answer to <em>its</em> caller:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>     <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
            <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
@@ -1097,8 +1088,8 @@ returned answer is assigned to <code class="docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>You see the pattern – the calls are finishing in reverse order, returning the
-partial answers, <code class="docutils literal"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+partial answers, <code class="docutils literal notranslate"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>     <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
            <span class="k">return</span> <span class="n">ans</span>      <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
@@ -1106,26 +1097,26 @@ partial answers, <code class="docutils literal"><span class="pre">fact(0)</span>
 </pre></div>
 </div>
 <p>and then:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="k">return</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and finally:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>Within the computer, the code for <code class="docutils literal"><span class="pre">fact</span></code> is not copied at each call –
+<p>Within the computer, the code for <code class="docutils literal notranslate"><span class="pre">fact</span></code> is not copied at each call –
 instead, a new <em>namespace</em> (activation record) is generated for each call to
-<code class="docutils literal"><span class="pre">fact</span></code>.
+<code class="docutils literal notranslate"><span class="pre">fact</span></code>.
 When a call finishes, its answer is returned and its namespace is erased
 (popped from the activation stack).</p>
 <p>Every function has its own pre- and post- conditions.
@@ -1133,7 +1124,7 @@ So, if a function calls itself, it can use <em>its own pre- and postconditions t
 deduce the properties of the answer computed by the self-call</em>.
 This is remarkable and exactly correct.</p>
 <p>Here is the desired specification of fact:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    n &gt;= 0</span>
 <span class="sd">      post   ans == n!</span>
@@ -1141,17 +1132,17 @@ This is remarkable and exactly correct.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>When <code class="docutils literal"><span class="pre">fact</span></code> calls itself, we use the above pre- and post-conditions to deduce
+<p>When <code class="docutils literal notranslate"><span class="pre">fact</span></code> calls itself, we use the above pre- and post-conditions to deduce
 what happens.
-In the process, we deduce that the completed coding of <code class="docutils literal"><span class="pre">fact</span></code> possesses
+In the process, we deduce that the completed coding of <code class="docutils literal notranslate"><span class="pre">fact</span></code> possesses
 exactly these same pre- and post-conditions!</p>
-<p>Recall again the “official definition” of <code class="docutils literal"><span class="pre">n!</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
+<p>Recall again the “official definition” of <code class="docutils literal notranslate"><span class="pre">n!</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
 </div>
-<p>Here is the deduction that <code class="docutils literal"><span class="pre">fact</span></code> meets its stated pre- and post-conditions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
+<p>Here is the deduction that <code class="docutils literal notranslate"><span class="pre">fact</span></code> meets its stated pre- and post-conditions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    n &gt;= 0</span>
 <span class="sd">      post   ans == n!</span>
@@ -1185,13 +1176,13 @@ n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
 </div>
 <p>We did it!
-The proof is not magic or trickery – notice that the call, <code class="docutils literal"><span class="pre">fact(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
-uses an argument value that is different — one smaller than — argument <code class="docutils literal"><span class="pre">n</span></code>
-used with <code class="docutils literal"><span class="pre">fact(n)</span></code>.
+The proof is not magic or trickery – notice that the call, <code class="docutils literal notranslate"><span class="pre">fact(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
+uses an argument value that is different — one smaller than — argument <code class="docutils literal notranslate"><span class="pre">n</span></code>
+used with <code class="docutils literal notranslate"><span class="pre">fact(n)</span></code>.
 This style of recursion by counting-downward-by-ones-until-zero will be exposed
 in the next chapter as an instance of <em>mathematical induction</em>.</p>
 <p>Here is a sample call of the end result:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ 200 &gt;= 0, that is  [200/n]pre_fact }&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ 200 &gt;= 0, that is  [200/n]pre_fact }&quot;&quot;&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">fact</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{ [x/ans][200/n]post_fact,  that is,  x == 200! }&quot;&quot;&quot;</span>
 </pre></div>
@@ -1207,7 +1198,7 @@ self-call and a loop – in both cases, the construct reuses its very own
 <ol class="arabic">
 <li><p class="first">Here is the simplest version, a forwards law where there is no updating to
 global variables:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    {  pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.</span>
 <span class="sd">       post   R    (where assertion  R  can mention  ans and x)  Call this,  f_post.</span>
@@ -1218,10 +1209,10 @@ global variables:</p>
     <span class="sd">&quot;&quot;&quot;{ ... prove  R  here, that is,  ans  and  x  have property  R }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Outside of the function, <code class="docutils literal"><span class="pre">f</span></code>, we write <code class="docutils literal"><span class="pre">f_pre</span></code> for <code class="docutils literal"><span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">f_post</span></code>
-for <code class="docutils literal"><span class="pre">R</span></code>.
+<p>Outside of the function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, we write <code class="docutils literal notranslate"><span class="pre">f_pre</span></code> for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">f_post</span></code>
+for <code class="docutils literal notranslate"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>                  <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>                  <span class="c1"># prove the precondition, where  e  binds to parameter x</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                               <span class="c1"># y  does not appear in  e</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x]f_post      premise   # presume the postcondition where</span>
@@ -1231,10 +1222,10 @@ Here is the schematic for a correct call of the function:</p>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Recall that <code class="docutils literal"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal"><span class="pre">e</span></code> for all
-occurrences of <code class="docutils literal"><span class="pre">x</span></code> within formula <code class="docutils literal"><span class="pre">f_pre</span></code>.
-The other two substitions explain how <code class="docutils literal"><span class="pre">f_post</span></code> is stated in terms of the
-receiving variable, <code class="docutils literal"><span class="pre">y</span></code>, and how the entry premise is propagated after
+<p>Recall that <code class="docutils literal notranslate"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal notranslate"><span class="pre">e</span></code> for all
+occurrences of <code class="docutils literal notranslate"><span class="pre">x</span></code> within formula <code class="docutils literal notranslate"><span class="pre">f_pre</span></code>.
+The other two substitions explain how <code class="docutils literal notranslate"><span class="pre">f_post</span></code> is stated in terms of the
+receiving variable, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and how the entry premise is propagated after
 the call.</p>
 </li>
 <li><p class="first">When we use a procedure, that is, a function that updates a global variable,
@@ -1243,7 +1234,7 @@ answer from the function.
 Every global variable should have an invariant property, and every function
 that uses the global variable should pledge to preserve that invariant
 property:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="c1"># the global variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="c1"># the global variable</span>
 <span class="sd">&quot;&quot;&quot;{ globalinv  I_g  }&quot;&quot;&quot;</span>  <span class="c1"># must be proved true here</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1263,10 +1254,10 @@ property:</p>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>For the function’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
-Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
+<p>For the function’s invocation, we deduce <code class="docutils literal notranslate"><span class="pre">[e/x]pre_f</span></code> to get the result.
+Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ [e/x]pre_f,  that is,  Q_e,g  }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c1"># y and g  do not appear in  e,  and  y and g  are distinct names</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">{ 1. [y/ans][e/x][g_old/g_in]f_post      premise</span>
@@ -1276,15 +1267,15 @@ appear in argument <code class="docutils literal"><span class="pre">e</span></co
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Further, provided that all assignments to global variable <code class="docutils literal"><span class="pre">g</span></code> occur only
-within functions that preserve its <code class="docutils literal"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal"><span class="pre">I_g</span></code> as
+<p>Further, provided that all assignments to global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> occur only
+within functions that preserve its <code class="docutils literal notranslate"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal notranslate"><span class="pre">I_g</span></code> as
 needed in the main program.</p>
 </li>
 <li><p class="first">If we wish to reason in a backwards fashion about function calls, we can use
 a different law.
 To keep it simple, assume no global variables are updated by the function.
 For the specification,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    { pre    Q_x</span>
 <span class="sd">      post   R_ans,x</span>
@@ -1292,9 +1283,9 @@ For the specification,</p>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>if a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards
-from <code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]pre_f  ^  ([e/x][y/ans]post_f --&gt; G)  }&quot;&quot;&quot;</span>
+<p>if a call to <code class="docutils literal notranslate"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal notranslate"><span class="pre">G</span></code>, we reason backwards
+from <code class="docutils literal notranslate"><span class="pre">G</span></code> to its subgoal like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ subgoal:  [e/x]pre_f  ^  ([e/x][y/ans]post_f --&gt; G)  }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># y  does not appear in argument  e</span>
 <span class="sd">&quot;&quot;&quot;{ goal: G }&quot;&quot;&quot;</span>
 </pre></div>

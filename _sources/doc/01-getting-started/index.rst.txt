@@ -457,51 +457,6 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
         </tr>
       </table>
 
-   Alternatively, you can use the following
-   `signify <https://github.com/search?q=signify+OpenBSD>`__ command:
-
-   .. raw:: html
-
-      <table width="100%" >
-        <tr>
-         <td>
-
-   .. code:: bash
-
-      signify -p sireum-v3-key.pub -x <file>.minisig -Vm <file>
-
-   where ``sireum-v3-key.pub`` can be downloaded from: http://bit.ly/sv3key
-
-   .. raw:: html
-
-         </td>
-         <td style="vertical-align: text-top;">
-           &nbsp;&nbsp;
-           <button id="copySignify" data-clipboard-text="signify -p sireum-v3-key.pub -x .minisig -Vm">
-             <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
-           </button>
-         </td>
-        </tr>
-      </table>
-   .. raw:: html
-
-      <script>
-      new Clipboard(document.getElementById('copySignify'));
-
-      if (navigator.appVersion.indexOf("Mac")!=-1) {
-        addClass(document.getElementById('birmp'), 'active');
-        addClass(document.getElementById('birm'), 'active');
-      }
-      if (navigator.appVersion.indexOf("Linux")!=-1 || navigator.appVersion.indexOf("X11")!=-1) {
-        addClass(document.getElementById('birlp'), 'active');
-        addClass(document.getElementById('birl'), 'active');
-      }
-      if (navigator.appVersion.indexOf("Win")!=-1) {
-        addClass(document.getElementById('birwp'), 'active');
-        addClass(document.getElementById('birw'), 'active');
-      }
-      </script>
-
 ----
 
 Running Logika using Sireum CLI

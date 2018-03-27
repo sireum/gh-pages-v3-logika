@@ -3,21 +3,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>7. Applications of Propositional Logic to Program Proving &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -31,8 +23,7 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8. The Predicate-Logic Quantifiers" href="../08-predicate-logic/index.html" />
     <link rel="prev" title="6. Loops, Invariants, Induction" href="../06-loops-invariants-induction/index.html" />
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -169,18 +160,18 @@ Logika: Programming Logics
 connectives, <em>and</em>, <em>or</em>, <em>not</em>, <em>implies</em>, <em>for all</em>, <em>there exists</em>.
 It is a “starter language” for stating laws for other areas.
 (Example: in algebra, we use symbolic logic to declare, “for all (every)
-integer(s), <code class="docutils literal"><span class="pre">i</span></code>, there exists an integer <code class="docutils literal"><span class="pre">j</span></code> such that <code class="docutils literal"><span class="pre">j</span> <span class="pre">&gt;</span> <span class="pre">i</span></code>.)
+integer(s), <code class="docutils literal notranslate"><span class="pre">i</span></code>, there exists an integer <code class="docutils literal notranslate"><span class="pre">j</span></code> such that <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">&gt;</span> <span class="pre">i</span></code>.)
 Without symbolic logic, modern math, physics, philosophy, computing, and
 electronics simply would not exist.</p>
 <p>Anyone who works in one of the above-stated technical areas must be competent in
 using symbolic logic, and in particular, in performing <em>deduction</em>.</p>
 <p>Deduction is the synthesis of new facts — consequences — from known facts.
-An example: a cases analysis of the assertion that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span> <span class="pre">v</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> lets us
-deduce that <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> and that <code class="docutils literal"><span class="pre">1.0/x</span></code> is a non-erroneous, floating-point
+An example: a cases analysis of the assertion that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span> <span class="pre">v</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> lets us
+deduce that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code> and that <code class="docutils literal notranslate"><span class="pre">1.0/x</span></code> is a non-erroneous, floating-point
 number.
 Another example, stated in almost every logic text written in the last 50 years,
 goes</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>All humans are mortal
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>All humans are mortal
  and
 Socrates is a human.
 
@@ -200,15 +191,15 @@ etc.</p>
 statements that can be understood as “true” (it’s a fact) or “false”
 (it’s wrong).</p>
 <p>Examples of propositions from algebra are</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>x &gt; 0
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x &gt; 0
 y == 2*x + 1
 2 &gt; 4
 </pre></div>
 </div>
 <p>The third proposition is always understood as false, whereas the first two might
-be true or false, depending on the values of <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.</p>
+be true or false, depending on the values of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <p>Examples of propositions written in English are</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>Socrates is a human.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Socrates is a human.
 The sun is shining.
 I have a million bucks in my pocket.
 </pre></div>
@@ -216,19 +207,19 @@ I have a million bucks in my pocket.
 <p>In English, we can also write sentences that are not propositions:
 “Will it rain tomorrow?” is a question and not a true-false proposition.
 We will always stay within algebra and form true-false propositions from
-arithmetic operators like <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">/</span></code> and comparison operators like <code class="docutils literal"><span class="pre">==</span></code>
-and <code class="docutils literal"><span class="pre">&gt;</span></code>.
+arithmetic operators like <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code> and comparison operators like <code class="docutils literal notranslate"><span class="pre">==</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.
 The operators,
-<code class="docutils literal"><span class="pre">^</span></code> (math: ∧),
-<code class="docutils literal"><span class="pre">V</span></code> (math: ∨),
-<code class="docutils literal"><span class="pre">-&gt;</span></code> (math: →),
-<code class="docutils literal"><span class="pre">~</span></code> (math: ¬),
+<code class="docutils literal notranslate"><span class="pre">^</span></code> (math: ∧),
+<code class="docutils literal notranslate"><span class="pre">V</span></code> (math: ∨),
+<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> (math: →),
+<code class="docutils literal notranslate"><span class="pre">~</span></code> (math: ¬),
 are called <em>propositional connectives</em> because they connect together
 propositions to make new propositions.
-(Example: <code class="docutils literal"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">V</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">-&gt;</span> <span class="pre">~(2x</span> <span class="pre">=</span> <span class="pre">0)</span></code> is a proposition that connects
-together <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, and <code class="docutils literal"><span class="pre">2x</span> <span class="pre">=</span> <span class="pre">0</span></code> with <code class="docutils literal"><span class="pre">~</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, and <code class="docutils literal"><span class="pre">-&gt;</span></code>.)</p>
-<p>Later we will study <code class="docutils literal"><span class="pre">FORALL</span></code> (math: ∀) and
-<code class="docutils literal"><span class="pre">EXIST</span></code> (math: ∃), which are more delicate than the
+(Example: <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">V</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">-&gt;</span> <span class="pre">~(2x</span> <span class="pre">=</span> <span class="pre">0)</span></code> is a proposition that connects
+together <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>, and <code class="docutils literal notranslate"><span class="pre">2x</span> <span class="pre">=</span> <span class="pre">0</span></code> with <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, and <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>.)</p>
+<p>Later we will study <code class="docutils literal notranslate"><span class="pre">FORALL</span></code> (math: ∀) and
+<code class="docutils literal notranslate"><span class="pre">EXIST</span></code> (math: ∃), which are more delicate than the
 propositional connectives and are called <em>quantifiers</em>.</p>
 </div>
 <div class="section" id="inference-rules">
@@ -245,8 +236,8 @@ the connective (this is called an <em>elimination rule</em>).</p>
 <p>For the sections that follow, we will review the introduction and elimination
 rules for each propositional connective, give examples of their use in proofs,
 and describe strategies for applying to rules.
-When we present the rules, we will use the letters, <code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">Q</span></code>, <code class="docutils literal"><span class="pre">R</span></code>, …,
-to represent propositions (rather than use <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, etc., as propositions).</p>
+When we present the rules, we will use the letters, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">Q</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, …,
+to represent propositions (rather than use <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, etc., as propositions).</p>
 <p>The notation,</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -257,18 +248,18 @@ to represent propositions (rather than use <code class="docutils literal"><span 
 <tr class="row-odd"><td>ASCII</td>
 <td>Math</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">P0,</span> <span class="pre">P1,</span> <span class="pre">...,</span> <span class="pre">Pm</span> <span class="pre">|-</span> <span class="pre">Q</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">P0,</span> <span class="pre">P1,</span> <span class="pre">...,</span> <span class="pre">Pm</span> <span class="pre">|-</span> <span class="pre">Q</span></code></td>
 <td><script type="math/tex">P_0, P_1, \ldots, P_m \vdash Q</script></script></td>
 </tr>
 </tbody>
 </table>
 <hr class="docutils" />
-<p>(read as, “<code class="docutils literal"><span class="pre">P0</span></code>, <code class="docutils literal"><span class="pre">P1</span></code>, …, <code class="docutils literal"><span class="pre">Pm</span></code> <em>entails</em> <code class="docutils literal"><span class="pre">Q</span></code>”) is a claim —
-a sequent — that asserts propositions <code class="docutils literal"><span class="pre">Pi</span></code> let us deduce <code class="docutils literal"><span class="pre">Q</span></code>.
-The <code class="docutils literal"><span class="pre">Pi</span></code> are called <em>premises</em> and <code class="docutils literal"><span class="pre">Q</span></code> is called the <em>consequent</em>.
-For example, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">z</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">|-</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">z</span></code>.
-It says, “when premises <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> and <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">z</span> <span class="pre">+</span> <span class="pre">1</span></code> are accepted as facts
-(true propositions), then consequent <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">z</span></code> is guaranteed to be a fact as
+<p>(read as, “<code class="docutils literal notranslate"><span class="pre">P0</span></code>, <code class="docutils literal notranslate"><span class="pre">P1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">Pm</span></code> <em>entails</em> <code class="docutils literal notranslate"><span class="pre">Q</span></code>”) is a claim —
+a sequent — that asserts propositions <code class="docutils literal notranslate"><span class="pre">Pi</span></code> let us deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">Pi</span></code> are called <em>premises</em> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> is called the <em>consequent</em>.
+For example, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y,</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">z</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">|-</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">z</span></code>.
+It says, “when premises <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">z</span> <span class="pre">+</span> <span class="pre">1</span></code> are accepted as facts
+(true propositions), then consequent <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">z</span></code> is guaranteed to be a fact as
 well.</p>
 <p>When we state such a claim — a sequent — we must supply a <em>proof</em> to support
 the claim.
@@ -276,15 +267,15 @@ We use deduction rules to make a proof.</p>
 </div>
 <div class="section" id="and-introduction-and-and-elimination">
 <h2>7.3. And-Introduction and And-Elimination<a class="headerlink" href="#and-introduction-and-and-elimination" title="Permalink to this headline">¶</a></h2>
-<p>It is easy to work with the conjunction connective, <code class="docutils literal"><span class="pre">^</span></code>
+<p>It is easy to work with the conjunction connective, <code class="docutils literal notranslate"><span class="pre">^</span></code>
 (math: ∧).
-Clearly, <code class="docutils literal"><span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, that is, when both <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> are facts, then
-so is the proposition, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>.
-Dually, we accept that <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code> as well as <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">Q</span></code>.
+Clearly, <code class="docutils literal notranslate"><span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, that is, when both <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> are facts, then
+so is the proposition, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>.
+Dually, we accept that <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code> as well as <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">Q</span></code>.
 Here are the deduction rules that formalize these intuitions:</p>
 <div class="section" id="rules">
 <h3>7.3.1. Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>        P   Q               P ^ Q              P ^ Q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        P   Q               P ^ Q              P ^ Q
 ^i :  ---------     ^e1 : ---------    ^e2 : ---------
         P ^ Q                 P                  Q
 </pre></div>
@@ -299,7 +290,7 @@ Here are some examples.</p>
 </div>
 <div class="section" id="examples">
 <h3>7.3.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p, q, r |- r ^ (q ^ p)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p, q, r |- r ^ (q ^ p)
 
 {
   1. p                    premise // (a starting fact)
@@ -311,12 +302,12 @@ Here are some examples.</p>
 </pre></div>
 </div>
 <p>Read line 4 like this: “from the fact stated on line 2 and the fact stated on
-line 1, we deduce <code class="docutils literal"><span class="pre">q</span> <span class="pre">^</span> <span class="pre">p</span></code> by applying the <code class="docutils literal"><span class="pre">^i</span></code> law”.
+line 1, we deduce <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">^</span> <span class="pre">p</span></code> by applying the <code class="docutils literal notranslate"><span class="pre">^i</span></code> law”.
 Lines 4 and 5 construct new facts from the starting facts (premises) on
 lines 1-3.
 A proof generates new knowledge from existing knowledge by using deduction
 rules.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p ^ (q ^ r) |-  r ^ p
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p ^ (q ^ r) |-  r ^ p
 
 {
   1. p ^ (q ^ r)        premise
@@ -327,10 +318,10 @@ rules.</p>
 }
 </pre></div>
 </div>
-<p>The two examples seen so far suggest that a proposition like <code class="docutils literal"><span class="pre">r</span> <span class="pre">^</span> <span class="pre">p</span></code> is like
-a pair, <code class="docutils literal"><span class="pre">(r,</span> <span class="pre">p)</span></code>, in Python that we can disassemble by indexing.
-The <code class="docutils literal"><span class="pre">^e</span></code> rule does the indexing, and the <code class="docutils literal"><span class="pre">^i</span></code>-does the pair-building.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p |- p ^ p
+<p>The two examples seen so far suggest that a proposition like <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">^</span> <span class="pre">p</span></code> is like
+a pair, <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">p)</span></code>, in Python that we can disassemble by indexing.
+The <code class="docutils literal notranslate"><span class="pre">^e</span></code> rule does the indexing, and the <code class="docutils literal notranslate"><span class="pre">^i</span></code>-does the pair-building.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p |- p ^ p
 
 {
   1. p            premise
@@ -339,14 +330,14 @@ The <code class="docutils literal"><span class="pre">^e</span></code> rule does 
 </pre></div>
 </div>
 <p>This example shows you can use a premise multiple times in a proof.</p>
-<p>It is easy to prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code> (use <code class="docutils literal"><span class="pre">^e1</span></code>), but we cannot prove
-<code class="docutils literal"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>.
+<p>It is easy to prove <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code> (use <code class="docutils literal notranslate"><span class="pre">^e1</span></code>), but we cannot prove
+<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>.
 This reminds us that deduction rules develop new knowledge, but the knowledge
 might be weaker than the starting facts used to deduce the knowledge.
-When we have propositions <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> and we prove both
-<code class="docutils literal"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">Q</span></code> and also <code class="docutils literal"><span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code>, we write
-<code class="docutils literal"><span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">Q</span></code> (math: <script type="math/tex">P \dashv\vdash Q</script></script>)
-and say that <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> are equivalent – they hold the “same amounts of
+When we have propositions <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> and we prove both
+<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">Q</span></code> and also <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span></code>, we write
+<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">Q</span></code> (math: <script type="math/tex">P \dashv\vdash Q</script></script>)
+and say that <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> are equivalent – they hold the “same amounts of
 knowledge”.</p>
 </div>
 <div class="section" id="tactics">
@@ -355,14 +346,14 @@ knowledge”.</p>
 The rules for conjunction come with these two tactics, which we rate from
 (*) to (***) based on their utility:</p>
 <ul>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">^i</span></code>-tactic: If your task is to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then</p>
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">^i</span></code>-tactic: If your task is to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">^i</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">^i</span></code>.</li>
 </ol>
 <p>The proof you are building looks like this</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises     premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises     premise
      (fill in)
 i. P
      (fill in)
@@ -371,10 +362,10 @@ k. P ^  Q       ^i i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">(**) <code class="docutils literal"><span class="pre">^e</span></code>-tactic: If your task is to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code> and you have as
-a premise or proved fact in your partial proof, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then apply <code class="docutils literal"><span class="pre">^e</span></code>
-to extract <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> to use in the proof</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises     premise
+<li><p class="first">(**) <code class="docutils literal notranslate"><span class="pre">^e</span></code>-tactic: If your task is to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code> and you have as
+a premise or proved fact in your partial proof, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then apply <code class="docutils literal notranslate"><span class="pre">^e</span></code>
+to extract <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> to use in the proof</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises     premise
     . . .
 i.   P ^ Q      premise
 i+1. P          ^e1 i
@@ -387,9 +378,9 @@ j.   R
 </ul>
 <p>Let’s apply the tactics to one of the previous examples:</p>
 <ol class="arabic">
-<li><p class="first">Prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span> <span class="pre">^</span> <span class="pre">P</span></code>: Use the (***)-<code class="docutils literal"><span class="pre">^i</span></code> tactic to generate two
-subgoals, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span></code> and also <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">P</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premises
+<li><p class="first">Prove <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span> <span class="pre">^</span> <span class="pre">P</span></code>: Use the (***)-<code class="docutils literal notranslate"><span class="pre">^i</span></code> tactic to generate two
+subgoals, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">R</span></code> and also <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">|-</span> <span class="pre">P</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premises
        (fill in)
 i.   R
        (fill in)
@@ -398,8 +389,8 @@ j+1. R ^ P         ^i i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">Since the (***)-tactic can’t be used on either subgoal, apply the (**)-<code class="docutils literal"><span class="pre">^e</span></code>-tactic to the premise</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premise
+<li><p class="first">Since the (***)-tactic can’t be used on either subgoal, apply the (**)-<code class="docutils literal notranslate"><span class="pre">^e</span></code>-tactic to the premise</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premise
 2.   P             ^e1 1     // (succeeded in proving subgoal, P)
 3.   Q ^ R         ^e2 1
       (fill in)
@@ -408,8 +399,8 @@ i+1. R ^ P         ^i i 2
 </pre></div>
 </div>
 </li>
-<li><p class="first">We can prove the remaining subgoal by applying the <code class="docutils literal"><span class="pre">^e</span></code>-tactic once more</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premises
+<li><p class="first">We can prove the remaining subgoal by applying the <code class="docutils literal notranslate"><span class="pre">^e</span></code>-tactic once more</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   P ^ (Q ^ R)   premises
 2.   P             ^e1 1     // (succeeded in proving subgoal, P)
 3.   Q ^ R         ^e2 1
 4.   R             ^e2 3     // (succeeded in proving subgoal, R)
@@ -422,13 +413,13 @@ i+1. R ^ P         ^i i 2
 </div>
 <div class="section" id="or-introduction-and-or-elimination">
 <h2>7.4. Or-Introduction and Or-Elimination<a class="headerlink" href="#or-introduction-and-or-elimination" title="Permalink to this headline">¶</a></h2>
-<p>It is a bit trickier reasoning about disjunction, <code class="docutils literal"><span class="pre">V</span></code> (math: ∨),
+<p>It is a bit trickier reasoning about disjunction, <code class="docutils literal notranslate"><span class="pre">V</span></code> (math: ∨),
 because there are multiple meanings of the word in English.
 We use the meaning “one or the other or both”.
-This causes us to accept the entailments, <code class="docutils literal"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>
-(as well as <code class="docutils literal"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">P</span></code>), which give us the two versions of the <code class="docutils literal"><span class="pre">Vi</span></code>
+This causes us to accept the entailments, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>
+(as well as <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">P</span></code>), which give us the two versions of the <code class="docutils literal notranslate"><span class="pre">Vi</span></code>
 deduction rule, seen below.</p>
-<p>There must also be a rule for applying a fact of form, <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>, to deduce new
+<p>There must also be a rule for applying a fact of form, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>, to deduce new
 knowledge.
 In real life, we call the rule “case analysis”.
 For example, say that you have either 4 quarters in your pocket or 10 dimes in
@@ -443,24 +434,24 @@ coffee;</li>
 coffee.</li>
 </ol>
 <p>So, in both cases, you can buy the coffee.</p>
-<p>This pattern of deduction is formalized in the <code class="docutils literal"><span class="pre">Ve</span></code>-rule below.</p>
+<p>This pattern of deduction is formalized in the <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-rule below.</p>
 <div class="section" id="id1">
 <h3>7.4.1. Rules<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>                                                      { P assume    { Q assume
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                                                      { P assume    { Q assume
          P                  Q                 P V Q     ... R    }    ... R    }
 Vi1 : --------    Vi2 :  --------        Ve: ------------------------------------
        P V Q              P V Q                              R
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">Ve</span></code>-rule is the deduction-rule form of case analysis: you assume <code class="docutils literal"><span class="pre">P</span></code>
-and do deductions that prove <code class="docutils literal"><span class="pre">R</span></code> and then you assume <code class="docutils literal"><span class="pre">Q</span></code> and do another
-sequence of deductions to reprove <code class="docutils literal"><span class="pre">R</span></code>.
+<p>The <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-rule is the deduction-rule form of case analysis: you assume <code class="docutils literal notranslate"><span class="pre">P</span></code>
+and do deductions that prove <code class="docutils literal notranslate"><span class="pre">R</span></code> and then you assume <code class="docutils literal notranslate"><span class="pre">Q</span></code> and do another
+sequence of deductions to reprove <code class="docutils literal notranslate"><span class="pre">R</span></code>.
 Each case is a “subproof” that is indented with braces.
-Once both cases are proved, you conclude <code class="docutils literal"><span class="pre">R</span></code> no matter what.</p>
+Once both cases are proved, you conclude <code class="docutils literal notranslate"><span class="pre">R</span></code> no matter what.</p>
 </div>
 <div class="section" id="id2">
 <h3>7.4.2. Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p |- q V p
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p |- q V p
 
 {
   1. p              premise
@@ -468,20 +459,20 @@ Once both cases are proved, you conclude <code class="docutils literal"><span cl
 }
 </pre></div>
 </div>
-<p>Perhaps it seems strange to “weaken” fact <code class="docutils literal"><span class="pre">p</span></code> by attaching <code class="docutils literal"><span class="pre">q</span></code> to it.
+<p>Perhaps it seems strange to “weaken” fact <code class="docutils literal notranslate"><span class="pre">p</span></code> by attaching <code class="docutils literal notranslate"><span class="pre">q</span></code> to it.
 Yet, we do this all the time.
 For example, when we say, “today is Tuesday, so today is a weekday”, we have
 weakened “today is Tuesday” to “today is Monday or Tuesday or … or Friday”.
-In math, we might have that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, so we conclude that <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code>, that is,
-<code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">|-</span> <span class="pre">(x</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">V</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code>.</p>
-<p>What is more interesting is that proposition <code class="docutils literal"><span class="pre">q</span></code> in the above proof can be any
-proposition, and it need not be a true fact (<code class="docutils literal"><span class="pre">p</span></code> is the fact that matters
+In math, we might have that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, so we conclude that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">0</span></code>, that is,
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">|-</span> <span class="pre">(x</span> <span class="pre">&lt;</span> <span class="pre">0)</span> <span class="pre">V</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code>.</p>
+<p>What is more interesting is that proposition <code class="docutils literal notranslate"><span class="pre">q</span></code> in the above proof can be any
+proposition, and it need not be a true fact (<code class="docutils literal notranslate"><span class="pre">p</span></code> is the fact that matters
 here).
-For example, we can prove <code class="docutils literal"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">|-</span> <span class="pre">(2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">V</span> <span class="pre">(1</span> <span class="pre">==</span> <span class="pre">0)</span></code>.
-This sequent is valid, because it is enough that <code class="docutils literal"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span></code> is a fact;
-literally, <code class="docutils literal"><span class="pre">1</span> <span class="pre">==</span> <span class="pre">0</span></code> does not matter.</p>
+For example, we can prove <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">|-</span> <span class="pre">(2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">V</span> <span class="pre">(1</span> <span class="pre">==</span> <span class="pre">0)</span></code>.
+This sequent is valid, because it is enough that <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">1</span></code> is a fact;
+literally, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">==</span> <span class="pre">0</span></code> does not matter.</p>
 <p>A similar result goes</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p ^ q |- p V q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p ^ q |- p V q
 
 {
   1. p ^ q        premise
@@ -490,8 +481,8 @@ literally, <code class="docutils literal"><span class="pre">1</span> <span class
 }
 </pre></div>
 </div>
-<p>For that matter, we reprove this result using <code class="docutils literal"><span class="pre">^e2</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p ^ q |- p V q
+<p>For that matter, we reprove this result using <code class="docutils literal notranslate"><span class="pre">^e2</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p ^ q |- p V q
 
 {
   1. p ^ q        premise
@@ -500,10 +491,10 @@ literally, <code class="docutils literal"><span class="pre">1</span> <span class
 }
 </pre></div>
 </div>
-<p>We cannot prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, which clearly shows that the <code class="docutils literal"><span class="pre">Vi</span></code> rule
+<p>We cannot prove <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, which clearly shows that the <code class="docutils literal notranslate"><span class="pre">Vi</span></code> rule
 generates “weaker knowledge” from its facts.</p>
-<p>Here is a proof that uses case analysis — <code class="docutils literal"><span class="pre">Ve</span></code> — to prove a useful sequent.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p V q, r |- (p ^ r) V (q ^ r)
+<p>Here is a proof that uses case analysis — <code class="docutils literal notranslate"><span class="pre">Ve</span></code> — to prove a useful sequent.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p V q, r |- (p ^ r) V (q ^ r)
 
 {
   1. p V q                     premise
@@ -522,19 +513,19 @@ generates “weaker knowledge” from its facts.</p>
 }
 </pre></div>
 </div>
-<p>Each case — the <code class="docutils literal"><span class="pre">p</span></code> case and the <code class="docutils literal"><span class="pre">q</span></code> case — proved the same fact, so
+<p>Each case — the <code class="docutils literal notranslate"><span class="pre">p</span></code> case and the <code class="docutils literal notranslate"><span class="pre">q</span></code> case — proved the same fact, so
 we conclude that the fact holds no matter what.</p>
-<p><em>Both subproofs must prove the same fact</em>, and then the <code class="docutils literal"><span class="pre">Ve</span></code> rule finishes the
+<p><em>Both subproofs must prove the same fact</em>, and then the <code class="docutils literal notranslate"><span class="pre">Ve</span></code> rule finishes the
 proof.
 Here, line 11 states that, starting from the cases asserted on line 1, the proof
-that <code class="docutils literal"><span class="pre">p</span></code> proves the goal is stated in lines 4-6 and the proof that <code class="docutils literal"><span class="pre">q</span></code>
+that <code class="docutils literal notranslate"><span class="pre">p</span></code> proves the goal is stated in lines 4-6 and the proof that <code class="docutils literal notranslate"><span class="pre">q</span></code>
 proves the goal is stated in lines 8-10.</p>
 <p>The assumption on line 4 (and the one on line 8) acts like a local variable
 inside a function – it can be used only within the function’s body.
 This is because the assumption is a what-if premise that is used only for the
 sake of discussion of the case.</p>
 <p>Finally, here is a simple but vital proof</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p V p |- p
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p V p |- p
 
 {
   1. p V p         premise
@@ -553,15 +544,15 @@ sake of discussion of the case.</p>
 <h3>7.4.3. Tactics<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>There is one good tactic, and one not-so-good:</p>
 <ul>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
 premise or proved fact in the partial proof, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
-<li>use the <code class="docutils literal"><span class="pre">Ve</span></code>-rule to prove <code class="docutils literal"><span class="pre">R</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-rule to prove <code class="docutils literal notranslate"><span class="pre">R</span></code>.</li>
 </ol>
 <p>The proof is structured like this</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises       premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises       premise
      . . .
 i. P V Q
 j. {
@@ -578,10 +569,10 @@ p. R              Ve i j m
 </pre></div>
 </div>
 </li>
-<li><p class="first">(*) <code class="docutils literal"><span class="pre">Vi</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>, pick either of <code class="docutils literal"><span class="pre">P</span></code> or
-<code class="docutils literal"><span class="pre">Q</span></code>, and try to prove it.
-Finish with <code class="docutils literal"><span class="pre">Vi</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises     premise
+<li><p class="first">(*) <code class="docutils literal notranslate"><span class="pre">Vi</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>, pick either of <code class="docutils literal notranslate"><span class="pre">P</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Q</span></code>, and try to prove it.
+Finish with <code class="docutils literal notranslate"><span class="pre">Vi</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises     premise
      (fill in)
 i.  P
 j.  P V Q        Vi1 i
@@ -590,52 +581,52 @@ j.  P V Q        Vi1 i
 </li>
 </ul>
 <p>If you examine the previous proof example, you see that the proof was
-constructed by applying the <code class="docutils literal"><span class="pre">Ve</span></code> tactic, which made possible the use of the
-<code class="docutils literal"><span class="pre">^i</span></code> tactic upon the two subgoals.
-The <code class="docutils literal"><span class="pre">Vi</span></code> tactic is used only when it is clear that it will yield progress
+constructed by applying the <code class="docutils literal notranslate"><span class="pre">Ve</span></code> tactic, which made possible the use of the
+<code class="docutils literal notranslate"><span class="pre">^i</span></code> tactic upon the two subgoals.
+The <code class="docutils literal notranslate"><span class="pre">Vi</span></code> tactic is used only when it is clear that it will yield progress
 towards the goal.</p>
 </div>
 </div>
 <div class="section" id="implies-introduction-and-implies-elimination">
 <h2>7.5. Implies-Introduction and Implies-Elimination<a class="headerlink" href="#implies-introduction-and-implies-elimination" title="Permalink to this headline">¶</a></h2>
-<p>Remember that <code class="docutils literal"><span class="pre">-&gt;</span></code> (math: →) is a kind of “logical if-then”.
+<p>Remember that <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> (math: →) is a kind of “logical if-then”.
 The word, “implies” has several shadings of meaning in spoken English, and there
 are multiple meanings of the word in logic.
-Here, we understand <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> to assert that <code class="docutils literal"><span class="pre">P</span></code> holds knowledge sufficient
-to deduce <code class="docutils literal"><span class="pre">Q</span></code> – so, whenever <code class="docutils literal"><span class="pre">P</span></code> is proved to be a fact, then <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>
-enables <code class="docutils literal"><span class="pre">Q</span></code> to be proved a fact, too.</p>
-<p>With this understanding, it is easy to accept that <code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">Q</span></code>;
-this yields the <code class="docutils literal"><span class="pre">-&gt;e</span></code> rule.</p>
+Here, we understand <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> to assert that <code class="docutils literal notranslate"><span class="pre">P</span></code> holds knowledge sufficient
+to deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code> – so, whenever <code class="docutils literal notranslate"><span class="pre">P</span></code> is proved to be a fact, then <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>
+enables <code class="docutils literal notranslate"><span class="pre">Q</span></code> to be proved a fact, too.</p>
+<p>With this understanding, it is easy to accept that <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">Q</span></code>;
+this yields the <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code> rule.</p>
 <p>But there must also be a rule for building propositions of the form,
-<code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>.
-Say that a family of propositions, <code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">R</span></code>, <code class="docutils literal"><span class="pre">S</span></code>, <code class="docutils literal"><span class="pre">T</span></code>, … are enough to
-prove proposition, <code class="docutils literal"><span class="pre">Q</span></code>.
-Say we know that <code class="docutils literal"><span class="pre">R</span></code>, <code class="docutils literal"><span class="pre">S</span></code>, <code class="docutils literal"><span class="pre">T</span></code>, … are facts.
-Thus, if we only knew that <code class="docutils literal"><span class="pre">P</span></code> was a fact, too, then we would have <code class="docutils literal"><span class="pre">Q</span></code> as a
+<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>.
+Say that a family of propositions, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">S</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, … are enough to
+prove proposition, <code class="docutils literal notranslate"><span class="pre">Q</span></code>.
+Say we know that <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">S</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, … are facts.
+Thus, if we only knew that <code class="docutils literal notranslate"><span class="pre">P</span></code> was a fact, too, then we would have <code class="docutils literal notranslate"><span class="pre">Q</span></code> as a
 fact.
-In this sense, <code class="docutils literal"><span class="pre">R</span></code>, <code class="docutils literal"><span class="pre">S</span></code>, <code class="docutils literal"><span class="pre">T</span></code>, … <em>are enough to prove that</em> <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>
+In this sense, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">S</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, … <em>are enough to prove that</em> <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>
 <em>is a fact</em>.</p>
-<p>Stated more precisely, the situation where <code class="docutils literal"><span class="pre">P,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">Q</span></code> lets us
-conclude that <code class="docutils literal"><span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>.
+<p>Stated more precisely, the situation where <code class="docutils literal notranslate"><span class="pre">P,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">Q</span></code> lets us
+conclude that <code class="docutils literal notranslate"><span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">T,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>.
 These two ideas, which go hand in hand, are formalized below.</p>
 <div class="section" id="id4">
 <h3>7.5.1. Rules<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none"><div class="highlight"><pre><span></span>       { P assume
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       { P assume
          ... Q    }                P -&gt; Q   P
 -&gt;i : --------------       -&gt;e :  ------------
           P -&gt; Q                       Q
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">-&gt;i</span></code>-rule is a case analysis – it says, consider the case when <code class="docutils literal"><span class="pre">P</span></code> is
+<p>The <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>-rule is a case analysis – it says, consider the case when <code class="docutils literal notranslate"><span class="pre">P</span></code> is
 a fact.
 (We don’t know this for certain; it is a case/possibility we want to discuss.)
-If assuming <code class="docutils literal"><span class="pre">P</span></code> (plus using other facts we already have) leads to a proof of
-<code class="docutils literal"><span class="pre">Q</span></code>, then we conclude that <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is a fact.</p>
+If assuming <code class="docutils literal notranslate"><span class="pre">P</span></code> (plus using other facts we already have) leads to a proof of
+<code class="docutils literal notranslate"><span class="pre">Q</span></code>, then we conclude that <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is a fact.</p>
 </div>
 <div class="section" id="id5">
 <h3>7.5.2. Examples<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>Here are two simple uses of <code class="docutils literal"><span class="pre">-&gt;e</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(p ^ q) -&gt; r,  p -&gt; q,  p  |-  r
+<p>Here are two simple uses of <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(p ^ q) -&gt; r,  p -&gt; q,  p  |-  r
 
 {
   1. (p ^ q) -&gt; r           premise
@@ -647,7 +638,7 @@ If assuming <code class="docutils literal"><span class="pre">P</span></code> (pl
 }
 </pre></div>
 </div>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(p V q) -&gt; r,  q |-  r
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(p V q) -&gt; r,  q |-  r
 
 {
   1. (p V q) -&gt; r           premise
@@ -657,8 +648,8 @@ If assuming <code class="docutils literal"><span class="pre">P</span></code> (pl
 }
 </pre></div>
 </div>
-<p>Here is an example that uses <code class="docutils literal"><span class="pre">-&gt;i</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p,  (q ^ p) -&gt; r  |-  q -&gt; r
+<p>Here is an example that uses <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p,  (q ^ p) -&gt; r  |-  q -&gt; r
 
 {
   1. p                       premise
@@ -672,11 +663,11 @@ If assuming <code class="docutils literal"><span class="pre">P</span></code> (pl
 }
 </pre></div>
 </div>
-<p>The proof includes the case that, when <code class="docutils literal"><span class="pre">q</span></code> is assumed a fact then <code class="docutils literal"><span class="pre">r</span></code> would
+<p>The proof includes the case that, when <code class="docutils literal notranslate"><span class="pre">q</span></code> is assumed a fact then <code class="docutils literal notranslate"><span class="pre">r</span></code> would
 follow as a fact, too.
-The subproof lets us conclude that <code class="docutils literal"><span class="pre">q</span> <span class="pre">-&gt;</span> <span class="pre">r</span></code> is a fact.</p>
+The subproof lets us conclude that <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">-&gt;</span> <span class="pre">r</span></code> is a fact.</p>
 <p>Here, two if-then facts entail a third one</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p -&gt; q,  q -&gt; r  |- p -&gt; r
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p -&gt; q,  q -&gt; r  |- p -&gt; r
 
 {
   1. p -&gt; q      premise
@@ -690,9 +681,9 @@ The subproof lets us conclude that <code class="docutils literal"><span class="p
 }
 </pre></div>
 </div>
-<p>Notice how we assumed <code class="docutils literal"><span class="pre">p</span></code> to move the proof forwards to a proof of <code class="docutils literal"><span class="pre">r</span></code>.
+<p>Notice how we assumed <code class="docutils literal notranslate"><span class="pre">p</span></code> to move the proof forwards to a proof of <code class="docutils literal notranslate"><span class="pre">r</span></code>.
 We employ a similar tactic in this example</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p -&gt; (q -&gt; r) |-  (q ^ p) -&gt;  r
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p -&gt; (q -&gt; r) |-  (q ^ p) -&gt;  r
 
 {
   1. p -&gt; (q -&gt; r)      premise
@@ -708,7 +699,7 @@ We employ a similar tactic in this example</p>
 </pre></div>
 </div>
 <p>It is possible to nest cases-analyses, as in this crucial example</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p -&gt; r,  q -&gt; r  |-  (p V q) -&gt; r
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p -&gt; r,  q -&gt; r  |-  (p V q) -&gt; r
 
 {
   1. p -&gt; r            premise
@@ -737,14 +728,14 @@ more precisely than ordinary people do in real life.</p>
 <h3>7.5.3. Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Implication comes with two good tactics:</p>
 <ul>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">-&gt;i</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>,</p>
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code>,</p>
 <ol class="arabic simple">
-<li>assume <code class="docutils literal"><span class="pre">P</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">-&gt;i</span></code>.</li>
+<li>assume <code class="docutils literal notranslate"><span class="pre">P</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">Q</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>.</li>
 </ol>
 <p>The proof structure looks like this</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises          premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises          premise
        . . .
 j.  {
       k.  P           assume
@@ -755,16 +746,16 @@ m.  P -&gt; Q            -&gt;i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">(*) <code class="docutils literal"><span class="pre">-&gt;e</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(*) <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> appears as a
 premise or a proved fact in the partial proof, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">-&gt;e</span></code> to deduce <code class="docutils literal"><span class="pre">Q</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code> to deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code>.</li>
 </ol>
 <p>Here, the tactic is to generate new knowledge that will bring us closer to the
-goal, <code class="docutils literal"><span class="pre">R</span></code>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises      premise
+goal, <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises      premise
        . . .
 i.  P -&gt; Q
         (fill in)
@@ -776,37 +767,37 @@ k.  R
 </div>
 </li>
 </ul>
-<p>In an earlier proof example, you see an immediate use of the (***)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
+<p>In an earlier proof example, you see an immediate use of the (***)-<code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>
 tactic to the new subgoal</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>P -&gt; (Q -&gt; R), Q ^ P |- R
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P -&gt; (Q -&gt; R), Q ^ P |- R
 </pre></div>
 </div>
-<p>An easy application of the (**)-<code class="docutils literal"><span class="pre">^i</span></code> tactic generates this simpler subgoal</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>P -&gt; (Q -&gt; R), Q, P |- R
+<p>An easy application of the (**)-<code class="docutils literal notranslate"><span class="pre">^i</span></code> tactic generates this simpler subgoal</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>P -&gt; (Q -&gt; R), Q, P |- R
 </pre></div>
 </div>
-<p>and we quickly finish the proof by applying the (*)-<code class="docutils literal"><span class="pre">-&gt;e</span></code> tactic twice to
-deduce <code class="docutils literal"><span class="pre">R</span></code>.</p>
+<p>and we quickly finish the proof by applying the (*)-<code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code> tactic twice to
+deduce <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
 </div>
 </div>
 <div class="section" id="negation">
 <h2>7.6. Negation<a class="headerlink" href="#negation" title="Permalink to this headline">¶</a></h2>
 <p>The word, “not”, has many shadings in English, and it does also in logic.
-We might read <code class="docutils literal"><span class="pre">~P</span></code> as saying, “<code class="docutils literal"><span class="pre">P</span></code> is not a fact”, or “the opposite of <code class="docutils literal"><span class="pre">P</span></code>
-is a fact”, or “<code class="docutils literal"><span class="pre">P</span></code> can never be a fact”, or “it is impossible for <code class="docutils literal"><span class="pre">P</span></code> to be
-a fact”, or “<code class="docutils literal"><span class="pre">P</span></code> is ruled out”, or even “<code class="docutils literal"><span class="pre">P</span></code> is false”.
-The choice of deduction rules will decide the precise meaning of <code class="docutils literal"><span class="pre">~P</span></code>.
-What is clearcut, however, is that whenever we can prove, <code class="docutils literal"><span class="pre">P</span></code> and also <code class="docutils literal"><span class="pre">~P</span></code>,
-for some proposition, <code class="docutils literal"><span class="pre">P</span></code>, we have a contradiction.
-A contradiction states an impossible situation, that is, <code class="docutils literal"><span class="pre">P</span></code> is a fact at the
+We might read <code class="docutils literal notranslate"><span class="pre">~P</span></code> as saying, “<code class="docutils literal notranslate"><span class="pre">P</span></code> is not a fact”, or “the opposite of <code class="docutils literal notranslate"><span class="pre">P</span></code>
+is a fact”, or “<code class="docutils literal notranslate"><span class="pre">P</span></code> can never be a fact”, or “it is impossible for <code class="docutils literal notranslate"><span class="pre">P</span></code> to be
+a fact”, or “<code class="docutils literal notranslate"><span class="pre">P</span></code> is ruled out”, or even “<code class="docutils literal notranslate"><span class="pre">P</span></code> is false”.
+The choice of deduction rules will decide the precise meaning of <code class="docutils literal notranslate"><span class="pre">~P</span></code>.
+What is clearcut, however, is that whenever we can prove, <code class="docutils literal notranslate"><span class="pre">P</span></code> and also <code class="docutils literal notranslate"><span class="pre">~P</span></code>,
+for some proposition, <code class="docutils literal notranslate"><span class="pre">P</span></code>, we have a contradiction.
+A contradiction states an impossible situation, that is, <code class="docutils literal notranslate"><span class="pre">P</span></code> is a fact at the
 same time that it is not a fact.
 It is a “crash”, “the end of the world (or at least of the proof!)”.</p>
 <div class="section" id="id7">
 <h3>7.6.1. Rules<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>We use this symbol — <code class="docutils literal"><span class="pre">_|_</span></code> (math: ⊥) — to stand for a
+<p>We use this symbol — <code class="docutils literal notranslate"><span class="pre">_|_</span></code> (math: ⊥) — to stand for a
 contradiction.
 There is an extra rule to deduce you have proved a contradiction</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>        P    ~P
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        P    ~P
 ~e :  -----------
          _|_
 </pre></div>
@@ -814,8 +805,8 @@ There is an extra rule to deduce you have proved a contradiction</p>
 <p>(The name is not ideal, but we will use it, anyway.)</p>
 <p>If you start from some premises and you prove a contradiction, it means that the
 premises disagree with each other.
-(For example, from premises <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> we can deduce
-<code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code>.
+(For example, from premises <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> we can deduce
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">^</span> <span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code>.
 The problem is that the premises disagree about what is true at the start.)</p>
 <p>When we encounter a contradiction in real life, we usually “start over” and try
 our reasoning again, from a different set of premises.
@@ -824,9 +815,9 @@ In logic, contradictions are not only a signal that we should “start over”
 useful for finishing a line of logical reasoning where we must consider all
 cases, even the impossible ones, that follow from some starting set of premises.</p>
 <p>There is a special law for reasoning forwards from an impossible situation —
-the <code class="docutils literal"><span class="pre">_|_e</span></code> law — which says, in the case of a contradiction, everything
-becomes a fact. (That is, “if <code class="docutils literal"><span class="pre">False</span></code> is a fact, so is everything else!”.)</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>         _|_
+the <code class="docutils literal notranslate"><span class="pre">_|_e</span></code> law — which says, in the case of a contradiction, everything
+becomes a fact. (That is, “if <code class="docutils literal notranslate"><span class="pre">False</span></code> is a fact, so is everything else!”.)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>         _|_
 _|_e :  ------  for any proposition, Q, at all
           Q
 </pre></div>
@@ -834,10 +825,10 @@ _|_e :  ------  for any proposition, Q, at all
 </div>
 <div class="section" id="id8">
 <h3>7.6.2. Examples<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">_|_e</span></code>-rule works well with case analysis, where we discover that one case
+<p>The <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>-rule works well with case analysis, where we discover that one case
 is impossible.
 Here is the classic example</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p V q, ~p |- q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p V q, ~p |- q
 
 {
   1. p V q      premise
@@ -854,18 +845,18 @@ Here is the classic example</p>
 }
 </pre></div>
 </div>
-<p>Considering the premise, <code class="docutils literal"><span class="pre">p</span> <span class="pre">V</span> <span class="pre">q</span></code>, we develop the two-case analysis.
-The first case, where <code class="docutils literal"><span class="pre">p</span></code> holds true, is impossible, because it causes a
+<p>Considering the premise, <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">V</span> <span class="pre">q</span></code>, we develop the two-case analysis.
+The first case, where <code class="docutils literal notranslate"><span class="pre">p</span></code> holds true, is impossible, because it causes a
 contradiction.
-The <code class="docutils literal"><span class="pre">_|_e</span></code>-rule lets us gracefully prove <code class="docutils literal"><span class="pre">q</span></code> in this “impossible case”.
-(You can read lines 4-6 as saying, “in the case when <code class="docutils literal"><span class="pre">p</span></code> might hold true,
+The <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>-rule lets us gracefully prove <code class="docutils literal notranslate"><span class="pre">q</span></code> in this “impossible case”.
+(You can read lines 4-6 as saying, “in the case when <code class="docutils literal notranslate"><span class="pre">p</span></code> might hold true,
 there is a contradiction, and in such an impossible situation, we can deduce
-whatever we like, so we deduce <code class="docutils literal"><span class="pre">q</span></code> to finish this impossible case”.)</p>
-<p>The second case, that <code class="docutils literal"><span class="pre">q</span></code> holds true, is the only realistic case, and it
+whatever we like, so we deduce <code class="docutils literal notranslate"><span class="pre">q</span></code> to finish this impossible case”.)</p>
+<p>The second case, that <code class="docutils literal notranslate"><span class="pre">q</span></code> holds true, is the only realistic case, and it
 immediately yields the consequent.
-The proof finishes the two-case analysis with a step of <code class="docutils literal"><span class="pre">Ve</span></code>.</p>
+The proof finishes the two-case analysis with a step of <code class="docutils literal notranslate"><span class="pre">Ve</span></code>.</p>
 <p>Here is another example</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p -&gt; _|_ |-  p -&gt; r
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p -&gt; _|_ |-  p -&gt; r
 
 {
   1. p -&gt; _|_       premise
@@ -878,10 +869,10 @@ The proof finishes the two-case analysis with a step of <code class="docutils li
 }
 </pre></div>
 </div>
-<p>The sequent can be read as, “if <code class="docutils literal"><span class="pre">P</span></code> generates a contradiction, then <code class="docutils literal"><span class="pre">P</span></code>
+<p>The sequent can be read as, “if <code class="docutils literal notranslate"><span class="pre">P</span></code> generates a contradiction, then <code class="docutils literal notranslate"><span class="pre">P</span></code>
 generates anything we want!”.
 Here is a more interesting variation</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>~p |-  p -&gt; q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~p |-  p -&gt; q
 
 {
   1. ~p        premise
@@ -894,8 +885,8 @@ Here is a more interesting variation</p>
 }
 </pre></div>
 </div>
-<p>That is, if <code class="docutils literal"><span class="pre">P</span></code> is impossible, we can make any old if-then claim we want about
-would follow if <code class="docutils literal"><span class="pre">P</span></code> somehow became a fact.
+<p>That is, if <code class="docutils literal notranslate"><span class="pre">P</span></code> is impossible, we can make any old if-then claim we want about
+would follow if <code class="docutils literal notranslate"><span class="pre">P</span></code> somehow became a fact.
 (Example: “if I am the president of the U.S., then everyone gets a tax refund of
 a million bucks”. It’s a true statement but not so useful, since I am not the
 president and will never be.)</p>
@@ -903,16 +894,16 @@ president and will never be.)</p>
 <div class="section" id="tactic">
 <h3>7.6.3. Tactic<a class="headerlink" href="#tactic" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>(*) <code class="docutils literal"><span class="pre">_|_</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, if <code class="docutils literal"><span class="pre">~P</span></code> appears as a premise
+<li>(*) <code class="docutils literal notranslate"><span class="pre">_|_</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, if <code class="docutils literal notranslate"><span class="pre">~P</span></code> appears as a premise
 or as a proved fact in our partial proof, then<ol class="arabic">
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">~e</span></code> to deduce <code class="docutils literal"><span class="pre">_|_</span></code></li>
-<li>use the <code class="docutils literal"><span class="pre">_|_e</span></code>-rule to deduce <code class="docutils literal"><span class="pre">Q</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">~e</span></code> to deduce <code class="docutils literal notranslate"><span class="pre">_|_</span></code></li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>-rule to deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code>.</li>
 </ol>
 </li>
 </ul>
 <p>The structure is</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   Premises     premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   Premises     premise
        . . .
 i.   ~P
       (fill in)
@@ -921,35 +912,35 @@ k.   _|_          ~e i j
 l.   Q            _|_e k
 </pre></div>
 </div>
-<p>In the previous proof example, we see that <code class="docutils literal"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is proved quickly
-once we obtain as a new fact (via an assumption, thanks to the (***)-<code class="docutils literal"><span class="pre">-&gt;i</span></code>
+<p>In the previous proof example, we see that <code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> is proved quickly
+once we obtain as a new fact (via an assumption, thanks to the (***)-<code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>
 tactic!).</p>
 </div>
 <div class="section" id="negation-introduction">
 <h3>7.6.4. Negation Introduction<a class="headerlink" href="#negation-introduction" title="Permalink to this headline">¶</a></h3>
 <p>Another rule for negation lets us deduce when an assertion is incompatible with
 facts we already know.</p>
-<p>For example, say that <code class="docutils literal"><span class="pre">Q</span></code>, <code class="docutils literal"><span class="pre">R</span></code>, <code class="docutils literal"><span class="pre">S</span></code>, … are some premises that we have
+<p>For example, say that <code class="docutils literal notranslate"><span class="pre">Q</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">S</span></code>, … are some premises that we have
 used to prove facts.
-Say we add <code class="docutils literal"><span class="pre">P</span></code> to the premise set, but it is incompatible, that is, we prove,
-<code class="docutils literal"><span class="pre">Q,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">...,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code>.
-So, in a world where <code class="docutils literal"><span class="pre">Q</span></code>, <code class="docutils literal"><span class="pre">R</span></code>, <code class="docutils literal"><span class="pre">S</span></code>, … are facts, <code class="docutils literal"><span class="pre">P</span></code> can never be a
-fact – we have <code class="docutils literal"><span class="pre">Q,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">~P</span></code>.</p>
+Say we add <code class="docutils literal notranslate"><span class="pre">P</span></code> to the premise set, but it is incompatible, that is, we prove,
+<code class="docutils literal notranslate"><span class="pre">Q,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">...,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code>.
+So, in a world where <code class="docutils literal notranslate"><span class="pre">Q</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">S</span></code>, … are facts, <code class="docutils literal notranslate"><span class="pre">P</span></code> can never be a
+fact – we have <code class="docutils literal notranslate"><span class="pre">Q,</span> <span class="pre">R,</span> <span class="pre">S,</span> <span class="pre">...</span> <span class="pre">|-</span> <span class="pre">~P</span></code>.</p>
 <div class="section" id="rule">
 <h4>Rule<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-none"><div class="highlight"><pre><span></span>       { P assume
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       { P assume
          ... _|_  }
 ~i:   --------------
            ~P
 </pre></div>
 </div>
-<p>The rule says that we can discuss the case when <code class="docutils literal"><span class="pre">P</span></code> holds; if a contradiction
-results, then it is impossible for <code class="docutils literal"><span class="pre">P</span></code> to ever be a fact – indeed, <code class="docutils literal"><span class="pre">~P</span></code> is
+<p>The rule says that we can discuss the case when <code class="docutils literal notranslate"><span class="pre">P</span></code> holds; if a contradiction
+results, then it is impossible for <code class="docutils literal notranslate"><span class="pre">P</span></code> to ever be a fact – indeed, <code class="docutils literal notranslate"><span class="pre">~P</span></code> is
 the fact that holds.</p>
 </div>
 <div class="section" id="id9">
 <h4>Examples<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p,  q -&gt; ~p  |-  ~q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p,  q -&gt; ~p  |-  ~q
 
 {
   1. p           premise
@@ -963,12 +954,12 @@ the fact that holds.</p>
 }
 </pre></div>
 </div>
-<p>Here, the premises, <code class="docutils literal"><span class="pre">p</span></code> and <code class="docutils literal"><span class="pre">q</span> <span class="pre">-&gt;</span> <span class="pre">~p</span></code>, are so strong that <em>it is impossible
-for</em> <code class="docutils literal"><span class="pre">q</span></code> <em>to ever be proved as a fact</em>.
-(Lines 4-5 show that, if <code class="docutils literal"><span class="pre">q</span></code> ever was proved a fact, it would cause a
+<p>Here, the premises, <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">-&gt;</span> <span class="pre">~p</span></code>, are so strong that <em>it is impossible
+for</em> <code class="docutils literal notranslate"><span class="pre">q</span></code> <em>to ever be proved as a fact</em>.
+(Lines 4-5 show that, if <code class="docutils literal notranslate"><span class="pre">q</span></code> ever was proved a fact, it would cause a
 contradiction/crash.)
-So, <code class="docutils literal"><span class="pre">~q</span></code> (“<code class="docutils literal"><span class="pre">q</span></code> is impossible”) is proved, instead.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p |- ~~p
+So, <code class="docutils literal notranslate"><span class="pre">~q</span></code> (“<code class="docutils literal notranslate"><span class="pre">q</span></code> is impossible”) is proved, instead.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p |- ~~p
 
 {
   1. p           premise
@@ -980,9 +971,9 @@ So, <code class="docutils literal"><span class="pre">~q</span></code> (“<code 
 }
 </pre></div>
 </div>
-<p>Note that the <code class="docutils literal"><span class="pre">~i</span></code> rule is not capable of proving <code class="docutils literal"><span class="pre">~~P</span> <span class="pre">|-</span> <span class="pre">P</span></code>.
-Indeed, if “it is impossible that it is impossible for <code class="docutils literal"><span class="pre">P</span></code> to be a fact”, does
-this mean that <code class="docutils literal"><span class="pre">P</span></code> (is proved to be) a fact?
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">~i</span></code> rule is not capable of proving <code class="docutils literal notranslate"><span class="pre">~~P</span> <span class="pre">|-</span> <span class="pre">P</span></code>.
+Indeed, if “it is impossible that it is impossible for <code class="docutils literal notranslate"><span class="pre">P</span></code> to be a fact”, does
+this mean that <code class="docutils literal notranslate"><span class="pre">P</span></code> (is proved to be) a fact?
 (Example: Last night, you came home late and used your keys to enter your
 apartment.
 This morning, you can’t find your keys.
@@ -992,21 +983,21 @@ keys
 In mathematics, there are number problems where people have proved that it is
 impossible for there not to be a solution.
 But no one yet knows exactly what the solution is!)</p>
-<p>These examples support this understanding of <code class="docutils literal"><span class="pre">~P</span></code></p>
+<p>These examples support this understanding of <code class="docutils literal notranslate"><span class="pre">~P</span></code></p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">~P</span></code> <em>says that</em> “<code class="docutils literal"><span class="pre">P</span></code> <em>is impossible</em>”</div></blockquote>
-<p>The three rules, <code class="docutils literal"><span class="pre">_|_e</span></code>, <code class="docutils literal"><span class="pre">~i</span></code>, and <code class="docutils literal"><span class="pre">~e</span></code>, give the meaning of
-“is impossible” to the operator, <code class="docutils literal"><span class="pre">~</span></code>.</p>
+<div><code class="docutils literal notranslate"><span class="pre">~P</span></code> <em>says that</em> “<code class="docutils literal notranslate"><span class="pre">P</span></code> <em>is impossible</em>”</div></blockquote>
+<p>The three rules, <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>, <code class="docutils literal notranslate"><span class="pre">~i</span></code>, and <code class="docutils literal notranslate"><span class="pre">~e</span></code>, give the meaning of
+“is impossible” to the operator, <code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
 </div>
 <div class="section" id="id10">
 <h4>Tactic<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>The (***)-<code class="docutils literal"><span class="pre">~i</span></code> tactic says, to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code>,</p>
+<p>The (***)-<code class="docutils literal notranslate"><span class="pre">~i</span></code> tactic says, to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code>,</p>
 <ol class="arabic simple">
-<li>assume <code class="docutils literal"><span class="pre">P</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">~i</span></code></li>
+<li>assume <code class="docutils literal notranslate"><span class="pre">P</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">~i</span></code></li>
 </ol>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises         premises
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises         premises
      . . .
 j. {
      k.  P          assume
@@ -1016,7 +1007,7 @@ j. {
 m. ~P                ~i j
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">~i</span></code>-tactic was used with good success in the previous example.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">~i</span></code>-tactic was used with good success in the previous example.</p>
 </div>
 </div>
 <div class="section" id="proof-by-contradiction">
@@ -1025,37 +1016,37 @@ m. ~P                ~i j
 and vice versa.
 In integer arithmetic, the negative symbol flips positive ints to negatives and
 vice versa.
-In these areas, for a datum, <code class="docutils literal"><span class="pre">D</span></code>, the phrase, <code class="docutils literal"><span class="pre">~D</span></code>, means the “opposite of”
-or the “complement of” <code class="docutils literal"><span class="pre">D</span></code>.</p>
+In these areas, for a datum, <code class="docutils literal notranslate"><span class="pre">D</span></code>, the phrase, <code class="docutils literal notranslate"><span class="pre">~D</span></code>, means the “opposite of”
+or the “complement of” <code class="docutils literal notranslate"><span class="pre">D</span></code>.</p>
 <p>In real life, we use opposites a lot – the opposite of daytime is nighttime,
 the opposite of happy is sad, and so on.
-We might even say that <code class="docutils literal"><span class="pre">~daytime</span></code> equals <code class="docutils literal"><span class="pre">nighttime</span></code>, and so on.
-But what is <code class="docutils literal"><span class="pre">~raining</span></code>? Does it equal <code class="docutils literal"><span class="pre">sunny</span></code>? <code class="docutils literal"><span class="pre">overcast</span></code>? <code class="docutils literal"><span class="pre">snowing</span></code>?
+We might even say that <code class="docutils literal notranslate"><span class="pre">~daytime</span></code> equals <code class="docutils literal notranslate"><span class="pre">nighttime</span></code>, and so on.
+But what is <code class="docutils literal notranslate"><span class="pre">~raining</span></code>? Does it equal <code class="docutils literal notranslate"><span class="pre">sunny</span></code>? <code class="docutils literal notranslate"><span class="pre">overcast</span></code>? <code class="docutils literal notranslate"><span class="pre">snowing</span></code>?
 Some concepts have no natural opposite.</p>
 <p>If we work with circuits or similar True/False or “opposite” systems, then we
-should be able to prove <code class="docutils literal"><span class="pre">~~P</span> <span class="pre">|-</span> <span class="pre">P</span></code>.
+should be able to prove <code class="docutils literal notranslate"><span class="pre">~~P</span> <span class="pre">|-</span> <span class="pre">P</span></code>.
 Here is the rule that lets us do so:</p>
 <div class="section" id="id11">
 <h4>Rule<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-none"><div class="highlight"><pre><span></span>        { ~P assume
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        { ~P assume
           ... _|_   }
 pbc:   ---------------
              P
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">pbc</span></code> (“proof by contradiction”) rule says that, when <code class="docutils literal"><span class="pre">~P</span></code> leads to a
-contradiction, then we have built a proof of <code class="docutils literal"><span class="pre">P</span></code>.</p>
-<p>That is, <em>when</em> “<code class="docutils literal"><span class="pre">P</span></code> <em>is impossible</em>” <em>is impossible</em>, <code class="docutils literal"><span class="pre">pbc</span></code> <em>concludes not
-only that</em> “<code class="docutils literal"><span class="pre">P</span></code> <em>is possible</em>” <em>but that</em> “<code class="docutils literal"><span class="pre">P</span></code> <em>is a certainty</em>” –
+<p>The <code class="docutils literal notranslate"><span class="pre">pbc</span></code> (“proof by contradiction”) rule says that, when <code class="docutils literal notranslate"><span class="pre">~P</span></code> leads to a
+contradiction, then we have built a proof of <code class="docutils literal notranslate"><span class="pre">P</span></code>.</p>
+<p>That is, <em>when</em> “<code class="docutils literal notranslate"><span class="pre">P</span></code> <em>is impossible</em>” <em>is impossible</em>, <code class="docutils literal notranslate"><span class="pre">pbc</span></code> <em>concludes not
+only that</em> “<code class="docutils literal notranslate"><span class="pre">P</span></code> <em>is possible</em>” <em>but that</em> “<code class="docutils literal notranslate"><span class="pre">P</span></code> <em>is a certainty</em>” –
 <em>a fact</em>.</p>
-<p>In a sense, <code class="docutils literal"><span class="pre">pbc</span></code> builds “something from nothing” – a “proof” of “fact” <code class="docutils literal"><span class="pre">P</span></code>
-from an argument that says <code class="docutils literal"><span class="pre">~P</span></code> leads to an impossible situation.
-But does this mean we have “built” <code class="docutils literal"><span class="pre">P</span></code>?
+<p>In a sense, <code class="docutils literal notranslate"><span class="pre">pbc</span></code> builds “something from nothing” – a “proof” of “fact” <code class="docutils literal notranslate"><span class="pre">P</span></code>
+from an argument that says <code class="docutils literal notranslate"><span class="pre">~P</span></code> leads to an impossible situation.
+But does this mean we have “built” <code class="docutils literal notranslate"><span class="pre">P</span></code>?
 In a world where the word “not” means the “opposite of”, we have.</p>
 </div>
 <div class="section" id="id12">
 <h4>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-none"><div class="highlight"><pre><span></span>~~p |- p
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~~p |- p
 
 {
   1. ~~p          premise
@@ -1067,7 +1058,7 @@ In a world where the word “not” means the “opposite of”, we have.</p>
 }
 </pre></div>
 </div>
-<div class="highlight-none"><div class="highlight"><pre><span></span>~(~p V ~q)  |- p ^ q
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~(~p V ~q)  |- p ^ q
 
 {
   1. ~(~p V ~q)      premise
@@ -1087,9 +1078,9 @@ In a world where the word “not” means the “opposite of”, we have.</p>
 }
 </pre></div>
 </div>
-<p>Here is a famous consequence of <code class="docutils literal"><span class="pre">pbc</span></code>: from no starting premises at all, we
-can prove <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> for <em>any proposition we can imagine</em>.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>|- p V ~p
+<p>Here is a famous consequence of <code class="docutils literal notranslate"><span class="pre">pbc</span></code>: from no starting premises at all, we
+can prove <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> for <em>any proposition we can imagine</em>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>|- p V ~p
 
 {
   1. {
@@ -1107,31 +1098,31 @@ can prove <code class="docutils literal"><span class="pre">P</span> <span class=
 }
 </pre></div>
 </div>
-<p>This is sometimes referred to as the law of the excluded middle (LEM) as <code class="docutils literal"><span class="pre">P</span></code>
+<p>This is sometimes referred to as the law of the excluded middle (LEM) as <code class="docutils literal notranslate"><span class="pre">P</span></code>
 is either true or false.  There is no third possibility (hence <em>excluded middle</em>).
-Now that we have done this proof, say that <code class="docutils literal"><span class="pre">P</span></code> stands for “God has red hair”.
+Now that we have done this proof, say that <code class="docutils literal notranslate"><span class="pre">P</span></code> stands for “God has red hair”.
 We have this result:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">|-</span> <span class="s2">&quot;God has red hair&quot;</span> <span class="n">V</span> <span class="o">~</span><span class="p">(</span><span class="s2">&quot;God has red hair&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|-</span> <span class="s2">&quot;God has red hair&quot;</span> <span class="n">V</span> <span class="o">~</span><span class="p">(</span><span class="s2">&quot;God has red hair&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Do you accept this?
-Perhaps the <code class="docutils literal"><span class="pre">pbc</span></code> rule is not so well suited for deductions in the world of
+Perhaps the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule is not so well suited for deductions in the world of
 theology.
-A similar example is this one: let <code class="docutils literal"><span class="pre">P</span></code> stand for “I have stopped kicking my
+A similar example is this one: let <code class="docutils literal notranslate"><span class="pre">P</span></code> stand for “I have stopped kicking my
 dog”.
 (But perhaps I do not even have a pet, let alone ever kicked one!)</p>
-<p><code class="docutils literal"><span class="pre">pbc</span></code> constructs “something from nothing”.
-This appeals to circuit builders, where <code class="docutils literal"><span class="pre">~</span></code> and <code class="docutils literal"><span class="pre">V</span></code> are just gates/on-off
+<p><code class="docutils literal notranslate"><span class="pre">pbc</span></code> constructs “something from nothing”.
+This appeals to circuit builders, where <code class="docutils literal notranslate"><span class="pre">~</span></code> and <code class="docutils literal notranslate"><span class="pre">V</span></code> are just gates/on-off
 switches, but not always to computer scientists, who like to compute/build data
 values and data structures in constructive ways, with algorithms.
 For this reason, some logicians (actually, not so many) refuse to accept the
-<code class="docutils literal"><span class="pre">pbc</span></code> rule, except in specific circumstances.</p>
-<p>Typically, when people accept that <code class="docutils literal"><span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> is a fact, it is because they
+<code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule, except in specific circumstances.</p>
+<p>Typically, when people accept that <code class="docutils literal notranslate"><span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> is a fact, it is because they
 are using a decision procedure to answer the question.
 When we consider situations that do not have decision procedures, the situation
 gets murky, as in the example about the color of God’s hair.</p>
-<p>Here is a surprising result, due to <code class="docutils literal"><span class="pre">pbc</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>p -&gt; q |- ~p V q
+<p>Here is a surprising result, due to <code class="docutils literal notranslate"><span class="pre">pbc</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p -&gt; q |- ~p V q
 
  {
    1. p -&gt; q               premise
@@ -1162,40 +1153,40 @@ gets murky, as in the example about the color of God’s hair.</p>
  }
 </pre></div>
 </div>
-<p>This proof says that the dependency of <code class="docutils literal"><span class="pre">q</span></code> on <code class="docutils literal"><span class="pre">p</span></code> forces us to conclude that
-either <code class="docutils literal"><span class="pre">q</span></code> is already a fact or <code class="docutils literal"><span class="pre">p</span></code> is impossible.
+<p>This proof says that the dependency of <code class="docutils literal notranslate"><span class="pre">q</span></code> on <code class="docutils literal notranslate"><span class="pre">p</span></code> forces us to conclude that
+either <code class="docutils literal notranslate"><span class="pre">q</span></code> is already a fact or <code class="docutils literal notranslate"><span class="pre">p</span></code> is impossible.
 It is slightly odd that an “if-then” dependency would ensure either of the two
 outcomes.
-But this is the consequence of <code class="docutils literal"><span class="pre">pbc</span></code>’s ability to build something from nothing.</p>
+But this is the consequence of <code class="docutils literal notranslate"><span class="pre">pbc</span></code>’s ability to build something from nothing.</p>
 <p>This result also relies on pbc</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>|- (P -&gt; Q) V (Q -&gt; P)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>|- (P -&gt; Q) V (Q -&gt; P)
 </pre></div>
 </div>
-<p>for <em>any choice whatsover</em> of propositions <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code>.
-(An example: let <code class="docutils literal"><span class="pre">P</span></code> stand for “It is raining” and <code class="docutils literal"><span class="pre">Q</span></code> stand for
+<p>for <em>any choice whatsover</em> of propositions <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code>.
+(An example: let <code class="docutils literal notranslate"><span class="pre">P</span></code> stand for “It is raining” and <code class="docutils literal notranslate"><span class="pre">Q</span></code> stand for
 “I am the President”.
 The above sequent holds true, even though there is no dependency between the two
 propositions.
 Why is that so?
 Is it reasonable?
-The claim looks more benign when we restrict <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> to be propositions
+The claim looks more benign when we restrict <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> to be propositions
 about logic gates.
 The moral is, certain logic rules are meant for certain application areas, and
-the <code class="docutils literal"><span class="pre">pbc</span></code> rule works well in only circuit-theory-like worlds.)</p>
-<p>This last result follows because <code class="docutils literal"><span class="pre">pbc</span></code> lets us deduce that
-<code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span></code> – no longer does <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> tell us that <code class="docutils literal"><span class="pre">P</span></code> gives the
-needed knowledge for constructing/deducing <code class="docutils literal"><span class="pre">Q</span></code>;
-no longer does <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> tell us that <code class="docutils literal"><span class="pre">Q</span></code> physically depends on <code class="docutils literal"><span class="pre">P</span></code>.
-Instead, due to <code class="docutils literal"><span class="pre">pbc</span></code>, we must read <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> as stating a coincidence about
-the underlying True/False values of <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code>.
-For this reason, the <code class="docutils literal"><span class="pre">-&gt;</span></code> operator is no longer necessary in a logic that
-uses the <code class="docutils literal"><span class="pre">pbc</span></code> rule;
-this is why there is no need for an <code class="docutils literal"><span class="pre">-&gt;</span></code> gate in circuit theory (you use
-<code class="docutils literal"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span></code> instead).</p>
-<p>There is no truly useful tactic for applying the <code class="docutils literal"><span class="pre">pbc</span></code>-rule.
+the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule works well in only circuit-theory-like worlds.)</p>
+<p>This last result follows because <code class="docutils literal notranslate"><span class="pre">pbc</span></code> lets us deduce that
+<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span></code> – no longer does <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> tell us that <code class="docutils literal notranslate"><span class="pre">P</span></code> gives the
+needed knowledge for constructing/deducing <code class="docutils literal notranslate"><span class="pre">Q</span></code>;
+no longer does <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> tell us that <code class="docutils literal notranslate"><span class="pre">Q</span></code> physically depends on <code class="docutils literal notranslate"><span class="pre">P</span></code>.
+Instead, due to <code class="docutils literal notranslate"><span class="pre">pbc</span></code>, we must read <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> as stating a coincidence about
+the underlying True/False values of <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code>.
+For this reason, the <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> operator is no longer necessary in a logic that
+uses the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule;
+this is why there is no need for an <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> gate in circuit theory (you use
+<code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span></code> instead).</p>
+<p>There is no truly useful tactic for applying the <code class="docutils literal notranslate"><span class="pre">pbc</span></code>-rule.
 It is indeed a rule of “last resort”, because it says, to try to prove
-<code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code>, one should assume <code class="docutils literal"><span class="pre">~P</span></code> and see if this leads one into a
-contradiction, that is, a proof that <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code>, one should assume <code class="docutils literal notranslate"><span class="pre">~P</span></code> and see if this leads one into a
+contradiction, that is, a proof that <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">_|_</span></code>.
 This is a kind of logical “wild-goose chase”.
 But later in the chapter, we will see how computers can be made to chase after
 such geese.</p>
@@ -1206,96 +1197,96 @@ such geese.</p>
 <h2>7.7. Important Equivalences<a class="headerlink" href="#important-equivalences" title="Permalink to this headline">¶</a></h2>
 <p>These useful equivalences can be proved with the laws for And and Or:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">P</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">P</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">P</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">Q</span> <span class="pre">^</span> <span class="pre">P</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">R)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">(P</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">V</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">(P</span> <span class="pre">V</span> <span class="pre">R)</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">R)</span> <span class="pre">P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">Q</span> <span class="pre">^</span> <span class="pre">P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">R)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">(P</span> <span class="pre">^</span> <span class="pre">R)</span> <span class="pre">V</span> <span class="pre">(Q</span> <span class="pre">^</span> <span class="pre">R)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">(P</span> <span class="pre">V</span> <span class="pre">R)</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">R)</span> <span class="pre">P</span></code></li>
 </ul>
 <p>If you are an algebraist, you already knew these assertions, which characterize
 a distributive lattice.</p>
 <p>When we add the rules for implies, we can prove one other key equivalence:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">-&gt;</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">(Q</span> <span class="pre">-&gt;</span> <span class="pre">R)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">-&gt;</span> <span class="pre">R</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">(Q</span> <span class="pre">-&gt;</span> <span class="pre">R)</span></code></li>
 </ul>
-<p>When we add the <code class="docutils literal"><span class="pre">~e</span></code>, <code class="docutils literal"><span class="pre">_|_e</span></code>, and <code class="docutils literal"><span class="pre">~i</span></code> rules, we can also prove:</p>
+<p>When we add the <code class="docutils literal notranslate"><span class="pre">~e</span></code>, <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>, and <code class="docutils literal notranslate"><span class="pre">~i</span></code> rules, we can also prove:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">~(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">~P</span> <span class="pre">^</span> <span class="pre">~Q</span></code></li>
-<li><code class="docutils literal"><span class="pre">~(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">-&gt;</span> <span class="pre">Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">-&gt;</span> <span class="pre">~Q)</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(P</span> <span class="pre">-&gt;</span> <span class="pre">~Q)</span> <span class="pre">-||-</span> <span class="pre">(~P)</span> <span class="pre">V</span> <span class="pre">Q</span></code></li>
-<li><code class="docutils literal"><span class="pre">~P</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">_|_</span></code></li>
-<li><code class="docutils literal"><span class="pre">~P</span> <span class="pre">-||-</span> <span class="pre">~~~P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">~P</span> <span class="pre">^</span> <span class="pre">~Q</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~(P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">-&gt;</span> <span class="pre">Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">-&gt;</span> <span class="pre">~Q)</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">-&gt;</span> <span class="pre">~Q)</span> <span class="pre">-||-</span> <span class="pre">(~P)</span> <span class="pre">V</span> <span class="pre">Q</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">_|_</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">-||-</span> <span class="pre">~~~P</span></code></li>
 </ul>
 <p>Now we have characterized what algebraists call the Heyting lattices.</p>
-<p>If we accept <code class="docutils literal"><span class="pre">pbc</span></code> (or equivalently, we accept <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> as a fact), then we
+<p>If we accept <code class="docutils literal notranslate"><span class="pre">pbc</span></code> (or equivalently, we accept <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code> as a fact), then we
 have these important results:
-(Note, for each equivalence, <code class="docutils literal"><span class="pre">-||-</span></code>, that follows, the first part, stated with
-<code class="docutils literal"><span class="pre">|-</span></code>, can be proved without <code class="docutils literal"><span class="pre">pbc</span></code>, but the reverse direction requires
-<code class="docutils literal"><span class="pre">pbc</span></code>.)</p>
+(Note, for each equivalence, <code class="docutils literal notranslate"><span class="pre">-||-</span></code>, that follows, the first part, stated with
+<code class="docutils literal notranslate"><span class="pre">|-</span></code>, can be proved without <code class="docutils literal notranslate"><span class="pre">pbc</span></code>, but the reverse direction requires
+<code class="docutils literal notranslate"><span class="pre">pbc</span></code>.)</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">~~P</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">V</span> <span class="pre">~Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">^</span> <span class="pre">~Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></li>
-<li><code class="docutils literal"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">~Q</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~Q</span> <span class="pre">-&gt;</span> <span class="pre">~P</span></code></li>
-<li><code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">~Q)</span></code></li>
-<li><code class="docutils literal"><span class="pre">(B</span> <span class="pre">^</span> <span class="pre">P)</span> <span class="pre">V</span> <span class="pre">(~B</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">(B</span> <span class="pre">-&gt;</span> <span class="pre">P)</span> <span class="pre">^</span> <span class="pre">(~B</span> <span class="pre">-&gt;</span> <span class="pre">Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-||-</span> <span class="pre">~~P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">V</span> <span class="pre">~Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(~P</span> <span class="pre">^</span> <span class="pre">~Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">~Q</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~Q</span> <span class="pre">-&gt;</span> <span class="pre">~P</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span> <span class="pre">-||-</span> <span class="pre">~(P</span> <span class="pre">^</span> <span class="pre">~Q)</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">(B</span> <span class="pre">^</span> <span class="pre">P)</span> <span class="pre">V</span> <span class="pre">(~B</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">-||-</span> <span class="pre">(B</span> <span class="pre">-&gt;</span> <span class="pre">P)</span> <span class="pre">^</span> <span class="pre">(~B</span> <span class="pre">-&gt;</span> <span class="pre">Q)</span></code></li>
 </ul>
-<p>In algebra, the inference rules presented here for <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">_|_</span></code>, and
-<code class="docutils literal"><span class="pre">~</span></code> define the structure of a Boolean lattice, and the origins of modern
+<p>In algebra, the inference rules presented here for <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">_|_</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">~</span></code> define the structure of a Boolean lattice, and the origins of modern
 abstract algebra and logic come from George Boole’s attempt to formalize
-“what it means” to compute with <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">~</span></code>.</p>
+“what it means” to compute with <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>.</p>
 </div>
 <div class="section" id="conjunctive-normal-form-cnf">
 <h2>7.8. Conjunctive Normal Form (CNF)<a class="headerlink" href="#conjunctive-normal-form-cnf" title="Permalink to this headline">¶</a></h2>
-<p>Computers can be programmed to manipulate propositions built with <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>,
-<code class="docutils literal"><span class="pre">~</span></code>.
+<p>Computers can be programmed to manipulate propositions built with <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>,
+<code class="docutils literal notranslate"><span class="pre">~</span></code>.
 This is because the previous equivalences show we can eliminate all occurrences
-of <code class="docutils literal"><span class="pre">-&gt;</span></code> and use <code class="docutils literal"><span class="pre">~</span></code>, <code class="docutils literal"><span class="pre">V</span></code> instead (provided we accept the <code class="docutils literal"><span class="pre">pbc</span></code> rule).</p>
-<p>A more striking result (again, provided we accept the <code class="docutils literal"><span class="pre">pbc</span></code> rule) is that
-every proposition written with <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">~</span></code> can be rewritten as an
+of <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> and use <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code> instead (provided we accept the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule).</p>
+<p>A more striking result (again, provided we accept the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule) is that
+every proposition written with <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code> can be rewritten as an
 equivalent proposition in this structure, called
 <em>conjunctive normal form (cnf)</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A00</span> <span class="n">v</span> <span class="n">A01</span> <span class="n">V</span> <span class="o">...</span> <span class="n">A0n</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">A10</span> <span class="n">V</span> <span class="n">A11</span> <span class="n">V</span> <span class="o">...</span> <span class="n">A1n</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="p">(</span><span class="n">Am0</span> <span class="n">V</span> <span class="n">Am1</span> <span class="n">V</span> <span class="o">...</span> <span class="n">Amn</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A00</span> <span class="n">v</span> <span class="n">A01</span> <span class="n">V</span> <span class="o">...</span> <span class="n">A0n</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">A10</span> <span class="n">V</span> <span class="n">A11</span> <span class="n">V</span> <span class="o">...</span> <span class="n">A1n</span><span class="p">)</span> <span class="o">^</span> <span class="o">...</span> <span class="o">^</span> <span class="p">(</span><span class="n">Am0</span> <span class="n">V</span> <span class="n">Am1</span> <span class="n">V</span> <span class="o">...</span> <span class="n">Amn</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where each <code class="docutils literal"><span class="pre">Aij</span></code> is either a primitive proposition, <code class="docutils literal"><span class="pre">P</span></code>, or a negated
-primitive proposition, <code class="docutils literal"><span class="pre">~P</span></code>.</p>
+<p>where each <code class="docutils literal notranslate"><span class="pre">Aij</span></code> is either a primitive proposition, <code class="docutils literal notranslate"><span class="pre">P</span></code>, or a negated
+primitive proposition, <code class="docutils literal notranslate"><span class="pre">~P</span></code>.</p>
 <p>A cnf-proposition is an “and-or” proposition, where “or-clauses” (disjunctive
 clauses) are “anded together”.
 The cnf structure is easy for a computer to manipulate and forms the starting
 point for a powerful computerized proof technique known as
 <em>resolution theorem proving</em>, which we consider shortly.</p>
-<p>For example, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code> is in cnf, but <code class="docutils literal"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">~R</span></code> is not.
+<p>For example, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code> is in cnf, but <code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">^</span> <span class="pre">Q)</span> <span class="pre">V</span> <span class="pre">~R</span></code> is not.
 (Why?)
-But the latter proposition is equivalent to <code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">~R)</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code>, which is in
+But the latter proposition is equivalent to <code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">~R)</span> <span class="pre">^</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code>, which is in
 cnf.</p>
-<p>Here is another example: <code class="docutils literal"><span class="pre">~(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code> is equivalent to <code class="docutils literal"><span class="pre">~Q</span> <span class="pre">^</span> <span class="pre">~~R</span></code>, which is
-equivalent to <code class="docutils literal"><span class="pre">~Q</span> <span class="pre">^</span> <span class="pre">R</span></code>, which is in cnf.</p>
+<p>Here is another example: <code class="docutils literal notranslate"><span class="pre">~(Q</span> <span class="pre">V</span> <span class="pre">~R)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">~Q</span> <span class="pre">^</span> <span class="pre">~~R</span></code>, which is
+equivalent to <code class="docutils literal notranslate"><span class="pre">~Q</span> <span class="pre">^</span> <span class="pre">R</span></code>, which is in cnf.</p>
 <p>Again, a proposition in conjunctive normal form is a sequence of one or more
-conjunctions, <code class="docutils literal"><span class="pre">A1</span> <span class="pre">^</span> <span class="pre">A2</span> <span class="pre">^</span> <span class="pre">...</span> <span class="pre">^</span> <span class="pre">Am</span></code>, where each <code class="docutils literal"><span class="pre">Ai</span></code> is itself a sequence of
-one or more disjunctions, <code class="docutils literal"><span class="pre">Bi1</span> <span class="pre">V</span> <span class="pre">Bi2</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">Bin</span></code>, where each component,
-<code class="docutils literal"><span class="pre">Bij</span></code>, is itself a primitive proposition, <code class="docutils literal"><span class="pre">P</span></code>, or the negation, <code class="docutils literal"><span class="pre">~P</span></code>, of
+conjunctions, <code class="docutils literal notranslate"><span class="pre">A1</span> <span class="pre">^</span> <span class="pre">A2</span> <span class="pre">^</span> <span class="pre">...</span> <span class="pre">^</span> <span class="pre">Am</span></code>, where each <code class="docutils literal notranslate"><span class="pre">Ai</span></code> is itself a sequence of
+one or more disjunctions, <code class="docutils literal notranslate"><span class="pre">Bi1</span> <span class="pre">V</span> <span class="pre">Bi2</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">Bin</span></code>, where each component,
+<code class="docutils literal notranslate"><span class="pre">Bij</span></code>, is itself a primitive proposition, <code class="docutils literal notranslate"><span class="pre">P</span></code>, or the negation, <code class="docutils literal notranslate"><span class="pre">~P</span></code>, of
 one.</p>
 <p>There are specific logical equivalences we apply to transform a proposition into
 cnf.
 Here they are, stated within an algorithm that converts an arbitrary proposition
 into one in cnf:</p>
 <ol class="arabic">
-<li><p class="first">First, remove all implications, <code class="docutils literal"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span></code>, with this equivalence:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="n">V</span> <span class="n">B</span>
+<li><p class="first">First, remove all implications, <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-&gt;</span> <span class="pre">B</span></code>, with this equivalence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="n">V</span> <span class="n">B</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Next, move all remaining negation operators inwards, by repeatedly applying
 these equivalences:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="n">A</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="n">A</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~</span><span class="p">(</span><span class="o">~</span><span class="n">A</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="n">A</span>
 <span class="o">~</span><span class="p">(</span><span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="n">V</span> <span class="o">~</span><span class="n">B</span>
 <span class="o">~</span><span class="p">(</span><span class="n">A</span> <span class="n">V</span> <span class="n">B</span><span class="p">)</span>  <span class="o">-||-</span>  <span class="o">~</span><span class="n">A</span> <span class="o">^</span> <span class="o">~</span><span class="n">B</span>
 </pre></div>
@@ -1304,13 +1295,13 @@ these equivalences:</p>
 <li><p class="first">At this point, all negation operators appear next to primitive propositions.
 To finish, repeatedly apply (inside out) this equivalence to group together
 all disjunction operators:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span> <span class="n">V</span> <span class="n">C</span>  <span class="o">-||-</span>  <span class="p">(</span><span class="n">A</span> <span class="n">V</span> <span class="n">C</span><span class="p">)</span>  <span class="o">^</span>  <span class="p">(</span><span class="n">B</span> <span class="n">V</span> <span class="n">C</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">^</span> <span class="n">B</span><span class="p">)</span> <span class="n">V</span> <span class="n">C</span>  <span class="o">-||-</span>  <span class="p">(</span><span class="n">A</span> <span class="n">V</span> <span class="n">C</span><span class="p">)</span>  <span class="o">^</span>  <span class="p">(</span><span class="n">B</span> <span class="n">V</span> <span class="n">C</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>Let’s apply these steps to a nontrivial example</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(~P -&gt; Q) V ~(Q V ~R)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(~P -&gt; Q) V ~(Q V ~R)
 
 -||-  (~~P V Q)  V  ~(Q V ~R)        (step 1)
 
@@ -1323,44 +1314,44 @@ all disjunction operators:</p>
 </div>
 <p>The result, which is in cnf, can be simplified further:</p>
 <ol class="arabic simple">
-<li>Every disjunctive clause of form, <code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code>, can be
+<li>Every disjunctive clause of form, <code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code>, can be
 reduced by removing duplicates of the same proposition:
-<code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code></li>
-<li>Every disjunctive clause of form, <code class="docutils literal"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">~Q</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code>, is always
-true and can be reduced to <code class="docutils literal"><span class="pre">True</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code></li>
+<li>Every disjunctive clause of form, <code class="docutils literal notranslate"><span class="pre">(P</span> <span class="pre">V</span> <span class="pre">Q</span> <span class="pre">V</span> <span class="pre">...</span> <span class="pre">V</span> <span class="pre">~Q</span> <span class="pre">V</span> <span class="pre">R</span> <span class="pre">V</span> <span class="pre">...)</span></code>, is always
+true and can be reduced to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</li>
 </ol>
-<p>Looking at the previous example, we see that <code class="docutils literal"><span class="pre">(~Q</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">(R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span></code>
-reduces to <code class="docutils literal"><span class="pre">True</span> <span class="pre">^</span> <span class="pre">(R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span></code>, which is just <code class="docutils literal"><span class="pre">R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>.
+<p>Looking at the previous example, we see that <code class="docutils literal notranslate"><span class="pre">(~Q</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span> <span class="pre">^</span> <span class="pre">(R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span></code>
+reduces to <code class="docutils literal notranslate"><span class="pre">True</span> <span class="pre">^</span> <span class="pre">(R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q)</span></code>, which is just <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">V</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code>.
 In this way, we reduce a complex proposition into its minimal, equivalent form,
 cnf.</p>
 <p>These constructions suggest that propositional logic, using all the deduction
-rules including <code class="docutils literal"><span class="pre">pbc</span></code>, boils down to an and-or game.
+rules including <code class="docutils literal notranslate"><span class="pre">pbc</span></code>, boils down to an and-or game.
 And in some sense, this is true.
-But the story changes when we add the quantifiers, <code class="docutils literal"><span class="pre">FORALL</span></code>
+But the story changes when we add the quantifiers, <code class="docutils literal notranslate"><span class="pre">FORALL</span></code>
 (“for all”; math: ∀) and EXIST (“there exists”;
 math: ∃).</p>
 </div>
 <div class="section" id="models-of-propositional-logic-soundness-and-completeness">
 <h2>7.9. Models of Propositional Logic: Soundness and Completeness<a class="headerlink" href="#models-of-propositional-logic-soundness-and-completeness" title="Permalink to this headline">¶</a></h2>
-<p>When we say that “<code class="docutils literal"><span class="pre">P</span></code> is a fact”, what does this mean?
-Perhaps it means “<code class="docutils literal"><span class="pre">P</span></code> is True”, or “<code class="docutils literal"><span class="pre">P</span></code> is proved”, or “our confidence in
-<code class="docutils literal"><span class="pre">P</span></code> is absolute”.</p>
+<p>When we say that “<code class="docutils literal notranslate"><span class="pre">P</span></code> is a fact”, what does this mean?
+Perhaps it means “<code class="docutils literal notranslate"><span class="pre">P</span></code> is True”, or “<code class="docutils literal notranslate"><span class="pre">P</span></code> is proved”, or “our confidence in
+<code class="docutils literal notranslate"><span class="pre">P</span></code> is absolute”.</p>
 <p>The purpose of this section is to describe ways that we give meaning to
 propositions and to show that the deduction rules in this chapter generate new
 knowledge that means what we think it means.</p>
 <div class="section" id="truth-tables">
 <h3>7.9.1. Truth Tables<a class="headerlink" href="#truth-tables" title="Permalink to this headline">¶</a></h3>
 <p>The most basic interpretation of propositions is that a proposition means either
-True (<code class="docutils literal"><span class="pre">T</span></code>, <code class="docutils literal"><span class="pre">1</span></code>) or False (<code class="docutils literal"><span class="pre">F</span></code>, <code class="docutils literal"><span class="pre">0</span></code>).
+True (<code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>) or False (<code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">0</span></code>).
 This is a “circuit theory” interpretation.
-In this situation, the meanings of the connectives, <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">~</span></code> are
+In this situation, the meanings of the connectives, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code> are
 given by the truth tables in the Chapter on <a class="reference internal" href="../02-circuits-truth-tables/index.html#circuits"><span class="std std-ref">Circuits and Truth Tables</span></a>.</p>
 <p>Return to the Chapter on <a class="reference internal" href="../02-circuits-truth-tables/index.html#circuits"><span class="std std-ref">Circuits and Truth Tables</span></a> of these notes and review the truth tables for
-<code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">~</span></code>.
-A truth table defines how the “inputs” <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> are converted into
+<code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>.
+A truth table defines how the “inputs” <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> are converted into
 “outputs”.
-Next, here is the standard truth table for <code class="docutils literal"><span class="pre">-&gt;</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>--------------
+Next, here is the standard truth table for <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>--------------
  p q |  p -&gt; q
 --------------
  T T |    T
@@ -1370,24 +1361,24 @@ Next, here is the standard truth table for <code class="docutils literal"><span 
  -------------
 </pre></div>
 </div>
-<p>The table’s last two rows are a bit surprising – indeed, neither <code class="docutils literal"><span class="pre">T</span></code> nor
-<code class="docutils literal"><span class="pre">F</span></code> seem exactly correct as outputs here!
-Think of <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> as “the truth of “<code class="docutils literal"><span class="pre">P</span></code> forces the truth of <code class="docutils literal"><span class="pre">Q</span></code>”.
-So, when <code class="docutils literal"><span class="pre">P</span></code> is <code class="docutils literal"><span class="pre">F</span></code>, then <code class="docutils literal"><span class="pre">Q</span></code> is not forced to be anything at all.
-This makes <code class="docutils literal"><span class="pre">T</span></code> a reasonable answer for the last two rows of the table.</p>
+<p>The table’s last two rows are a bit surprising – indeed, neither <code class="docutils literal notranslate"><span class="pre">T</span></code> nor
+<code class="docutils literal notranslate"><span class="pre">F</span></code> seem exactly correct as outputs here!
+Think of <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> as “the truth of “<code class="docutils literal notranslate"><span class="pre">P</span></code> forces the truth of <code class="docutils literal notranslate"><span class="pre">Q</span></code>”.
+So, when <code class="docutils literal notranslate"><span class="pre">P</span></code> is <code class="docutils literal notranslate"><span class="pre">F</span></code>, then <code class="docutils literal notranslate"><span class="pre">Q</span></code> is not forced to be anything at all.
+This makes <code class="docutils literal notranslate"><span class="pre">T</span></code> a reasonable answer for the last two rows of the table.</p>
 <p>In a more technical sense, the values in the last two rows connect to our
-ability to prove <code class="docutils literal"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> and also <code class="docutils literal"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">~Q</span></code> –
+ability to prove <code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> and also <code class="docutils literal notranslate"><span class="pre">~P</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">~Q</span></code> –
 they relate to our willingness to consider impossible cases (and embrace the
-<code class="docutils literal"><span class="pre">_|_e</span></code> rule).</p>
+<code class="docutils literal notranslate"><span class="pre">_|_e</span></code> rule).</p>
 <p>Nonetheless, we see that our understanding of implication as a truth table is
 open to discussion.</p>
 <p>Recall that we can build a truth table of a compound proposition.
 We can do this for any sequent, computing the values of its premises and its
 goal.
-Here is an example: the sequent <code class="docutils literal"><span class="pre">p,</span> <span class="pre">q</span> <span class="pre">v</span> <span class="pre">r</span>&#160; <span class="pre">|-</span>&#160; <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">v</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code> can be
-translated as <code class="docutils literal"><span class="pre">p</span> <span class="pre">^</span> <span class="pre">(q</span> <span class="pre">v</span> <span class="pre">r)</span> <span class="pre">-&gt;</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">v</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code> and the following truth
+Here is an example: the sequent <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q</span> <span class="pre">v</span> <span class="pre">r</span>&#160; <span class="pre">|-</span>&#160; <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">v</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code> can be
+translated as <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">^</span> <span class="pre">(q</span> <span class="pre">v</span> <span class="pre">r)</span> <span class="pre">-&gt;</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">v</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code> and the following truth
 table can be constructed</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>--------------------------------------------
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>--------------------------------------------
 p  q  r  |  p ^ (q v r) -&gt; (p ^ q) v (p ^ r)
 --------------------------------------------
 T  T  T  |    T    T    T     T    T    T
@@ -1401,49 +1392,49 @@ F  F  F  |    F    F    T     F    F    F
 --------------------------------------------
 </pre></div>
 </div>
-<p>According to the truth table, <code class="docutils literal"><span class="pre">p</span></code>, <code class="docutils literal"><span class="pre">q</span> <span class="pre">V</span> <span class="pre">s</span></code> entails
-<code class="docutils literal"><span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>, because, in every row where both <code class="docutils literal"><span class="pre">p</span></code> and also <code class="docutils literal"><span class="pre">q</span> <span class="pre">V</span> <span class="pre">r</span></code>
-compute to <code class="docutils literal"><span class="pre">T</span></code>, then so does <code class="docutils literal"><span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>.</p>
+<p>According to the truth table, <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">V</span> <span class="pre">s</span></code> entails
+<code class="docutils literal notranslate"><span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>, because, in every row where both <code class="docutils literal notranslate"><span class="pre">p</span></code> and also <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">V</span> <span class="pre">r</span></code>
+compute to <code class="docutils literal notranslate"><span class="pre">T</span></code>, then so does <code class="docutils literal notranslate"><span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>.</p>
 <p>We can of course use the deduction rules to build a proof of
-<code class="docutils literal"><span class="pre">p,</span> <span class="pre">q</span> <span class="pre">V</span> <span class="pre">r</span> <span class="pre">|-</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q</span> <span class="pre">V</span> <span class="pre">r</span> <span class="pre">|-</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">q)</span> <span class="pre">V</span> <span class="pre">(p</span> <span class="pre">^</span> <span class="pre">r)</span></code>.</p>
 <p>Now, we have two questions:</p>
 <ol class="arabic simple">
 <li><em>soundness</em>: When we use the deduction rules to prove that
-<code class="docutils literal"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, does this mean that the compound truth table also
-shows that <code class="docutils literal"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span></code> entails <code class="docutils literal"><span class="pre">Q</span></code>?</li>
+<code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, does this mean that the compound truth table also
+shows that <code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span></code> entails <code class="docutils literal notranslate"><span class="pre">Q</span></code>?</li>
 <li><em>completeness</em>: When we use a compound truth table and calculate that
-<code class="docutils literal"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span></code> entails <code class="docutils literal"><span class="pre">Q</span></code>, does this mean we can use the deduction
-rules to build a proof that <code class="docutils literal"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>?</li>
+<code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span></code> entails <code class="docutils literal notranslate"><span class="pre">Q</span></code>, does this mean we can use the deduction
+rules to build a proof that <code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>?</li>
 </ol>
-<p>When we use all the inference rules presented in this chapter (that is, <code class="docutils literal"><span class="pre">^i</span></code>,
-<code class="docutils literal"><span class="pre">^e</span></code>, <code class="docutils literal"><span class="pre">Vi</span></code>, <code class="docutils literal"><span class="pre">Ve</span></code>, <code class="docutils literal"><span class="pre">-&gt;i</span></code>, <code class="docutils literal"><span class="pre">-&gt;e</span></code>, <code class="docutils literal"><span class="pre">_|_e</span></code>, <code class="docutils literal"><span class="pre">~i</span></code>, <code class="docutils literal"><span class="pre">~e</span></code>, <code class="docutils literal"><span class="pre">pbc</span></code>)
+<p>When we use all the inference rules presented in this chapter (that is, <code class="docutils literal notranslate"><span class="pre">^i</span></code>,
+<code class="docutils literal notranslate"><span class="pre">^e</span></code>, <code class="docutils literal notranslate"><span class="pre">Vi</span></code>, <code class="docutils literal notranslate"><span class="pre">Ve</span></code>, <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>, <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code>, <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>, <code class="docutils literal notranslate"><span class="pre">~i</span></code>, <code class="docutils literal notranslate"><span class="pre">~e</span></code>, <code class="docutils literal notranslate"><span class="pre">pbc</span></code>)
 then the short answer to both questions is “yes”.
 The inference rules encode completely all the information within truth tables,
 and truth tables decode all the deductions of inference rules.</p>
 <p>Because of soundness and completeness, one way to determine whether there is a
-proof for a sequent, <code class="docutils literal"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, is to build its truth table and
+proof for a sequent, <code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, is to build its truth table and
 see if the truth table tells us whether the claim is true.
 If yes, then we know there is a proof.
 This brute-force technique is easy to program; why did we bother to learn about
 cnf and resolution theorem proving, then?
 The reason is that truth tables will fail us when we add the for-all
-(<code class="docutils literal"><span class="pre">FORALL</span></code>; math: ∀) and there-exists
-(<code class="docutils literal"><span class="pre">EXIST</span></code>; math: ∃) operators to logic,
+(<code class="docutils literal notranslate"><span class="pre">FORALL</span></code>; math: ∀) and there-exists
+(<code class="docutils literal notranslate"><span class="pre">EXIST</span></code>; math: ∃) operators to logic,
 but resolution theorem proving can and will be expanded to work with
 quantifiers.
 This is the reason for its success.</p>
 <p>The reason why truth tables predict existence of proofs is because they are tied
-to the <code class="docutils literal"><span class="pre">pbc</span></code> rule.
-Say that we are purists and refuse to use the <code class="docutils literal"><span class="pre">pbc</span></code> inference rule.
+to the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> rule.
+Say that we are purists and refuse to use the <code class="docutils literal notranslate"><span class="pre">pbc</span></code> inference rule.
 The set of rules that remain are certainly sound with respect to the truth
 tables, but they are not complete.
-(For example, a compound truth table shows that <code class="docutils literal"><span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code>, but this cannot
-be proved without <code class="docutils literal"><span class="pre">pbc</span></code>.)</p>
-<p>You might argue that the deduction system lacking <code class="docutils literal"><span class="pre">pbc</span></code> is too weak.
+(For example, a compound truth table shows that <code class="docutils literal notranslate"><span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">~P</span></code>, but this cannot
+be proved without <code class="docutils literal notranslate"><span class="pre">pbc</span></code>.)</p>
+<p>You might argue that the deduction system lacking <code class="docutils literal notranslate"><span class="pre">pbc</span></code> is too weak.
 <em>Or, you might argue that our understanding of the meaning of propositions is
 incorrect.</em></p>
-<p>The point is, meaning goes beyond primitive notions like <code class="docutils literal"><span class="pre">{0,</span> <span class="pre">1}</span></code> and
-<code class="docutils literal"><span class="pre">{T,</span> <span class="pre">F}</span></code>, and mathematicians have understood this for about 200 years.
+<p>The point is, meaning goes beyond primitive notions like <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">1}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{T,</span> <span class="pre">F}</span></code>, and mathematicians have understood this for about 200 years.
 Indeed, there are many different forms of meaning and many different forms of
 symbolic logic that deduce assertions with those meanings.</p>
 </div>
@@ -1451,24 +1442,24 @@ symbolic logic that deduce assertions with those meanings.</p>
 <div class="section" id="summary-of-rules-and-tactics">
 <h2>7.10. Summary of Rules and Tactics<a class="headerlink" href="#summary-of-rules-and-tactics" title="Permalink to this headline">¶</a></h2>
 <p>As a general principle, when you are proving a claim:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="o">...</span> <span class="o">|-</span> <span class="n">T</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="o">...</span> <span class="o">|-</span> <span class="n">T</span>
 </pre></div>
 </div>
-<p>first look at the connectives within <code class="docutils literal"><span class="pre">T</span></code> and note that you will probably need
+<p>first look at the connectives within <code class="docutils literal notranslate"><span class="pre">T</span></code> and note that you will probably need
 the introduction rules for those connectives to assemble the clauses you prove
-into <code class="docutils literal"><span class="pre">T</span></code>.
-Then, look at the connectives within each of the premises, <code class="docutils literal"><span class="pre">Si</span></code>, and note that
+into <code class="docutils literal notranslate"><span class="pre">T</span></code>.
+Then, look at the connectives within each of the premises, <code class="docutils literal notranslate"><span class="pre">Si</span></code>, and note that
 you will probably need the elimination rules for those connectives to
 disassemble the premises into the primitive propositions needed to assemble into
-<code class="docutils literal"><span class="pre">T</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
 <p>To choose the order for using the introduction and elimination rules, think
 about the tactics you might use to disassemble the premises and assemble the
 goal.
 The inference rules in this chapter are reviewed below in the order in which
 they should be tactically applied:</p>
 <ul>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">^i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises     premise
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">^i</span></code>: use to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises     premise
      (fill in)
 j. P
      (fill in)
@@ -1477,15 +1468,15 @@ l. P ^ Q       ^i j k
 </pre></div>
 </div>
 </li>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code> appears as a
 premise or proved fact in the partial proof, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
-<li>use the <code class="docutils literal"><span class="pre">Ve</span></code>-rule to prove <code class="docutils literal"><span class="pre">R</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code></li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">Ve</span></code>-rule to prove <code class="docutils literal notranslate"><span class="pre">R</span></code>.</li>
 </ol>
 <p>The proof is structured like this</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises          premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises          premise
       . . .
 j. P V Q
 k. {
@@ -1502,8 +1493,8 @@ q. R                 Ve j k n
 </pre></div>
 </div>
 </li>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">-&gt;i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1. Premises          premise
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">-&gt;i</span></code>: use to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Premises          premise
      . . .
 j. {
      k.  P           assume
@@ -1514,8 +1505,8 @@ m. P -&gt; Q           -&gt;i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">(***) <code class="docutils literal"><span class="pre">~i</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises         premises
+<li><p class="first">(***) <code class="docutils literal notranslate"><span class="pre">~i</span></code>: use to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">~P</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises         premises
       . . .
 j. {
      k.  P           assume
@@ -1526,10 +1517,10 @@ m. ~P                ~i j
 </pre></div>
 </div>
 </li>
-<li><p class="first">(**) <code class="docutils literal"><span class="pre">^e</span></code>-tactic: If your task is to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code> and you have as
-a premise or proved fact in your partial proof, <code class="docutils literal"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then apply <code class="docutils literal"><span class="pre">^e</span></code>
-to extract <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">Q</span></code> to use in the proof</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   Premises      premise
+<li><p class="first">(**) <code class="docutils literal notranslate"><span class="pre">^e</span></code>-tactic: If your task is to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code> and you have as
+a premise or proved fact in your partial proof, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">^</span> <span class="pre">Q</span></code>, then apply <code class="docutils literal notranslate"><span class="pre">^e</span></code>
+to extract <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">Q</span></code> to use in the proof</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   Premises      premise
         . . .
 i.   P ^ Q
 i+1. P             ^e1 i
@@ -1539,16 +1530,16 @@ j.   R
 </pre></div>
 </div>
 </li>
-<li><p class="first">(*) <code class="docutils literal"><span class="pre">-&gt;e</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> appears as a
+<li><p class="first">(*) <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">R</span></code>, if <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">-&gt;</span> <span class="pre">Q</span></code> appears as a
 premise or a proved fact in the partial proof, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">-&gt;e</span></code> to deduce <code class="docutils literal"><span class="pre">Q</span></code></li>
-<li>prove <code class="docutils literal"><span class="pre">Premises,</span> <span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">-&gt;e</span></code> to deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code></li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises,</span> <span class="pre">P,</span> <span class="pre">Q</span> <span class="pre">|-</span> <span class="pre">R</span></code>.</li>
 </ol>
 <p>Here, the tactic is to generate new knowledge that will bring us closer to the
-goal, <code class="docutils literal"><span class="pre">R</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises      premise
+goal, <code class="docutils literal notranslate"><span class="pre">R</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises      premise
        . . .
 i.  P -&gt; Q
         (fill in)
@@ -1559,15 +1550,15 @@ k.  R
 </pre></div>
 </div>
 </li>
-<li><p class="first">(*) <code class="docutils literal"><span class="pre">_|_</span></code>-tactic: To prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, if <code class="docutils literal"><span class="pre">~P</span></code> appears as a premise
+<li><p class="first">(*) <code class="docutils literal notranslate"><span class="pre">_|_</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">Q</span></code>, if <code class="docutils literal notranslate"><span class="pre">~P</span></code> appears as a premise
 or as a proved fact in our partial proof, then</p>
 <ol class="arabic simple">
-<li>prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
-<li>use <code class="docutils literal"><span class="pre">~e</span></code> to deduce <code class="docutils literal"><span class="pre">_|_</span></code></li>
-<li>use the <code class="docutils literal"><span class="pre">_|_e</span></code>-rule to deduce <code class="docutils literal"><span class="pre">Q</span></code>.</li>
+<li>prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></li>
+<li>use <code class="docutils literal notranslate"><span class="pre">~e</span></code> to deduce <code class="docutils literal notranslate"><span class="pre">_|_</span></code></li>
+<li>use the <code class="docutils literal notranslate"><span class="pre">_|_e</span></code>-rule to deduce <code class="docutils literal notranslate"><span class="pre">Q</span></code>.</li>
 </ol>
 <p>The structure is</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.   Premises     premise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.   Premises     premise
        . . .
 i.   ~P
       (fill in)
@@ -1577,16 +1568,16 @@ l.   Q            _|_e k
 </pre></div>
 </div>
 </li>
-<li><p class="first">(*) <code class="docutils literal"><span class="pre">Vi</span></code>: use to prove <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises     premise
+<li><p class="first">(*) <code class="docutils literal notranslate"><span class="pre">Vi</span></code>: use to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span> <span class="pre">V</span> <span class="pre">Q</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises     premise
       (fill in)
 i.  P
 j.  P V Q        Vi1 i
 </pre></div>
 </div>
 </li>
-<li><p class="first">() <code class="docutils literal"><span class="pre">pbc</span></code>: use, as a last resort, to try to prove any <code class="docutils literal"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>1.  Premises         premise
+<li><p class="first">() <code class="docutils literal notranslate"><span class="pre">pbc</span></code>: use, as a last resort, to try to prove any <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">|-</span> <span class="pre">P</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.  Premises         premise
       . . .
 i. {
      j. ~P           assume
