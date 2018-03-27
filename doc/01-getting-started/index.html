@@ -415,7 +415,22 @@ digital signature can be verified using the following command:</p>
      </button>
    </td>
   </tr>
-</table></div></div>
+</table>
+
+<script>
+if (navigator.appVersion.indexOf("Mac")!=-1) {
+  addClass(document.getElementById('birmp'), 'active');
+  addClass(document.getElementById('birm'), 'active');
+}
+if (navigator.appVersion.indexOf("Linux")!=-1 || navigator.appVersion.indexOf("X11")!=-1) {
+  addClass(document.getElementById('birlp'), 'active');
+  addClass(document.getElementById('birl'), 'active');
+}
+if (navigator.appVersion.indexOf("Win")!=-1) {
+  addClass(document.getElementById('birwp'), 'active');
+  addClass(document.getElementById('birw'), 'active');
+}
+</script></div></div>
 </div>
 <hr class="docutils" />
 <div class="section" id="running-logika-using-sireum-cli">
