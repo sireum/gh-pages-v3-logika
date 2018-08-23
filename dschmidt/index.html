@@ -1,29 +1,43 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Logika: Programming Logics &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <title>Logika: Programming Logics &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sireum.css" type="text/css" />
-    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../_static/logika.ico"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Sireum Logika" href="../index.html" />
     <link rel="next" title="1. Introduction: Why bother?" href="01-introduction/index.html" />
     <link rel="prev" title="3.4. Programming Logic" href="../doc/03-language/programming/index.html" />
-  </head><body>
+  </head>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -118,61 +132,64 @@ style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="01-introduction/index.html">1. Introduction: Why bother?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-circuits-truth-tables/index.html">2. Circuits and Truth Tables</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#base-2-arithmetic">2.1. Base 2 Arithmetic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#gates-and-truth-tables">2.2. Gates and Truth Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#hardware-description-language">2.3. Hardware Description Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#knowledge-travels-along-the-wires-of-a-circuit">2.4. Knowledge Travels Along the Wires of A Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#gates-and-truth-tables">2.1. Gates and Truth Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#logika-truth-tables">2.2. Logika Truth Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#the-strange-case-of-the-imply-gate">2.3. The Strange Case of the Imply-gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#common-logical-formula-circuit-equivalences">2.4. Common Logical Formula (circuit) Equivalences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#why-it-is-called-the-top-level-operator">2.5. Why it is called the &#8220;Top Level&#8221; operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-circuits-truth-tables/index.html#knowledge-travels-along-the-wires-of-a-circuit">2.6. Knowledge Travels Along the Wires of A Circuit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="03-algebra/index.html">3. Circuits that Compute on Numbers: Algebra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03-algebra/index.html#id1">3.1. Algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03-algebra/index.html#arithmetic-circuits">3.2. Arithmetic Circuits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03-algebra/index.html#single-assignment-programs">3.3. Single-Assignment Programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03-algebra/index.html#some-history">3.4. Some history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-propositional-logic/index.html">3. Propositional Logic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#propositions">3.1. Propositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#the-sequent">3.2. The Sequent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#inference-rules">3.3. Inference Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#logika-proof-syntax">3.4. Logika Proof Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#the-premise-justification">3.5. The premise Justification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#the-assume-justification">3.6. The assume Justification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#logical-operator-based-justifications">3.7. Logical Operator Based Justifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#and-introduction-and-and-elimination">3.8. And-Introduction and And-Elimination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#or-introduction-and-or-elimination">3.9. Or-Introduction and Or-Elimination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#implies-introduction-and-implies-elimination">3.10. Implies-Introduction and Implies-Elimination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#negation">3.11. Negation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#negation-introduction">3.12. Negation Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#proof-by-contradiction">3.13. Proof by Contradiction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#important-equivalences">3.14. Important Equivalences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#models-of-propositional-logic-soundness-and-completeness">3.15. Models of Propositional Logic: Soundness and Completeness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-propositional-logic/index.html#summary-of-rules-and-tactics">3.16. Summary of Rules and Tactics</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="04-programming-logic/index.html">4. Programming Logic for Assignments and Conditionals</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04-programming-logic/index.html#assignment">4.1. Assignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-programming-logic/index.html#conditional-commands">4.2. Conditional Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-programming-logic/index.html#summary">4.3. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-predicate-logic/index.html">4. The Predicate-Logic Quantifiers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04-predicate-logic/index.html#the-universal-quantifier-and-its-deduction-rules">4.1. The Universal Quantifier and Its Deduction Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-predicate-logic/index.html#the-existential-quantifier">4.2. The Existential Quantifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-predicate-logic/index.html#equivalences-in-predicate-logic">4.3. Equivalences in Predicate Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-predicate-logic/index.html#soundness-and-completeness-of-deduction-rules">4.4. Soundness and Completeness of Deduction Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-predicate-logic/index.html#summary">4.5. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="05-functions-procedures/index.html">5. Functions and Procedures</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="05-functions-procedures/index.html#pre-and-post-conditions">5.1. Pre- and Post-conditions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-functions-procedures/index.html#global-variables-and-procedures">5.2. Global Variables and Procedures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-functions-procedures/index.html#deduction-law-for-procedures">5.3. Deduction Law for Procedures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-functions-procedures/index.html#procedures-that-call-procedures">5.4. Procedures that Call Procedures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-functions-procedures/index.html#summary">5.5. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-programming-logic/index.html">5. Programming Logic for Assignments and Conditionals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05-programming-logic/index.html#logic-and-domain">5.1. Logic and Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-programming-logic/index.html#assignment">5.2. Assignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-programming-logic/index.html#conditional-commands">5.3. Conditional Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-programming-logic/index.html#summary">5.4. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="06-loops-invariants-induction/index.html">6. Loops, Invariants, Induction</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="06-loops-invariants-induction/index.html">6. Loops and Loop Invariants</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#while-loops">6.1. While Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#examples-of-invariant-discovery">6.2. Examples of Invariant Discovery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#universal-and-existential-assertions">6.3. Universal and Existential Assertions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#partial-and-total-correctness">6.4. Partial and Total Correctness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#an-introduction-to-mathematical-induction">6.5. An Introduction to Mathematical Induction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#logika-solution-modes">6.3. Logika Solution Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#loop-termination-and-total-correctness">6.4. Loop Termination and Total Correctness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#sequences-and-the-use-of-universal-and-existential-assertions">6.5. Sequences and the use of Universal and Existential Assertions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-loops-invariants-induction/index.html#summary">6.6. Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="07-propositional-logic/index.html">7. Applications of Propositional Logic to Program Proving</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#propositions">7.1. Propositions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#inference-rules">7.2. Inference Rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#and-introduction-and-and-elimination">7.3. And-Introduction and And-Elimination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#or-introduction-and-or-elimination">7.4. Or-Introduction and Or-Elimination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#implies-introduction-and-implies-elimination">7.5. Implies-Introduction and Implies-Elimination</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#negation">7.6. Negation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#important-equivalences">7.7. Important Equivalences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#conjunctive-normal-form-cnf">7.8. Conjunctive Normal Form (CNF)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#models-of-propositional-logic-soundness-and-completeness">7.9. Models of Propositional Logic: Soundness and Completeness</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-propositional-logic/index.html#summary-of-rules-and-tactics">7.10. Summary of Rules and Tactics</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="08-predicate-logic/index.html">8. The Predicate-Logic Quantifiers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="08-predicate-logic/index.html#the-universal-quantifier-and-its-deduction-rules">8.1. The Universal quantifier and Its Deduction Rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-predicate-logic/index.html#the-existential-quantifier">8.2. The Existential Quantifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-predicate-logic/index.html#equivalences-in-predicate-logic">8.3. Equivalences in Predicate Logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-predicate-logic/index.html#soundness-and-completeness-of-deduction-rules">8.4. Soundness and Completeness of Deduction Rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-predicate-logic/index.html#summary">8.5. Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-functions-procedures/index.html">7. Functions and Procedures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#the-client-service-model">7.1. The Client-Service Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#contracts-pre-post-conditions-and-the-modifies-clause">7.2. Contracts : Pre-/Post-conditions and the Modifies clause</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#global-variables-and-procedures">7.3. Global Variables and Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#functions-that-call-functions">7.4. Functions that Call Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#industry-applications">7.5. Industry Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-functions-procedures/index.html#summary">7.6. Summary</a></li>
 </ul>
 </li>
 </ul>

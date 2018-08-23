@@ -1,0 +1,177 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Logika: Programming Logics
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   1. Introduction: Why bother?
+   </b></big></big></big></big>
+   </font>
+
+.. highlight:: scala
+
+.. _introduction:
+
+Introduction: Why bother?
+#########################
+
+That's a good question!
+After all, you can hack a spreadsheet program or build an interactive game by
+writing a lot of code, experimenting with it, and patching it.
+After awhile, the program you wrote does more or less what you wanted.
+
+But imagine if the rest of the world worked that same way -- would you want to
+drive a car or fly an airplane that was "hacked together"?
+How about travelling in a bus across a bridge that fell down a few times already
+and was repeatedly patched till it (seemed) to hold?
+
+Perhaps these analogies are a bit extreme, but professional scientists and
+engineers rely on planning, design, and calculation so that they are certain the
+products they want to build will work before anyone starts building them.
+Professionals rely on an intellectual foundation to plan, design, and calculate.
+For example:
+
+* physicists use mathematics as the intellectual foundation of their products
+
+* chemical engineers use chemistry
+
+* mechanical engineers use physics
+
+* computer engineers and computer (software) scientists use algebra and symbolic
+  logic
+
+If you develop significant expertise in software engineering, perhaps you will
+work at a firm or lab that develops *safety-critical software*, that is,
+software upon which people's money or safety or lives depend.
+(An example is the flight-control software that lives in a jet.
+Another example is the navigation software in a satellite that talks to the GPS
+device in someone's car.)
+Software of this nature has to be working correctly from the beginning --
+there is no freedom to hack-and-patch the code once it is in use.
+Software engineers must use algebra and logic to plan and calculate how the
+software will behave before the software is built and installed.
+
+This story is not an idle one: As you probably know, computer processor chips
+are planned out in a programming language that looks a lot like C.
+When Intel designed its first Pentium chip, there was a programming error in one
+of the chip's coded hash tables.
+The coding was burned into hardware, and millions of chips were manufactured.
+The error was quickly detected -- the chip did not always perform multiplication
+correctly.
+As a result, Intel lost a lot of money recalling the faulty chips and
+manufacturing a patched replacement.
+These days, Intel uses techniques for validating chip designs much like the ones
+you will learn in this course.
+
+If you have taken a software architecture course
+(e.g., `CIS 501: Software Architecture and Design`),
+you know that large systems can be drawn out, or "blueprinted," with diagrams
+that show the components and how they connect together by means of method calls,
+event broadcast, and message passing.
+What we will learn in this course is lower level and more basic -- we will learn
+how to calculate how the lines of coding in each component compute internal
+knowledge as they convert inputs into outputs.
+
+To understand the idea, let's think about electronics.
+When an electronic device, like a TV-set or radio, is designed, the parts of
+the device and their wirings are drawn out in a diagram called a schematic.
+Here is a schematic of a vacuum-tube guitar amplifier, the kind used by
+recording studios to produce a warm sound with good sustain:
+
+.. image:: image/eicohf22.png
+
+Notice that the wires to the vacuum tubes (the globes labelled V1 through V5)
+are labelled with voltages, and there is a table in the lower left corner of the
+schematic that lists the correct resistances that will hold at each of the wires
+("pins") that connect to the tubes.
+
+The voltage and resistance calculations are both an *analysis* and a
+*prediction* of how the circuit should behave.
+The numbers were calculated with mathematics and algebra, and if the electronics
+parts are working correctly, *then these voltage, amperage, and resistance
+levels must occur* -- the foundations of electronics (math and algebra) demand
+it.
+
+When the circuit is built, the actual levels are measured with a multimeter and
+compared to the calculations; if there is a discrepency, this is a signal that
+some part within the circuit is faulty.
+
+A computer program is a "circuit" that "runs on" knowledge, and when we
+design the parts (lines) of a computer program, we should include
+"knowledge checks" that assert the amount of knowledge computed by the program
+at various points.
+We will learn how to write and insert such knowledge checks, called
+*assertions*, into programs and use the laws of symbolic logic to prove that the
+assertions will hold true.
+
+You will see many examples of "program schematics" in the upcoming chapters.
+Here are two.
+First, this little code fragment apparently selects the larger of two integers
+and prints it:
+
+.. literalinclude:: logika/01-example-1.logika
+   :linenos:
+
+Think of the program as a "circuit" whose lines are "wired" together in
+sequence.
+Instead of voltage, information or knowledge "flows" from one line to the next.
+Here is the program's "schematic" where the internal "knowledge levels" are
+written in symbolic logic and are inserted within the lines of the program,
+enclosed by set braces, ``l"""{ ... }"""``:
+
+.. literalinclude:: logika/01-example-2.logika
+   :linenos:
+   :lineno-start: 3
+   :lines: 3-
+
+The last annotation, ``l"""{ ... max >= x ∧ max >= y ... }"""``, is a symbolic-logic
+statement that ``max`` is guaranteed to be greater-or-equal to both inputs.
+We now know, once the program is implemented, it will behave with this logical
+property.
+
+Here is a second example, a complete analysis of a function that squares all the
+integers in an array that is passed to it as its argument:
+
+.. literalinclude:: logika/01-example-3.logika
+   :linenos:
+   :lineno-start: 3
+   :lines: 3-
+
+You are not expected to understand the above, but the function's
+``post``-condition list the guarantees of what goes out for any given
+array of integers.
+In this case, "what goes out" is an array whose elements are squared --
+it is guaranteed to work, because it was analyzed the same way an electronics
+engineer analyzes a circuit.
+
+If the above somehow looks daunting, here is a shorter proof that leverages
+:ref:`Logika's automation <auto-mode>`:
+
+.. literalinclude:: logika/01-example-4.logika
+   :linenos:
+   :lineno-start: 3
+   :lines: 3-
+
+Even better, using symbolic execution, it can be automatically proved without
+proof annotations:
+
+.. literalinclude:: logika/01-example-5.logika
+   :linenos:
+   :lineno-start: 3
+   :lines: 3-
+
+
+----
+
+.. raw:: html
+
+   <p align=right><small><em>
+   This note was adapted from David Schmidt's CIS 301, 2008,
+   <a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/introT.html">Chapter 00</a>
+   course note.
+   </em></small></p>

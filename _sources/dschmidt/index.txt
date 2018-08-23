@@ -1,0 +1,50 @@
+.. raw:: html
+
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   Logika: Programming Logics
+   </b></big></big></big></big>
+   </font>
+
+.. include:: ../def.rst
+
+.. _course-notes:
+
+Logika: Programming Logics
+##########################
+
+These notes were adapted from the
+`Programming Logics <http://people.cis.ksu.edu/~schmidt/301s14/Lectures/home.html>`__
+lecture notes by |Schmidt|.
+
+The main adaptation of the work is to use the Sireum Logika formal
+input language as the notations for the propositional, predicate, and programming logics.
+
+.. raw:: html
+
+
+   This adaptation work is licensed under a newer license version of Schmidt's --
+   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+   License (CC BY 4.0)</a>. © Copyright 2016, Robby.
+   <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+   style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+
+..
+   note::
+   The adaptation to use the Logika formal language is still in progress;
+   it is currently up to :ref:`Chapter 1 <introduction>`.
+
+----
+
+.. toctree::
+   :maxdepth: 2
+   :numbered: 3
+
+   01-introduction/index.rst
+   02-circuits-truth-tables/index.rst
+   03-propositional-logic/index.rst
+   04-predicate-logic/index.rst
+   05-programming-logic/index.rst
+   06-loops-invariants-induction/index.rst
+   07-functions-procedures/index.rst

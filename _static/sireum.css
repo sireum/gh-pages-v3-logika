@@ -601,7 +601,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Monaco;
+  font-family: Monaco, "Courier New";
 }
 code {
   padding: 2px 4px;

@@ -1,0 +1,1871 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Programming Logic for Assignments and Conditionals &mdash; Sireum Logika</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/logika.ico"/>
+    <link rel="top" title="Sireum Logika" href="../../index.html" />
+    <link rel="up" title="Logika: Programming Logics" href="../index.html" />
+    <link rel="next" title="6. Loops and Loop Invariants" href="../06-loops-invariants-induction/index.html" />
+    <link rel="prev" title="4. The Predicate-Logic Quantifiers" href="../04-predicate-logic/index.html" />
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Logika</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../doc/01-getting-started/index.html">Download</a></li>
+                <li><a href="../../doc/index.html">Documentation</a></li>
+                <li><a href="../index.html">Course Notes</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#"> <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">5. Programming Logic for Assignments and Conditionals</a><ul>
+<li><a class="reference internal" href="#logic-and-domain">5.1. Logic and Domain</a></li>
+<li><a class="reference internal" href="#assignment">5.2. Assignment</a><ul>
+<li><a class="reference internal" href="#assignment-without-mutation">5.2.1. Assignment without Mutation</a><ul>
+<li><a class="reference internal" href="#the-substitution-deduction-rule-claim-manipulator">The Substitution Deduction Rule (Claim Manipulator)</a></li>
+<li><a class="reference internal" href="#the-algebra-deduction-rule-claim-manipulator">The Algebra Deduction Rule (Claim manipulator)</a><ul>
+<li><a class="reference internal" href="#logika-algebra-and-division-modulo">Logika, Algebra and Division (Modulo)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utility-claim-transformers">5.2.2. Utility Claim Transformers</a><ul>
+<li><a class="reference internal" href="#law-for-assume-claim-transformer">Law for Assume (Claim Transformer)</a></li>
+<li><a class="reference internal" href="#law-for-assert-claim-transformer">Law for Assert (Claim Transformer)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assignment-with-mutation">5.2.3. Assignment with Mutation</a><ul>
+<li><a class="reference internal" href="#law-for-assignment-forwards-reasoning-claim-transformer">Law for Assignment: Forwards Reasoning (Claim Transformer)</a></li>
+<li><a class="reference internal" href="#properties-stated-in-terms-of-initial-input-values">Properties Stated in Terms of Initial Input Values</a></li>
+<li><a class="reference internal" href="#mechanical-decidability-of-properties-of-assignment-code">Mechanical Decidability of Properties of Assignment Code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#optional-section-the-backwards-law-for-assignment-and-goal-directed-reasoning">5.2.4. <em>Optional Section: The Backwards Law for Assignment and Goal-Directed Reasoning</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conditional-commands">5.3. Conditional Commands</a><ul>
+<li><a class="reference internal" href="#the-forwards-law-for-conditional-commands-claim-transformation">5.3.1. The Forwards Law for Conditional Commands (Claim Transformation)</a></li>
+<li><a class="reference internal" href="#optional-section-the-backwards-law-for-conditional-commands">5.3.2. <em>Optional Section: The Backwards Law for Conditional Commands</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary">5.4. Summary</a><ul>
+<li><a class="reference internal" href="#forwards-assignment-law">5.4.1. Forwards Assignment Law</a></li>
+<li><a class="reference internal" href="#backwards-assignment-law">5.4.2. Backwards Assignment Law</a></li>
+<li><a class="reference internal" href="#forwards-conditional-law">5.4.3. Forwards Conditional Law</a></li>
+<li><a class="reference internal" href="#backwards-conditional-law">5.4.4. Backwards Conditional Law</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <br/>
+<font color="darkgray">
+<big><big><b>
+Logika: Programming Logics
+</b></big></big>
+</font>
+<br/>
+<font color="black">
+<big><big><big><big><b>
+5. Programming Logic for Assignments and Conditionals
+</b></big></big></big></big>
+</font><div class="section" id="programming-logic-for-assignments-and-conditionals">
+<span id="programming-logic"></span><h1>5. Programming Logic for Assignments and Conditionals<a class="headerlink" href="#programming-logic-for-assignments-and-conditionals" title="Permalink to this headline">¶</a></h1>
+<p>This course will now transition from developing a sound set of logical
+deduction rules and their use to correctly prove logical claims, to applying
+those skills to prove the correctness of programs.  If time permits, we may cover
+the Curry-Howard Isomorphism, which demonstrates that there is a direct relationship
+between computer programs and mathematical proofs.</p>
+<div class="section" id="logic-and-domain">
+<h2>5.1. Logic and Domain<a class="headerlink" href="#logic-and-domain" title="Permalink to this headline">¶</a></h2>
+<p>A logic for programming languages would allow us to reason about out program in
+a systematic way, it might eliminate the need for programming debugging and in
+many cases may allow for automatic verification that a program is correct.</p>
+<p>Earlier in the course, we discussed what we meant by a logic.  A logic is a set of
+truth preserving rules for a domain, which allow new claims (truths) to be
+derived from the known truths (premises).  We further said a logic is sound if
+new claims in the logic are also true in the domain. The model (the logic
+abstraction) must match reality.  Finally, we limited ourselves to logics that
+can be executed by a machine.</p>
+<a class="reference internal image-reference" href="../../_images/05-image-10.png"><img alt="../../_images/05-image-10.png" src="../../_images/05-image-10.png" style="width: 501px; height: 484px;" /></a>
+<p>Here, the domain is that of programming commands and how they impact our knowledge
+about values stored in memory.  This abstraction models every thing about
+what a program does as set of values in memory and how each command changes
+what we know about those memory values.  It allows us to ignore details such
+as where the value is (in cache, main memory or virtual memory) and commands
+which don&#8217;t impact the memory values.</p>
+<p>We would like our logic to be able to follow the structure of a program and express
+truths about the values of variables in the program.  To that end, our logic will
+state claims about variables after each command which impacts the knowledge
+about them.</p>
+<div class="highlight-none"><div class="highlight"><pre>program command 1
+l&quot;&quot;&quot;{ previous claims and
+       claims based on program command 1}&quot;&quot;&quot;
+program command 2
+l&quot;&quot;&quot;{ previous claims and
+       claims based on program command 2}&quot;&quot;&quot;
+program command 3
+l&quot;&quot;&quot;{ previous claims and
+       claims based on program command 3}&quot;&quot;&quot;
+</pre></div>
+</div>
+<p>We will come up with two kinds of logical rules for the programming domain.
+The first will be <em>claim-manipulating</em> rules.  These rules will allow simplification
+of existing facts through substation and algebra and are used as justifications
+in Logika proofs.</p>
+<p><em>Claim-transforming</em> rules, on the other hand,
+capture the meaning of a programming command and allow the deduction of new
+claims which hold after command execution.  They are not used justifications
+in a Logika proof, but rather provide information on what extra is generated by
+the programming command.</p>
+</div>
+<div class="section" id="assignment">
+<h2>5.2. Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assignment-without-mutation">
+<h3>5.2.1. Assignment without Mutation<a class="headerlink" href="#assignment-without-mutation" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Logika Syntax and Semantics</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>import</td>
+<td>Similar to C# using
+puts Logika in programming logic mode</td>
+</tr>
+<tr class="row-even"><td rowspan="6">val x: Z</td>
+<td rowspan="6"><dl class="first last docutils">
+<dt>Similar to C# const int x</dt>
+<dd><div class="first last line-block">
+<div class="line">val - immutable storage location</div>
+<div class="line">x  - name (start with lower case a - z)</div>
+<div class="line">Z - integer-type</div>
+<div class="line">ZS - list of integers (not used here)</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"><td rowspan="3">assert(bool)</td>
+<td rowspan="3">Throws error if boolean statement
+is false</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<p>Let us begin by considering programs with assignments without mutation.
+A program with this feature is called a <em>single-assignment program</em>.</p>
+<p>Consider the code</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>  import org.sireum.logika._
+
+  val x: Z = 6
+  val y: Z = 6
+  val z: Z = 4
+
+  assert (x == y &amp; y &gt; z)
+</pre></div>
+</td></tr></table></div>
+<p>If we were to paste this into Sireum-Logika right now, it would not pass.  The
+error would be akin to the assertion at line 7 has not been proven.  To prove
+this we note that every assignment statement creates a new fact, but we need to
+update the Logika-checker with the new fact using special syntax.</p>
+<a class="reference internal image-reference" href="../../_images/image1.PNG"><img alt="../../_images/image1.PNG" src="../../_images/image1.PNG" style="width: 763.2px; height: 272.8px;" /></a>
+<p>In general, every time there is an assignment, there will be a following Logika
+proof block updating all relevant facts.  However this still will not run.
+Although we have updated the &#8220;fact&#8221; of each assignment we have not connected
+them in any meaningful manner.  Lets start with adding a new justification for
+substitution (<code class="docutils literal"><span class="pre">subst</span></code>).</p>
+<div class="section" id="the-substitution-deduction-rule-claim-manipulator">
+<h4>The Substitution Deduction Rule (Claim Manipulator)<a class="headerlink" href="#the-substitution-deduction-rule-claim-manipulator" title="Permalink to this headline">¶</a></h4>
+<p>Given 3 integers a, b, c and the fact <code class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span> <span class="pre">∧</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">c</span></code>, we would like to be
+able to express <code class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">c</span></code> as a valid claim.  This is the process of substitution.
+Substitution preserves truth by replacing one proposition with an equivalent one.
+In Logika it has two forms:</p>
+<img alt="../../_images/image2.PNG" src="../../_images/image2.PNG" />
+<div class="highlight-none"><div class="highlight"><pre>Syntax: subst1 source target    // ( 1 == LHS, 2 == RHS )
+
+Semeantics: Replace every occurrence of the LHS(RHS) of the source in the target
+            with the RHS(LHS) of source
+</pre></div>
+</div>
+<div class="sidebar">
+<p class="first sidebar-title">Hints on the Substitution rule</p>
+<p>It may help to think of the substitution rule a &#8220;string replacement&#8221; function.
+While this is a gross oversimplification of how it works, it succinctly
+describes its effect.  Because substitution requires equality to be proven
+before use it can manipulate propositional claims.</p>
+<div class="last highlight-none"><div class="highlight"><pre>1. p = r                      premise
+2. (q ∧ r) → ¬ s ∨ (t ∧ r)    premise
+3. (q ∧ p) → ¬ s ∨ (t ∧ p)    subst2 1 2
+</pre></div>
+</div>
+</div>
+<p>Using the substitution rule, the proof now looks like:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = 6
+l&quot;&quot;&quot;{
+    1. x = 6 premise  // generated by line 3&#39;s assigment
+    }&quot;&quot;&quot;
+
+val y: Z = 6
+l&quot;&quot;&quot;{
+    1. y = 6 premise  // generated by line 7&#39;s assigment
+    2. x = 6 premise  // from the proof on line 4 - 6
+    3. x = y subst2 1 2
+    }&quot;&quot;&quot;
+
+val z: Z = 4
+l&quot;&quot;&quot;{
+    1. z = 4  premise  // generated by line 7&#39;s assigment
+    2. x = y  premise  // from the proof on line 9 - 13
+    3. y = 6  premise  // from the proof on line 9 - 13
+    }&quot;&quot;&quot;
+
+assert (x == y &amp; y &gt; z)
+</pre></div>
+</td></tr></table></div>
+<p>Here the use of substitution on line 12 solves the left hand side
+of the assertion.  However to handle the mathematical relationship of 4 &lt; 6 we
+will need a different tool.</p>
+</div>
+<div class="section" id="the-algebra-deduction-rule-claim-manipulator">
+<h4>The Algebra Deduction Rule (Claim manipulator)<a class="headerlink" href="#the-algebra-deduction-rule-claim-manipulator" title="Permalink to this headline">¶</a></h4>
+<p>If given integers a, b, c and <code class="docutils literal"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">b</span> <span class="pre">∧</span> <span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">c</span></code> we would like to simplify to
+<code class="docutils literal"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">c</span></code>.  Substitution will not work, as it deals strictly with equalities.
+Fortunately, there is a powerful deduction rule in Logika called algebra.
+Algebra knows the equality and inequality relationships between integers.  The
+claim <code class="docutils literal"><span class="pre">21.</span> <span class="pre">6</span> <span class="pre">&gt;</span> <span class="pre">4</span>&nbsp; <span class="pre">algebra</span></code> is perfectly correct in the programing logic
+proof environment.  Algebra correctly evaluates integer addition, subtraction,
+multiplication, division and modulo.</p>
+<p>Algebra uses properties like distributive laws, commutative laws etc.
+For example, here are some laws for the binary operators, <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">*</span></code> where
+the operands (arguments) are integers:</p>
+<div class="highlight-python"><div class="highlight"><pre>(a + b) + c = a + (b + c)           law associativity of +
+a + b = b + a                       law commutativity of +
+a + 0 = a                           law unit+
+
+(a * b) * c = a * (b * c)           law associativity*
+a * b = b * a                       law commutativity*
+a * 1 = a                           law unit*
+
+a * (b + c) = (a * b) + (a * c)     law distributive * over +
+</pre></div>
+</div>
+<p>Lets take a look at the complete proof:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = 6
+l&quot;&quot;&quot;{
+    1. x = 6 premise
+    }&quot;&quot;&quot;
+
+val y: Z = 6
+l&quot;&quot;&quot;{
+    1. y = 6 premise
+    2. x = 6 premise
+    3. x = y subst2 1 2
+    }&quot;&quot;&quot;
+
+val z: Z = 4
+l&quot;&quot;&quot;{
+    1. z = 4          premise
+    2. x = y          premise
+    3. y = 6          premise
+    4. y &gt; z          algebra 1 3
+    5. x = y ∧ y &gt; z  ∧i 2 4
+    }&quot;&quot;&quot;
+
+assert (x == y &amp; y &gt; z)
+</pre></div>
+</td></tr></table></div>
+<p>Here on line 20 we see the most common use of algebra. Logika is told to use
+other facts it can find in claim 1 (line 17) and claim 3 (line 19) along with
+algebra to deduce <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">z</span></code>. In general you will feed algebra the lines that
+allow Logika to calculate the value (or value range) of each <code class="docutils literal"><span class="pre">var</span></code> or <code class="docutils literal"><span class="pre">val</span></code>
+in the claim.</p>
+<p>All the claims you pass to algebra must be in the current proof.  Passing too
+many, or irrelevant claims generally does no harm.  For example,
+<code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">z</span>&nbsp; <span class="pre">algebra</span> <span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span></code> would still work but the fact that x = y is not helpful.
+If your claims are insufficient (<code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">z</span>&nbsp; <span class="pre">algebra</span> <span class="pre">1</span> <span class="pre">2</span></code>), you will receive an
+error.</p>
+<p>Astute readers may have noticed that <em>algebra</em> can often be use in place of
+<em>substitution</em>. In fact, line 12 can be written as
+<code class="docutils literal"><span class="pre">3.</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span> <span class="pre">algebra</span> <span class="pre">1</span> <span class="pre">2</span></code>.  Algebra has rules for integer (in)equalities and
+&#8220;common&#8221; mathematical operations. It will also handle <code class="docutils literal"><span class="pre">¬</span></code>, as in <code class="docutils literal"><span class="pre">¬</span> <span class="pre">(x</span> <span class="pre">==</span> <span class="pre">0)</span></code>
+which evaluates as `` x != 0``.  However, algebra cannot handle any claim
+involving  <code class="docutils literal"><span class="pre">∧,</span> <span class="pre">∨,</span> <span class="pre">→,</span> <span class="pre">⊥,</span> <span class="pre">∀,</span> <span class="pre">∃</span></code>.  For these you will have to use substitution to
+build compound/complex claims.</p>
+<p>Next, we use ∧i to create a claim which exactly matches the boolean assertion in
+line 24.  Exactly means exactly.  If you need <code class="docutils literal"><span class="pre">assert(</span> <span class="pre">x</span> <span class="pre">==</span> <span class="pre">6)</span></code> and you have a
+claim of <code class="docutils literal"><span class="pre">6</span> <span class="pre">=</span> <span class="pre">x</span></code>; it will not work.  Likewise,  <code class="docutils literal"><span class="pre">assert</span> <span class="pre">(</span> <span class="pre">p</span> <span class="pre">|</span> <span class="pre">q)</span></code> will not
+match <code class="docutils literal"><span class="pre">q</span> <span class="pre">∨</span> <span class="pre">p</span></code>.</p>
+<p>Here is another quick example.</p>
+<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre> val hours: Z = 4
+ l&quot;&quot;&quot;{ 1.  hours == 4          premise // (generated by the assignment)
+ }&quot;&quot;&quot;
+ val minutes: Z = hours * 60
+ l&quot;&quot;&quot;{
+   1.  hours == 4             premise  // (the last-stated fact, unaltered)
+   2.  minutes == hours * 60  premise   // (the fact generated by the assignment)
+   3.  minutes == 240         algebra 1 2
+ }&quot;&quot;&quot;
+ assert(minutes = 240)
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="logika-algebra-and-division-modulo">
+<h5>Logika, Algebra and Division (Modulo)<a class="headerlink" href="#logika-algebra-and-division-modulo" title="Permalink to this headline">¶</a></h5>
+<p>There are three things to note about division (or modulo) when using variables and
+integer types.  First Logika can be <strong>finicky</strong> about division by a <code class="docutils literal"><span class="pre">var</span></code>.</p>
+<p>Second, Logika requires you to prove the denominator is not zero <strong>before</strong>
+the division.  You must prove exactly <code class="docutils literal"><span class="pre">denominator</span> <span class="pre">!=</span> <span class="pre">0</span></code>.  Other forms,
+<code class="docutils literal"><span class="pre">denominator</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">0</span> <span class="pre">!=</span> <span class="pre">denominator</span></code> will not work.  This leads to silly
+looking but necessary statements like</p>
+<div class="highlight-none"><div class="highlight"><pre>...
+14 . 2 != 0   algebra
+}&quot;&quot;&quot;
+var c: Z = a / 2
+</pre></div>
+</div>
+<p>Finally, Logika <strong>KNOWS</strong> integer division.   <code class="docutils literal"><span class="pre">165.</span>&nbsp; <span class="pre">(a/5)</span> <span class="pre">*</span> <span class="pre">5</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">algebra</span></code> is not
+true.  You are doing integer math and need to account  for the remainder.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val a: Z = readInt()
+l&quot;&quot;&quot;{
+     2. 3 != 0 algebra
+}&quot;&quot;&quot;
+
+assert (a == (a % 3) * 3)
+</pre></div>
+</td></tr></table></div>
+<p>In the above examples, the program correctly fails to verify.</p>
+</div>
+</div>
+</div>
+<div class="section" id="utility-claim-transformers">
+<h3>5.2.2. Utility Claim Transformers<a class="headerlink" href="#utility-claim-transformers" title="Permalink to this headline">¶</a></h3>
+<p>Often in logic and programming, we need helper functions, previously proved
+sub-proofs, lemmas etc. to make the work easier.  In this course, the Logika
+commands <em>assume</em> and <em>assert</em> fit in this niche. You have already seen <em>assert</em>
+in use, so now is an opportune time to more formally introduce the
+claim-transformation rules for both.</p>
+<div class="section" id="law-for-assume-claim-transformer">
+<h4>Law for Assume (Claim Transformer)<a class="headerlink" href="#law-for-assume-claim-transformer" title="Permalink to this headline">¶</a></h4>
+<p>An assume statement, <code class="docutils literal"><span class="pre">assume</span> <span class="pre">(expression)</span></code>, consists of the keyword assume and
+an expression.  If the expression is satisfiable, then the expression is entered
+as a premise in the following Logika proof-block.</p>
+<div class="highlight-none"><div class="highlight"><pre>var a: Z = readInt()
+assume (a &gt; 0 )
+l&quot;&quot;&quot;{
+     1. a &gt; 0 premise
+}&quot;&quot;&quot;
+</pre></div>
+</div>
+<p>You will see a Logika error if the assumption is not satisfiable.</p>
+<a class="reference internal image-reference" href="../../_images/05-image-20.PNG"><img alt="../../_images/05-image-20.PNG" src="../../_images/05-image-20.PNG" style="width: 765.6px; height: 68.0px;" /></a>
+<p>Toy programs often use assume in lieu of wrapping code in an &#8220;if statement&#8221;</p>
+<div class="highlight-none"><div class="highlight"><pre>var a : Z = readInt()
+assume (a != 0)
+l&quot;&quot;&quot;{
+     1. a != 0  premise
+}&quot;&quot;&quot;
+var b = 20 / a
+
+// instead of
+var a : Z = readInt()
+var b : Z = 0
+if (a != 0) {
+   b = 20 / a
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="law-for-assert-claim-transformer">
+<h4>Law for Assert (Claim Transformer)<a class="headerlink" href="#law-for-assert-claim-transformer" title="Permalink to this headline">¶</a></h4>
+<p>The assert statement, <code class="docutils literal"><span class="pre">assert(expression)</span></code>, consists of the keyword assert and
+an expression.  If the expression is <em>true</em>, then the expression is entered
+as a premise in the following Logika proof-block. If the expression is
+not true Logika throws an error.</p>
+<p>This expression is often used to &#8220;prove&#8221; that a block of code had the intended
+effect.  It is helpful when &#8220;backwards reasoning&#8221; (see below) through a program.</p>
+<div class="highlight-none"><div class="highlight"><pre>...
+l&quot;&quot;&quot;{
+    ... // prove exp
+    100. exp    justification
+}&quot;&quot;&quot;
+assert(exp)
+l&quot;&quot;&quot;{
+    1. exp      premise
+}&quot;&quot;&quot;
+</pre></div>
+</div>
+<p>With these utility functions in hand, we can get back to our development
+of claim-transforming rules for assignment.</p>
+</div>
+</div>
+<div class="section" id="assignment-with-mutation">
+<h3>5.2.3. Assignment with Mutation<a class="headerlink" href="#assignment-with-mutation" title="Permalink to this headline">¶</a></h3>
+<p>What we have discussed so far works great for values (named memory locations
+which are immutable), but does not address the much more common computer programming
+practice of using mutable locations (or variables).  Logika supports variables,
+and the following program is valid.</p>
+<div class="sidebar">
+<p class="first sidebar-title">Logika syntax</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="6">var x: Z</td>
+<td rowspan="6"><dl class="first last docutils">
+<dt>Similar to C# int x</dt>
+<dd><div class="first last line-block">
+<div class="line">var - mutable storage location</div>
+<div class="line">x  - name (start with lower case a - z)</div>
+<div class="line">Z - integer-type</div>
+<div class="line">ZS - list of integers (not used here)</div>
+</div>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td>readInt()</td>
+<td>Similar to C#
+Convert.ToInt32(Console.ReadLine());</td>
+</tr>
+<tr class="row-even"><td rowspan="4">assume(bool)</td>
+<td rowspan="4">Creates a &#8220;fact&#8221; which can then be used
+as a premise in the following Logika
+proof block</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"><td rowspan="3">assert(bool)</td>
+<td rowspan="3">Throws error if boolean statement
+is false</td>
+</tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+var x: Z = readInt(&quot; Enter an integer greater than 0 :&quot;)
+assume (x &gt; 0)
+l&quot;&quot;&quot;{
+      1. x &gt; 0 premise
+    }&quot;&quot;&quot;
+x = 2
+l&quot;&quot;&quot;{
+     1. x = 2 premise
+     2. x &gt; 1 algebra 1
+     }&quot;&quot;&quot;
+
+assert (x &gt; 1)
+</pre></div>
+</td></tr></table></div>
+<p>But this approach quickly breaks down when you consider:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+var x: Z = readInt(&quot; Enter an integer greater than 0 :&quot;)
+assume (x &gt; 0)
+l&quot;&quot;&quot;{
+      1. x &gt; 0 premise
+    }&quot;&quot;&quot;
+x = x + 1
+l&quot;&quot;&quot;{
+     1. x = x + 1 premise????
+     2. ????
+     }&quot;&quot;&quot;
+
+assert (x &gt; 1)
+</pre></div>
+</td></tr></table></div>
+<p>While <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> makes perfect sense in programming languages, it is utter
+rubbish in logic. Instead we need different rules and more precise
+way of reasoning about assignment.</p>
+<div class="section" id="law-for-assignment-forwards-reasoning-claim-transformer">
+<h4>Law for Assignment: Forwards Reasoning (Claim Transformer)<a class="headerlink" href="#law-for-assignment-forwards-reasoning-claim-transformer" title="Permalink to this headline">¶</a></h4>
+<p>In the assignment, <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>, we must distinguish between the &#8220;old&#8221; value of
+<code class="docutils literal"><span class="pre">x</span></code>, which appears on the assignment&#8217;s right-hand side, and its &#8220;new&#8221; value,
+which appears on its left-hand side.
+With this distinction, we can reason correctly about <code class="docutils literal"><span class="pre">x</span></code>.
+Here is the example repeated, with the distinction made clear:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+var x: Z = readInt(&quot; Enter an integer greater than 0 :&quot;)
+assume (x &gt; 0)
+l&quot;&quot;&quot;{
+      1. x &gt; 0 premise
+    }&quot;&quot;&quot;
+x = x + 1
+l&quot;&quot;&quot;{
+     0. x_old &gt; 0 premise
+     1. x = x_old +1 premise
+     2. x_old = x -1 algebra 1
+     3. x - 1 &gt; 0 algebra 2 0
+     4. x &gt; 1 algebra 3
+     }&quot;&quot;&quot;
+assert (x &gt; 1)
+</pre></div>
+</td></tr></table></div>
+<p>When we have an assertion, <code class="docutils literal"><span class="pre">P(x)</span></code>, that holds true just before an assignment,
+<code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">f(x)</span></code>, we calculate the assertions after the assignment, in two stages:</p>
+<ol class="arabic simple">
+<li>We assert that <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">[x_old/x]f(x)</span></code> and also <code class="docutils literal"><span class="pre">[x_old/x]P(x)</span></code>.
+The notation, <code class="docutils literal"><span class="pre">[x_old/x]E</span></code>, means that we substitute (replace) all
+occurrences of <code class="docutils literal"><span class="pre">x</span></code> within expression <code class="docutils literal"><span class="pre">f(x)</span></code> by <code class="docutils literal"><span class="pre">x_old</span></code>.</li>
+<li>We next apply deductions, giving us a new assertion, <code class="docutils literal"><span class="pre">Q(x)</span></code>, that does not
+mention <code class="docutils literal"><span class="pre">x_old</span></code>.
+This assertion can be carried forwards as a premise for future deduction.</li>
+</ol>
+<p>This is what we did in the earlier example &#8211; we deduced <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, which we can
+carry forwards.
+We then forget all the assertions that mentioned <code class="docutils literal"><span class="pre">x_old</span></code>.</p>
+<p><strong>NOTE</strong>: It is vitally important you update all facts which depend on x_old before
+you exit the Logika proof block following the assignment which caused it to
+exists.  The scope of x_old is only that first Logika proof after the assignment.</p>
+<p>The rule&#8217;s schematic looks likes this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  ...</span>
+<span class="s">  m. P</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x == [x_old/x]e      premise</span>
+<span class="s">  2. [x_old/x]P           premise</span>
+<span class="s">  ...</span>
+<span class="s">  n. Q                    // (where  Q  must _not_ mention  x_old)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Here is a second example that shows the form of reasoning we follow when working
+with assignments.
+Say that <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">x</span></code> at the outset, and we wish to preserve this property as the
+computation progresses.
+We can prove it with algebra:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+ var x: Z = readInt(&quot;Enter an int&quot;)
+   var y: Z = readInt(&quot;Enter LARGER int&quot;)
+   assume (y &gt; x)
+   l&quot;&quot;&quot;{ 1.  y &gt; x         premise }&quot;&quot;&quot;
+   x = x - 1
+   l&quot;&quot;&quot;{
+     1.  y &gt; x_old        premise
+     2.  x == x_old - 1   premise
+     3.  x_old == x + 1   algebra 2    // This line abbreviates multiple small steps.
+     4.  y &gt; x + 1        subst1 3 1   // Substitute the equality on line 3 into the formula on line 1.
+     5.  y &gt; x            algebra 4    // There is no mention of  x_old
+   }&quot;&quot;&quot;
+   y = y + 1
+   l&quot;&quot;&quot;{
+     1. y_old &gt; x         premise
+     2. y == y_old + 1    premise
+     3. y &gt; x             algebra 1 2  // This line abbreviates these steps:
+                                       //   y_old == y - 1
+                                       //   y - 1 &gt; x
+                                       //   y &gt; x + 1
+   }&quot;&quot;&quot;
+   assert (y &gt; x)
+</pre></div>
+</td></tr></table></div>
+<p>After each command, a proof segment begins with the premises and then <em>subst</em>
+and <em>algebra</em> steps lead to the last line, which states the knowledge that
+travels forwards to the next command.  Again, we must ensure that no &#8220;_old&#8221; variables
+appear in any claims which we may want to use in subsequent Logika proof blocks
+as claims.</p>
+<p>Here is a third example, where we wish to show that the value within variable
+<code class="docutils literal"><span class="pre">x</span></code> falls in a certain range (perhaps <code class="docutils literal"><span class="pre">x</span></code> is used as an index to an array):</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+var x: Z = readInt()
+// the precondition is that int  x  falls in the range, 1,2,...,99
+assume (x &gt; 0 &amp; x &lt; 100)
+l&quot;&quot;&quot;{ 1. x &gt; 0 ∧ x &lt; 100           premise    }&quot;&quot;&quot;
+x = x + 1
+l&quot;&quot;&quot;{
+  1. x_old &gt; 0  ^  x_old &lt; 100     premise
+  2. x_old &gt; 0                     ^e1 1
+  3. x == x_old + 1                premise
+  4. x_old + 1 &gt; 1                 algebra 2
+  5. x &gt; 1                         subst2 3 4
+  6. x_old &lt; 100                   ^e2 1
+  7. x_old + 1 &lt; 101               algebra 6
+  8. x &lt; 101                       subst2 3 7
+  9. x &gt; 1 ^ x &lt; 101               ^i 5 8
+}&quot;&quot;&quot;
+assert ( x &gt; 1 &amp; x &lt; 101)
+</pre></div>
+</td></tr></table></div>
+<p>The starting assertion about <code class="docutils literal"><span class="pre">x</span></code> is sometimes called a <em>precondition</em>, because
+it is the input property that the program requires to operate successfully.
+The goal of the program is its <em>postcondition</em>.  More on this when we discuss
+functions and procedures (similar to C# Methods).</p>
+</div>
+<div class="section" id="properties-stated-in-terms-of-initial-input-values">
+<h4>Properties Stated in Terms of Initial Input Values<a class="headerlink" href="#properties-stated-in-terms-of-initial-input-values" title="Permalink to this headline">¶</a></h4>
+<p>Sometimes we really must discuss the &#8220;old&#8221; value of a variable after an
+assignment completes.
+Here is a small but tricky program that swaps the values of the its two
+variables, <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">val</span> <span class="n">temp</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">temp</span>
+<span class="n">println</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>At the end of the program, we want to assert that <code class="docutils literal"><span class="pre">y</span></code> has <code class="docutils literal"><span class="pre">x</span></code>&#8216;s value and
+<code class="docutils literal"><span class="pre">x</span></code> has <code class="docutils literal"><span class="pre">y</span></code>&#8216;s.
+To do this, we may invent dummy constants called <code class="docutils literal"><span class="pre">xin</span></code> and <code class="docutils literal"><span class="pre">yin</span></code> and
+pretend they are the input values to <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> respectively:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+ val xin: Z = readInt()
+ val yin: Z = readInt()
+ var x: Z = xin
+ var y: Z = yin
+ l&quot;&quot;&quot;{
+   1. x == xin                                      premise
+   2. y == yin                                      premise
+ }&quot;&quot;&quot;
+ val temp: Z = x
+ l&quot;&quot;&quot;{
+   1.  temp == x                                     premise
+   3.  x == xin                                     premise
+   4.  temp == xin                                  subst1 3 1
+ }&quot;&quot;&quot;
+ x = y
+ l&quot;&quot;&quot;{
+   1. x == y                                         premise
+   3. temp == xin                                   premise
+   5. y == yin                                      premise
+   6. x == yin                                      subst1 5 1
+ }&quot;&quot;&quot;
+ y = temp
+ l&quot;&quot;&quot;{
+   1. y = temp                                       premise
+   2. temp = xin                                    premise
+   3. y = xin                                       algebra 1 2
+   5. x = yin                                       premise
+   4. y = xin  ^  x = yin                          ∧i 3 5
+   }&quot;&quot;&quot;
+
+assert(y == xin  &amp;  x == yin)
+</pre></div>
+</td></tr></table></div>
+<p>The dummy values <code class="docutils literal"><span class="pre">xin</span></code> and <code class="docutils literal"><span class="pre">yin</span></code> plus the assignment law navigate us
+through the deduction.</p>
+</div>
+<div class="section" id="mechanical-decidability-of-properties-of-assignment-code">
+<h4>Mechanical Decidability of Properties of Assignment Code<a class="headerlink" href="#mechanical-decidability-of-properties-of-assignment-code" title="Permalink to this headline">¶</a></h4>
+<p>After several examples, we are tempted to conclude that deducing forwards
+knowledge is a mechanical activity, where we do an assignment and then eliminate
+occurrences of the &#8220;old&#8221; variable, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ P }&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1.  [x_old/x]P        premise</span>
+<span class="s">  2. x == [x_old/x]e    premise</span>
+
+<span class="s">  // solve for  x_old  in terms of  x  and  e :</span>
+<span class="s">  3. x_old = ...x...    algebra 2</span>
+
+<span class="s">  // eliminate  x_old  in Line 1 :</span>
+<span class="s">  4. [...x.../x_old]P       subst1 3 1</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>We can apply this pattern to an earlier example &#8211; it works!</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+var x: Z = readInt()
+assume (x &gt; 0 &amp; x &lt; 100)
+x = x + 1
+l&quot;&quot;&quot;{
+  1. x_old &gt; 0  ^  x_old &lt; 100     premise
+  2. x == x_old + 1                premise
+  //  Solve for  x_old :
+  3. x_old == x - 1                algebra 2
+  //  Restate inequalities as atoms
+  4. x_old &gt; 0                     ∧e1 1
+  5. x_old &lt; 100                   ∧e2 1
+  //  Eliminate x_old
+  6. x &gt; 1                         algebra 4 3
+  7. x &lt; 101                       algebra 5 3
+  8. x &gt; 1 ∧ x &lt; 101               ∧i 6 7
+}&quot;&quot;&quot;
+assert (x &gt; 1 &amp; x &lt; 101)
+</pre></div>
+</td></tr></table></div>
+<p>Will the variable-elimination technique always lead us to the final goal?
+If so, perhaps we can write a proof generator that will automatically write the
+proofs for us!</p>
+<p>Unfortunately, the answer here is &#8220;no&#8221;.
+The reason is that important intermediate knowledge can be lost, and here is
+a simple example that shows how:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">       1. y == x * 2        premise</span>
+<span class="s">    }&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">       1. y == x_old * 2       premise</span>
+<span class="s">       2. x == 3               premise</span>
+<span class="s">       3. x_old == y / 2       algebra 1   // Solve for  x_old</span>
+<span class="s">       //  We cannot eliminate  x_old  from  Line 2 ?!</span>
+<span class="s">       //  The knowledge that travels forwards is only</span>
+<span class="s">       //    x == 3</span>
+<span class="s">       //  We lose knowledge about  y.</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">val</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">//</span> <span class="n">prove</span> <span class="n">here</span> <span class="n">that</span>  <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>  <span class="n">that</span> <span class="ow">is</span><span class="p">,</span>  <span class="n">y</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">even</span><span class="o">-</span><span class="n">valued</span> <span class="nb">int</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x == 3               premise</span>
+<span class="s">  2. z == 4               premise</span>
+<span class="s">  // We cannot use   x_old == y / 2  as a premise .... x_old has disappeared.</span>
+<span class="s">  // Lines 1 and 2 cannot prove the goal.</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>A human sees how to repair the above proof &#8211; extract new knowledge about <code class="docutils literal"><span class="pre">y</span></code>
+from premise <code class="docutils literal"><span class="pre">y</span> <span class="pre">==</span> <span class="pre">x_old</span> <span class="pre">*</span> <span class="pre">2</span></code>:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+var x: Z = readInt()
+val y: Z = x * 2
+l&quot;&quot;&quot;{  
+     1. y == x * 2        premise 
+}&quot;&quot;&quot;
+x = 3
+l&quot;&quot;&quot;{
+     1. y == x_old * 2       premise
+     2. y % 2 == 0           algebra 1   // because  y  is even-valued, even though
+                                         // we don&#39;t know what value it has
+}&quot;&quot;&quot;
+val z: Z = 4
+// prove here that  y % 2 == 0,  that is,  y is an even-valued int
+l&quot;&quot;&quot;{
+     1. y % 2 == 0        premise     //
+     2. 2 != 0            algebra     // this line is necessary to avoid an error
+                                      // saying we haven&#39;t proven divisor is non-zero
+}&quot;&quot;&quot;
+assert (y % 2 == 0)
+</pre></div>
+</td></tr></table></div>
+<p>When we analyze a program in a forwards direction, we work together with an
+automated checker tool to reach our goal.</p>
+</div>
+</div>
+<div class="section" id="optional-section-the-backwards-law-for-assignment-and-goal-directed-reasoning">
+<h3>5.2.4. <em>Optional Section: The Backwards Law for Assignment and Goal-Directed Reasoning</em><a class="headerlink" href="#optional-section-the-backwards-law-for-assignment-and-goal-directed-reasoning" title="Permalink to this headline">¶</a></h3>
+<p>The previous examples raise this question:
+When we analyze a program from start to finish, which facts should we try to
+deduce and carry forwards after each assignment?
+We cannot answer this question unless we know the <em>goal assertion</em> we are trying
+to prove at the program&#8217;s end.
+For this reason, we should learn how to reason <em>backwards</em> from the goal at the
+end of a program to the asserts at the beginning.
+This is called <em>goal-directed reasoning</em>, and there is a simple, beautiful
+deduction rule for assignments that takes the guesswork out of goal-directed
+reasoning.</p>
+<p>Here is an example.
+Say that at program&#8217;s end, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">2</span></code> must hold, and the program ends like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     subgoal: ???</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    goal: x &gt; 2</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>What is the subgoal needed for success?
+It appears that <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> must hold just before the assignment.
+How did we calculate this?
+Since the assignment &#8220;equates&#8221; <code class="docutils literal"><span class="pre">x</span></code> with <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code>, it must be <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> that
+is greater than 2 &#8211; we <em>substitute</em> <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">1</span></code> into the goal, for <code class="docutils literal"><span class="pre">x</span></code>,
+that is, we compute the subgoal as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="p">]</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>  <span class="o">=</span>  <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>that is, y &gt; 1 is the subgoal:</p>
+<div class="highlight-python"><div class="highlight"><pre>  <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     subgoal: y &gt; 1</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    goal: x &gt; 2</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>This reasoning is the basis of a &#8220;backwards law&#8221; for assignment commands.</p>
+<p>The formal statement of the backwards-assignment law is this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     subgoal:  [e/x]G</span>
+<span class="s">    }&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    goal: G</span>
+<span class="s">    }&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The goal, <code class="docutils literal"><span class="pre">G</span></code>, is sometimes called the assignment&#8217;s <em>postcondition</em>, and
+the subgoal, <code class="docutils literal"><span class="pre">[e/x]G</span></code>, is the <em>precondition</em>.
+It is a formal, proved result that every such precondition, postcondition pair
+calculated by the backwards-assignment law can be proved as a correct forwards
+deduction with the forwards-assignment law.
+Let&#8217;s use the backwards assignment law on an example from the previous section.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     ???</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     x &gt; 1  ^  x &lt; 101   (goal)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The backwards assignment law tells us <code class="docutils literal"><span class="pre">???`</span></code> should be
+<code class="docutils literal"><span class="pre">[x</span> <span class="pre">+</span> <span class="pre">1/</span> <span class="pre">x](x</span> <span class="pre">&gt;</span> <span class="pre">1</span> <span class="pre">^</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">101)</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      x + 1 &gt; 1  and  x + 1 &lt; 101  (subgoal)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     x &gt; 1  ^  x &lt; 101    (goal)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, we use algebra to show that the assert proves the subgoal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x &gt; 0 ^ x &lt; 100                      premise</span>
+<span class="s">  2. x &gt; 0                                ^e1 1</span>
+<span class="s">  3. x &lt; 100                              ^e2 1</span>
+<span class="s">  4. x + 1 &gt; 1                            algebra 2</span>
+<span class="s">  5. x + 1 &lt; 101                          algebra 3</span>
+<span class="s">  6. x + 1 &gt; 1  and  x + 1 &lt; 101          ^i 4 5      // (subgoal achieved)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x_old + 1 &gt; 1  and  x_old + 1 &lt; 101  premise</span>
+<span class="s">  2. x == x_old + 1                       premise</span>
+<span class="s">  3. x &gt; 1  ^  x &lt; 101                    subst2 2 1 // (goal achived)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">println</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The backwards law helps us calculate exactly the correct knowledge at
+intermediate program points that will lead to the desired final goal.</p>
+<p>This technique works well on programs that are sequences of assignments.
+Here are two examples worked in backwards style:</p>
+<div class="highlight-python"><div class="highlight"><pre>var dimes: Z = readInt()
+var money: Z = dimes * 10
+assume WHAT??
+dimes = dimes + 1
+money = money + 10
+// GOAL:   money == dimes * 10
+</pre></div>
+</div>
+<p>We fill in the subgoals one by one:</p>
+<div class="highlight-python"><div class="highlight"><pre>var dimes: Z = readInt()
+var money: Z = dimes * 10
+assume WHAT??
+l&quot;&quot;&quot;{ SUBGOAL II:  (money + 10) == (dimes + 1) * 10 }&quot;&quot;&quot;
+dimes = dimes + 1
+l&quot;&quot;&quot;{ SUBGOAL I:  (money + 10) == dimes * 10 }&quot;&quot;&quot;
+money = money + 10
+// GOAL:   money == dimes * 10
+</pre></div>
+</div>
+<p>Some algebra simplifies the second subgoal into just <code class="docutils literal"><span class="pre">money</span> <span class="pre">==</span> <span class="pre">dimes</span> <span class="pre">*</span> <span class="pre">10</span></code>,
+which must be asserted at the beginning.
+Here is a previous problematic example, now neatly handled:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     SUBGOAL II:    y % 2 == 0   (x doesn&#39;t matter!)</span>
+<span class="s">    }&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    SUBGOAL I:     y % 2 == 0   (z doesn&#39;t matter!)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">//</span> <span class="n">GOAL</span><span class="p">:</span>   <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>  <span class="n">that</span> <span class="ow">is</span><span class="p">,</span>  <span class="n">y</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">even</span><span class="o">-</span><span class="n">valued</span> <span class="nb">int</span>
+</pre></div>
+</div>
+<p>The backwards technique works even when there is a self-referential assignment:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     goal: x &gt; 2</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>We calculate that the subgoal before the assignment must be
+<code class="docutils literal"><span class="pre">[x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">x](x</span> <span class="pre">&gt;</span> <span class="pre">2)</span></code>, which is <code class="docutils literal"><span class="pre">(x</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">&gt;</span> <span class="pre">2</span></code>.
+A small algebra step completes the forwards proof of the backwards deduction:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="n">assume</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x &gt; 1            premise</span>
+<span class="s">  2. x + 1 &gt; 2        algebra 1</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x = x_old + 1    premise</span>
+<span class="s">  2. x_old + 1 &gt; 2    premise</span>
+<span class="s">  3. x &gt; 2            subst2 1 2</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>By reasoning backwards, we avoid the need to work directly with <code class="docutils literal"><span class="pre">x_old</span></code> &#8211;
+the subgoals we calculate by substitution are correctly expressed in terms of
+<code class="docutils literal"><span class="pre">x</span></code>.
+So, if your program has a clearly stated goal, you <em>can use backwards reasoning
+to prove that the goal is achieved</em>.</p>
+</div>
+</div>
+<div class="section" id="conditional-commands">
+<h2>5.3. Conditional Commands<a class="headerlink" href="#conditional-commands" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Logika Syntax and Semantics</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><dl class="first last docutils">
+<dt>if (bool){</dt>
+<dd><dl class="first last docutils">
+<dt>...</dt>
+<dd>}</dd>
+</dl>
+</dd>
+</dl>
+</td>
+<td>Similar to C#</td>
+</tr>
+<tr class="row-even"><td><dl class="first last docutils">
+<dt>if (bool){</dt>
+<dd>...</dd>
+<dt>} else {</dt>
+<dd><dl class="first last docutils">
+<dt>...</dt>
+<dd>}</dd>
+</dl>
+</dd>
+</dl>
+</td>
+<td>If there is an else branch
+the if&#8217;s ending } must be on the
+same line as the <em>else {</em></td>
+</tr>
+<tr class="row-odd"><td rowspan="3">&nbsp;</td>
+<td rowspan="3">There is no else-if. Nest the
+new if inside the outer-else</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+</tbody>
+</table>
+</div>
+<p>To deduce the knowledge generated by a conditional (if-else) command, we must
+analyze both arms (paths) within the command.
+This is because some executions will follow the then-arm and some will follow
+the else-arm.
+Before we state the rules for forwards and backwards reasoning, we motivate the
+key ideas with examples.
+This conditional command sets <code class="docutils literal"><span class="pre">max</span></code> to the larger of numbers <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="n">x</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="n">y</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>What can we assert when the command finishes, no matter what the values of <code class="docutils literal"><span class="pre">x</span></code>
+and <code class="docutils literal"><span class="pre">y</span></code> might be?
+First, when we analyze the then-arm, we have:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">max</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     1. max == x  premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>and when we analyze the else-arm, we have:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">max</span> <span class="o">=</span> <span class="n">y</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. max == y</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>These two deductions imply that, when the conditional finishes, one or the other
+property holds true:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="n">x</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="n">y</span>
+<span class="p">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     1 . max == x  v  max == y premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>This illustrates the first principle of conditional commands:
+the knowledge produced by the command is the <em>disjunction</em> (or) of the
+knowledge produced by each arm.
+In the section on propositional logic, we covered how to apply cases analyses
+on disjunctive assertions to extract useful knowledge.</p>
+<p>Recall that the intent of the conditional was to set <code class="docutils literal"><span class="pre">max</span></code> so that it holds
+the larger of <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.
+The assertion we proved so far does not imply the desired goal.
+This is because we ignored a critical feature of a conditional command:
+<em>By asking a question &#8212; the test &#8212; the conditional command generates new
+knowledge.</em></p>
+<p>For the then arm, we have the new knowledge that <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code>;
+for the else-arm, we have that <code class="docutils literal"><span class="pre">~(x</span> <span class="pre">&gt;</span> <span class="pre">y)</span></code>, that is, <code class="docutils literal"><span class="pre">y</span> <span class="pre">&gt;=</span> <span class="pre">x</span></code>.
+We can embed these assertions into the analysis of the conditional command,
+like this, and conclude that, in both cases, <code class="docutils literal"><span class="pre">max</span></code> holds the maximum of <code class="docutils literal"><span class="pre">x</span></code>
+and <code class="docutils literal"><span class="pre">y</span></code>:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+ val x: Z = readInt()
+ val y: Z = readInt()
+ var max: Z = readInt()
+ if (x &gt; y) {
+     l&quot;&quot;&quot;{
+         1. x &gt; y                premise
+     }&quot;&quot;&quot;
+     max = x
+     l&quot;&quot;&quot;{
+       1. x &gt; y                   premise
+       2. max == x                premise
+       3. max &gt;= x                algebra 2
+       4. max &gt;= y                algebra 1 3
+       5. max &gt;= x ∧  max &gt;= y   ^i 3 4
+     }&quot;&quot;&quot;
+ } else {
+     l&quot;&quot;&quot;{
+       1. ¬ (x &gt; y)                premise
+       2. y &gt;= x                  algebra 1
+     }&quot;&quot;&quot;
+     max = y
+     l&quot;&quot;&quot;{
+       1. max == y                premise
+       2. y &gt;= x                  premise
+       3. max &gt;= y                algebra 1
+       4. max &gt;= x                algebra 1 2
+       5. max &gt;= x  ∧  max &gt;= y   ^i 4 3
+     }&quot;&quot;&quot;
+ }
+ l&quot;&quot;&quot;{
+      //1. (max &gt;= x ∧  max &gt;= y) ∨ (max &gt;= x  ∧  max &gt;= y) Logika will not take this
+      1. max &gt;= x  ∧  max &gt;= y   premise
+ }&quot;&quot;&quot;
+ assert (max &gt;= x  &amp;  max &gt;= y)
+</pre></div>
+</td></tr></table></div>
+<p>Each arm generates the assertion that <code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>.
+Now, in both cases of the or-formula, we can conclude merely
+<code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>, as listed in the proof&#8217;s last line. This is very
+similar to OR-elimination from propositional logic.</p>
+<p>More accurately stated, the if-else&#8217;s proof is
+<code class="docutils literal"><span class="pre">&lt;proved</span> <span class="pre">in</span> <span class="pre">if-branch&gt;</span> <span class="pre">v</span> <span class="pre">&lt;proved</span> <span class="pre">in</span> <span class="pre">else-branch&gt;</span></code>, but Logika&#8217;s implementation
+of the conditional&#8217;s claim transformation will not accept the
+disjunction&#8217;s form when the LHS and RHS are exactly the same.  Instead this is
+exactly the as <code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>.</p>
+<p>We are not yet finished with this example; the desired goal is truly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">max</span> <span class="o">&gt;=</span> <span class="n">x</span>  <span class="o">^</span>  <span class="nb">max</span> <span class="o">&gt;=</span> <span class="n">y</span>  <span class="o">^</span>  <span class="p">(</span><span class="nb">max</span> <span class="o">==</span> <span class="n">x</span>  <span class="n">v</span>  <span class="nb">max</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should build a proof of this goal assertion by combining the two partial
+proofs that we have already constructed.</p>
+<div class="section" id="the-forwards-law-for-conditional-commands-claim-transformation">
+<h3>5.3.1. The Forwards Law for Conditional Commands (Claim Transformation)<a class="headerlink" href="#the-forwards-law-for-conditional-commands-claim-transformation" title="Permalink to this headline">¶</a></h3>
+<p>Here is the schematic of the forwards law for conditionals:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    ...</span>
+<span class="s">    P</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. B          premise</span>
+<span class="s">    2. P          premise</span>
+<span class="s">    ...</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C1</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">       ...</span>
+<span class="s">       Q1</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. ¬ B         premise</span>
+<span class="s">    2. P          premise</span>
+<span class="s">    ...</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C2</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      ...</span>
+<span class="s">      Q2</span>
+<span class="s">   }&quot;&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. Q1 ∨ Q2   premise</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<dl class="docutils">
+<dt>When both branches of conditional prove the same facts, <code class="docutils literal"><span class="pre">if(B){</span> <span class="pre">Q1</span> <span class="pre">}</span> <span class="pre">else</span> <span class="pre">{</span> <span class="pre">Q1</span> <span class="pre">}</span></code></dt>
+<dd>, Logika will not accept <code class="docutils literal"><span class="pre">1.</span> <span class="pre">P</span> <span class="pre">∨</span> <span class="pre">P</span> <span class="pre">premise</span></code> if the if-Logika-proof block.</dd>
+</dl>
+<p class="last">Instead use <code class="docutils literal"><span class="pre">1.</span> <span class="pre">P</span> <span class="pre">premise</span></code>.</p>
+</div>
+<p>That is, given the assertion, <code class="docutils literal"><span class="pre">P</span></code>, at the conditional&#8217;s start, the then-arm,
+<code class="docutils literal"><span class="pre">C1</span></code> uses <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">B</span></code> to generate assertion, <code class="docutils literal"><span class="pre">Q1</span></code>, and the else-arm,
+<code class="docutils literal"><span class="pre">C2</span></code>, uses <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">¬B</span></code> to generate assertion <code class="docutils literal"><span class="pre">Q2</span></code>.
+These two conclusions are joined at the conditional&#8217;s conclusion.</p>
+<p>When a conditional command lacks an else-arm, e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">x</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>we analyze it without one, using the negation of the if-condition as the only
+&#8220;fact&#8221; from the omitted else-branch</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+ var x: Z = readInt()
+
+ if (x &lt; 0) {
+ l&quot;&quot;&quot;{
+       1. x &lt; 0  premise
+     }&quot;&quot;&quot;
+
+       x = 0 - x
+       l&quot;&quot;&quot;{
+           1. x_old &lt; 0      premise
+           2. x = 0 - x_old  premise
+           3. x &gt;= 0         algebra 1 2
+       }&quot;&quot;&quot;
+  }
+  l&quot;&quot;&quot;{
+      1. x &gt;= 0 ∨ ¬ (x &lt; 0)  premise
+      2.  {
+            3. x &gt;= 0        assume
+          }
+      4.  {
+            5. ¬ (x &lt; 0)     assume
+            6. x &gt;= 0        algebra 5
+          }
+      7.   x &gt;= 0            ∨e 1 2 4
+  }&quot;&quot;&quot;
+
+ assert( x &gt;= 0 )
+</pre></div>
+</td></tr></table></div>
+<p>Here, note on line 18 the negation of the if-condition is used in place
+of an &#8220;else&#8221; branch.</p>
+</div>
+<div class="section" id="optional-section-the-backwards-law-for-conditional-commands">
+<h3>5.3.2. <em>Optional Section: The Backwards Law for Conditional Commands</em><a class="headerlink" href="#optional-section-the-backwards-law-for-conditional-commands" title="Permalink to this headline">¶</a></h3>
+<p>Assertions that are disjunctions are cumbersome to handle, and we should avoid
+them when possible.
+Given that the forwards law for conditionals generates a disjunction, reflecting
+the two possibilities for execution, it is important to learn how to reason
+backwards from a goal through the arms of a conditional command.
+As usual, we motivate the law through an example.
+Using the previously seen program that assigns to <code class="docutils literal"><span class="pre">max</span></code>, perhaps we want to
+prove the goal, <code class="docutils literal"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">x</span> <span class="pre">^</span> <span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">y</span> <span class="pre">^</span> <span class="pre">(</span> <span class="pre">max</span> <span class="pre">==</span> <span class="pre">y</span> <span class="pre">V</span> <span class="pre">max</span> <span class="pre">==</span> <span class="pre">x)</span></code>.
+Our intuition tells us that this goal must be achieved through  both
+paths of the conditional command.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = readInt()
+val y: Z = readInt()
+var  max : Z = 0
+if (x &gt; y){
+     max = x
+     } else {
+     max = y
+     }
+assert (max &gt;= x &amp; max &gt;=y &amp; (max == x | max == y))
+</pre></div>
+</td></tr></table></div>
+<p>This can be accomplished this way</p>
+<a class="reference internal image-reference" href="../../_images/image3.png"><img alt="../../_images/image3.png" src="../../_images/image3.png" style="width: 1420.0px; height: 357.6px;" /></a>
+<p>First we observe that there are no disjunctions at the top level of the goal
+so the entire assertion must be proven in both the if- and else-branch.  Next
+we observe that each branch can prove one-side of the <code class="docutils literal"><span class="pre">max</span> <span class="pre">==</span> <span class="pre">y</span> <span class="pre">V</span> <span class="pre">max</span> <span class="pre">==</span> <span class="pre">x</span></code>
+proposition and finally we note which branch uses the if-condition and which the
+if-condition&#8217;s negation.</p>
+<p>Another way to look at this same program is might be to say if x &gt; y then max
+equals x otherwise max equals y.  In other words as an implication.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = readInt()
+val y: Z = readInt()
+var  max : Z = 0
+if (x &gt; y){
+     max = x
+     } else {
+     max = y
+     }
+assert ((x &gt; y) → (max == x )) ∨ ( ¬ (x &gt; y) → (max == y))
+</pre></div>
+</td></tr></table></div>
+<p>To which we would then &#8220;allocate&#8221; one side of the top level disjunction to
+the if-branch and the other to the else-.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = readInt()
+val y: Z = readInt()
+var  max : Z = 0
+if (x &gt; y){
+     max = x
+     assert(max == x)
+     assert((x &gt;y) → (max == x))
+     } else {
+     max = y
+     assert(max == y)
+     assert(¬ (x &gt; y) → (max == y))
+     }
+assert ((x &gt; y) → (max == x )) ∨ ( ¬ (x &gt; y) → (max == y))
+</pre></div>
+</td></tr></table></div>
+<p>Unfortunately, Logika programs do not understand <code class="docutils literal"><span class="pre">¬</span> <span class="pre">,</span> <span class="pre">→</span></code> so it must be written
+in the disjunctive form of implication</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>import org.sireum.logika._
+
+val x: Z = readInt()
+val y: Z = readInt()
+var  max : Z = 0
+if (x &gt; y){
+     max = x
+     assert(max == x)
+     assert(!(x &gt; y) | (max == x))
+     } else {
+     max = y
+     assert(max == y)
+     assert((x &gt; y) | (max == y))
+     }
+assert ((!(x &gt; y) | (max == x)) | ((x &gt; y) | (max == y)))
+</pre></div>
+</td></tr></table></div>
+<p>Lets assume you wanted a program to calculate absolute values.  Here is an example
+where incorrect coding will keep you from achieving the desired proof:</p>
+<div class="highlight-python"><div class="highlight"><pre> <span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">x</span>
+ <span class="p">}</span>
+<span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using backwards reasoning, we quickly deduce that</p>
+<div class="highlight-python"><div class="highlight"><pre>var x: Z = readInt()
+if(x &gt; 0){
+     x = 0 - x
+     l&quot;&quot;&quot;{
+         1. x_old &gt; 0 premise
+         2. x = 0 - x_old
+         ....
+         100. x &gt;= 0   ????
+     }
+}
+l&quot;&quot;&quot;{
+     1 . x &gt;= 0 ∨ !(x &gt; 0)
+     ...
+     100. x &gt;= 0  ∨e 1 a b
+}&quot;&quot;&quot;
+assert( x &gt;= 0 )
+</pre></div>
+</div>
+<p>We see immediately there is <em>no way</em> that the if-subgoal holds true: clearly,
+<code class="docutils literal"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">→</span> <span class="pre">-x</span> <span class="pre">&gt;</span> <span class="pre">0)</span></code> is false, and <code class="docutils literal"><span class="pre">¬</span> <span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">0)</span> <span class="pre">→</span> <span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is false also
+(for values of <code class="docutils literal"><span class="pre">x</span></code> that are negative).
+So, we cannot prove that the program achieves its goal.
+Forwards reasoning also fails:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{ x &gt; 0 }&quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">-</span><span class="n">x</span>
+    <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">      1. x = 0 - x_old   premise</span>
+<span class="s">      2. x_old &gt; 0       premise</span>
+<span class="s">      3. x &lt; 0           algebra 1 2</span>
+<span class="s">    }&quot;&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">     1. x &lt; 0 ∨ !(x &gt; 0)</span>
+<span class="s">     There is no way we can deduce  x &gt;= 0</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>In contrast, say that we consider this variation of the example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">var</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span>  <span class="n">x</span>
+<span class="p">}</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can prove, using either forwards or backwards reasoning, that this particular
+program achieves its goal (because we can deduce that the if-branch will be
+skipped).</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>5.4. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Here are the two laws for reasoning about assignments:</p>
+<div class="section" id="forwards-assignment-law">
+<h3>5.4.1. Forwards Assignment Law<a class="headerlink" href="#forwards-assignment-law" title="Permalink to this headline">¶</a></h3>
+<p>First, recall that the notation, <code class="docutils literal"><span class="pre">[a/b]E</span></code>, denotes phrase <code class="docutils literal"><span class="pre">E</span></code> with all
+occurrences of <code class="docutils literal"><span class="pre">b</span></code> replaced by <code class="docutils literal"><span class="pre">a</span></code>.
+(Example: <code class="docutils literal"><span class="pre">[3</span> <span class="pre">/</span> <span class="pre">x](2</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">x)</span></code> is <code class="docutils literal"><span class="pre">(2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">3)</span></code>.)</p>
+<p>Here is the deduction law for an assignment command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  ...</span>
+<span class="s">  m. P</span>
+<span class="s">}&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">  1. x == [x_old/x]e      premise</span>
+<span class="s">  2. [x_old/x]P           premise</span>
+<span class="s">  ...</span>
+<span class="s">  n. Q    (where  Q  must _not_ mention  x_old)</span>
+<span class="s">}&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="backwards-assignment-law">
+<h3>5.4.2. Backwards Assignment Law<a class="headerlink" href="#backwards-assignment-law" title="Permalink to this headline">¶</a></h3>
+<p>Given a goal, <code class="docutils literal"><span class="pre">G</span></code>, we compute this subgoal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ [e/x]G }&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">e</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{ G }&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>That is, the subgoal (precondition) required to achieve (postcondition) <code class="docutils literal"><span class="pre">G</span></code>
+with the assignment is <code class="docutils literal"><span class="pre">[e/x]G</span></code>.</p>
+</div>
+<div class="section" id="forwards-conditional-law">
+<h3>5.4.3. Forwards Conditional Law<a class="headerlink" href="#forwards-conditional-law" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ ... P }&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. B          premise</span>
+<span class="s">    2. P          premise</span>
+<span class="s">    ...</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C1</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ ... Q1  }&quot;&quot;&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<span class="s">    1. ¬B         premise</span>
+<span class="s">    2. P          premise</span>
+<span class="s">    ...</span>
+<span class="s">  }&quot;&quot;&quot;</span>
+  <span class="n">C2</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ ... Q2 }&quot;&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. Q1 v Q2   premise }&quot;&quot;&quot;</span>
+<span class="k">assert</span> <span class="p">(</span> <span class="n">Q1</span> <span class="o">|</span> <span class="n">Q2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That is, if we deduce from precondition <code class="docutils literal"><span class="pre">B</span> <span class="pre">^</span> <span class="pre">P</span></code> and commands <code class="docutils literal"><span class="pre">C1</span></code> a
+postcondition <code class="docutils literal"><span class="pre">Q1</span></code> (and do the same for <code class="docutils literal"><span class="pre">C2</span></code>, we can assemble the
+postcondition <code class="docutils literal"><span class="pre">Q1</span> <span class="pre">v</span> <span class="pre">Q2</span></code> for the conditional.
+(Of course, if <code class="docutils literal"><span class="pre">Q1</span></code> is identical to <code class="docutils literal"><span class="pre">Q2</span></code>, we can conclude just <code class="docutils literal"><span class="pre">Q1</span></code>.)</p>
+</div>
+<div class="section" id="backwards-conditional-law">
+<h3>5.4.4. Backwards Conditional Law<a class="headerlink" href="#backwards-conditional-law" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">l</span><span class="s">&quot;&quot;&quot;{ (B --&gt; S1)  ^  (¬B --&gt; S2) }&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ S1 }&quot;&quot;&quot;</span>
+  <span class="n">C1</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ G }&quot;&quot;&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ S2 }&quot;&quot;&quot;</span>
+  <span class="n">C2</span>
+  <span class="n">l</span><span class="s">&quot;&quot;&quot;{ G }&quot;&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">l</span><span class="s">&quot;&quot;&quot;{ G }&quot;&quot;&quot;</span>
+<span class="k">assert</span><span class="p">(</span> <span class="n">G</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>That is, if we deduce that <code class="docutils literal"><span class="pre">S1</span></code> is the subgoal required by <code class="docutils literal"><span class="pre">C1</span></code> to attain
+goal <code class="docutils literal"><span class="pre">G</span></code> (similarly for <code class="docutils literal"><span class="pre">C2</span></code>), then the subgoal (precondition) needed to
+attain the goal (postcondition) by the conditional is
+<code class="docutils literal"><span class="pre">(B</span> <span class="pre">--&gt;</span> <span class="pre">S1)</span> <span class="pre">^</span> <span class="pre">(¬B</span> <span class="pre">--&gt;</span> <span class="pre">S2)</span></code>.</p>
+<hr class="docutils" />
+<p align=right><small><em>
+This note was adapted from David Schmidt's CIS 301, 2008,
+<a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/2assignifT.html">Chapter 2</a>
+course note.
+</em></small></p>
+<p align=right><small><em>
+It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
+to conform with Logika syntax and more closely match <br>
+KSU's CIS 301 course as taught in Spring 2018.
+</em></small></p></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,820 @@
+.. raw:: html
+
+   <br/>
+   <font color="darkgray">
+   <big><big><b>
+   Logika: Programming Logics
+   </b></big></big>
+   </font>
+   <br/>
+   <font color="black">
+   <big><big><big><big><b>
+   6. Loop, Invariants, Induction
+   </b></big></big></big></big>
+   </font>
+
+
+.. _loops-invariants-induction:
+
+Loops and Loop Invariants
+#########################
+
+At the end of the last chapter we discussed how a conditional branching
+creates two "paths" for the logic to flow thru and they are combined
+in a **disjunction** after the condition. A *loop* is a command that restarts itself
+over and over while the loop condition remains true.
+
+In order to analyze loop behavior we will need to know: what is true before the
+loop executes, what is done inside the loop and what true after the loop,
+regardless of how many times the loop executes.
+At the end of the loop, the **conjunction** of the negation of the loop-condition
+and property called the loop-invariant are true.
+
+The loop's *invariant* is a statement about what is true before you begin the
+body of the loop and after iteration of the loop-body.  Put another way,
+the loop-invariant **must** be true each time you go to check the loop condition;
+it is true the first time you check to see if you go into the loop, and still
+still true the last time you check and "skip" the loop.
+
+.. image:: images/06-image-10.png
+   :width: 896
+   :height: 640
+   :scale: 60
+
+While Loops
+***********
+
+Consider the factorial ``n!``.  We can understand factorial as a repeated
+product: for integer ``n > 0``::
+
+  n! == 1 * 2 * 3 * ...up to... * n
+
+.. sidebar:: While-loop syntax and *modifies*
+
+    Syntaxt is similar to C#
+
+    However, a while statement *must* be immediately followed by a Logika
+    proof block.  This may contain an invariant clause, which catalogs
+    any invariant claims (invariants are optional).  The block must contain
+    a modifies clause.
+
+    In Logika, when a loop (also a function) modifies a variable from an outside
+    or higher level scope it must explicitly state that in a Logika proof
+    block immediately following the ``while () {`` line.  Since any loop counter
+    or other sentinel value is declared outside the loop, the loop must either
+    modify the value or loop forever.
+
+    In this case line 9 states that both i and fac may be modified in the loop.
+
+
+It is easy to write a loop program that computes the repeated product:
+
+.. literalinclude:: logika/06-example-10.logika
+   :linenos:
+
+The loop adjoins the multiplications, ``*1``, ``*2``, ``*3``, etc., to the
+running total, ``fac``, until the loop reaches ``i == n``.
+Consider some execution cases::
+
+  n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+  n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
+  n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
+  n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
+  n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4!
+  . . .
+  the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
+
+For input, ``n == 4``, the loop computes correctly ``4!`` in 4 iterations
+because the loop computes correctly ``3!`` in 3 iterations --
+*the fourth loop iteration builds upon the work of the previous three*.
+This is the standard use of a loop: each loop iteration builds on the previous
+iterations to move one step closer to the final goal.
+
+We should always ask this crucial question about every loop we write:
+
+    Say that the loop has been running for some iterations; what has it accomplished so far?
+
+For the factorial example, the response is:
+"after ``i`` iterations, variable ``fac`` has the value, ``i!``, that is,
+``fac == i!``."
+
+This answer is important, because it reveals the strategy the loop uses to reach
+its goal in stages: as ``i`` counts upwards towards ``n``, ``fac == i!``
+repeatedly holds true.
+Because the loop stops when ``i == n``, this means the loop will achieve its
+goal: ``fac == n!``.
+
+The answer to the "crucial question" listed above is the loop's
+*invariant property*. Now, why is it an invariant?
+
+This is because *the output from the loop's prior iterations flows into the
+loop's next iteration*.
+So, whatever is accomplished looks the same, iteration after iteration after
+iteration.
+This is a logical property that can be proved.
+
+
+.. note:: Logika Programming *fact*
+
+    A *fact* statement can be used to introduce global (named) axioms and
+    (pure) proof functions (whose behaviors are specified via axioms)
+    to help with specifying contracts.  It is important to note that, as the name
+    implies, Logika treats these axioms as facts--if you make an error in the
+    definition, Logika will dutifully enforce that error everywhere in the program.
+
+    .. literalinclude:: logika/06-example-20.logika
+       :linenos:
+
+    Lets go through this quickly.  In this class, facts will be given to you, you
+    are only expected to know how to use them.
+
+    On line 4 we see ``def factorial(n:Z): Z``.  This tells you that the *fact* is
+    named ``factorial``, it has one named argument ``n``, which is an integer, and
+    that factorial itself evaluates to an integer (think of this as a return type).
+
+    Line 5 is the first rule, ``fZero. factorial(0) == 1``.  This rule, used as a
+    justification, allows you to state ``factorial(0) == 1`` as a claim.
+    Using this new claim, you can prove additional things through substitution.
+    Be sure you understand the ``fPos`` rule.  This is a syntactical form and semantical
+    meaning you will see often in programming logic.
+
+We deduce the invariant property on the factorial-loop body like this:
+
+.. literalinclude:: logika/06-example-30.logika
+   :linenos:
+
+This little example is just the loop repeated twice. What we see is both at
+the begining and after each update, ``fac == factorial(i)``.
+Notice how the knowledge generated by completing one iteration "feeds into"
+the next iteration.
+And, after each iteration, that knowledge is that ``fac == factorial(i)``.
+
+.. sidebar:: Logika Loop Invariants
+
+   The optional keyword *invariant* goes in the while-loop proof, before the
+   *modifies* clause.  Each requirement can go on its own line.  Use of the
+   *invariant* clause allows you to use the invariant(s) in the proof block
+   immediately following the while-loop.
+
+  **Loop-termination**
+
+   A robust proof of a loop would include the proof that loop must terminate.
+   The mechanics and thought process behind proving loop termination will be
+   deferred to a later time.  However, it is important for the student
+   to realize if a loop does not terminate, Logika may verify claims that are
+   not necessarily true.  A semantic error in programing can lead to unsound
+   conclusions.
+
+
+A working Logika program would look something like
+
+.. literalinclude:: logika/06-example-40.logika
+   :linenos:
+
+
+Pay particular attention to lines 17 and 18, where we prove the invariant is true
+before entering the loop the first time.  Similarly, lines 47 and 50 re-establish
+the invariant before we try to loop again.  Thus, we prove the loop invariant
+holds each time we check the loop-condition and possibly proceed through the
+loop-body.
+
+Of course, on each loop the loop counter, ``i``, gets larger by one, meaning
+that we are closer to achieving the final goal, but the changing values of
+``fac`` and ``i`` ensure that ``fac == factorial(i)`` remains true:
+"after ``i`` iterations, ``fac`` has value ``factorial(i)``."
+
+*The invariant property documents the loop's structure -- how the loop achieves
+its goal*.
+
+As exciting as that discussion was, the loop-invariant is a means to an end,
+not the end itself.  What is it we are trying to achieve?  In this example, we
+would like to be able to prove that fac == n-factorial.  As *facts* cannot
+be used in assertions, what we will really assert is ``i == n``, and then we know
+from our invariant that fac == n-factorial.  Consider:
+
+.. literalinclude:: logika/06-example-50.logika
+   :linenos:
+
+For certain, when the loop quits after ``i`` iterations, we know that
+the invariant holds.
+But we also know that the loop's test has gone false, that is, ``~(i < n)``,
+that is, ``i >=n``.  However these facts are not enough to prove ``i == n``.
+In this case we say our invariant is too weak, it theoretically admits too many
+possibilities.
+
+.. sidebar:: Hey wait a minute
+
+   You might want to call foul here and claim it is obvious from reading the entire
+   program that ``i`` **must** be ``n``.  Please recall the axiom that **The obvious
+   is the enemy of the provable.** The end goal is to prove the effect you want
+   using only the negation of the loop-condition and the invariant.  You need
+   to pack all the facts you need into these two expressions.
+
+The solution is to **strengthen** the invariant, make is so it allows fewer
+possibilities after the loop.  In particular, we will want to strengthen the
+invariant so the only possible value of ``i`` is ``n``.  We can do this by
+adding a condition to the invariant such that values of i > n are not allowed.
+
+.. literalinclude:: logika/06-example-60.logika
+   :linenos:
+
+The added condition to the invariant at line 18 does the trick.  Updating the
+proof sections so it will verify is left for you as an optional exercise.
+
+Here is a summary of the main points just made:
+
+* **A loop is a function that repeatedly calls itself.**
+  **(It is a** *tail-recursive* **function.)**
+
+* **The loop's invariant states a strategy for accomplishing a goal:**
+
+      the loop has been running for awhile; what has it accomplished so far?
+
+* **The loop's invariant is exactly the precondition for executing the loop's
+  body, and it is exactly the postcondition of what is generated by executing
+  the loop's body.**
+
+* **When the loop terminates, the falsity of the termination test coupled with
+  the invariant should imply that the loop has achieved its goal.**
+
+Even if you forget all about algebra and proofs, whenever you write a loop,
+*document the loop with its invariant stated in words*.
+If you are unable to state in words the invariant, then you don't understand
+yourself what your loop is doing.
+
+
+Law for While-Loops (Claim Transformation)
+==========================================
+
+Here is the law we use for deducing the properties of a while-loop.
+It uses an invariant assertion, ``I``:
+
+.. code-block:: python
+
+   """{
+      ...
+      I
+   }"""  // we must prove this True before the loop is entered
+         // because it must be true before checking B
+   while (B) {
+     l"""{
+          invariant  I
+          modifies  VARLIST   // the variables updated in  C
+     }"""
+     l"""{
+           1. B   premise     // inside loop, so B must be true
+           2. I   premise     // the premises for the loop's body
+          ...
+     }"""
+     C
+     l"""{
+          ...
+          I      // we must prove  I  at the end of the body
+                 // because it must be true before re-checking B
+     }"""
+   }  // end loop
+
+   l"""{
+         1. ~B    premise
+         2. I     premise
+         ...
+   }"""
+
+That is, to deduce the knowledge produced by a while-loop (when we do not know
+in advance how many times the loop will iterate), we must deduce an invariant
+``I`` that:
+
+1. is proved true before the first time we check the loop condition
+
+2. is proved true at the end of the loop's body
+
+Then, no matter how many times (0,1,2,...) the loop repeats, we know that ``I``
+must hold true when the loop stops.
+We also know ``~B`` holds when the loop stops.
+
+.. image:: images/06-image-20.png
+   :width: 1578
+   :height: 533
+   :scale: 60
+
+Because the loop will update some variables in its body, we must know these
+variables' names, so that any premises other than the loop invariant that enter
+the loop body that mention these variables are cancelled.
+
+
+A challenge lies in formulating the appropriate invariant that states what the
+loop is accomplishing while it repeats.
+Invariant discovery is an art form; there cannot exist a mechanical algorithm to
+do this.
+(This is a key result of computability theory, the study of what problems are
+mechanically solvable.)
+So, we now study how to discover loop invariants.
+
+
+
+Examples of Invariant Discovery
+*******************************
+
+A key intellectual task in programming is stating a loop's invariant.
+The invariant tells us "what the loop is doing" as it iterates -- progresses in
+small steps -- towards its goal.
+
+**IMPORTANT: Saying what "the loop is doing" is different from saying what the
+loop "will do" before it starts or what the loop "has done" after it has
+finished.**
+We must ask the crucial question:
+
+    Say that the loop has been running for a while -- what has it accomplished so far?
+
+The answer to this question, whether stated in English or algebra, is the
+invariant, the loop's true meaning.
+
+Following are some examples of invariant discovery.
+
+
+
+Multiplication as Repeated Addition
+===================================
+
+.. sidebar:: Common Mistake  -- Read The Darn Program
+
+   It is common for time-pressed students to jump in and start throwing
+   claims, justifications and rules at the problem without first
+   critically reading and understanding the program. If you don't understand
+   what program's goal is and how it goes about achieving it , it is hard
+   to prove it is correct.  This is particular true once you start using
+   data structures.
+
+
+Most people forget that the Greeks and Arabs intended multiplication to be just
+repeated addition.
+So, what does this program calculate for ``z`` when it finishes?
+What is the loop's invariant?
+(How does the loop reach its goal?)
+
+.. literalinclude:: logika/06-example-70.logika
+   :linenos:
+
+Apparently, this program computes ``x * y`` and saves it in ``z``.
+To understand, we execute a test case and watch what is printed::
+
+  Type an int: 3
+  Type another: 4
+  (a) x = 3  y = 4  count = 0  z = 0
+  (a) x = 3  y = 4  count = 1  z = 4
+  (a) x = 3  y = 4  count = 2  z = 8
+  (b) x = 3  y = 4  count = 3  z = 12
+
+The trace information in each row shows this pattern between the values of the
+variables:
+
+.. code-block:: python
+
+   count * y  == z
+
+This is what the loop is doing --- what it means --- ``z`` holds the value of
+``count * y``.
+Because the loop stops when ``count == x``, we conclude that ``z == x * y``.
+
+.. sidebar:: This program has an error
+
+   Did you catch it? What happens if x == -3? It should be obvious the loop
+   will never terminate.   We'll fix this with an *assume()* as we move forward.
+
+We can apply logic laws to prove that ``count * y == z ∧ count <= x`` is
+invariant for the loop's body:
+
+
+.. literalinclude:: logika/06-example-80.logika
+   :linenos:
+
+
+
+Division as Repeated Subtraction
+================================
+
+Maybe you remember that division was invented to represent repeated subtraction,
+e.g., "how many times can you subtract 4 from 20?
+(5) --- 4 goes into 20 five times --- 20 divided by 4 is 5 (with remainder 0)".
+
+Here is the program that does repeated subtraction like division is meant to do:
+
+.. literalinclude:: logika/06-example-100.logika
+   :linenos:
+
+Here is a sample execution with trace information printed::
+
+  Type an nonegative int: 14
+  Type a positive int: 3
+  (a) n = 14  d = 3  q = 0  r = 14
+  (a) n = 14  d = 3  q = 1  r = 11
+  (a) n = 14  d = 3  q = 2  r = 8
+  (a) n = 14  d = 3  q = 3  r = 5
+  (b) n = 14  d = 3  q = 4  r = 2
+  14 divided by 3 is 4 with remainder 2
+
+This is a "numbers game", where we are allowed to use only ``+`` and ``-`` on
+the numbers.
+The underlying strategy (invariant) at point ``(a)`` is:
+
+.. code-block:: python
+
+   l"""{
+        invariant  (d * q) + r == n
+        modifies q, r
+   }"""
+
+When the loop quits, that is, when there is no longer enough value in ``r`` to
+allow yet one more subtraction of ``q``, then the result is exactly the
+quotient-remainder that results from dividing ``n`` by ``d``.  The proof is left
+as an exercise.
+
+
+Averaging Test Scores
+=====================
+Even a task like summing scores and computing their average depends on a loop
+invariant.  We will approach this using  accumulators for scores and the number
+of scores.
+
+.. literalinclude:: logika/06-example-130.logika
+   :linenos:
+
+If we examine the loop at an arbitrary iteration, we see that ``acc`` holds the
+sum of the value of each previously entered valid score, and cnt contains the
+number of valid scores entered.
+
+When a valid score is entered, the "new" value of the accumulator should equal
+the old value plus the score.   At first blush this seems straight forward
+
+.. code-block:: none
+
+   acc = acc + scr
+   l"""{
+        1. acc = acc_old + scr    premise
+   }"""
+
+But recall that ``acc_old`` only has a scope of the proof block following the
+assignment.  Thus ``invariant acc = acc_old + scr`` will not work.  We will need
+extra variables to explicitly keep track of the previous loop-iteration's values.
+Next we note that "if a valid score is entered " means we have an implication, so
+``acc = prevA + scr`` must be conditioned on ``s >=0``.
+
+The above arguments apply to the count variable as well.  This leads to
+
+.. literalinclude:: logika/06-example-140.logika
+    :linenos:
+
+The proof is left
+as an exercise.
+
+Squaring an Array's Numbers
+===========================
+
+Say that ``a`` is a sequence of ints, and say we write a loop that squares each of
+``a``'s elements and stores the information in sequence ``b``:
+
+.. literalinclude:: logika/06-example-110.logika
+   :linenos:
+
+In words, the loop's invariant is that
+
+    while the loop is running, ``b``'s elements, from 0 up to ``i``,
+    are the square of ``a``'s, and the rest are unchanged.
+
+We express this using the logical operator forall (``∀``).
+
+First we will want to capture the idea that everything before ``i`` in sequence
+``b`` has been changed by the loop.  This is expressed by line 1 below.
+
+.. code-block:: python
+   :linenos:
+
+   ∀j:Z ( 0<= j ∧ j< i) → (b(j) == (a(j) * a(j)))
+   ∀j:Z ( i<= j ∧ j< b.size) → (b(j) == a(j) )
+   b.size = a.size
+
+Lines 2 and 3 express what **has not been changed** by the loop.  All indices ``i`` and
+above still equal a, and the sizes of the 2 sequences are the same.
+
+.. sidebar:: Sequence ∀ Syntax
+
+   The statement ``∀j:Z ( 0<= j ∧ j< i) → (b(j) == (a(j) * a(j)))`` is parsed as
+    | For all integer variables j,
+    | IF j >=0 AND j < i
+    | THEN b(j) == (a(j) * a(j))
+
+   You may ask, what happens when ``i == 0``?  In this case the Right Hand Side
+   of the implication *(0<= j ∧ j< i)* is false (there are no ints which
+   satisfy the condition), so the implications is said to be vacuously true.
+
+   ``∀j:Z ( 0<= j ∧ j< i) → (b(j) == (a(j) * a(j)))``  can be written
+   ``∀j ( 0 .. < i) b(j) == a(j) * a(j)``
+
+   This is covered more fully in this chapter's section on Sequences.
+
+
+For all ``j`` in the range from ``0`` to
+``i-1, b(j)== a(j) * a(j)``; for all ``j`` in the range, ``i`` to
+``b.size - 1, b(j) == a (j)``; and we ensure the size of the arrays match.
+This last statement is key, and we will see why in a moment.
+
+This indicates clearly that sequence ``b`` is split into toe segments: one whose
+elements are the square of ``a`` and one whose elements are not yet altered.
+
+When the loop quits, it is because ``i == b.size``.
+In this situation, the range from ``i`` to ``b.size-1`` is empty -- all the
+array's elements are squared.
+
+Please note, a working invariant in Logika will require more than this key idea.
+Here is a program that with an set of claims for the invariant which produces
+the desired behavior. Below we'll discuss why the "extra" claims are necessary.
+
+.. literalinclude:: logika/06-example-120.logika
+   :linenos:
+
+Logika will throw an error it we do not prove that all sequence-indexing operations
+will be inside the sequent itseld.  Lets cover the potential of index-out-of-bounds
+errors in ``b`` first.  Lines 8 and 9 ensure that at the start of every
+loop-iteration, the variable ``i`` lies inside the indices of ``b``.
+Specifically, line 16 will not throw an
+index-out-of-bounds error for sequence ``b``.
+
+However, Logika knows the loop ``modifies b``; so the invariant must account
+for the possibility of adding or deleting elements in ``b``, i.e changing its size.
+The invariant ``a.size = b.size`` on line 10 enforces a rule that ``b``
+is always the size of ``a`` at the start of every iteration, so line 16
+will never get an index-out-of-bounds error from ``a``.
+
+Line 10 also helps us prove our goal.  Because the loop does not modify ``a``, and
+``b`` is always the same size as ``a``,
+``∀j:Z ( 0<= j ∧ j< b.size) → (b(j) == (a(j) * a(j)))``  is true at the end of
+the loop.  If ``b`` were
+allowed to be smaller or bigger than ``a``, indices in on sequence, but not the
+other, would either throw an error or be ignored.  That is not the behavior we
+want.  The proof is left as an exercise.
+
+
+Logika Solution Modes
+*********************
+
+Up to now, we have been running Logika in "manual mode"
+
+.. image:: images/06-image-30.png
+   :width: 1469
+   :height: 856
+   :scale: 40
+
+
+We are now reaching the point where additional practice in manual mode may no
+longer be a learning activity, and where the proof-blocks after claim transformations
+can become dozens of lines long.  Logika offers two advanced modes which we periodically
+use to reduce the number and length of required proof-blocks
+
+Auto-mode
+=========
+
+.. image:: images/06-image-30.png
+   :width: 509
+   :height: 532
+   :scale: 100
+
+This mode enables you to use ``auto`` in lieu of normal justification statements.
+Consider the final proof for Multiplication as Repeated addition.  In manual
+mode it required roughly 50 lines to complete.  In Auto mode
+
+.. literalinclude:: logika/06-example-160.logika
+  :linenos:
+
+it requires fewer than 30 lines.  This brevity is achieved with some loss of human
+readability.  Why some manual proof lines can be omitted or why some auto proof-blocks
+and lines are required may not be intuitively obvious.
+
+Symexe-mode
+===========
+
+Even more powerful is Symexe mode.  This mode allows you to reason about your
+program based on invariants and method  pre-, post- and frame conditions.
+
+.. image:: images/06-image-40.png
+   :width: 541
+   :height: 551
+   :scale: 60
+
+It reduces the multiplication problem to roughly 20 lines
+
+.. literalinclude:: logika/06-example-170.logika
+  :linenos:
+
+
+Pitfalls of Auto and Symexe
+===========================
+
+When using these more advanced modes, it is not always obvious why Logika will
+not verify.  Sometimes semantic errors in the program keep it from verifying; i.e.
+Logika has found a corner or edge case for which the program does not account.
+Other times the invariants and conditions do not actually prove the goal.
+Inevitably, sometimes it will be both.
+
+
+In either case an option is to turn off "Auto" and begin typing each proof-block
+as if in manual mode (this can be done with Symexe enabled) until you find the
+logical or programming error.
+
+
+Loop Termination and Total Correctness
+**************************************
+
+**THIS AREA BEING REFURBISHED FOR YOUR FUTURE ENJOYMENT**
+
+.. image:: images/proofs.png
+   :height: 224
+   :width: 740
+
+This image is licensed under a Creative Commons Attribution-NonCommercial
+2.5 License. https://xkcd.com/1724/
+
+
+Sequences and the use of Universal and Existential Assertions
+*************************************************************
+
+Computer scientists and other programmers often need to express some truths
+(propositions) about all elements in a collection or sequence of objects.
+
+Sequences
+=========
+
+In this course, we use only on type of sequence, an ordered list. The general
+rules for applying logic to collections can be abstracted from these examples
+and applied to different types of collections as needed.
+
+As the name implies, there are no "NULL" or gaps in a sequence. However it is
+possible to make an empty sequence ``(var b : ZS = ZS())``.
+
+Types and Constructors
+----------------------
+
+In class we deal with two types of lists, lists of integers and lists of booleans.
+
+   +------+-------------------+--------------------------------------------+
+   | type |  Description      |       constructor                          |
+   +------+-------------------+--------------------------------------------+
+   |  ZS  | List of integers  |  var <var_name>: ZS = ZS (<int, int, ...>) |
+   +------+-------------------+--------------------------------------------+
+   |  BS  | List of booleans  |  var <var_name>: BS = BS (<bool, bool, ..>)|
+   +------+-------------------+--------------------------------------------+
+
+The version of Logika we use does not support sequences of sequences.
+
+
+Operations and Properties
+-------------------------
+
+Given ``var a: ZS = ZS(1,2,3)``.  ``a`` = [1,2,3]
+
+   +---------------+--------------------------------------------------------+
+   | Indexing      | Sequences are index from 0.                            |
+   | a(Z)          | Logika will show an error if you have not proven that  |
+   |               | a variable used for indexing does not lie within the   |
+   |               | sequence's range.                                      |
+   |               |   a(0)= 1                                              |
+   +---------------+--------------------------------------------------------+
+   | a.size        | Sequences have a property providing their number of    |
+   |               | elements.                                              |
+   |               |                                                        |
+   |               |   a.size == 3                                          |
+   +---------------+--------------------------------------------------------+
+   | Append        | Sequences can have a value appended to their end.      |
+   | :+            |                                                        |
+   |               |   a = a:+(4)  // a == [1, 2, 3, 4]                     |
+   +---------------+--------------------------------------------------------+
+   | Prepend       | Sequences can have a value prepended to their front.   |
+   | +:            |                                                        |
+   |               |   a= (0)+:a  // a = [ 0, 1, 2, 3]                      |
+   +---------------+--------------------------------------------------------+
+   | Reassignment  | Sequences instantiated as var can be reassigned.       |
+   |               | This appears to be the only way to "shrink" a          |
+   |               | sequence.                                              |
+   |               |   a = ZS(5,6)  // a = [ 5, 6]                          |
+   +---------------+--------------------------------------------------------+
+   | var b: ZS =   |  Creates an exact copy of a for b.  Dirrect assignment |
+   |  a.clone      |  ``b = a``, is not permitted                           |
+   +---------------+--------------------------------------------------------+
+
+Law for Sequence Element Assignment (Claim Transformation)
+----------------------------------------------------------
+
+To assign a value to an element ``i`` of a sequence a is very similar to
+the assignment of non-sequence element.
+
+.. code-block:: none
+
+  l"""{
+       prove :
+       0 <= i      // must be stated with 0 on LHS
+       i < a.size
+       P           // other claims involving a(i)
+   }"""
+
+   a(e1) = e2     // expr is type of sequence
+   l"""{
+       1. [a_old/a] P                    premise
+       2. a.size = a_old.size            premise
+       3. a([a_old/a]e1) = [a_old/a]e2   premise
+           //  what changed in the sequence
+       4. ∀i: (0 .. < a.size)
+            (i != [a_old/a]e1) →
+                 a(i)==a_old(i)          premise
+           // what did not change in the sequence
+    }"""
+
+in the Logika-proof block immediately following a sequence element assignment,
+Logika creates a local "sequence_old" for reference.  A concrete Logika
+example (solved in auto mode) of this law is below:
+
+.. literalinclude:: logika/06-example-150.logika
+   :linenos:
+
+Note the use of ``auto`` on line 2.  This eliminates roughly a dozen lines of
+claim manipulations.  Proving an element in a sequence, created by ``ZS(1,2,...)``
+is equal to a value is a laborious process in manual mode.
+
+
+Use of Quantifiers
+==================
+
+The basic form of specifying some claim P(a(x)) holds for every member of the
+sequence ``a`` are
+
+.. code-block:: none
+
+   ∀<var-name>: <var-type> ( lower-bound ∧ upper-bound)  → P(a(x))
+
+   ∀<var-name>( lower-bound .. upper-bound)  P(a(x))   // shorthand version
+
+Where the lower- and upper-bounds are inclusive statements about where to start
+and end looking through the sequence.  For example
+``∀x: Z  ( x>=0 ∧ x < a.size)  → P(a(x))`` would check every member of ``a`` to
+see that P(a(x)) holds where as
+``∀x: Z  ( 0 .. < (a.size/ 2))  P(a(x))`` would check the first half.
+Logika will verify ``∀``, if and only if P(a(x)) is proven true for every a(x) in the range.
+
+Similarly, the forms for there exist are
+
+.. code-block:: none
+
+   ∃<var-name>: <var-type> ( lower-bound ∧ upper-bound)  → P(a(x))
+
+   ∃<var-name>( lower-bound .. upper-bound)  P(a(x))
+
+Of course in this case at least 1 member of a(x) in the checked range must
+satisfy P(a(x)) for Logika to verify.
+
+.. note:: Best Practice for Sequences
+
+    It is best, when modifying a sequence in a loop (or function), to *always*
+    specify what changes and what remains the same, including the size of the sequence.
+    Failure to do so may lead to sound, but incomplete proofs.  If you have no errors,
+    Logika *will* verify sound but incompletely specified proofs.
+
+
+
+Summary
+*******
+
+The law for while-loops is
+
+.. code-block:: python
+
+   """{ ... I }"""
+   while B :
+     """
+     { invariant  I
+       modifies   VARLIST   (those variables updated in  C) }
+     """
+     """
+     { 1. B   premise
+       2. I   premise
+       ... }
+     """
+     C
+     """{ ... I }"""
+
+   """
+   { 1. ~B    premise
+     2. I     premise
+     ... }
+   """
+----
+
+.. raw:: html
+
+   <p align=right><small><em>
+   This note was adapted from David Schmidt's CIS 301, 2008,
+   <a href="http://people.cis.ksu.edu/~schmidt/301s14/Lectures/4whileT.html">Chapter 4</a>
+   course note.
+   </em></small></p>
+   <p align=right><small><em>
+   It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
+   to conform with Logika syntax and more closely match <br>
+   KSU's CIS 301 course as taught in Spring 2018.
+   </em></small></p>
