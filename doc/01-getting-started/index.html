@@ -1,27 +1,21 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>1. Getting Started &mdash; Sireum Logika</title>
-    
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <title>1. Getting Started &#8212; Sireum Logika</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -30,15 +24,15 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
     <link rel="prev" title="Sireum Logika Documentation" href="../index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -200,8 +194,8 @@ Sireum Logika Documentation
 <span id="id1"></span><h1>1. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Logika runs on x64 macOS, Linux, and Windows operating systems
 (tested on macOS 10.12 &amp; 10.13, KDE neon, Ubuntu 17.10, and Windows 10).</p>
-<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span>Using Sireum v3 Binary Distribution</span></a> or
-<a class="reference internal" href="#using-source"><span>Using Sireum v3 Source Distribution</span></a>.</p>
+<p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span class="std std-ref">Using Sireum v3 Binary Distribution</span></a> or
+<a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
 <div class="section" id="using-sireum-v3-binary-distribution">
 <span id="using-binary"></span><h2>1.1. Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
 <hr/>
@@ -240,7 +234,7 @@ experimental features.</p>
          <div class="tab-pane" id="birm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre>(sim=sireum-v3-ive-mac64.dmg &amp;&amp; rm -f $sim &amp;&amp; curl -JLo $sim http://bit.ly/sv3ivem &amp;&amp; open $sim)
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>(sim=sireum-v3-ive-mac64.dmg &amp;&amp; rm -f $sim &amp;&amp; curl -JLo $sim http://bit.ly/sv3ivem &amp;&amp; open $sim)
 </pre></div>
 </div>
    </td>
@@ -259,7 +253,7 @@ experimental features.</p>
 <p>Drag and drop the Sireum icon to the Applications folder.</p>
 <p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
 if it is instead downloaded using a browser,
-you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
+you need to remove Apple’s quarantine extended attribute on the .dmg file before opening it as follows:
 <code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-ive-mac64.dmg</span></code>).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
@@ -332,7 +326,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
       <div class="tab-pane active" id="bidm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre>(sdim=sireum-v3-dev-ive-mac64.dmg &amp;&amp; rm -f $sdim &amp;&amp; curl -JLo $sdim http://bit.ly/sv3divem &amp;&amp; open $sdim)
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>(sdim=sireum-v3-dev-ive-mac64.dmg &amp;&amp; rm -f $sdim &amp;&amp; curl -JLo $sdim http://bit.ly/sv3divem &amp;&amp; open $sdim)
 </pre></div>
 </div>
    </td>
@@ -351,7 +345,7 @@ to use that, add <code class="docutils literal"><span class="pre">SIREUM_HOME\pl
 <p>Drag and drop the Sireum-dev icon to the Applications folder.</p>
 <p>(Note: the above avoids <a class="reference external" href="https://support.apple.com/en-us/HT202491">GateKeeper</a>;
 if it is instead downloaded using a browser,
-you need to remove Apple&#8217;s quarantine extended attribute on the .dmg file before opening it as follows:
+you need to remove Apple’s quarantine extended attribute on the .dmg file before opening it as follows:
 <code class="docutils literal"><span class="pre">xattr</span> <span class="pre">-d</span> <span class="pre">com.apple.quarantine</span> <span class="pre">sireum-v3-dev-ive-mac64.dmg</span></code>).</p>
 <p>For subsequent instructions, replace <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal"><span class="pre">/Applications/Sireum-dev.app/Contents/Resources/sireum-v3-dev</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal"><span class="pre">Sireum-dev</span></code> inside <code class="docutils literal"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal"><span class="pre">open</span> <span class="pre">/Applications/Sireum-dev.app</span></code>).</p>
@@ -419,13 +413,13 @@ just in case you want to ensure that your copy is untampered
 digital signature can be verified using the following command:</p>
 <table width="100%" >
   <tr>
-   <td><div class="code bash highlight-none"><div class="highlight"><pre>minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm &lt;file&gt;
+   <td><div class="code bash highlight-none"><div class="highlight"><pre><span></span>minisign -P RWShRZe/1tMRHAcQ2162Wq5FhU2ptktJdQxzUxvK0MwVjDYRC4JY87Fb -Vm &lt;file&gt;
 </pre></div>
 </div>
 <div class="last">   </td>
    <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
+     <button id="copyMinisign" data-clipboard-text="minisign -P RWShRZe/1tMRHAcQ2162Wq5FhU2ptktJdQxzUxvK0MwVjDYRC4JY87Fb -Vm">
        <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
@@ -453,18 +447,18 @@ if (navigator.appVersion.indexOf("Win")!=-1) {
 <p>To run Logika:</p>
 <ul>
 <li><p class="first">Under <strong>macOS</strong> or <strong>Linux</strong>:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>SIREUM_HOME/sireum logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>SIREUM_HOME/sireum logika
 </pre></div>
 </div>
 </li>
 <li><p class="first">Under <strong>Windows</strong>:</p>
-<div class="code batch highlight-none"><div class="highlight"><pre>SIREUM_HOME\sireum logika
+<div class="code batch highlight-none"><div class="highlight"><pre><span></span>SIREUM_HOME\sireum logika
 </pre></div>
 </div>
 </li>
 </ul>
 <p>Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre>Sireum Logika:
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika:
 A Program Verifier and A Natural Deduction Proof Checker
 ... for Propositional, Predicate, and Programming Logics
 
@@ -493,7 +487,7 @@ Symbol Conversion Options:
     --unicode    Convert to Unicode
 </pre></div>
 </div>
-<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
@@ -506,7 +500,7 @@ a Windows shell/command prompt.</p>
 <h3>1.1.3. Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h3>
 <p>To update Logika, simply re-download/install/replace according to the
 above instructions.</p>
-<p>Next, see <a class="reference internal" href="#logika-examples"><span>Verifying Examples using Sireum CLI</span></a>.</p>
+<p>Next, see <a class="reference internal" href="#logika-examples"><span class="std std-ref">Verifying Examples using Sireum CLI</span></a>.</p>
 </div>
 </div>
 <div class="section" id="using-sireum-v3-source-distribution">
@@ -535,8 +529,8 @@ through the distribution package manager.</p>
 <h4>1.2.1.3. Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
 <p>On Windows, it is best to install <a class="reference external" href="https://msys2.github.io">MSYS2</a> (64-bit)
 and use its MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell to install the above tools.
-First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell from the Windows start menu&#8217;s MSYS2 64bit group):</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>pacman -S git unzip wget
+First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></code> shell from the Windows start menu’s MSYS2 64bit group):</p>
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>pacman -S git unzip wget
 </pre></div>
 </div>
 </div>
@@ -545,7 +539,7 @@ First, open MSYS2 <code class="docutils literal"><span class="pre">bash</span></
 <span id="source-installing-running"></span><h3>1.2.2. Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To install Logika, enter the following commands under <code class="docutils literal"><span class="pre">bash</span></code>
 (<em>in a directory whose path does not contain whitespaces</em>):</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>git clone --recursive https://github.com/sireum/v3.git sireum-v3
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/sireum/v3.git sireum-v3
 sireum-v3/sireum logika
 </pre></div>
 </div>
@@ -561,9 +555,9 @@ itself.
 If the build somehow fails, please see
 [troubleshooting](<a class="reference external" href="https://github.com/sireum/v3#troubleshooting">https://github.com/sireum/v3#troubleshooting</a>).</p>
 <p>The process may take a while depending on your internet connection speed and
-your machine&#8217;s computational prowess.</p>
+your machine’s computational prowess.</p>
 <p>When it finishes, Logika will display its usage information:</p>
-<div class="highlight-none"><div class="highlight"><pre>Sireum Logika:
+<div class="highlight-none"><div class="highlight"><pre><span></span>Sireum Logika:
 A Program Verifier and A Natural Deduction Proof Checker
 ... for Propositional, Predicate, and Programming Logics
 
@@ -592,7 +586,7 @@ Symbol Conversion Options:
     --unicode    Convert to Unicode
 </pre></div>
 </div>
-<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span>Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
+<p>(Please refer to <a class="reference internal" href="#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a> for descriptions on the above option switches.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For the remainder of this document, we use <code class="docutils literal"><span class="pre">LOGIKA</span></code> as a shorthand for
@@ -602,7 +596,7 @@ Symbol Conversion Options:
 <div class="section" id="source-update">
 <span id="id2"></span><h3>1.2.3. Updating Logika<a class="headerlink" href="#source-update" title="Permalink to this headline">¶</a></h3>
 <p>To get updates, simply do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--recurse-submodules</span></code> inside <code class="docutils literal"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>cd sireum-v3
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>cd sireum-v3
 git pull --recurse-submodules
 LOGIKA
 </pre></div>
@@ -616,7 +610,7 @@ LOGIKA
 <ul>
 <li><p class="first">Using git</p>
 <p>Clone the repository to try out some of the examples:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>git clone https://github.com/sireum/v3-logika-examples.git logika-examples
 </pre></div>
 </div>
 </li>
@@ -626,7 +620,7 @@ LOGIKA
 </ul>
 <p>Then run Logika on, e.g., <code class="docutils literal"><span class="pre">logika-examples/src/propositional/intro-nat-ded.logika</span></code>,
 whose content is as follows:</p>
-<div class="highlight-none"><div class="highlight"><pre>p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
+<div class="highlight-none"><div class="highlight"><pre><span></span>p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 {
   1. p ∨ q                    premise
   2. r                        premise
@@ -645,38 +639,38 @@ whose content is as follows:</p>
 </pre></div>
 </div>
 <p>using the following command:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>LOGIKA logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>which will show:</p>
-<div class="highlight-none"><div class="highlight"><pre>Propositional logic proof is accepted.
+<div class="highlight-none"><div class="highlight"><pre><span></span>Propositional logic proof is accepted.
 </pre></div>
 </div>
 <p>If one introduced a typo in the proof, such as using ∨i1 instead of ∨i2 in step #10 in the above example,
 Logika will instead output:</p>
-<div class="highlight-none"><div class="highlight"><pre>[13, 11] The disjunction&#39;s left sub-expression in step #10 does not match #9 for Or-intro1.
+<div class="highlight-none"><div class="highlight"><pre><span></span>[13, 11] The disjunction&#39;s left sub-expression in step #10 does not match #9 for Or-intro1.
 Propositional logic proof is rejected.
 </pre></div>
 </div>
 <p>One can specify the sequent to prove as a command line to ensure that the proof in the file is
 the one that is expected as follows (if you introduced the typo, revert it back first):</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>LOGIKA -s &quot;¬(¬p ∨ ¬q) ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA -s &quot;¬(¬p ∨ ¬q) ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>If the provided sequent is different than the one in the file, the tool rejects it.
 For example:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>LOGIKA -s &quot;p, q ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>LOGIKA -s &quot;p, q ⊢ p ∧ q&quot; logika-examples/src/propositional/intro-nat-ded.logika
 </pre></div>
 </div>
 <p>will result:</p>
-<div class="highlight-none"><div class="highlight"><pre>The specified sequent is different than the one in the file.
+<div class="highlight-none"><div class="highlight"><pre><span></span>The specified sequent is different than the one in the file.
 Specified:
 p, q ⊢ p ∧ q
 File:
 p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 </pre></div>
 </div>
-<p>For a better experience, consider using the Sireum IVE&#8217;s <a class="reference internal" href="../02-live/index.html#live"><span>IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
+<p>For a better experience, consider using the Sireum IVE’s <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
 </div>
 <div class="section" id="logika-command-line-configuration">
 <span id="cli-configuration"></span><h2>1.4. Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
@@ -686,7 +680,7 @@ thus, there is no configuration switch needed for it.</p>
 <span id="id3"></span><h3>1.4.1. Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal"><span class="pre">-a</span></code> or <code class="docutils literal"><span class="pre">--auto</span></code>.</p>
 <p>The auto mode enables claim justifications using the
-<a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span>auto</span></a> summoning.
+<a class="reference internal" href="../03-language/programming/index.html#prog-auto"><span class="std std-ref">auto</span></a> summoning.
 It also enables Logika to try to automatically prove
 contracts (e.g., assertions, pre/post-conditions, invariants) and
 runtime error checks (e.g., division by zero, sequence indexing).</p>
@@ -694,11 +688,11 @@ runtime error checks (e.g., division by zero, sequence indexing).</p>
 enabling this mode.
 Moreover, Logika will produce an error message if it cannot
 automatically prove a contract or a runtime error check
-(in which case, one can increase the <a class="reference internal" href="#timeout"><span>timeout</span></a>
+(in which case, one can increase the <a class="reference internal" href="#timeout"><span class="std std-ref">timeout</span></a>
 for automatic proving, or guide Logika by establishing more
 claims to help with making the necessary deduction).</p>
 <p>Furthermore, auto mode changes the way
-<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span>proof statement</span></a> works.
+<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> works.
 By default, a proof statement only propagates the proven
 claims inside that statement.
 This essentially resets the premises that are available
@@ -707,7 +701,7 @@ has proven.
 If auto is enabled, proof statements also
 propagate their premises along with their proven claims.
 For more information with examples, please refer to the
-<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span>proof statement</span></a> section.</p>
+<a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> section.</p>
 </div>
 <div class="section" id="formula">
 <h3>1.4.2. Formula<a class="headerlink" href="#formula" title="Permalink to this headline">¶</a></h3>
@@ -765,7 +759,7 @@ cannot be proved automatically.</p>
 either 0, 8, 16, 32, or 64.
 By default, Logika uses arbitrary-precision (big) integer for
 its integer (<code class="docutils literal"><span class="pre">Z</span></code>) type.
-When supplied with a non-zero parameter in <a class="reference internal" href="#symexe"><span>Symbolic Execution Mode</span></a>,
+When supplied with a non-zero parameter in <a class="reference internal" href="#symexe"><span class="std std-ref">Symbolic Execution Mode</span></a>,
 say <code class="docutils literal"><span class="pre">N</span></code>, Logika uses the ranged integer from -2 <sup>N - 1</sup>
 to 2 <sup>N -1</sup> - 1 for <code class="docutils literal"><span class="pre">Z</span></code> where over/under-flows are checked.</p>
 </div>
@@ -785,7 +779,7 @@ header and source files, as well as a <a class="reference external" href="https:
 (<code class="docutils literal"><span class="pre">CMakeLists.txt</span></code>).</p>
 <p>To compile the generated C code, go to the directory under which the files
 are generated and execute:</p>
-<div class="code bash highlight-none"><div class="highlight"><pre>cmake .
+<div class="code bash highlight-none"><div class="highlight"><pre><span></span>cmake .
 make
 </pre></div>
 </div>
@@ -796,7 +790,7 @@ make
 <p>The server mode puts Logika to accepts requests through
 its console input and responds through its console output.
 This is designed for integration with other tools such as
-the <a class="reference internal" href="../02-live/index.html#live"><span>IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.
+the <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.
 Each request/respond message is in the (restricted)
 form of a line JSON serialization string whose schema are
 derived from the Scala case classes defined in the

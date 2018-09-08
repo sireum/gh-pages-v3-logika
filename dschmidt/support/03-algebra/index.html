@@ -1,27 +1,21 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Circuits that Compute on Numbers: Algebra &mdash; Sireum Logika</title>
-    
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <title>Circuits that Compute on Numbers: Algebra &#8212; Sireum Logika</title>
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
@@ -30,12 +24,13 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="../../../index.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -131,14 +126,14 @@ Logika: Programming Logics
 </b></big></big></big></big>
 </font><div class="section" id="circuits-that-compute-on-numbers-algebra">
 <span id="algebra"></span><h1>Circuits that Compute on Numbers: Algebra<a class="headerlink" href="#circuits-that-compute-on-numbers-algebra" title="Permalink to this headline">¶</a></h1>
-<p>Circuits are &#8220;programs&#8221; that are constructed from AND, OR, NOT operations and
+<p>Circuits are “programs” that are constructed from AND, OR, NOT operations and
 compute on the value set, <code class="docutils literal"><span class="pre">{</span> <span class="pre">t,</span> <span class="pre">f</span> <span class="pre">}</span></code>.
 We use equations to name the wires within the circuit, and we saw how to deduce
 properties of the circuit even when we did not know the exact values of the
-circuit&#8217;s inputs.
+circuit’s inputs.
 This is critical for circuit design and analysis.</p>
-<p>We can also make &#8220;circuits&#8221; from the arithmetic operations, <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>,
-<code class="docutils literal"><span class="pre">/</span></code>, that compute on numbers &#8211; numbers travel along the wires.
+<p>We can also make “circuits” from the arithmetic operations, <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>,
+<code class="docutils literal"><span class="pre">/</span></code>, that compute on numbers – numbers travel along the wires.
 We apply the principles of <em>algebra</em> to deduce properties of the circuits we
 write.</p>
 <p>In this chapter, we review principles of algebra and apply them to equationally
@@ -147,43 +142,43 @@ defined systems (circuits).</p>
 <h2>Algebra<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>An algebra is a set of (equational) laws for a set of operators.
 For example, here are laws for the binary operators, <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">*</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>(a + b) + c = a + (b + c)           law assoc+
-a + b = b + a                       law comm+
-a + 0 = a                           law unit+
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>           <span class="n">law</span> <span class="n">assoc</span><span class="o">+</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span>                       <span class="n">law</span> <span class="n">comm</span><span class="o">+</span>
+<span class="n">a</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">=</span> <span class="n">a</span>                           <span class="n">law</span> <span class="n">unit</span><span class="o">+</span>
 
-(a * b) * c = a * (b * c)           law assoc*
-a * b = b * a                       law comm*
-a * 1 = a                           law unit*
+<span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>           <span class="n">law</span> <span class="n">assoc</span><span class="o">*</span>
+<span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">a</span>                       <span class="n">law</span> <span class="n">comm</span><span class="o">*</span>
+<span class="n">a</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">a</span>                           <span class="n">law</span> <span class="n">unit</span><span class="o">*</span>
 
-a * (b + c) = (a * b) + (a * c)     law dist
+<span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>     <span class="n">law</span> <span class="n">dist</span>
 </pre></div>
 </div>
 <p>(By the way, this set of laws defines a <em>ring</em> for <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">*</span></code>.)</p>
 <p>Say we use the numbers, <code class="docutils literal"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,...</span></code>, as the arguments to the operators;
 then we add some equational laws to define how the numbers are related by
 <code class="docutils literal"><span class="pre">+1</span></code>, namely:</p>
-<div class="highlight-python"><div class="highlight"><pre>1 + 1 = 2
-2 + 1 = 3
-3 + 1 = 4
-   and so on, and also
-0 * 0 = 0
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">4</span>
+   <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span><span class="p">,</span> <span class="ow">and</span> <span class="n">also</span>
+<span class="mi">0</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>We use the operators and arguments to write <em>expressions</em>, like <code class="docutils literal"><span class="pre">(3</span> <span class="pre">*</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">1</span></code>.
-We use the equational laws to calculate the expression&#8217;s answer, its output,
+We use the equational laws to calculate the expression’s answer, its output,
 its <em>meaning</em>.
 The short story is that <code class="docutils literal"><span class="pre">(3</span> <span class="pre">*</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">7</span></code>;
 the long story is that the above equations calculate, <em>deduce</em>, that the
-expression&#8217;s meaning is 7.</p>
-<p>Here&#8217;s <em>why</em> <code class="docutils literal"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">6</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre>3 * 2 =  3 * (1 + 1)          because  1 + 1 = 2
-      =  (3 * 1) + (3 * 1)    because  dist
-      =  3 + 3                because  unit* (twice)
-      =  3 + (2 + 1)          because  2 + 1 = 3
-      =  3 + (1 + 2)          because  comm+
-      =  (3 + 1) + 2          because  assoc+
-      =  4 + 2                because  3 + 1 = 4
-      = ... =  6              (you do the remaining steps)
+expression’s meaning is 7.</p>
+<p>Here’s <em>why</em> <code class="docutils literal"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">6</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">=</span>  <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>          <span class="n">because</span>  <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">2</span>
+      <span class="o">=</span>  <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>    <span class="n">because</span>  <span class="n">dist</span>
+      <span class="o">=</span>  <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span>                <span class="n">because</span>  <span class="n">unit</span><span class="o">*</span> <span class="p">(</span><span class="n">twice</span><span class="p">)</span>
+      <span class="o">=</span>  <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>          <span class="n">because</span>  <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">3</span>
+      <span class="o">=</span>  <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>          <span class="n">because</span>  <span class="n">comm</span><span class="o">+</span>
+      <span class="o">=</span>  <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>          <span class="n">because</span>  <span class="n">assoc</span><span class="o">+</span>
+      <span class="o">=</span>  <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span>                <span class="n">because</span>  <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">4</span>
+      <span class="o">=</span> <span class="o">...</span> <span class="o">=</span>  <span class="mi">6</span>              <span class="p">(</span><span class="n">you</span> <span class="n">do</span> <span class="n">the</span> <span class="n">remaining</span> <span class="n">steps</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>So, <code class="docutils literal"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">6</span></code> and then <code class="docutils literal"><span class="pre">(3</span> <span class="pre">*</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">6</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">7</span></code>.
@@ -192,21 +187,21 @@ bits in its gate layout.</p>
 </div>
 <div class="section" id="arithmetic-circuits">
 <h2>Arithmetic Circuits<a class="headerlink" href="#arithmetic-circuits" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s write an expression that uses variable names like <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.
+<p>Let’s write an expression that uses variable names like <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.
 One example is <code class="docutils literal"><span class="pre">(2</span> <span class="pre">*</span> <span class="pre">(x</span> <span class="pre">+</span> <span class="pre">y))</span> <span class="pre">-</span> <span class="pre">(y</span> <span class="pre">+</span> <span class="pre">1)</span></code>.
 Like the logic expressions in the previous chapter, this expression uses <code class="docutils literal"><span class="pre">x</span></code>
-and <code class="docutils literal"><span class="pre">y</span></code> as its &#8220;inputs.&#8221;
-So, let&#8217;s pretend we have hardware gates for the operations, <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>,
+and <code class="docutils literal"><span class="pre">y</span></code> as its “inputs.”
+So, let’s pretend we have hardware gates for the operations, <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>,
 <code class="docutils literal"><span class="pre">*</span></code>.
 Now, we have circuits where <em>numbers travel along the wires</em>.
 The circuit corresponding to <code class="docutils literal"><span class="pre">(2</span> <span class="pre">*</span> <span class="pre">(x</span> <span class="pre">+</span> <span class="pre">y))</span> <span class="pre">-</span> <span class="pre">(y</span> <span class="pre">+</span> <span class="pre">1)</span></code> looks like this:</p>
 <img alt="../../../_images/expr.png" src="../../../_images/expr.png" />
-<p>In the 1970&#8217;s, this form of circuit, called a <em>data-flow program</em>, was used with
+<p>In the 1970’s, this form of circuit, called a <em>data-flow program</em>, was used with
 computers with multiple processors for parallel computation of subexpressions.
 They are now again being investigated for use with multi-core processors.
 Here is the equational system for the above circuit, where each internal wire is
 labelled with its own name:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">c</span>
@@ -215,22 +210,22 @@ labelled with its own name:</p>
 <p>This equation set uses one operation in each equation.
 It is called <em>three-address code</em> and is produced by a compiler when the
 compiler translates arithmetic expressions into machine language.
-Let&#8217;s repeat the exercises at the end of the previous chapter for this
+Let’s repeat the exercises at the end of the previous chapter for this
 equational system. First, say that <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code> and <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">2</span></code>;
 we can apply the algebra laws to calculate the knowledge that holds true after
-each equation is &#8220;executed&#8221; within the program:</p>
-<div class="highlight-python"><div class="highlight"><pre>            premises: x = 3,  y = 2
-a = x + y
-            therefore,  x = 3,  y = 2,  a = x + y
+each equation is “executed” within the program:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>            <span class="n">premises</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+            <span class="n">therefore</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
-            therefore,  x = 3,  y = 2,  a = 5
-            (by application of the previously viewed algebra laws)
-b = 2 * a
-            therefore,  x = 3,  y = 2,  a = 5,  b = 10
-c = y + 1
-            therefore,  x = 3,  y = 2,  a = 5,  b = 10,  c = 3
-d = b - c
-            therefore,  x = 3,  y = 2,  a = 5,  b = 10,  c = 3,  d = 7
+            <span class="n">therefore</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="p">(</span><span class="n">by</span> <span class="n">application</span> <span class="n">of</span> <span class="n">the</span> <span class="n">previously</span> <span class="n">viewed</span> <span class="n">algebra</span> <span class="n">laws</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+            <span class="n">therefore</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">therefore</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>  <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">c</span>
+            <span class="n">therefore</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>  <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">7</span>
 </pre></div>
 </div>
 <p>Algebra calculates the numerical values for all of <code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, <code class="docutils literal"><span class="pre">c</span></code> , <code class="docutils literal"><span class="pre">d</span></code>.
@@ -239,37 +234,37 @@ cells.
 The above is a <em>test case</em> of the program.
 Next, say that we know that the circuit will be plugged into an assembly that
 supplies input <code class="docutils literal"><span class="pre">1</span></code> to <code class="docutils literal"><span class="pre">x</span></code>.
-What can we deduce about the circuit&#8217;s output (in terms of <code class="docutils literal"><span class="pre">y</span></code>)?
+What can we deduce about the circuit’s output (in terms of <code class="docutils literal"><span class="pre">y</span></code>)?
 This is a bread-and-butter use of algebra:</p>
-<div class="highlight-python"><div class="highlight"><pre>           premise:  x = 1
-a = x + y
-           therefore,  a = x + y,  x = 1
-                       a = 1 + y                                by substitution
-b = 2 * a
-           therefore,  b = 2 * a,  a = 1 + y
-                       b = 2 * (1 + y)                          by substitution
-                       b = (2 * y) + 2                          by algebra
-c = y + 1
-           therefore,  c = y + 1,  b = (2 * y) + 2
-d = b - c
-           therefore, d = b - c,  c = y + 1,  b = (2 * y) + 2
-                      d = (2 * y) + 2 - (y + 1)                 by substitution
-                      d = y + 1                                 by algebra
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="n">premise</span><span class="p">:</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+           <span class="n">therefore</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span>  <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+                       <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">y</span>                                <span class="n">by</span> <span class="n">substitution</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+           <span class="n">therefore</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span>  <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">y</span>
+                       <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>                          <span class="n">by</span> <span class="n">substitution</span>
+                       <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>                          <span class="n">by</span> <span class="n">algebra</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+           <span class="n">therefore</span><span class="p">,</span>  <span class="n">c</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">c</span>
+           <span class="n">therefore</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">c</span><span class="p">,</span>  <span class="n">c</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>  <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+                      <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>                 <span class="n">by</span> <span class="n">substitution</span>
+                      <span class="n">d</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>                                 <span class="n">by</span> <span class="n">algebra</span>
 </pre></div>
 </div>
 <p>This reasoning is similar to what we use when we write assignment commands in a
 programming language.</p>
 <div class="section" id="validating-code-for-an-embedded-system">
 <h3>Validating Code for an Embedded System<a class="headerlink" href="#validating-code-for-an-embedded-system" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s do one more exercise.
+<p>Let’s do one more exercise.
 Say we have this equation set/circuit/program:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>Pretend that the algebra equations define a real-time controller for the rudder
-of an airplane, and inputs <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> are supplied from the plane&#8217;s
+of an airplane, and inputs <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> are supplied from the plane’s
 gyroscope, refreshed every few milliseconds.
 Assume that the input value supplied by the <code class="docutils literal"><span class="pre">x</span></code> sensor will always be larger
 than the value supplied by the <code class="docutils literal"><span class="pre">y</span></code> sensor, that is, <code class="docutils literal"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> must hold true.
@@ -280,16 +275,16 @@ If so, then the code can be burned into the hardware controller and installed in
 the plane.</p>
 <p>We construct the proof with algebra.
 Along the way, we will prove that <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> are positive:</p>
-<div class="highlight-python"><div class="highlight"><pre>           premises:  x &gt; y,  x &gt; 0
-a = x - y
-           since  x &gt; y, then  x - y &gt; y - y  then  x - y &gt; 0  by algebra
-           since  a = x - y,  then  a &gt; 0  by substitution
-b = 2 * a
-           since a &gt; 0,  then  2 * a &gt; 0  by algebra
-           then  b &gt; 0   by substitution
-c = b + 1
-           since b &gt; 0  then  b + 1 &gt; 0 + 1  then  b + 1 &gt; 1  by algebra
-           then  c &gt; 1  by substitution
+<div class="highlight-default"><div class="highlight"><pre><span></span>           <span class="n">premises</span><span class="p">:</span>  <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">,</span>  <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+           <span class="n">since</span>  <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">,</span> <span class="n">then</span>  <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y</span>  <span class="n">then</span>  <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="n">by</span> <span class="n">algebra</span>
+           <span class="n">since</span>  <span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>  <span class="n">then</span>  <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="n">by</span> <span class="n">substitution</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span>
+           <span class="n">since</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>  <span class="n">then</span>  <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="n">by</span> <span class="n">algebra</span>
+           <span class="n">then</span>  <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span>   <span class="n">by</span> <span class="n">substitution</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+           <span class="n">since</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="n">then</span>  <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">1</span>  <span class="n">then</span>  <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">1</span>  <span class="n">by</span> <span class="n">algebra</span>
+           <span class="n">then</span>  <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">1</span>  <span class="n">by</span> <span class="n">substitution</span>
 </pre></div>
 </div>
 <p>So, we have proved that when the inputs satisfy the <em>precondition</em> that
@@ -310,14 +305,14 @@ A program with this feature is called a <em>single-assignment program</em>.
 Further, there is no <em>self reference</em>, that is, no equation, <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">e</span></code>, where
 <code class="docutils literal"><span class="pre">e</span></code> references <code class="docutils literal"><span class="pre">x</span></code> directly or indirectly.
 If we violate either property, our analysis breaks down.
-Consider this &#8220;equation set&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+Consider this “equation set”:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <p>A naive application of algebra lets us deduce a falsehood:</p>
-<div class="highlight-python"><div class="highlight"><pre>x = 0
+<div class="highlight-default"><div class="highlight"><pre><span></span>x = 0
           therefore,  x == 0
 y = x
           therefore,  y == x  and  x == 0
@@ -330,18 +325,18 @@ x = x + 1
 </div>
 <p>The assignment command we use in programming is different from an algebraic
 equality.
-We must distinguish between the &#8220;old&#8221; value of <code class="docutils literal"><span class="pre">x</span></code> prior to the assignment,
-<code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>, and the &#8220;new&#8221; value of <code class="docutils literal"><span class="pre">x</span></code> that results from the assignment&#8217;s
-&#8220;output.&#8221;
+We must distinguish between the “old” value of <code class="docutils literal"><span class="pre">x</span></code> prior to the assignment,
+<code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>, and the “new” value of <code class="docutils literal"><span class="pre">x</span></code> that results from the assignment’s
+“output.”
 This leads us to <em>programming logic</em> in the next chapter.</p>
 </div>
 <div class="section" id="some-history">
 <h2>Some history<a class="headerlink" href="#some-history" title="Permalink to this headline">¶</a></h2>
-<p>By the way, the first &#8220;high level&#8221; programming language, Fortran, was designed
-in the 1950s by John Backus for IBM&#8217;s engineers, who wanted to write and solve
+<p>By the way, the first “high level” programming language, Fortran, was designed
+in the 1950s by John Backus for IBM’s engineers, who wanted to write and solve
 equation sets.
 Backus knew that computer hardware used storage cells for variables and that
-the cells&#8217; values could be updated.
+the cells’ values could be updated.
 So, he introduced the equational version of assignment to Fortran, which wrecks
 the correspondence between algebra equations and program code.
 Since then, there are many modern languages, the <em>functional programming

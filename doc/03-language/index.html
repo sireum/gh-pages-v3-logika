@@ -1,27 +1,21 @@
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>3. The Logika Formal Input Language &mdash; Sireum Logika</title>
-    
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <title>3. The Logika Formal Input Language &#8212; Sireum Logika</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/journal/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -30,15 +24,15 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
-    <link rel="top" title="Sireum Logika" href="../../index.html" />
-    <link rel="up" title="Sireum Logika Documentation" href="../index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.1. Basic Language Elements" href="basic/index.html" />
     <link rel="prev" title="2. IntelliJ-based Logika Integrated Verification Environment (LIVE)" href="../02-live/index.html" />
   </head>
-  <body role="document">
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -127,13 +121,13 @@ Sireum Logika Documentation
 <span id="language"></span><h1>3. The Logika Formal Input Language<a class="headerlink" href="#the-logika-formal-input-language" title="Permalink to this headline">¶</a></h1>
 <h2>Design Rationale</h2><p>There are many ways one can take when designing a language
 for introducing logics in computer science.
-Below are the main design criteria for Logika&#8217;s:</p>
+Below are the main design criteria for Logika’s:</p>
 <ol class="arabic">
 <li><p class="first">Based on a real, popular, and modern statically-typed
 programming language.</p>
 <p>This criterion helps with making the case that logics
 are applicable in real-world settings.</p>
-<p>The &#8220;statically-typed&#8221; part of the criterion is of
+<p>The “statically-typed” part of the criterion is of
 a personal opinion (i.e., static typing is one showcase
 of widely-successful applications of logics
 in computer science, which was introduced to avoid
@@ -152,8 +146,8 @@ case studies on interesting problems.
 When larger sets are needed, they should be introduced
 gradually.</p>
 </li>
-<li><p class="first">Has a &#8220;clean&#8221; semantic.</p>
-<p>&#8220;Clean&#8221; here really means that the language
+<li><p class="first">Has a “clean” semantic.</p>
+<p>“Clean” here really means that the language
 semantic does not complicate reasoning.
 For example, 32-bit or 64-bit integers are typically used
 in most programming languages for efficiency sake.
@@ -161,7 +155,7 @@ However, they complicate reasoning because one has to
 worry about underflows/overflows.
 Such concerns should be separated and considered later
 once reasoning basics have been grasped.
-In this particular case, &#8220;clean&#8221; translates
+In this particular case, “clean” translates
 to using arbitrary-precision integers; reasoning
 to handle ranged or modulo integers can be exposed as
 additional learning modules.</p>
@@ -176,7 +170,7 @@ language features (or a library).</p>
 is chosen as the basis due to its customizability to provide
 a clean sandbox for a small, yet interesting language features
 (i.e., by leveraging advanced Scala features such as implicits,
-macro, and &#8220;magic&#8221; functions such as <code class="docutils literal"><span class="pre">apply</span></code> and <code class="docutils literal"><span class="pre">update</span></code>;
+macro, and “magic” functions such as <code class="docutils literal"><span class="pre">apply</span></code> and <code class="docutils literal"><span class="pre">update</span></code>;
 see Logika runtime library [<a class="reference external" href="https://github.com/sireum/v3-runtime/blob/release/runtime/shared/src/main/scala/org/sireum/package.scala">github</a>, <a class="reference external" href="http://search.maven.org/#search%7Cga%7C1%7Clogika-runtime">maven</a>]).</p>
 <h2>Language Overview</h2><p>The Logika input formal language are generally categorized into two:</p>
 <ul class="simple">
@@ -187,16 +181,16 @@ as well as for expressing software contracts.</li>
 <p>There are common elements between the two categories (e.g., the expression language).
 However, they may have some difference, thus,
 it is convenient to be able to distinguish when the elements are in a certain context
-by using &#8220;proof context&#8221; or &#8220;programming context&#8221;.</p>
+by using “proof context” or “programming context”.</p>
 <p>The programming language is a simple procedural subset of the
 <a class="reference external" href="http://scala-lang.org">Scala programming language</a>.
 The proof language is actually embedded in the programming language,
 but they are easily distinguishable because of their reserved form that uses
-Scala&#8217;s <em>multi-line</em>
-<a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> &#8211;
-more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> ... <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>.
+Scala’s <em>multi-line</em>
+<a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> –
+more specifically, <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;{</span></code> … <code class="docutils literal"><span class="pre">}&quot;&quot;&quot;</span></code>.
 Here is an example to ponder:</p>
-<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
 
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{ fact</span>
 <span class="s">        def sum(zs: ZS, n: Z): Z</span>
@@ -263,11 +257,11 @@ Here is an example to ponder:</p>
 </div>
 <hr class="docutils" />
 <p>Let us first discuss the
-<a class="reference internal" href="basic/index.html#basic-language"><span>basic language elements</span></a> that are common to the two categories,
+<a class="reference internal" href="basic/index.html#basic-language"><span class="std std-ref">basic language elements</span></a> that are common to the two categories,
 before proceeding to discuss the
-<a class="reference internal" href="propositional/index.html#propositional-language"><span>propositional</span></a>,
-<a class="reference internal" href="predicate/index.html#predicate-language"><span>predicate</span></a>, and
-<a class="reference internal" href="programming/index.html#programming-language"><span>programming</span></a> logic input languages.</p>
+<a class="reference internal" href="propositional/index.html#propositional-language"><span class="std std-ref">propositional</span></a>,
+<a class="reference internal" href="predicate/index.html#predicate-language"><span class="std std-ref">predicate</span></a>, and
+<a class="reference internal" href="programming/index.html#programming-language"><span class="std std-ref">programming</span></a> logic input languages.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basic/index.html">3.1. Basic Language Elements</a><ul>
