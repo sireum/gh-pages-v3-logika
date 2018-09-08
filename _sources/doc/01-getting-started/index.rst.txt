@@ -443,14 +443,14 @@ To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
    .. code:: bash
 
-      minisign -P RWShRZe/1tMRHAcQ2162Wq5FhU2ptktJdQxzUxvK0MwVjDYRC4JY87Fb -Vm <file>
+      minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm <file>
 
    .. raw:: html
 
          </td>
          <td style="vertical-align: text-top;">
            &nbsp;&nbsp;
-           <button id="copyMinisign" data-clipboard-text="minisign -P RWShRZe/1tMRHAcQ2162Wq5FhU2ptktJdQxzUxvK0MwVjDYRC4JY87Fb -Vm">
+           <button id="copyMinisign" data-clipboard-text="minisign -P RWSJrtRxSDlkZHXVldw0WXJvSfzaEsW9R6vxq0sVKDtbmgzQSb4uOwnu -Vm">
              <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
            </button>
          </td>
