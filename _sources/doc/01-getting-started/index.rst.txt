@@ -130,14 +130,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -JLo $sim http://bit.ly/sv3ivem && open $sim)
+   (sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim http://bit.ly/sv3ivem && open $sim)
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -JLo $sim http://bit.ly/sv3ivem && open $sim)">
+        <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim http://bit.ly/sv3ivem && open $sim)">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
@@ -289,14 +289,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -JLo $sdim http://bit.ly/sv3divem && open $sdim)
+   (sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim http://bit.ly/sv3divem && open $sdim)
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -JLo $sdim http://bit.ly/sv3divem && open $sdim)">
+        <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim http://bit.ly/sv3divem && open $sdim)">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>

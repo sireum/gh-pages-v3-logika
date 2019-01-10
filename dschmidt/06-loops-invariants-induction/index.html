@@ -3,25 +3,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>6. Loops and Loop Invariants &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -31,8 +24,7 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7. Functions and Procedures" href="../07-functions-procedures/index.html" />
     <link rel="prev" title="5. Programming Logic for Assignments and Conditionals" href="../05-programming-logic/index.html" />
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -167,9 +159,9 @@ still true the last time you check and “skip” the loop.</p>
 <a class="reference internal image-reference" href="../../_images/06-image-10.png"><img alt="../../_images/06-image-10.png" src="../../_images/06-image-10.png" style="width: 537.6px; height: 384.0px;" /></a>
 <div class="section" id="while-loops">
 <h2>6.1. While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
-<p>Consider the factorial <code class="docutils literal"><span class="pre">n!</span></code>.  We can understand factorial as a repeated
-product: for integer <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
+<p>Consider the factorial <code class="docutils literal notranslate"><span class="pre">n!</span></code>.  We can understand factorial as a repeated
+product: for integer <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
 </pre></div>
 </div>
 <div class="sidebar">
@@ -181,13 +173,13 @@ any invariant claims (invariants are optional).  The block must contain
 a modifies clause.</p>
 <p>In Logika, when a loop (also a function) modifies a variable from an outside
 or higher level scope it must explicitly state that in a Logika proof
-block immediately following the <code class="docutils literal"><span class="pre">while</span> <span class="pre">()</span> <span class="pre">{</span></code> line.  Since any loop counter
+block immediately following the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">()</span> <span class="pre">{</span></code> line.  Since any loop counter
 or other sentinel value is declared outside the loop, the loop must either
 modify the value or loop forever.</p>
 <p class="last">In this case line 9 states that both i and fac may be modified in the loop.</p>
 </div>
 <p>It is easy to write a loop program that computes the repeated product:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -216,10 +208,10 @@ modify the value or loop forever.</p>
 
 </pre></div>
 </td></tr></table></div>
-<p>The loop adjoins the multiplications, <code class="docutils literal"><span class="pre">*1</span></code>, <code class="docutils literal"><span class="pre">*2</span></code>, <code class="docutils literal"><span class="pre">*3</span></code>, etc., to the
-running total, <code class="docutils literal"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
+<p>The loop adjoins the multiplications, <code class="docutils literal notranslate"><span class="pre">*1</span></code>, <code class="docutils literal notranslate"><span class="pre">*2</span></code>, <code class="docutils literal notranslate"><span class="pre">*3</span></code>, etc., to the
+running total, <code class="docutils literal notranslate"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 Consider some execution cases:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n == 0: the loop repeats 0 times: it computes  fac == 1  ==  0!
 n == 1: the loop repeats 1 time:  it computes  fac == 1 * 1  ==  1!
 n == 2: the loop repeats 2 times: it computes  fac == (1 * 1) * 2  ==  2!
 n == 3: the loop repeats 3 times: it computes  fac == (1 * 1 * 2) * 3  ==  3!
@@ -228,8 +220,8 @@ n == 4: the loop repeats 4 times: it computes  fac == (1 * 1 * 2 * 3) * 4  ==  4
 the loop repeats k+1 times: it computes  fac == (k!) * (k+1)  ==  (k+1)!
 </pre></div>
 </div>
-<p>For input, <code class="docutils literal"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">4</span></code>, the loop computes correctly <code class="docutils literal"><span class="pre">4!</span></code> in 4 iterations
-because the loop computes correctly <code class="docutils literal"><span class="pre">3!</span></code> in 3 iterations –
+<p>For input, <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">4</span></code>, the loop computes correctly <code class="docutils literal notranslate"><span class="pre">4!</span></code> in 4 iterations
+because the loop computes correctly <code class="docutils literal notranslate"><span class="pre">3!</span></code> in 3 iterations –
 <em>the fourth loop iteration builds upon the work of the previous three</em>.
 This is the standard use of a loop: each loop iteration builds on the previous
 iterations to move one step closer to the final goal.</p>
@@ -237,13 +229,13 @@ iterations to move one step closer to the final goal.</p>
 <blockquote>
 <div>Say that the loop has been running for some iterations; what has it accomplished so far?</div></blockquote>
 <p>For the factorial example, the response is:
-“after <code class="docutils literal"><span class="pre">i</span></code> iterations, variable <code class="docutils literal"><span class="pre">fac</span></code> has the value, <code class="docutils literal"><span class="pre">i!</span></code>, that is,
-<code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>.”</p>
+“after <code class="docutils literal notranslate"><span class="pre">i</span></code> iterations, variable <code class="docutils literal notranslate"><span class="pre">fac</span></code> has the value, <code class="docutils literal notranslate"><span class="pre">i!</span></code>, that is,
+<code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>.”</p>
 <p>This answer is important, because it reveals the strategy the loop uses to reach
-its goal in stages: as <code class="docutils literal"><span class="pre">i</span></code> counts upwards towards <code class="docutils literal"><span class="pre">n</span></code>, <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>
+its goal in stages: as <code class="docutils literal notranslate"><span class="pre">i</span></code> counts upwards towards <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">i!</span></code>
 repeatedly holds true.
-Because the loop stops when <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, this means the loop will achieve its
-goal: <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">n!</span></code>.</p>
+Because the loop stops when <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, this means the loop will achieve its
+goal: <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">n!</span></code>.</p>
 <p>The answer to the “crucial question” listed above is the loop’s
 <em>invariant property</em>. Now, why is it an invariant?</p>
 <p>This is because <em>the output from the loop’s prior iterations flows into the
@@ -259,7 +251,7 @@ This is a logical property that can be proved.</p>
 to help with specifying contracts.  It is important to note that, as the name
 implies, Logika treats these axioms as facts–if you make an error in the
 definition, Logika will dutifully enforce that error everywhere in the program.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -276,17 +268,17 @@ definition, Logika will dutifully enforce that error everywhere in the program.<
 </td></tr></table></div>
 <p>Lets go through this quickly.  In this class, facts will be given to you, you
 are only expected to know how to use them.</p>
-<p>On line 4 we see <code class="docutils literal"><span class="pre">def</span> <span class="pre">factorial(n:Z):</span> <span class="pre">Z</span></code>.  This tells you that the <em>fact</em> is
-named <code class="docutils literal"><span class="pre">factorial</span></code>, it has one named argument <code class="docutils literal"><span class="pre">n</span></code>, which is an integer, and
+<p>On line 4 we see <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">factorial(n:Z):</span> <span class="pre">Z</span></code>.  This tells you that the <em>fact</em> is
+named <code class="docutils literal notranslate"><span class="pre">factorial</span></code>, it has one named argument <code class="docutils literal notranslate"><span class="pre">n</span></code>, which is an integer, and
 that factorial itself evaluates to an integer (think of this as a return type).</p>
-<p class="last">Line 5 is the first rule, <code class="docutils literal"><span class="pre">fZero.</span> <span class="pre">factorial(0)</span> <span class="pre">==</span> <span class="pre">1</span></code>.  This rule, used as a
-justification, allows you to state <code class="docutils literal"><span class="pre">factorial(0)</span> <span class="pre">==</span> <span class="pre">1</span></code> as a claim.
+<p class="last">Line 5 is the first rule, <code class="docutils literal notranslate"><span class="pre">fZero.</span> <span class="pre">factorial(0)</span> <span class="pre">==</span> <span class="pre">1</span></code>.  This rule, used as a
+justification, allows you to state <code class="docutils literal notranslate"><span class="pre">factorial(0)</span> <span class="pre">==</span> <span class="pre">1</span></code> as a claim.
 Using this new claim, you can prove additional things through substitution.
-Be sure you understand the <code class="docutils literal"><span class="pre">fPos</span></code> rule.  This is a syntactical form and semantical
+Be sure you understand the <code class="docutils literal notranslate"><span class="pre">fPos</span></code> rule.  This is a syntactical form and semantical
 meaning you will see often in programming logic.</p>
 </div>
 <p>We deduce the invariant property on the factorial-loop body like this:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -448,10 +440,10 @@ meaning you will see often in programming logic.</p>
 </pre></div>
 </td></tr></table></div>
 <p>This little example is just the loop repeated twice. What we see is both at
-the begining and after each update, <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.
+the begining and after each update, <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.
 Notice how the knowledge generated by completing one iteration “feeds into”
 the next iteration.
-And, after each iteration, that knowledge is that <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.</p>
+And, after each iteration, that knowledge is that <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Logika Loop Invariants</p>
 <blockquote>
@@ -469,7 +461,7 @@ not necessarily true.  A semantic error in programing can lead to unsound
 conclusions.</div></blockquote>
 </div>
 <p>A working Logika program would look something like</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -579,18 +571,18 @@ before entering the loop the first time.  Similarly, lines 47 and 50 re-establis
 the invariant before we try to loop again.  Thus, we prove the loop invariant
 holds each time we check the loop-condition and possibly proceed through the
 loop-body.</p>
-<p>Of course, on each loop the loop counter, <code class="docutils literal"><span class="pre">i</span></code>, gets larger by one, meaning
+<p>Of course, on each loop the loop counter, <code class="docutils literal notranslate"><span class="pre">i</span></code>, gets larger by one, meaning
 that we are closer to achieving the final goal, but the changing values of
-<code class="docutils literal"><span class="pre">fac</span></code> and <code class="docutils literal"><span class="pre">i</span></code> ensure that <code class="docutils literal"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code> remains true:
-“after <code class="docutils literal"><span class="pre">i</span></code> iterations, <code class="docutils literal"><span class="pre">fac</span></code> has value <code class="docutils literal"><span class="pre">factorial(i)</span></code>.”</p>
+<code class="docutils literal notranslate"><span class="pre">fac</span></code> and <code class="docutils literal notranslate"><span class="pre">i</span></code> ensure that <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code> remains true:
+“after <code class="docutils literal notranslate"><span class="pre">i</span></code> iterations, <code class="docutils literal notranslate"><span class="pre">fac</span></code> has value <code class="docutils literal notranslate"><span class="pre">factorial(i)</span></code>.”</p>
 <p><em>The invariant property documents the loop’s structure – how the loop achieves
 its goal</em>.</p>
 <p>As exciting as that discussion was, the loop-invariant is a means to an end,
 not the end itself.  What is it we are trying to achieve?  In this example, we
 would like to be able to prove that fac == n-factorial.  As <em>facts</em> cannot
-be used in assertions, what we will really assert is <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, and then we know
+be used in assertions, what we will really assert is <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, and then we know
 from our invariant that fac == n-factorial.  Consider:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -653,25 +645,25 @@ from our invariant that fac == n-factorial.  Consider:</p>
 <span class="k">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>For certain, when the loop quits after <code class="docutils literal"><span class="pre">i</span></code> iterations, we know that
+<p>For certain, when the loop quits after <code class="docutils literal notranslate"><span class="pre">i</span></code> iterations, we know that
 the invariant holds.
-But we also know that the loop’s test has gone false, that is, <code class="docutils literal"><span class="pre">~(i</span> <span class="pre">&lt;</span> <span class="pre">n)</span></code>,
-that is, <code class="docutils literal"><span class="pre">i</span> <span class="pre">&gt;=n</span></code>.  However these facts are not enough to prove <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
+But we also know that the loop’s test has gone false, that is, <code class="docutils literal notranslate"><span class="pre">~(i</span> <span class="pre">&lt;</span> <span class="pre">n)</span></code>,
+that is, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&gt;=n</span></code>.  However these facts are not enough to prove <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 In this case we say our invariant is too weak, it theoretically admits too many
 possibilities.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Hey wait a minute</p>
 <p class="last">You might want to call foul here and claim it is obvious from reading the entire
-program that <code class="docutils literal"><span class="pre">i</span></code> <strong>must</strong> be <code class="docutils literal"><span class="pre">n</span></code>.  Please recall the axiom that <strong>The obvious
+program that <code class="docutils literal notranslate"><span class="pre">i</span></code> <strong>must</strong> be <code class="docutils literal notranslate"><span class="pre">n</span></code>.  Please recall the axiom that <strong>The obvious
 is the enemy of the provable.</strong> The end goal is to prove the effect you want
 using only the negation of the loop-condition and the invariant.  You need
 to pack all the facts you need into these two expressions.</p>
 </div>
 <p>The solution is to <strong>strengthen</strong> the invariant, make is so it allows fewer
 possibilities after the loop.  In particular, we will want to strengthen the
-invariant so the only possible value of <code class="docutils literal"><span class="pre">i</span></code> is <code class="docutils literal"><span class="pre">n</span></code>.  We can do this by
+invariant so the only possible value of <code class="docutils literal notranslate"><span class="pre">i</span></code> is <code class="docutils literal notranslate"><span class="pre">n</span></code>.  We can do this by
 adding a condition to the invariant such that values of i &gt; n are not allowed.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -765,8 +757,8 @@ yourself what your loop is doing.</p>
 <div class="section" id="law-for-while-loops-claim-transformation">
 <h3>6.1.1. Law for While-Loops (Claim Transformation)<a class="headerlink" href="#law-for-while-loops-claim-transformation" title="Permalink to this headline">¶</a></h3>
 <p>Here is the law we use for deducing the properties of a while-loop.
-It uses an invariant assertion, <code class="docutils literal"><span class="pre">I</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{</span>
+It uses an invariant assertion, <code class="docutils literal notranslate"><span class="pre">I</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{</span>
 <span class="sd">   ...</span>
 <span class="sd">   I</span>
 <span class="sd">}&quot;&quot;&quot;</span>  <span class="o">//</span> <span class="n">we</span> <span class="n">must</span> <span class="n">prove</span> <span class="n">this</span> <span class="bp">True</span> <span class="n">before</span> <span class="n">the</span> <span class="n">loop</span> <span class="ow">is</span> <span class="n">entered</span>
@@ -798,14 +790,14 @@ It uses an invariant assertion, <code class="docutils literal"><span class="pre"
 </div>
 <p>That is, to deduce the knowledge produced by a while-loop (when we do not know
 in advance how many times the loop will iterate), we must deduce an invariant
-<code class="docutils literal"><span class="pre">I</span></code> that:</p>
+<code class="docutils literal notranslate"><span class="pre">I</span></code> that:</p>
 <ol class="arabic simple">
 <li>is proved true before the first time we check the loop condition</li>
 <li>is proved true at the end of the loop’s body</li>
 </ol>
-<p>Then, no matter how many times (0,1,2,…) the loop repeats, we know that <code class="docutils literal"><span class="pre">I</span></code>
+<p>Then, no matter how many times (0,1,2,…) the loop repeats, we know that <code class="docutils literal notranslate"><span class="pre">I</span></code>
 must hold true when the loop stops.
-We also know <code class="docutils literal"><span class="pre">~B</span></code> holds when the loop stops.</p>
+We also know <code class="docutils literal notranslate"><span class="pre">~B</span></code> holds when the loop stops.</p>
 <a class="reference internal image-reference" href="../../_images/06-image-20.png"><img alt="../../_images/06-image-20.png" src="../../_images/06-image-20.png" style="width: 946.8px; height: 319.8px;" /></a>
 <p>Because the loop will update some variables in its body, we must know these
 variables’ names, so that any premises other than the loop invariant that enter
@@ -846,10 +838,10 @@ data structures.</p>
 </div>
 <p>Most people forget that the Greeks and Arabs intended multiplication to be just
 repeated addition.
-So, what does this program calculate for <code class="docutils literal"><span class="pre">z</span></code> when it finishes?
+So, what does this program calculate for <code class="docutils literal notranslate"><span class="pre">z</span></code> when it finishes?
 What is the loop’s invariant?
 (How does the loop reach its goal?)</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -884,9 +876,9 @@ What is the loop’s invariant?
 <span class="k">assert</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Apparently, this program computes <code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> and saves it in <code class="docutils literal"><span class="pre">z</span></code>.
+<p>Apparently, this program computes <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> and saves it in <code class="docutils literal notranslate"><span class="pre">z</span></code>.
 To understand, we execute a test case and watch what is printed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
 <span class="n">Type</span> <span class="n">another</span><span class="p">:</span> <span class="mi">4</span>
 <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>  <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">z</span> <span class="o">=</span> <span class="mi">4</span>
@@ -896,20 +888,20 @@ To understand, we execute a test case and watch what is printed:</p>
 </div>
 <p>The trace information in each row shows this pattern between the values of the
 variables:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">==</span> <span class="n">z</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">==</span> <span class="n">z</span>
 </pre></div>
 </div>
-<p>This is what the loop is doing — what it means — <code class="docutils literal"><span class="pre">z</span></code> holds the value of
-<code class="docutils literal"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code>.
-Because the loop stops when <code class="docutils literal"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>, we conclude that <code class="docutils literal"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p>
+<p>This is what the loop is doing — what it means — <code class="docutils literal notranslate"><span class="pre">z</span></code> holds the value of
+<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code>.
+Because the loop stops when <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>, we conclude that <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p>
 <div class="sidebar">
 <p class="first sidebar-title">This program has an error</p>
 <p class="last">Did you catch it? What happens if x == -3? It should be obvious the loop
 will never terminate.   We’ll fix this with an <em>assume()</em> as we move forward.</p>
 </div>
-<p>We can apply logic laws to prove that <code class="docutils literal"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">==</span> <span class="pre">z</span> <span class="pre">∧</span> <span class="pre">count</span> <span class="pre">&lt;=</span> <span class="pre">x</span></code> is
+<p>We can apply logic laws to prove that <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">==</span> <span class="pre">z</span> <span class="pre">∧</span> <span class="pre">count</span> <span class="pre">&lt;=</span> <span class="pre">x</span></code> is
 invariant for the loop’s body:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1013,7 +1005,7 @@ invariant for the loop’s body:</p>
 e.g., “how many times can you subtract 4 from 20?
 (5) — 4 goes into 20 five times — 20 divided by 4 is 5 (with remainder 0)”.</p>
 <p>Here is the program that does repeated subtraction like division is meant to do:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1055,7 +1047,7 @@ e.g., “how many times can you subtract 4 from 20?
 </pre></div>
 </td></tr></table></div>
 <p>Here is a sample execution with trace information printed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="n">nonegative</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">14</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="n">nonegative</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">14</span>
 <span class="n">Type</span> <span class="n">a</span> <span class="n">positive</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
 <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">14</span>  <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span>  <span class="n">q</span> <span class="o">=</span> <span class="mi">1</span>  <span class="n">r</span> <span class="o">=</span> <span class="mi">11</span>
@@ -1065,18 +1057,18 @@ e.g., “how many times can you subtract 4 from 20?
 <span class="mi">14</span> <span class="n">divided</span> <span class="n">by</span> <span class="mi">3</span> <span class="ow">is</span> <span class="mi">4</span> <span class="k">with</span> <span class="n">remainder</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>This is a “numbers game”, where we are allowed to use only <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">-</span></code> on
+<p>This is a “numbers game”, where we are allowed to use only <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code> on
 the numbers.
-The underlying strategy (invariant) at point <code class="docutils literal"><span class="pre">(a)</span></code> is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+The underlying strategy (invariant) at point <code class="docutils literal notranslate"><span class="pre">(a)</span></code> is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     invariant  (d * q) + r == n</span>
 <span class="s2">     modifies q, r</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>When the loop quits, that is, when there is no longer enough value in <code class="docutils literal"><span class="pre">r</span></code> to
-allow yet one more subtraction of <code class="docutils literal"><span class="pre">q</span></code>, then the result is exactly the
-quotient-remainder that results from dividing <code class="docutils literal"><span class="pre">n</span></code> by <code class="docutils literal"><span class="pre">d</span></code>.  The proof is left
+<p>When the loop quits, that is, when there is no longer enough value in <code class="docutils literal notranslate"><span class="pre">r</span></code> to
+allow yet one more subtraction of <code class="docutils literal notranslate"><span class="pre">q</span></code>, then the result is exactly the
+quotient-remainder that results from dividing <code class="docutils literal notranslate"><span class="pre">n</span></code> by <code class="docutils literal notranslate"><span class="pre">d</span></code>.  The proof is left
 as an exercise.</p>
 </div>
 <div class="section" id="averaging-test-scores">
@@ -1084,7 +1076,7 @@ as an exercise.</p>
 <p>Even a task like summing scores and computing their average depends on a loop
 invariant.  We will approach this using  accumulators for scores and the number
 of scores.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1127,24 +1119,24 @@ of scores.</p>
 <span class="nb">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="s2">&quot; scores were entered with an average of &quot;</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>If we examine the loop at an arbitrary iteration, we see that <code class="docutils literal"><span class="pre">acc</span></code> holds the
+<p>If we examine the loop at an arbitrary iteration, we see that <code class="docutils literal notranslate"><span class="pre">acc</span></code> holds the
 sum of the value of each previously entered valid score, and cnt contains the
 number of valid scores entered.</p>
 <p>When a valid score is entered, the “new” value of the accumulator should equal
 the old value plus the score.   At first blush this seems straight forward</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>acc = acc + scr
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>acc = acc + scr
 l&quot;&quot;&quot;{
      1. acc = acc_old + scr    premise
 }&quot;&quot;&quot;
 </pre></div>
 </div>
-<p>But recall that <code class="docutils literal"><span class="pre">acc_old</span></code> only has a scope of the proof block following the
-assignment.  Thus <code class="docutils literal"><span class="pre">invariant</span> <span class="pre">acc</span> <span class="pre">=</span> <span class="pre">acc_old</span> <span class="pre">+</span> <span class="pre">scr</span></code> will not work.  We will need
+<p>But recall that <code class="docutils literal notranslate"><span class="pre">acc_old</span></code> only has a scope of the proof block following the
+assignment.  Thus <code class="docutils literal notranslate"><span class="pre">invariant</span> <span class="pre">acc</span> <span class="pre">=</span> <span class="pre">acc_old</span> <span class="pre">+</span> <span class="pre">scr</span></code> will not work.  We will need
 extra variables to explicitly keep track of the previous loop-iteration’s values.
 Next we note that “if a valid score is entered ” means we have an implication, so
-<code class="docutils literal"><span class="pre">acc</span> <span class="pre">=</span> <span class="pre">prevA</span> <span class="pre">+</span> <span class="pre">scr</span></code> must be conditioned on <code class="docutils literal"><span class="pre">s</span> <span class="pre">&gt;=0</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">acc</span> <span class="pre">=</span> <span class="pre">prevA</span> <span class="pre">+</span> <span class="pre">scr</span></code> must be conditioned on <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&gt;=0</span></code>.</p>
 <p>The above arguments apply to the count variable as well.  This leads to</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1206,9 +1198,9 @@ as an exercise.</p>
 </div>
 <div class="section" id="squaring-an-array-s-numbers">
 <h3>6.2.4. Squaring an Array’s Numbers<a class="headerlink" href="#squaring-an-array-s-numbers" title="Permalink to this headline">¶</a></h3>
-<p>Say that <code class="docutils literal"><span class="pre">a</span></code> is a sequence of ints, and say we write a loop that squares each of
-<code class="docutils literal"><span class="pre">a</span></code>’s elements and stores the information in sequence <code class="docutils literal"><span class="pre">b</span></code>:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p>Say that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sequence of ints, and say we write a loop that squares each of
+<code class="docutils literal notranslate"><span class="pre">a</span></code>’s elements and stores the information in sequence <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1241,24 +1233,24 @@ as an exercise.</p>
 </td></tr></table></div>
 <p>In words, the loop’s invariant is that</p>
 <blockquote>
-<div>while the loop is running, <code class="docutils literal"><span class="pre">b</span></code>’s elements, from 0 up to <code class="docutils literal"><span class="pre">i</span></code>,
-are the square of <code class="docutils literal"><span class="pre">a</span></code>’s, and the rest are unchanged.</div></blockquote>
-<p>We express this using the logical operator forall (<code class="docutils literal"><span class="pre">∀</span></code>).</p>
-<p>First we will want to capture the idea that everything before <code class="docutils literal"><span class="pre">i</span></code> in sequence
-<code class="docutils literal"><span class="pre">b</span></code> has been changed by the loop.  This is expressed by line 1 below.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div>while the loop is running, <code class="docutils literal notranslate"><span class="pre">b</span></code>’s elements, from 0 up to <code class="docutils literal notranslate"><span class="pre">i</span></code>,
+are the square of <code class="docutils literal notranslate"><span class="pre">a</span></code>’s, and the rest are unchanged.</div></blockquote>
+<p>We express this using the logical operator forall (<code class="docutils literal notranslate"><span class="pre">∀</span></code>).</p>
+<p>First we will want to capture the idea that everything before <code class="docutils literal notranslate"><span class="pre">i</span></code> in sequence
+<code class="docutils literal notranslate"><span class="pre">b</span></code> has been changed by the loop.  This is expressed by line 1 below.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>∀j:Z ( 0&lt;= j ∧ j&lt; i) → (b(j) == (a(j) * a(j)))
 ∀j:Z ( i&lt;= j ∧ j&lt; b.size) → (b(j) == a(j) )
 b.size = a.size
 </pre></div>
 </td></tr></table></div>
-<p>Lines 2 and 3 express what <strong>has not been changed</strong> by the loop.  All indices <code class="docutils literal"><span class="pre">i</span></code> and
+<p>Lines 2 and 3 express what <strong>has not been changed</strong> by the loop.  All indices <code class="docutils literal notranslate"><span class="pre">i</span></code> and
 above still equal a, and the sizes of the 2 sequences are the same.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Sequence ∀ Syntax</p>
 <dl class="docutils">
-<dt>The statement <code class="docutils literal"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code> is parsed as</dt>
+<dt>The statement <code class="docutils literal notranslate"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code> is parsed as</dt>
 <dd><div class="first last line-block">
 <div class="line">For all integer variables j,</div>
 <div class="line">IF j &gt;=0 AND j &lt; i</div>
@@ -1266,26 +1258,26 @@ above still equal a, and the sizes of the 2 sequences are the same.</p>
 </div>
 </dd>
 </dl>
-<p>You may ask, what happens when <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">0</span></code>?  In this case the Right Hand Side
+<p>You may ask, what happens when <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">0</span></code>?  In this case the Right Hand Side
 of the implication <em>(0&lt;= j ∧ j&lt; i)</em> is false (there are no ints which
 satisfy the condition), so the implications is said to be vacuously true.</p>
-<p><code class="docutils literal"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code>  can be written
-<code class="docutils literal"><span class="pre">∀j</span> <span class="pre">(</span> <span class="pre">0</span> <span class="pre">..</span> <span class="pre">&lt;</span> <span class="pre">i)</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code>  can be written
+<code class="docutils literal notranslate"><span class="pre">∀j</span> <span class="pre">(</span> <span class="pre">0</span> <span class="pre">..</span> <span class="pre">&lt;</span> <span class="pre">i)</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code></p>
 <p class="last">This is covered more fully in this chapter’s section on Sequences.</p>
 </div>
-<p>For all <code class="docutils literal"><span class="pre">j</span></code> in the range from <code class="docutils literal"><span class="pre">0</span></code> to
-<code class="docutils literal"><span class="pre">i-1,</span> <span class="pre">b(j)==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code>; for all <code class="docutils literal"><span class="pre">j</span></code> in the range, <code class="docutils literal"><span class="pre">i</span></code> to
-<code class="docutils literal"><span class="pre">b.size</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">(j)</span></code>; and we ensure the size of the arrays match.
+<p>For all <code class="docutils literal notranslate"><span class="pre">j</span></code> in the range from <code class="docutils literal notranslate"><span class="pre">0</span></code> to
+<code class="docutils literal notranslate"><span class="pre">i-1,</span> <span class="pre">b(j)==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code>; for all <code class="docutils literal notranslate"><span class="pre">j</span></code> in the range, <code class="docutils literal notranslate"><span class="pre">i</span></code> to
+<code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">(j)</span></code>; and we ensure the size of the arrays match.
 This last statement is key, and we will see why in a moment.</p>
-<p>This indicates clearly that sequence <code class="docutils literal"><span class="pre">b</span></code> is split into toe segments: one whose
-elements are the square of <code class="docutils literal"><span class="pre">a</span></code> and one whose elements are not yet altered.</p>
-<p>When the loop quits, it is because <code class="docutils literal"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">b.size</span></code>.
-In this situation, the range from <code class="docutils literal"><span class="pre">i</span></code> to <code class="docutils literal"><span class="pre">b.size-1</span></code> is empty – all the
+<p>This indicates clearly that sequence <code class="docutils literal notranslate"><span class="pre">b</span></code> is split into toe segments: one whose
+elements are the square of <code class="docutils literal notranslate"><span class="pre">a</span></code> and one whose elements are not yet altered.</p>
+<p>When the loop quits, it is because <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">b.size</span></code>.
+In this situation, the range from <code class="docutils literal notranslate"><span class="pre">i</span></code> to <code class="docutils literal notranslate"><span class="pre">b.size-1</span></code> is empty – all the
 array’s elements are squared.</p>
 <p>Please note, a working invariant in Logika will require more than this key idea.
 Here is a program that with an set of claims for the invariant which produces
 the desired behavior. Below we’ll discuss why the “extra” claims are necessary.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1326,20 +1318,20 @@ the desired behavior. Below we’ll discuss why the “extra” claims are neces
 </td></tr></table></div>
 <p>Logika will throw an error it we do not prove that all sequence-indexing operations
 will be inside the sequent itseld.  Lets cover the potential of index-out-of-bounds
-errors in <code class="docutils literal"><span class="pre">b</span></code> first.  Lines 8 and 9 ensure that at the start of every
-loop-iteration, the variable <code class="docutils literal"><span class="pre">i</span></code> lies inside the indices of <code class="docutils literal"><span class="pre">b</span></code>.
+errors in <code class="docutils literal notranslate"><span class="pre">b</span></code> first.  Lines 8 and 9 ensure that at the start of every
+loop-iteration, the variable <code class="docutils literal notranslate"><span class="pre">i</span></code> lies inside the indices of <code class="docutils literal notranslate"><span class="pre">b</span></code>.
 Specifically, line 16 will not throw an
-index-out-of-bounds error for sequence <code class="docutils literal"><span class="pre">b</span></code>.</p>
-<p>However, Logika knows the loop <code class="docutils literal"><span class="pre">modifies</span> <span class="pre">b</span></code>; so the invariant must account
-for the possibility of adding or deleting elements in <code class="docutils literal"><span class="pre">b</span></code>, i.e changing its size.
-The invariant <code class="docutils literal"><span class="pre">a.size</span> <span class="pre">=</span> <span class="pre">b.size</span></code> on line 10 enforces a rule that <code class="docutils literal"><span class="pre">b</span></code>
-is always the size of <code class="docutils literal"><span class="pre">a</span></code> at the start of every iteration, so line 16
-will never get an index-out-of-bounds error from <code class="docutils literal"><span class="pre">a</span></code>.</p>
-<p>Line 10 also helps us prove our goal.  Because the loop does not modify <code class="docutils literal"><span class="pre">a</span></code>, and
-<code class="docutils literal"><span class="pre">b</span></code> is always the same size as <code class="docutils literal"><span class="pre">a</span></code>,
-<code class="docutils literal"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">b.size)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code>  is true at the end of
-the loop.  If <code class="docutils literal"><span class="pre">b</span></code> were
-allowed to be smaller or bigger than <code class="docutils literal"><span class="pre">a</span></code>, indices in on sequence, but not the
+index-out-of-bounds error for sequence <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>However, Logika knows the loop <code class="docutils literal notranslate"><span class="pre">modifies</span> <span class="pre">b</span></code>; so the invariant must account
+for the possibility of adding or deleting elements in <code class="docutils literal notranslate"><span class="pre">b</span></code>, i.e changing its size.
+The invariant <code class="docutils literal notranslate"><span class="pre">a.size</span> <span class="pre">=</span> <span class="pre">b.size</span></code> on line 10 enforces a rule that <code class="docutils literal notranslate"><span class="pre">b</span></code>
+is always the size of <code class="docutils literal notranslate"><span class="pre">a</span></code> at the start of every iteration, so line 16
+will never get an index-out-of-bounds error from <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<p>Line 10 also helps us prove our goal.  Because the loop does not modify <code class="docutils literal notranslate"><span class="pre">a</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">b</span></code> is always the same size as <code class="docutils literal notranslate"><span class="pre">a</span></code>,
+<code class="docutils literal notranslate"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">b.size)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code>  is true at the end of
+the loop.  If <code class="docutils literal notranslate"><span class="pre">b</span></code> were
+allowed to be smaller or bigger than <code class="docutils literal notranslate"><span class="pre">a</span></code>, indices in on sequence, but not the
 other, would either throw an error or be ignored.  That is not the behavior we
 want.  The proof is left as an exercise.</p>
 </div>
@@ -1355,10 +1347,10 @@ use to reduce the number and length of required proof-blocks</p>
 <div class="section" id="auto-mode">
 <h3>6.3.1. Auto-mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/06-image-30.png"><img alt="../../_images/06-image-30.png" src="../../_images/06-image-30.png" style="width: 509.0px; height: 532.0px;" /></a>
-<p>This mode enables you to use <code class="docutils literal"><span class="pre">auto</span></code> in lieu of normal justification statements.
+<p>This mode enables you to use <code class="docutils literal notranslate"><span class="pre">auto</span></code> in lieu of normal justification statements.
 Consider the final proof for Multiplication as Repeated addition.  In manual
 mode it required roughly 50 lines to complete.  In Auto mode</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1427,7 +1419,7 @@ and lines are required may not be intuitively obvious.</p>
 program based on invariants and method  pre-, post- and frame conditions.</p>
 <a class="reference internal image-reference" href="../../_images/06-image-40.png"><img alt="../../_images/06-image-40.png" src="../../_images/06-image-40.png" style="width: 324.59999999999997px; height: 330.59999999999997px;" /></a>
 <p>It reduces the multiplication problem to roughly 20 lines</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1502,7 +1494,7 @@ logical or programming error.</p>
 rules for applying logic to collections can be abstracted from these examples
 and applied to different types of collections as needed.</p>
 <p>As the name implies, there are no “NULL” or gaps in a sequence. However it is
-possible to make an empty sequence <code class="docutils literal"><span class="pre">(var</span> <span class="pre">b</span> <span class="pre">:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS())</span></code>.</p>
+possible to make an empty sequence <code class="docutils literal notranslate"><span class="pre">(var</span> <span class="pre">b</span> <span class="pre">:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS())</span></code>.</p>
 <div class="section" id="types-and-constructors">
 <h4>Types and Constructors<a class="headerlink" href="#types-and-constructors" title="Permalink to this headline">¶</a></h4>
 <p>In class we deal with two types of lists, lists of integers and lists of booleans.</p>
@@ -1533,7 +1525,7 @@ possible to make an empty sequence <code class="docutils literal"><span class="p
 </div>
 <div class="section" id="operations-and-properties">
 <h4>Operations and Properties<a class="headerlink" href="#operations-and-properties" title="Permalink to this headline">¶</a></h4>
-<p>Given <code class="docutils literal"><span class="pre">var</span> <span class="pre">a:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS(1,2,3)</span></code>.  <code class="docutils literal"><span class="pre">a</span></code> = [1,2,3]</p>
+<p>Given <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">a:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS(1,2,3)</span></code>.  <code class="docutils literal notranslate"><span class="pre">a</span></code> = [1,2,3]</p>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -1586,7 +1578,7 @@ sequence.</p>
 </dl>
 </td>
 <td>Creates an exact copy of a for b.  Dirrect assignment
-<code class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, is not permitted</td>
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code>, is not permitted</td>
 </tr>
 </tbody>
 </table>
@@ -1594,9 +1586,9 @@ sequence.</p>
 </div>
 <div class="section" id="law-for-sequence-element-assignment-claim-transformation">
 <h4>Law for Sequence Element Assignment (Claim Transformation)<a class="headerlink" href="#law-for-sequence-element-assignment-claim-transformation" title="Permalink to this headline">¶</a></h4>
-<p>To assign a value to an element <code class="docutils literal"><span class="pre">i</span></code> of a sequence a is very similar to
+<p>To assign a value to an element <code class="docutils literal notranslate"><span class="pre">i</span></code> of a sequence a is very similar to
 the assignment of non-sequence element.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>l&quot;&quot;&quot;{
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>l&quot;&quot;&quot;{
      prove :
      0 &lt;= i      // must be stated with 0 on LHS
      i &lt; a.size
@@ -1619,7 +1611,7 @@ the assignment of non-sequence element.</p>
 <p>in the Logika-proof block immediately following a sequence element assignment,
 Logika creates a local “sequence_old” for reference.  A concrete Logika
 example (solved in auto mode) of this law is below:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1664,28 +1656,28 @@ example (solved in auto mode) of this law is below:</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Note the use of <code class="docutils literal"><span class="pre">auto</span></code> on line 2.  This eliminates roughly a dozen lines of
-claim manipulations.  Proving an element in a sequence, created by <code class="docutils literal"><span class="pre">ZS(1,2,...)</span></code>
+<p>Note the use of <code class="docutils literal notranslate"><span class="pre">auto</span></code> on line 2.  This eliminates roughly a dozen lines of
+claim manipulations.  Proving an element in a sequence, created by <code class="docutils literal notranslate"><span class="pre">ZS(1,2,...)</span></code>
 is equal to a value is a laborious process in manual mode.</p>
 </div>
 </div>
 <div class="section" id="use-of-quantifiers">
 <h3>6.5.2. Use of Quantifiers<a class="headerlink" href="#use-of-quantifiers" title="Permalink to this headline">¶</a></h3>
 <p>The basic form of specifying some claim P(a(x)) holds for every member of the
-sequence <code class="docutils literal"><span class="pre">a</span></code> are</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>∀&lt;var-name&gt;: &lt;var-type&gt; ( lower-bound ∧ upper-bound)  → P(a(x))
+sequence <code class="docutils literal notranslate"><span class="pre">a</span></code> are</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>∀&lt;var-name&gt;: &lt;var-type&gt; ( lower-bound ∧ upper-bound)  → P(a(x))
 
 ∀&lt;var-name&gt;( lower-bound .. upper-bound)  P(a(x))   // shorthand version
 </pre></div>
 </div>
 <p>Where the lower- and upper-bounds are inclusive statements about where to start
 and end looking through the sequence.  For example
-<code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">(</span> <span class="pre">x&gt;=0</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">a.size)</span>&#160; <span class="pre">→</span> <span class="pre">P(a(x))</span></code> would check every member of <code class="docutils literal"><span class="pre">a</span></code> to
+<code class="docutils literal notranslate"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">(</span> <span class="pre">x&gt;=0</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">a.size)</span>&#160; <span class="pre">→</span> <span class="pre">P(a(x))</span></code> would check every member of <code class="docutils literal notranslate"><span class="pre">a</span></code> to
 see that P(a(x)) holds where as
-<code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">(</span> <span class="pre">0</span> <span class="pre">..</span> <span class="pre">&lt;</span> <span class="pre">(a.size/</span> <span class="pre">2))</span>&#160; <span class="pre">P(a(x))</span></code> would check the first half.
-Logika will verify <code class="docutils literal"><span class="pre">∀</span></code>, if and only if P(a(x)) is proven true for every a(x) in the range.</p>
+<code class="docutils literal notranslate"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">(</span> <span class="pre">0</span> <span class="pre">..</span> <span class="pre">&lt;</span> <span class="pre">(a.size/</span> <span class="pre">2))</span>&#160; <span class="pre">P(a(x))</span></code> would check the first half.
+Logika will verify <code class="docutils literal notranslate"><span class="pre">∀</span></code>, if and only if P(a(x)) is proven true for every a(x) in the range.</p>
 <p>Similarly, the forms for there exist are</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>∃&lt;var-name&gt;: &lt;var-type&gt; ( lower-bound ∧ upper-bound)  → P(a(x))
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>∃&lt;var-name&gt;: &lt;var-type&gt; ( lower-bound ∧ upper-bound)  → P(a(x))
 
 ∃&lt;var-name&gt;( lower-bound .. upper-bound)  P(a(x))
 </pre></div>
@@ -1705,7 +1697,7 @@ Logika <em>will</em> verify sound but incompletely specified proofs.</p>
 <div class="section" id="summary">
 <h2>6.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>The law for while-loops is</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>
 <span class="k">while</span> <span class="n">B</span> <span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  { invariant  I</span>
