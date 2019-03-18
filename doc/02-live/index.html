@@ -3,18 +3,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>2. IntelliJ-based Logika Integrated Verification Environment (LIVE) &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +30,8 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3. The Logika Formal Input Language" href="../03-language/index.html" />
     <link rel="prev" title="1. Getting Started" href="../01-getting-started/index.html" />
-  </head><body>
+  </head>
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -174,7 +181,7 @@ for any editor file types.</li>
 <ul class="simple">
 <li>Can be used in conjunction with IntelliJ’s
 <a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet">Scala Worksheet</a>
-(<code class="docutils literal notranslate"><span class="pre">.sc</span></code> files) or its Scala editor (<code class="docutils literal notranslate"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
+(<code class="docutils literal"><span class="pre">.sc</span></code> files) or its Scala editor (<code class="docutils literal"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
 (e.g., the screenshot above illustrates how LIVE works with the Scala Worksheet).</li>
 </ul>
 </div>
@@ -193,7 +200,7 @@ please take a look at its system requirements and follow the installation instru
 for your respective operating system.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">In Windows and some Linux distributions, you need to add <code class="docutils literal notranslate"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
+<p class="last">In Windows and some Linux distributions, you need to add <code class="docutils literal"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
 <a class="reference external" href="https://www.jetbrains.com/idea/help/tuning-intellij-idea.html#copy1">.vmoption</a> file.</p>
 </div>
 </div>
@@ -208,15 +215,15 @@ Thus, you can choose to skip directly to <a class="reference internal" href="#li
 <a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">JetBrains’ plugin repositories</a>.</p>
 <p>First, open IntelliJ’s
 <a class="reference external" href="https://www.jetbrains.com/idea/help/settings-preferences-dialog.html">Preferences</a>
-(shortcut: <code class="docutils literal notranslate"><span class="pre">⌘,</span></code> in macOS):</p>
+(shortcut: <code class="docutils literal"><span class="pre">⌘,</span></code> in macOS):</p>
 <a class="reference internal image-reference" href="../../_images/install-from-jetbrains.png"><img alt="../../_images/install-from-jetbrains.png" src="../../_images/install-from-jetbrains.png" style="width: 529.6px; height: 334.40000000000003px;" /></a>
 <ol class="arabic simple">
-<li>Click on <code class="docutils literal notranslate"><span class="pre">Plugins</span></code>.</li>
-<li>Select <code class="docutils literal notranslate"><span class="pre">Browse</span> <span class="pre">repositories...</span></code>.</li>
-<li>Type <code class="docutils literal notranslate"><span class="pre">sireum</span></code> in the search text field of the newly displayed window.</li>
-<li>Click <code class="docutils literal notranslate"><span class="pre">Install</span></code> and then click <code class="docutils literal notranslate"><span class="pre">Restart</span></code> IntelliJ.</li>
+<li>Click on <code class="docutils literal"><span class="pre">Plugins</span></code>.</li>
+<li>Select <code class="docutils literal"><span class="pre">Browse</span> <span class="pre">repositories...</span></code>.</li>
+<li>Type <code class="docutils literal"><span class="pre">sireum</span></code> in the search text field of the newly displayed window.</li>
+<li>Click <code class="docutils literal"><span class="pre">Install</span></code> and then click <code class="docutils literal"><span class="pre">Restart</span></code> IntelliJ.</li>
 </ol>
-<p>Once restarted, LIVE adds a <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span></code> sub-menu under the
+<p>Once restarted, LIVE adds a <code class="docutils literal"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal"><span class="pre">Logika</span></code> sub-menu under the
 <a class="reference external" href="https://www.jetbrains.com/idea/help/menus-and-toolbars.html">IntelliJ Tools menu</a>.</p>
 </div>
 </div>
@@ -226,9 +233,9 @@ Thus, you can choose to skip directly to <a class="reference internal" href="#li
 <h3>2.3.1. Configuring Scala and Scala Worksheet Settings<a class="headerlink" href="#configuring-scala-and-scala-worksheet-settings" title="Permalink to this headline">¶</a></h3>
 <p>By default, LIVE is <a class="reference internal" href="#live-configuration"><span class="std std-ref">configured</span></a> to also work with
 <a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet">Scala Worksheet</a>
-<code class="docutils literal notranslate"><span class="pre">.sc</span></code> files; Scala Worksheet is an excellent tool for learning Scala.
-Using <code class="docutils literal notranslate"><span class="pre">.sc</span></code> files allow one to test and prove Logika programs using the same editor.</p>
-<p>You can <a class="reference internal" href="#live-configuration"><span class="std std-ref">configure</span></a> LIVE to also work with <code class="docutils literal notranslate"><span class="pre">.scala</span></code> files to
+<code class="docutils literal"><span class="pre">.sc</span></code> files; Scala Worksheet is an excellent tool for learning Scala.
+Using <code class="docutils literal"><span class="pre">.sc</span></code> files allow one to test and prove Logika programs using the same editor.</p>
+<p>You can <a class="reference internal" href="#live-configuration"><span class="std std-ref">configure</span></a> LIVE to also work with <code class="docutils literal"><span class="pre">.scala</span></code> files to
 benefit from, for example, its code-folding feature, which is handy for hiding
 proof claims that have been verified.</p>
 <p>To have a better experience working with Logika programs using the Scala or Scala
@@ -248,15 +255,15 @@ warnings for Logika programs.
 Thus, it is best to disable them when working on Logika programs.
 The two code inspections can be found in the
 <a class="reference external" href="https://www.jetbrains.com/idea/help/disabling-and-enabling-inspections.html">IntelliJ’s Editor Inspections</a>
-settings under <code class="docutils literal notranslate"><span class="pre">Scala</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">General</span></code>:<ul>
-<li><code class="docutils literal notranslate"><span class="pre">Comparing</span> <span class="pre">unrelated</span> <span class="pre">types</span></code>:
-Logika uses arbitrary-precision integers (<code class="docutils literal notranslate"><span class="pre">scala.BigInt</span></code>, which is aliased as <code class="docutils literal notranslate"><span class="pre">Z</span></code>
-in Logika) instead of using 32-bit <code class="docutils literal notranslate"><span class="pre">Int</span></code>.
-IntelliJ gives a spurious warning when a variable of type <code class="docutils literal notranslate"><span class="pre">Z</span></code> (the alias) is
-compared with an <code class="docutils literal notranslate"><span class="pre">Int</span></code> literal (it does not give such warning if <code class="docutils literal notranslate"><span class="pre">BigInt</span></code> is used
+settings under <code class="docutils literal"><span class="pre">Scala</span></code> -&gt; <code class="docutils literal"><span class="pre">General</span></code>:<ul>
+<li><code class="docutils literal"><span class="pre">Comparing</span> <span class="pre">unrelated</span> <span class="pre">types</span></code>:
+Logika uses arbitrary-precision integers (<code class="docutils literal"><span class="pre">scala.BigInt</span></code>, which is aliased as <code class="docutils literal"><span class="pre">Z</span></code>
+in Logika) instead of using 32-bit <code class="docutils literal"><span class="pre">Int</span></code>.
+IntelliJ gives a spurious warning when a variable of type <code class="docutils literal"><span class="pre">Z</span></code> (the alias) is
+compared with an <code class="docutils literal"><span class="pre">Int</span></code> literal (it does not give such warning if <code class="docutils literal"><span class="pre">BigInt</span></code> is used
 directly, but that is not supported in Logika).</li>
-<li><code class="docutils literal notranslate"><span class="pre">Redundant</span> <span class="pre">Return</span></code>:
-Logika requires an explicit <code class="docutils literal notranslate"><span class="pre">return</span></code> keyword when a method returns a value (which
+<li><code class="docutils literal"><span class="pre">Redundant</span> <span class="pre">Return</span></code>:
+Logika requires an explicit <code class="docutils literal"><span class="pre">return</span></code> keyword when a method returns a value (which
 can only be done at the end of the method, thus, in Scala, it is unnecessary).</li>
 </ul>
 </li>
@@ -304,9 +311,9 @@ open the <a class="reference external" href="https://github.com/sireum/v3-logika
 as an <a class="reference external" href="https://www.jetbrains.com/idea/help/opening-reopening-and-closing-projects.html">IntelliJ project</a>.</p>
 <p>If this is your first time opening the project, you need to
 <a class="reference external" href="https://www.jetbrains.com/idea/help/configuring-global-project-and-module-sdks.html">configure the project SDK</a>
-(note: the SDK Type should be Java SDK), and point it to the <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/platform/java</span></code> directory
+(note: the SDK Type should be Java SDK), and point it to the <code class="docutils literal"><span class="pre">SIREUM_HOME/platform/java</span></code> directory
 (which was created during the process of :ref:` installing Logika &lt;getting-started&gt;`).</p>
-<p>Opening any of the <code class="docutils literal notranslate"><span class="pre">.logika</span></code> files would:</p>
+<p>Opening any of the <code class="docutils literal"><span class="pre">.logika</span></code> files would:</p>
 <hr class="docutils" />
 <ul>
 <li><p class="first">Syntax highlight the file document as shown in
@@ -318,7 +325,7 @@ as an <a class="reference external" href="https://www.jetbrains.com/idea/help/op
 <hr class="docutils" />
 <ul>
 <li><p class="first">Cause LIVE to ask for the Sireum v3 installation directory (if it cannot infer Sireum v3 location).</p>
-<p>Just point it to <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> (see <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>).</p>
+<p>Just point it to <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> (see <a class="reference internal" href="../01-getting-started/index.html#getting-started"><span class="std std-ref">Getting Started</span></a>).</p>
 <p>If LIVE cannot confirm that the selected directory contains a working Sireum v3
 installation, it will display the following:</p>
 <a class="reference internal image-reference" href="../../_images/sireum-dir-invalid.png"><img alt="../../_images/sireum-dir-invalid.png" src="../../_images/sireum-dir-invalid.png" style="width: 300.0px; height: 139.5px;" /></a>
@@ -337,18 +344,18 @@ the background, and hovering the mouse cursor shows a tooltip of Logika’s stat
 <p>Clicking on the status icon will bring up a dialog that asks whether the server should
 be shutdown:</p>
 <a class="reference internal image-reference" href="../../_images/logika-server-shutdown.png"><img alt="../../_images/logika-server-shutdown.png" src="../../_images/logika-server-shutdown.png" style="width: 301.5px; height: 108.0px;" /></a>
-<p>Answering <code class="docutils literal notranslate"><span class="pre">Yes</span></code> will terminate the server and cause the status icon to disappear.</p>
+<p>Answering <code class="docutils literal"><span class="pre">Yes</span></code> will terminate the server and cause the status icon to disappear.</p>
 </li>
 </ul>
 <hr class="docutils" />
 <ul>
-<li><p class="first">Display a notification at the top-right corner that the <code class="docutils literal notranslate"><span class="pre">.logika</span></code> example is
+<li><p class="first">Display a notification at the top-right corner that the <code class="docutils literal"><span class="pre">.logika</span></code> example is
 “Logika Verified”:</p>
 <img alt="../../_images/logika-verified.png" src="../../_images/logika-verified.png" />
 </li>
 </ul>
 <hr class="docutils" />
-<p>That is, opening a <code class="docutils literal notranslate"><span class="pre">.logika</span></code> file (or a <code class="docutils literal notranslate"><span class="pre">.lgk</span></code> file) cause Logika to
+<p>That is, opening a <code class="docutils literal"><span class="pre">.logika</span></code> file (or a <code class="docutils literal"><span class="pre">.lgk</span></code> file) cause Logika to
 automatically work on the file document.
 As you edit the file, Logika will continually analyze it and give various
 feedback such as syntax error marking (see <a class="reference internal" href="#effect"><span class="std std-ref">Effects</span></a>),
@@ -356,11 +363,11 @@ notification, etc.
 (LIVE waits a certain amount of time after the file content is modified before
 calling Logika; this “idle” wait time period can be <a class="reference internal" href="#live-configuration"><span class="std std-ref">configured</span></a>).</p>
 <p>LIVE can also be configured to work with other file types.
-Note that opening any configured files other than <code class="docutils literal notranslate"><span class="pre">.logika</span></code> or <code class="docutils literal notranslate"><span class="pre">.lgk</span></code>
+Note that opening any configured files other than <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code>
 does not automatically cause LIVE to directly verify and monitor such files.
 Instead one needs to explicitly <a class="reference internal" href="#live-action"><span class="std std-ref">invoke Logika</span></a> once.
 Once invoked, LIVE will continue to monitor changes to the file document
-similar to <code class="docutils literal notranslate"><span class="pre">.logika</span></code> or <code class="docutils literal notranslate"><span class="pre">.lgk</span></code> files.
+similar to <code class="docutils literal"><span class="pre">.logika</span></code> or <code class="docutils literal"><span class="pre">.lgk</span></code> files.
 If the editor is closed and reopened, Logika needs to be explicitly invoked once again.</p>
 </div>
 <div class="section" id="live-actions">
@@ -368,13 +375,13 @@ If the editor is closed and reopened, Logika needs to be explicitly invoked once
 <p>There are three ways to explicitly bring Logika to LIVE:</p>
 <hr class="docutils" />
 <ul>
-<li><p class="first">Triggering the menu item <code class="docutils literal notranslate"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span> <span class="pre">Check</span></code>:</p>
+<li><p class="first">Triggering the menu item <code class="docutils literal"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal"><span class="pre">Logika</span></code> -&gt; <code class="docutils literal"><span class="pre">Logika</span> <span class="pre">Check</span></code>:</p>
 <a class="reference internal image-reference" href="../../_images/live-check-menuitem.png"><img alt="../../_images/live-check-menuitem.png" src="../../_images/live-check-menuitem.png" style="width: 388.8px; height: 232.79999999999998px;" /></a>
 </li>
 </ul>
 <hr class="docutils" />
 <ul>
-<li><p class="first">Right-clicking on the editor and selecting <code class="docutils literal notranslate"><span class="pre">Logika</span> <span class="pre">Check</span></code>:</p>
+<li><p class="first">Right-clicking on the editor and selecting <code class="docutils literal"><span class="pre">Logika</span> <span class="pre">Check</span></code>:</p>
 <a class="reference internal image-reference" href="../../_images/live-check-editor.png"><img alt="../../_images/live-check-editor.png" src="../../_images/live-check-editor.png" style="width: 210.6px; height: 208.2px;" /></a>
 </li>
 </ul>
@@ -383,12 +390,12 @@ If the editor is closed and reopened, Logika needs to be explicitly invoked once
 <li>Using a <a class="reference internal" href="#shortcuts"><span class="std std-ref">shortcut</span></a>.</li>
 </ul>
 <hr class="docutils" />
-<p>Note that these LIVE actions to verify file documents are only available for <code class="docutils literal notranslate"><span class="pre">.logika</span></code>,
-<code class="docutils literal notranslate"><span class="pre">.lgk</span></code> and other file types that have been registered in <a class="reference internal" href="#live-configuration"><span class="std std-ref">Sireum LIVE Configuration</span></a>.</p>
+<p>Note that these LIVE actions to verify file documents are only available for <code class="docutils literal"><span class="pre">.logika</span></code>,
+<code class="docutils literal"><span class="pre">.lgk</span></code> and other file types that have been registered in <a class="reference internal" href="#live-configuration"><span class="std std-ref">Sireum LIVE Configuration</span></a>.</p>
 <hr class="docutils" />
 <p>Logika symbols can be converted to ASCII or Unicode by triggering the menu items
-<code class="docutils literal notranslate"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
-or by right-clicking on the editor and selecting  <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
+<code class="docutils literal"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal"><span class="pre">Logika</span></code> -&gt; <code class="docutils literal"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
+or by right-clicking on the editor and selecting  <code class="docutils literal"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
 as shown in the screenshots above.</p>
 </div>
 <div class="section" id="live-shortcuts">
@@ -397,10 +404,10 @@ as shown in the screenshots above.</p>
 <hr class="docutils" />
 <ul>
 <li><p class="first">For invoking Logika to analyze an opened file document.
-The default keyboard shortcut is Shift-Command-L (<code class="docutils literal notranslate"><span class="pre">⇧⌘L</span></code>) when
+The default keyboard shortcut is Shift-Command-L (<code class="docutils literal"><span class="pre">⇧⌘L</span></code>) when
 <a class="reference external" href="https://www.jetbrains.com/idea/help/keymap.html">Intelli’s Keymap</a>
-is set using one of the <code class="docutils literal notranslate"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> Keymaps (i.e., the keymap name
-contains <code class="docutils literal notranslate"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code>); otherwise, it is Shift-Control-L (<code class="docutils literal notranslate"><span class="pre">⇧⌃L</span></code>).</p>
+is set using one of the <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> Keymaps (i.e., the keymap name
+contains <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code>); otherwise, it is Shift-Control-L (<code class="docutils literal"><span class="pre">⇧⌃L</span></code>).</p>
 <p>This shortcut is only available for file types that have been registered in
 <a class="reference internal" href="#live-configuration"><span class="std std-ref">Sireum LIVE Configuration</span></a>.</p>
 </li>
@@ -410,7 +417,7 @@ contains <code class="docutils literal notranslate"><span class="pre">Mac</span>
 <li><p class="first">For inserting math Unicode symbols relevant for Logika.
 There are two keystrokes needed for a symbol insertion:</p>
 <ol class="arabic">
-<li><p class="first">The first keystroke is Shift-Command/Control-Semicolon (<code class="docutils literal notranslate"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal notranslate"><span class="pre">⇧⌃;</span></code>)</p>
+<li><p class="first">The first keystroke is Shift-Command/Control-Semicolon (<code class="docutils literal"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal"><span class="pre">⇧⌃;</span></code>)</p>
 </li>
 <li><p class="first">The second keystroke depends on which symbol to insert; below is a table
 of the shortcut, Unicode symbol and hexadecimal code, and its equivalent
@@ -430,65 +437,65 @@ ASCII characters accepted by Logika.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">T</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">⊤</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊤</span></code></td>
 <td>U+22A4</td>
-<td><code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+<td><code class="docutils literal"><span class="pre">T</span></code>, <code class="docutils literal"><span class="pre">true</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">F</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">⊥</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">F</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊥</span></code></td>
 <td>U+22A5</td>
-<td><code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">_|_</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code></td>
+<td><code class="docutils literal"><span class="pre">F</span></code>, <code class="docutils literal"><span class="pre">_|_</span></code>, <code class="docutils literal"><span class="pre">false</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> or <code class="docutils literal notranslate"><span class="pre">,</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">≤</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;</span></code> or <code class="docutils literal"><span class="pre">,</span></code></td>
+<td><code class="docutils literal"><span class="pre">≤</span></code></td>
 <td>U+2264</td>
-<td><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></td>
+<td><code class="docutils literal"><span class="pre">&lt;=</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">.</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">≥</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&gt;</span></code> or <code class="docutils literal"><span class="pre">.</span></code></td>
+<td><code class="docutils literal"><span class="pre">≥</span></code></td>
 <td>U+2265</td>
-<td><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></td>
+<td><code class="docutils literal"><span class="pre">&gt;=</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">!</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">≠</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">!</span></code> or <code class="docutils literal"><span class="pre">1</span></code></td>
+<td><code class="docutils literal"><span class="pre">≠</span></code></td>
 <td>U+2260</td>
-<td><code class="docutils literal notranslate"><span class="pre">!=</span></code></td>
+<td><code class="docutils literal"><span class="pre">!=</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">N</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">¬</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">N</span></code></td>
+<td><code class="docutils literal"><span class="pre">¬</span></code></td>
 <td>U+00AC</td>
-<td><code class="docutils literal notranslate"><span class="pre">!</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code></td>
+<td><code class="docutils literal"><span class="pre">!</span></code>, <code class="docutils literal"><span class="pre">~</span></code>, <code class="docutils literal"><span class="pre">not</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">^</span></code> or <code class="docutils literal notranslate"><span class="pre">6</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">∧</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">^</span></code> or <code class="docutils literal"><span class="pre">6</span></code></td>
+<td><code class="docutils literal"><span class="pre">∧</span></code></td>
 <td>U+2227</td>
-<td><code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code></td>
+<td><code class="docutils literal"><span class="pre">&amp;</span></code>, <code class="docutils literal"><span class="pre">^</span></code>, <code class="docutils literal"><span class="pre">and</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">V</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">∨</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">V</span></code></td>
+<td><code class="docutils literal"><span class="pre">∨</span></code></td>
 <td>U+2228</td>
-<td><code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code></td>
+<td><code class="docutils literal"><span class="pre">|</span></code>, <code class="docutils literal"><span class="pre">V</span></code>, <code class="docutils literal"><span class="pre">or</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">-</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">→</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-</span></code></td>
+<td><code class="docutils literal"><span class="pre">→</span></code></td>
 <td>U+21D2</td>
-<td><code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">implies</span></code></td>
+<td><code class="docutils literal"><span class="pre">-&gt;</span></code>, <code class="docutils literal"><span class="pre">implies</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">A</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">∀</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">A</span></code></td>
+<td><code class="docutils literal"><span class="pre">∀</span></code></td>
 <td>U+2200</td>
-<td><code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">all</span></code>, <code class="docutils literal notranslate"><span class="pre">forall</span></code></td>
+<td><code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">all</span></code>, <code class="docutils literal"><span class="pre">forall</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">E</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">∃</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">E</span></code></td>
+<td><code class="docutils literal"><span class="pre">∃</span></code></td>
 <td>U+2203</td>
-<td><code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">some</span></code>, <code class="docutils literal notranslate"><span class="pre">exists</span></code></td>
+<td><code class="docutils literal"><span class="pre">E</span></code>, <code class="docutils literal"><span class="pre">some</span></code>, <code class="docutils literal"><span class="pre">exists</span></code></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">|</span></code> or <code class="docutils literal notranslate"><span class="pre">\</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">⊢</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">|</span></code> or <code class="docutils literal"><span class="pre">\</span></code></td>
+<td><code class="docutils literal"><span class="pre">⊢</span></code></td>
 <td>U+22A2</td>
-<td><code class="docutils literal notranslate"><span class="pre">|-</span></code></td>
+<td><code class="docutils literal"><span class="pre">|-</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +526,7 @@ the expected format.</p>
 <h4>2.8.1.1. Sireum v3 Directory<a class="headerlink" href="#sireum-v3-directory" title="Permalink to this headline">¶</a></h4>
 <p>This setting can be used to (re-) enter the Sireum v3 directory, either
 by typing the absolute path to the directory or by using a file browser dialog
-that can be opened by clicking the <code class="docutils literal notranslate"><span class="pre">...</span></code> button.</p>
+that can be opened by clicking the <code class="docutils literal"><span class="pre">...</span></code> button.</p>
 <p>The entered path is checked to see whether it contains a working Sireum v3
 installation.</p>
 </div>
@@ -529,7 +536,7 @@ installation.</p>
 (VM) instance that IntelliJ runs on.
 Instead, a VM is spawned, for example, for the Logika server in the background.</p>
 <p>This setting can be used to provide some VM arguments when spawning the VM.
-Each argument is separated by space(s) and each should start with a dash (<code class="docutils literal notranslate"><span class="pre">-</span></code>).
+Each argument is separated by space(s) and each should start with a dash (<code class="docutils literal"><span class="pre">-</span></code>).
 By default, the JVM stack size is set to 2Mb.</p>
 <p>In the case where invalid VM arguments are specified, it would prevent
 spawning the Logika server; the plugin detects this situation and will revert
@@ -538,11 +545,11 @@ the configuration to previous settings.</p>
 <div class="section" id="environment-variables">
 <h4>2.8.1.3. Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h4>
 <p>Additional environment variables can be specified in the text area.
-By default, <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> is set to the Sireum v3 directory and cannot be overriden;
+By default, <code class="docutils literal"><span class="pre">SIREUM_HOME</span></code> is set to the Sireum v3 directory and cannot be overriden;
 it is required by Sireum tools to work properly
 (e.g., it is how Logika finds where Z3 is installed).</p>
-<p>The expected format is a key-value pair separated by an equal sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) per line.
-The key has to satisfy the following regular expression <code class="docutils literal notranslate"><span class="pre">[a-zA-Z_][a-zA-Z0-9_]*</span></code>
+<p>The expected format is a key-value pair separated by an equal sign (<code class="docutils literal"><span class="pre">=</span></code>) per line.
+The key has to satisfy the following regular expression <code class="docutils literal"><span class="pre">[a-zA-Z_][a-zA-Z0-9_]*</span></code>
 (i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).</p>
 </div>
 </div>
@@ -560,8 +567,8 @@ Below are the additional settings for LIVE.</p>
 <h4>2.8.2.2. File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this headline">¶</a></h4>
 <p>The text field provides a way to configure which file types
 (based on their extension name) that LIVE actions should be enabled.</p>
-<p>By default, only Scala Worksheet <code class="docutils literal notranslate"><span class="pre">.sc</span></code> files are configured.
-One can add other files such as <code class="docutils literal notranslate"><span class="pre">.scala</span></code> and <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files.</p>
+<p>By default, only Scala Worksheet <code class="docutils literal"><span class="pre">.sc</span></code> files are configured.
+One can add other files such as <code class="docutils literal"><span class="pre">.scala</span></code> and <code class="docutils literal"><span class="pre">.txt</span></code> files.</p>
 <p>The expected format is the file extension names separated by semicolon
 (whitespaces are ignored).</p>
 </div>
@@ -603,7 +610,7 @@ after/post claims of the corresponding program location.
 For example,</p>
 <a class="reference internal image-reference" href="../../_images/live-hint.png"><img alt="../../_images/live-hint.png" src="../../_images/live-hint.png" style="width: 100%;" /></a>
 <p>when the <img alt="hintIcon" src="../../_images/logika-gutter-hint_dark.png" /> bulb gutter icon associated with
-<code class="docutils literal notranslate"><span class="pre">a(x)</span> <span class="pre">=</span> <span class="pre">a(x)</span> <span class="pre">*</span> <span class="pre">a(x)</span></code> at line 16 is clicked,
+<code class="docutils literal"><span class="pre">a(x)</span> <span class="pre">=</span> <span class="pre">a(x)</span> <span class="pre">*</span> <span class="pre">a(x)</span></code> at line 16 is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 the available pre/post claims that can be used as premises.</p>
 </div>
@@ -620,7 +627,7 @@ For <a class="reference external" href="https://github.com/sireum/v3-logika-exam
 (using <a class="reference internal" href="../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>),</p>
 <a class="reference internal image-reference" href="../../_images/live-summoning.png"><img alt="../../_images/live-summoning.png" src="../../_images/live-summoning.png" style="width: 100%;" /></a>
 <p>when the second <img alt="summoningIcon" src="../../_images/logika-gutter-summoning_dark.png" /> bolt gutter icon associated with
-<code class="docutils literal notranslate"><span class="pre">a(x)</span> <span class="pre">=</span> <span class="pre">a(x)</span> <span class="pre">*</span> <span class="pre">a(x</span> <span class="pre">-</span> <span class="pre">1)</span></code> at line 16 is clicked,
+<code class="docutils literal"><span class="pre">a(x)</span> <span class="pre">=</span> <span class="pre">a(x)</span> <span class="pre">*</span> <span class="pre">a(x</span> <span class="pre">-</span> <span class="pre">1)</span></code> at line 16 is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 a list of proof obligations that were checked and then selects the third one
 where the run-time check verification condition (VC) cannot be deduced;

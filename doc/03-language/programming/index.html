@@ -3,18 +3,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>3.4. Programming Logic &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sireum.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +30,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Logika: Programming Logics" href="../../../dschmidt/index.html" />
     <link rel="prev" title="3.3. Predicate Logic" href="../predicate/index.html" />
-  </head><body>
+  </head>
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -154,11 +161,11 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 propositional and predicate logics’ in one main characteristic:
 variable and function types have to be explicitly specified.</p>
 <p>It currently has three built-in types:
-(1) <code class="docutils literal notranslate"><span class="pre">B</span></code> – boolean type,
-(2) <code class="docutils literal notranslate"><span class="pre">Z</span></code> – arbitrary-precision integer type, and
-(3) <code class="docutils literal notranslate"><span class="pre">ZS</span></code> – mutable integer sequence (array) type
-(whose index and element type is <code class="docutils literal notranslate"><span class="pre">Z</span></code> with indices starting
-at <code class="docutils literal notranslate"><span class="pre">0</span></code>). There is no <code class="docutils literal notranslate"><span class="pre">null</span></code> nor top (like Java’s <code class="docutils literal notranslate"><span class="pre">Object</span></code> or Scala’s <code class="docutils literal notranslate"><span class="pre">Any</span></code>)
+(1) <code class="docutils literal"><span class="pre">B</span></code> – boolean type,
+(2) <code class="docutils literal"><span class="pre">Z</span></code> – arbitrary-precision integer type, and
+(3) <code class="docutils literal"><span class="pre">ZS</span></code> – mutable integer sequence (array) type
+(whose index and element type is <code class="docutils literal"><span class="pre">Z</span></code> with indices starting
+at <code class="docutils literal"><span class="pre">0</span></code>). There is no <code class="docutils literal"><span class="pre">null</span></code> nor top (like Java’s <code class="docutils literal"><span class="pre">Object</span></code> or Scala’s <code class="docutils literal"><span class="pre">Any</span></code>)
 values in Logika, which simplify reasonings.</p>
 <p>In contrast to regular Scala, Logika’s programming language separates between
 commands (statements) and queries (expressions).
@@ -166,14 +173,14 @@ Logika statements are evaluated for their side effect, and
 expressions are evaluated purely for their resulting value
 (side-effect free – they do not change values stored in variables).
 (In Scala, commands are simply expressions whose return value is
-empty tuple <code class="docutils literal notranslate"><span class="pre">()</span></code>, which is <em>the</em> <code class="docutils literal notranslate"><span class="pre">Unit</span></code> type value.)
+empty tuple <code class="docutils literal"><span class="pre">()</span></code>, which is <em>the</em> <code class="docutils literal"><span class="pre">Unit</span></code> type value.)
 These distinctions are also done to simplify reasonings.</p>
 <p>The following pattern notation is used to describe a statement’s side-effects
-(similar to <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span class="std std-ref">Proof Schematic Pattern</span></a>, but enclosed in <code class="docutils literal notranslate"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> to
+(similar to <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span class="std std-ref">Proof Schematic Pattern</span></a>, but enclosed in <code class="docutils literal"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code> to
 distinguish it from statement blocks):</p>
 <div class="literal-block-wrapper docutils container" id="claim-transformation-notation">
 <div class="code-block-caption"><span class="caption-text"><strong>Statement Claim Transformation Rule Notation</strong></span><a class="headerlink" href="#claim-transformation-notation" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{ // precondition</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{ // precondition</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">statement</span>
@@ -183,9 +190,9 @@ distinguish it from statement blocks):</p>
 </pre></div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">P</span></code> represents any claim that holds (is true) before the statement (precondition)
-and <code class="docutils literal notranslate"><span class="pre">R</span></code> represents any claim that holds after the statement (postcondition).
-The notation uses an identifier such as <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code> to represent
+<p><code class="docutils literal"><span class="pre">P</span></code> represents any claim that holds (is true) before the statement (precondition)
+and <code class="docutils literal"><span class="pre">R</span></code> represents any claim that holds after the statement (postcondition).
+The notation uses an identifier such as <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">R</span></code> to represent
 multiple claims.</p>
 <p>In essence, a statement is a claim transformer – a function that transforms
 its precondition to its postcondition.
@@ -196,17 +203,17 @@ Thus, the whole program execution can be characterized by composing the claim tr
 done by each of the program statements.</p>
 <p>As a convention:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">Q</span></code>, and <code class="docutils literal notranslate"><span class="pre">R</span></code> are used to represent claims.</li>
-<li><code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">Z</span></code> are used to represent variable identifiers and proof step numbers
+<li><code class="docutils literal"><span class="pre">P</span></code>, <code class="docutils literal"><span class="pre">Q</span></code>, and <code class="docutils literal"><span class="pre">R</span></code> are used to represent claims.</li>
+<li><code class="docutils literal"><span class="pre">X</span></code>, <code class="docutils literal"><span class="pre">Y</span></code>, <code class="docutils literal"><span class="pre">Z</span></code> are used to represent variable identifiers and proof step numbers
 (the two can be easily distinguished).</li>
-<li><code class="docutils literal notranslate"><span class="pre">ZS</span></code> (prefix) is used to represent variable identifiers of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">T</span></code> is used to represent a type.</li>
-<li><code class="docutils literal notranslate"><span class="pre">F</span></code> is used to represent a function/method identifier.</li>
-<li><code class="docutils literal notranslate"><span class="pre">E</span></code> is used to represent a general expression.</li>
-<li><code class="docutils literal notranslate"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
+<li><code class="docutils literal"><span class="pre">ZS</span></code> (prefix) is used to represent variable identifiers of type <code class="docutils literal"><span class="pre">ZS</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">T</span></code> is used to represent a type.</li>
+<li><code class="docutils literal"><span class="pre">F</span></code> is used to represent a function/method identifier.</li>
+<li><code class="docutils literal"><span class="pre">E</span></code> is used to represent a general expression.</li>
+<li><code class="docutils literal"><span class="pre">C</span></code> is used to represent a command/statement or a sequence of statements.</li>
 </ul>
-<p>The above can be numbered, for example, <code class="docutils literal notranslate"><span class="pre">X1</span></code>, <code class="docutils literal notranslate"><span class="pre">X2</span></code>, etc.
-In such case, they typically form a series, and <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">J</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code>
+<p>The above can be numbered, for example, <code class="docutils literal"><span class="pre">X1</span></code>, <code class="docutils literal"><span class="pre">X2</span></code>, etc.
+In such case, they typically form a series, and <code class="docutils literal"><span class="pre">N</span></code>, <code class="docutils literal"><span class="pre">M</span></code>, <code class="docutils literal"><span class="pre">I</span></code>, <code class="docutils literal"><span class="pre">J</span></code>, and <code class="docutils literal"><span class="pre">K</span></code>
 are used to represent some numbers in the series.</p>
 <p>The subsequent sections describe Logika’s renditions of programming
 logic rules that are described in
@@ -214,7 +221,7 @@ logic rules that are described in
 and <a class="reference internal" href="../../../dschmidt/06-loops-invariants-induction/index.html#loops-invariants-induction"><span class="std std-ref">Loops and Loop Invariants</span></a>.</p>
 <div class="section" id="program">
 <h2>3.4.1. Program<a class="headerlink" href="#program" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">                </span><span class="nv">programElement</span><span class="o">*</span><span class="w">            </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="o">)?</span><span class="w"></span>
 
@@ -242,7 +249,7 @@ In addition, axioms and proof functions defined in
 </div>
 <div class="section" id="statement">
 <span id="prog-statement"></span><h2>3.4.2. Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
 <span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
@@ -266,10 +273,10 @@ a <a class="reference internal" href="#prog-seq-assign"><span class="std std-ref
 a <a class="reference internal" href="#prog-print"><span class="std std-ref">Print</span></a> statement,
 a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a>, or
 a <a class="reference internal" href="#prog-sequent"><span class="std std-ref">Sequent</span></a>
-(<code class="docutils literal notranslate"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span class="std std-ref">Method Invocation</span></a>).</p>
+(<code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span class="std std-ref">Method Invocation</span></a>).</p>
 <div class="section" id="variable-declaration-and-assignment">
 <span id="prog-var-assign"></span><h3>3.4.2.1. Variable Declaration and Assignment<a class="headerlink" href="#variable-declaration-and-assignment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;val&#39;</span><span class="w">                      </span><span class="c">// read-only modifier</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;var&#39;</span><span class="w">                      </span><span class="c">// read/write modifier</span><span class="w"></span>
 <span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">        </span><span class="c">// variable declaration</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">rhs</span><span class="w">                   </span><span class="c">// variable assignment</span><span class="w"></span>
@@ -291,21 +298,21 @@ a <a class="reference internal" href="#prog-sequent"><span class="std std-ref">S
 </div>
 <p>A variable declaration is a special assignment form that also declares
 the variable that it assigns at the same time.
-The variable has to be declared as either read-only (using the <code class="docutils literal notranslate"><span class="pre">val</span></code> keyword) –
-which cannot be reassigned later on, or read/write (using the <code class="docutils literal notranslate"><span class="pre">var</span></code> keyword).
+The variable has to be declared as either read-only (using the <code class="docutils literal"><span class="pre">val</span></code> keyword) –
+which cannot be reassigned later on, or read/write (using the <code class="docutils literal"><span class="pre">var</span></code> keyword).
 Note that, unlike methods, variables cannot be forward-referenced.</p>
 <p>The claim transformation rule for a variable declaration is the same as for
 assignment.
 Below are the claim transformation rules for an assignment based on
-the form of its right-hand side (<code class="docutils literal notranslate"><span class="pre">rhs</span></code>).
-Note that any claim referring to the generated <code class="docutils literal notranslate"><span class="pre">_old</span></code> variable is <em>transient</em>;
+the form of its right-hand side (<code class="docutils literal"><span class="pre">rhs</span></code>).
+Note that any claim referring to the generated <code class="docutils literal"><span class="pre">_old</span></code> variable is <em>transient</em>;
 it does not survive the next (non-proof/sequent) statement. Thus,
 such claim has to be transformed in a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a>/<a class="reference internal" href="#prog-sequent"><span class="std std-ref">Sequent</span></a>
 statement in order for the information that it contains to be propagated.</p>
 <hr class="docutils" />
 <div class="literal-block-wrapper docutils container" id="var-assign-exp-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Variable Assignment Rule</strong></span><a class="headerlink" href="#var-assign-exp-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">X</span> <span class="k">=</span> <span class="n">E</span>
@@ -317,22 +324,22 @@ statement in order for the information that it contains to be propagated.</p>
 </div>
 </div>
 <p>The <a class="reference internal" href="#var-assign-exp-rule"><span class="std std-ref">Variable Assignment Rule</span></a> indicates that any claim in its precondition
-is rewritten by substituting the assigned variable <code class="docutils literal notranslate"><span class="pre">X</span></code> with the newly
-introduced variable <code class="docutils literal notranslate"><span class="pre">X_old</span></code> that stores the value of <code class="docutils literal notranslate"><span class="pre">X</span></code> before the
-assignment, and the value of <code class="docutils literal notranslate"><span class="pre">X</span></code> is now equal to the value of expression
-<code class="docutils literal notranslate"><span class="pre">E</span></code> where any occurence of <code class="docutils literal notranslate"><span class="pre">X</span></code> in <code class="docutils literal notranslate"><span class="pre">E</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">X_old</span></code>
+is rewritten by substituting the assigned variable <code class="docutils literal"><span class="pre">X</span></code> with the newly
+introduced variable <code class="docutils literal"><span class="pre">X_old</span></code> that stores the value of <code class="docutils literal"><span class="pre">X</span></code> before the
+assignment, and the value of <code class="docutils literal"><span class="pre">X</span></code> is now equal to the value of expression
+<code class="docutils literal"><span class="pre">E</span></code> where any occurence of <code class="docutils literal"><span class="pre">X</span></code> in <code class="docutils literal"><span class="pre">E</span></code> is replaced with <code class="docutils literal"><span class="pre">X_old</span></code>
 (which leverages the fact that any Logika expression is pure –
 side-effect free).</p>
 <hr class="docutils" />
 <p>To avoid aliasing issues of mutable objects that complicate reasoning,
-Logika forces <code class="docutils literal notranslate"><span class="pre">ZS</span></code> to be cloned (resulting in a new object copy of the sequence)
+Logika forces <code class="docutils literal"><span class="pre">ZS</span></code> to be cloned (resulting in a new object copy of the sequence)
 when assigned to a different variable.
-That is, <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">Y</span></code> are ill-formed if <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> are of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code>.
-It has to be <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y.clone</span></code> instead.
-The <code class="docutils literal notranslate"><span class="pre">ZS</span></code> cloning rule is as follows.</p>
+That is, <code class="docutils literal"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">Y</span></code> are ill-formed if <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">Y</span></code> are of type <code class="docutils literal"><span class="pre">ZS</span></code>.
+It has to be <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y.clone</span></code> instead.
+The <code class="docutils literal"><span class="pre">ZS</span></code> cloning rule is as follows.</p>
 <div class="literal-block-wrapper docutils container" id="var-assign-clone-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>ZS Cloning Rule</strong></span><a class="headerlink" href="#var-assign-clone-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">X</span> <span class="k">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">clone</span>
@@ -344,21 +351,21 @@ The <code class="docutils literal notranslate"><span class="pre">ZS</span></code
 </div>
 </div>
 <hr class="docutils" />
-<p><code class="docutils literal notranslate"><span class="pre">ZS</span></code> variable can also be assigned as a result of <code class="docutils literal notranslate"><span class="pre">ZS</span></code>
+<p><code class="docutils literal"><span class="pre">ZS</span></code> variable can also be assigned as a result of <code class="docutils literal"><span class="pre">ZS</span></code>
 appending operation
-(<code class="docutils literal notranslate"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">:+</span> <span class="pre">E2</span></code>, where <code class="docutils literal notranslate"><span class="pre">E1</span></code> is of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code> is of type <code class="docutils literal notranslate"><span class="pre">Z</span></code>)
+(<code class="docutils literal"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">:+</span> <span class="pre">E2</span></code>, where <code class="docutils literal"><span class="pre">E1</span></code> is of type <code class="docutils literal"><span class="pre">ZS</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> is of type <code class="docutils literal"><span class="pre">Z</span></code>)
 or prepending operation
-(<code class="docutils literal notranslate"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">+:</span> <span class="pre">E2</span></code>, where <code class="docutils literal notranslate"><span class="pre">E1</span></code> is of type <code class="docutils literal notranslate"><span class="pre">Z</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code> is of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code>),
-both of which also produce a new <code class="docutils literal notranslate"><span class="pre">ZS</span></code> object (see <a class="reference internal" href="#prog-exp"><span class="std std-ref">Expression</span></a>).</p>
+(<code class="docutils literal"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">E1</span> <span class="pre">+:</span> <span class="pre">E2</span></code>, where <code class="docutils literal"><span class="pre">E1</span></code> is of type <code class="docutils literal"><span class="pre">Z</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> is of type <code class="docutils literal"><span class="pre">ZS</span></code>),
+both of which also produce a new <code class="docutils literal"><span class="pre">ZS</span></code> object (see <a class="reference internal" href="#prog-exp"><span class="std std-ref">Expression</span></a>).</p>
 <hr class="docutils" />
-<p>The <code class="docutils literal notranslate"><span class="pre">readInt</span></code> built-in function asks for an integer input through the program
-console input (an optional string literal prompt <code class="docutils literal notranslate"><span class="pre">STRING</span></code> can be provided to
+<p>The <code class="docutils literal"><span class="pre">readInt</span></code> built-in function asks for an integer input through the program
+console input (an optional string literal prompt <code class="docutils literal"><span class="pre">STRING</span></code> can be provided to
 display a custom message). Since the resulting integer value depends on
 the user input, which cannot be predicted, there is no claim that can be stated
 regarding the value that can be deduced, which is reflected below.</p>
 <div class="literal-block-wrapper docutils container" id="var-assign-readint-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>readInt Rule</strong></span><a class="headerlink" href="#var-assign-readint-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">X</span> <span class="k">=</span> <span class="n">readInt</span><span class="o">()</span>  <span class="c1">// also applies when a STRING prompt message is provided</span>
@@ -369,12 +376,12 @@ regarding the value that can be deduced, which is reflected below.</p>
 </div>
 </div>
 <hr class="docutils" />
-<p>The <code class="docutils literal notranslate"><span class="pre">randomInt</span></code> built-in function generates a random integer value.
-Similar to <code class="docutils literal notranslate"><span class="pre">readInt</span></code>, there is no claim that can be stated regarding the
+<p>The <code class="docutils literal"><span class="pre">randomInt</span></code> built-in function generates a random integer value.
+Similar to <code class="docutils literal"><span class="pre">readInt</span></code>, there is no claim that can be stated regarding the
 resulting value.</p>
 <div class="literal-block-wrapper docutils container" id="var-assign-randomint-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>randomInt Rule</strong></span><a class="headerlink" href="#var-assign-randomint-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">X</span> <span class="k">=</span> <span class="n">randomInt</span><span class="o">()</span>
@@ -385,27 +392,27 @@ resulting value.</p>
 </div>
 </div>
 <hr class="docutils" />
-<p>The rule for <code class="docutils literal notranslate"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span class="std std-ref">Method Invocation</span></a>
-(substitute occurrence of <code class="docutils literal notranslate"><span class="pre">F_result</span></code> in the rules with the assigned variable
-identifier <code class="docutils literal notranslate"><span class="pre">X</span></code>).</p>
+<p>The rule for <code class="docutils literal"><span class="pre">invoke</span></code> is discussed in <a class="reference internal" href="#prog-invoke"><span class="std std-ref">Method Invocation</span></a>
+(substitute occurrence of <code class="docutils literal"><span class="pre">F_result</span></code> in the rules with the assigned variable
+identifier <code class="docutils literal"><span class="pre">X</span></code>).</p>
 </div>
 <div class="section" id="assertion-and-assumption">
 <span id="prog-assert"></span><h3>3.4.2.2. Assertion and Assumption<a class="headerlink" href="#assertion-and-assumption" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assert&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assertion</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">         </span><span class="c">// assumption</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In Scala, both assertion and assumption methods check whether
 the specified boolean expression is true;
-if not, it throws an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> (if assertion
+if not, it throws an <code class="docutils literal"><span class="pre">AssertionError</span></code> (if assertion
 checking is enabled).</p>
 <p>The two differ in the intention behind them, which are
 geared for verification purposes.
 Assertion’s expression has to be proven (i.e.,
-<code class="docutils literal notranslate"><span class="pre">E</span></code> is required as a precondition of <a class="reference internal" href="#assert-rule"><span class="std std-ref">Assertion Rule</span></a>),
+<code class="docutils literal"><span class="pre">E</span></code> is required as a precondition of <a class="reference internal" href="#assert-rule"><span class="std std-ref">Assertion Rule</span></a>),
 while assumption’s expression can be taken as an axiom
-(i.e., <code class="docutils literal notranslate"><span class="pre">E</span></code> is not required as
+(i.e., <code class="docutils literal"><span class="pre">E</span></code> is not required as
 a precondition of <a class="reference internal" href="#assume-rule"><span class="std std-ref">Assumption Rule</span></a>, but can be concluded
 in the postcondition).
 When a program has been verified, all assertions can be
@@ -413,7 +420,7 @@ safely erased (to be safe, assumptions should still be
 runtime checked).</p>
 <div class="literal-block-wrapper docutils container" id="assert-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Assertion Rule</strong></span><a class="headerlink" href="#assert-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">  …. E                                   …                 // requires E</span>
 <span class="s">}&quot;&quot;&quot;</span>
@@ -427,7 +434,7 @@ runtime checked).</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="assume-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Assumption Rule</strong></span><a class="headerlink" href="#assume-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">assume</span><span class="o">(</span><span class="n">E</span><span class="o">)</span>
@@ -441,7 +448,7 @@ runtime checked).</p>
 </div>
 <div class="section" id="if-else-conditional">
 <span id="prog-conditional"></span><h3>3.4.2.3. If-Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">conditional</span><span class="w"></span>
 
 <span class="nv">conditional</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">         </span><span class="c">// conditional</span><span class="w"></span>
@@ -452,22 +459,22 @@ runtime checked).</p>
 </pre></div>
 </div>
 <p>Statements in both Logika if-else conditional branches have to
-be contained in a code block <code class="docutils literal notranslate"><span class="pre">{</span></code> … <code class="docutils literal notranslate"><span class="pre">}</span></code>.
+be contained in a code block <code class="docutils literal"><span class="pre">{</span></code> … <code class="docutils literal"><span class="pre">}</span></code>.
 A conditional can be without the else/false-branch, in which case
 it is treated as an empty statement block.</p>
-<p>The <a class="reference internal" href="#if-else-rule"><span class="std std-ref">If-Else Conditional Rule</span></a> specifies that its precondition <code class="docutils literal notranslate"><span class="pre">P</span></code> holds in the beginning of
+<p>The <a class="reference internal" href="#if-else-rule"><span class="std std-ref">If-Else Conditional Rule</span></a> specifies that its precondition <code class="docutils literal"><span class="pre">P</span></code> holds in the beginning of
 both branches.
 In the beginning of the true-branch,
-the conditional test expression <code class="docutils literal notranslate"><span class="pre">E</span></code> can be deduced, while its negation <code class="docutils literal notranslate"><span class="pre">¬E</span></code> can be
+the conditional test expression <code class="docutils literal"><span class="pre">E</span></code> can be deduced, while its negation <code class="docutils literal"><span class="pre">¬E</span></code> can be
 deduced in the beginning of the false-branch.
 At the end of the conditional,
-the claim <code class="docutils literal notranslate"><span class="pre">R1</span> <span class="pre">∨</span> <span class="pre">R2</span></code> can be deduced, where <code class="docutils literal notranslate"><span class="pre">R1</span></code> is
-the postcondition of <code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">R2</span></code> is the postcondition
-of <code class="docutils literal notranslate"><span class="pre">C2</span></code> (if there no such <code class="docutils literal notranslate"><span class="pre">C2</span></code>, then <code class="docutils literal notranslate"><span class="pre">R2</span></code> represents <code class="docutils literal notranslate"><span class="pre">P</span></code> and <code class="docutils literal notranslate"><span class="pre">¬E</span></code>).
-If <code class="docutils literal notranslate"><span class="pre">R1</span> <span class="pre">≡</span> <span class="pre">R2</span></code>, then one can also deduce just <code class="docutils literal notranslate"><span class="pre">R1</span></code>.</p>
+the claim <code class="docutils literal"><span class="pre">R1</span> <span class="pre">∨</span> <span class="pre">R2</span></code> can be deduced, where <code class="docutils literal"><span class="pre">R1</span></code> is
+the postcondition of <code class="docutils literal"><span class="pre">C1</span></code> and <code class="docutils literal"><span class="pre">R2</span></code> is the postcondition
+of <code class="docutils literal"><span class="pre">C2</span></code> (if there no such <code class="docutils literal"><span class="pre">C2</span></code>, then <code class="docutils literal"><span class="pre">R2</span></code> represents <code class="docutils literal"><span class="pre">P</span></code> and <code class="docutils literal"><span class="pre">¬E</span></code>).
+If <code class="docutils literal"><span class="pre">R1</span> <span class="pre">≡</span> <span class="pre">R2</span></code>, then one can also deduce just <code class="docutils literal"><span class="pre">R1</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="if-else-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>If-Else Conditional Rule</strong></span><a class="headerlink" href="#if-else-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">E</span><span class="o">)</span> <span class="o">{</span>
@@ -499,7 +506,7 @@ If <code class="docutils literal notranslate"><span class="pre">R1</span> <span 
 </div>
 <div class="section" id="while-loop">
 <span id="prog-while-loop"></span><h3>3.4.2.4. While-Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">whileLoop</span><span class="w"></span>
 
 <span class="nv">whileLoop</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;while&#39;</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w">      </span><span class="c">// while-loop</span><span class="w"></span>
@@ -529,18 +536,18 @@ These are reflected in <a class="reference internal" href="#while-loop-rule"><sp
 where each claim is a conjunct.
 The main benefit of separating the invariant into several expressions is that Logika can specifically pinpoint
 which invariant conjunct has yet to be proven as one works through the verification process.
-In the case that no loop invariant is specified, then it is considered as <code class="docutils literal notranslate"><span class="pre">⊤</span></code>.</p>
+In the case that no loop invariant is specified, then it is considered as <code class="docutils literal"><span class="pre">⊤</span></code>.</p>
 <p>The modifies clause should comprehensively lists all variables that may be modified by the loop body.
 The program is ill-formed if the loop body modifies a variable, but it is not listed in the modifies clause.
 The set of variables that are modified include variables that are assigned in the loop, modified by nested loops,
 and side-effects of method invocations.</p>
-<p>A loop precondition <code class="docutils literal notranslate"><span class="pre">P</span></code> is also treated as an invariant if it does not refer to any of the
+<p>A loop precondition <code class="docutils literal"><span class="pre">P</span></code> is also treated as an invariant if it does not refer to any of the
 variables listed in the loop’s modifies clause.
-The loop test condition <code class="docutils literal notranslate"><span class="pre">E</span></code> holds at the beginning of the loop body, and its negation <code class="docutils literal notranslate"><span class="pre">¬E</span></code> is a
+The loop test condition <code class="docutils literal"><span class="pre">E</span></code> holds at the beginning of the loop body, and its negation <code class="docutils literal"><span class="pre">¬E</span></code> is a
 postcondition of loop.</p>
 <div class="literal-block-wrapper docutils container" id="while-loop-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>While-Loop Rule</strong></span><a class="headerlink" href="#while-loop-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P</span>
 <span class="s">  …. I</span>
 <span class="s">}&quot;&quot;&quot;</span>
@@ -573,27 +580,27 @@ used to satisfy loop invariants whenever possible.</p>
 </div>
 <div class="section" id="sequence-element-assignment">
 <span id="prog-seq-assign"></span><h3>3.4.2.5. Sequence Element Assignment<a class="headerlink" href="#sequence-element-assignment" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w">       </span><span class="c">// sequence element assignment</span><span class="w"></span>
 </pre></div>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">ZS</span></code> sequence value stored in a variable <code class="docutils literal notranslate"><span class="pre">X</span></code> can be mutated by updating
-one of its elements at a certain index expressed by <code class="docutils literal notranslate"><span class="pre">E1</span></code> with a new value
-expressed by an expression <code class="docutils literal notranslate"><span class="pre">E2</span></code> (i.e., <code class="docutils literal notranslate"><span class="pre">X(E1)</span> <span class="pre">=</span> <span class="pre">E2</span></code>; see <a class="reference internal" href="#seq-assign-rule"><span class="std std-ref">Sequence Element Assignment Rule</span></a>).</p>
-<p>The avoid runtime errors, <code class="docutils literal notranslate"><span class="pre">E1</span></code> has to be within the bound of
-<code class="docutils literal notranslate"><span class="pre">X</span></code>’s indices, i.e., <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E1</span></code> and <code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>; thus,
+<p>A <code class="docutils literal"><span class="pre">ZS</span></code> sequence value stored in a variable <code class="docutils literal"><span class="pre">X</span></code> can be mutated by updating
+one of its elements at a certain index expressed by <code class="docutils literal"><span class="pre">E1</span></code> with a new value
+expressed by an expression <code class="docutils literal"><span class="pre">E2</span></code> (i.e., <code class="docutils literal"><span class="pre">X(E1)</span> <span class="pre">=</span> <span class="pre">E2</span></code>; see <a class="reference internal" href="#seq-assign-rule"><span class="std std-ref">Sequence Element Assignment Rule</span></a>).</p>
+<p>The avoid runtime errors, <code class="docutils literal"><span class="pre">E1</span></code> has to be within the bound of
+<code class="docutils literal"><span class="pre">X</span></code>’s indices, i.e., <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>; thus,
 they are required as the statement’s precondition.
 When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled, <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> is implicitly
 used to satisfy the precondition whenever possible.</p>
-<p>At the postcondition, <code class="docutils literal notranslate"><span class="pre">E1</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code> and all precondition claims are rewritten to refer to
-<code class="docutils literal notranslate"><span class="pre">X_old</span></code> if they refer to <code class="docutils literal notranslate"><span class="pre">X</span></code>.
+<p>At the postcondition, <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> and all precondition claims are rewritten to refer to
+<code class="docutils literal"><span class="pre">X_old</span></code> if they refer to <code class="docutils literal"><span class="pre">X</span></code>.
 Similar to the variable assignment rules, any claim referring to the generated
-<code class="docutils literal notranslate"><span class="pre">_old</span></code> variable is transient.</p>
-<p>The update does not change the size of <code class="docutils literal notranslate"><span class="pre">X</span></code>, thus, one can deduce <code class="docutils literal notranslate"><span class="pre">X.size</span> <span class="pre">==</span> <span class="pre">X_old.size</span></code>.
+<code class="docutils literal"><span class="pre">_old</span></code> variable is transient.</p>
+<p>The update does not change the size of <code class="docutils literal"><span class="pre">X</span></code>, thus, one can deduce <code class="docutils literal"><span class="pre">X.size</span> <span class="pre">==</span> <span class="pre">X_old.size</span></code>.
 Furthermore, only the updated element got changed to the new value.</p>
 <div class="literal-block-wrapper docutils container" id="seq-assign-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Sequence Element Assignment Rule</strong></span><a class="headerlink" href="#seq-assign-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">  …. 0 ≤ E1                              …                 // required to avoid runtime error</span>
 <span class="s">  …. E1 &lt; X.size                         …                 // required to avoid runtime error</span>
@@ -613,7 +620,7 @@ Furthermore, only the updated element got changed to the new value.</p>
 </div>
 <div class="section" id="print">
 <span id="prog-print"></span><h3>3.4.2.6. Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">print</span><span class="w"></span>
 
 <span class="nv">print</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;print&#39;</span><span class="w">                    </span><span class="c">// print without a newline appended</span><span class="w"></span>
@@ -623,10 +630,10 @@ Furthermore, only the updated element got changed to the new value.</p>
 <span class="nv">printArgList</span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="no">STRING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">println</span></code> built-in methods are provided for logging purposes
+<p>The <code class="docutils literal"><span class="pre">print</span></code> and <code class="docutils literal"><span class="pre">println</span></code> built-in methods are provided for logging purposes
 (albeit primitive ones).
 They accept any number of arguments, which can be string literals, and
-<code class="docutils literal notranslate"><span class="pre">B</span></code>,  <code class="docutils literal notranslate"><span class="pre">Z</span></code>, and <code class="docutils literal notranslate"><span class="pre">ZS</span></code> values.</p>
+<code class="docutils literal"><span class="pre">B</span></code>,  <code class="docutils literal"><span class="pre">Z</span></code>, and <code class="docutils literal"><span class="pre">ZS</span></code> values.</p>
 <p>Logika does not reason about their side-effects as they are
 tangential to Logika’s functional verification focus.</p>
 <p>For example, a Logika verified program may still be unsafe
@@ -639,7 +646,7 @@ Logika’s functional verification perspective, thus,
 any claim in the precondition can be deduced in the postcondition.</p>
 <div class="literal-block-wrapper docutils container" id="print-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Print Rule</strong></span><a class="headerlink" href="#print-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  …. P                                   …</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="n">print</span> <span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="c1">// also applies for println</span>
@@ -652,7 +659,7 @@ any claim in the precondition can be deduced in the postcondition.</p>
 </div>
 <div class="section" id="proof">
 <span id="prog-proof"></span><h3>3.4.2.7. Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">proof</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w">   </span><span class="c">// proof</span><span class="w"></span>
 
 <span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
@@ -691,7 +698,7 @@ in regular proof steps at the proof-level (i.e., claims in sub-proofs are exclud
 </div>
 <div class="section" id="sequent">
 <span id="prog-sequent"></span><h3>3.4.2.8. Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">stmt</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="c">// sequent (auto mode only)</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
@@ -713,11 +720,11 @@ That is, it serves as a convenient syntactic sugar for a <a class="reference int
 <p>There are two ways the form can be used: with or without premises.</p>
 <p>When the sequent premises are specified to automatically deduce its
 conclusions, i.e.,:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;P1,  …,  PN  ⊢  R1,  …, RM&quot;&quot;&quot;</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;P1,  …,  PN  ⊢  R1,  …, RM&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>it desugars to the following proof statement:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">      1. P1                              premise</span>
 <span class="s">  …</span>
 <span class="s">      N. PN                              premise</span>
@@ -728,11 +735,11 @@ conclusions, i.e.,:</p>
 </pre></div>
 </div>
 <p>When no premise is specified in the sequent, such as:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;⊢  R1,  …, RM&quot;&quot;&quot;</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;⊢  R1,  …, RM&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p>it desugars to the following proof statement:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  1. R1                                  auto</span>
 <span class="s">  …</span>
 <span class="s">  M. RM                                  auto</span>
@@ -743,7 +750,7 @@ conclusions, i.e.,:</p>
 </div>
 <div class="section" id="expression">
 <span id="prog-exp"></span><h2>3.4.3. Expression<a class="headerlink" href="#expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w">                       </span><span class="c">// true literal, can also use &#39;T&#39; for &#39;true&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">exp</span><span class="w">         </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w">                       </span><span class="c">// true literal, can also use &#39;T&#39; for &#39;true&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="w">                      </span><span class="c">// false literal, can also use &#39;F&#39; for for &#39;false&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// variable reference</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">NUM</span><span class="w">                          </span><span class="c">// integer literal</span><span class="w"></span>
@@ -769,97 +776,97 @@ conclusions, i.e.,:</p>
 its claim expression language in the proof context
 in that it does not support math symbols and quantifications.</p>
 <p>It supports typical operators on integer values, albeit arbitrary-precision.
-The integer literal form <code class="docutils literal notranslate"><span class="pre">NUM</span></code> can only be used for
+The integer literal form <code class="docutils literal"><span class="pre">NUM</span></code> can only be used for
 value up to 2<sup>31</sup> - 1;
-otherwise the <code class="docutils literal notranslate"><span class="pre">Z(STRING)</span></code> form
-(e.g., <code class="docutils literal notranslate"><span class="pre">Z(&quot;2147483648&quot;)</span></code>, <code class="docutils literal notranslate"><span class="pre">Z(&quot;-2147483649&quot;)</span></code>)
+otherwise the <code class="docutils literal"><span class="pre">Z(STRING)</span></code> form
+(e.g., <code class="docutils literal"><span class="pre">Z(&quot;2147483648&quot;)</span></code>, <code class="docutils literal"><span class="pre">Z(&quot;-2147483649&quot;)</span></code>)
 has to be used instead.
 This is because Scala’s integer literal by default is
 a 32-bit signed integer.
 Logika detects the erroneous situation when
-<code class="docutils literal notranslate"><span class="pre">NUM</span></code> is used for integers that cannot fit into 32-bit.
+<code class="docutils literal"><span class="pre">NUM</span></code> is used for integers that cannot fit into 32-bit.
 It also detects expressions involving 32-bit integer literal
 that result in values that do not fit into 32-bit such
-as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal an error; this is because
+as <code class="docutils literal"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2147483647</span></code> and signal an error; this is because
 such (static) expressions can be optimized to 32-bit integer
 values when compiled, but they silently overflows/underflows.</p>
-<p>Moreover, Logika rejects <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> where
+<p>Moreover, Logika rejects <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> where
 the left-hand side is a 32-bit static expression, and the
 right hand side is not.
-For example, <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">==</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">x</span></code> are not allowed;
-instead, they have to be written as <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">5</span></code>,
+For example, <code class="docutils literal"><span class="pre">5</span> <span class="pre">==</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">x</span></code> are not allowed;
+instead, they have to be written as <code class="docutils literal"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">5</span></code> and <code class="docutils literal"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">5</span></code>,
 respectively.
-(This is due to Scala’s <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> that accept any
+(This is due to Scala’s <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> that accept any
 type value, which
 <a class="reference external" href="http://stackoverflow.com/questions/3565456/scala-implicit-type-conversion-and">prevents implicit type conversion</a>
-to <code class="docutils literal notranslate"><span class="pre">Z</span></code>.)
-In proof context, one can use the alternative forms of <code class="docutils literal notranslate"><span class="pre">==</span></code>
-(<code class="docutils literal notranslate"><span class="pre">=</span></code>) and <code class="docutils literal notranslate"><span class="pre">!=</span></code> (<code class="docutils literal notranslate"><span class="pre">≠</span></code>) such as <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">≠</span> <span class="pre">x</span></code>.
+to <code class="docutils literal"><span class="pre">Z</span></code>.)
+In proof context, one can use the alternative forms of <code class="docutils literal"><span class="pre">==</span></code>
+(<code class="docutils literal"><span class="pre">=</span></code>) and <code class="docutils literal"><span class="pre">!=</span></code> (<code class="docutils literal"><span class="pre">≠</span></code>) such as <code class="docutils literal"><span class="pre">5</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">5</span> <span class="pre">≠</span> <span class="pre">x</span></code>.
 Note that 32-bit static expressions on both sides are allowed
-such as <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">0</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">ZS(</span></code> … <code class="docutils literal notranslate"><span class="pre">)</span></code> literal form is used to create a <code class="docutils literal notranslate"><span class="pre">ZS</span></code>
+such as <code class="docutils literal"><span class="pre">5</span> <span class="pre">!=</span> <span class="pre">0</span></code>.</p>
+<p>The <code class="docutils literal"><span class="pre">ZS(</span></code> … <code class="docutils literal"><span class="pre">)</span></code> literal form is used to create a <code class="docutils literal"><span class="pre">ZS</span></code>
 object whose elements are listed as arguments.
-For example <code class="docutils literal notranslate"><span class="pre">ZS(2,</span> <span class="pre">5,</span> <span class="pre">3)</span></code> creates a <code class="docutils literal notranslate"><span class="pre">ZS</span></code> object whose
+For example <code class="docutils literal"><span class="pre">ZS(2,</span> <span class="pre">5,</span> <span class="pre">3)</span></code> creates a <code class="docutils literal"><span class="pre">ZS</span></code> object whose
 size is 3 and the element 2 at index 0, 5 at index 1, and
-3 at index 2. The <code class="docutils literal notranslate"><span class="pre">ZS</span></code> append (<code class="docutils literal notranslate"><span class="pre">:+</span></code>) and prepend
-(<code class="docutils literal notranslate"><span class="pre">+:</span></code>) operations create a new <code class="docutils literal notranslate"><span class="pre">ZS</span></code> object from an
+3 at index 2. The <code class="docutils literal"><span class="pre">ZS</span></code> append (<code class="docutils literal"><span class="pre">:+</span></code>) and prepend
+(<code class="docutils literal"><span class="pre">+:</span></code>) operations create a new <code class="docutils literal"><span class="pre">ZS</span></code> object from an
 existing one.</p>
-<p>Unlike a sequence element update, <code class="docutils literal notranslate"><span class="pre">:+</span></code> and <code class="docutils literal notranslate"><span class="pre">+:</span></code> are
+<p>Unlike a sequence element update, <code class="docutils literal"><span class="pre">:+</span></code> and <code class="docutils literal"><span class="pre">+:</span></code> are
 directly represented in the proof context.
 For example,</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="k">=</span> <span class="n">Y</span> <span class="o">:+</span> <span class="mi">2</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="k">=</span> <span class="n">Y</span> <span class="o">:+</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>generates a postcondition claim <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code> instead of:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>X.size == Y.size + 1
+<p>generates a postcondition claim <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code> instead of:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>X.size == Y.size + 1
 X(Y.size) == 2
 ∀q_i: (0 ..&lt; Y.size)  X(q_i) == Y(q_i)
 </pre></div>
 </div>
-<p>The first two claims can be “extracted” using <code class="docutils literal notranslate"><span class="pre">algebra</span></code> from
-<code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code>, but the last claim can only be extracted using
-<code class="docutils literal notranslate"><span class="pre">auto</span></code> (see <a class="reference internal" href="#prog-algebra"><span class="std std-ref">Algebra (algebra)</span></a> and <a class="reference internal" href="#prog-auto"><span class="std std-ref">Auto (auto)</span></a>).</p>
+<p>The first two claims can be “extracted” using <code class="docutils literal"><span class="pre">algebra</span></code> from
+<code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span> <span class="pre">:+</span> <span class="pre">2</span></code>, but the last claim can only be extracted using
+<code class="docutils literal"><span class="pre">auto</span></code> (see <a class="reference internal" href="#prog-algebra"><span class="std std-ref">Algebra (algebra)</span></a> and <a class="reference internal" href="#prog-auto"><span class="std std-ref">Auto (auto)</span></a>).</p>
 <p>Another example,</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="k">=</span> <span class="mi">1</span> <span class="o">+:</span> <span class="n">X</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="k">=</span> <span class="mi">1</span> <span class="o">+:</span> <span class="n">X</span>
 </pre></div>
 </div>
-<p>generates a postcondition claim <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+:</span> <span class="pre">X_old</span></code>,
+<p>generates a postcondition claim <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">+:</span> <span class="pre">X_old</span></code>,
 which holds the knowledge:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>X.size == X_old.size + 1
+<div class="highlight-default"><div class="highlight"><pre><span></span>X.size == X_old.size + 1
 X(0) == 1
 ∀q_i: (1 ..&lt; X.size)  X(q_i) == X_old(q_i - 1)
 </pre></div>
 </div>
-<p>The direct representations mean fully reasoning about <code class="docutils literal notranslate"><span class="pre">:+</span></code>
-and <code class="docutils literal notranslate"><span class="pre">+:</span></code> can only be done by enabling <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.
+<p>The direct representations mean fully reasoning about <code class="docutils literal"><span class="pre">:+</span></code>
+and <code class="docutils literal"><span class="pre">+:</span></code> can only be done by enabling <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.
 This is done by design instead of due to the Logika’s
 limitation; at some point, it is best to switch to
 a more automatic/machine-assisted approach in order not
 overwhelm oneself with mundane details (and save one’s
 braincells for solving more interesting problems).</p>
-<p>One last thing to note is that <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">|</span></code> operators
+<p>One last thing to note is that <code class="docutils literal"><span class="pre">&amp;</span></code> and <code class="docutils literal"><span class="pre">|</span></code> operators
 are logical-and and logical-or operators instead of
-the short-circuit <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code> operators used in
+the short-circuit <code class="docutils literal"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal"><span class="pre">||</span></code> operators used in
 many languages such as Java.
 This is a simplification because short-circuit operators
-are conditionals; <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code> may be added in the
+are conditionals; <code class="docutils literal"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal"><span class="pre">||</span></code> may be added in the
 future.</p>
 <p>The rest of the operations have the typical meaning used in
 other programming languages.</p>
 <div class="section" id="runtime-checks">
 <h3>3.4.3.1. Runtime Checks<a class="headerlink" href="#runtime-checks" title="Permalink to this headline">¶</a></h3>
-<p>Some operators such as <code class="docutils literal notranslate"><span class="pre">/</span></code> and <code class="docutils literal notranslate"><span class="pre">%</span></code> are not defined on certain argument values
+<p>Some operators such as <code class="docutils literal"><span class="pre">/</span></code> and <code class="docutils literal"><span class="pre">%</span></code> are not defined on certain argument values
 (i.e., when the divisor is zero).
 Such situations are typically checked at runtime (e.g., in Java, the VM throws
-an <code class="docutils literal notranslate"><span class="pre">ArithmeticException</span></code> for a division by zero).</p>
+an <code class="docutils literal"><span class="pre">ArithmeticException</span></code> for a division by zero).</p>
 <p>Instead, Logika requires precondition claims to avoid runtime exceptions/errors
 when certain expressions are used in the programming context.</p>
 <p>Below are the list of expressions that require some precondition related to
 runtime checks:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">/</span> <span class="pre">E2</span></code> requires <code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">%</span> <span class="pre">E2</span></code> requires <code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">X(E)</span></code> requires <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E</span></code> and <code class="docutils literal notranslate"><span class="pre">E</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">E1</span> <span class="pre">/</span> <span class="pre">E2</span></code> requires <code class="docutils literal"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">E1</span> <span class="pre">%</span> <span class="pre">E2</span></code> requires <code class="docutils literal"><span class="pre">E2</span> <span class="pre">≠</span> <span class="pre">0</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">X(E)</span></code> requires <code class="docutils literal"><span class="pre">0</span> <span class="pre">≤</span> <span class="pre">E</span></code> and <code class="docutils literal"><span class="pre">E</span> <span class="pre">&lt;</span> <span class="pre">X.size</span></code>.</li>
 </ul>
 <p>When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled, <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> is implicitly used to
 satisfy the above preconditions whenever possible.</p>
@@ -867,7 +874,7 @@ satisfy the above preconditions whenever possible.</p>
 </div>
 <div class="section" id="invariant">
 <span id="prog-invariant"></span><h2>3.4.4. Invariant<a class="headerlink" href="#invariant" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">invariant</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">invariant</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">claim</span><span class="o">+</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
 </pre></div>
@@ -886,7 +893,7 @@ implementable.</p>
 </div>
 <div class="section" id="method-declaration">
 <span id="prog-method-decl"></span><h2>3.4.5. Method Declaration<a class="headerlink" href="#method-declaration" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">methodDecl</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;@&#39;</span><span class="w"> </span><span class="s">&#39;helper&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">methodDecl</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;@&#39;</span><span class="w"> </span><span class="s">&#39;helper&#39;</span><span class="w"> </span><span class="o">)?</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;def&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">paramList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">type</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;Unit&#39;</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">methodContract</span><span class="o">?</span><span class="w"></span>
 <span class="w">                </span><span class="nv">stmt</span><span class="o">*</span><span class="w"></span>
@@ -912,24 +919,24 @@ implementable.</p>
 <span class="w">                </span><span class="nv">claim</span><span class="o">+</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>A Logika method can have an associated contract that specifies its <code class="docutils literal notranslate"><span class="pre">precondition</span></code>
+<p>A Logika method can have an associated contract that specifies its <code class="docutils literal"><span class="pre">precondition</span></code>
 (claims that have to be true in order for the method to properly function),
-<code class="docutils literal notranslate"><span class="pre">modifies</span></code> clause (that comprehensively lists all variables that will be modified
+<code class="docutils literal"><span class="pre">modifies</span></code> clause (that comprehensively lists all variables that will be modified
 by the method, similar to the modifies clause in the modifies clause in
 <a class="reference internal" href="#prog-while-loop"><span class="std std-ref">loop invariants</span></a>), and
-<code class="docutils literal notranslate"><span class="pre">postcondition</span></code> (claims that the method has to satisfy once it finishes executing).
+<code class="docutils literal"><span class="pre">postcondition</span></code> (claims that the method has to satisfy once it finishes executing).
 If the precondition or the postcondition are not specified, then they are treated
-as <code class="docutils literal notranslate"><span class="pre">⊤</span></code>. Moreover, if the modifies clause is not specified, that means the
+as <code class="docutils literal"><span class="pre">⊤</span></code>. Moreover, if the modifies clause is not specified, that means the
 method does not modify any variable (pure).</p>
 <p>Note that Logika method parameter variables cannot be assigned (read-only); but,
-any parameter variable of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code> can have its element assigned as <code class="docutils literal notranslate"><span class="pre">ZS</span></code>
-is a mutable sequence. A method whose return type is <code class="docutils literal notranslate"><span class="pre">Unit</span></code> is considered as
+any parameter variable of type <code class="docutils literal"><span class="pre">ZS</span></code> can have its element assigned as <code class="docutils literal"><span class="pre">ZS</span></code>
+is a mutable sequence. A method whose return type is <code class="docutils literal"><span class="pre">Unit</span></code> is considered as
 not returning a value;
 otherwise, the resulting value is captured in a special variable named
-<code class="docutils literal notranslate"><span class="pre">result</span></code>, which can be referred to in the method’s postcondition.</p>
+<code class="docutils literal"><span class="pre">result</span></code>, which can be referred to in the method’s postcondition.</p>
 <p>In general, there are two kinds of methods in Logika:
 helper and regular (non-helper) methods; helper methods are declared by using the
-<code class="docutils literal notranslate"><span class="pre">&#64;helper</span></code> annotation, and regular ones are those without the annotation.
+<code class="docutils literal"><span class="pre">&#64;helper</span></code> annotation, and regular ones are those without the annotation.
 Regular methods maintain the program global <a class="reference internal" href="#prog-invariant"><span class="std std-ref">Invariant</span></a>,
 while helper methods do not have to.</p>
 <hr class="docutils" />
@@ -946,7 +953,7 @@ to refer to precondition and postcondition that include global <a class="referen
 respectively.</p>
 <div class="literal-block-wrapper docutils container" id="method-decl-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  invariant I                                              // I can be represented by multiple claims</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
@@ -982,7 +989,7 @@ respectively.</p>
 these are reflected in <a class="reference internal" href="#method-decl-helper-rule"><span class="std std-ref">Helper Method Declaration Rule</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="method-decl-helper-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Helper Method Declaration Rule</strong></span><a class="headerlink" href="#method-decl-helper-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nd">@helper</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="nd">@helper</span>
 <span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="cm">/* … */</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">    requires  PRE                                          // precondition</span>
@@ -1008,18 +1015,18 @@ these are reflected in <a class="reference internal" href="#method-decl-helper-r
 <hr class="docutils" />
 <p>Helper and regular methods have some similarities. That is:</p>
 <ol class="upperalpha simple">
-<li>Each of them can assume <code class="docutils literal notranslate"><span class="pre">PRE</span></code> before it starts executing.</li>
-<li>For any modified variable <code class="docutils literal notranslate"><span class="pre">XI</span></code>, it can assume <code class="docutils literal notranslate"><span class="pre">XI</span> <span class="pre">==</span> <span class="pre">XI_in</span></code> before
-it starts executing. The <code class="docutils literal notranslate"><span class="pre">_in</span></code> variables represent the corresponding
+<li>Each of them can assume <code class="docutils literal"><span class="pre">PRE</span></code> before it starts executing.</li>
+<li>For any modified variable <code class="docutils literal"><span class="pre">XI</span></code>, it can assume <code class="docutils literal"><span class="pre">XI</span> <span class="pre">==</span> <span class="pre">XI_in</span></code> before
+it starts executing. The <code class="docutils literal"><span class="pre">_in</span></code> variables represent the corresponding
 variable values before they are modified during the execution, and they
 can be referred in claim expressions (in proof context) throughout the
 method’s body and in its postcondition claims.</li>
-<li>The method has to establish <code class="docutils literal notranslate"><span class="pre">POST</span></code>.
-If the method’s return type is not <code class="docutils literal notranslate"><span class="pre">Unit</span></code>, it has to <code class="docutils literal notranslate"><span class="pre">return</span></code> a value,
-expressed by <code class="docutils literal notranslate"><span class="pre">E</span></code> and stored in the special variable <code class="docutils literal notranslate"><span class="pre">result</span></code> as
+<li>The method has to establish <code class="docutils literal"><span class="pre">POST</span></code>.
+If the method’s return type is not <code class="docutils literal"><span class="pre">Unit</span></code>, it has to <code class="docutils literal"><span class="pre">return</span></code> a value,
+expressed by <code class="docutils literal"><span class="pre">E</span></code> and stored in the special variable <code class="docutils literal"><span class="pre">result</span></code> as
 previously mentioned.
-The variable <code class="docutils literal notranslate"><span class="pre">result</span></code> can be used on <code class="docutils literal notranslate"><span class="pre">POST</span></code>; hence, at the end of
-the method <code class="docutils literal notranslate"><span class="pre">[E/result]POST</span></code> has to be established.</li>
+The variable <code class="docutils literal"><span class="pre">result</span></code> can be used on <code class="docutils literal"><span class="pre">POST</span></code>; hence, at the end of
+the method <code class="docutils literal"><span class="pre">[E/result]POST</span></code> has to be established.</li>
 </ol>
 <p>When <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled, <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> is implicitly
 used to satisfy postcondition (and invariant) whenever possible.
@@ -1028,7 +1035,7 @@ satisfiability of the method contract.</p>
 </div>
 <div class="section" id="method-invocation">
 <span id="prog-invoke"></span><h2>3.4.6. Method Invocation<a class="headerlink" href="#method-invocation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">invoke</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">expList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w"></span>
 
 <span class="nv">expList</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">exp</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
@@ -1044,7 +1051,7 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 <a class="reference internal" href="#method-invoke-helper-rule"><span class="std std-ref">Helper Method Invocation Rule</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="method-invoke-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Method Invocation Rule</strong></span><a class="headerlink" href="#method-invoke-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  invariant I</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
@@ -1087,7 +1094,7 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 </div>
 <div class="literal-block-wrapper docutils container" id="method-invoke-helper-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Helper Method Invocation Rule</strong></span><a class="headerlink" href="#method-invoke-helper-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="nd">@helper</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="nd">@helper</span>
 <span class="k">def</span> <span class="n">F</span><span class="o">(</span><span class="n">X1</span><span class="k">:</span> <span class="kt">T1</span><span class="o">,</span> <span class="cm">/* … */</span><span class="o">,</span> <span class="nc">XN</span><span class="k">:</span> <span class="kt">TN</span><span class="o">)</span> <span class="sc">&#39;:&#39;</span> <span class="cm">/* … */</span> <span class="k">=</span> <span class="o">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">    requires  PRE</span>
@@ -1123,46 +1130,46 @@ These are reflected in <a class="reference internal" href="#method-invoke-rule">
 </pre></div>
 </div>
 </div>
-<p>The result and side-effects of invoking a regular or a helper method <code class="docutils literal notranslate"><span class="pre">F</span></code> are
+<p>The result and side-effects of invoking a regular or a helper method <code class="docutils literal"><span class="pre">F</span></code> are
 as follows:</p>
 <ol class="arabic">
-<li><p class="first">Any reference to <code class="docutils literal notranslate"><span class="pre">result</span></code> in the method’s postcondition is substituted
-with <code class="docutils literal notranslate"><span class="pre">F_result</span></code> (<code class="docutils literal notranslate"><span class="pre">POST1</span></code> in <a class="reference internal" href="#method-invoke-rule"><span class="std std-ref">Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span class="std std-ref">Helper Method Invocation Rule</span></a>).
-Note that any claim referring to <code class="docutils literal notranslate"><span class="pre">F_result</span></code> is transient similar to <code class="docutils literal notranslate"><span class="pre">_old</span></code> variables.
+<li><p class="first">Any reference to <code class="docutils literal"><span class="pre">result</span></code> in the method’s postcondition is substituted
+with <code class="docutils literal"><span class="pre">F_result</span></code> (<code class="docutils literal"><span class="pre">POST1</span></code> in <a class="reference internal" href="#method-invoke-rule"><span class="std std-ref">Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span class="std std-ref">Helper Method Invocation Rule</span></a>).
+Note that any claim referring to <code class="docutils literal"><span class="pre">F_result</span></code> is transient similar to <code class="docutils literal"><span class="pre">_old</span></code> variables.
 As described in <a class="reference internal" href="#prog-var-assign"><span class="std std-ref">Variable Declaration and Assignment</span></a>, if the result is assigned to
-a variable <code class="docutils literal notranslate"><span class="pre">X</span></code>, then <code class="docutils literal notranslate"><span class="pre">F_result</span></code> is further substituted with <code class="docutils literal notranslate"><span class="pre">X</span></code>
+a variable <code class="docutils literal"><span class="pre">X</span></code>, then <code class="docutils literal"><span class="pre">F_result</span></code> is further substituted with <code class="docutils literal"><span class="pre">X</span></code>
 (not shown in <a class="reference internal" href="#method-invoke-rule"><span class="std std-ref">Method Invocation Rule</span></a> or <a class="reference internal" href="#method-invoke-helper-rule"><span class="std std-ref">Helper Method Invocation Rule</span></a>).
-<code class="docutils literal notranslate"><span class="pre">P</span></code> cannot refer to <code class="docutils literal notranslate"><span class="pre">result</span></code>, thus, <code class="docutils literal notranslate"><span class="pre">P1</span> <span class="pre">≡</span> <span class="pre">P</span></code>.</p>
+<code class="docutils literal"><span class="pre">P</span></code> cannot refer to <code class="docutils literal"><span class="pre">result</span></code>, thus, <code class="docutils literal"><span class="pre">P1</span> <span class="pre">≡</span> <span class="pre">P</span></code>.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">F</span></code> might modify <code class="docutils literal notranslate"><span class="pre">ZS</span></code> values which are passed as parameters.
+<li><p class="first"><code class="docutils literal"><span class="pre">F</span></code> might modify <code class="docutils literal"><span class="pre">ZS</span></code> values which are passed as parameters.
 The effects of the modifications can only be observed after the invocation
-if the arguments for the parameters are variables of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code> because
-other expression forms that of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code> (i.e., <code class="docutils literal notranslate"><span class="pre">ZS(</span></code> … <code class="docutils literal notranslate"><span class="pre">)</span></code>,
-<code class="docutils literal notranslate"><span class="pre">:+</span></code>, and <code class="docutils literal notranslate"><span class="pre">+:</span></code>) produce a new <code class="docutils literal notranslate"><span class="pre">ZS</span></code> object that cannot be referred after
+if the arguments for the parameters are variables of type <code class="docutils literal"><span class="pre">ZS</span></code> because
+other expression forms that of type <code class="docutils literal"><span class="pre">ZS</span></code> (i.e., <code class="docutils literal"><span class="pre">ZS(</span></code> … <code class="docutils literal"><span class="pre">)</span></code>,
+<code class="docutils literal"><span class="pre">:+</span></code>, and <code class="docutils literal"><span class="pre">+:</span></code>) produce a new <code class="docutils literal"><span class="pre">ZS</span></code> object that cannot be referred after
 the invocation.</p>
-<p><code class="docutils literal notranslate"><span class="pre">POST2-J</span></code> and <code class="docutils literal notranslate"><span class="pre">P2-J</span></code> (for 1 ≤ <code class="docutils literal notranslate"><span class="pre">J</span></code> ≤ <code class="docutils literal notranslate"><span class="pre">N</span></code>)
-capture the effects of modifications of <code class="docutils literal notranslate"><span class="pre">ZS</span></code> values
+<p><code class="docutils literal"><span class="pre">POST2-J</span></code> and <code class="docutils literal"><span class="pre">P2-J</span></code> (for 1 ≤ <code class="docutils literal"><span class="pre">J</span></code> ≤ <code class="docutils literal"><span class="pre">N</span></code>)
+capture the effects of modifications of <code class="docutils literal"><span class="pre">ZS</span></code> values
 passed as parameters whose arguments are variables.
-More specifically, for each parameter <code class="docutils literal notranslate"><span class="pre">XJ</span></code> of type <code class="docutils literal notranslate"><span class="pre">ZS</span></code>,
-if <code class="docutils literal notranslate"><span class="pre">XJ</span></code> is modified and the argument <code class="docutils literal notranslate"><span class="pre">EJ</span></code> for <code class="docutils literal notranslate"><span class="pre">XJ</span></code> is a variable
-<code class="docutils literal notranslate"><span class="pre">ZSJ</span></code>, then, any occurrence of <code class="docutils literal notranslate"><span class="pre">ZSJ</span></code> is substituted with <code class="docutils literal notranslate"><span class="pre">ZSJ_old</span></code>
-in <code class="docutils literal notranslate"><span class="pre">P2-(J-1)</span></code> and <code class="docutils literal notranslate"><span class="pre">POST2-(J-1)</span></code>;
-otherwise <code class="docutils literal notranslate"><span class="pre">P2-J</span> <span class="pre">≡</span> <span class="pre">P2-(J-1)</span></code> and <code class="docutils literal notranslate"><span class="pre">POST2-J</span> <span class="pre">≡</span> <span class="pre">POST2-(J-1)</span></code>.
-Additionally, <code class="docutils literal notranslate"><span class="pre">XJ</span></code> is substituted with <code class="docutils literal notranslate"><span class="pre">ZSJ</span></code> and
-<code class="docutils literal notranslate"><span class="pre">XJ_in</span></code> is substituted with <code class="docutils literal notranslate"><span class="pre">ZSJ_old</span></code> in <code class="docutils literal notranslate"><span class="pre">POST2-J</span></code>.</p>
+More specifically, for each parameter <code class="docutils literal"><span class="pre">XJ</span></code> of type <code class="docutils literal"><span class="pre">ZS</span></code>,
+if <code class="docutils literal"><span class="pre">XJ</span></code> is modified and the argument <code class="docutils literal"><span class="pre">EJ</span></code> for <code class="docutils literal"><span class="pre">XJ</span></code> is a variable
+<code class="docutils literal"><span class="pre">ZSJ</span></code>, then, any occurrence of <code class="docutils literal"><span class="pre">ZSJ</span></code> is substituted with <code class="docutils literal"><span class="pre">ZSJ_old</span></code>
+in <code class="docutils literal"><span class="pre">P2-(J-1)</span></code> and <code class="docutils literal"><span class="pre">POST2-(J-1)</span></code>;
+otherwise <code class="docutils literal"><span class="pre">P2-J</span> <span class="pre">≡</span> <span class="pre">P2-(J-1)</span></code> and <code class="docutils literal"><span class="pre">POST2-J</span> <span class="pre">≡</span> <span class="pre">POST2-(J-1)</span></code>.
+Additionally, <code class="docutils literal"><span class="pre">XJ</span></code> is substituted with <code class="docutils literal"><span class="pre">ZSJ</span></code> and
+<code class="docutils literal"><span class="pre">XJ_in</span></code> is substituted with <code class="docutils literal"><span class="pre">ZSJ_old</span></code> in <code class="docutils literal"><span class="pre">POST2-J</span></code>.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">F</span></code> might modify global variables.
-The effects of the modifications are captured in <code class="docutils literal notranslate"><span class="pre">P3</span></code> and <code class="docutils literal notranslate"><span class="pre">POST3</span></code>.
-More specifically, for any modified variable <code class="docutils literal notranslate"><span class="pre">YK</span></code> (for 1 ≤ <code class="docutils literal notranslate"><span class="pre">K</span></code> ≤ <code class="docutils literal notranslate"><span class="pre">M</span></code>),
-<code class="docutils literal notranslate"><span class="pre">YK_in</span></code> is substituted with <code class="docutils literal notranslate"><span class="pre">YK_old</span></code> in <code class="docutils literal notranslate"><span class="pre">P2-N</span></code> and <code class="docutils literal notranslate"><span class="pre">POST2-N</span></code>.
-Note that <code class="docutils literal notranslate"><span class="pre">YK</span></code> could actually be a parameter, in which case the substitution
+<li><p class="first"><code class="docutils literal"><span class="pre">F</span></code> might modify global variables.
+The effects of the modifications are captured in <code class="docutils literal"><span class="pre">P3</span></code> and <code class="docutils literal"><span class="pre">POST3</span></code>.
+More specifically, for any modified variable <code class="docutils literal"><span class="pre">YK</span></code> (for 1 ≤ <code class="docutils literal"><span class="pre">K</span></code> ≤ <code class="docutils literal"><span class="pre">M</span></code>),
+<code class="docutils literal"><span class="pre">YK_in</span></code> is substituted with <code class="docutils literal"><span class="pre">YK_old</span></code> in <code class="docutils literal"><span class="pre">P2-N</span></code> and <code class="docutils literal"><span class="pre">POST2-N</span></code>.
+Note that <code class="docutils literal"><span class="pre">YK</span></code> could actually be a parameter, in which case the substitution
 is harmless because the parameter has been substituted in the previous step.</p>
 </li>
 </ol>
 </div>
 <div class="section" id="fact">
 <span id="prog-fact"></span><h2>3.4.7. Fact<a class="headerlink" href="#fact" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">fact</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">fact</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;l&quot;&quot;&quot;&#39;</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="o">(</span><span class="w"> </span><span class="nv">axiom</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">proofFunction</span><span class="w"> </span><span class="o">)+</span><span class="w"> </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"> </span><span class="s">&#39;&quot;&quot;&quot;&#39;</span><span class="w"></span>
 
@@ -1185,14 +1192,14 @@ proof functions (whose behaviors are specified via axioms) to help with
 specifying contracts.</p>
 <p>While axioms are assumed to hold, Logika can check their satisfiability
 to ensure their consistency by enabling <a class="reference internal" href="../../01-getting-started/index.html#check-sat"><span class="std std-ref">Satisfiability Checking Mode</span></a>;
-an unsatisfiable axiom claim reduces to <code class="docutils literal notranslate"><span class="pre">⊥</span></code>, thus, it can render any
+an unsatisfiable axiom claim reduces to <code class="docutils literal"><span class="pre">⊥</span></code>, thus, it can render any
 specification to be proven by using <a class="reference internal" href="../propositional/index.html#bottom-elim"><span class="std std-ref">⊥-Elimination  (⊥e)</span></a>.</p>
 <p>In <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>, all axioms are implicitly used to help deduce claims
 in <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto summoning without arguments</span></a>.</p>
 </div>
 <div class="section" id="extended-assume-step">
 <h2>3.4.8. Extended Assume Step<a class="headerlink" href="#extended-assume-step" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w">         </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;:&#39;</span><span class="w"> </span><span class="nv">type</span><span class="w"></span>
 </span><span class="hll"><span class="w">              </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w">               </span><span class="c">// ID must be &quot;fresh&quot;; used for Exists-Elimination</span><span class="w"></span>
@@ -1204,7 +1211,7 @@ typed.</p>
 </div>
 <div class="section" id="extended-claim-expression">
 <h2>3.4.9. Extended Claim Expression<a class="headerlink" href="#extended-claim-expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                          </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                          </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                          </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// identifier</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;result&#39;</span><span class="w">                     </span><span class="c">// method result (only in postcondition of methods whose return type is not Unit)</span><span class="w"></span>
@@ -1242,19 +1249,19 @@ typed.</p>
 </pre></div>
 </div>
 <p>The claim expression language is extended from the one in
-<a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a> that adds <code class="docutils literal notranslate"><span class="pre">Z</span></code> and <code class="docutils literal notranslate"><span class="pre">ZS</span></code> literals,
-in/equality tests, and arithmetic and <code class="docutils literal notranslate"><span class="pre">ZS</span></code> operations,
+<a class="reference internal" href="../predicate/index.html#predicate-language"><span class="std std-ref">Predicate Logic</span></a> that adds <code class="docutils literal"><span class="pre">Z</span></code> and <code class="docutils literal"><span class="pre">ZS</span></code> literals,
+in/equality tests, and arithmetic and <code class="docutils literal"><span class="pre">ZS</span></code> operations,
 as highlighted above.</p>
 <p>In addition to having an explicit type for quantified variables
 (<em>type domain</em>), Logika allows an <em>integer range domain</em> of the form
-<code class="docutils literal notranslate"><span class="pre">(</span></code> integer low bound <code class="docutils literal notranslate"><span class="pre">..</span></code> integer high bound <code class="docutils literal notranslate"><span class="pre">)</span></code>;
-by default, the range is inclusive; <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> can be used to in either
-side of <code class="docutils literal notranslate"><span class="pre">..</span></code> to indicate exclusive range for the low and/or high
+<code class="docutils literal"><span class="pre">(</span></code> integer low bound <code class="docutils literal"><span class="pre">..</span></code> integer high bound <code class="docutils literal"><span class="pre">)</span></code>;
+by default, the range is inclusive; <code class="docutils literal"><span class="pre">&lt;</span></code> can be used to in either
+side of <code class="docutils literal"><span class="pre">..</span></code> to indicate exclusive range for the low and/or high
 bounds, respectively.</p>
 </div>
 <div class="section" id="extended-justification-and-inference-rules">
 <h2>3.4.10. Extended Justification and Inference Rules<a class="headerlink" href="#extended-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">      </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">          </span><span class="c">// And-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// And-Elimination1</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w">     </span><span class="nv">rNUM</span><span class="w">               </span><span class="c">// And-Elimination2</span><span class="w"></span>
@@ -1284,32 +1291,32 @@ adding new ones as highlighted above.</p>
 <div class="section" id="or-elimination-e">
 <h3>3.4.10.1. Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="../propositional/index.html#or-elim-pattern"><span class="std std-ref">Or-Elimination (∨e) Schematic Pattern</span></a> and <a class="reference internal" href="../propositional/index.html#or-elim-alt-pattern"><span class="std std-ref">Alternative Or-Elimination (∨e) Schematic Pattern</span></a>
-are extended to also work for <code class="docutils literal notranslate"><span class="pre">≤</span></code> and <code class="docutils literal notranslate"><span class="pre">≥</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">≤</span> <span class="pre">E2</span></code> is treated as <code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">≥</span> <span class="pre">E2</span></code> is tread as <code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">&gt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>.</p>
+are extended to also work for <code class="docutils literal"><span class="pre">≤</span></code> and <code class="docutils literal"><span class="pre">≥</span></code>,
+where <code class="docutils literal"><span class="pre">E1</span> <span class="pre">≤</span> <span class="pre">E2</span></code> is treated as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&lt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>, and
+<code class="docutils literal"><span class="pre">E1</span> <span class="pre">≥</span> <span class="pre">E2</span></code> is tread as <code class="docutils literal"><span class="pre">E1</span> <span class="pre">&gt;</span> <span class="pre">E2</span>&#160; <span class="pre">∨</span>&#160; <span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>.</p>
 </div>
 <div class="section" id="quantified-claim-inference-rules-i-e-i-e">
 <h3>3.4.10.2. Quantified Claim Inference Rules (∀i, ∀e, ∃i, ∃e)<a class="headerlink" href="#quantified-claim-inference-rules-i-e-i-e" title="Permalink to this headline">¶</a></h3>
 <p>Quantifications using the integer range domain form
 are simplified first before applying <a class="reference internal" href="../predicate/index.html#pred-rules"><span class="std std-ref">Quantified Claim Justification and Inference Rules</span></a>.</p>
-<p>For example, the claim <code class="docutils literal notranslate"><span class="pre">∀x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
-simplified first to <code class="docutils literal notranslate"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">→</span> <span class="pre">P{x}</span></code>
+<p>For example, the claim <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
+simplified first to <code class="docutils literal"><span class="pre">∀x:</span> <span class="pre">Z</span>&#160; <span class="pre">0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3</span> <span class="pre">→</span> <span class="pre">P{x}</span></code>
 before applying any of the ∀-quantified claim rules.</p>
-<p>Another example, the claim <code class="docutils literal notranslate"><span class="pre">∃x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
-simplified first to <code class="docutils literal notranslate"><span class="pre">∃x:</span> <span class="pre">Z</span>&#160; <span class="pre">(0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3)</span> <span class="pre">∧</span> <span class="pre">P{x}</span></code>
+<p>Another example, the claim <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">(0</span> <span class="pre">..&lt;</span> <span class="pre">3)</span>&#160; <span class="pre">P{x}</span></code> is
+simplified first to <code class="docutils literal"><span class="pre">∃x:</span> <span class="pre">Z</span>&#160; <span class="pre">(0</span> <span class="pre">≤</span> <span class="pre">x</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">3)</span> <span class="pre">∧</span> <span class="pre">P{x}</span></code>
 before applying any of the ∃-quantified claim rules.</p>
 </div>
 <div class="section" id="fact-fact">
 <h3>3.4.10.3. Fact (fact)<a class="headerlink" href="#fact-fact" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;fact&#39;</span><span class="w">    </span><span class="no">ID</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">fact</span></code> justification can be used to bring in an axiom
+<p>The <code class="docutils literal"><span class="pre">fact</span></code> justification can be used to bring in an axiom
 by its identifier in a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a> statement.</p>
 <div class="literal-block-wrapper docutils container" id="fact-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Fact Schematic Pattern</strong></span><a class="headerlink" href="#fact-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  fact</span>
 <span class="s">     X. E</span>
 <span class="s">}&quot;&quot;&quot;</span>
@@ -1323,19 +1330,19 @@ by its identifier in a <a class="reference internal" href="#prog-proof"><span cl
 </div>
 <div class="section" id="invariant-invariant">
 <h3>3.4.10.4. Invariant (invariant)<a class="headerlink" href="#invariant-invariant" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;invariant&#39;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Similar to the <code class="docutils literal notranslate"><span class="pre">fact</span></code> justification, <code class="docutils literal notranslate"><span class="pre">invariant</span></code> can be used
+<p>Similar to the <code class="docutils literal"><span class="pre">fact</span></code> justification, <code class="docutils literal"><span class="pre">invariant</span></code> can be used
 to bring in an invariant claim.
 Since invariant claims are unnamed, the justification does not
-require an argument (unlike <code class="docutils literal notranslate"><span class="pre">fact</span></code>).
-Note that <code class="docutils literal notranslate"><span class="pre">invariant</span></code> can only be used in a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a>
+require an argument (unlike <code class="docutils literal"><span class="pre">fact</span></code>).
+Note that <code class="docutils literal"><span class="pre">invariant</span></code> can only be used in a <a class="reference internal" href="#prog-proof"><span class="std std-ref">Proof</span></a>
 statement that is outside of a method (top-level).</p>
 <div class="literal-block-wrapper docutils container" id="invariant-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Invariant Schematic Pattern</strong></span><a class="headerlink" href="#invariant-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  invariant I</span>
 <span class="s">}&quot;&quot;&quot;</span>
 <span class="c1">// …</span>
@@ -1348,19 +1355,19 @@ statement that is outside of a method (top-level).</p>
 </div>
 <div class="section" id="substitutions-subst1-and-subst2">
 <h3>3.4.10.5. Substitutions (subst1 and subst2)<a class="headerlink" href="#substitutions-subst1-and-subst2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst1&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;subst2&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The two substitution justifications can be used to substitute
-claim expressions <code class="docutils literal notranslate"><span class="pre">E1</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code> that are equal to each other
-(<code class="docutils literal notranslate"><span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>);
-<code class="docutils literal notranslate"><span class="pre">subst1</span></code> substitutes <code class="docutils literal notranslate"><span class="pre">E1</span></code> with <code class="docutils literal notranslate"><span class="pre">E2</span></code>,
-while <code class="docutils literal notranslate"><span class="pre">subst2</span></code> substitutes <code class="docutils literal notranslate"><span class="pre">E2</span></code> with <code class="docutils literal notranslate"><span class="pre">E1</span></code>.</p>
+claim expressions <code class="docutils literal"><span class="pre">E1</span></code> and <code class="docutils literal"><span class="pre">E2</span></code> that are equal to each other
+(<code class="docutils literal"><span class="pre">E1</span> <span class="pre">==</span> <span class="pre">E2</span></code>);
+<code class="docutils literal"><span class="pre">subst1</span></code> substitutes <code class="docutils literal"><span class="pre">E1</span></code> with <code class="docutils literal"><span class="pre">E2</span></code>,
+while <code class="docutils literal"><span class="pre">subst2</span></code> substitutes <code class="docutils literal"><span class="pre">E2</span></code> with <code class="docutils literal"><span class="pre">E1</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="subst1-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Substitution1 (subst1) Schematic Pattern</strong></span><a class="headerlink" href="#subst1-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  X. E1 == E2                            …</span>
 <span class="s">  Y. P{E1}</span>
 <span class="s">  Z. [E2/E1]P{E1}                        subst1 X Y</span>
@@ -1370,7 +1377,7 @@ while <code class="docutils literal notranslate"><span class="pre">subst2</span>
 </div>
 <div class="literal-block-wrapper docutils container" id="subst2-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Substitution2 (subst1) Schematic Pattern</strong></span><a class="headerlink" href="#subst2-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  X. E1 == E2                            …</span>
 <span class="s">  Y. P{E2}</span>
 <span class="s">  Z. [E1/E2]P{E2}                        subst2 X Y</span>
@@ -1382,7 +1389,7 @@ while <code class="docutils literal notranslate"><span class="pre">subst2</span>
 </div>
 <div class="section" id="summonings">
 <span id="id1"></span><h2>3.4.11. Summonings<a class="headerlink" href="#summonings" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;auto&#39;</span><span class="w">    </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </span></pre></div>
@@ -1397,7 +1404,7 @@ such as by employing Z3’s powerful automatic satisfiability checking
 and/or
 <a class="reference external" href="https://www.youtube.com/embed/Qs51cQUuEOM?rel=0&amp;autoplay=1&amp;start=280">a modern example</a>
 on how summoning works).</p>
-<p>Currently, there are two summonings in Logika: <code class="docutils literal notranslate"><span class="pre">algebra</span></code> and <code class="docutils literal notranslate"><span class="pre">auto</span></code>, both of which
+<p>Currently, there are two summonings in Logika: <code class="docutils literal"><span class="pre">algebra</span></code> and <code class="docutils literal"><span class="pre">auto</span></code>, both of which
 use Z3 to check the deductions.
 Note that although Z3 is quite powerful,
 Z3 cannot always automatically deduce claims, for example, when they involve
@@ -1407,22 +1414,22 @@ Other summonings involving more elaborate incantations will be added in the
 future to address this.</p>
 <div class="section" id="algebra-algebra">
 <span id="prog-algebra"></span><h3>3.4.11.1. Algebra (algebra)<a class="headerlink" href="#algebra-algebra" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;algebra&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">algebra</span></code> summoning can be used to automatically deduce
+<p>The <code class="docutils literal"><span class="pre">algebra</span></code> summoning can be used to automatically deduce
 algebraic arithmetic claims.
 It cannot be used to reason about claims that contain
 a conjunction, a disjunction, an implication, or a quantification.
 This is by design and it is done to force reasoning about claims involving
 propositional and predicate logic operators using their respective
 inference rules.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">algebra</span></code> summoning can be used with or without arguments;
+<p>The <code class="docutils literal"><span class="pre">algebra</span></code> summoning can be used with or without arguments;
 its usages are depicted in <a class="reference internal" href="#algebra-rule"><span class="std std-ref">Algebra Schematic Pattern (with some arguments)</span></a> and <a class="reference internal" href="#algebra-empty-rule"><span class="std std-ref">Algebra Schematic Pattern (without argument)</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="algebra-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Algebra Schematic Pattern (with some arguments)</strong></span><a class="headerlink" href="#algebra-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  X1. E1                                 …                 // E1 cannot use ∧, ∨, →, ∀, ∃</span>
 <span class="s">  …</span>
 <span class="s">  XN. EN                                 …                 // N &gt; 0, EN cannot use ∧, ∨, →, ∀, ∃</span>
@@ -1433,30 +1440,30 @@ its usages are depicted in <a class="reference internal" href="#algebra-rule"><s
 </div>
 <div class="literal-block-wrapper docutils container" id="algebra-empty-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Algebra Schematic Pattern (without argument)</strong></span><a class="headerlink" href="#algebra-empty-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  Z.  E                                  algebra           // if ¬E is unsat</span>
 <span class="s">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">algebra</span></code> summoning is available regardless of whether
+<p>The <code class="docutils literal"><span class="pre">algebra</span></code> summoning is available regardless of whether
 the <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a> is enabled; however, it is subsumed by the
 <a class="reference internal" href="#prog-auto"><span class="std std-ref">auto</span></a> summoning, which is described next.</p>
 </div>
 <div class="section" id="auto-auto">
 <span id="prog-auto"></span><h3>3.4.11.2. Auto (auto)<a class="headerlink" href="#auto-auto" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;auto&#39;</span><span class="w">    </span><span class="nv">rNUM</span><span class="o">*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">auto</span></code> summoning can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.
-It is similar to <code class="docutils literal notranslate"><span class="pre">algebra</span></code>, but without its restrictions.
+<p>The <code class="docutils literal"><span class="pre">auto</span></code> summoning can only be used in <a class="reference internal" href="../../01-getting-started/index.html#auto-mode"><span class="std std-ref">Auto Mode</span></a>.
+It is similar to <code class="docutils literal"><span class="pre">algebra</span></code>, but without its restrictions.
 That is, it can be used to reason about any claim expression form.
-Moreover, in contrast to <code class="docutils literal notranslate"><span class="pre">algebra</span></code>, <code class="docutils literal notranslate"><span class="pre">auto</span></code> uses all axioms and
+Moreover, in contrast to <code class="docutils literal"><span class="pre">algebra</span></code>, <code class="docutils literal"><span class="pre">auto</span></code> uses all axioms and
 premises when used without arguments.</p>
 <div class="literal-block-wrapper docutils container" id="auto-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Auto Schematic Pattern (with some arguments)</strong></span><a class="headerlink" href="#auto-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  X1. E1                                 …</span>
 <span class="s">  …</span>
 <span class="s">  XN. EN                                 …                 // N &gt; 0</span>
@@ -1467,7 +1474,7 @@ premises when used without arguments.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="auto-empty-rule">
 <div class="code-block-caption"><span class="caption-text"><strong>Auto Schematic Pattern (without argument)</strong></span><a class="headerlink" href="#auto-empty-rule" title="Permalink to this code">¶</a></div>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
+<div class="highlight-scala"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s">&quot;&quot;&quot;{</span>
 <span class="s">  X1. P1                                 …</span>
 <span class="s">  …</span>
 <span class="s">  XK. PM                                 …</span>
@@ -1492,7 +1499,7 @@ a type mismatch).</p>
 <h2>3.4.13. Programming Logic Input Language Grammar<a class="headerlink" href="#programming-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <p>Note that extended language elements from
 that of the <a class="reference internal" href="../predicate/index.html#pred-grammar"><span class="std std-ref">Predicate Logic Input Language Grammar</span></a> are highlighted.</p>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">program</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">import</span><span class="w">                     </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">                </span><span class="nv">programElement</span><span class="o">*</span><span class="w">            </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">              </span><span class="o">)?</span><span class="w"></span>
 

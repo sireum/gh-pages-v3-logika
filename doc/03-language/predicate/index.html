@@ -3,18 +3,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>3.3. Predicate Logic &#8212; Sireum Logika</title>
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sireum.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +30,8 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3.4. Programming Logic" href="../programming/index.html" />
     <link rel="prev" title="3.2. Propositional Logic" href="../propositional/index.html" />
-  </head><body>
+  </head>
+  <body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -142,13 +149,13 @@ logic natural deductions;
 the reader is referred to <a class="reference internal" href="../../../dschmidt/04-predicate-logic/index.html#predicate-logic"><span class="std std-ref">The Predicate-Logic Quantifiers</span></a> for more intuitive
 and general discussion on predicate logic.</p>
 <p><strong>Predicate Logic Input Language Grammar</strong></p>
-<div class="highlight-antlr notranslate" id="predicate-1"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
+<div class="highlight-antlr" id="predicate-1"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Logika’s predicate logic input language is similar to that of
 <a class="reference internal" href="../propositional/index.html#propositional-language"><span class="std std-ref">Propositional Logic</span></a>, where it consists of a sequent and the sequent’s proof.
 Here is an example that is also a <a class="reference external" href="https://en.wikipedia.org/wiki/Syllogism">syllogism</a>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  ∃y human(y)  ⊢  ∃z mortal(z)
+<div class="highlight-none"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  ∃y human(y)  ⊢  ∃z mortal(z)
 {
   1. ∀x human(x) → mortal(x)               premise
   2. ∃y human(y)                           premise
@@ -168,7 +175,7 @@ As a reference, the complete predicate logic input language is specified in
 <a class="reference internal" href="#pred-grammar"><span class="std std-ref">Predicate Logic Input Language Grammar</span></a>.</p>
 <div class="section" id="extended-sub-proof-assumption-step">
 <span id="extended-assumptions"></span><h2>3.3.1. Extended Sub-Proof Assumption Step<a class="headerlink" href="#extended-sub-proof-assumption-step" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w">                  </span><span class="c">// ID must be &quot;fresh&quot; in scope; used for ForAll-Introduction</span><span class="w"></span>
 </span><span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w">   </span><span class="c">// ID must be &quot;fresh&quot;; used for Exists-Elimination</span><span class="w"></span>
 </span></pre></div>
@@ -186,7 +193,7 @@ This form is used for <a class="reference internal" href="#exists-elim"><span cl
 </div>
 <div class="section" id="extended-claim-expression">
 <h2>3.3.2. Extended Claim Expression<a class="headerlink" href="#extended-claim-expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                          </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                          </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                          </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                           </span><span class="c">// identifier</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// predicate application</span><span class="w"></span>
@@ -205,7 +212,7 @@ the predicate logic claim expressions are untyped.
 One can take the view that all variables in Logika’s predicate logic
 language are of integer type and
 all predicates/functions accepts only integers and returns an integer, where
-zero is treated as <code class="docutils literal notranslate"><span class="pre">⊥</span></code> and non-zero as <code class="docutils literal notranslate"><span class="pre">⊤</span></code>.
+zero is treated as <code class="docutils literal"><span class="pre">⊥</span></code> and non-zero as <code class="docutils literal"><span class="pre">⊤</span></code>.
 Integers are desirable in this context instead of booleans because
 it allows one to quantify over (infinitely) many objects
 instead of only two.</p>
@@ -215,19 +222,19 @@ predicate logic has two additional kinds of expression:
 as highlighted above, and described next.</p>
 <div class="section" id="first-order-uninterpreted-predicate-and-function-applications">
 <span id="uninterpreted-functions"></span><h3>3.3.2.1. First-Order Uninterpreted Predicate and Function Applications<a class="headerlink" href="#first-order-uninterpreted-predicate-and-function-applications" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">        </span><span class="c">// predicate application</span><span class="w"></span>
 
 <span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
-<p>A predicate is a function that returns either <code class="docutils literal notranslate"><span class="pre">⊤</span></code> or <code class="docutils literal notranslate"><span class="pre">⊥</span></code>.
+<p>A predicate is a function that returns either <code class="docutils literal"><span class="pre">⊤</span></code> or <code class="docutils literal"><span class="pre">⊥</span></code>.
 In predicate logic, the meaning of each function is unspecified,
 thus, uninterpreted.</p>
 <p>Instead of depending on function interpretations,
 Logika’s predicate logic reasoning uses
 <a class="reference internal" href="#subst-notation"><span class="std std-ref">rewriting/substitution</span></a>, in addition to
-<a class="reference internal" href="../propositional/index.html#structural-eq"><span class="std std-ref">structural equivalence</span></a> (<code class="docutils literal notranslate"><span class="pre">≡</span></code>)
+<a class="reference internal" href="../propositional/index.html#structural-eq"><span class="std std-ref">structural equivalence</span></a> (<code class="docutils literal"><span class="pre">≡</span></code>)
 that is used in propositional logic.
 The rewriting technique depends on the inherent property that
 each function is pure – meaning that it produces the same result
@@ -235,15 +242,15 @@ when given the same arguments regardless of how many times
 it is applied (invoked/called).</p>
 <p>A function is applied by referring to its
 identifier followed by some ordered arguments (optional)
-which are separated by a comma (<code class="docutils literal notranslate"><span class="pre">,</span></code>) and delimited by a
+which are separated by a comma (<code class="docutils literal"><span class="pre">,</span></code>) and delimited by a
 parenthesis, such as shown in the
 <a class="reference internal" href="#predicate-1"><span class="std std-ref">syllogism</span></a> example above (and below) for
-<code class="docutils literal notranslate"><span class="pre">human</span></code> and <code class="docutils literal notranslate"><span class="pre">mortal</span></code>.</p>
+<code class="docutils literal"><span class="pre">human</span></code> and <code class="docutils literal"><span class="pre">mortal</span></code>.</p>
 <p>Functions have to always be supplied with arguments whenever
 referred (i.e., they have to always be applied).
 This makes it easy to distinguish whether an identifier is
 a predicate, e.g.,:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  human(socrates)  ⊢  mortal(socrates)
+<div class="highlight-none"><div class="highlight"><pre><span></span>∀x human(x) → mortal(x),  human(socrates)  ⊢  mortal(socrates)
 {
   1. ∀x human(x) → mortal(x)               premise
   2. human(socrates)                       premise
@@ -253,16 +260,16 @@ a predicate, e.g.,:</p>
 </pre></div>
 </div>
 <p>In this popular syllogism,
-<code class="docutils literal notranslate"><span class="pre">socrates</span></code> is distinguishably a variable (intuitively, it points
+<code class="docutils literal"><span class="pre">socrates</span></code> is distinguishably a variable (intuitively, it points
 to Socrates the person, which is mechanically modeled using
-an integer object made up from <code class="docutils literal notranslate"><span class="pre">1</span></code>s and <code class="docutils literal notranslate"><span class="pre">0</span></code>s), but
-<code class="docutils literal notranslate"><span class="pre">human</span></code> and <code class="docutils literal notranslate"><span class="pre">mortal</span></code> are predicates (which intuitively,
+an integer object made up from <code class="docutils literal"><span class="pre">1</span></code>s and <code class="docutils literal"><span class="pre">0</span></code>s), but
+<code class="docutils literal"><span class="pre">human</span></code> and <code class="docutils literal"><span class="pre">mortal</span></code> are predicates (which intuitively,
 classify whether an object is a human and a mortal, respectively).</p>
 <p>In Logika, all functions are first-order, i.e., they
 do not accept function values as arguments. Note that this
 does not preclude functions to accepts results of other functions,
 as illustrated in the following example:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>∀x gt(inc(x), x)     ∀x gt(x, dec(x))
+<div class="highlight-none"><div class="highlight"><pre><span></span>∀x gt(inc(x), x)     ∀x gt(x, dec(x))
 -------------------------------------
  ∀x gt(inc(x), x)  ∧  gt(x, dec(x))
 {
@@ -278,8 +285,8 @@ as illustrated in the following example:</p>
 }
 </pre></div>
 </div>
-<p>As can be observed, the <code class="docutils literal notranslate"><span class="pre">gt</span></code> predicate can accepts results of
-applying functions <code class="docutils literal notranslate"><span class="pre">inc</span></code> and <code class="docutils literal notranslate"><span class="pre">dec</span></code>.
+<p>As can be observed, the <code class="docutils literal"><span class="pre">gt</span></code> predicate can accepts results of
+applying functions <code class="docutils literal"><span class="pre">inc</span></code> and <code class="docutils literal"><span class="pre">dec</span></code>.
 (By the way, the example uses uninterpreted functions/predicates
 to model properties of integer arithmetic operators
 due to the lack for
@@ -295,7 +302,7 @@ each function has a fixed number of arguments.</p>
 </div>
 <div class="section" id="universally-and-existensially-quantified-claims">
 <span id="quantified-claims"></span><h3>3.3.2.2. Universally and Existensially Quantified Claims<a class="headerlink" href="#universally-and-existensially-quantified-claims" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;∀&#39;</span><span class="w">                        </span><span class="c">// univ. quant., can also use &#39;forall&#39;, &#39;all&#39;, &#39;A&#39; for &#39;∀&#39;      (also apply in just)</span><span class="w"></span>
 <span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃&#39;</span><span class="w">                        </span><span class="c">// exist. quant., can also use &#39;exists&#39;, &#39;some&#39;, &#39;E&#39; for &#39;∃&#39;    (also apply in just)</span><span class="w"></span>
 <span class="w">              </span><span class="o">)</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="no">ID</span><span class="o">)*</span><span class="w"> </span><span class="nv">claim</span><span class="w"></span>
@@ -306,9 +313,9 @@ over multiple variables at once (followed by the quantified
 claim expression), which means the same as if one
 quantifies over the variables one by one in the same order.
 For example,
-<code class="docutils literal notranslate"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span></code> is semantically equivalent as <code class="docutils literal notranslate"><span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>;
+<code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span></code> is semantically equivalent as <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>;
 however, for simplicity, they are not considered as structurally equivalent, i.e.,
-<code class="docutils literal notranslate"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal notranslate"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
+<code class="docutils literal"><span class="pre">¬(∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≡</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> or <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">∀y</span> <span class="pre">p(x,y)</span> <span class="pre">≢</span> <span class="pre">∀x,y</span> <span class="pre">p(x,y)</span></code>.</p>
 </div>
 </div>
 <div class="section" id="well-formed-ness">
@@ -316,13 +323,13 @@ however, for simplicity, they are not considered as structurally equivalent, i.e
 <p>For simplicity, Logika does not allow identifier “shadowing”,
 which means that a variable cannot be quantified more than one time in the
 same scope.
-For example, <code class="docutils literal notranslate"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
-<code class="docutils literal notranslate"><span class="pre">(∀x</span> <span class="pre">…)</span>&#160; <span class="pre">∧</span>&#160; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
-<p>In general, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…</span></code> is well-formed, because the first variable <code class="docutils literal notranslate"><span class="pre">x</span></code> is
-different than the quantified variable <code class="docutils literal notranslate"><span class="pre">x</span></code>.
-The first <code class="docutils literal notranslate"><span class="pre">x</span></code> is a <em>free</em> variable because it is not
+For example, <code class="docutils literal"><span class="pre">∀x</span> <span class="pre">(…</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…)</span></code> is ill-formed in Logika, but
+<code class="docutils literal"><span class="pre">(∀x</span> <span class="pre">…)</span>&#160; <span class="pre">∧</span>&#160; <span class="pre">(∀x</span> <span class="pre">…)</span></code> is well-formed.</p>
+<p>In general, <code class="docutils literal"><span class="pre">x</span> <span class="pre">∧</span> <span class="pre">∀x</span> <span class="pre">…</span></code> is well-formed, because the first variable <code class="docutils literal"><span class="pre">x</span></code> is
+different than the quantified variable <code class="docutils literal"><span class="pre">x</span></code>.
+The first <code class="docutils literal"><span class="pre">x</span></code> is a <em>free</em> variable because it is not
 defined/quantified in the expression where it is referred,
-while the second <code class="docutils literal notranslate"><span class="pre">x</span></code> is defined in the quantification.</p>
+while the second <code class="docutils literal"><span class="pre">x</span></code> is defined in the quantification.</p>
 <p>However, to avoid confusion, Logika disallows such claim expression.
 This is because, in the context of a sequent and its proof, all free variables
 are actually <em>implicitly universally-quantified</em> (even for propositional logic).
@@ -332,33 +339,33 @@ is consistent with the restriction of disallowing identifier shadowing.</p>
 <div class="section" id="abstract-notations-and-substitution">
 <span id="subst-notation"></span><h2>3.3.4. Abstract Notations and Substitution<a class="headerlink" href="#abstract-notations-and-substitution" title="Permalink to this headline">¶</a></h2>
 <p>One abstract notation that is used from now on is to express that a claim
-<code class="docutils literal notranslate"><span class="pre">R</span></code> that refers to some free variables (in the context of <code class="docutils literal notranslate"><span class="pre">R</span></code> itself)
-such as <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, as: <code class="docutils literal notranslate"><span class="pre">R{a,b}</span></code>.
-In this notation, the order appearance of variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>
+<code class="docutils literal"><span class="pre">R</span></code> that refers to some free variables (in the context of <code class="docutils literal"><span class="pre">R</span></code> itself)
+such as <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>, as: <code class="docutils literal"><span class="pre">R{a,b}</span></code>.
+In this notation, the order appearance of variables <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code>
 do not matter.
-For example, one can abstract <code class="docutils literal notranslate"><span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> as <code class="docutils literal notranslate"><span class="pre">∀x,y</span> <span class="pre">Q{x,y}</span></code> or
-<code class="docutils literal notranslate"><span class="pre">∀x,y</span> <span class="pre">Q{y,x}</span></code> because both just say that the claim <code class="docutils literal notranslate"><span class="pre">Q</span></code> refers
-to both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.
+For example, one can abstract <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">p(x,y))</span></code> as <code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">Q{x,y}</span></code> or
+<code class="docutils literal"><span class="pre">∀x,y</span> <span class="pre">Q{y,x}</span></code> because both just say that the claim <code class="docutils literal"><span class="pre">Q</span></code> refers
+to both <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>.
 Thus, in general, when defining a quantification, it is either one of the
 following forms:
-<code class="docutils literal notranslate"><span class="pre">∀a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (universal), or
-<code class="docutils literal notranslate"><span class="pre">∃a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (existensial), where <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
+<code class="docutils literal"><span class="pre">∀a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (universal), or
+<code class="docutils literal"><span class="pre">∃a1,...,aN</span> <span class="pre">P{a1,...,aN}</span></code> (existensial), where <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>.</p>
 <p>Another notation is for expression substitution.
-The notation <code class="docutils literal notranslate"><span class="pre">[E2/E1]R</span></code> means all occurences of expression
-<code class="docutils literal notranslate"><span class="pre">E1</span></code> in <code class="docutils literal notranslate"><span class="pre">R</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">E2</span></code>; an easy way to remember
-which one replaces which one is to read <code class="docutils literal notranslate"><span class="pre">/</span></code> as “steps over”,
-thus <code class="docutils literal notranslate"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal notranslate"><span class="pre">E2</span></code> steps over <code class="docutils literal notranslate"><span class="pre">E1</span></code> in <code class="docutils literal notranslate"><span class="pre">R</span></code>.
-Here is a concrete example of a substitution, <code class="docutils literal notranslate"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
-Another example, <code class="docutils literal notranslate"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
+The notation <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> means all occurences of expression
+<code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code> is replaced with <code class="docutils literal"><span class="pre">E2</span></code>; an easy way to remember
+which one replaces which one is to read <code class="docutils literal"><span class="pre">/</span></code> as “steps over”,
+thus <code class="docutils literal"><span class="pre">[E2/E1]R</span></code> reads as <code class="docutils literal"><span class="pre">E2</span></code> steps over <code class="docutils literal"><span class="pre">E1</span></code> in <code class="docutils literal"><span class="pre">R</span></code>.
+Here is a concrete example of a substitution, <code class="docutils literal"><span class="pre">[x/y]g(y)</span> <span class="pre">≡</span> <span class="pre">g(x)</span></code>.
+Another example, <code class="docutils literal"><span class="pre">[f(g(x))/f(y)]g(f(y),</span> <span class="pre">f(x))</span> <span class="pre">≡</span> <span class="pre">g(f(g(x)),</span> <span class="pre">f(x))</span></code>.</p>
 <p>The substitution notation is right-associative.
 When multiple substitutions are done on an expression at the same time,
-notated as: <code class="docutils literal notranslate"><span class="pre">[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R</span></code>, for <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> –
-it means, <code class="docutils literal notranslate"><span class="pre">[E2_N/E1_N]</span> <span class="pre">(…</span> <span class="pre">([E2_2/E1_2]</span> <span class="pre">([E2_1/E1_1]</span> <span class="pre">R)))</span></code>.
-For example, <code class="docutils literal notranslate"><span class="pre">[z/y][y/x]x</span> <span class="pre">≡</span> <span class="pre">[z/y]([y/x]x)</span> <span class="pre">≡</span> <span class="pre">[z/y]y</span> <span class="pre">≡</span> <span class="pre">z</span></code>.</p>
+notated as: <code class="docutils literal"><span class="pre">[E2_N/E1_N]…[E2_2/E1_2][E2_1/E1_1]R</span></code>, for <code class="docutils literal"><span class="pre">N</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> –
+it means, <code class="docutils literal"><span class="pre">[E2_N/E1_N]</span> <span class="pre">(…</span> <span class="pre">([E2_2/E1_2]</span> <span class="pre">([E2_1/E1_1]</span> <span class="pre">R)))</span></code>.
+For example, <code class="docutils literal"><span class="pre">[z/y][y/x]x</span> <span class="pre">≡</span> <span class="pre">[z/y]([y/x]x)</span> <span class="pre">≡</span> <span class="pre">[z/y]y</span> <span class="pre">≡</span> <span class="pre">z</span></code>.</p>
 </div>
 <div class="section" id="quantified-claim-justification-and-inference-rules">
 <span id="pred-rules"></span><h2>3.3.5. Quantified Claim Justification and Inference Rules<a class="headerlink" href="#quantified-claim-justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">              </span><span class="c">// And-Introduction</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                   </span><span class="c">// And-Elimination1</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                   </span><span class="c">// And-Elimination2</span><span class="w"></span>
@@ -381,18 +388,18 @@ For example, <code class="docutils literal notranslate"><span class="pre">[z/y][
 logic – one introduction rule and one elimination rule for
 both universal and existensial quantifications.</p>
 <p>The subsequent sections assume that
-each rule is being applied at a regular proof step numbered <code class="docutils literal notranslate"><span class="pre">Z</span></code>
+each rule is being applied at a regular proof step numbered <code class="docutils literal"><span class="pre">Z</span></code>
 and they use the <a class="reference internal" href="../propositional/index.html#schematic-pattern"><span class="std std-ref">Proof Schematic Pattern</span></a> to characterize valid
 inference rule applications.</p>
 <div class="section" id="forall-introduction-i">
 <span id="forall-intro"></span><h3>3.3.5.1. Forall-Introduction (∀i)<a class="headerlink" href="#forall-introduction-i" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                   </span><span class="c">// Forall-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="forall-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. {
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. {
      X1. a                                                   // variable  a  has to be fresh
      …
      XK. P{a}                                …
@@ -402,15 +409,15 @@ Z. ∀x P{x}                                   ∀i X            // P{x} ≡ [x/
 </pre></div>
 </div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">x</span></code> cannot appear in <code class="docutils literal notranslate"><span class="pre">P{a}</span></code>; otherwise,
+<p>Note that <code class="docutils literal"><span class="pre">x</span></code> cannot appear in <code class="docutils literal"><span class="pre">P{a}</span></code>; otherwise,
 the proof violates the <a class="reference internal" href="#pred-well-formed"><span class="std std-ref">Well-Formed-Ness</span></a> rules
-(i.e., such <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">P{a}</span></code> can only either be a free variable or
+(i.e., such <code class="docutils literal"><span class="pre">x</span></code> in <code class="docutils literal"><span class="pre">P{a}</span></code> can only either be a free variable or
 defined in an enclosing sub-proof, both of which are disallowed).</p>
 <p>The following alternative pattern is used grouping multiple
 quantified variables in a single ∀-quantification.</p>
 <div class="literal-block-wrapper docutils container" id="forall-intro-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Introduction (∀i) Schematic Pattern</strong></span><a class="headerlink" href="#forall-intro-alt-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. {
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. {
      X1. a                                                   // variable  a  has to be fresh
      …
      XK. ∀y1,…,yN P{a}                       …               // N &gt; 0 (otherwise the previous applies)
@@ -423,13 +430,13 @@ Z. ∀x,y1,…,yN P{x}                           ∀i X            // P{x} ≡ [
 </div>
 <div class="section" id="forall-elimination-e">
 <h3>3.3.5.2. Forall-Elimination (∀e)<a class="headerlink" href="#forall-elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∀e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">            </span><span class="c">// Forall-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="forall-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. ∀x P{x}                                   …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x P{x}                                   …
 Z. [E/x]P{x}                                 ∀e X E
 </pre></div>
 </div>
@@ -438,7 +445,7 @@ Z. [E/x]P{x}                                 ∀e X E
 variables at once.</p>
 <div class="literal-block-wrapper docutils container" id="forall-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. ∀x1,…,xN P{x1,…,xN}                       …               // N &gt; 1 (otherwise the previous applies)
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xN P{x1,…,xN}                       …               // N &gt; 1 (otherwise the previous applies)
 Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &lt;= N
 </pre></div>
 </div>
@@ -446,39 +453,39 @@ Z. ∀x(K+1),…,xN [E1/x1]…[EK/xK]P{x1,…,xN}    ∀e X E1 … EK    // K &l
 <p>The following can be applied for nested ∀-quantifications.</p>
 <div class="literal-block-wrapper docutils container" id="forall-elim-alt2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Forall-Elimination (∀e) Schematic Pattern</strong></span><a class="headerlink" href="#forall-elim-alt2-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. ∀x1,…,xK ∀x(K+1),…,xN P{x1,…,xN}          …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∀x1,…,xK ∀x(K+1),…,xN P{x1,…,xN}          …
 Z. ∀x(J+1),…,xN [E1/x1]…[EJ/xK]P{x1,…,xN}    ∀e X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
 </pre></div>
 </div>
 </div>
 <p>There are actually infinitely many of such patterns according to the level
 of ∀-quantification nesting that is implemented in Logika (i.e., there exists
-<strong>Alternative+</strong><code class="docutils literal notranslate"><span class="pre">M</span></code> <strong>Forall-Elimination (∀e) Schematic Pattern</strong>
-for any positive <code class="docutils literal notranslate"><span class="pre">M</span></code>).</p>
+<strong>Alternative+</strong><code class="docutils literal"><span class="pre">M</span></code> <strong>Forall-Elimination (∀e) Schematic Pattern</strong>
+for any positive <code class="docutils literal"><span class="pre">M</span></code>).</p>
 </div>
 <div class="section" id="exists-introduction-i">
 <h3>3.3.5.3. Exists-Introduction (∃i)<a class="headerlink" href="#exists-introduction-i" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">claim</span><span class="o">+</span><span class="w">            </span><span class="c">// Exists-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="exists-intro-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. [E/x]P{x}                                 …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. [E/x]P{x}                                 …
 Z. ∃x P{x}                                   ∃i X E
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="exists-intro-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. [E1/x1]…[EK/xK]P{x}                       …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EK/xK]P{x}                       …
 Z. ∃x1,…,xN P{x}                             ∃i X E1 … EK    // K &lt;= N, N &gt; 1 (otherwise the previous applies)
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="exists-intro-alt2-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative+1 Exists-Introduction (∃i) Schematic Pattern</strong></span><a class="headerlink" href="#exists-intro-alt2-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. [E1/x1]…[EJ/xJ]P{x}                       …
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. [E1/x1]…[EJ/xJ]P{x}                       …
 Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &lt; K &lt; J &lt;= N
 </pre></div>
 </div>
@@ -486,13 +493,13 @@ Z. ∃x1,…,xK ∃x(K+1),…,xN P{x}                ∃i X E1 … EJ    // 0 &l
 </div>
 <div class="section" id="exists-elimination-e">
 <span id="exists-elim"></span><h3>3.3.5.4. Exists-Elimination (∃e)<a class="headerlink" href="#exists-elimination-e" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∃e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">              </span><span class="c">// Exists-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="exists-elim-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Exists-Elimination (∃e) Schematic Pattern</strong></span><a class="headerlink" href="#exists-elim-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. ∃x P{x}
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∃x P{x}
 Y. {
      X1. a  P{a}                                             // variable  a  has to be fresh
      …
@@ -505,7 +512,7 @@ Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]
 </div>
 <div class="literal-block-wrapper docutils container" id="exists-elim-alt-pattern">
 <div class="code-block-caption"><span class="caption-text"><strong>Alternative Exists-Elimination (∃e) Schematic Pattern</strong></span><a class="headerlink" href="#exists-elim-alt-pattern" title="Permalink to this code">¶</a></div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>X. ∃x,y1,…,yN P{x}                                           // N &gt; 0 (otherwise the previous applies)
+<div class="highlight-none"><div class="highlight"><pre><span></span>X. ∃x,y1,…,yN P{x}                                           // N &gt; 0 (otherwise the previous applies)
 Y. {
      X1. a  ∃y1,…,yN P{a}                                    // variable  a  has to be fresh
      …
@@ -523,7 +530,7 @@ Z. Q                                         ∃e X Y          // P{x} ≡ [x/a]
 <span id="pred-grammar"></span><h2>3.3.6. Predicate Logic Input Language Grammar<a class="headerlink" href="#predicate-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <p>Note that extended language elements from
 that of the <a class="reference internal" href="../propositional/index.html#prop-grammar"><span class="std std-ref">Propositional Logic Input Language Grammar</span></a> are highlighted.</p>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
+<div class="highlight-antlr"><div class="highlight"><pre><span></span><span class="nl">predicate</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">                </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
 <span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                          </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
