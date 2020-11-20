@@ -89,10 +89,10 @@ the `Simplified BSD <https://github.com/sireum/v3/blob/release/license.md>`__ li
              <h3 class="panel-title">Contact</h3>
            </div>
            <div class="panel-body">
-             <a href="http://people.cis.ksu.edu/~robby">Robby</a><br/>
+             Professor <a href="http://people.cis.ksu.edu/~robby">Robby</a><br/>
              <a href="http://santoslab.org">SAnToS Laboratory</a><br/>
              <a href="http://www.cis.ksu.edu">Computer Science Department</a><br/>
-             <a href="http://engg.ksu.edu">College of Engineering</a><br/>
+             <a href="http://engg.ksu.edu">Carl R. Ice College of Engineering</a><br/>
              <a href="http://www.ksu.edu">Kansas State University</a><br/>
              2181 <a href="http://www.engg.ksu.edu/phaseiv/">Engineering Hall</a><br/>
              <a href="https://goo.gl/maps/qHsXwu5XAhT2">1701D Platt Street</a><br/>

@@ -1,37 +1,30 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3.1. Basic Language Elements &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sireum.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sireum.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../../_static/js/jquery-fix.js"></script>
+    <script src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3.2. Propositional Logic" href="../propositional/index.html" />
     <link rel="prev" title="3. The Logika Formal Input Language" href="../index.html" />
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -132,108 +125,108 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 3.1. Basic Language Elements
 </b></big></big></big></big>
 </font><div class="section" id="basic-language-elements">
-<span id="basic-language"></span><h1>3.1. Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h1>
+<span id="basic-language"></span><h1><span class="section-number">3.1. </span>Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="identifiers">
-<h2>3.1.1. Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.1. </span>Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h2>
 <p>Variable and function (method) identifiers are of the following regular expression form:
-<code class="docutils literal"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
+<code class="docutils literal notranslate"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
 underscores. A valid identifier should not be the same as any of Logika operators,
 literals, and keywords.</p>
 <p>Identifiers containing an underscore cannot be used in the programming context (i.e.,
 underscore cannot be a part of a user-declared variable/function identifier).</p>
 </div>
 <div class="section" id="operators-and-literals">
-<span id="ops-literals"></span><h2>3.1.2. Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h2>
+<span id="ops-literals"></span><h2><span class="section-number">3.1.2. </span>Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h2>
 <p>Below are a table of Logika operators and literals in both programming and proof context,
 listed with a decreasing precedence order (first is highest) along with Math Unicode <a class="reference internal" href="../../02-live/index.html#shortcuts"><span class="std std-ref">LIVE Shortcuts</span></a>.
 Note that the proof context operators and literals include the ones in the programming
-context, <code class="docutils literal"><span class="pre">NUM</span></code> is either <code class="docutils literal"><span class="pre">0</span></code> or <code class="docutils literal"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal"><span class="pre">STRING</span></code> is
+context, <code class="docutils literal notranslate"><span class="pre">NUM</span></code> is either <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">[1-9][0-9]*</span></code>, <code class="docutils literal notranslate"><span class="pre">STRING</span></code> is
 <a class="reference external" href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5">Java’s string literal</a>
 without the octal escape.
-The prepend (<code class="docutils literal"><span class="pre">+:</span></code>) and implication operators (<code class="docutils literal"><span class="pre">-&gt;</span></code>, <code class="docutils literal"><span class="pre">implies</span></code>, <code class="docutils literal"><span class="pre">→</span></code>)
+The prepend (<code class="docutils literal notranslate"><span class="pre">+:</span></code>) and implication operators (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">implies</span></code>, <code class="docutils literal notranslate"><span class="pre">→</span></code>)
 are right-associative.</p>
 <hr class="docutils" />
-<table border="1" class="colwidths-given docutils">
+<table class="colwidths-given docutils align-default">
 <colgroup>
-<col width="15%" />
-<col width="23%" />
-<col width="22%" />
-<col width="40%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 22%" />
+<col style="width: 40%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Programming Context</th>
-<th class="head">Proof Context (ASCII)</th>
-<th class="head">Proof Context (Math Unicode)</th>
-<th class="head"><a class="reference internal" href="../../02-live/index.html#live"><span class="std std-ref">LIVE</span></a> 2 <sup>nd</sup> Keystroke Shortcut (1 <sup>st</sup> Keystroke: <code class="docutils literal"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal"><span class="pre">⇧⌃;</span></code>)</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Programming Context</p></th>
+<th class="head"><p>Proof Context (ASCII)</p></th>
+<th class="head"><p>Proof Context (Math Unicode)</p></th>
+<th class="head"><p><a class="reference internal" href="../../02-live/index.html#live"><span class="std std-ref">LIVE</span></a> 2 <sup>nd</sup> Keystroke Shortcut (1 <sup>st</sup> Keystroke: <code class="docutils literal notranslate"><span class="pre">⇧⌘;</span></code>/<code class="docutils literal notranslate"><span class="pre">⇧⌃;</span></code>)</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">true</span></code> <code class="docutils literal"><span class="pre">F</span></code> <code class="docutils literal"><span class="pre">false</span></code> <code class="docutils literal"><span class="pre">NUM</span></code> <code class="docutils literal"><span class="pre">STRING</span></code></td>
-<td><code class="docutils literal"><span class="pre">_|_</span></code></td>
-<td><code class="docutils literal"><span class="pre">⊤</span></code> (U+22A4) <code class="docutils literal"><span class="pre">⊥</span></code> (U+22A5)</td>
-<td><code class="docutils literal"><span class="pre">T</span></code> <code class="docutils literal"><span class="pre">F</span></code></td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code> <code class="docutils literal notranslate"><span class="pre">true</span></code> <code class="docutils literal notranslate"><span class="pre">F</span></code> <code class="docutils literal notranslate"><span class="pre">false</span></code> <code class="docutils literal notranslate"><span class="pre">NUM</span></code> <code class="docutils literal notranslate"><span class="pre">STRING</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">_|_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">⊤</span></code> (U+22A4) <code class="docutils literal notranslate"><span class="pre">⊥</span></code> (U+22A5)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code> <code class="docutils literal notranslate"><span class="pre">F</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">*</span></code> <code class="docutils literal"><span class="pre">/</span></code> <code class="docutils literal"><span class="pre">%</span></code></td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code> <code class="docutils literal notranslate"><span class="pre">/</span></code> <code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">+</span></code> <code class="docutils literal"><span class="pre">-</span></code> <code class="docutils literal"><span class="pre">+:</span></code></td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code> <code class="docutils literal notranslate"><span class="pre">-</span></code> <code class="docutils literal notranslate"><span class="pre">+:</span></code></p></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">:+</span></code></td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">:+</span></code></p></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">==</span></code> <code class="docutils literal"><span class="pre">!=</span></code> <code class="docutils literal"><span class="pre">!</span></code></td>
-<td><code class="docutils literal"><span class="pre">=</span></code> <code class="docutils literal"><span class="pre">~</span></code> <code class="docutils literal"><span class="pre">not</span></code></td>
-<td><code class="docutils literal"><span class="pre">≠</span></code> (U+2260) <code class="docutils literal"><span class="pre">¬</span></code> (U+00AC)</td>
-<td>(<code class="docutils literal"><span class="pre">!</span></code> or <code class="docutils literal"><span class="pre">1</span></code>) <code class="docutils literal"><span class="pre">N</span></code></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code> <code class="docutils literal notranslate"><span class="pre">!=</span></code> <code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> <code class="docutils literal notranslate"><span class="pre">~</span></code> <code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">≠</span></code> (U+2260) <code class="docutils literal notranslate"><span class="pre">¬</span></code> (U+00AC)</p></td>
+<td><p>(<code class="docutils literal notranslate"><span class="pre">!</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>) <code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&lt;=</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code> <code class="docutils literal"><span class="pre">&gt;=</span></code></td>
-<td>&#160;</td>
-<td><code class="docutils literal"><span class="pre">≤</span></code> (U+2264) <code class="docutils literal"><span class="pre">≥</span></code> (U+2265)</td>
-<td><code class="docutils literal"><span class="pre">&lt;</span></code> <code class="docutils literal"><span class="pre">&gt;</span></code></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">≤</span></code> (U+2264) <code class="docutils literal notranslate"><span class="pre">≥</span></code> (U+2265)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">&amp;</span></code></td>
-<td><code class="docutils literal"><span class="pre">^</span></code> <code class="docutils literal"><span class="pre">and</span></code></td>
-<td><code class="docutils literal"><span class="pre">∧</span></code> (U+2227)</td>
-<td>(<code class="docutils literal"><span class="pre">^</span></code> or <code class="docutils literal"><span class="pre">6</span></code>)</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^</span></code> <code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">∧</span></code> (U+2227)</p></td>
+<td><p>(<code class="docutils literal notranslate"><span class="pre">^</span></code> or <code class="docutils literal notranslate"><span class="pre">6</span></code>)</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">|</span></code></td>
-<td><code class="docutils literal"><span class="pre">V</span></code> <code class="docutils literal"><span class="pre">or</span></code></td>
-<td><code class="docutils literal"><span class="pre">∨</span></code> (U+2228)</td>
-<td><code class="docutils literal"><span class="pre">V</span></code></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span></code> <code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">∨</span></code> (U+2228)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td><code class="docutils literal"><span class="pre">-&gt;</span></code> <code class="docutils literal"><span class="pre">implies</span></code></td>
-<td><code class="docutils literal"><span class="pre">→</span></code> (U+21D2)</td>
-<td><code class="docutils literal"><span class="pre">-</span></code></td>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">implies</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">→</span></code> (U+21D2)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">all</span></code> <code class="docutils literal"><span class="pre">forall</span></code> <code class="docutils literal"><span class="pre">E</span></code> <code class="docutils literal"><span class="pre">some</span></code> <code class="docutils literal"><span class="pre">exists</span></code></td>
-<td><code class="docutils literal"><span class="pre">∀</span></code> (U+2200) <code class="docutils literal"><span class="pre">∃</span></code> (U+2203)</td>
-<td><code class="docutils literal"><span class="pre">A</span></code> <code class="docutils literal"><span class="pre">E</span></code></td>
+<tr class="row-odd"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">all</span></code> <code class="docutils literal notranslate"><span class="pre">forall</span></code> <code class="docutils literal notranslate"><span class="pre">E</span></code> <code class="docutils literal notranslate"><span class="pre">some</span></code> <code class="docutils literal notranslate"><span class="pre">exists</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">∀</span></code> (U+2200) <code class="docutils literal notranslate"><span class="pre">∃</span></code> (U+2203)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">E</span></code></p></td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td><code class="docutils literal"><span class="pre">|-</span></code></td>
-<td><code class="docutils literal"><span class="pre">⊢</span></code> (U+22A2)</td>
-<td>(<code class="docutils literal"><span class="pre">|</span></code> or <code class="docutils literal"><span class="pre">\</span></code>)</td>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">|-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">⊢</span></code> (U+22A2)</p></td>
+<td><p>(<code class="docutils literal notranslate"><span class="pre">|</span></code> or <code class="docutils literal notranslate"><span class="pre">\</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <hr class="docutils" />
 <div class="section" id="keywords">
-<h2>3.1.3. Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.3. </span>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
 <p>Logika keywords consists of Scala’s keywords, contract keywords,
 justification keywords, and type keywords.</p>
 <div class="section" id="scala-keywords">
-<h3>3.1.3.1. Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">abstract</span>       <span class="n">case</span>           <span class="n">catch</span>          <span class="k">class</span>          <span class="nc">def</span>
+<h3><span class="section-number">3.1.3.1. </span>Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abstract</span>       <span class="n">case</span>           <span class="n">catch</span>          <span class="k">class</span>          <span class="nc">def</span>
 <span class="n">do</span>             <span class="k">else</span>           <span class="n">extends</span>        <span class="n">false</span>          <span class="n">final</span>
 <span class="k">finally</span>        <span class="k">for</span>            <span class="n">forSome</span>        <span class="k">if</span>             <span class="n">implicit</span>
 <span class="kn">import</span>         <span class="nn">lazy</span>           <span class="n">macro</span>          <span class="n">match</span>          <span class="n">new</span>
@@ -245,27 +238,27 @@ justification keywords, and type keywords.</p>
 </div>
 </div>
 <div class="section" id="types">
-<h3>3.1.3.2. Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">B</span>              <span class="n">Z</span>              <span class="n">ZS</span>
+<h3><span class="section-number">3.1.3.2. </span>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B</span>              <span class="n">Z</span>              <span class="n">ZS</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="built-in-functions">
-<h3>3.1.3.3. Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">readInt</span>        <span class="n">randomInt</span>      <span class="nb">print</span>          <span class="n">println</span>
+<h3><span class="section-number">3.1.3.3. </span>Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">readInt</span>        <span class="n">randomInt</span>      <span class="nb">print</span>          <span class="n">println</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="contracts">
-<h3>3.1.3.4. Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pre</span>            <span class="n">requires</span>       <span class="n">modifies</span>       <span class="n">post</span>           <span class="n">ensures</span>
+<h3><span class="section-number">3.1.3.4. </span>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span>            <span class="n">requires</span>       <span class="n">modifies</span>       <span class="n">post</span>           <span class="n">ensures</span>
 <span class="n">fact</span>           <span class="n">invariant</span>      <span class="k">assert</span>         <span class="n">assume</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="justifications">
-<h3>3.1.3.5. Justifications<a class="headerlink" href="#justifications" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">premise</span>        <span class="n">andi</span>           <span class="n">ande1</span>          <span class="n">ande2</span>          <span class="n">ori1</span>
+<h3><span class="section-number">3.1.3.5. </span>Justifications<a class="headerlink" href="#justifications" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">premise</span>        <span class="n">andi</span>           <span class="n">ande1</span>          <span class="n">ande2</span>          <span class="n">ori1</span>
 <span class="n">Vi1</span>            <span class="n">ori2</span>           <span class="n">Vi2</span>            <span class="n">ore</span>            <span class="n">Ve</span>
 <span class="n">impliesi</span>       <span class="n">impliese</span>       <span class="n">noti</span>           <span class="n">negi</span>           <span class="n">note</span>
 <span class="n">nege</span>           <span class="n">bottome</span>        <span class="n">falsee</span>         <span class="n">pbc</span>
@@ -278,14 +271,14 @@ justification keywords, and type keywords.</p>
 </div>
 </div>
 <div class="section" id="comments">
-<h2>3.1.4. Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.4. </span>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>Logika comments are <a class="reference external" href="https://en.wikipedia.org/wiki/C_syntax#Comments">C99</a>
-line (<code class="docutils literal"><span class="pre">//</span></code> … until end of the line) and block (<code class="docutils literal"><span class="pre">/*</span></code> … <code class="docutils literal"><span class="pre">*/</span></code>) comments.</p>
+line (<code class="docutils literal notranslate"><span class="pre">//</span></code> … until end of the line) and block (<code class="docutils literal notranslate"><span class="pre">/*</span></code> … <code class="docutils literal notranslate"><span class="pre">*/</span></code>) comments.</p>
 <p>Note that block comments are not allowed to appear inside Logika statements
-(<code class="docutils literal"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal"><span class="pre">&quot;&quot;&quot;</span></code>).</p>
+(<code class="docutils literal notranslate"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>).</p>
 </div>
 <div class="section" id="newlines-and-whitespaces">
-<h2>3.1.5. Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.5. </span>Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h2>
 <p>Scala is a line-oriented language where newline characters are treated specially in some cases.
 For example, newline characters <em>can</em> separate expressions in a code block.
 The <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html#newline-characters">actual rules of when newlines are treated specially</a>
@@ -297,14 +290,14 @@ For clarity sake, instead of explicitly listing newlines in the Logika context-f
 that go beyond Scala’s, special situations are described in the relevant sections.
 Interested readers are referred to the full
 <a class="reference external" href="https://github.com/sireum/v3/blob/release/logika/jvm/src/main/resources/org/sireum/logika/parser/Antlr4Logika.g4">Logika’s ANTLR4 grammar</a>
-(<code class="docutils literal"><span class="pre">NL</span></code> token) if such details are preferred.
+(<code class="docutils literal notranslate"><span class="pre">NL</span></code> token) if such details are preferred.
 (A separate lexical analysis is done after the ANTLR4-generated lexer tokenize an input text
 to implement Scala’s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
 <p>Other than the special newline rules that Logika follows in proof context,
 Logika whitespaces are similar to Scala’s.</p>
 </div>
 <div class="section" id="grammatical-rules">
-<h2>3.1.6. Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.6. </span>Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h2>
 <p>Logika grammars are written in this document using the
 <a class="reference external" href="https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md">ANTLR4-style</a> of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Backus–Naur_Form">Backus-Naur Form (BNF) grammar</a>.</p>

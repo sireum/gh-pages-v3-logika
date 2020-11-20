@@ -1,36 +1,29 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>7. Functions and Procedures &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sireum.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="../../_static/logika.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="6. Loops and Loop Invariants" href="../06-loops-invariants-induction/index.html" />
-  </head>
-  <body>
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -151,7 +144,7 @@ Logika: Programming Logics
 7. Functions and Procedures
 </b></big></big></big></big>
 </font><div class="section" id="functions-and-procedures">
-<span id="functions-procedures"></span><h1>7. Functions and Procedures<a class="headerlink" href="#functions-and-procedures" title="Permalink to this headline">¶</a></h1>
+<span id="functions-procedures"></span><h1><span class="section-number">7. </span>Functions and Procedures<a class="headerlink" href="#functions-and-procedures" title="Permalink to this headline">¶</a></h1>
 <p>A function or procedure (from here forward function unless the distinction is
 relevant) is a named body of
 commands that does significant work.  It may take parameter and or return values.
@@ -160,9 +153,9 @@ function, we should summarize its knowledge-production capabilities. This is
 critical,  because we assemble a program by connecting a collection of functions,
 and therefore must know what they are capable of doing.</p>
 <p>As you reviewed in calculus, a function maps each element of a domain to a single
-element of a co-domain.  So the equation for a line <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">ax</span> <span class="pre">+</span> <span class="pre">b</span></code> is a function
-mapping real-numbers to real numbers, as long as each <code class="docutils literal"><span class="pre">x</span></code> maps to exactly one
-<code class="docutils literal"><span class="pre">y</span></code> (no vertical lines).  Because of this, a methods/subroutines which return
+element of a co-domain.  So the equation for a line <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">ax</span> <span class="pre">+</span> <span class="pre">b</span></code> is a function
+mapping real-numbers to real numbers, as long as each <code class="docutils literal notranslate"><span class="pre">x</span></code> maps to exactly one
+<code class="docutils literal notranslate"><span class="pre">y</span></code> (no vertical lines).  Because of this, a methods/subroutines which return
 a value are often referred to as “functions”.</p>
 <p>But as you have seen in C# and Java, there are functions which return nothing, i.e.
 <em>void-type</em> (<em>Unit-type</em> in Logika).  These functions may change no programmatic
@@ -174,22 +167,24 @@ For those with only an object oriented background, a global
 variable is analogous to a <em>public static &lt;class-field&gt;</em>; it is globally visible
 and mutable.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Traditionally, “function” refers to a method with a non-Unit (non-void) return
+<p class="admonition-title">Note</p>
+<p>Traditionally, “function” refers to a method with a non-Unit (non-void) return
 type, where as “procedure” has a Unit (void) return type.
 Readers should be aware that there are contemporary programming languages
 that have different syntax and semantics for functions and procedures.</p>
 </div>
 <div class="section" id="the-client-service-model">
-<h2>7.1. The Client-Service Model<a class="headerlink" href="#the-client-service-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>The Client-Service Model<a class="headerlink" href="#the-client-service-model" title="Permalink to this headline">¶</a></h2>
 <p>Whether implicitly or explicitly, we create contracts with every function we construct.
 We intend, that as long as the parameters passed in meet certain conditions, the
 function will produce a particular effect.  This effect can be achieved by
 manipulating shared data and/or returning values.</p>
 <p>So we can think of a program (the client) composing a solution to a problem.
 Consider a program that calculates a real-root of the quadratic equation.</p>
+<div class="math notranslate nohighlight">
+\[(b ± sqrt(b ^2 - 4ac) / 2a\]</div>
 <p>Which may result in a LISP-esque program like this:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>(defun root1 (a, b, c)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(defun root1 (a, b, c)
 
   (div (add (b) (sqrt (subt (mult (b) (b))
                                  (mult( (4) (mult (a) (c))))))
@@ -198,14 +193,16 @@ Consider a program that calculates a real-root of the quadratic equation.</p>
 ; we just calculate the &quot;b +&quot; root
 </pre></div>
 </div>
-<p>Here the client, function root1, knows the values of <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code> and has access to math services
+<p>Here the client, function root1, knows the values of <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code> and has access to math services
 <em>{div(ide), add, sqrt[square root], subt(ract), mult(iply)}</em>.  The implicit
 contract for the binary operators is something like.</p>
 <blockquote>
-<div>add (x) (y) – provided two real numbers x and y, add returns the real number value x + y</div></blockquote>
+<div><p>add (x) (y) – provided two real numbers x and y, add returns the real number value x + y</p>
+</div></blockquote>
 <p>and for the unary operator</p>
 <blockquote>
-<div>sqrt (x) – provided any positive real number x, sqrt returns the positive real square root of x</div></blockquote>
+<div><p>sqrt (x) – provided any positive real number x, sqrt returns the positive real square root of x</p>
+</div></blockquote>
 <p>The client has no insight on how these functions accomplish their objectives only the
 preconditions for their use, and the conditional guarantees (post-conditions) made
 about the returned value.</p>
@@ -215,22 +212,22 @@ all service preconditions are met.  We will discuss which one fails to have its
 precondition met latter.</p>
 </div>
 <div class="section" id="contracts-pre-post-conditions-and-the-modifies-clause">
-<h2>7.2. Contracts : Pre-/Post-conditions and the Modifies clause<a class="headerlink" href="#contracts-pre-post-conditions-and-the-modifies-clause" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Contracts : Pre-/Post-conditions and the Modifies clause<a class="headerlink" href="#contracts-pre-post-conditions-and-the-modifies-clause" title="Permalink to this headline">¶</a></h2>
 <p>A function is a “mini-program”:
 it has inputs, namely the arguments assigned to its parameters, and
 it has outputs, namely the information returned as the function’s answer.
 It acts like a logic gate or chip, with “input wires” and “output wires”.</p>
 <p>Here is an example that shows the format we use for writing a function:</p>
 <div class="sidebar">
-<p class="first sidebar-title">Logika function syntax and semantics</p>
-<table border="1" class="last docutils">
+<p class="sidebar-title">Logika function syntax and semantics</p>
+<table class="docutils align-default">
 <colgroup>
-<col width="48%" />
-<col width="52%" />
+<col style="width: 48%" />
+<col style="width: 52%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>def divides( a: Z, b: Z) : B =  {</td>
-<td><div class="first last line-block">
+<tbody>
+<tr class="row-odd"><td><p>def divides( a: Z, b: Z) : B =  {</p></td>
+<td><div class="line-block">
 <div class="line">def <em>function_name</em></div>
 <div class="line">(&lt;paramter_List&gt;)</div>
 <div class="line-block">
@@ -240,52 +237,53 @@ It acts like a logic gate or chip, with “input wires” and “output wires”
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>Function return types</td>
-<td><div class="first last line-block">
+<tr class="row-even"><td><p>Function return types</p></td>
+<td><div class="line-block">
 <div class="line">Z, ZS, B, BS, Unit</div>
 <div class="line">Unit is analogous to C# void</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>l”“”{</td>
-<td>Program logic proof may contain</td>
+<tr class="row-odd"><td><p>l”””{</p></td>
+<td><p>Program logic proof may contain</p></td>
 </tr>
-<tr class="row-even"><td>&lt; pre or requires &gt;</td>
-<td>Pre conditions</td>
+<tr class="row-even"><td><p>&lt; pre or requires &gt;</p></td>
+<td><p>Pre conditions</p></td>
 </tr>
-<tr class="row-odd"><td>&lt;modifies &lt;var list&gt;&gt;</td>
-<td>list of global vars and parameters
-modified in the function</td>
+<tr class="row-odd"><td><p>&lt;modifies &lt;var list&gt;&gt;</p></td>
+<td><p>list of global vars and parameters
+modified in the function</p></td>
 </tr>
-<tr class="row-even"><td><em>KEYWORD</em> <strong>result</strong></td>
-<td>the value returned (as the variable
-named may be out of scope)</td>
+<tr class="row-even"><td><p><em>KEYWORD</em> <strong>result</strong></p></td>
+<td><p>the value returned (as the variable
+named may be out of scope)</p></td>
 </tr>
-<tr class="row-odd"><td><blockquote class="first">
-<div>&lt;post or ensures&gt; &lt;result ==&gt;</div></blockquote>
-<div class="last line-block">
-<div class="line">}”“”</div>
+<tr class="row-odd"><td><blockquote>
+<div><p>&lt;post or ensures&gt; &lt;result ==&gt;</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line">}”””</div>
 </div>
 </td>
-<td>Post conditions
-modified in the function</td>
+<td><p>Post conditions
+modified in the function</p></td>
 </tr>
-<tr class="row-even"><td><div class="first line-block">
+<tr class="row-even"><td><div class="line-block">
 <div class="line-block">
 <div class="line">…</div>
 </div>
 <div class="line">&lt;return var_name&gt;</div>
 </div>
-<p class="last">}</p>
+<p>}</p>
 </td>
-<td>If the function has a non-Unit
+<td><p>If the function has a non-Unit
 return a type. It must return a
-var/val of that type</td>
+var/val of that type</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -311,32 +309,32 @@ precondition, post-condition, and the modifies clauses.</p>
 <p>The precondition, which is optional, states the situations under which the
 function operates correctly.  It generally constrains the values of the parameters
 and any global variables (think C# class fields or properties) to ensure
-the function operates properly.  Logika accepts both the keywords <code class="docutils literal"><span class="pre">pre</span></code> and
-<code class="docutils literal"><span class="pre">requires</span></code> to start the precondition definition.  Multiple requirements may be
+the function operates properly.  Logika accepts both the keywords <code class="docutils literal notranslate"><span class="pre">pre</span></code> and
+<code class="docutils literal notranslate"><span class="pre">requires</span></code> to start the precondition definition.  Multiple requirements may be
 stated on separate lines–this allows them to be proven/used individually
 in proof blocks.  Logika will throw an error if preconditions are not proven
 before calling a function.</p>
 <p>Next, similar to loops, if a function modifies parameters or global values,
 it must list them in a <strong>modifies</strong> clause.  In addition to the loop-like features,
-Logika will capture a <code class="docutils literal"><span class="pre">&lt;var_name&gt;_in</span></code> snapshot each variable listed in the
+Logika will capture a <code class="docutils literal notranslate"><span class="pre">&lt;var_name&gt;_in</span></code> snapshot each variable listed in the
 modified clause.  This facilitates comparisons between current and “original” values.
-<code class="docutils literal"><span class="pre">_in</span></code> values are only captured for items listed in the modified clause.</p>
-<p>Finally, the post-condition (<code class="docutils literal"><span class="pre">post</span></code> or <code class="docutils literal"><span class="pre">ensures</span></code>) states what the function has
+<code class="docutils literal notranslate"><span class="pre">_in</span></code> values are only captured for items listed in the modified clause.</p>
+<p>Finally, the post-condition (<code class="docutils literal notranslate"><span class="pre">post</span></code> or <code class="docutils literal notranslate"><span class="pre">ensures</span></code>) states what the function has
 accomplished when it terminates. Like preconditions it may contain multiple
 lines.  Logika will throw an error if post-conditions are not proven
-before leaving a function. Logika uses the keyword <code class="docutils literal"><span class="pre">result</span></code> to refer to the
+before leaving a function. Logika uses the keyword <code class="docutils literal notranslate"><span class="pre">result</span></code> to refer to the
 object (if any) returned by the function. This shorthand only exists in the
 proof-block following the function’s definition.</p>
 <p>It is an excellent practice to discuss the “final” values of anything mentioned in
 the “modifies” block, as well as “result” so users of the function understand
 what the function has accomplished.</p>
 <div class="section" id="specification">
-<h3>7.2.1. Specification<a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span>Specification<a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h3>
 <p>The function’s <em>specification</em> consists of its header line and pre- and post-
 conditions and the modifies block.  This tells us how to use the function correctly:
 (A comment with the informal description is also nice to have.)
 Here is the specification for the above function:</p>
-<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -355,13 +353,12 @@ function’s code to know how to use the function</em>.
 This is especially crucial when you use a function from a library that was
 written by someone else – ideally, you should not read the library’s code to
 learn how to call the library’s functions!</p>
-<p>In the above example, the client can tell that <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> are not modified
+<p>In the above example, the client can tell that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are not modified
 so can deduce that the returned result does indeed check if b divides a.</p>
 <div class="sidebar">
-<p class="first sidebar-title">Modifies as part of contract</p>
-<dl class="docutils">
-<dt>Consider :</dt>
-<dd><div class="first last highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p class="sidebar-title">Modifies as part of contract</p>
+<dl>
+<dt>Consider :</dt><dd><div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -379,20 +376,20 @@ so can deduce that the returned result does indeed check if b divides a.</p>
 </dd>
 </dl>
 <p>The client reading this specification cannot be certain that the function
-is accurate.  The <code class="docutils literal"><span class="pre">b</span></code> in the <code class="docutils literal"><span class="pre">result</span> <span class="pre">==</span></code> is the final, modified
-version of <code class="docutils literal"><span class="pre">b</span></code>.  There is nothing to tell the client what value <code class="docutils literal"><span class="pre">b</span></code>
+is accurate.  The <code class="docutils literal notranslate"><span class="pre">b</span></code> in the <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">==</span></code> is the final, modified
+version of <code class="docutils literal notranslate"><span class="pre">b</span></code>.  There is nothing to tell the client what value <code class="docutils literal notranslate"><span class="pre">b</span></code>
 holds at the end of the function.</p>
-<p class="last">If you put a variable in the modifies clause, describe its value in the post
+<p>If you put a variable in the modifies clause, describe its value in the post
 conditions.</p>
 </div>
 </div>
 <div class="section" id="using-specifications">
-<h3>7.2.2. Using Specifications<a class="headerlink" href="#using-specifications" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span>Using Specifications<a class="headerlink" href="#using-specifications" title="Permalink to this headline">¶</a></h3>
 <p>To call the function, we supply arguments that bind to the function’s parameters,
 and we supply a variable that is the target for the returned answer and we
 ensure any preconditions for the parameters are met.
 We correctly call the function like this:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -442,7 +439,7 @@ call for its parameters</em>.
 As our reward for establishing the precondition, we receive in return the
 post-condition.</p>
 <p>A proof of this is</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -515,9 +512,9 @@ post-condition.</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<p>In contrast, we cannot presume <code class="docutils literal"><span class="pre">divides</span></code>’ post-condition if we eliminate the
-<code class="docutils literal"><span class="pre">assume</span> <span class="pre">(</span> <span class="pre">y</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">)</span></code>.  Try it and see if Logika will accept the proof.</p>
-<p>Since we did not prove <code class="docutils literal"><span class="pre">y</span> <span class="pre">!=</span> <span class="pre">0</span></code> as a precondition for applying <code class="docutils literal"><span class="pre">divides</span></code>,
+<p>In contrast, we cannot presume <code class="docutils literal notranslate"><span class="pre">divides</span></code>’ post-condition if we eliminate the
+<code class="docutils literal notranslate"><span class="pre">assume</span> <span class="pre">(</span> <span class="pre">y</span> <span class="pre">!=</span> <span class="pre">0</span> <span class="pre">)</span></code>.  Try it and see if Logika will accept the proof.</p>
+<p>Since we did not prove <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">!=</span> <span class="pre">0</span></code> as a precondition for applying <code class="docutils literal notranslate"><span class="pre">divides</span></code>,
 we cannot assert the post-condition after the call.
 Literally, we have no knowledge of what the function produces in this situation
 – perhaps the call will “crash” (generate an exception)!</p>
@@ -528,21 +525,21 @@ something like this:</p>
 <p>and a call tree based on the equation for root1 is</p>
 <a class="reference internal image-reference" href="../../_images/07-image-20.png"><img alt="../../_images/07-image-20.png" src="../../_images/07-image-20.png" style="width: 428.8px; height: 657.6px;" /></a>
 <p>As mentioned when the program was introduced, there is a problem.  In this case,
-the problem is with meeting the contract for <code class="docutils literal"><span class="pre">sqrt</span></code>.  The precondition
-for <code class="docutils literal"><span class="pre">sqrt</span></code> is that its input is real and non-negative.  However, the post-condition
-for <code class="docutils literal"><span class="pre">subt</span></code> does not guarantee that it’s result is positive, only that the result
+the problem is with meeting the contract for <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>.  The precondition
+for <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> is that its input is real and non-negative.  However, the post-condition
+for <code class="docutils literal notranslate"><span class="pre">subt</span></code> does not guarantee that it’s result is positive, only that the result
 is a real number.</p>
 <p>Potential solutions include: adding a pre-condition to root1, requiring the discriminant
 (<em>b^2 - 4ac</em>) to be positive; and, adding an if-condition which only calculates
 the root if the discriminant is positive.</p>
 </div>
 <div class="section" id="forwards-law-for-function-definition-and-call">
-<h3>7.2.3. Forwards Law for Function Definition and Call<a class="headerlink" href="#forwards-law-for-function-definition-and-call" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.3. </span>Forwards Law for Function Definition and Call<a class="headerlink" href="#forwards-law-for-function-definition-and-call" title="Permalink to this headline">¶</a></h3>
 <p>Here is a summary of what we have developed so far.
-Given a function, <code class="docutils literal"><span class="pre">f</span></code>, with a pre-post specification, we must show that the
+Given a function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, with a pre-post specification, we must show that the
 presumption of the precondition at the beginning of the function’s body lets us
 prove the post-condition at the end of the body:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">&lt;</span><span class="n">x</span><span class="p">:</span><span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;&gt;</span><span class="p">):</span> <span class="n">return_type</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">&lt;</span><span class="n">x</span><span class="p">:</span><span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;&gt;</span><span class="p">):</span> <span class="n">return_type</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">       pre    Q     // where  Q  can mention  x</span>
 <span class="s2">       &lt;modifies ...&gt;  // as appropriate</span>
@@ -561,11 +558,11 @@ prove the post-condition at the end of the body:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Outside of the function, <code class="docutils literal"><span class="pre">f</span></code>, we write <code class="docutils literal"><span class="pre">f_pre</span></code> for <code class="docutils literal"><span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">f_post</span></code> for
-<code class="docutils literal"><span class="pre">R</span></code>.
+<p>Outside of the function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, we write <code class="docutils literal notranslate"><span class="pre">f_pre</span></code> for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">f_post</span></code> for
+<code class="docutils literal notranslate"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function.
 It is a variation of the assignment law:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>              <span class="o">//</span> <span class="n">prove</span> <span class="n">the</span> <span class="n">precondition</span><span class="p">,</span> <span class="n">where</span>  <span class="n">e</span>  <span class="n">binds</span> <span class="n">to</span> <span class="n">parameter</span> <span class="n">x</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{ [e/x]f_pre  }&quot;&quot;&quot;</span>              <span class="o">//</span> <span class="n">prove</span> <span class="n">the</span> <span class="n">precondition</span><span class="p">,</span> <span class="n">where</span>  <span class="n">e</span>  <span class="n">binds</span> <span class="n">to</span> <span class="n">parameter</span> <span class="n">x</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                            <span class="o">//</span> <span class="n">y</span>  <span class="n">does</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">e</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     1. [y/result][e/x]f_post   premise  // presume the post-condition,</span>
@@ -575,10 +572,10 @@ It is a variation of the assignment law:</p>
 <span class="s2"> }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Recall that <code class="docutils literal"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal"><span class="pre">e</span></code> for all occurrences
-of <code class="docutils literal"><span class="pre">x</span></code> within formula <code class="docutils literal"><span class="pre">f_pre</span></code>.</p>
+<p>Recall that <code class="docutils literal notranslate"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal notranslate"><span class="pre">e</span></code> for all occurrences
+of <code class="docutils literal notranslate"><span class="pre">x</span></code> within formula <code class="docutils literal notranslate"><span class="pre">f_pre</span></code>.</p>
 <p>Here is another example, an absolute-value function:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -613,7 +610,7 @@ of <code class="docutils literal"><span class="pre">x</span></code> within formu
 is positive).
 We construct a proof that converts the knowledge in the precondition into the
 knowledge in the post-condition:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -684,7 +681,7 @@ knowledge in the post-condition:</p>
 </td></tr></table></div>
 <p>Now that the function is verifies, and therefore satisfies its specification,
 we can call it:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -806,7 +803,7 @@ Often the specifications are written in English, but underlying the English
 descriptions are the pre-post-conditions illustrated in this section.</p>
 </div>
 <div class="section" id="optional-section-how-to-work-from-specifications-to-code">
-<h3>7.2.4. Optional Section: How to Work from Specifications To Code<a class="headerlink" href="#optional-section-how-to-work-from-specifications-to-code" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.4. </span>Optional Section: How to Work from Specifications To Code<a class="headerlink" href="#optional-section-how-to-work-from-specifications-to-code" title="Permalink to this headline">¶</a></h3>
 <p>When you call a function that someone else wrote, you rely on to tell you how
 the function behaves.
 (In many cases, you can’t read the code, e.g., .NET components)
@@ -825,8 +822,8 @@ the specification.</p>
 <p>Here is a simplistic example.
 Say you must write a function that receives two numbers as inputs and selects
 the maximum, or larger, of the two as the function’s output.
-The specification of the function, <code class="docutils literal"><span class="pre">max</span></code>, might look like this:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+The specification of the function, <code class="docutils literal notranslate"><span class="pre">max</span></code>, might look like this:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -852,20 +849,20 @@ The specification of the function, <code class="docutils literal"><span class="p
 </pre></div>
 </td></tr></table></div>
 <p>You must write the code for function max so that it meets the post-condition.
-Along the way, you might require some restrictions on <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for your
+Along the way, you might require some restrictions on <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for your
 solution to work.
 These would be listed in the precondition.</p>
 <p>The logical operators in the post-condition sometimes give us hints how to code
 the function.
-Here, we see that the function’s answer will be either <code class="docutils literal"><span class="pre">x</span></code> or <code class="docutils literal"><span class="pre">y</span></code>,
+Here, we see that the function’s answer will be either <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code>,
 suggesting that the function will use assignment commands of the form,
-<code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">y</span></code>.
+<code class="docutils literal notranslate"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">ans</span> <span class="pre">=</span> <span class="pre">y</span></code>.
 We also see that there is an “or” operator in the specification.
 This suggests that we will require an if-command to choose which of the two
 assignments to use.
 Although it is not an exact science, we can move from the post-condition to this
 possible coding:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -901,10 +898,10 @@ possible coding:</p>
 </pre></div>
 </td></tr></table></div>
 <p>Now, we use the laws for assignments and conditionals to compute whether a
-precondition is needed that places restrictions on <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> so that the
+precondition is needed that places restrictions on <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> so that the
 function behaves properly.
 What we see here is that our coding works correctly.  No precondition is required.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -985,20 +982,20 @@ What we see here is that our coding works correctly.  No precondition is require
 programs.</p>
 </div>
 <div class="section" id="optional-section-backwards-law-for-function-invocation">
-<h3>7.2.5. Optional Section: Backwards Law for Function Invocation<a class="headerlink" href="#optional-section-backwards-law-for-function-invocation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.5. </span>Optional Section: Backwards Law for Function Invocation<a class="headerlink" href="#optional-section-backwards-law-for-function-invocation" title="Permalink to this headline">¶</a></h3>
 <p>Here is a precise statement of how to reason backwards from a goal across a
 function call.
 First, given the specification,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>def f(x:?): ? = {
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>def f(x:?): ? = {
     l&quot;&quot;&quot;{
       requires    Q
       ensures     R
     }&quot;&quot;&quot;
 </pre></div>
 </div>
-<p>If a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards from
-<code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">L</span><span class="s2">&quot;&quot;&quot;{</span>
+<p>If a call to <code class="docutils literal notranslate"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal notranslate"><span class="pre">G</span></code>, we reason backwards from
+<code class="docutils literal notranslate"><span class="pre">G</span></code> to its subgoal like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">      subgoal:  [e/x]f_pre  ^  ([e/x][y/ans]f_post → G)</span>
 <span class="s2">     }&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="o">//</span> <span class="n">y</span>  <span class="n">does</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">argument</span>  <span class="n">e</span>
@@ -1007,11 +1004,11 @@ First, given the specification,</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>That is, for the call, <code class="docutils literal"><span class="pre">f(e)</span></code>, to accomplish <code class="docutils literal"><span class="pre">G</span></code>, it must be the case that
-<code class="docutils literal"><span class="pre">f</span></code>’s post-condition implies <code class="docutils literal"><span class="pre">G</span></code> and that we can prove <code class="docutils literal"><span class="pre">f</span></code>’s precondition
-holds true (so that we can call <code class="docutils literal"><span class="pre">f</span></code>).
+<p>That is, for the call, <code class="docutils literal notranslate"><span class="pre">f(e)</span></code>, to accomplish <code class="docutils literal notranslate"><span class="pre">G</span></code>, it must be the case that
+<code class="docutils literal notranslate"><span class="pre">f</span></code>’s post-condition implies <code class="docutils literal notranslate"><span class="pre">G</span></code> and that we can prove <code class="docutils literal notranslate"><span class="pre">f</span></code>’s precondition
+holds true (so that we can call <code class="docutils literal notranslate"><span class="pre">f</span></code>).
 An example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">Z</span><span class="p">)</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">Z</span><span class="p">)</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="p">{</span>
 <span class="o">//</span> <span class="nb">max</span>  <span class="n">selects</span> <span class="n">the</span> <span class="n">larger</span> <span class="n">of</span>  <span class="n">x</span>  <span class="ow">and</span>  <span class="n">y</span>  <span class="ow">and</span> <span class="n">returns</span> <span class="n">it</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">       ensures   (result = x ∨ result = y)</span>
@@ -1020,16 +1017,16 @@ An example:</p>
 </pre></div>
 </div>
 <p>and the program</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">var</span> <span class="n">b</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span>
 <span class="sd">&quot;&quot;&quot;{  subgoal: ??? }&quot;&quot;&quot;</span>
 <span class="n">var</span> <span class="n">c</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">recip</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;{  goal: c  &lt; 7 }&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>we compute that the subgoal is <code class="docutils literal"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">7</span> <span class="pre">^</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">7</span> <span class="pre">→</span> <span class="pre">c</span> <span class="pre">&gt;</span> <span class="pre">7)</span></code>.</p>
-<p>This tells us what <code class="docutils literal"><span class="pre">assert</span></code> or <code class="docutils literal"><span class="pre">if</span></code> command to add to our program:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
+<p>we compute that the subgoal is <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">7</span> <span class="pre">^</span> <span class="pre">b</span> <span class="pre">&gt;</span> <span class="pre">7</span> <span class="pre">→</span> <span class="pre">c</span> <span class="pre">&gt;</span> <span class="pre">7)</span></code>.</p>
+<p>This tells us what <code class="docutils literal notranslate"><span class="pre">assert</span></code> or <code class="docutils literal notranslate"><span class="pre">if</span></code> command to add to our program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">a</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="n">var</span> <span class="n">b</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">()</span>
 <span class="k">assert</span> <span class="p">(</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="o">|</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">)</span>
 </pre></div>
@@ -1039,10 +1036,10 @@ we need to ensure at least one of the integers is greater than 7.</p>
 </div>
 </div>
 <div class="section" id="global-variables-and-procedures">
-<h2>7.3. Global Variables and Procedures<a class="headerlink" href="#global-variables-and-procedures" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Global Variables and Procedures<a class="headerlink" href="#global-variables-and-procedures" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Some languages, especially those derived from Pascal (ex: Ada), have
+<p class="admonition-title">Note</p>
+<p>Some languages, especially those derived from Pascal (ex: Ada), have
 strict syntax a semantic rules governing functions and procedures–they
 cannot be interchanged. In many
 functional languages, functions are evaluated for their return value and
@@ -1050,8 +1047,8 @@ procedures for their side-effect.  Most object oriented languages are more
 relaxed and you may see the terms function and procedure used interchangeably.</p>
 </div>
 <p>Recall we use “procedure” to refer to functions which use or change global
-values.  For example, <code class="docutils literal"><span class="pre">fpm</span></code> is global to <code class="docutils literal"><span class="pre">convert2Feet</span></code> here:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+values.  For example, <code class="docutils literal notranslate"><span class="pre">fpm</span></code> is global to <code class="docutils literal notranslate"><span class="pre">convert2Feet</span></code> here:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1084,10 +1081,10 @@ values.  For example, <code class="docutils literal"><span class="pre">fpm</span
 </td></tr></table></div>
 <p>A global variable “lives” before a procedure is called and lives after the
 function finishes.
-In the above example, <code class="docutils literal"><span class="pre">fpm</span></code> is defined before the procedure <code class="docutils literal"><span class="pre">convert2Feet</span></code>
+In the above example, <code class="docutils literal notranslate"><span class="pre">fpm</span></code> is defined before the procedure <code class="docutils literal notranslate"><span class="pre">convert2Feet</span></code>
 is called, and it exists after the procedure exits.
-In contrast, <code class="docutils literal"><span class="pre">fpm</span></code> is local here:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+In contrast, <code class="docutils literal notranslate"><span class="pre">fpm</span></code> is local here:</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1117,7 +1114,7 @@ In contrast, <code class="docutils literal"><span class="pre">fpm</span></code> 
 <p>A global variable that is read (but <em>not updated</em>) by a procedure body can be
 safely used in the procedure’s pre- and post-conditions;
 it acts just like an extra parameter to the function:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1162,20 +1159,20 @@ it acts just like an extra parameter to the function:</p>
 </td></tr></table></div>
 <p>However, we must restrict all calls to the procedure so that the call does <em>not</em> use the
 global variable as the target of the function’s answer.
-That is, <code class="docutils literal"><span class="pre">totalFeet</span> <span class="pre">=</span> <span class="pre">convert2Feet(5)</span></code> is ok, and so is <code class="docutils literal"><span class="pre">totalFeet</span> <span class="pre">=</span> <span class="pre">convert2Feet(fmp)</span></code>,
-but <code class="docutils literal"><span class="pre">fpm</span> <span class="pre">=</span> <span class="pre">convert2Feet(5)</span></code> <em>is not</em>.</p>
+That is, <code class="docutils literal notranslate"><span class="pre">totalFeet</span> <span class="pre">=</span> <span class="pre">convert2Feet(5)</span></code> is ok, and so is <code class="docutils literal notranslate"><span class="pre">totalFeet</span> <span class="pre">=</span> <span class="pre">convert2Feet(fmp)</span></code>,
+but <code class="docutils literal notranslate"><span class="pre">fpm</span> <span class="pre">=</span> <span class="pre">convert2Feet(5)</span></code> <em>is not</em>.</p>
 <div class="section" id="global-variables-that-are-updated">
-<h3>7.3.1. Global Variables that are Updated<a class="headerlink" href="#global-variables-that-are-updated" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span>Global Variables that are Updated<a class="headerlink" href="#global-variables-that-are-updated" title="Permalink to this headline">¶</a></h3>
 <p>In the Logika language, every global variable that is updated by a procedure must
-be listed in the <code class="docutils literal"><span class="pre">modifies</span></code> line that is in the Logika proof-block following the
+be listed in the <code class="docutils literal notranslate"><span class="pre">modifies</span></code> line that is in the Logika proof-block following the
 procedure’s signature.</p>
 <p>Here is a simple but important example: a timer that counts down to zero.
-The <code class="docutils literal"><span class="pre">init</span></code> and <code class="docutils literal"><span class="pre">tick</span></code> procedures maintain the global variable <code class="docutils literal"><span class="pre">time</span></code>.  <code class="docutils literal"><span class="pre">tick</span></code>
+The <code class="docutils literal notranslate"><span class="pre">init</span></code> and <code class="docutils literal notranslate"><span class="pre">tick</span></code> procedures maintain the global variable <code class="docutils literal notranslate"><span class="pre">time</span></code>.  <code class="docutils literal notranslate"><span class="pre">tick</span></code>
 requires that initial time (time_in) is greater than or equal to zero; and promises that if
-it is strictly greater than 0, <code class="docutils literal"><span class="pre">tick</span></code>  will decrement the time by 1.  <code class="docutils literal"><span class="pre">init</span></code>
+it is strictly greater than 0, <code class="docutils literal notranslate"><span class="pre">tick</span></code>  will decrement the time by 1.  <code class="docutils literal notranslate"><span class="pre">init</span></code>
 requires that the start ticks be greater zero; and promises that
 time will be set to the value provided.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1332,14 +1329,14 @@ time will be set to the value provided.</p>
    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ 1.  time &gt;= 0                   premise  }&quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Each of the procedures can change variable <code class="docutils literal"><span class="pre">time</span></code>, and each time a function
-finished, there is a post-condition that <code class="docutils literal"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.
-This is an <em>invariant</em>; here the invariant property is that <code class="docutils literal"><span class="pre">time</span></code> stays
+<p>Each of the procedures can change variable <code class="docutils literal notranslate"><span class="pre">time</span></code>, and each time a function
+finished, there is a post-condition that <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code>.
+This is an <em>invariant</em>; here the invariant property is that <code class="docutils literal notranslate"><span class="pre">time</span></code> stays
 nonnegative.</p>
 <p>This next example is similar.
 The procedure that withdraws money from a bank account must never let the
 balance go negative:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1380,16 +1377,16 @@ balance go negative:</p>
     <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<p><code class="docutils literal"><span class="pre">withdraw</span></code>’s pre- and post-conditions are carefully written to ensure that
+<p><code class="docutils literal notranslate"><span class="pre">withdraw</span></code>’s pre- and post-conditions are carefully written to ensure that
 the procedure is used correctly.
-Recall that <code class="docutils literal"><span class="pre">balance_in</span></code> means the value of global variable <code class="docutils literal"><span class="pre">balance</span></code> on
+Recall that <code class="docutils literal notranslate"><span class="pre">balance_in</span></code> means the value of global variable <code class="docutils literal notranslate"><span class="pre">balance</span></code> on
 procedure entry.
 We will return to both these examples shortly.</p>
 </div>
 <div class="section" id="deduction-law-for-procedures">
-<h3>7.3.2. Deduction Law for Procedures<a class="headerlink" href="#deduction-law-for-procedures" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.2. </span>Deduction Law for Procedures<a class="headerlink" href="#deduction-law-for-procedures" title="Permalink to this headline">¶</a></h3>
 <p>Here is a precise statement of the law we use for procedures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="o">//</span>  <span class="n">the</span> <span class="k">global</span> <span class="n">variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="o">//</span>  <span class="n">the</span> <span class="k">global</span> <span class="n">variable</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
@@ -1402,7 +1399,7 @@ We will return to both these examples shortly.</p>
 </pre></div>
 </div>
 <p>To invoke the procedure, we prove the precondition:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     [e/x]f_pre</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                             <span class="o">//</span> <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">do</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">e</span><span class="p">,</span>  <span class="ow">and</span>  <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">are</span> <span class="n">distinct</span>
@@ -1413,18 +1410,18 @@ We will return to both these examples shortly.</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
+<p>Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 </div>
 <div class="section" id="global-variable-invariants">
-<h3>7.3.3. Global-Variable Invariants<a class="headerlink" href="#global-variable-invariants" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.3.3. </span>Global-Variable Invariants<a class="headerlink" href="#global-variable-invariants" title="Permalink to this headline">¶</a></h3>
 <p>A global variable is often shared by more than one procedure, and the procedures
 must cooperate and keep the global variable in proper shape for shared use.
 For this reason, a global variable often has attached to it a
 <em>global-variable invariant</em> that asserts a property of the variable’s value that
 must be preserved by every procedure that updates the variable.</p>
-<p>Earlier, we saw a timer module that maintained a nonnegative value for <code class="docutils literal"><span class="pre">time</span></code>.
-It is best to assert that <code class="docutils literal"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is a global invariant.
+<p>Earlier, we saw a timer module that maintained a nonnegative value for <code class="docutils literal notranslate"><span class="pre">time</span></code>.
+It is best to assert that <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">&gt;=</span> <span class="pre">0</span></code> is a global invariant.
 Then, each of the two procedures can assume the invariant when they execute.
 (And, each procedure must ensure the invariant is still holding true when they
 exit!)</p>
@@ -1433,7 +1430,7 @@ invariant (see lines 11 - 13 below), Logika will enforce that requirement
 every time a function is called and when the procedure returns.  Note, you must
 prove the invariant <strong>before</strong>  claiming it.</p>
 <p>Here is the timer example reworked:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1598,10 +1595,10 @@ prove the invariant <strong>before</strong>  claiming it.</p>
    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{ 1.  time &gt;= 0                   premise  }&quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
-<dl class="docutils">
-<dt>The invariant is only enforced on function calls and returns.</dt>
-<dd>If you violate the invariant in the main portion of the program, Logika will
-not complain until you go to call a function.</dd>
+<dl class="simple">
+<dt>The invariant is only enforced on function calls and returns.</dt><dd><p>If you violate the invariant in the main portion of the program, Logika will
+not complain until you go to call a function.</p>
+</dd>
 </dl>
 <p>In an object-oriented language, when a global (“class”) variable and its methods
 (“functions”) are defined within a class, the global-variable invariant is called
@@ -1610,7 +1607,7 @@ the <em>class invariant</em>.</p>
 inserts ten-cent coins.
 (The bank is a “reactive system” that processes “coin-insertion events”!)
 The class enforces its invariant – that’s its mission.</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1698,7 +1695,7 @@ and write down the class invariant</em>.
 Then, define and code the functions so that they maintain the invariant.</p>
 <p>Here is a second example, a class that models a bank account.
 The account’s balance should always be kept nonnegative:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1865,9 +1862,9 @@ The account’s balance should always be kept nonnegative:</p>
      <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
-<p>All the class’s functions pledge to keep <code class="docutils literal"><span class="pre">balance</span></code> nonnegative.
-Assuming that no other program commands update the <code class="docutils literal"><span class="pre">balance</span></code>, the proofs
-must ensure that <code class="docutils literal"><span class="pre">balance</span></code>’s global invariant holds always.</p>
+<p>All the class’s functions pledge to keep <code class="docutils literal notranslate"><span class="pre">balance</span></code> nonnegative.
+Assuming that no other program commands update the <code class="docutils literal notranslate"><span class="pre">balance</span></code>, the proofs
+must ensure that <code class="docutils literal notranslate"><span class="pre">balance</span></code>’s global invariant holds always.</p>
 <p>Whenever a module or class holds a data structure, there
 <em>always should be a global invariant that states the critical properties of the
 structure that must be maintained</em>.
@@ -1882,7 +1879,7 @@ to hold true
 <div class="section" id="law-for-global-invariants-and-procedure-calls">
 <h4>Law for Global Invariants and Procedure Calls<a class="headerlink" href="#law-for-global-invariants-and-procedure-calls" title="Permalink to this headline">¶</a></h4>
 <p>Here is the law used in the above example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># the global variable</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     // some proof of I_g</span>
 <span class="s2">}&quot;&quot;&quot;</span>
@@ -1910,10 +1907,10 @@ to hold true
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For the procedure’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
-Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<p>For the procedure’s invocation, we deduce <code class="docutils literal notranslate"><span class="pre">[e/x]pre_f</span></code> to get the result.
+Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     [e/x]pre_f  // that is,  Q_e,g</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="o">//</span> <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">do</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">e</span><span class="p">,</span>  <span class="ow">and</span>  <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">are</span> <span class="n">distinct</span> <span class="n">names</span>
@@ -1925,29 +1922,29 @@ appear in argument <code class="docutils literal"><span class="pre">e</span></co
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Further, provided that all assignments to global variable <code class="docutils literal"><span class="pre">g</span></code> occur only
-within procedures that preserve its <code class="docutils literal"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal"><span class="pre">I_g</span></code> as
+<p>Further, provided that all assignments to global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> occur only
+within procedures that preserve its <code class="docutils literal notranslate"><span class="pre">I_g</span></code>, we can always assert <code class="docutils literal notranslate"><span class="pre">I_g</span></code> as
 needed in the main program.</p>
 <p>There are many other examples of modules/classes that use global invariants.
 Here are three obvious ones:</p>
 <ul class="simple">
-<li>A spreadsheet program: a module holds a grid that models a spreadsheet, and
+<li><p>A spreadsheet program: a module holds a grid that models a spreadsheet, and
 the key invariant property is that the last cell in each row of the
 spreadsheet holds the sum of the numbers in that row.
 So, the functions that insert or change numbers in the cells of the
 spreadsheet must compute new totals for the rows so that the invariant is
-preserved.</li>
-<li>A board game, like chess: a module holds a grid that models the chess board
+preserved.</p></li>
+<li><p>A board game, like chess: a module holds a grid that models the chess board
 and the pieces placed on it.
 The global invariant is that the pieces correctly show the history of the
 moves made so far during the game.
-The functions that make moves and captures must preserve the invariant.</li>
-<li>An animation: a module holds a three-dimensional space inhabited by one or
+The functions that make moves and captures must preserve the invariant.</p></li>
+<li><p>An animation: a module holds a three-dimensional space inhabited by one or
 more sprites (moving objects).
 The invariant is that no sprite can travel outside the dimensions of the
 space.
 The functions that insert, move, and delete sprites must preserve the
-invariant.</li>
+invariant.</p></li>
 </ul>
 <p><em>A key job when doing object-oriented programming is writing class invariants</em>,
 that is, global invariants for the private fields in each class.
@@ -1958,24 +1955,24 @@ preserve the invariants.</p>
 </div>
 </div>
 <div class="section" id="functions-that-call-functions">
-<h2>7.4. Functions that Call Functions<a class="headerlink" href="#functions-that-call-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>Functions that Call Functions<a class="headerlink" href="#functions-that-call-functions" title="Permalink to this headline">¶</a></h2>
 <p>All the techniques apply when the code inside a procedure body calls another
 procedure: as long as we establish the precondition for the called procedure,
 we can call it, and we obtain the post-condition as new knowledge in return.
 In this way, procedures can build on each others’ post-conditions.</p>
 <div class="section" id="functions-that-call-themselves">
-<h3>7.4.1. Functions that Call Themselves<a class="headerlink" href="#functions-that-call-themselves" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>Functions that Call Themselves<a class="headerlink" href="#functions-that-call-themselves" title="Permalink to this headline">¶</a></h3>
 <p>It is interesting that a procedure can call <em>itself</em>, and we can reason about
 this in the same way that we use for any other procedure call.
 Here is a detailed example.</p>
-<p>For integer <code class="docutils literal"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the <em>factorial</em> of <code class="docutils literal"><span class="pre">n</span></code>, written <code class="docutils literal"><span class="pre">n!</span></code> is defined as
-<code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">n</span></code>.
-It is the tradition to define <code class="docutils literal"><span class="pre">0!</span> <span class="pre">=</span> <span class="pre">1</span></code>, but factorials for negative integers
+<p>For integer <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, the <em>factorial</em> of <code class="docutils literal notranslate"><span class="pre">n</span></code>, written <code class="docutils literal notranslate"><span class="pre">n!</span></code> is defined as
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">...up</span> <span class="pre">to...</span> <span class="pre">*</span> <span class="pre">n</span></code>.
+It is the tradition to define <code class="docutils literal notranslate"><span class="pre">0!</span> <span class="pre">=</span> <span class="pre">1</span></code>, but factorials for negative integers
 do not exist.</p>
 <p>Factorial lists the number of permutations (combinations or “shuffles”), e.g.,
-<code class="docutils literal"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
-<code class="docutils literal"><span class="pre">a</span></code>, <code class="docutils literal"><span class="pre">b</span></code>, and <code class="docutils literal"><span class="pre">c</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">abc</span>
+<code class="docutils literal notranslate"><span class="pre">fact(3)</span> <span class="pre">=</span> <span class="pre">6</span></code> notes there six permutations for arranging three items,
+<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span>
 <span class="n">bac</span>
 <span class="n">bca</span>
 <span class="n">acb</span>
@@ -1984,12 +1981,12 @@ do not exist.</p>
 </pre></div>
 </div>
 <p>There is a profound recursive definition of factorial:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,   for  n &gt; 0
 </pre></div>
 </div>
-<p>For example, we calculate <code class="docutils literal"><span class="pre">4!</span></code> like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>4! == 3! * 4
+<p>For example, we calculate <code class="docutils literal notranslate"><span class="pre">4!</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>4! == 3! * 4
    where 3! == 2! * 3
             where 2! == 1! * 2
                      where 1! == 0! * 1
@@ -2003,14 +2000,14 @@ and finally,
    4! == 3! * 4 = 24
 </pre></div>
 </div>
-<p>The process of counting downwards from <code class="docutils literal"><span class="pre">4!</span></code> to <code class="docutils literal"><span class="pre">3!</span></code> to <code class="docutils literal"><span class="pre">2!</span></code> to <code class="docutils literal"><span class="pre">1!</span></code> to
-<code class="docutils literal"><span class="pre">0!</span></code> and assembling the answer as <code class="docutils literal"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code> can be programmed as a
-function that repeatedly calls <em>itself</em> for the answers to <code class="docutils literal"><span class="pre">3!</span></code>, <code class="docutils literal"><span class="pre">2!</span></code>,
-<code class="docutils literal"><span class="pre">1!</span></code>, etc.:</p>
-<p>The easiest way to understand the computation of, say, <code class="docutils literal"><span class="pre">factorialRec(3)</span></code>, is to draw
+<p>The process of counting downwards from <code class="docutils literal notranslate"><span class="pre">4!</span></code> to <code class="docutils literal notranslate"><span class="pre">3!</span></code> to <code class="docutils literal notranslate"><span class="pre">2!</span></code> to <code class="docutils literal notranslate"><span class="pre">1!</span></code> to
+<code class="docutils literal notranslate"><span class="pre">0!</span></code> and assembling the answer as <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">*</span> <span class="pre">1</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">4</span></code> can be programmed as a
+function that repeatedly calls <em>itself</em> for the answers to <code class="docutils literal notranslate"><span class="pre">3!</span></code>, <code class="docutils literal notranslate"><span class="pre">2!</span></code>,
+<code class="docutils literal notranslate"><span class="pre">1!</span></code>, etc.:</p>
+<p>The easiest way to understand the computation of, say, <code class="docutils literal notranslate"><span class="pre">factorialRec(3)</span></code>, is to draw
 out the function calls, making a new copy of the called function each time it is
 restarted, like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
             <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
               <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">else</span> <span class="p">:</span>
@@ -2019,11 +2016,11 @@ restarted, like this:</p>
             <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>Notice how the <em>binding</em> of argument <code class="docutils literal"><span class="pre">3</span></code> to parameter <code class="docutils literal"><span class="pre">n</span></code> is enacted with
-the assignment, <code class="docutils literal"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>.
+<p>Notice how the <em>binding</em> of argument <code class="docutils literal notranslate"><span class="pre">3</span></code> to parameter <code class="docutils literal notranslate"><span class="pre">n</span></code> is enacted with
+the assignment, <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>.
 (This is how it is implemented within a computer, too.)
-The code for <code class="docutils literal"><span class="pre">factorialRec(3)</span></code> activates a fresh copy of <code class="docutils literal"><span class="pre">factorialRec</span></code> with argument 2:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+The code for <code class="docutils literal notranslate"><span class="pre">factorialRec(3)</span></code> activates a fresh copy of <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> with argument 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                                           <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>               <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
@@ -2034,7 +2031,7 @@ The code for <code class="docutils literal"><span class="pre">factorialRec(3)</s
 </pre></div>
 </div>
 <p>This generates another call (fresh copy of) factorialRec:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
                                                                   <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
@@ -2046,7 +2043,7 @@ The code for <code class="docutils literal"><span class="pre">factorialRec(3)</s
 </pre></div>
 </div>
 <p>This expands to:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
                    <span class="k">return</span> <span class="n">ans</span>              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>            <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2057,10 +2054,10 @@ The code for <code class="docutils literal"><span class="pre">factorialRec(3)</s
                                                                                           <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>We see a sequence, or “stack”, of activations of <code class="docutils literal"><span class="pre">factorialRec</span></code>, one per call.
+<p>We see a sequence, or “stack”, of activations of <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code>, one per call.
 Within a computer, an <em>activation-record stack</em> remembers the activations.
-The call to <code class="docutils literal"><span class="pre">factorialRec(0)</span></code> returns an answer – 1:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+The call to <code class="docutils literal notranslate"><span class="pre">factorialRec(0)</span></code> returns an answer – 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
                    <span class="k">return</span> <span class="n">ans</span>              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>            <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
@@ -2068,9 +2065,9 @@ The call to <code class="docutils literal"><span class="pre">factorialRec(0)</sp
                                                                   <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
-<p>This makes the most recent activation (copy) of <code class="docutils literal"><span class="pre">factorialRec</span></code> disappear, and the
-returned answer is assigned to <code class="docutils literal"><span class="pre">ans</span></code> in the previous call:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<p>This makes the most recent activation (copy) of <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> disappear, and the
+returned answer is assigned to <code class="docutils literal notranslate"><span class="pre">ans</span></code> in the previous call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
                    <span class="k">return</span> <span class="n">ans</span>              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>            <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
@@ -2079,7 +2076,7 @@ returned answer is assigned to <code class="docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>allowing the previous call to return <em>its</em> answer to <em>its</em> caller:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">3</span>             <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">1</span>
                    <span class="k">return</span> <span class="n">ans</span>              <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
@@ -2087,8 +2084,8 @@ returned answer is assigned to <code class="docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>You see the pattern – the calls are finishing in reverse order, returning the
-partial answers, <code class="docutils literal"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+partial answers, <code class="docutils literal notranslate"><span class="pre">fact(0)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">fact(1)</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">fact(2)</span> <span class="pre">=</span> <span class="pre">2</span></code>, and so on:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
                    <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
                    <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>              <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
                    <span class="k">return</span> <span class="n">ans</span>               <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
@@ -2096,26 +2093,26 @@ partial answers, <code class="docutils literal"><span class="pre">fact(0)</span>
 </pre></div>
 </div>
 <p>and then:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="n">factorialRec</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=&gt;</span>  <span class="k">return</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
            <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
            <span class="n">ans</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">n</span>
            <span class="k">return</span> <span class="n">ans</span>
 </pre></div>
 </div>
 <p>and finally:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorialRec</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">return</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>Within the computer, the code for <code class="docutils literal"><span class="pre">factorialRec</span></code> is not copied at each call –
+<p>Within the computer, the code for <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> is not copied at each call –
 instead, a new <em>namespace</em> (activation record) is generated for each call to
-<code class="docutils literal"><span class="pre">factorialRec</span></code>.
+<code class="docutils literal notranslate"><span class="pre">factorialRec</span></code>.
 When a call finishes, its answer is returned and its namespace is erased
 (popped from the activation stack).</p>
 <p>Every function has its own pre- and post- conditions.
@@ -2123,7 +2120,7 @@ So, if a function calls itself, it can use <em>its own pre- and post-conditions 
 deduce the properties of the answer computed by the self-call</em>.
 This is remarkable and exactly correct.</p>
 <p>Here is the desired specification of factorialRec:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">   fact // axioms</span>
 <span class="s2">     def f(n: Z): Z</span>
 <span class="s2">     fZero. f(0) == 1</span>
@@ -2136,30 +2133,30 @@ This is remarkable and exactly correct.</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>When <code class="docutils literal"><span class="pre">factorialRec</span></code> calls itself, we use the above pre- and post-conditions to deduce
+<p>When <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> calls itself, we use the above pre- and post-conditions to deduce
 what happens.
-In the process, we deduce that the completed coding of <code class="docutils literal"><span class="pre">factorialRec</span></code> possesses
+In the process, we deduce that the completed coding of <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> possesses
 exactly these same pre- and post-conditions!</p>
-<p>Recall again the “official definition” of <code class="docutils literal"><span class="pre">n!</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>0! == 1
+<p>Recall again the “official definition” of <code class="docutils literal notranslate"><span class="pre">n!</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0! == 1
 n! == (n-1)! * n,  for  n &gt; 0
 </pre></div>
 </div>
-<p>Here is the deduction that <code class="docutils literal"><span class="pre">factorialRec</span></code> meets its stated pre- and post-conditions:</p>
+<p>Here is the deduction that <code class="docutils literal notranslate"><span class="pre">factorialRec</span></code> meets its stated pre- and post-conditions:</p>
 <p>We did it!
-The proof is not magic or trickery – notice that the call, <code class="docutils literal"><span class="pre">factorialRec(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
-uses an argument value that is different — one smaller than — argument <code class="docutils literal"><span class="pre">n</span></code>
-used with <code class="docutils literal"><span class="pre">factorialRec(n)</span></code>.
+The proof is not magic or trickery – notice that the call, <code class="docutils literal notranslate"><span class="pre">factorialRec(n</span> <span class="pre">-</span> <span class="pre">1)</span></code>,
+uses an argument value that is different — one smaller than — argument <code class="docutils literal notranslate"><span class="pre">n</span></code>
+used with <code class="docutils literal notranslate"><span class="pre">factorialRec(n)</span></code>.
 This style of recursion by counting-downward-by-ones-until-zero will be exposed
 in the next chapter as an instance of <em>mathematical induction</em>.</p>
 </div>
 </div>
 <div class="section" id="industry-applications">
-<h2>7.5. Industry Applications<a class="headerlink" href="#industry-applications" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.5. </span>Industry Applications<a class="headerlink" href="#industry-applications" title="Permalink to this headline">¶</a></h2>
 <p>The material you have studied in this class has several applications in the contemporary
 industrial practices of software and programming language design.</p>
 <div class="section" id="software-design-design-by-contract">
-<h3>7.5.1. Software Design: Design-by-Contract<a class="headerlink" href="#software-design-design-by-contract" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.1. </span>Software Design: Design-by-Contract<a class="headerlink" href="#software-design-design-by-contract" title="Permalink to this headline">¶</a></h3>
 <p>In 1986, Bertrand Myer introduced the contract as metaphor for software design,
 with particular application to the then novel object-oriented programming
 languages available and under development <em>(see “Applying Design by Contract”,
@@ -2173,7 +2170,7 @@ system applications, the general practice of conceptualizing pre and post-condit
 is a benefit during design.</p>
 </div>
 <div class="section" id="language-implementation">
-<h3>7.5.2. Language Implementation<a class="headerlink" href="#language-implementation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.5.2. </span>Language Implementation<a class="headerlink" href="#language-implementation" title="Permalink to this headline">¶</a></h3>
 <p>If industry is using a design-by-contract, we need programming languages which
 support it.  Optimally, we would like contracts to be enforced by the complier or
 interpreter.</p>
@@ -2183,7 +2180,7 @@ interpreter.</p>
 time. Dynamically typed languages (python and javascript), type contracts
 are not checked before execution and this can lead to run time errors, or the
 need for guard code to ensure “type correctness”.</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>// C# - static this program will never run
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// C# - static this program will never run
 char[] a = { &#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
 char b = &#39;z&#39;;
 char c = a[b];  // this line will throw a compile error for type
@@ -2202,7 +2199,7 @@ if (isinstance(b, int)):
 </div>
 <p>Static type checking aids in soundness checking, but implementation does not
 guarantee that no runtime errors will occur.  Consider this C# program</p>
-<div class="highlight-none"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2244,21 +2241,20 @@ lead to changing the defensive programming everywhere the service is called.</p>
 <div class="section" id="beyond-type-and-defensive-programming">
 <h4>Beyond Type and Defensive Programming<a class="headerlink" href="#beyond-type-and-defensive-programming" title="Permalink to this headline">¶</a></h4>
 <div class="sidebar">
-<p class="first sidebar-title">First Class Citizen</p>
-<dl class="docutils">
-<dt>A first class citizen in programming languages are items which</dt>
-<dd><ol class="first last arabic simple">
-<li>can be the actual parameters of functions</li>
-<li>can be returned as results of functions</li>
-<li>can be the subject of assignment statements</li>
-<li>can be tested for equality.</li>
+<p class="sidebar-title">First Class Citizen</p>
+<dl class="simple">
+<dt>A first class citizen in programming languages are items which</dt><dd><ol class="arabic simple">
+<li><p>can be the actual parameters of functions</p></li>
+<li><p>can be returned as results of functions</p></li>
+<li><p>can be the subject of assignment statements</p></li>
+<li><p>can be tested for equality.</p></li>
 </ol>
 </dd>
 </dl>
 <p>So in C#, literals, ints, doubles, objects  etc.  are first class citizens.
 Functions are not (delegate are a way of achieving some first-class-like
 functionality but fail the equality test).</p>
-<p class="last">This notion of first class citizenship comes from Dr Robin Popplestone (
+<p>This notion of first class citizenship comes from Dr Robin Popplestone (
 <em>The Design Philosophy of POP-2. in: D. Michie: Machine Intelligence 3,
 Edinburgh at the University Press, 1968</em>).</p>
 </div>
@@ -2275,12 +2271,12 @@ be found on the LeadingAgile (a process consultant company) web site
 </div>
 </div>
 <div class="section" id="summary">
-<h2>7.6. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>We used a variety of laws for function definitions and calls.</p>
 <ol class="arabic">
-<li><p class="first">Here is the simplest version, a forwards law where there is no updating to
+<li><p>Here is the simplest version, a forwards law where there is no updating to
 global variables:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">         pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.</span>
 <span class="s2">         modifies ... (where parameters and globals are listed if modified)</span>
@@ -2296,10 +2292,10 @@ global variables:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Outside of the function, <code class="docutils literal"><span class="pre">f</span></code>, we write <code class="docutils literal"><span class="pre">f_pre</span></code> for <code class="docutils literal"><span class="pre">Q</span></code> and <code class="docutils literal"><span class="pre">f_post</span></code>
-for <code class="docutils literal"><span class="pre">R</span></code>.
+<p>Outside of the function, <code class="docutils literal notranslate"><span class="pre">f</span></code>, we write <code class="docutils literal notranslate"><span class="pre">f_pre</span></code> for <code class="docutils literal notranslate"><span class="pre">Q</span></code> and <code class="docutils literal notranslate"><span class="pre">f_post</span></code>
+for <code class="docutils literal notranslate"><span class="pre">R</span></code>.
 Here is the schematic for a correct call of the function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">      [e/x]f_pre  // prove the precondition, where  e  binds to parameter x</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>                               <span class="o">//</span> <span class="n">y</span>  <span class="n">does</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">e</span>
@@ -2311,19 +2307,19 @@ Here is the schematic for a correct call of the function:</p>
 <span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Recall that <code class="docutils literal"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal"><span class="pre">e</span></code> for all
-occurrences of <code class="docutils literal"><span class="pre">x</span></code> within formula <code class="docutils literal"><span class="pre">f_pre</span></code>.
-The other two substitions explain how <code class="docutils literal"><span class="pre">f_post</span></code> is stated in terms of the
-receiving variable, <code class="docutils literal"><span class="pre">y</span></code>, and how the entry premise is propagated after
+<p>Recall that <code class="docutils literal notranslate"><span class="pre">[e/x]f_pre</span></code> defines a substitution of <code class="docutils literal notranslate"><span class="pre">e</span></code> for all
+occurrences of <code class="docutils literal notranslate"><span class="pre">x</span></code> within formula <code class="docutils literal notranslate"><span class="pre">f_pre</span></code>.
+The other two substitions explain how <code class="docutils literal notranslate"><span class="pre">f_post</span></code> is stated in terms of the
+receiving variable, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and how the entry premise is propagated after
 the call.</p>
 </li>
-<li><p class="first">When we use a procedure, that is, a function that updates a global variable,
+<li><p>When we use a procedure, that is, a function that updates a global variable,
 the laws become more complex, because the global variable acts like a second
 answer from the function.
 Every global variable should have an invariant property, and every function
 that uses the global variable should pledge to preserve that invariant
 property:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="o">//</span> <span class="n">the</span> <span class="k">global</span> <span class="n">variable</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="o">...</span>                    <span class="o">//</span> <span class="n">the</span> <span class="k">global</span> <span class="n">variable</span>
 <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">      ... proof of I_g     // the invariant property for g</span>
 <span class="s2">}&quot;&quot;&quot;</span>
@@ -2349,10 +2345,10 @@ property:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For the function’s invocation, we deduce <code class="docutils literal"><span class="pre">[e/x]pre_f</span></code> to get the result.
-Since global variable <code class="docutils literal"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal"><span class="pre">g</span></code> cannot
-appear in argument <code class="docutils literal"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal"><span class="pre">y</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<p>For the function’s invocation, we deduce <code class="docutils literal notranslate"><span class="pre">[e/x]pre_f</span></code> to get the result.
+Since global variable <code class="docutils literal notranslate"><span class="pre">g</span></code> acts as a second answer variable, <code class="docutils literal notranslate"><span class="pre">g</span></code> cannot
+appear in argument <code class="docutils literal notranslate"><span class="pre">e</span></code> nor can it be the same as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">      [e/x]pre_f,  that is,  Q_e,g</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="o">//</span> <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">do</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span>  <span class="n">e</span><span class="p">,</span>  <span class="ow">and</span>  <span class="n">y</span> <span class="ow">and</span> <span class="n">g</span>  <span class="n">are</span> <span class="n">distinct</span> <span class="n">names</span>
@@ -2365,14 +2361,14 @@ appear in argument <code class="docutils literal"><span class="pre">e</span></co
 </pre></div>
 </div>
 <p>Further, <strong>provided that all assignments to global variable ``g`` occur only
-within functions that preserve its ``I_g``</strong>, we can always assert <code class="docutils literal"><span class="pre">I_g</span></code> as
+within functions that preserve its ``I_g``</strong>, we can always assert <code class="docutils literal notranslate"><span class="pre">I_g</span></code> as
 needed in the main program.</p>
 </li>
-<li><p class="first">If we wish to reason in a backwards fashion about function calls, we can use
+<li><p>If we wish to reason in a backwards fashion about function calls, we can use
 a different law.
 To keep it simple, assume no global variables are updated by the function.
 For the specification,</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">:</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">         pre    Q    (where assertion  Q  can mention  x)   Call this,  f_pre.</span>
 <span class="s2">         modifies ... (where parameters and globals are listed if modified)</span>
@@ -2380,9 +2376,9 @@ For the specification,</p>
 <span class="s2">    } &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>if a call to <code class="docutils literal"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal"><span class="pre">G</span></code>, we reason backwards
-from <code class="docutils literal"><span class="pre">G</span></code> to its subgoal like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<p>if a call to <code class="docutils literal notranslate"><span class="pre">f</span></code> is meant to achieve a goal, <code class="docutils literal notranslate"><span class="pre">G</span></code>, we reason backwards
+from <code class="docutils literal notranslate"><span class="pre">G</span></code> to its subgoal like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
 <span class="s2">     subgoal:  [e/x]pre_f  ^  ([e/x][y/ans]post_f --&gt; G)</span>
 <span class="s2">}&quot;&quot;&quot;</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="o">//</span> <span class="n">y</span>  <span class="n">does</span> <span class="ow">not</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">argument</span>  <span class="n">e</span>
