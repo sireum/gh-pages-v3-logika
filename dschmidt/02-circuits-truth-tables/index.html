@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. Circuits and Truth Tables &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -129,12 +128,12 @@ Logika: Programming Logics
 2. Circuits and Truth Tables
 </b></big></big></big></big>
 </font><hr class="docutils" />
-<div class="section" id="circuits-and-truth-tables">
+<section id="circuits-and-truth-tables">
 <span id="circuits"></span><h1><span class="section-number">2. </span>Circuits and Truth Tables<a class="headerlink" href="#circuits-and-truth-tables" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, we review basic notions about gates and learn the relationship
 between circuits and assignment-based computer programs.
 This sets the stage for analyzing modern programs.</p>
-<div class="section" id="gates-and-truth-tables">
+<section id="gates-and-truth-tables">
 <h2><span class="section-number">2.1. </span>Gates and Truth Tables<a class="headerlink" href="#gates-and-truth-tables" title="Permalink to this headline">¶</a></h2>
 <p>Here are the four basic gates:</p>
 <table class="docutils align-default">
@@ -267,83 +266,58 @@ the IMPLY gate is not.</p>
 <p>Now we look up the value under the “∧” symbol in the ¬ gate table.  In the first
 row we see that the truth assignment for the first row, “T”, is “F” and record
 it under the “¬” symbol. Do this for every row and we are done.</p>
-<div class="section" id="characterizing-truth-tables">
+<section id="characterizing-truth-tables">
 <h3><span class="section-number">2.1.1. </span>Characterizing Truth Tables<a class="headerlink" href="#characterizing-truth-tables" title="Permalink to this headline">¶</a></h3>
 <p>In our study of logic, it will be convenient to characterize logical formula with
 a description of their truth tables. If all truth assignments for a logical formula
 are True, the formula is said to be a tautology.  The formula <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∨</span> <span class="pre">¬</span> <span class="pre">p</span></code> is a
 tautology.  In the following example, the <code class="docutils literal notranslate"><span class="pre">*</span></code> marks the top level or last
 evaluated operator.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>      *
-------------
-p | p ∨ ¬ p
-------------
-T | T T F T
-F | F T T F
-------------
-Tautology
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>      *
+<span class="linenos">2</span>------------
+<span class="linenos">3</span>p | p ∨ ¬ p
+<span class="linenos">4</span>------------
+<span class="linenos">5</span>T | T T F T
+<span class="linenos">6</span>F | F T T F
+<span class="linenos">7</span>------------
+<span class="linenos">8</span>Tautology
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>A formula for which every truth assignment is False is called contradictory. The
 formula <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">¬</span> <span class="pre">p</span></code> is contradictory (or a contradiction).</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>      *
-------------
-p | p ∧ ¬ p
-------------
-T | T F F T
-F | F F T F
-------------
-Contradictory
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>      *
+<span class="linenos">2</span>------------
+<span class="linenos">3</span>p | p ∧ ¬ p
+<span class="linenos">4</span>------------
+<span class="linenos">5</span>T | T F F T
+<span class="linenos">6</span>F | F F T F
+<span class="linenos">7</span>------------
+<span class="linenos">8</span>Contradictory
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>A formula for which some truth assignments are False and other’s True is called
 contingent.  The equation <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">q</span> <span class="pre">|</span> <span class="pre">¬</span> <span class="pre">(q</span> <span class="pre">∧</span> <span class="pre">q)</span></code>, from above is contingent.</p>
 <blockquote>
-<div><div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>      *
----------------
-p q | ¬ (p ∧ q)
----------------
-T T | F  T T T
-T F | T  T F F
-F T | T  F F T
-F F | T  F F F
----------------
-Contingent
-- T : [T F] [F T] [F F]
-- F : [T T]
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>      *
+<span class="linenos"> 2</span>---------------
+<span class="linenos"> 3</span>p q | ¬ (p ∧ q)
+<span class="linenos"> 4</span>---------------
+<span class="linenos"> 5</span>T T | F  T T T
+<span class="linenos"> 6</span>T F | T  T F F
+<span class="linenos"> 7</span>F T | T  F F T
+<span class="linenos"> 8</span>F F | T  F F F
+<span class="linenos"> 9</span>---------------
+<span class="linenos">10</span>Contingent
+<span class="linenos">11</span>- T : [T F] [F T] [F F]
+<span class="linenos">12</span>- F : [T T]
 </pre></div>
-</td></tr></table></div>
+</div>
 </div></blockquote>
 <p>In this section, we have used Logika truth tables.  They are explained in more
 detail below.  In this class, if you produce a truth table as part of an answer,
 it must match the Logika syntax.</p>
-</div>
-<div class="section" id="truth-tables-as-proofs">
+</section>
+<section id="truth-tables-as-proofs">
 <h3><span class="section-number">2.1.2. </span>Truth Tables as Proofs<a class="headerlink" href="#truth-tables-as-proofs" title="Permalink to this headline">¶</a></h3>
 <p>This is a class about logic.  As such, much the class will involve formally
 proving some claim is always true, never true, or true only under certain conditions.
@@ -365,29 +339,22 @@ problem.</p>
 <p>OKay … then why are we making you learn truth tables? Well, even when more advanced
 techniques are applied to prove logical statements, underling the techniques’ soundness
 are these primitive rules which are easily expressed and learned via truth tables.</p>
-</div>
-</div>
-<div class="section" id="logika-truth-tables">
+</section>
+</section>
+<section id="logika-truth-tables">
 <h2><span class="section-number">2.2. </span>Logika Truth Tables<a class="headerlink" href="#logika-truth-tables" title="Permalink to this headline">¶</a></h2>
 <p>From this point forward, the course will expect you to use Logika formatted
 truth tables.  The Logika truth table for the formula  <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">(P</span> <span class="pre">∧</span> <span class="pre">Q)</span></code> is:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>      *
-------------
-p | p ∨ ¬ p
-------------
-T | T T F T
-F | F T T F
-------------
-Tautology
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>      *
+<span class="linenos">2</span>------------
+<span class="linenos">3</span>p | p ∨ ¬ p
+<span class="linenos">4</span>------------
+<span class="linenos">5</span>T | T T F T
+<span class="linenos">6</span>F | F T T F
+<span class="linenos">7</span>------------
+<span class="linenos">8</span>Tautology
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Logika truth tables have standard format (syntax) and semantic meanings.  All elements
 of the truth table must be included to be considered correct.</p>
 <a class="reference internal image-reference" href="../../_images/LTTExplained.png"><img alt="../../_images/LTTExplained.png" src="../../_images/LTTExplained.png" style="width: 898.0px; height: 399.0px;" /></a>
@@ -414,8 +381,8 @@ are <code class="docutils literal notranslate"><span class="pre">Contingent</spa
 <p>Parentheses alter the order of operations as they do in normal algebra.
 Parenthetical expressions are evaluated from most-deeply nested to
 least-deeply nested  (inside-to-outside).</p>
-</div>
-<div class="section" id="the-strange-case-of-the-imply-gate">
+</section>
+<section id="the-strange-case-of-the-imply-gate">
 <h2><span class="section-number">2.3. </span>The Strange Case of the Imply-gate<a class="headerlink" href="#the-strange-case-of-the-imply-gate" title="Permalink to this headline">¶</a></h2>
 <p>The astute reader will notice that <code class="docutils literal notranslate"><span class="pre">→</span></code> truth tables work very different from
 <code class="docutils literal notranslate"><span class="pre">∧</span></code> and <code class="docutils literal notranslate"><span class="pre">∨</span></code>. To begin with, <code class="docutils literal notranslate"><span class="pre">∧</span></code> and <code class="docutils literal notranslate"><span class="pre">∨</span></code> truth assignments are symmetric;
@@ -448,64 +415,42 @@ evidence to prove that it is false.</p>
 <em>Summa Logicae</em> in the 14th century.  These somewhat convoluted
 rules add tremendous expressive power to logic and computation.  Without them
 there would be no branching in programs (no IFs, no FORs, no WHILEs).</p>
-</div>
-<div class="section" id="common-logical-formula-circuit-equivalences">
+</section>
+<section id="common-logical-formula-circuit-equivalences">
 <h2><span class="section-number">2.4. </span>Common Logical Formula (circuit) Equivalences<a class="headerlink" href="#common-logical-formula-circuit-equivalences" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="equality">
+<section id="equality">
 <h3><span class="section-number">2.4.1. </span>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h3>
 <p>Two (or more) logical statements are said to be equal IFF (if and only if, <code class="docutils literal notranslate"><span class="pre">↔</span></code>) they have
 the same truth value for every truth assignment; i.e. their truth tables
 evaluate exactly the same. An example of equal are <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">∧</span> <span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">(q</span> <span class="pre">∧</span> <span class="pre">p)</span></code></p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         *
---------------
-p q | (p ∧ q)
---------------
-T T |  T T T
-T F |  T F F
-F T |  F F T
-F F |  F F F
----------------
-Contingent
-- T : [T T]
-- F : [F F] [F T] [T F]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>         *
+<span class="linenos"> 2</span>--------------
+<span class="linenos"> 3</span>p q | (p ∧ q)
+<span class="linenos"> 4</span>--------------
+<span class="linenos"> 5</span>T T |  T T T
+<span class="linenos"> 6</span>T F |  T F F
+<span class="linenos"> 7</span>F T |  F F T
+<span class="linenos"> 8</span>F F |  F F F
+<span class="linenos"> 9</span>---------------
+<span class="linenos">10</span>Contingent
+<span class="linenos">11</span>- T : [T T]
+<span class="linenos">12</span>- F : [F F] [F T] [T F]
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         *
--------------------
-p q |  p ∧ (q ∧ p)
--------------------
-T T |  T T  T T T
-T F |  T F  F F T
-F T |  F F  T F F
-F F |  F F  F F F
---------------------
-Contingent
-- T : [T T]
-- F : [F F] [F T] [T F]
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>         *
+<span class="linenos"> 2</span>-------------------
+<span class="linenos"> 3</span>p q |  p ∧ (q ∧ p)
+<span class="linenos"> 4</span>-------------------
+<span class="linenos"> 5</span>T T |  T T  T T T
+<span class="linenos"> 6</span>T F |  T F  F F T
+<span class="linenos"> 7</span>F T |  F F  T F F
+<span class="linenos"> 8</span>F F |  F F  F F F
+<span class="linenos"> 9</span>--------------------
+<span class="linenos">10</span>Contingent
+<span class="linenos">11</span>- T : [T T]
+<span class="linenos">12</span>- F : [F F] [F T] [T F]
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Finding equivalent logical statements of fewer gates (states) is important to
 several fields. In computer
 science, fewer states can lead to less memory, fewer operations and smaller programs.  In
@@ -515,8 +460,8 @@ have not yet introduced an “equals” operator.</p>
 <blockquote>
 <div><p>p = q ↔ (p → q) ∧ (q → p)</p>
 </div></blockquote>
-</div>
-<div class="section" id="the-double-negative">
+</section>
+<section id="the-double-negative">
 <h3><span class="section-number">2.4.2. </span>The Double Negative<a class="headerlink" href="#the-double-negative" title="Permalink to this headline">¶</a></h3>
 <p>In Logika, and in many logic applications, double negations
 effectively cancel each other out.  This is not the only possible interpretation
@@ -525,8 +470,8 @@ interpretations in the section on Propositional Logic.</p>
 <blockquote>
 <div><p>¬ ¬ p ↔ p</p>
 </div></blockquote>
-</div>
-<div class="section" id="exclusive-or-xor">
+</section>
+<section id="exclusive-or-xor">
 <h3><span class="section-number">2.4.3. </span>Exclusive OR (XOR)<a class="headerlink" href="#exclusive-or-xor" title="Permalink to this headline">¶</a></h3>
 <p>As previously discussed, common English usage of “or” is in the exclusive sense.
 <code class="docutils literal notranslate"><span class="pre">(p</span> <span class="pre">XOR</span> <span class="pre">q)</span></code> can be expressed in several ways:</p>
@@ -536,8 +481,8 @@ interpretations in the section on Propositional Logic.</p>
 </div>
 <p>In class, we will not accept the use of an XOR operator, you must express the
 all formula in terms of AND, OR, NOT and IMPLY.</p>
-</div>
-<div class="section" id="de-morgan-s-law">
+</section>
+<section id="de-morgan-s-law">
 <h3><span class="section-number">2.4.4. </span>De Morgan’s Law<a class="headerlink" href="#de-morgan-s-law" title="Permalink to this headline">¶</a></h3>
 <p>De Morgan’s Law is a statement about the relationship between AND
 and NOT-OR (NOR) (<code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">(</span> <span class="pre">p</span> <span class="pre">∨</span> <span class="pre">q)</span></code>).  Specifically:</p>
@@ -554,8 +499,8 @@ gates, NAND and NOT; greatly economizing integrated chip production.</p>
 approach for its proof. Mathematical induction is the basis for many
 computer science proofs in areas of algorithms, languages and
 computational complexity.</p>
-</div>
-<div class="section" id="implication-equivalences">
+</section>
+<section id="implication-equivalences">
 <h3><span class="section-number">2.4.5. </span>Implication Equivalences<a class="headerlink" href="#implication-equivalences" title="Permalink to this headline">¶</a></h3>
 <p>Finally, implication can be expressed as negation and OR; or as its
 contra-positive statement.</p>
@@ -578,9 +523,9 @@ equivalences, IF you are asked to prove they are equal by truth table,
 it is expected that you would make a truth table for each side of the <code class="docutils literal notranslate"><span class="pre">↔</span></code>
 and show that their values match for every truth assignment.</p>
 </div>
-</div>
-</div>
-<div class="section" id="why-it-is-called-the-top-level-operator">
+</section>
+</section>
+<section id="why-it-is-called-the-top-level-operator">
 <h2><span class="section-number">2.5. </span>Why it is called the “Top Level” operator<a class="headerlink" href="#why-it-is-called-the-top-level-operator" title="Permalink to this headline">¶</a></h2>
 <p>Let us return to the 2-bit adder, and consider only the circuitry for Q1.  In a
 circuit, knowledge can be said to flow along the wires, where it is transformed
@@ -610,8 +555,8 @@ operator is the root of the tree;  hence the term “Top Level” operator.</p>
 (¬(A1 ∧ B1)) ∧ (A1 ∧ B1)
 </pre></div>
 </div>
-</div>
-<div class="section" id="knowledge-travels-along-the-wires-of-a-circuit">
+</section>
+<section id="knowledge-travels-along-the-wires-of-a-circuit">
 <h2><span class="section-number">2.6. </span>Knowledge Travels Along the Wires of A Circuit<a class="headerlink" href="#knowledge-travels-along-the-wires-of-a-circuit" title="Permalink to this headline">¶</a></h2>
 <p>So far, we pretended that low- and high-voltage levels travel along the wiring
 of a circuit.
@@ -704,8 +649,8 @@ course note.
 It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
 to conform with Logika syntax and more closely match <br>
 KSU's CIS 301 course as taught in Spring 2018.
-</em></small></p></div>
-</div>
+</em></small></p></section>
+</section>
 
 
     </div>

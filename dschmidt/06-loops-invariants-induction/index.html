@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. Loops and Loop Invariants &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -140,7 +139,7 @@ Logika: Programming Logics
 <big><big><big><big><b>
 6. Loop, Invariants, Induction
 </b></big></big></big></big>
-</font><div class="section" id="loops-and-loop-invariants">
+</font><section id="loops-and-loop-invariants">
 <span id="loops-invariants-induction"></span><h1><span class="section-number">6. </span>Loops and Loop Invariants<a class="headerlink" href="#loops-and-loop-invariants" title="Permalink to this headline">¶</a></h1>
 <p>At the end of the last chapter we discussed how a conditional branching
 creates two “paths” for the logic to flow thru and they are combined
@@ -157,14 +156,14 @@ the loop-invariant <strong>must</strong> be true each time you go to check the l
 it is true the first time you check to see if you go into the loop, and still
 still true the last time you check and “skip” the loop.</p>
 <a class="reference internal image-reference" href="../../_images/06-image-10.png"><img alt="../../_images/06-image-10.png" src="../../_images/06-image-10.png" style="width: 537.6px; height: 384.0px;" /></a>
-<div class="section" id="while-loops">
+<section id="while-loops">
 <h2><span class="section-number">6.1. </span>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
 <p>Consider the factorial <code class="docutils literal notranslate"><span class="pre">n!</span></code>.  We can understand factorial as a repeated
 product: for integer <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>n! == 1 * 2 * 3 * ...up to... * n
 </pre></div>
 </div>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">While-loop syntax and <em>modifies</em></p>
 <p>Syntaxt is similar to C#</p>
 <p>However, a while statement <em>must</em> be immediately followed by a Logika
@@ -177,37 +176,24 @@ block immediately following the <code class="docutils literal notranslate"><span
 or other sentinel value is declared outside the loop, the loop must either
 modify the value or loop forever.</p>
 <p>In this case line 9 states that both i and fac may be modified in the loop.</p>
-</div>
+</aside>
 <p>It is easy to write a loop program that computes the repeated product:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">    modifies i, fac</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-    <span class="p">}</span>
-
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span><span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 8</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 9</span><span class="s2">    modifies i, fac</span>
+<span class="linenos">10</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">11</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">12</span>    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">13</span>    <span class="p">}</span>
+<span class="linenos">14</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>The loop adjoins the multiplications, <code class="docutils literal notranslate"><span class="pre">*1</span></code>, <code class="docutils literal notranslate"><span class="pre">*2</span></code>, <code class="docutils literal notranslate"><span class="pre">*3</span></code>, etc., to the
 running total, <code class="docutils literal notranslate"><span class="pre">fac</span></code>, until the loop reaches <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 Consider some execution cases:</p>
@@ -252,21 +238,15 @@ This is a logical property that can be proved.</p>
 to help with specifying contracts.  It is important to note that, as the name
 implies, Logika treats these axioms as facts–if you make an error in the
 definition, Logika will dutifully enforce that error everywhere in the program.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  fact // axioms</span>
-<span class="s2">    def factorial(n: Z): Z</span>
-<span class="s2">    fZero. factorial(0) == 1</span>
-<span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
-<span class="s2">}&quot;&quot;&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos">2</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">3</span><span class="s2">  fact // axioms</span>
+<span class="linenos">4</span><span class="s2">    def factorial(n: Z): Z</span>
+<span class="linenos">5</span><span class="s2">    fZero. factorial(0) == 1</span>
+<span class="linenos">6</span><span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
+<span class="linenos">7</span><span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Lets go through this quickly.  In this class, facts will be given to you, you
 are only expected to know how to use them.</p>
 <p>On line 4 we see <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">factorial(n:Z):</span> <span class="pre">Z</span></code>.  This tells you that the <em>fact</em> is
@@ -279,173 +259,94 @@ Be sure you understand the <code class="docutils literal notranslate"><span clas
 meaning you will see often in programming logic.</p>
 </div>
 <p>We deduce the invariant property on the factorial-loop body like this:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  fact // axioms</span>
-<span class="s2">    def factorial(n: Z): Z</span>
-<span class="s2">    fZero. factorial(0) = 1</span>
-<span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) = factorial(x - 1) * x</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-
-<span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">var</span> <span class="n">i</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">      1. i == 0              premise</span>
-<span class="s2">      2. i &gt;= 0              algebra 1</span>
-<span class="s2">      3. fac == 1            premise</span>
-<span class="s2">      4. factorial(0) == 1   fact fZero</span>
-<span class="s2">      5. factorial(i) == 1   subst2 1 4</span>
-<span class="s2">      6. fac = factorial(i)  algebra 3 5</span>
-<span class="s2">      }&quot;&quot;&quot;</span>
-<span class="o">//</span> <span class="n">begin</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-    <span class="o">//</span><span class="n">first</span> <span class="s2">&quot;update&quot;</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-      <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">            1. i_old == 0              premise</span>
-<span class="s2">            2. i = i_old + 1           premise</span>
-<span class="s2">            3. i_old &gt;= 0              premise</span>
-<span class="s2">            4. i &gt; 0                   algebra 1 2 3</span>
-<span class="s2">            5. fac = factorial(i_old)  premise</span>
-<span class="s2">            6. fac = factorial(i-1)    algebra 5 2</span>
-<span class="s2">      }&quot;&quot;&quot;</span>
-
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">          1. fac_old = factorial(i-1)     premise</span>
-<span class="s2">          2. fac = fac_old * i            premise</span>
-<span class="s2">          3. i &gt; 0                        premise</span>
-<span class="s2">          4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
-<span class="s2">                 factorial(x - 1) * x     fact fPos</span>
-<span class="s2">          5. i &gt; 0 → factorial(i) =</span>
-<span class="s2">                 factorial(i - 1) * i     ∀e 4 i</span>
-<span class="s2">          6. factorial(i) =</span>
-<span class="s2">               factorial(i - 1) * i       →e 5 3</span>
-<span class="s2">          7. factorial(i) =</span>
-<span class="s2">               fac_old * i                algebra 6 1</span>
-<span class="s2">          8. fac = factorial(i)           algebra 7 2</span>
-<span class="s2">     }&quot;&quot;&quot;</span>
-    <span class="o">//</span> <span class="n">End</span> <span class="n">first</span> <span class="n">update</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-         <span class="o">//</span><span class="n">second</span> <span class="s2">&quot;update&quot;</span>
-         <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-           <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">                 1. i_old &gt; 0              premise</span>
-<span class="s2">                 2. i = i_old + 1           premise</span>
-<span class="s2">                 3. i_old &gt;= 0              premise</span>
-<span class="s2">                 4. i &gt; 0                   algebra 1 2 3</span>
-<span class="s2">                 5. fac = factorial(i_old)  premise</span>
-<span class="s2">                 6. fac = factorial(i-1)    algebra 5 2</span>
-<span class="s2">           }&quot;&quot;&quot;</span>
-
-         <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-          <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">               1. fac_old = factorial(i-1)     premise</span>
-<span class="s2">               2. fac = fac_old * i            premise</span>
-<span class="s2">               3. i &gt; 0                        premise</span>
-<span class="s2">               4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
-<span class="s2">                      factorial(x - 1) * x     fact fPos</span>
-<span class="s2">                5. i &gt; 0 → factorial(i) =</span>
-<span class="s2">                       factorial(i - 1) * i     ∀e 4 i</span>
-<span class="s2">                6. factorial(i) =</span>
-<span class="s2">                     factorial(i - 1) * i       →e 5 3</span>
-<span class="s2">                7. factorial(i) =</span>
-<span class="s2">                     fac_old * i                algebra 6 1</span>
-<span class="s2">                8. fac = factorial(i)           algebra 7 2</span>
-<span class="s2">          }&quot;&quot;&quot;</span>
-         <span class="o">//</span> <span class="n">End</span> <span class="n">second</span> <span class="n">update</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-            <span class="o">//</span> <span class="n">Third</span> <span class="n">update</span> <span class="ow">is</span> <span class="n">exact</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">second</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 4</span><span class="s2">  fact // axioms</span>
+<span class="linenos"> 5</span><span class="s2">    def factorial(n: Z): Z</span>
+<span class="linenos"> 6</span><span class="s2">    fZero. factorial(0) = 1</span>
+<span class="linenos"> 7</span><span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) = factorial(x - 1) * x</span>
+<span class="linenos"> 8</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="linenos">12</span><span class="n">var</span> <span class="n">i</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">13</span><span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">14</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">15</span><span class="s2">      1. i == 0              premise</span>
+<span class="linenos">16</span><span class="s2">      2. i &gt;= 0              algebra 1</span>
+<span class="linenos">17</span><span class="s2">      3. fac == 1            premise</span>
+<span class="linenos">18</span><span class="s2">      4. factorial(0) == 1   fact fZero</span>
+<span class="linenos">19</span><span class="s2">      5. factorial(i) == 1   subst2 1 4</span>
+<span class="linenos">20</span><span class="s2">      6. fac = factorial(i)  algebra 3 5</span>
+<span class="linenos">21</span><span class="s2">      }&quot;&quot;&quot;</span>
+<span class="linenos">22</span><span class="o">//</span> <span class="n">begin</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>    <span class="o">//</span><span class="n">first</span> <span class="s2">&quot;update&quot;</span>
+<span class="linenos">25</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">26</span>      <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">27</span><span class="s2">            1. i_old == 0              premise</span>
+<span class="linenos">28</span><span class="s2">            2. i = i_old + 1           premise</span>
+<span class="linenos">29</span><span class="s2">            3. i_old &gt;= 0              premise</span>
+<span class="linenos">30</span><span class="s2">            4. i &gt; 0                   algebra 1 2 3</span>
+<span class="linenos">31</span><span class="s2">            5. fac = factorial(i_old)  premise</span>
+<span class="linenos">32</span><span class="s2">            6. fac = factorial(i-1)    algebra 5 2</span>
+<span class="linenos">33</span><span class="s2">      }&quot;&quot;&quot;</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span>    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">36</span>     <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">37</span><span class="s2">          1. fac_old = factorial(i-1)     premise</span>
+<span class="linenos">38</span><span class="s2">          2. fac = fac_old * i            premise</span>
+<span class="linenos">39</span><span class="s2">          3. i &gt; 0                        premise</span>
+<span class="linenos">40</span><span class="s2">          4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
+<span class="linenos">41</span><span class="s2">                 factorial(x - 1) * x     fact fPos</span>
+<span class="linenos">42</span><span class="s2">          5. i &gt; 0 → factorial(i) =</span>
+<span class="linenos">43</span><span class="s2">                 factorial(i - 1) * i     ∀e 4 i</span>
+<span class="linenos">44</span><span class="s2">          6. factorial(i) =</span>
+<span class="linenos">45</span><span class="s2">               factorial(i - 1) * i       →e 5 3</span>
+<span class="linenos">46</span><span class="s2">          7. factorial(i) =</span>
+<span class="linenos">47</span><span class="s2">               fac_old * i                algebra 6 1</span>
+<span class="linenos">48</span><span class="s2">          8. fac = factorial(i)           algebra 7 2</span>
+<span class="linenos">49</span><span class="s2">     }&quot;&quot;&quot;</span>
+<span class="linenos">50</span>    <span class="o">//</span> <span class="n">End</span> <span class="n">first</span> <span class="n">update</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">51</span>
+<span class="linenos">52</span>         <span class="o">//</span><span class="n">second</span> <span class="s2">&quot;update&quot;</span>
+<span class="linenos">53</span>         <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">54</span>           <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">55</span><span class="s2">                 1. i_old &gt; 0              premise</span>
+<span class="linenos">56</span><span class="s2">                 2. i = i_old + 1           premise</span>
+<span class="linenos">57</span><span class="s2">                 3. i_old &gt;= 0              premise</span>
+<span class="linenos">58</span><span class="s2">                 4. i &gt; 0                   algebra 1 2 3</span>
+<span class="linenos">59</span><span class="s2">                 5. fac = factorial(i_old)  premise</span>
+<span class="linenos">60</span><span class="s2">                 6. fac = factorial(i-1)    algebra 5 2</span>
+<span class="linenos">61</span><span class="s2">           }&quot;&quot;&quot;</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span>         <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">64</span>          <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">65</span><span class="s2">               1. fac_old = factorial(i-1)     premise</span>
+<span class="linenos">66</span><span class="s2">               2. fac = fac_old * i            premise</span>
+<span class="linenos">67</span><span class="s2">               3. i &gt; 0                        premise</span>
+<span class="linenos">68</span><span class="s2">               4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
+<span class="linenos">69</span><span class="s2">                      factorial(x - 1) * x     fact fPos</span>
+<span class="linenos">70</span><span class="s2">                5. i &gt; 0 → factorial(i) =</span>
+<span class="linenos">71</span><span class="s2">                       factorial(i - 1) * i     ∀e 4 i</span>
+<span class="linenos">72</span><span class="s2">                6. factorial(i) =</span>
+<span class="linenos">73</span><span class="s2">                     factorial(i - 1) * i       →e 5 3</span>
+<span class="linenos">74</span><span class="s2">                7. factorial(i) =</span>
+<span class="linenos">75</span><span class="s2">                     fac_old * i                algebra 6 1</span>
+<span class="linenos">76</span><span class="s2">                8. fac = factorial(i)           algebra 7 2</span>
+<span class="linenos">77</span><span class="s2">          }&quot;&quot;&quot;</span>
+<span class="linenos">78</span>         <span class="o">//</span> <span class="n">End</span> <span class="n">second</span> <span class="n">update</span> <span class="o">--</span> <span class="n">fac</span> <span class="o">==</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">79</span>
+<span class="linenos">80</span>            <span class="o">//</span> <span class="n">Third</span> <span class="n">update</span> <span class="ow">is</span> <span class="n">exact</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">second</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>This little example is just the loop repeated twice. What we see is both at
 the begining and after each update, <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.
 Notice how the knowledge generated by completing one iteration “feeds into”
 the next iteration.
 And, after each iteration, that knowledge is that <code class="docutils literal notranslate"><span class="pre">fac</span> <span class="pre">==</span> <span class="pre">factorial(i)</span></code>.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Logika Loop Invariants</p>
 <blockquote>
 <div><p>The optional keyword <em>invariant</em> goes in the while-loop proof, before the
@@ -462,113 +363,62 @@ to realize if a loop does not terminate, Logika may verify claims that are
 not necessarily true.  A semantic error in programing can lead to unsound
 conclusions.</p>
 </div></blockquote>
-</div>
+</aside>
 <p>A working Logika program would look something like</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  fact // axioms</span>
-<span class="s2">    def factorial(n: Z): Z</span>
-<span class="s2">    fZero. factorial(0) == 1</span>
-<span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-<span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. i == 0             premise</span>
-<span class="s2">     2. fac == 1           premise</span>
-<span class="s2">     3. factorial(0) == 1   fact fZero</span>
-<span class="s2">     4. factorial(i) == fac algebra 1 2 3</span>
-<span class="s2">     5. i &gt;= 0              algebra 1</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     invariant factorial(i) = fac</span>
-<span class="s2">               i &gt;= 0</span>
-<span class="s2">     modifies i, fac</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">      1. factorial(i) == fac premise</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        0. i_old &gt;= 0                       premise</span>
-<span class="s2">        1. factorial(i_old) == fac          premise</span>
-<span class="s2">        2. i = i_old + 1                    premise</span>
-<span class="s2">        3. factorial(i - 1) == fac          algebra 1 2</span>
-<span class="s2">        4. i &gt; 0                            algebra 0 2</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">          1. factorial(i - 1) == fac_old    premise</span>
-<span class="s2">          2. fac == fac_old * i             premise</span>
-<span class="s2">          3. fac == factorial(i - 1) * i    algebra 1 2</span>
-<span class="s2">          4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
-<span class="s2">                    factorial(x - 1) * x    fact fPos</span>
-<span class="s2">          5. i&gt;0 → factorial(i) =</span>
-<span class="s2">                 factorial(i - 1) * i       ∀e 4 i</span>
-<span class="s2">          6. i &gt; 0                          premise</span>
-<span class="s2">          7. factorial(i) =</span>
-<span class="s2">                  factorial(i - 1) * i      →e 5 6</span>
-<span class="s2">          8. fac = factorial(i)             algebra 3 7</span>
-<span class="s2">        }&quot;&quot;&quot;</span>
-<span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 3</span><span class="s2">  fact // axioms</span>
+<span class="linenos"> 4</span><span class="s2">    def factorial(n: Z): Z</span>
+<span class="linenos"> 5</span><span class="s2">    fZero. factorial(0) == 1</span>
+<span class="linenos"> 6</span><span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
+<span class="linenos"> 7</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">12</span><span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">13</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">14</span><span class="s2">     1. i == 0             premise</span>
+<span class="linenos">15</span><span class="s2">     2. fac == 1           premise</span>
+<span class="linenos">16</span><span class="s2">     3. factorial(0) == 1   fact fZero</span>
+<span class="linenos">17</span><span class="s2">     4. factorial(i) == fac algebra 1 2 3</span>
+<span class="linenos">18</span><span class="s2">     5. i &gt;= 0              algebra 1</span>
+<span class="linenos">19</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">22</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">23</span><span class="s2">     invariant factorial(i) = fac</span>
+<span class="linenos">24</span><span class="s2">               i &gt;= 0</span>
+<span class="linenos">25</span><span class="s2">     modifies i, fac</span>
+<span class="linenos">26</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">27</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">28</span><span class="s2">      1. factorial(i) == fac premise</span>
+<span class="linenos">29</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">30</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">31</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">32</span><span class="s2">        0. i_old &gt;= 0                       premise</span>
+<span class="linenos">33</span><span class="s2">        1. factorial(i_old) == fac          premise</span>
+<span class="linenos">34</span><span class="s2">        2. i = i_old + 1                    premise</span>
+<span class="linenos">35</span><span class="s2">        3. factorial(i - 1) == fac          algebra 1 2</span>
+<span class="linenos">36</span><span class="s2">        4. i &gt; 0                            algebra 0 2</span>
+<span class="linenos">37</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">38</span>    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">39</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">40</span><span class="s2">          1. factorial(i - 1) == fac_old    premise</span>
+<span class="linenos">41</span><span class="s2">          2. fac == fac_old * i             premise</span>
+<span class="linenos">42</span><span class="s2">          3. fac == factorial(i - 1) * i    algebra 1 2</span>
+<span class="linenos">43</span><span class="s2">          4. ∀x: Z  x &gt; 0 → factorial(x) =</span>
+<span class="linenos">44</span><span class="s2">                    factorial(x - 1) * x    fact fPos</span>
+<span class="linenos">45</span><span class="s2">          5. i&gt;0 → factorial(i) =</span>
+<span class="linenos">46</span><span class="s2">                 factorial(i - 1) * i       ∀e 4 i</span>
+<span class="linenos">47</span><span class="s2">          6. i &gt; 0                          premise</span>
+<span class="linenos">48</span><span class="s2">          7. factorial(i) =</span>
+<span class="linenos">49</span><span class="s2">                  factorial(i - 1) * i      →e 5 6</span>
+<span class="linenos">50</span><span class="s2">          8. fac = factorial(i)             algebra 3 7</span>
+<span class="linenos">51</span><span class="s2">        }&quot;&quot;&quot;</span>
+<span class="linenos">52</span><span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Pay particular attention to lines 17 and 18, where we prove the invariant is true
 before entering the loop the first time.  Similarly, lines 47 and 50 re-establish
 the invariant before we try to loop again.  Thus, we prove the loop invariant
@@ -585,154 +435,92 @@ not the end itself.  What is it we are trying to achieve?  In this example, we
 would like to be able to prove that fac == n-factorial.  As <em>facts</em> cannot
 be used in assertions, what we will really assert is <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>, and then we know
 from our invariant that fac == n-factorial.  Consider:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  fact // axioms</span>
-<span class="s2">    def factorial(n: Z): Z</span>
-<span class="s2">    fZero. factorial(0) == 1</span>
-<span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="o">//</span> <span class="n">omitting</span>  <span class="n">manual</span> <span class="n">proofs</span> <span class="n">through</span> <span class="n">end</span> <span class="n">of</span> <span class="n">loop</span>
-<span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     invariant factorial(i) = fac</span>
-<span class="s2">               i &gt;= 0</span>
-<span class="s2">     modifies i, fac</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-<span class="p">}</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. ¬ (i &lt; n)            premise  //negation of loop condition</span>
-<span class="s2">     2. i &gt;= 0               premise  // invariant</span>
-<span class="s2">     3. factorial(i) = fac   premise  // invariant</span>
-
-<span class="s2">     //. i = n               some justification but probably algebra or subst</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="k">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 3</span><span class="s2">  fact // axioms</span>
+<span class="linenos"> 4</span><span class="s2">    def factorial(n: Z): Z</span>
+<span class="linenos"> 5</span><span class="s2">    fZero. factorial(0) == 1</span>
+<span class="linenos"> 6</span><span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
+<span class="linenos"> 7</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos"> 8</span><span class="o">//</span> <span class="n">omitting</span>  <span class="n">manual</span> <span class="n">proofs</span> <span class="n">through</span> <span class="n">end</span> <span class="n">of</span> <span class="n">loop</span>
+<span class="linenos"> 9</span><span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">12</span><span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">15</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">16</span><span class="s2">     invariant factorial(i) = fac</span>
+<span class="linenos">17</span><span class="s2">               i &gt;= 0</span>
+<span class="linenos">18</span><span class="s2">     modifies i, fac</span>
+<span class="linenos">19</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">22</span>    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">23</span><span class="p">}</span>
+<span class="linenos">24</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">25</span><span class="s2">     1. ¬ (i &lt; n)            premise  //negation of loop condition</span>
+<span class="linenos">26</span><span class="s2">     2. i &gt;= 0               premise  // invariant</span>
+<span class="linenos">27</span><span class="s2">     3. factorial(i) = fac   premise  // invariant</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="s2">     //. i = n               some justification but probably algebra or subst</span>
+<span class="linenos">30</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">31</span><span class="k">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>For certain, when the loop quits after <code class="docutils literal notranslate"><span class="pre">i</span></code> iterations, we know that
 the invariant holds.
 But we also know that the loop’s test has gone false, that is, <code class="docutils literal notranslate"><span class="pre">~(i</span> <span class="pre">&lt;</span> <span class="pre">n)</span></code>,
 that is, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&gt;=n</span></code>.  However these facts are not enough to prove <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">n</span></code>.
 In this case we say our invariant is too weak, it theoretically admits too many
 possibilities.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Hey wait a minute</p>
 <p>You might want to call foul here and claim it is obvious from reading the entire
 program that <code class="docutils literal notranslate"><span class="pre">i</span></code> <strong>must</strong> be <code class="docutils literal notranslate"><span class="pre">n</span></code>.  Please recall the axiom that <strong>The obvious
 is the enemy of the provable.</strong> The end goal is to prove the effect you want
 using only the negation of the loop-condition and the invariant.  You need
 to pack all the facts you need into these two expressions.</p>
-</div>
+</aside>
 <p>The solution is to <strong>strengthen</strong> the invariant, make is so it allows fewer
 possibilities after the loop.  In particular, we will want to strengthen the
 invariant so the only possible value of <code class="docutils literal notranslate"><span class="pre">i</span></code> is <code class="docutils literal notranslate"><span class="pre">n</span></code>.  We can do this by
 adding a condition to the invariant such that values of i &gt; n are not allowed.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">  fact // axioms</span>
-<span class="s2">    def factorial(n: Z): Z</span>
-<span class="s2">    fZero. factorial(0) == 1</span>
-<span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="o">//</span> <span class="n">omitting</span>  <span class="n">manual</span> <span class="n">proofs</span> <span class="n">through</span> <span class="n">end</span> <span class="n">of</span> <span class="n">loop</span>
-<span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     invariant factorial(i) = fac</span>
-<span class="s2">               i &gt;= 0</span>
-<span class="s2">               i &lt;= n</span>
-<span class="s2">     modifies i, fac</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
-<span class="p">}</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. ¬ (i &lt; n)            premise  //negation of loop condition</span>
-<span class="s2">     2. i &gt;= 0               premise  // invariant</span>
-<span class="s2">     3. factorial(i) = fac   premise  // invariant</span>
-<span class="s2">     4. i &lt;= n               premise  // invariant</span>
-<span class="s2">     5. i &gt;= n               algebra 1</span>
-<span class="s2">     6. i = n                algebra 4 5</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="k">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 3</span><span class="s2">  fact // axioms</span>
+<span class="linenos"> 4</span><span class="s2">    def factorial(n: Z): Z</span>
+<span class="linenos"> 5</span><span class="s2">    fZero. factorial(0) == 1</span>
+<span class="linenos"> 6</span><span class="s2">    fPos.  ∀x: Z  x &gt; 0 → factorial(x) == factorial(x - 1) * x</span>
+<span class="linenos"> 7</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos"> 8</span><span class="o">//</span> <span class="n">omitting</span>  <span class="n">manual</span> <span class="n">proofs</span> <span class="n">through</span> <span class="n">end</span> <span class="n">of</span> <span class="n">loop</span>
+<span class="linenos"> 9</span><span class="n">val</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a nonnegative int: &quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">assume</span><span class="p">(</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">12</span><span class="n">var</span> <span class="n">fac</span><span class="p">:</span> <span class="n">Z</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">15</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">16</span><span class="s2">     invariant factorial(i) = fac</span>
+<span class="linenos">17</span><span class="s2">               i &gt;= 0</span>
+<span class="linenos">18</span><span class="s2">               i &lt;= n</span>
+<span class="linenos">19</span><span class="s2">     modifies i, fac</span>
+<span class="linenos">20</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">23</span>    <span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span> <span class="o">*</span> <span class="n">i</span>
+<span class="linenos">24</span><span class="p">}</span>
+<span class="linenos">25</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">26</span><span class="s2">     1. ¬ (i &lt; n)            premise  //negation of loop condition</span>
+<span class="linenos">27</span><span class="s2">     2. i &gt;= 0               premise  // invariant</span>
+<span class="linenos">28</span><span class="s2">     3. factorial(i) = fac   premise  // invariant</span>
+<span class="linenos">29</span><span class="s2">     4. i &lt;= n               premise  // invariant</span>
+<span class="linenos">30</span><span class="s2">     5. i &gt;= n               algebra 1</span>
+<span class="linenos">31</span><span class="s2">     6. i = n                algebra 4 5</span>
+<span class="linenos">32</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">33</span><span class="k">assert</span><span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>The added condition to the invariant at line 18 does the trick.  Updating the
 proof sections so it will verify is left for you as an optional exercise.</p>
 <p>Here is a summary of the main points just made:</p>
@@ -754,7 +542,7 @@ the invariant should imply that the loop has achieved its goal.</strong></p></li
 <em>document the loop with its invariant stated in words</em>.
 If you are unable to state in words the invariant, then you don’t understand
 yourself what your loop is doing.</p>
-<div class="section" id="law-for-while-loops-claim-transformation">
+<section id="law-for-while-loops-claim-transformation">
 <h3><span class="section-number">6.1.1. </span>Law for While-Loops (Claim Transformation)<a class="headerlink" href="#law-for-while-loops-claim-transformation" title="Permalink to this headline">¶</a></h3>
 <p>Here is the law we use for deducing the properties of a while-loop.
 It uses an invariant assertion, <code class="docutils literal notranslate"><span class="pre">I</span></code>:</p>
@@ -809,9 +597,9 @@ do this.
 (This is a key result of computability theory, the study of what problems are
 mechanically solvable.)
 So, we now study how to discover loop invariants.</p>
-</div>
-</div>
-<div class="section" id="examples-of-invariant-discovery">
+</section>
+</section>
+<section id="examples-of-invariant-discovery">
 <h2><span class="section-number">6.2. </span>Examples of Invariant Discovery<a class="headerlink" href="#examples-of-invariant-discovery" title="Permalink to this headline">¶</a></h2>
 <p>A key intellectual task in programming is stating a loop’s invariant.
 The invariant tells us “what the loop is doing” as it iterates – progresses in
@@ -826,9 +614,9 @@ We must ask the crucial question:</p>
 <p>The answer to this question, whether stated in English or algebra, is the
 invariant, the loop’s true meaning.</p>
 <p>Following are some examples of invariant discovery.</p>
-<div class="section" id="multiplication-as-repeated-addition">
+<section id="multiplication-as-repeated-addition">
 <h3><span class="section-number">6.2.1. </span>Multiplication as Repeated Addition<a class="headerlink" href="#multiplication-as-repeated-addition" title="Permalink to this headline">¶</a></h3>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Common Mistake  – Read The Darn Program</p>
 <p>It is common for time-pressed students to jump in and start throwing
 claims, justifications and rules at the problem without first
@@ -836,47 +624,31 @@ critically reading and understanding the program. If you don’t understand
 what program’s goal is and how it goes about achieving it , it is hard
 to prove it is correct.  This is particular true once you start using
 data structures.</p>
-</div>
+</aside>
 <p>Most people forget that the Greeks and Arabs intended multiplication to be just
 repeated addition.
 So, what does this program calculate for <code class="docutils literal notranslate"><span class="pre">z</span></code> when it finishes?
 What is the loop’s invariant?
 (How does the loop reach its goal?)</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an int: &quot;</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type another: &quot;</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">         modifies z, count</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-<span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="k">assert</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type another: &quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 9</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">10</span><span class="s2">         modifies z, count</span>
+<span class="linenos">11</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">12</span>    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="linenos">14</span>    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">15</span><span class="p">}</span>
+<span class="linenos">16</span><span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">17</span><span class="k">assert</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Apparently, this program computes <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> and saves it in <code class="docutils literal notranslate"><span class="pre">z</span></code>.
 To understand, we execute a test case and watch what is printed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
@@ -895,158 +667,92 @@ variables:</p>
 <p>This is what the loop is doing — what it means — <code class="docutils literal notranslate"><span class="pre">z</span></code> holds the value of
 <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span></code>.
 Because the loop stops when <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">==</span> <span class="pre">x</span></code>, we conclude that <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">This program has an error</p>
 <p>Did you catch it? What happens if x == -3? It should be obvious the loop
 will never terminate.   We’ll fix this with an <em>assume()</em> as we move forward.</p>
-</div>
+</aside>
 <p>We can apply logic laws to prove that <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">==</span> <span class="pre">z</span> <span class="pre">∧</span> <span class="pre">count</span> <span class="pre">&lt;=</span> <span class="pre">x</span></code> is
 invariant for the loop’s body:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">    1. z == 0         premise</span>
-<span class="s2">    2. count = 0      premise</span>
-<span class="s2">    3. x &gt;= 0         premise</span>
-<span class="s2">    4. z = count * y  algebra 1 2</span>
-<span class="s2">    5. count &lt;= x     algebra 2 3</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">         invariant z = count * y</span>
-<span class="s2">                   count &lt;= x</span>
-<span class="s2">         modifies z, count</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        1. z = z_old + y        premise</span>
-<span class="s2">        2. z_old = count * y    premise</span>
-<span class="s2">        3. z = y * (count +1)   algebra 1 2</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        1. z = y * ( count_old +1)  premise</span>
-<span class="s2">        2. count = count_old + 1    premise</span>
-<span class="s2">        3. count_old &lt;= x           premise</span>
-<span class="s2">        4. count_old != x           premise</span>
-<span class="s2">        5. count &lt;= x               algebra 2 3 4</span>
-<span class="s2">        6. z = count * y            algebra  1 2</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-<span class="p">}</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. count &lt;= x     premise</span>
-<span class="s2">     2. ¬(count != x)  premise</span>
-<span class="s2">     3. count = x      algebra 1 2</span>
-<span class="s2">     4. z = count * y  premise</span>
-<span class="s2">     5. x * y = z      algebra 3 4</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-<span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-
-<span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 7</span><span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 8</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 9</span><span class="s2">    1. z == 0         premise</span>
+<span class="linenos">10</span><span class="s2">    2. count = 0      premise</span>
+<span class="linenos">11</span><span class="s2">    3. x &gt;= 0         premise</span>
+<span class="linenos">12</span><span class="s2">    4. z = count * y  algebra 1 2</span>
+<span class="linenos">13</span><span class="s2">    5. count &lt;= x     algebra 2 3</span>
+<span class="linenos">14</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">17</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">18</span><span class="s2">         invariant z = count * y</span>
+<span class="linenos">19</span><span class="s2">                   count &lt;= x</span>
+<span class="linenos">20</span><span class="s2">         modifies z, count</span>
+<span class="linenos">21</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">22</span>    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">23</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="linenos">24</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">25</span><span class="s2">        1. z = z_old + y        premise</span>
+<span class="linenos">26</span><span class="s2">        2. z_old = count * y    premise</span>
+<span class="linenos">27</span><span class="s2">        3. z = y * (count +1)   algebra 1 2</span>
+<span class="linenos">28</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">29</span>    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">30</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">31</span><span class="s2">        1. z = y * ( count_old +1)  premise</span>
+<span class="linenos">32</span><span class="s2">        2. count = count_old + 1    premise</span>
+<span class="linenos">33</span><span class="s2">        3. count_old &lt;= x           premise</span>
+<span class="linenos">34</span><span class="s2">        4. count_old != x           premise</span>
+<span class="linenos">35</span><span class="s2">        5. count &lt;= x               algebra 2 3 4</span>
+<span class="linenos">36</span><span class="s2">        6. z = count * y            algebra  1 2</span>
+<span class="linenos">37</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">38</span><span class="p">}</span>
+<span class="linenos">39</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">40</span><span class="s2">     1. count &lt;= x     premise</span>
+<span class="linenos">41</span><span class="s2">     2. ¬(count != x)  premise</span>
+<span class="linenos">42</span><span class="s2">     3. count = x      algebra 1 2</span>
+<span class="linenos">43</span><span class="s2">     4. z = count * y  premise</span>
+<span class="linenos">44</span><span class="s2">     5. x * y = z      algebra 3 4</span>
+<span class="linenos">45</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">46</span><span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="division-as-repeated-subtraction">
+</section>
+<section id="division-as-repeated-subtraction">
 <h3><span class="section-number">6.2.2. </span>Division as Repeated Subtraction<a class="headerlink" href="#division-as-repeated-subtraction" title="Permalink to this headline">¶</a></h3>
 <p>Maybe you remember that division was invented to represent repeated subtraction,
 e.g., “how many times can you subtract 4 from 20?
 (5) — 4 goes into 20 five times — 20 divided by 4 is 5 (with remainder 0)”.</p>
 <p>Here is the program that does repeated subtraction like division is meant to do:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">var</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an nonegative int: &quot;</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">d</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>  <span class="o">&amp;</span>  <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">q</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">r</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">n</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">         //invariant  ???</span>
-<span class="s2">         modifies q, r</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">println</span><span class="p">(</span><span class="s2">&quot;(a) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">d</span>
-<span class="p">}</span>
-<span class="k">assert</span> <span class="p">(</span> <span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;(b) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot; divided by &quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; is &quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; with remainder &quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">var</span> <span class="n">n</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type an nonegative int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">d</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">assume</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span>  <span class="o">&amp;</span>  <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">q</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 7</span><span class="n">var</span> <span class="n">r</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">n</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">10</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">11</span><span class="s2">         //invariant  ???</span>
+<span class="linenos">12</span><span class="s2">         modifies q, r</span>
+<span class="linenos">13</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">14</span>    <span class="n">println</span><span class="p">(</span><span class="s2">&quot;(a) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="linenos">15</span>    <span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">16</span>    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">d</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span><span class="k">assert</span> <span class="p">(</span> <span class="p">)</span>
+<span class="linenos">19</span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;(b) n =&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot; d =&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; q =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; r =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="linenos">20</span><span class="nb">print</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot; divided by &quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="s2">&quot; is &quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot; with remainder &quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Here is a sample execution with trace information printed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span> <span class="n">an</span> <span class="n">nonegative</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">14</span>
 <span class="n">Type</span> <span class="n">a</span> <span class="n">positive</span> <span class="nb">int</span><span class="p">:</span> <span class="mi">3</span>
@@ -1071,55 +777,35 @@ The underlying strategy (invariant) at point <code class="docutils literal notra
 allow yet one more subtraction of <code class="docutils literal notranslate"><span class="pre">q</span></code>, then the result is exactly the
 quotient-remainder that results from dividing <code class="docutils literal notranslate"><span class="pre">n</span></code> by <code class="docutils literal notranslate"><span class="pre">d</span></code>.  The proof is left
 as an exercise.</p>
-</div>
-<div class="section" id="averaging-test-scores">
+</section>
+<section id="averaging-test-scores">
 <h3><span class="section-number">6.2.3. </span>Averaging Test Scores<a class="headerlink" href="#averaging-test-scores" title="Permalink to this headline">¶</a></h3>
 <p>Even a task like summing scores and computing their average depends on a loop
 invariant.  We will approach this using  accumulators for scores and the number
 of scores.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">var</span> <span class="n">acc</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>  <span class="o">//</span> <span class="n">accumulator</span>
-<span class="n">var</span> <span class="n">cnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>   <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">entered</span> <span class="n">scores</span>
-<span class="n">var</span> <span class="n">scr</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>   <span class="o">//</span> <span class="n">value</span> <span class="n">of</span> <span class="n">current</span> <span class="n">entered</span> <span class="n">score</span>
-<span class="n">var</span> <span class="n">average</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        invariant  ???</span>
-<span class="s2">        modifies acc, cnt, scr</span>
-<span class="s2">        }&quot;&quot;&quot;</span>
-    <span class="n">scr</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Enter score , or -1 to quit&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="p">)</span>  <span class="p">{</span>
-        <span class="n">acc</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">scr</span>
-        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">average</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">/</span> <span class="n">cnt</span>
-            <span class="p">}</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="s2">&quot; scores were entered with an average of &quot;</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">var</span> <span class="n">acc</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>  <span class="o">//</span> <span class="n">accumulator</span>
+<span class="linenos"> 3</span><span class="n">var</span> <span class="n">cnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>   <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">entered</span> <span class="n">scores</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">scr</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>   <span class="o">//</span> <span class="n">value</span> <span class="n">of</span> <span class="n">current</span> <span class="n">entered</span> <span class="n">score</span>
+<span class="linenos"> 5</span><span class="n">var</span> <span class="n">average</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">while</span> <span class="p">(</span><span class="n">s</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 8</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 9</span><span class="s2">        invariant  ???</span>
+<span class="linenos">10</span><span class="s2">        modifies acc, cnt, scr</span>
+<span class="linenos">11</span><span class="s2">        }&quot;&quot;&quot;</span>
+<span class="linenos">12</span>    <span class="n">scr</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Enter score , or -1 to quit&quot;</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="k">if</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="p">)</span>  <span class="p">{</span>
+<span class="linenos">14</span>        <span class="n">acc</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">scr</span>
+<span class="linenos">15</span>        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">16</span>    <span class="p">}</span>
+<span class="linenos">17</span><span class="p">}</span>
+<span class="linenos">18</span><span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">19</span>            <span class="n">average</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">/</span> <span class="n">cnt</span>
+<span class="linenos">20</span>            <span class="p">}</span>
+<span class="linenos">21</span><span class="nb">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="s2">&quot; scores were entered with an average of &quot;</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>If we examine the loop at an arbitrary iteration, we see that <code class="docutils literal notranslate"><span class="pre">acc</span></code> holds the
 sum of the value of each previously entered valid score, and cnt contains the
 number of valid scores entered.</p>
@@ -1137,101 +823,60 @@ extra variables to explicitly keep track of the previous loop-iteration’s valu
 Next we note that “if a valid score is entered ” means we have an implication, so
 <code class="docutils literal notranslate"><span class="pre">acc</span> <span class="pre">=</span> <span class="pre">prevA</span> <span class="pre">+</span> <span class="pre">scr</span></code> must be conditioned on <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">&gt;=0</span></code>.</p>
 <p>The above arguments apply to the count variable as well.  This leads to</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">var</span> <span class="n">acc</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>    <span class="o">//</span> <span class="n">accumulator</span>
-<span class="n">var</span> <span class="n">pAcc</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">acc</span>  <span class="o">//</span> <span class="n">the</span> <span class="n">accumulator</span> <span class="n">value</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">loop</span><span class="o">-</span><span class="n">iteration</span>
-<span class="n">var</span> <span class="n">cnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>     <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">entered</span> <span class="n">scores</span>
-<span class="n">var</span> <span class="n">pCnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>   <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">entered</span> <span class="n">scores</span>
-<span class="n">var</span> <span class="n">scr</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>     <span class="o">//</span> <span class="n">value</span> <span class="n">of</span> <span class="n">current</span> <span class="n">entered</span> <span class="n">score</span>
-<span class="n">var</span> <span class="n">average</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        invariant   acc = pAcc + scr ∨ scr &lt; 0</span>
-<span class="s2">                    cnt = pCnt + 1 ∨ scr &lt; 0</span>
-<span class="s2">                    pCnt &gt; -1 -&gt; cnt &gt;=0</span>
-<span class="s2">        modifies acc, pAcc, cnt, scr, pCnt</span>
-<span class="s2">        }&quot;&quot;&quot;</span>
-    <span class="n">scr</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Enter score , or -1 to quit&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="p">)</span>  <span class="p">{</span>
-        <span class="n">pAcc</span> <span class="o">=</span> <span class="n">acc</span>
-        <span class="n">acc</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">scr</span>
-        <span class="n">pCnt</span> <span class="o">=</span> <span class="n">cnt</span>
-        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">pCnt</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">average</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">/</span> <span class="n">cnt</span>
-            <span class="p">}</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="s2">&quot; scores were entered with an average of &quot;</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">var</span> <span class="n">acc</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>    <span class="o">//</span> <span class="n">accumulator</span>
+<span class="linenos"> 3</span><span class="n">var</span> <span class="n">pAcc</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">acc</span>  <span class="o">//</span> <span class="n">the</span> <span class="n">accumulator</span> <span class="n">value</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">loop</span><span class="o">-</span><span class="n">iteration</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">cnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>     <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">entered</span> <span class="n">scores</span>
+<span class="linenos"> 5</span><span class="n">var</span> <span class="n">pCnt</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>   <span class="o">//</span> <span class="n">number</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">entered</span> <span class="n">scores</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">scr</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>     <span class="o">//</span> <span class="n">value</span> <span class="n">of</span> <span class="n">current</span> <span class="n">entered</span> <span class="n">score</span>
+<span class="linenos"> 7</span><span class="n">var</span> <span class="n">average</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">10</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">11</span><span class="s2">        invariant   acc = pAcc + scr ∨ scr &lt; 0</span>
+<span class="linenos">12</span><span class="s2">                    cnt = pCnt + 1 ∨ scr &lt; 0</span>
+<span class="linenos">13</span><span class="s2">                    pCnt &gt; -1 -&gt; cnt &gt;=0</span>
+<span class="linenos">14</span><span class="s2">        modifies acc, pAcc, cnt, scr, pCnt</span>
+<span class="linenos">15</span><span class="s2">        }&quot;&quot;&quot;</span>
+<span class="linenos">16</span>    <span class="n">scr</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Enter score , or -1 to quit&quot;</span><span class="p">)</span>
+<span class="linenos">17</span>    <span class="k">if</span> <span class="p">(</span><span class="n">scr</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="p">)</span>  <span class="p">{</span>
+<span class="linenos">18</span>        <span class="n">pAcc</span> <span class="o">=</span> <span class="n">acc</span>
+<span class="linenos">19</span>        <span class="n">acc</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">+</span> <span class="n">scr</span>
+<span class="linenos">20</span>        <span class="n">pCnt</span> <span class="o">=</span> <span class="n">cnt</span>
+<span class="linenos">21</span>        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">22</span>    <span class="p">}</span>
+<span class="linenos">23</span><span class="p">}</span>
+<span class="linenos">24</span><span class="k">if</span> <span class="p">(</span><span class="n">pCnt</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">25</span>            <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">26</span>            <span class="n">average</span> <span class="o">=</span> <span class="n">acc</span> <span class="o">/</span> <span class="n">cnt</span>
+<span class="linenos">27</span>            <span class="p">}</span>
+<span class="linenos">28</span><span class="nb">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="s2">&quot; scores were entered with an average of &quot;</span><span class="p">,</span> <span class="n">average</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>The proof is left
 as an exercise.</p>
-</div>
-<div class="section" id="squaring-an-array-s-numbers">
+</section>
+<section id="squaring-an-array-s-numbers">
 <h3><span class="section-number">6.2.4. </span>Squaring an Array’s Numbers<a class="headerlink" href="#squaring-an-array-s-numbers" title="Permalink to this headline">¶</a></h3>
 <p>Say that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a sequence of ints, and say we write a loop that squares each of
 <code class="docutils literal notranslate"><span class="pre">a</span></code>’s elements and stores the information in sequence <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">b</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">clone</span>  <span class="o">//</span> <span class="n">creates</span> <span class="ow">in</span> <span class="n">b</span> <span class="k">as</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">a</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        invariant  ???</span>
-<span class="s2">        modifies i, b</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-<span class="n">println</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">var</span> <span class="n">b</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">clone</span>  <span class="o">//</span> <span class="n">creates</span> <span class="ow">in</span> <span class="n">b</span> <span class="k">as</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">a</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 7</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 8</span><span class="s2">        invariant  ???</span>
+<span class="linenos"> 9</span><span class="s2">        modifies i, b</span>
+<span class="linenos">10</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">11</span>    <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">12</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">13</span><span class="p">}</span>
+<span class="linenos">14</span><span class="n">println</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="linenos">15</span><span class="n">println</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>In words, the loop’s invariant is that</p>
 <blockquote>
 <div><p>while the loop is running, <code class="docutils literal notranslate"><span class="pre">b</span></code>’s elements, from 0 up to <code class="docutils literal notranslate"><span class="pre">i</span></code>,
@@ -1240,16 +885,14 @@ are the square of <code class="docutils literal notranslate"><span class="pre">a
 <p>We express this using the logical operator forall (<code class="docutils literal notranslate"><span class="pre">∀</span></code>).</p>
 <p>First we will want to capture the idea that everything before <code class="docutils literal notranslate"><span class="pre">i</span></code> in sequence
 <code class="docutils literal notranslate"><span class="pre">b</span></code> has been changed by the loop.  This is expressed by line 1 below.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>∀j:Z ( 0&lt;= j ∧ j&lt; i) → (b(j) == (a(j) * a(j)))
-∀j:Z ( i&lt;= j ∧ j&lt; b.size) → (b(j) == a(j) )
-b.size = a.size
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>∀j:Z ( 0&lt;= j ∧ j&lt; i) → (b(j) == (a(j) * a(j)))
+<span class="linenos">2</span>∀j:Z ( i&lt;= j ∧ j&lt; b.size) → (b(j) == a(j) )
+<span class="linenos">3</span>b.size = a.size
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Lines 2 and 3 express what <strong>has not been changed</strong> by the loop.  All indices <code class="docutils literal notranslate"><span class="pre">i</span></code> and
 above still equal a, and the sizes of the 2 sequences are the same.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Sequence ∀ Syntax</p>
 <dl>
 <dt>The statement <code class="docutils literal notranslate"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code> is parsed as</dt><dd><div class="line-block">
@@ -1265,7 +908,7 @@ satisfy the condition), so the implications is said to be vacuously true.</p>
 <p><code class="docutils literal notranslate"><span class="pre">∀j:Z</span> <span class="pre">(</span> <span class="pre">0&lt;=</span> <span class="pre">j</span> <span class="pre">∧</span> <span class="pre">j&lt;</span> <span class="pre">i)</span> <span class="pre">→</span> <span class="pre">(b(j)</span> <span class="pre">==</span> <span class="pre">(a(j)</span> <span class="pre">*</span> <span class="pre">a(j)))</span></code>  can be written
 <code class="docutils literal notranslate"><span class="pre">∀j</span> <span class="pre">(</span> <span class="pre">0</span> <span class="pre">..</span> <span class="pre">&lt;</span> <span class="pre">i)</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code></p>
 <p>This is covered more fully in this chapter’s section on Sequences.</p>
-</div>
+</aside>
 <p>For all <code class="docutils literal notranslate"><span class="pre">j</span></code> in the range from <code class="docutils literal notranslate"><span class="pre">0</span></code> to
 <code class="docutils literal notranslate"><span class="pre">i-1,</span> <span class="pre">b(j)==</span> <span class="pre">a(j)</span> <span class="pre">*</span> <span class="pre">a(j)</span></code>; for all <code class="docutils literal notranslate"><span class="pre">j</span></code> in the range, <code class="docutils literal notranslate"><span class="pre">i</span></code> to
 <code class="docutils literal notranslate"><span class="pre">b.size</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">b(j)</span> <span class="pre">==</span> <span class="pre">a</span> <span class="pre">(j)</span></code>; and we ensure the size of the arrays match.
@@ -1278,45 +921,27 @@ array’s elements are squared.</p>
 <p>Please note, a working invariant in Logika will require more than this key idea.
 Here is a program that with an set of claims for the invariant which produces
 the desired behavior. Below we’ll discuss why the “extra” claims are necessary.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">b</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">clone</span>
-<span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">b</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        invariant  i &gt;= 0</span>
-<span class="s2">                   i &lt;= b.size</span>
-<span class="s2">                   a.size = b.size</span>
-<span class="s2">                   //∀j:Z ( 0&lt;= j ∧ j&lt; i) → (b(j) == (a(j) * a(j)))  equal to line 12</span>
-<span class="s2">                   ∀x: (0 ..&lt; i) (b(x) == a(x)* a(x))</span>
-<span class="s2">                   ∀x: (i ..&lt; b.size) (b(x) == a(x))</span>
-<span class="s2">        modifies i, b</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-<span class="n">println</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">var</span> <span class="n">a</span> <span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">var</span> <span class="n">b</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">clone</span>
+<span class="linenos"> 4</span><span class="n">var</span> <span class="n">i</span> <span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">b</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 7</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 8</span><span class="s2">        invariant  i &gt;= 0</span>
+<span class="linenos"> 9</span><span class="s2">                   i &lt;= b.size</span>
+<span class="linenos">10</span><span class="s2">                   a.size = b.size</span>
+<span class="linenos">11</span><span class="s2">                   //∀j:Z ( 0&lt;= j ∧ j&lt; i) → (b(j) == (a(j) * a(j)))  equal to line 12</span>
+<span class="linenos">12</span><span class="s2">                   ∀x: (0 ..&lt; i) (b(x) == a(x)* a(x))</span>
+<span class="linenos">13</span><span class="s2">                   ∀x: (i ..&lt; b.size) (b(x) == a(x))</span>
+<span class="linenos">14</span><span class="s2">        modifies i, b</span>
+<span class="linenos">15</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">16</span>    <span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">17</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">18</span><span class="p">}</span>
+<span class="linenos">19</span><span class="n">println</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Logika will throw an error it we do not prove that all sequence-indexing operations
 will be inside the sequent itseld.  Lets cover the potential of index-out-of-bounds
 errors in <code class="docutils literal notranslate"><span class="pre">b</span></code> first.  Lines 8 and 9 ensure that at the start of every
@@ -1335,9 +960,9 @@ the loop.  If <code class="docutils literal notranslate"><span class="pre">b</sp
 allowed to be smaller or bigger than <code class="docutils literal notranslate"><span class="pre">a</span></code>, indices in on sequence, but not the
 other, would either throw an error or be ignored.  That is not the behavior we
 want.  The proof is left as an exercise.</p>
-</div>
-</div>
-<div class="section" id="logika-solution-modes">
+</section>
+</section>
+<section id="logika-solution-modes">
 <h2><span class="section-number">6.3. </span>Logika Solution Modes<a class="headerlink" href="#logika-solution-modes" title="Permalink to this headline">¶</a></h2>
 <p>Up to now, we have been running Logika in “manual mode”</p>
 <a class="reference internal image-reference" href="../../_images/06-image-30.png"><img alt="../../_images/06-image-30.png" src="../../_images/06-image-30.png" style="width: 587.6px; height: 342.40000000000003px;" /></a>
@@ -1345,128 +970,79 @@ want.  The proof is left as an exercise.</p>
 longer be a learning activity, and where the proof-blocks after claim transformations
 can become dozens of lines long.  Logika offers two advanced modes which we periodically
 use to reduce the number and length of required proof-blocks</p>
-<div class="section" id="auto-mode">
+<section id="auto-mode">
 <h3><span class="section-number">6.3.1. </span>Auto-mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/06-image-30.png"><img alt="../../_images/06-image-30.png" src="../../_images/06-image-30.png" style="width: 509.0px; height: 532.0px;" /></a>
 <p>This mode enables you to use <code class="docutils literal notranslate"><span class="pre">auto</span></code> in lieu of normal justification statements.
 Consider the final proof for Multiplication as Repeated addition.  In manual
 mode it required roughly 50 lines to complete.  In Auto mode</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">         invariant z = count * y</span>
-<span class="s2">                   count &lt;= x</span>
-<span class="s2">         modifies z, count</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        3. z = y * (count +1)   auto</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">        5. count &lt;= x               auto</span>
-<span class="s2">        6. z = count * y            auto</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-<span class="p">}</span>
-
-<span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-
-<span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 7</span><span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">10</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">11</span><span class="s2">         invariant z = count * y</span>
+<span class="linenos">12</span><span class="s2">                   count &lt;= x</span>
+<span class="linenos">13</span><span class="s2">         modifies z, count</span>
+<span class="linenos">14</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">15</span>    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="linenos">17</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">18</span><span class="s2">        3. z = y * (count +1)   auto</span>
+<span class="linenos">19</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">20</span>    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">21</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">22</span><span class="s2">        5. count &lt;= x               auto</span>
+<span class="linenos">23</span><span class="s2">        6. z = count * y            auto</span>
+<span class="linenos">24</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">25</span><span class="p">}</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>it requires fewer than 30 lines.  This brevity is achieved with some loss of human
 readability.  Why some manual proof lines can be omitted or why some auto proof-blocks
 and lines are required may not be intuitively obvious.</p>
-</div>
-<div class="section" id="symexe-mode">
+</section>
+<section id="symexe-mode">
 <h3><span class="section-number">6.3.2. </span>Symexe-mode<a class="headerlink" href="#symexe-mode" title="Permalink to this headline">¶</a></h3>
 <p>Even more powerful is Symexe mode.  This mode allows you to reason about your
 program based on invariants and method  pre-, post- and frame conditions.</p>
 <a class="reference internal image-reference" href="../../_images/06-image-40.png"><img alt="../../_images/06-image-40.png" src="../../_images/06-image-40.png" style="width: 324.59999999999997px; height: 330.59999999999997px;" /></a>
 <p>It reduces the multiplication problem to roughly 20 lines</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-
-<span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
-<span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
-<span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">         invariant z = count * y</span>
-<span class="s2">                   count &lt;= x</span>
-<span class="s2">         modifies z, count</span>
-<span class="s2">    }&quot;&quot;&quot;</span>
-    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-<span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-
-<span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">val</span> <span class="n">x</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type a positive int: &quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">val</span> <span class="n">y</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">readInt</span><span class="p">(</span><span class="s2">&quot;Type any int : &quot;</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">var</span> <span class="n">z</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 7</span><span class="n">var</span> <span class="n">count</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">10</span>    <span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">11</span><span class="s2">         invariant z = count * y</span>
+<span class="linenos">12</span><span class="s2">                   count &lt;= x</span>
+<span class="linenos">13</span><span class="s2">         modifies z, count</span>
+<span class="linenos">14</span><span class="s2">    }&quot;&quot;&quot;</span>
+<span class="linenos">15</span>    <span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(a) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="n">y</span>
+<span class="linenos">17</span>    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">18</span><span class="p">}</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">println</span> <span class="p">(</span><span class="s2">&quot;(b) x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot; y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot; count =&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s2">&quot; z =&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="k">assert</span><span class="p">(</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="pitfalls-of-auto-and-symexe">
+</section>
+<section id="pitfalls-of-auto-and-symexe">
 <h3><span class="section-number">6.3.3. </span>Pitfalls of Auto and Symexe<a class="headerlink" href="#pitfalls-of-auto-and-symexe" title="Permalink to this headline">¶</a></h3>
 <p>When using these more advanced modes, it is not always obvious why Logika will
 not verify.  Sometimes semantic errors in the program keep it from verifying; i.e.
@@ -1476,27 +1052,27 @@ Inevitably, sometimes it will be both.</p>
 <p>In either case an option is to turn off “Auto” and begin typing each proof-block
 as if in manual mode (this can be done with Symexe enabled) until you find the
 logical or programming error.</p>
-</div>
-</div>
-<div class="section" id="loop-termination-and-total-correctness">
+</section>
+</section>
+<section id="loop-termination-and-total-correctness">
 <h2><span class="section-number">6.4. </span>Loop Termination and Total Correctness<a class="headerlink" href="#loop-termination-and-total-correctness" title="Permalink to this headline">¶</a></h2>
 <p><strong>THIS AREA BEING REFURBISHED FOR YOUR FUTURE ENJOYMENT</strong></p>
 <a class="reference internal image-reference" href="../../_images/proofs.png"><img alt="../../_images/proofs.png" src="../../_images/proofs.png" style="width: 740px; height: 224px;" /></a>
 <p>This image is licensed under a Creative Commons Attribution-NonCommercial
 2.5 License. <a class="reference external" href="https://xkcd.com/1724/">https://xkcd.com/1724/</a></p>
-</div>
-<div class="section" id="sequences-and-the-use-of-universal-and-existential-assertions">
+</section>
+<section id="sequences-and-the-use-of-universal-and-existential-assertions">
 <h2><span class="section-number">6.5. </span>Sequences and the use of Universal and Existential Assertions<a class="headerlink" href="#sequences-and-the-use-of-universal-and-existential-assertions" title="Permalink to this headline">¶</a></h2>
 <p>Computer scientists and other programmers often need to express some truths
 (propositions) about all elements in a collection or sequence of objects.</p>
-<div class="section" id="sequences">
+<section id="sequences">
 <h3><span class="section-number">6.5.1. </span>Sequences<a class="headerlink" href="#sequences" title="Permalink to this headline">¶</a></h3>
 <p>In this course, we use only on type of sequence, an ordered list. The general
 rules for applying logic to collections can be abstracted from these examples
 and applied to different types of collections as needed.</p>
 <p>As the name implies, there are no “NULL” or gaps in a sequence. However it is
 possible to make an empty sequence <code class="docutils literal notranslate"><span class="pre">(var</span> <span class="pre">b</span> <span class="pre">:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS())</span></code>.</p>
-<div class="section" id="types-and-constructors">
+<section id="types-and-constructors">
 <h4>Types and Constructors<a class="headerlink" href="#types-and-constructors" title="Permalink to this headline">¶</a></h4>
 <p>In class we deal with two types of lists, lists of integers and lists of booleans.</p>
 <blockquote>
@@ -1523,8 +1099,8 @@ possible to make an empty sequence <code class="docutils literal notranslate"><s
 </table>
 </div></blockquote>
 <p>The version of Logika we use does not support sequences of sequences.</p>
-</div>
-<div class="section" id="operations-and-properties">
+</section>
+<section id="operations-and-properties">
 <h4>Operations and Properties<a class="headerlink" href="#operations-and-properties" title="Permalink to this headline">¶</a></h4>
 <p>Given <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">a:</span> <span class="pre">ZS</span> <span class="pre">=</span> <span class="pre">ZS(1,2,3)</span></code>.  <code class="docutils literal notranslate"><span class="pre">a</span></code> = [1,2,3]</p>
 <blockquote>
@@ -1589,8 +1165,8 @@ sequence.</p>
 </tbody>
 </table>
 </div></blockquote>
-</div>
-<div class="section" id="law-for-sequence-element-assignment-claim-transformation">
+</section>
+<section id="law-for-sequence-element-assignment-claim-transformation">
 <h4>Law for Sequence Element Assignment (Claim Transformation)<a class="headerlink" href="#law-for-sequence-element-assignment-claim-transformation" title="Permalink to this headline">¶</a></h4>
 <p>To assign a value to an element <code class="docutils literal notranslate"><span class="pre">i</span></code> of a sequence a is very similar to
 the assignment of non-sequence element.</p>
@@ -1617,57 +1193,36 @@ the assignment of non-sequence element.</p>
 <p>in the Logika-proof block immediately following a sequence element assignment,
 Logika creates a local “sequence_old” for reference.  A concrete Logika
 example (solved in auto mode) of this law is below:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
-<span class="n">var</span> <span class="n">s</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">val</span> <span class="n">j</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                                   <span class="o">//</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. j == s(2)                  premise</span>
-<span class="s2">     2. s(2) == 2                  auto</span>
-<span class="s2">     3. s.size = 10                premise</span>
-<span class="s2">     20. 0 &lt;= j                    algebra 1 2    // 0 &lt;= e1</span>
-<span class="s2">     21. j &lt; s.size                algebra 1 3 2  // e1 &lt; a.size</span>
-<span class="s2">     22. s(j) &lt; 5                  algebra 1 2    // P</span>
-<span class="s2">}&quot;&quot;&quot;</span>
-
-<span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>                                   <span class="o">//</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
-<span class="s2">     1. s_old(j) &lt; 5               premise        // P</span>
-<span class="s2">     2. s_old(j) = 2               premise        // P</span>
-<span class="s2">     3. s.size = s_old.size        premise        // a.size = a_old.size</span>
-<span class="s2">     4. s(s_old(2)) = s_old(j) +1  premise        // a([a_old/a]e1)= [a_old/a]e2</span>
-<span class="s2">     5. ∀i: (0 .. &lt; s.size)                       // ∀i: (0 .. &lt; a.size)</span>
-<span class="s2">            (i != s_old(2)) →                     //    (i != [a_old/a]e1) →</span>
-<span class="s2">              s(i)==s_old(i)       premise        //      a(i)==a_old(i)</span>
-<span class="s2">}&quot;&quot;&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">org.sireum.logika._</span>
+<span class="linenos"> 2</span><span class="n">var</span> <span class="n">s</span><span class="p">:</span> <span class="n">ZS</span> <span class="o">=</span> <span class="n">ZS</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">val</span> <span class="n">j</span><span class="p">:</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                                   <span class="o">//</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos"> 5</span><span class="s2">     1. j == s(2)                  premise</span>
+<span class="linenos"> 6</span><span class="s2">     2. s(2) == 2                  auto</span>
+<span class="linenos"> 7</span><span class="s2">     3. s.size = 10                premise</span>
+<span class="linenos"> 8</span><span class="s2">     20. 0 &lt;= j                    algebra 1 2    // 0 &lt;= e1</span>
+<span class="linenos"> 9</span><span class="s2">     21. j &lt; s.size                algebra 1 3 2  // e1 &lt; a.size</span>
+<span class="linenos">10</span><span class="s2">     22. s(j) &lt; 5                  algebra 1 2    // P</span>
+<span class="linenos">11</span><span class="s2">}&quot;&quot;&quot;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>                                   <span class="o">//</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">s</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="linenos">14</span><span class="n">l</span><span class="s2">&quot;&quot;&quot;{</span>
+<span class="linenos">15</span><span class="s2">     1. s_old(j) &lt; 5               premise        // P</span>
+<span class="linenos">16</span><span class="s2">     2. s_old(j) = 2               premise        // P</span>
+<span class="linenos">17</span><span class="s2">     3. s.size = s_old.size        premise        // a.size = a_old.size</span>
+<span class="linenos">18</span><span class="s2">     4. s(s_old(2)) = s_old(j) +1  premise        // a([a_old/a]e1)= [a_old/a]e2</span>
+<span class="linenos">19</span><span class="s2">     5. ∀i: (0 .. &lt; s.size)                       // ∀i: (0 .. &lt; a.size)</span>
+<span class="linenos">20</span><span class="s2">            (i != s_old(2)) →                     //    (i != [a_old/a]e1) →</span>
+<span class="linenos">21</span><span class="s2">              s(i)==s_old(i)       premise        //      a(i)==a_old(i)</span>
+<span class="linenos">22</span><span class="s2">}&quot;&quot;&quot;</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Note the use of <code class="docutils literal notranslate"><span class="pre">auto</span></code> on line 2.  This eliminates roughly a dozen lines of
 claim manipulations.  Proving an element in a sequence, created by <code class="docutils literal notranslate"><span class="pre">ZS(1,2,...)</span></code>
 is equal to a value is a laborious process in manual mode.</p>
-</div>
-</div>
-<div class="section" id="use-of-quantifiers">
+</section>
+</section>
+<section id="use-of-quantifiers">
 <h3><span class="section-number">6.5.2. </span>Use of Quantifiers<a class="headerlink" href="#use-of-quantifiers" title="Permalink to this headline">¶</a></h3>
 <p>The basic form of specifying some claim P(a(x)) holds for every member of the
 sequence <code class="docutils literal notranslate"><span class="pre">a</span></code> are</p>
@@ -1698,9 +1253,9 @@ specify what changes and what remains the same, including the size of the sequen
 Failure to do so may lead to sound, but incomplete proofs.  If you have no errors,
 Logika <em>will</em> verify sound but incompletely specified proofs.</p>
 </div>
-</div>
-</div>
-<div class="section" id="summary">
+</section>
+</section>
+<section id="summary">
 <h2><span class="section-number">6.6. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>The law for while-loops is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;{ ... I }&quot;&quot;&quot;</span>
@@ -1734,8 +1289,8 @@ course note.
 It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
 to conform with Logika syntax and more closely match <br>
 KSU's CIS 301 course as taught in Spring 2018.
-</em></small></p></div>
-</div>
+</em></small></p></section>
+</section>
 
 
     </div>

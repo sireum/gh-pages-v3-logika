@@ -77,8 +77,8 @@ Using Sireum v3 Binary Distribution
 
    <hr/>
    <center>
-   <p>Video Tutorials: (1) <a href="http://files.sireum.org/media/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a>, and
-   (2) <a href="http://files.sireum.org/media/sireum-ive-examples.mp4">Verifying Logika Examples using Sireum IVE</a></p>
+   <p>Video Tutorials: (1) <a href="https://github.com/sireum/releases/releases/download/v3/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a>, and
+   (2) <a href="https://github.com/sireum/releases/releases/download/v3/sireum-ive-examples.mp4">Verifying Logika Examples using Sireum IVE</a></p>
    </center>
    <hr/>
 
@@ -130,14 +130,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim http://bit.ly/sv3ivem && open $sim)
+   (sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg && open $sim)
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim http://bit.ly/sv3ivem && open $sim)">
+        <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg && open $sim)">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
@@ -164,14 +164,14 @@ To run Sireum IVE, double-click ``Sireum`` inside ``/Applications`` (or, in a te
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3ivems
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="birl"><p></p><hr/>
 
-Download from: http://bit.ly/sv3ivel
+Download from: https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -182,14 +182,14 @@ To run Sireum IVE in a terminal: ``SIREUM_HOME/idea``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3ivels
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="birw"><p></p><hr/>
 
-Download from: http://bit.ly/sv3ivew
+Download from: https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\Sireum\sireum.bat`` is present.
 
@@ -210,14 +210,14 @@ To run Sireum IVE:
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``
 
-|Minisign|: http://bit.ly/sv3ivews
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcrm"><p></p><hr/>
 
-Download from: http://bit.ly/sv3clim
+Download from: https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -226,14 +226,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3clims
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcrl"><p></p><hr/>
 
-Download from: http://bit.ly/sv3clil
+Download from: https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -242,14 +242,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3`` (or
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3clils
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcrw"><p></p><hr/>
 
-Download from: http://bit.ly/sv3cliw
+Download from: https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\sireum-v3\sireum.bat`` is present.
 
@@ -257,7 +257,7 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\sireum-v3``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
-|Minisign|: http://bit.ly/sv3cliws
+|Minisign|: https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip.minisig
 
 .. raw:: html
 
@@ -289,14 +289,14 @@ Execute the following in a bash terminal:
 
 .. code:: bash
 
-   (sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim http://bit.ly/sv3divem && open $sdim)
+   (sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg && open $sdim)
 
 .. raw:: html
 
       </td>
       <td style="vertical-align: text-top;">
         &nbsp;&nbsp;
-        <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim http://bit.ly/sv3divem && open $sdim)">
+        <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg && open $sdim)">
           <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
         </button>
       </td>
@@ -323,14 +323,14 @@ To run Sireum IVE, double-click ``Sireum-dev`` inside ``/Applications`` (or, in 
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3divems
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bidl"><p></p><hr/>
 
-Download from: http://bit.ly/sv3divel
+Download from: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -341,14 +341,14 @@ To run Sireum IVE in a terminal: ``SIREUM_HOME/idea``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3divels
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bidw"><p></p><hr/>
 
-Download from: http://bit.ly/sv3divew
+Download from: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\Sireum-dev\sireum.bat`` is present.
 
@@ -369,14 +369,14 @@ To run Sireum IVE:
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``
 
-|Minisign|: http://bit.ly/sv3divews
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcdm"><p></p><hr/>
 
-Download from: http://bit.ly/sv3dclim
+Download from: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -385,14 +385,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3-dev``
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3dclims
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcdl"><p></p><hr/>
 
-Download from: http://bit.ly/sv3dclil
+Download from: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip
 
 Uncompress it in a folder whose path does not contain a whitespace such as ``/opt``
 (or ``~/Applications``, if your home directory path does not contain a whitespace).
@@ -401,14 +401,14 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``/opt/sireum-v3-dev``
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME/sireum``.
 
-|Minisign|: http://bit.ly/sv3dclils
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip.minisig
 
 .. raw:: html
 
            </div>
     	   <div class="tab-pane" id="bcdw"><p></p><hr/>
 
-Download from: http://bit.ly/sv3dcliw
+Download from: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip
 
 Uncompress it to the ``C:`` drive root directory (i.e., ``C:\``) so the file ``C:\sireum-v3-dev\sireum.bat`` is present.
 
@@ -416,7 +416,7 @@ For subsequent instructions, replace ``SIREUM_HOME`` with ``C:\sireum-v3-dev``.
 
 To run Sireum CLI in a terminal: ``SIREUM_HOME\sireum.bat``.
 
-|Minisign|: http://bit.ly/sv3dcliws
+|Minisign|: https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip.minisig
 
 .. raw:: html
 

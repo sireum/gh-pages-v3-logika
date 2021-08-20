@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2. IntelliJ-based Logika Integrated Verification Environment (LIVE) &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -149,10 +148,10 @@ Sireum Logika Documentation
 <big><big><big><big><b>
 2. IntelliJ-based Logika Integrated Verification Environment (LIVE)
 </b></big></big></big></big>
-</font><div class="section" id="intellij-based-logika-integrated-verification-environment-live">
+</font><section id="intellij-based-logika-integrated-verification-environment-live">
 <span id="live"></span><h1><span class="section-number">2. </span>IntelliJ-based Logika Integrated Verification Environment (LIVE)<a class="headerlink" href="#intellij-based-logika-integrated-verification-environment-live" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="../../_images/syntax-message.png"><img alt="../../_images/syntax-message.png" class="align-center" src="../../_images/syntax-message.png" style="width: 100%;" /></a>
-<div class="section" id="live-features">
+<section id="live-features">
 <h2><span class="section-number">2.1. </span>LIVE Features<a class="headerlink" href="#live-features" title="Permalink to this headline">¶</a></h2>
 <p>LIVE features mimic the typical features one would expect in a modern IDE.</p>
 <hr class="docutils" />
@@ -177,15 +176,15 @@ for any editor file types.</p></li>
 (<code class="docutils literal notranslate"><span class="pre">.sc</span></code> files) or its Scala editor (<code class="docutils literal notranslate"><span class="pre">.scala</span></code> files) to benefit from IntelliJ IDE features
 (e.g., the screenshot above illustrates how LIVE works with the Scala Worksheet).</p></li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="live-install">
+<section id="live-install">
 <h2><span class="section-number">2.2. </span>LIVE Install<a class="headerlink" href="#live-install" title="Permalink to this headline">¶</a></h2>
 <p>It is recommended to use the <span class="xref std std-ref">sireum-ive</span> distribution, which includes LIVE; if you do skip to <a class="reference internal" href="#optional-settings"><span class="std std-ref">Optional Settings</span></a>.</p>
 <p>Alternatively, you can install the <a class="reference external" href="https://plugins.jetbrains.com/plugin/8148">Sireum v3 IntelliJ plugin</a>
 in your IntelliJ installation (see
 <a class="reference external" href="https://www.jetbrains.com/help/idea/installing-updating-and-uninstalling-repository-plugins.html">Installing, Updating and Uninstalling Repository Plugins</a>).</p>
-<div class="section" id="prerequisites">
+<section id="prerequisites">
 <h3><span class="section-number">2.2.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>LIVE requires <a class="reference external" href="https://www.jetbrains.com/idea/download/">IntelliJ (15 or above</a>; it is
 recommended to install the <a class="reference external" href="http://plugins.jetbrains.com/plugin/1347">Scala plugin</a>);
@@ -196,8 +195,8 @@ for your respective operating system.</p>
 <p>In Windows and some Linux distributions, you need to add <code class="docutils literal notranslate"><span class="pre">-Dfile.encoding=UTF-8</span></code> in IntelliJ
 <a class="reference external" href="https://www.jetbrains.com/idea/help/tuning-intellij-idea.html#copy1">.vmoption</a> file.</p>
 </div>
-</div>
-<div class="section" id="installing-sireum-v3-plugin">
+</section>
+<section id="installing-sireum-v3-plugin">
 <h3><span class="section-number">2.2.2. </span>Installing Sireum v3 Plugin<a class="headerlink" href="#installing-sireum-v3-plugin" title="Permalink to this headline">¶</a></h3>
 <p>This step is optional as opening any Logika files retrieved during
 <a class="reference internal" href="#live-examples"><span class="std std-ref">LIVE Examples</span></a> will cause
@@ -218,11 +217,11 @@ Thus, you can choose to skip directly to <a class="reference internal" href="#li
 </ol>
 <p>Once restarted, LIVE adds a <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span></code> sub-menu under the
 <a class="reference external" href="https://www.jetbrains.com/idea/help/menus-and-toolbars.html">IntelliJ Tools menu</a>.</p>
-</div>
-</div>
-<div class="section" id="optional-settings">
+</section>
+</section>
+<section id="optional-settings">
 <span id="id1"></span><h2><span class="section-number">2.3. </span>Optional Settings<a class="headerlink" href="#optional-settings" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="configuring-scala-and-scala-worksheet-settings">
+<section id="configuring-scala-and-scala-worksheet-settings">
 <h3><span class="section-number">2.3.1. </span>Configuring Scala and Scala Worksheet Settings<a class="headerlink" href="#configuring-scala-and-scala-worksheet-settings" title="Permalink to this headline">¶</a></h3>
 <p>By default, LIVE is <a class="reference internal" href="#live-configuration"><span class="std std-ref">configured</span></a> to also work with
 <a class="reference external" href="https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet">Scala Worksheet</a>
@@ -262,8 +261,8 @@ can only be done at the end of the method, thus, in Scala, it is unnecessary).</
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="using-a-fixed-width-font">
+</section>
+<section id="using-a-fixed-width-font">
 <h3><span class="section-number">2.3.2. </span>Using A Fixed-Width Font<a class="headerlink" href="#using-a-fixed-width-font" title="Permalink to this headline">¶</a></h3>
 <p>When working with Logika math Unicode symbols (see <a class="reference internal" href="#shortcuts"><span class="std std-ref">LIVE Shortcuts</span></a>),
 it is best to use a font that is also (mostly) fixed-width for those symbols.</p>
@@ -273,21 +272,21 @@ it is best to use a font that is also (mostly) fixed-width for those symbols.</p
 is a good font to use; it is also an excellent font for programming or other
 purposes where a fixed-width font is desirable.</p>
 <p>See the <a class="reference external" href="https://www.jetbrains.com/help/idea/configuring-colors-and-fonts.html">IntelliJ’s doc</a> for changing your editor font.</p>
-</div>
-</div>
-<div class="section" id="live-update">
+</section>
+</section>
+<section id="live-update">
 <h2><span class="section-number">2.4. </span>LIVE Update<a class="headerlink" href="#live-update" title="Permalink to this headline">¶</a></h2>
 <p>IntelliJ will notify you whenever there is a newer version of LIVE.
 If accepted and LIVE is updated, you may also need to update Sireum v3.</p>
-<div class="section" id="using-sireum-v3-binary-distribution">
+<section id="using-sireum-v3-binary-distribution">
 <h3><span class="section-number">2.4.1. </span>Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h3>
 <p>LIVE detects when there is a new version of Sireum v3 when IntelliJ
 is launched.
 In such case, it displays the following notification:</p>
 <a class="reference internal image-reference" href="../../_images/sireum-update.png"><img alt="../../_images/sireum-update.png" src="../../_images/sireum-update.png" style="width: 50%;" /></a>
 <p>To update, see <a class="reference internal" href="../01-getting-started/index.html#binary-installing-running"><span class="std std-ref">Installation</span></a>.</p>
-</div>
-<div class="section" id="using-sireum-v3-source-distribution">
+</section>
+<section id="using-sireum-v3-source-distribution">
 <h3><span class="section-number">2.4.2. </span>Using Sireum v3 Source Distribution<a class="headerlink" href="#using-sireum-v3-source-distribution" title="Permalink to this headline">¶</a></h3>
 <p>LIVE tries to detect when Sireum v3 has not been updated after
 LIVE is updated.
@@ -295,9 +294,9 @@ In such case, it would present a one-time reminder that you need
 to update Sireum.</p>
 <a class="reference internal image-reference" href="../../_images/sireum-needs-updating.png"><img alt="../../_images/sireum-needs-updating.png" src="../../_images/sireum-needs-updating.png" style="width: 30%;" /></a>
 <p>For more information, see <a class="reference internal" href="../01-getting-started/index.html#source-update"><span class="std std-ref">Updating Logika</span></a>.</p>
-</div>
-</div>
-<div class="section" id="live-examples">
+</section>
+</section>
+<section id="live-examples">
 <span id="id2"></span><h2><span class="section-number">2.5. </span>LIVE Examples<a class="headerlink" href="#live-examples" title="Permalink to this headline">¶</a></h2>
 <p>To see how LIVE works,
 open the <a class="reference external" href="https://github.com/sireum/v3-logika-examples">Logika examples repository</a>
@@ -363,8 +362,8 @@ Instead one needs to explicitly <a class="reference internal" href="#live-action
 Once invoked, LIVE will continue to monitor changes to the file document
 similar to <code class="docutils literal notranslate"><span class="pre">.logika</span></code> or <code class="docutils literal notranslate"><span class="pre">.lgk</span></code> files.
 If the editor is closed and reopened, Logika needs to be explicitly invoked once again.</p>
-</div>
-<div class="section" id="live-actions">
+</section>
+<section id="live-actions">
 <span id="live-action"></span><h2><span class="section-number">2.6. </span>LIVE Actions<a class="headerlink" href="#live-actions" title="Permalink to this headline">¶</a></h2>
 <p>There are three ways to explicitly bring Logika to LIVE:</p>
 <hr class="docutils" />
@@ -391,8 +390,8 @@ If the editor is closed and reopened, Logika needs to be explicitly invoked once
 <code class="docutils literal notranslate"><span class="pre">Tools</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Logika</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
 or by right-clicking on the editor and selecting  <code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">ASCII</span></code>/<code class="docutils literal notranslate"><span class="pre">Convert</span> <span class="pre">to</span> <span class="pre">Unicode</span></code>
 as shown in the screenshots above.</p>
-</div>
-<div class="section" id="live-shortcuts">
+</section>
+<section id="live-shortcuts">
 <span id="shortcuts"></span><h2><span class="section-number">2.7. </span>LIVE Shortcuts<a class="headerlink" href="#live-shortcuts" title="Permalink to this headline">¶</a></h2>
 <p>LIVE provides two main shortcuts:</p>
 <hr class="docutils" />
@@ -500,8 +499,8 @@ ASCII characters accepted by Logika.</p>
 <hr class="docutils" />
 <p>The keystrokes for the above shortcuts are the default keystrokes; they can be
 configured in <a class="reference external" href="https://www.jetbrains.com/idea/help/keymap.html">IntelliJ’s Keymap settings</a>.</p>
-</div>
-<div class="section" id="sireum-live-configuration">
+</section>
+<section id="sireum-live-configuration">
 <span id="live-configuration"></span><h2><span class="section-number">2.8. </span>Sireum LIVE Configuration<a class="headerlink" href="#sireum-live-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Sireum and LIVE can be configured through
 <a class="reference external" href="https://www.jetbrains.com/idea/help/settings-preferences-dialog.html">IntelliJ’s Settings/Preferences dialog</a>
@@ -512,18 +511,18 @@ In some settings, checks are implemented to ensure validity of the settings.
 An invalid setting is indicated by coloring the corresponding label red;
 in such case, mouse hovering the input widget may give a description of
 the expected format.</p>
-<div class="section" id="sireum-settings">
+<section id="sireum-settings">
 <h3><span class="section-number">2.8.1. </span>Sireum Settings<a class="headerlink" href="#sireum-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/sireum-settings.png"><img alt="../../_images/sireum-settings.png" src="../../_images/sireum-settings.png" style="width: 647.4px; height: 252.0px;" /></a>
-<div class="section" id="sireum-v3-directory">
+<section id="sireum-v3-directory">
 <h4><span class="section-number">2.8.1.1. </span>Sireum v3 Directory<a class="headerlink" href="#sireum-v3-directory" title="Permalink to this headline">¶</a></h4>
 <p>This setting can be used to (re-) enter the Sireum v3 directory, either
 by typing the absolute path to the directory or by using a file browser dialog
 that can be opened by clicking the <code class="docutils literal notranslate"><span class="pre">...</span></code> button.</p>
 <p>The entered path is checked to see whether it contains a working Sireum v3
 installation.</p>
-</div>
-<div class="section" id="vm-arguments">
+</section>
+<section id="vm-arguments">
 <h4><span class="section-number">2.8.1.2. </span>VM Arguments<a class="headerlink" href="#vm-arguments" title="Permalink to this headline">¶</a></h4>
 <p>Sireum tools such as Logika does not run directly inside the Java Virtual Machine
 (VM) instance that IntelliJ runs on.
@@ -534,8 +533,8 @@ By default, the JVM stack size is set to 2Mb.</p>
 <p>In the case where invalid VM arguments are specified, it would prevent
 spawning the Logika server; the plugin detects this situation and will revert
 the configuration to previous settings.</p>
-</div>
-<div class="section" id="environment-variables">
+</section>
+<section id="environment-variables">
 <h4><span class="section-number">2.8.1.3. </span>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h4>
 <p>Additional environment variables can be specified in the text area.
 By default, <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> is set to the Sireum v3 directory and cannot be overriden;
@@ -544,19 +543,19 @@ it is required by Sireum tools to work properly
 <p>The expected format is a key-value pair separated by an equal sign (<code class="docutils literal notranslate"><span class="pre">=</span></code>) per line.
 The key has to satisfy the following regular expression <code class="docutils literal notranslate"><span class="pre">[a-zA-Z_][a-zA-Z0-9_]*</span></code>
 (i.e., a letter or an underscore, followed by zero or more letters, digits, or underscores).</p>
-</div>
-</div>
-<div class="section" id="live-settings">
+</section>
+</section>
+<section id="live-settings">
 <h3><span class="section-number">2.8.2. </span>LIVE Settings<a class="headerlink" href="#live-settings" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/live-settings.png"><img alt="../../_images/live-settings.png" src="../../_images/live-settings.png" style="width: 694.1999999999999px; height: 291.59999999999997px;" /></a>
 <p>Some of the options such as auto mode, checking satisfiability, and timeout are
 described in <a class="reference internal" href="../01-getting-started/index.html#cli-configuration"><span class="std std-ref">Logika Command-Line Configuration</span></a>.
 Below are the additional settings for LIVE.</p>
-<div class="section" id="syntax-highlighting">
+<section id="syntax-highlighting">
 <h4><span class="section-number">2.8.2.1. </span>Syntax Highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
 <p>The checkbox indicates whether LIVE should syntax highlight file documents.</p>
-</div>
-<div class="section" id="file-extensions">
+</section>
+<section id="file-extensions">
 <h4><span class="section-number">2.8.2.2. </span>File Extensions<a class="headerlink" href="#file-extensions" title="Permalink to this headline">¶</a></h4>
 <p>The text field provides a way to configure which file types
 (based on their extension name) that LIVE actions should be enabled.</p>
@@ -564,8 +563,8 @@ Below are the additional settings for LIVE.</p>
 One can add other files such as <code class="docutils literal notranslate"><span class="pre">.scala</span></code> and <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files.</p>
 <p>The expected format is the file extension names separated by semicolon
 (whitespaces are ignored).</p>
-</div>
-<div class="section" id="effects">
+</section>
+<section id="effects">
 <span id="effect"></span><h4><span class="section-number">2.8.2.3. </span>Effects<a class="headerlink" href="#effects" title="Permalink to this headline">¶</a></h4>
 <p>This underwave effect checkbox controls how location-aware errors and
 warnings are marked in the editor.
@@ -580,8 +579,8 @@ of the editor to help accentuate the marking.</p>
 indicates the marking.</p>
 <p>Mouse hovering on any of the marker visualization will show a tooltip
 of the marker message.</p>
-</div>
-<div class="section" id="background-analysis-and-idle-time">
+</section>
+<section id="background-analysis-and-idle-time">
 <h4><span class="section-number">2.8.2.4. </span>Background Analysis and Idle Time<a class="headerlink" href="#background-analysis-and-idle-time" title="Permalink to this headline">¶</a></h4>
 <p>This setting is used to turn on/off the Logika automatic background
 analysis as file documents are modified.</p>
@@ -590,8 +589,8 @@ explicitly invoke Logika manually to verify file documents.</p>
 <p>If selected, the idle time can be configured on how many milliseconds
 LIVE should wait after a file document is modified before sending it
 to the background Logika server for analysis.</p>
-</div>
-<div class="section" id="hint-generation">
+</section>
+<section id="hint-generation">
 <h4><span class="section-number">2.8.2.5. </span>Hint Generation<a class="headerlink" href="#hint-generation" title="Permalink to this headline">¶</a></h4>
 <p>Verifying programs can be challenging.
 To help with the process, Logika can generate some hints on the kind
@@ -606,8 +605,8 @@ For example,</p>
 <code class="docutils literal notranslate"><span class="pre">a(x)</span> <span class="pre">=</span> <span class="pre">a(x)</span> <span class="pre">*</span> <span class="pre">a(x)</span></code> at line 16 is clicked,
 LIVE opens a window on the right hand side of the editor that displays
 the available pre/post claims that can be used as premises.</p>
-</div>
-<div class="section" id="summoning-incriptions">
+</section>
+<section id="summoning-incriptions">
 <h4><span class="section-number">2.8.2.6. </span>Summoning Incriptions<a class="headerlink" href="#summoning-incriptions" title="Permalink to this headline">¶</a></h4>
 <p>Logika <a class="reference internal" href="../03-language/programming/index.html#summonings"><span class="std std-ref">summons</span></a> external tools (e.g., Z3) for
 verifying the program when checking satisfiability is enabled, <a class="reference internal" href="../03-language/programming/index.html#prog-algebra"><span class="std std-ref">Algebra (algebra)</span></a>
@@ -626,15 +625,15 @@ a list of proof obligations that were checked and then selects the third one
 where the run-time check verification condition (VC) cannot be deduced;
 the text area below the list displays the associated summoning incantations
 (i.e., Z3 script) for the failed deduction.</p>
-</div>
-<div class="section" id="cone-of-influence-for-summonings">
+</section>
+<section id="cone-of-influence-for-summonings">
 <h4><span class="section-number">2.8.2.7. </span>Cone of Influence for Summonings<a class="headerlink" href="#cone-of-influence-for-summonings" title="Permalink to this headline">¶</a></h4>
 <p>Logika will attempt to simplify summonings by reducing the number of facts
 for proving a claim based on their relevance.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
     </div>

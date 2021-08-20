@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4. The Predicate-Logic Quantifiers &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -135,7 +134,7 @@ Logika: Programming Logics
 <big><big><big><big><b>
 4. The Predicate-Logic Quantifiers
 </b></big></big></big></big>
-</font><div class="section" id="the-predicate-logic-quantifiers">
+</font><section id="the-predicate-logic-quantifiers">
 <span id="predicate-logic"></span><h1><span class="section-number">4. </span>The Predicate-Logic Quantifiers<a class="headerlink" href="#the-predicate-logic-quantifiers" title="Permalink to this headline">¶</a></h1>
 <p>In the previous chapter, we studied how to combine primitive propositions with
 the operators,
@@ -164,7 +163,7 @@ For example, for the domain of integers, we use predicates like <code class="doc
 individuals.)
 As these examples show, we might also use <em>functions</em>, like <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code>, to
 compute new individuals.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Note on Logika and uninterpreted functions</p>
 <p>In prepositional (and propositional) modes, Logika treats statements like
 <code class="docutils literal notranslate"><span class="pre">isHuman(x)</span></code> as an uninterpreted function with non-typed arguments.
@@ -172,7 +171,7 @@ Uninterpreted functions, borrowed mathematical logic, are assumed to work
 out to whichever type is necessary. In our case, <code class="docutils literal notranslate"><span class="pre">isHuman(x)</span></code> must be a
 predicate (T or F), so Logika assumes that no matter what you feed it,
 <code class="docutils literal notranslate"><span class="pre">isHuman(x)</span></code> always returns either True or False.</p>
-</div>
+</aside>
 <p>For nonnumeric domains like humans, animals, and objects, predicates are written
 in a function-call style, like this: <code class="docutils literal notranslate"><span class="pre">hasFourLegs(_)</span></code>, <code class="docutils literal notranslate"><span class="pre">isTheMotherOf(_,_)</span></code>,
 <code class="docutils literal notranslate"><span class="pre">isHuman(_)</span></code>, <code class="docutils literal notranslate"><span class="pre">isOlderThan(_,_)</span></code>, etc.
@@ -204,13 +203,13 @@ less-than-or-equal to its square”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>∀n (n &lt;= n * n)
 </pre></div>
 </div>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Logika Lists</p>
 <p>In Logika a list is an ordered sequence of elements, starting at 0.
 A list has a length (size) property which represent the number of elements it may
 contain.  Logika uses <code class="docutils literal notranslate"><span class="pre">()</span></code> to index lists rather than the more common
 <code class="docutils literal notranslate"><span class="pre">[]</span></code> used for array indexing in C# or Java.</p>
-</div>
+</aside>
 <p>A data-structure example looks like this: For a list, <code class="docutils literal notranslate"><span class="pre">r</span></code>, we can assert that
 every element of <code class="docutils literal notranslate"><span class="pre">r</span></code> is positive:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>∀i ((i &gt;= 0 ∧ i &lt; r.size) →  r(i) &gt; 0)
@@ -262,7 +261,7 @@ Lots more examples will follow.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>∀x(isHuman(x) →  isMortal(x)),  isHuman(Socrates)  |-  isMortal(Socrates)
 </pre></div>
 </div>
-<div class="section" id="the-universal-quantifier-and-its-deduction-rules">
+<section id="the-universal-quantifier-and-its-deduction-rules">
 <h2><span class="section-number">4.1. </span>The Universal Quantifier and Its Deduction Rules<a class="headerlink" href="#the-universal-quantifier-and-its-deduction-rules" title="Permalink to this headline">¶</a></h2>
 <p>Like the other logical operators, <code class="docutils literal notranslate"><span class="pre">∀</span></code> has an introduction rule and an
 elimination rule.
@@ -293,11 +292,11 @@ individual, <code class="docutils literal notranslate"><span class="pre">Socrate
 domain</em>, can apply specifically to <code class="docutils literal notranslate"><span class="pre">Socrates</span></code>, an individual member of the
 domain.
 We use the new knowledge on Line 3 to reach the conclusion on Line 4.</p>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Substitution Notation</p>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">[v/x]P(x)</span></code>  to mean: use <code class="docutils literal notranslate"><span class="pre">v</span></code> for all
 occurrences of <code class="docutils literal notranslate"><span class="pre">x</span></code> in <code class="docutils literal notranslate"><span class="pre">P(x)</span></code>.</p>
-</div>
+</aside>
 <p><code class="docutils literal notranslate"><span class="pre">∀e</span></code> tailors a general claim, prefixed by <code class="docutils literal notranslate"><span class="pre">∀x</span></code>, to any individual
 element (who replaces the <code class="docutils literal notranslate"><span class="pre">x</span></code>).
 We see this in Line 3 above.
@@ -494,7 +493,7 @@ This is a subtle point, so take a moment and think about it!</p>
 <p>No matter how you might try, you will see that the “block structure” of the
 proofs warns us when we are making invalid deductions.
 It is impossible to prove this claim.</p>
-<div class="section" id="more-examples">
+<section id="more-examples">
 <h3><span class="section-number">4.1.1. </span>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h3>
 <p>We state some standard exercises with <code class="docutils literal notranslate"><span class="pre">∀</span></code>, where the domains and
 predicates are unimportant:</p>
@@ -553,8 +552,8 @@ subproofs:</p>
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="tactics-for-the-rules">
+</section>
+<section id="tactics-for-the-rules">
 <h3><span class="section-number">4.1.2. </span>Tactics for the ∀-rules<a class="headerlink" href="#tactics-for-the-rules" title="Permalink to this headline">¶</a></h3>
 <p>As in the previous chapter, we now give advice as to when to use the <code class="docutils literal notranslate"><span class="pre">∀i</span></code>
 and <code class="docutils literal notranslate"><span class="pre">∀e</span></code> rules.</p>
@@ -597,8 +596,8 @@ significant step forwards to finishing the proof.
 Steps 4 and 5 of the previous (correct) example proof used this tactic.</p>
 </li>
 </ul>
-</div>
-<div class="section" id="other-ways-of-proving-propositions-with-the-universal-quantifier">
+</section>
+<section id="other-ways-of-proving-propositions-with-the-universal-quantifier">
 <h3><span class="section-number">4.1.3. </span>Other Ways of Proving Propositions with The Universal Quantifier<a class="headerlink" href="#other-ways-of-proving-propositions-with-the-universal-quantifier" title="Permalink to this headline">¶</a></h3>
 <p>How do we prove an assertion of the form, <code class="docutils literal notranslate"><span class="pre">∀x</span> <span class="pre">P(x)</span></code>?
 We just saw that <code class="docutils literal notranslate"><span class="pre">∀i</span></code> can do this for any domain whatsoever.
@@ -655,9 +654,9 @@ In this way, we have proofs of <code class="docutils literal notranslate"><span 
 <p>This is the idea behind the <code class="docutils literal notranslate"><span class="pre">∀i</span></code>-rule.</p>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="the-existential-quantifier">
+</section>
+</section>
+<section id="the-existential-quantifier">
 <h2><span class="section-number">4.2. </span>The Existential Quantifier<a class="headerlink" href="#the-existential-quantifier" title="Permalink to this headline">¶</a></h2>
 <p>The existential quantifier, <code class="docutils literal notranslate"><span class="pre">∃</span></code>, means
 “there exists” or “there is”.
@@ -687,7 +686,7 @@ For example, if we know that:</p>
 <p>that is, “there is someone who is human and mortal”.
 The identity of the human is no longer important to us.
 In the next section, we see that the <code class="docutils literal notranslate"><span class="pre">∃i</span></code>-rule makes such deductions.</p>
-<div class="section" id="the-existential-introduction-rule">
+<section id="the-existential-introduction-rule">
 <h3><span class="section-number">4.2.1. </span>The Existential-Introduction Rule<a class="headerlink" href="#the-existential-introduction-rule" title="Permalink to this headline">¶</a></h3>
 <p>Often <code class="docutils literal notranslate"><span class="pre">∃</span></code> is used to “hide” secret information.
 Consider these Pat Sajack musings from a typical game of Wheel of Fortune:</p>
@@ -735,7 +734,7 @@ vowels are exactly <code class="docutils literal notranslate"><span class="pre">
 <p>Although the game player does not know the letter and square that Pat Sajak
 “hid” with his statement, the player can still make useful deductions.
 We will use the <code class="docutils literal notranslate"><span class="pre">∃e</span></code> rule to deduce these style of propositions.</p>
-<div class="section" id="introduction-rule">
+<section id="introduction-rule">
 <h4>∃-Introduction Rule<a class="headerlink" href="#introduction-rule" title="Permalink to this headline">¶</a></h4>
 <p>The rule for <code class="docutils literal notranslate"><span class="pre">∃i</span></code> has this format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       P(d)         where  d  is an individual in the domain D
@@ -791,8 +790,8 @@ The proposition differs slightly from the previous one, but the two seem to have
 identical information content.
 (When we learn the <code class="docutils literal notranslate"><span class="pre">∃e</span></code>-rule, we can prove the two conclusions have
 identical content.)</p>
-</div>
-<div class="section" id="the-elimination-rule">
+</section>
+<section id="the-elimination-rule">
 <h4>The ∃-Elimination Rule<a class="headerlink" href="#the-elimination-rule" title="Permalink to this headline">¶</a></h4>
 <p>Since the <code class="docutils literal notranslate"><span class="pre">∃i</span></code>-rule constructs propositions that begin with <code class="docutils literal notranslate"><span class="pre">∃</span></code>, the
 <code class="docutils literal notranslate"><span class="pre">∃e</span></code>-rule disassembles propositions that begin with <code class="docutils literal notranslate"><span class="pre">∃</span></code>.
@@ -882,8 +881,8 @@ that we have no extra information about the identity of Mx <code class="docutils
 </div>
 <p>We do not know the identity of the vowel held in an unknown square, but this
 does not prevent us from concluding that there is a vowel.</p>
-</div>
-<div class="section" id="standard-examples">
+</section>
+<section id="standard-examples">
 <h4>Standard Examples<a class="headerlink" href="#standard-examples" title="Permalink to this headline">¶</a></h4>
 <p>For practice, we do some standard examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>∃x p(x) |- ∃y p(y)
@@ -949,8 +948,8 @@ See the assumptions at lines 3 and 6, based on Line 2:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(∃x p(x)) V (∃x q(x)) |- ∃x (p(x) V q(x)).
 </pre></div>
 </div>
-</div>
-<div class="section" id="an-important-example">
+</section>
+<section id="an-important-example">
 <h4>An Important Example<a class="headerlink" href="#an-important-example" title="Permalink to this headline">¶</a></h4>
 <p>We finish with this crucial example.
 We use the domain of people:</p>
@@ -1041,8 +1040,8 @@ invalid deductions.</p>
 </pre></div>
 </div>
 <p>Line 4 exposes that the “big boss”, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <em>must</em> be its own boss.</p>
-</div>
-<div class="section" id="domains-and-models">
+</section>
+<section id="domains-and-models">
 <h4>Domains and Models<a class="headerlink" href="#domains-and-models" title="Permalink to this headline">¶</a></h4>
 <p>The examples of bosses and workers illustrate these points:</p>
 <ol class="arabic">
@@ -1114,8 +1113,8 @@ Goedel’s result, known as the <em>First Incompleteness Theorem</em>, set mathe
 back on its heels and directly led to the formulation of theoretical computer
 science (of which this course is one small part).
 There is more material about Goedel’s work at the end of this chapter.</p>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h4>Tactics for The ∃-Rules<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>There are two tactics; neither is easy to master:</p>
 <ul>
@@ -1154,10 +1153,10 @@ k.  ∃x P(x)         ∃i j e
 </ul>
 <p>Look at the Wheel-of-Fortune proofs for instances where these tactics were
 applied.</p>
-</div>
-</div>
-</div>
-<div class="section" id="equivalences-in-predicate-logic">
+</section>
+</section>
+</section>
+<section id="equivalences-in-predicate-logic">
 <h2><span class="section-number">4.3. </span>Equivalences in Predicate Logic<a class="headerlink" href="#equivalences-in-predicate-logic" title="Permalink to this headline">¶</a></h2>
 <p>Here are some important equivalences in predicate logic.
 (We include the <code class="docutils literal notranslate"><span class="pre">pbc</span></code>-rule to prove the third and fourth ones.)</p>
@@ -1171,8 +1170,8 @@ applied.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">∧</span> <span class="pre">(∃x</span> <span class="pre">P(x))</span> <span class="pre">⇔</span> <span class="pre">∃x</span> <span class="pre">(Q</span> <span class="pre">∧</span> <span class="pre">P(x))</span> <span class="pre">(where</span> <span class="pre">x</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">appear</span> <span class="pre">in</span> <span class="pre">Q)</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">V</span> <span class="pre">(∃x</span> <span class="pre">P(x))</span> <span class="pre">⇔</span> <span class="pre">∃x</span> <span class="pre">(Q</span> <span class="pre">V</span> <span class="pre">P(x))</span> <span class="pre">(where</span> <span class="pre">x</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">appear</span> <span class="pre">in</span> <span class="pre">Q)</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="soundness-and-completeness-of-deduction-rules">
+</section>
+<section id="soundness-and-completeness-of-deduction-rules">
 <h2><span class="section-number">4.4. </span>Soundness and Completeness of Deduction Rules<a class="headerlink" href="#soundness-and-completeness-of-deduction-rules" title="Permalink to this headline">¶</a></h2>
 <p>Once again, it is time to consider what propositions mean and how it is that
 <code class="docutils literal notranslate"><span class="pre">∀i</span></code>, <code class="docutils literal notranslate"><span class="pre">∀e</span></code>, <code class="docutils literal notranslate"><span class="pre">∃i</span></code>, <code class="docutils literal notranslate"><span class="pre">∃e</span></code> preserve meaning.</p>
@@ -1188,7 +1187,7 @@ We must give meanings to all predicates and functions so that we can decide
 whether propositions like <code class="docutils literal notranslate"><span class="pre">isMortal(God)</span></code> and <code class="docutils literal notranslate"><span class="pre">(3+1)&gt;x</span></code> are True or False.
 The act of giving meanings to the predicates and functions is called an
 <em>interpretation</em>.</p>
-<div class="section" id="interpretations">
+<section id="interpretations">
 <h3><span class="section-number">4.4.1. </span>Interpretations<a class="headerlink" href="#interpretations" title="Permalink to this headline">¶</a></h3>
 <p>When we write propositions in a logic, we use predicates and function symbols
 (e.g., <code class="docutils literal notranslate"><span class="pre">∀i</span> <span class="pre">(i*2)&gt;i</span></code>).
@@ -1300,9 +1299,9 @@ This takes us to the Kripke models.
 Or, we can introduce two new programming constructs, the <em>abstract data type</em>
 and the <em>parametric polymorphic function</em> and extend the Heyting interpretation.</p>
 <p>All of these are possible and are studied in a typical second course on logic.</p>
-</div>
-</div>
-<div class="section" id="summary">
+</section>
+</section>
+<section id="summary">
 <h2><span class="section-number">4.5. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Here are the rules for the quantifiers, stated in terms of their tactics:</p>
 <ul>
@@ -1361,8 +1360,8 @@ course note.
 It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
 to conform with Logika syntax and more closely match <br>
 KSU's CIS 301 course as taught in Spring 2018.
-</em></small></p></div>
-</div>
+</em></small></p></section>
+</section>
 
 
     </div>

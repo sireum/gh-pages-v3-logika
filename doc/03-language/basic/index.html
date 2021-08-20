@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.1. Basic Language Elements &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../../_static/js/jquery-fix.js"></script>
     <script src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -124,9 +123,9 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 <big><big><big><big><b>
 3.1. Basic Language Elements
 </b></big></big></big></big>
-</font><div class="section" id="basic-language-elements">
+</font><section id="basic-language-elements">
 <span id="basic-language"></span><h1><span class="section-number">3.1. </span>Basic Language Elements<a class="headerlink" href="#basic-language-elements" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="identifiers">
+<section id="identifiers">
 <h2><span class="section-number">3.1.1. </span>Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline">¶</a></h2>
 <p>Variable and function (method) identifiers are of the following regular expression form:
 <code class="docutils literal notranslate"><span class="pre">[a-zA-Z][a-zA-Z0-9_]*</span></code>, i.e., a letter followed by zero of more letters, digits, or
@@ -134,8 +133,8 @@ underscores. A valid identifier should not be the same as any of Logika operator
 literals, and keywords.</p>
 <p>Identifiers containing an underscore cannot be used in the programming context (i.e.,
 underscore cannot be a part of a user-declared variable/function identifier).</p>
-</div>
-<div class="section" id="operators-and-literals">
+</section>
+<section id="operators-and-literals">
 <span id="ops-literals"></span><h2><span class="section-number">3.1.2. </span>Operators and Literals<a class="headerlink" href="#operators-and-literals" title="Permalink to this headline">¶</a></h2>
 <p>Below are a table of Logika operators and literals in both programming and proof context,
 listed with a decreasing precedence order (first is highest) along with Math Unicode <a class="reference internal" href="../../02-live/index.html#shortcuts"><span class="std std-ref">LIVE Shortcuts</span></a>.
@@ -218,13 +217,13 @@ are right-associative.</p>
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="keywords">
+<section id="keywords">
 <h2><span class="section-number">3.1.3. </span>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
 <p>Logika keywords consists of Scala’s keywords, contract keywords,
 justification keywords, and type keywords.</p>
-<div class="section" id="scala-keywords">
+<section id="scala-keywords">
 <h3><span class="section-number">3.1.3.1. </span>Scala Keywords<a class="headerlink" href="#scala-keywords" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abstract</span>       <span class="n">case</span>           <span class="n">catch</span>          <span class="k">class</span>          <span class="nc">def</span>
 <span class="n">do</span>             <span class="k">else</span>           <span class="n">extends</span>        <span class="n">false</span>          <span class="n">final</span>
@@ -236,27 +235,27 @@ justification keywords, and type keywords.</p>
 <span class="n">val</span>            <span class="n">var</span>            <span class="k">while</span>          <span class="k">with</span>           <span class="k">yield</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="types">
+</section>
+<section id="types">
 <h3><span class="section-number">3.1.3.2. </span>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">B</span>              <span class="n">Z</span>              <span class="n">ZS</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="built-in-functions">
+</section>
+<section id="built-in-functions">
 <h3><span class="section-number">3.1.3.3. </span>Built-in Functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">readInt</span>        <span class="n">randomInt</span>      <span class="nb">print</span>          <span class="n">println</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="contracts">
+</section>
+<section id="contracts">
 <h3><span class="section-number">3.1.3.4. </span>Contracts<a class="headerlink" href="#contracts" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span>            <span class="n">requires</span>       <span class="n">modifies</span>       <span class="n">post</span>           <span class="n">ensures</span>
 <span class="n">fact</span>           <span class="n">invariant</span>      <span class="k">assert</span>         <span class="n">assume</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="justifications">
+</section>
+<section id="justifications">
 <h3><span class="section-number">3.1.3.5. </span>Justifications<a class="headerlink" href="#justifications" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">premise</span>        <span class="n">andi</span>           <span class="n">ande1</span>          <span class="n">ande2</span>          <span class="n">ori1</span>
 <span class="n">Vi1</span>            <span class="n">ori2</span>           <span class="n">Vi2</span>            <span class="n">ore</span>            <span class="n">Ve</span>
@@ -268,16 +267,16 @@ justification keywords, and type keywords.</p>
 <span class="n">subst1</span>         <span class="n">subst2</span>         <span class="n">algebra</span>        <span class="n">auto</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="comments">
+</section>
+</section>
+<section id="comments">
 <h2><span class="section-number">3.1.4. </span>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>Logika comments are <a class="reference external" href="https://en.wikipedia.org/wiki/C_syntax#Comments">C99</a>
 line (<code class="docutils literal notranslate"><span class="pre">//</span></code> … until end of the line) and block (<code class="docutils literal notranslate"><span class="pre">/*</span></code> … <code class="docutils literal notranslate"><span class="pre">*/</span></code>) comments.</p>
 <p>Note that block comments are not allowed to appear inside Logika statements
 (<code class="docutils literal notranslate"><span class="pre">l&quot;&quot;&quot;</span></code> … <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>).</p>
-</div>
-<div class="section" id="newlines-and-whitespaces">
+</section>
+<section id="newlines-and-whitespaces">
 <h2><span class="section-number">3.1.5. </span>Newlines and Whitespaces<a class="headerlink" href="#newlines-and-whitespaces" title="Permalink to this headline">¶</a></h2>
 <p>Scala is a line-oriented language where newline characters are treated specially in some cases.
 For example, newline characters <em>can</em> separate expressions in a code block.
@@ -295,14 +294,14 @@ Interested readers are referred to the full
 to implement Scala’s newline rules, thus, it is not directly specified in the ANTLR4 grammar.)</p>
 <p>Other than the special newline rules that Logika follows in proof context,
 Logika whitespaces are similar to Scala’s.</p>
-</div>
-<div class="section" id="grammatical-rules">
+</section>
+<section id="grammatical-rules">
 <h2><span class="section-number">3.1.6. </span>Grammatical Rules<a class="headerlink" href="#grammatical-rules" title="Permalink to this headline">¶</a></h2>
 <p>Logika grammars are written in this document using the
 <a class="reference external" href="https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md">ANTLR4-style</a> of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Backus–Naur_Form">Backus-Naur Form (BNF) grammar</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>

@@ -4,16 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3. Propositional Logic &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
@@ -173,7 +173,7 @@ Logika: Programming Logics
 <big><big><big><big><b>
 3. Propositional Logic
 </b></big></big></big></big>
-</font><div class="section" id="propositional-logic">
+</font><section id="propositional-logic">
 <span id="id1"></span><h1><span class="section-number">3. </span>Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h1>
 <p>Symbolic logic is the study of assertions (declarative statements) using the
 connectives, <em>and</em>, <em>or</em>, <em>not</em>, <em>implies</em>, <em>for all</em>, <em>there exists</em>.
@@ -216,7 +216,7 @@ algorithm development.</p>
 as such <strong>the obvious is the enemy of the provable.</strong>  You may become frustrated
 with Logika and disappointed in your grade if your proofs rely on obvious but
 unstated (or unproven) facts.</p>
-<div class="section" id="propositions">
+<section id="propositions">
 <h2><span class="section-number">3.1. </span>Propositions<a class="headerlink" href="#propositions" title="Permalink to this headline">¶</a></h2>
 <p>Symbolic logic manipulates <em>propositions</em>, which are assertions – declarative
 statements that can be understood as “true” (it’s a fact) or “false”
@@ -252,8 +252,8 @@ together <code class="docutils literal notranslate"><span class="pre">x</span> <
 <p>Later we will study <code class="docutils literal notranslate"><span class="pre">FORALL</span></code> (∀) and
 <code class="docutils literal notranslate"><span class="pre">EXIST</span></code> (∃), which are more delicate than the
 propositional connectives and are called <em>quantifiers</em>.</p>
-</div>
-<div class="section" id="the-sequent">
+</section>
+<section id="the-sequent">
 <h2><span class="section-number">3.2. </span>The Sequent<a class="headerlink" href="#the-sequent" title="Permalink to this headline">¶</a></h2>
 <p>Sequent is a mathematical/logical term for assertion.  The notation, <span class="math notranslate nohighlight">\(p_0, p_1, \ldots, p_m ⊢ q\)</span>
 <a href="#id2"><span class="problematic" id="id3">|</span></a>(read as, “<code class="docutils literal notranslate"><span class="pre">p0</span></code>, <code class="docutils literal notranslate"><span class="pre">p1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">pm</span></code> <em>entails</em> <code class="docutils literal notranslate"><span class="pre">q</span></code>”) is
@@ -271,7 +271,7 @@ premises    ⊢ conclusions
 P1, ... Pn  ⊢ C1, ... Cm
 </pre></div>
 </div>
-<div class="section" id="validity-of-a-sequent">
+<section id="validity-of-a-sequent">
 <h3><span class="section-number">3.2.1. </span>Validity of a Sequent<a class="headerlink" href="#validity-of-a-sequent" title="Permalink to this headline">¶</a></h3>
 <p>When multiple premises and conclusions are present they
 are treated as a conjunction.  A sequent is said to be <strong>valid</strong> if, for every truth
@@ -279,8 +279,8 @@ assignment which make the premises true, the conclusion is also true.</p>
 <p>So for the sequent <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">→</span> <span class="pre">q</span> <span class="pre">,</span> <span class="pre">¬</span> <span class="pre">q</span>&#160; <span class="pre">⊢</span>&#160; <span class="pre">¬</span> <span class="pre">p</span></code>, we can construct a table like this:</p>
 <a class="reference internal image-reference" href="../../_images/03-image-10.png"><img alt="../../_images/03-image-10.png" src="../../_images/03-image-10.png" style="width: 354px; height: 157px;" /></a>
 <p>where we see that when both premises are true the conclusion is also true.</p>
-</div>
-<div class="section" id="logika-truth-table-example">
+</section>
+<section id="logika-truth-table-example">
 <h3><span class="section-number">3.2.2. </span>Logika Truth Table example<a class="headerlink" href="#logika-truth-table-example" title="Permalink to this headline">¶</a></h3>
 <p>Logika will not support this type of proof syntax. However, with what was covered
 in the natural language to propositional logic lectures and the logic gates of
@@ -288,36 +288,27 @@ chapter 2, we can see that this is an application of implication.  We can say th
 sequent  <code class="docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">...,</span> <span class="pre">Pn</span>&#160; <span class="pre">⊢</span> <span class="pre">C1,</span> <span class="pre">C2,</span> <span class="pre">...</span> <span class="pre">Cm</span></code> is valid
 if the logical formula <code class="docutils literal notranslate"><span class="pre">(P1</span> <span class="pre">∧</span> <span class="pre">P2</span> <span class="pre">∧</span> <span class="pre">...</span> <span class="pre">Pn</span> <span class="pre">)</span> <span class="pre">→</span> <span class="pre">(C1</span> <span class="pre">∧</span> <span class="pre">C2</span> <span class="pre">∧</span> <span class="pre">...</span> <span class="pre">Cm</span> <span class="pre">)</span></code> is a tautology.
 Re-phrased, IF all the premises are true, THEN all consequences are true.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>                      *
-----------------------------
-p q | ((p → q) ∧ ¬ q) → ¬p
-----------------------------
-T T |     T    F F    T F
-T F |     F    F T    T F
-F T |     T    F F    T T
-F F |     T    T T    T T
-----------------------------
-Tautology
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>                      *
+<span class="linenos"> 2</span>----------------------------
+<span class="linenos"> 3</span>p q | ((p → q) ∧ ¬ q) → ¬p
+<span class="linenos"> 4</span>----------------------------
+<span class="linenos"> 5</span>T T |     T    F F    T F
+<span class="linenos"> 6</span>T F |     F    F T    T F
+<span class="linenos"> 7</span>F T |     T    F F    T T
+<span class="linenos"> 8</span>F F |     T    T T    T T
+<span class="linenos"> 9</span>----------------------------
+<span class="linenos">10</span>Tautology
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>This is discussed in more depth in the section on Soundness and Completeness, which
 comes later in this chapter.</p>
 <p>Next consider the sequent <code class="docutils literal notranslate"><span class="pre">((p</span> <span class="pre">∧</span> <span class="pre">q)</span> <span class="pre">∧</span> <span class="pre">r)</span> <span class="pre">,</span> <span class="pre">s</span> <span class="pre">∧</span> <span class="pre">t</span> <span class="pre">⊢</span> <span class="pre">q</span> <span class="pre">∧</span> <span class="pre">t</span></code>.  Converted to a logic
 formula it is  <code class="docutils literal notranslate"><span class="pre">(((p</span> <span class="pre">∧</span> <span class="pre">q)</span> <span class="pre">∧</span> <span class="pre">r)</span> <span class="pre">∧</span> <span class="pre">(s</span> <span class="pre">∧</span> <span class="pre">t))</span> <span class="pre">→</span> <span class="pre">(q</span> <span class="pre">∧</span> <span class="pre">t)</span></code>, but this will require 32
 rows of truth assignments.  Using inferences rules will allow us to convert this
 32-line truth table proof into a 6-line proof.</p>
-</div>
-</div>
-<div class="section" id="inference-rules">
+</section>
+</section>
+<section id="inference-rules">
 <h2><span class="section-number">3.3. </span>Inference Rules<a class="headerlink" href="#inference-rules" title="Permalink to this headline">¶</a></h2>
 <p>The propositional connectives are a kind of data-structure language for building
 propositional-data-structures from basic, primitive propositions.
@@ -336,10 +327,10 @@ to represent propositions (rather than use <code class="docutils literal notrans
 <p>To prove a sequent is valid,  we must supply a <em>proof</em> to support
 the claim using any relevant premises, the inference rules and deduction to
 write a formal proof.</p>
-</div>
-<div class="section" id="logika-proof-syntax">
+</section>
+<section id="logika-proof-syntax">
 <h2><span class="section-number">3.4. </span>Logika Proof Syntax<a class="headerlink" href="#logika-proof-syntax" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-two-column-proof">
+<section id="the-two-column-proof">
 <h3><span class="section-number">3.4.1. </span>The Two-Column Proof<a class="headerlink" href="#the-two-column-proof" title="Permalink to this headline">¶</a></h3>
 <p>Sequents in Logika have the following form, where premises are separated by commas.</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;0</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">premises&gt;</span> <span class="pre">⊢</span> <span class="pre">&lt;</span> <span class="pre">1</span> <span class="pre">consequence&gt;</span></code></p>
@@ -382,8 +373,8 @@ not strictly required.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="scope-and-use-of-subproofs">
+</section>
+<section id="scope-and-use-of-subproofs">
 <h3><span class="section-number">3.4.2. </span>Scope and Use of Subproofs<a class="headerlink" href="#scope-and-use-of-subproofs" title="Permalink to this headline">¶</a></h3>
 <p>Sub-proofs are tools for case analysis or what-if excursions, used to support
 justification for later claims.  In propositional logic, they will always contain
@@ -393,7 +384,7 @@ is a proposition which is “local” to the sub-proof.</p>
 assumed at the start.  Assumed facts should be chosen, so that when combined
 with existing facts and rules, some other claim can be made at the conclusion
 of the sub-proof.</p>
-<div class="section" id="scope">
+<section id="scope">
 <h4>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h4>
 <p>Opening and closing braces (<code class="docutils literal notranslate"><span class="pre">{}</span></code>) define the scope of claims.  Other than the
 first <code class="docutils literal notranslate"><span class="pre">{</span></code> which goes directly under the sequent, the opening brace is given
@@ -425,16 +416,16 @@ the sub-proof is reached.  This happens before line 45.</p>
 <p>Only specific justifications, or inference rules, allow you to close a scope
 and create a new claim based on that sub proof in the enclosing (outer) scope.
 These justifications always take a sub-proof (i.e “17”) as justification.</p>
-</div>
-<div class="section" id="use">
+</section>
+<section id="use">
 <h4>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h4>
 <p>When a justification requires a sub-proof, the sub-proof is referred to by the
 line number of its opening brace (<code class="docutils literal notranslate"><span class="pre">{</span></code>), not the line number of the
 sub-proof’s concluding claim.</p>
-</div>
-</div>
-</div>
-<div class="section" id="the-premise-justification">
+</section>
+</section>
+</section>
+<section id="the-premise-justification">
 <h2><span class="section-number">3.5. </span>The premise Justification<a class="headerlink" href="#the-premise-justification" title="Permalink to this headline">¶</a></h2>
 <p>Now we will begin introducing inference rules/justifications which allow you to prove a
 sequent’s validity through a series of truth preserving operations.  The
@@ -442,62 +433,43 @@ most basic is the statement of premises in your proof so they can be used.</p>
 <p>As shown below, the claim is just the fact with “premise” as the justification.
 All, some or none of the premises can be introduced at any time in any order.
 Please note that only one premise may be entered per claim.</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="highlight"><pre><span></span>//This is ok
-p, q, ¬ r ⊢ p
-{
-   7. q      premise
-   2. p      premise
-   4. p      premise
-   11. ¬ r   premise
-}
-
-//This is also ok
-p, q, ¬ r ⊢ p
-{
-   11. ¬ r   premise
-}
-
-// This is wrong
-p, q, ¬ r ⊢ p
-{
-   11.p, q, ¬ r   premise
-}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>//This is ok
+<span class="linenos"> 2</span>p, q, ¬ r ⊢ p
+<span class="linenos"> 3</span>{
+<span class="linenos"> 4</span>   7. q      premise
+<span class="linenos"> 5</span>   2. p      premise
+<span class="linenos"> 6</span>   4. p      premise
+<span class="linenos"> 7</span>   11. ¬ r   premise
+<span class="linenos"> 8</span>}
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>//This is also ok
+<span class="linenos">11</span>p, q, ¬ r ⊢ p
+<span class="linenos">12</span>{
+<span class="linenos">13</span>   11. ¬ r   premise
+<span class="linenos">14</span>}
+<span class="linenos">15</span>
+<span class="linenos">16</span>// This is wrong
+<span class="linenos">17</span>p, q, ¬ r ⊢ p
+<span class="linenos">18</span>{
+<span class="linenos">19</span>   11.p, q, ¬ r   premise
+<span class="linenos">20</span>}
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>Occasionally you may wish (or need) to restate a claim from an outer proof in a
 sub proof.  If the claim you wish to restate is in scope, you may restate the
 claim using “premise” as the justification.  This may make your proof more
 human readable.</p>
-</div>
-<div class="section" id="the-assume-justification">
+</section>
+<section id="the-assume-justification">
 <h2><span class="section-number">3.6. </span>The assume Justification<a class="headerlink" href="#the-assume-justification" title="Permalink to this headline">¶</a></h2>
 <p>To make an assumption, you must start a new sub-proof and the assumption must
 be the first claim in the sub-proof. Any proposition can be assumed. The
 propositions <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">q</span> <span class="pre">∨</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">t→</span> <span class="pre">p</span></code> are both valid assumptions. Inside
 the sub-proof, the assumed proposition can be treated as a fact.</p>
-</div>
-<div class="section" id="logical-operator-based-justifications">
+</section>
+<section id="logical-operator-based-justifications">
 <h2><span class="section-number">3.7. </span>Logical Operator Based Justifications<a class="headerlink" href="#logical-operator-based-justifications" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="syntax">
+<section id="syntax">
 <h3><span class="section-number">3.7.1. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p>It is a tradition to draw the rules as a kind of “arithmetic sum-up expression”:
 when we have proof of the propositions above the horizontal bar, then we deduce
@@ -515,16 +487,16 @@ Placeholders will be used to guide you on what must be assumed for each sub-proo
 a new fact based on the sub-proof in the enclosing scope.</p></li>
 </ol>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="and-introduction-and-and-elimination">
+</section>
+</section>
+<section id="and-introduction-and-and-elimination">
 <h2><span class="section-number">3.8. </span>And-Introduction and And-Elimination<a class="headerlink" href="#and-introduction-and-and-elimination" title="Permalink to this headline">¶</a></h2>
 <p>It is easy to work with the conjunction connective, <code class="docutils literal notranslate"><span class="pre">∧</span></code>.
 Clearly, <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q</span> <span class="pre">⊢</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>, that is, when both <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code> are facts, then
 so is the proposition, <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span></code>.
 Dually, we accept that <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span> <span class="pre">⊢</span> <span class="pre">p</span></code> as well as <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span> <span class="pre">⊢</span> <span class="pre">q</span></code>.
 Here are the deduction rules that formalize these intuitions:</p>
-<div class="section" id="rules">
+<section id="rules">
 <h3><span class="section-number">3.8.1. </span>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>           P
            Q                P ∧ Q              P ∧ Q
@@ -534,8 +506,8 @@ Here are the deduction rules that formalize these intuitions:</p>
 </div>
 <p>The rules are used to build <em>proofs</em> of new facts from starting facts
 (premises).  The examples will explain the exact syntax.</p>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h3><span class="section-number">3.8.2. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p, q, r ⊢ r ∧ (q ∧ p)
 {
@@ -582,8 +554,8 @@ When we have propositions <code class="docutils literal notranslate"><span class
 <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">⊢</span> <span class="pre">q</span></code> and also <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">⊢</span> <span class="pre">p</span></code>, we write
 <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">⇔</span> <span class="pre">q</span></code> and say that <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code> are equivalent – they hold the
 “same amounts of knowledge”.</p>
-</div>
-<div class="section" id="tactics">
+</section>
+<section id="tactics">
 <h3><span class="section-number">3.8.3. </span>Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">¶</a></h3>
 <p>A <em>tactic</em> is a useful step towards proving a goal.
 The rules for conjunction come with these two tactics, which we rate from
@@ -652,8 +624,8 @@ i+1. r∧ p          ∧i i 2
 </div>
 </li>
 </ol>
-</div>
-<div class="section" id="logika-tips">
+</section>
+<section id="logika-tips">
 <h3><span class="section-number">3.8.4. </span>Logika Tips<a class="headerlink" href="#logika-tips" title="Permalink to this headline">¶</a></h3>
 <p>You have to understand the order of precedence for operations.  A former GTA
 described is as “seeing the invisible parentheses”.  Consider:</p>
@@ -668,9 +640,9 @@ described is as “seeing the invisible parentheses”.  Consider:</p>
 <p>The fact that Logika will not accept line 2 is can be irritating.  One must recall
 that <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">q</span> <span class="pre">∧</span> <span class="pre">r</span></code> is really <code class="docutils literal notranslate"><span class="pre">(p</span> <span class="pre">∧</span> <span class="pre">q)</span> <span class="pre">∧</span> <span class="pre">r</span></code> (from the order of precedence), and
 thus can be split into <code class="docutils literal notranslate"><span class="pre">(p</span> <span class="pre">∧</span> <span class="pre">q)</span> <span class="pre">∧e1</span></code> or <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">∧e2</span></code>.</p>
-</div>
-</div>
-<div class="section" id="or-introduction-and-or-elimination">
+</section>
+</section>
+<section id="or-introduction-and-or-elimination">
 <h2><span class="section-number">3.9. </span>Or-Introduction and Or-Elimination<a class="headerlink" href="#or-introduction-and-or-elimination" title="Permalink to this headline">¶</a></h2>
 <p>It is a bit trickier reasoning about disjunction, <code class="docutils literal notranslate"><span class="pre">∨</span></code>,
 because there are multiple meanings of the word in English.
@@ -695,7 +667,7 @@ coffee.</p></li>
 <p>So, in both cases, you can buy the coffee. (Actually, the cheapest coffee in
 the student union is more like $2.)</p>
 <p>This pattern of deduction is formalized in the <code class="docutils literal notranslate"><span class="pre">∨e</span></code>-rule below.</p>
-<div class="section" id="id4">
+<section id="id4">
 <h3><span class="section-number">3.9.1. </span>Rules<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                                                      { P assume    { Q assume
          P                  Q                 P ∨ Q     ... R    }    ... R   }
@@ -703,21 +675,21 @@ the student union is more like $2.)</p>
        P ∨ Q              P ∨ Q                              R
 </pre></div>
 </div>
-<div class="sidebar">
+<aside class="sidebar">
 <p class="sidebar-title">Don’t assume what you need to prove</p>
 <p>The “fact” you assume only has the scope of the sub-proof. Inside the sub-proof
 it is considered to be a fact, outside the sub-proof it may not exist.
 Therefore, if you assume the “fact” need to prove, you are almost certainly
 wrong.</p>
-</div>
+</aside>
 <p>The <code class="docutils literal notranslate"><span class="pre">∨e</span></code>-rule is the deduction-rule form of case analysis: you assume <code class="docutils literal notranslate"><span class="pre">p</span></code>
 and do deductions that prove <code class="docutils literal notranslate"><span class="pre">r</span></code> and then you assume <code class="docutils literal notranslate"><span class="pre">q</span></code> and do another
 sequence of deductions to reprove <code class="docutils literal notranslate"><span class="pre">r</span></code>.
 Each case is a “subproof” that is indented with braces.
 Once both cases are proved, you conclude <code class="docutils literal notranslate"><span class="pre">r</span></code> no matter what. The introduction and
 elimination rules will be expanded on in the next section.</p>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h3><span class="section-number">3.9.2. </span>Examples<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p ⊢ q ∨ p
 {
@@ -802,8 +774,8 @@ sake of discussion of the case.</p>
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="id6">
+</section>
+<section id="id6">
 <h3><span class="section-number">3.9.3. </span>Tactics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>There is one good tactic, and one not-so-good:</p>
 <ul>
@@ -848,15 +820,15 @@ constructed by applying the <code class="docutils literal notranslate"><span cla
 <code class="docutils literal notranslate"><span class="pre">∧i</span></code> tactic upon the two subgoals.
 The <code class="docutils literal notranslate"><span class="pre">∨i</span></code> tactic is used only when it is clear that it will yield progress
 towards the goal.</p>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h3><span class="section-number">3.9.4. </span>Logika Tips<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Proving the exact same fact means exact.  Proving <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">∧</span> <span class="pre">r</span></code> in the first subproof
 and <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">∧</span> <span class="pre">p</span></code> in the second will not work.  From the Logika standpoint, these
 are different (at least in manual mode).</p>
-</div>
-</div>
-<div class="section" id="implies-introduction-and-implies-elimination">
+</section>
+</section>
+<section id="implies-introduction-and-implies-elimination">
 <h2><span class="section-number">3.10. </span>Implies-Introduction and Implies-Elimination<a class="headerlink" href="#implies-introduction-and-implies-elimination" title="Permalink to this headline">¶</a></h2>
 <p>Remember that <code class="docutils literal notranslate"><span class="pre">→</span></code> is a kind of “logical if-then”.
 The word “implies” has several shadings of meaning in spoken English, and there
@@ -878,7 +850,7 @@ In this sense, <code class="docutils literal notranslate"><span class="pre">r</s
 <p>Stated more precisely, the situation where <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">r,</span> <span class="pre">s,</span> <span class="pre">t,</span> <span class="pre">...</span> <span class="pre">⊢</span> <span class="pre">q</span></code> lets us
 conclude that <code class="docutils literal notranslate"><span class="pre">r,</span> <span class="pre">s,</span> <span class="pre">t,</span> <span class="pre">...</span> <span class="pre">⊢</span> <span class="pre">p</span> <span class="pre">→</span> <span class="pre">q</span></code>.
 These two ideas, which go hand in hand, are formalized below.</p>
-<div class="section" id="id8">
+<section id="id8">
 <h3><span class="section-number">3.10.1. </span>Rules<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       { P assume                   P → Q
          ... Q    }                 P
@@ -891,8 +863,8 @@ a fact.
 (We don’t know this for certain; it is a case/possibility we want to discuss.)
 If assuming <code class="docutils literal notranslate"><span class="pre">p</span></code> (plus using other facts we already have) leads to a proof of
 <code class="docutils literal notranslate"><span class="pre">q</span></code>, then we conclude that <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">→</span> <span class="pre">q</span></code> is a fact.</p>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h3><span class="section-number">3.10.2. </span>Examples<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Here are two simple uses of <code class="docutils literal notranslate"><span class="pre">→e</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(p ∧ q) → r,  p → q,  p  ⊢  r
@@ -987,8 +959,8 @@ We employ a similar tactic in this example</p>
 <p>Here, the “or reasoning” is nested inside the “implies reasoning”.
 This example shows how mastery of basic deduction rules allows one to reason far
 more precisely than ordinary people do in real life.</p>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h3><span class="section-number">3.10.3. </span>Tactics<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>Implication comes with two good tactics:</p>
 <ul>
@@ -1042,9 +1014,9 @@ tactic to the new subgoal</p>
 </div>
 <p>and we quickly finish the proof by applying the (*)-<code class="docutils literal notranslate"><span class="pre">→e</span></code> tactic twice to
 deduce <code class="docutils literal notranslate"><span class="pre">r</span></code>.</p>
-</div>
-</div>
-<div class="section" id="negation">
+</section>
+</section>
+<section id="negation">
 <h2><span class="section-number">3.11. </span>Negation<a class="headerlink" href="#negation" title="Permalink to this headline">¶</a></h2>
 <p>The word, “not”, has many shadings in English, and this is also true in logic.
 We might read <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">p</span></code> as saying, “<code class="docutils literal notranslate"><span class="pre">p</span></code> is not a fact”, or “the opposite of <code class="docutils literal notranslate"><span class="pre">p</span></code>
@@ -1056,7 +1028,7 @@ for some proposition, <code class="docutils literal notranslate"><span class="pr
 A contradiction states an impossible situation, that is, <code class="docutils literal notranslate"><span class="pre">p</span></code> is a fact at the
 same time that it is not a fact.
 It is a “crash”, “the end of the world (or at least of the proof!)”.</p>
-<div class="section" id="id11">
+<section id="id11">
 <h3><span class="section-number">3.11.1. </span>Rules<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>We use this symbol — <code class="docutils literal notranslate"><span class="pre">⊥</span></code> (Logika Symbol: False) — to stand for a
 contradiction.
@@ -1087,8 +1059,8 @@ becomes a fact. (That is, “if <code class="docutils literal notranslate"><span
          Q
 </pre></div>
 </div>
-</div>
-<div class="section" id="id12">
+</section>
+<section id="id12">
 <h3><span class="section-number">3.11.2. </span>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">⊥e</span></code>-rule works well with case analysis, where we discover that one case
 is impossible.
@@ -1156,8 +1128,8 @@ would follow if <code class="docutils literal notranslate"><span class="pre">p</
 (Example: “if I am the president of the U.S., then everyone gets a tax refund of
 a million bucks”. It’s a true statement but not so useful, since I am not the
 president and will never be.)</p>
-</div>
-<div class="section" id="tactic">
+</section>
+<section id="tactic">
 <h3><span class="section-number">3.11.3. </span>Tactic<a class="headerlink" href="#tactic" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>(*) <code class="docutils literal notranslate"><span class="pre">⊥</span></code>-tactic: To prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">⊢</span> <span class="pre">q</span></code>, if <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">p</span></code> appears as a premise
@@ -1182,9 +1154,9 @@ l.   q            ⊥e k
 <p>In the previous proof example, we see that <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">p</span> <span class="pre">⊢</span> <span class="pre">p</span> <span class="pre">→</span> <span class="pre">q</span></code> is proved quickly
 once we obtain as a new fact (via an assumption, thanks to the (***)-<code class="docutils literal notranslate"><span class="pre">→i</span></code>
 tactic!).</p>
-</div>
-</div>
-<div class="section" id="negation-introduction">
+</section>
+</section>
+<section id="negation-introduction">
 <h2><span class="section-number">3.12. </span>Negation Introduction<a class="headerlink" href="#negation-introduction" title="Permalink to this headline">¶</a></h2>
 <p>Another rule for negation lets us deduce when an assertion is incompatible with
 facts we already know.</p>
@@ -1194,7 +1166,7 @@ Say we add <code class="docutils literal notranslate"><span class="pre">p</span>
 <code class="docutils literal notranslate"><span class="pre">q,</span> <span class="pre">r,</span> <span class="pre">s,</span> <span class="pre">...,</span> <span class="pre">p</span> <span class="pre">⊢</span> <span class="pre">⊥</span></code>.
 So, in a world where <code class="docutils literal notranslate"><span class="pre">q</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code>, … are facts, <code class="docutils literal notranslate"><span class="pre">p</span></code> can never be a
 fact – we have <code class="docutils literal notranslate"><span class="pre">q,</span> <span class="pre">r,</span> <span class="pre">s,</span> <span class="pre">...</span> <span class="pre">⊢</span> <span class="pre">¬</span> <span class="pre">p</span></code>.</p>
-<div class="section" id="rule">
+<section id="rule">
 <h3><span class="section-number">3.12.1. </span>Rule<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>       { P assume
          ... ⊥  }
@@ -1205,8 +1177,8 @@ fact – we have <code class="docutils literal notranslate"><span class="pre">q,
 <p>The rule says that we can discuss the case when <code class="docutils literal notranslate"><span class="pre">p</span></code> holds; if a contradiction
 results, then it is impossible for <code class="docutils literal notranslate"><span class="pre">p</span></code> to ever be a fact – indeed, <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">p</span></code> is
 the fact that holds.</p>
-</div>
-<div class="section" id="id13">
+</section>
+<section id="id13">
 <h3><span class="section-number">3.12.2. </span>Examples<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p,  q → ¬ p  ⊢  ¬ q
 
@@ -1226,7 +1198,7 @@ the fact that holds.</p>
 for</em> <code class="docutils literal notranslate"><span class="pre">q</span></code> <em>to ever be proved as a fact</em>.
 (Lines 4-5 show that, if <code class="docutils literal notranslate"><span class="pre">q</span></code> ever was proved a fact, it would cause a
 contradiction/crash.)
-So, <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">q</span></code> (“<code class="docutils literal notranslate"><span class="pre">q</span></code> is impossible”) is proved, instead.</p>
+So, <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">q</span></code> (”<code class="docutils literal notranslate"><span class="pre">q</span></code> is impossible”) is proved, instead.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p ⊢ ¬ ¬ p
 
 {
@@ -1257,8 +1229,8 @@ But no one yet knows exactly what the solution is!)</p>
 </div></blockquote>
 <p>The three rules, <code class="docutils literal notranslate"><span class="pre">⊥e</span></code>, <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">i</span></code>, and <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">e</span></code>, give the meaning of
 “is impossible” to the operator, <code class="docutils literal notranslate"><span class="pre">¬</span></code>.</p>
-</div>
-<div class="section" id="id14">
+</section>
+<section id="id14">
 <h3><span class="section-number">3.12.3. </span>Tactic<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>The (***)-<code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">i</span></code> tactic says, to prove <code class="docutils literal notranslate"><span class="pre">Premises</span> <span class="pre">⊢</span> <span class="pre">¬</span> <span class="pre">p</span></code>,</p>
 <ol class="arabic simple">
@@ -1277,9 +1249,9 @@ m. ¬ p                ¬ i j
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">i</span></code>-tactic was used with good success in the previous example.</p>
-</div>
-</div>
-<div class="section" id="proof-by-contradiction">
+</section>
+</section>
+<section id="proof-by-contradiction">
 <h2><span class="section-number">3.13. </span>Proof by Contradiction<a class="headerlink" href="#proof-by-contradiction" title="Permalink to this headline">¶</a></h2>
 <p>In circuit theory, the not-gate is a “flipper” – it flips low voltage to high
 and vice versa.
@@ -1295,7 +1267,7 @@ Some concepts have no natural opposite.</p>
 <p>If we work with circuits or similar True/False or “opposite” systems, then we
 should be able to prove <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">¬</span> <span class="pre">p</span> <span class="pre">⊢</span> <span class="pre">p</span></code>.
 Here is the rule that lets us do so:</p>
-<div class="section" id="id15">
+<section id="id15">
 <h3><span class="section-number">3.13.1. </span>Rule<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        { ¬ P assume
           ... ⊥   }
@@ -1312,8 +1284,8 @@ only that</em> “<code class="docutils literal notranslate"><span class="pre">p
 from an argument that says <code class="docutils literal notranslate"><span class="pre">¬</span> <span class="pre">p</span></code> leads to an impossible situation.
 But does this mean we have “built” <code class="docutils literal notranslate"><span class="pre">p</span></code>?
 In a world where the word “not” means the “opposite of”, we have.</p>
-</div>
-<div class="section" id="id16">
+</section>
+<section id="id16">
 <h3><span class="section-number">3.13.2. </span>Examples<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>¬ ¬ p ⊢ p
 
@@ -1459,9 +1431,9 @@ contradiction, that is, a proof that <code class="docutils literal notranslate">
 This is a kind of logical “wild-goose chase”.
 But later in the chapter, we will see how computers can be made to chase after
 such geese.</p>
-</div>
-</div>
-<div class="section" id="important-equivalences">
+</section>
+</section>
+<section id="important-equivalences">
 <h2><span class="section-number">3.14. </span>Important Equivalences<a class="headerlink" href="#important-equivalences" title="Permalink to this headline">¶</a></h2>
 <p>These useful equivalences can be proved with the laws for And and Or:</p>
 <ul class="simple">
@@ -1510,8 +1482,8 @@ have these important results:
 <code class="docutils literal notranslate"><span class="pre">¬</span></code> define the structure of a Boolean lattice, and the origins of modern
 abstract algebra and logic come from George Boole’s attempt to formalize
 “what it means” to compute with <code class="docutils literal notranslate"><span class="pre">∧</span></code>, <code class="docutils literal notranslate"><span class="pre">∨</span></code>, <code class="docutils literal notranslate"><span class="pre">¬</span></code>.</p>
-</div>
-<div class="section" id="models-of-propositional-logic-soundness-and-completeness">
+</section>
+<section id="models-of-propositional-logic-soundness-and-completeness">
 <h2><span class="section-number">3.15. </span>Models of Propositional Logic: Soundness and Completeness<a class="headerlink" href="#models-of-propositional-logic-soundness-and-completeness" title="Permalink to this headline">¶</a></h2>
 <p>When we say that “<code class="docutils literal notranslate"><span class="pre">p</span></code> is a fact”, what does this mean?
 Perhaps it means “<code class="docutils literal notranslate"><span class="pre">p</span></code> is True”, or “<code class="docutils literal notranslate"><span class="pre">p</span></code> is proved”, or “our confidence in
@@ -1617,8 +1589,8 @@ can and will be expanded to work with quantifiers.</p>
 <code class="docutils literal notranslate"><span class="pre">{T,</span> <span class="pre">F}</span></code>, and mathematicians have understood this for about 200 years.
 Indeed, there are many different forms of meaning and many different forms of
 symbolic logic that deduce assertions with those meanings.</p>
-</div>
-<div class="section" id="summary-of-rules-and-tactics">
+</section>
+<section id="summary-of-rules-and-tactics">
 <h2><span class="section-number">3.16. </span>Summary of Rules and Tactics<a class="headerlink" href="#summary-of-rules-and-tactics" title="Permalink to this headline">¶</a></h2>
 <p>As a general principle, when you are proving a claim:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>s1, s2, ... ⊢ t
@@ -1778,8 +1750,8 @@ k. P                 pbc i
 It was updated in 2018 by Dr John Hatcliff and George Lavezzi <br>
 to conform with Logika syntax and more closely match <br>
 KSU's CIS 301 course as taught in Spring 2018.
-</em></small></p></div>
-</div>
+</em></small></p></section>
+</section>
 
 
     </div>

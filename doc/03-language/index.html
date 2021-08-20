@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3. The Logika Formal Input Language &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -109,7 +108,7 @@ Sireum Logika Documentation
 <big><big><big><big><b>
 3. The Logika Formal Input Language
 </b></big></big></big></big>
-</font><div class="section" id="the-logika-formal-input-language">
+</font><section id="the-logika-formal-input-language">
 <span id="language"></span><h1><span class="section-number">3. </span>The Logika Formal Input Language<a class="headerlink" href="#the-logika-formal-input-language" title="Permalink to this headline">¶</a></h1>
 <h2>Design Rationale</h2><p>There are many ways one can take when designing a language
 for introducing logics in computer science.
@@ -182,7 +181,7 @@ Scala’s <em>multi-line</em>
 <a class="reference external" href="http://docs.scala-lang.org/overviews/core/string-interpolation.html">string interpolation syntax</a> –
 more specifically, <code class="docutils literal notranslate"><span class="pre">l&quot;&quot;&quot;{</span></code> … <code class="docutils literal notranslate"><span class="pre">}&quot;&quot;&quot;</span></code>.
 Here is an example to ponder:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.sireum.logika._</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org</span><span class="p">.</span><span class="nn">sireum</span><span class="p">.</span><span class="nn">logika</span><span class="p">.</span><span class="n">_</span>
 
 <span class="n">l</span><span class="s">&quot;&quot;&quot;{ fact</span>
 <span class="s">        def sum(zs: ZS, n: Z): Z</span>
@@ -190,16 +189,16 @@ Here is an example to ponder:</p>
 <span class="s">        rec.  ∀zs: ZS</span>
 <span class="s">                ∀n: Z</span>
 <span class="s">                  sum(zs, n + 1) == sum(zs, n) + zs(n)               }&quot;&quot;&quot;</span>
-<span class="k">def</span> <span class="n">add</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">ZS</span><span class="o">)</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="o">{</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nc">ZS</span><span class="p">):</span> <span class="nc">Z</span> <span class="o">=</span> <span class="p">{</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ post  result == sum(a, a.size)                               }&quot;&quot;&quot;</span>
 
-  <span class="k">var</span> <span class="n">answer</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="kd">var</span> <span class="n">answer</span><span class="p">:</span> <span class="nc">Z</span> <span class="o">=</span> <span class="mi">0</span>
 
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == 0                                  premise</span>
 <span class="s">        2. ∀zs: ZS  sum(zs, 0) == 0                     fact base</span>
 <span class="s">        3. sum(a, 0) == 0                               ∀e 2 a</span>
 <span class="s">        4. answer == sum(a, 0)                          subst2 3 1   }&quot;&quot;&quot;</span>
-  <span class="k">var</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Z</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="kd">var</span> <span class="n">i</span><span class="p">:</span> <span class="nc">Z</span> <span class="o">=</span> <span class="mi">0</span>
 
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, 0)                          premise</span>
 <span class="s">        2. i == 0                                       premise</span>
@@ -207,7 +206,7 @@ Here is an example to ponder:</p>
 <span class="s">        4. 0 ≤ a.size                                   algebra</span>
 <span class="s">        5. i ≤ a.size                                   subst2 2 4</span>
 <span class="s">        6. 0 ≤ i                                        algebra 2    }&quot;&quot;&quot;</span>
-  <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">l</span><span class="s">&quot;&quot;&quot;{ invariant  answer == sum(a, i)</span>
 <span class="s">                     0 ≤ i</span>
 <span class="s">                     i ≤ a.size</span>
@@ -218,7 +217,7 @@ Here is an example to ponder:</p>
 <span class="s">          3. i ≤ a.size                                 premise</span>
 <span class="s">          4. i ≠ a.size                                 premise</span>
 <span class="s">          5. i &lt; a.size                                 algebra 3 4  }&quot;&quot;&quot;</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">a</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == answer_old + a(i)                premise</span>
 <span class="s">          2. answer_old == sum(a, i)                    premise</span>
 <span class="s">          3. answer == sum(a, i) + a(i)                 algebra 2 1</span>
@@ -238,13 +237,13 @@ Here is an example to ponder:</p>
 <span class="s">          5. 0 ≤ i                                      algebra 2 4</span>
 <span class="s">          6. i_old &lt; a.size                             premise</span>
 <span class="s">          7. i ≤ a.size                                 algebra 2 6  }&quot;&quot;&quot;</span>
-  <span class="o">}</span>
+  <span class="p">}</span>
   <span class="n">l</span><span class="s">&quot;&quot;&quot;{ 1. answer == sum(a, i)                          premise</span>
 <span class="s">        2. not (i ≠ a.size)                             premise</span>
 <span class="s">        3. i == a.size                                  algebra 2</span>
 <span class="s">        4. answer == sum(a, a.size)                     subst1 3 1   }&quot;&quot;&quot;</span>
   <span class="k">return</span> <span class="n">answer</span>
-<span class="o">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -360,7 +359,7 @@ before proceeding to discuss the
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
     </div>

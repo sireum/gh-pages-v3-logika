@@ -141,7 +141,7 @@ Examples from Programming Logic
 Consider the loop for finding a value in a list of integers:
 
 .. literalinclude:: \logika\09-example-10.logika
-   :liinenos:
+   :linenos:
 
 After the loop finishes, we use ``-->e`` with the invariant to ensure that we
 print the correct answer:

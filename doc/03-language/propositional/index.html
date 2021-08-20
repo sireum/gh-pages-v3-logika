@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.2. Propositional Logic &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../../_static/js/jquery-fix.js"></script>
     <script src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -143,7 +142,7 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 <big><big><big><big><b>
 3.2. Propositional Logic
 </b></big></big></big></big>
-</font><div class="section" id="propositional-logic">
+</font><section id="propositional-logic">
 <span id="propositional-language"></span><h1><span class="section-number">3.2. </span>Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h1>
 <p><strong>Propositional Logic Input Language Grammar</strong></p>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
@@ -154,17 +153,17 @@ Sireum Logika Documentation &mdash; <a href="../index.html">3. The Logika Formal
 sequent.</p>
 <p>We will show examples later, but an example input has been shown
 in the <a class="reference internal" href="../../01-getting-started/index.html#logika-examples"><span class="std std-ref">Verifying Examples using Sireum CLI</span></a> section.</p>
-<div class="section" id="sequent">
+<section id="sequent">
 <h2><span class="section-number">3.2.1. </span>Sequent<a class="headerlink" href="#sequent" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
 <span class="w">              </span><span class="nv">claimList</span><span class="w">                </span><span class="c">// conclusions</span><span class="w"></span>
 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
 <span class="w">              </span><span class="no">HLINE</span><span class="w">                    </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
 <span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                   </span><span class="c">// conclusions</span><span class="w"></span>
 
-<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 </pre></div>
 </div>
 <p>A sequent consists of premises (optional) and
@@ -186,25 +185,25 @@ notation is as follows.</p>
 </pre></div>
 </div>
 <p>Either way to express yourself is fine.</p>
-</div>
-<div class="section" id="proof">
+</section>
+<section id="proof">
 <h2><span class="section-number">3.2.2. </span>Proof<a class="headerlink" href="#proof" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;}&#39;</span><span class="w"></span>
 
 <span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
 
-<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">        </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">        </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
 
-<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">                   </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w">                   </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">assumeStep</span><span class="w">               </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">               </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;}&#39;</span><span class="w"></span>
 
-<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;assume&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>A proof consists of a sequence of proof steps delimited by curly braces
@@ -248,8 +247,8 @@ should be separated by newline(s).</p>
 <p>Steps <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">7</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">11</span></code>, and <code class="docutils literal notranslate"><span class="pre">12</span></code> are regular proof steps;
 steps <code class="docutils literal notranslate"><span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">6</span></code>, and <code class="docutils literal notranslate"><span class="pre">9</span></code> are assumptions; and <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">5</span></code>, and <code class="docutils literal notranslate"><span class="pre">8</span></code> are
 sub-proofs, where <code class="docutils literal notranslate"><span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">8</span></code> are nested inside <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
-</div>
-<div class="section" id="proof-scoping-rules">
+</section>
+<section id="proof-scoping-rules">
 <span id="scoping"></span><h2><span class="section-number">3.2.3. </span>Proof Scoping Rules<a class="headerlink" href="#proof-scoping-rules" title="Permalink to this headline">¶</a></h2>
 <p>When applying an <a class="reference internal" href="#prop-rules"><span class="std std-ref">inference rule</span></a> to justify a proof step,
 one can refer to proof step numbers preceeding it
@@ -263,8 +262,8 @@ As a non-example, step <code class="docutils literal notranslate"><span class="p
 in various programming languages such as Scala or Java, where
 (with the exception that, again, each proof step number is unique throughout
 the whole proof, for clarity sake).</p>
-</div>
-<div class="section" id="proof-schematic-pattern">
+</section>
+<section id="proof-schematic-pattern">
 <span id="schematic-pattern"></span><h2><span class="section-number">3.2.4. </span>Proof Schematic Pattern<a class="headerlink" href="#proof-schematic-pattern" title="Permalink to this headline">¶</a></h2>
 <p>The discussion on <a class="reference internal" href="#prop-rules"><span class="std std-ref">justification and inference rules</span></a>
 uses the following schematic pattern rule and notation.</p>
@@ -296,17 +295,17 @@ Z. R    I X
 </div>
 <p>In this case, <code class="docutils literal notranslate"><span class="pre">X1</span></code> and <code class="docutils literal notranslate"><span class="pre">XK</span></code> have to be in same level and they indicate a prefix sequence of
 proof steps immediately inside <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
-</div>
-<div class="section" id="claim-expression">
+</section>
+<section id="claim-expression">
 <span id="prop-claim"></span><h2><span class="section-number">3.2.5. </span>Claim Expression<a class="headerlink" href="#claim-expression" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
+<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                         </span><span class="c">// identifier</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">              </span><span class="c">// parenthesized claim expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">                  </span><span class="c">// negation, can also use &#39;not&#39;, &#39;neg&#39;, &#39;&#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;    (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;∧&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// conjunction/and, can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;     (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;∨&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// disjunction/or, can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;       (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;(&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;)&#39;</span><span class="w">              </span><span class="c">// parenthesized claim expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">                  </span><span class="c">// negation, can also use &#39;not&#39;, &#39;neg&#39;, &#39;&#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;    (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;∧&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// conjunction/and, can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;     (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;∨&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// disjunction/or, can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;       (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The claim boolean expression language in propositional logic is rather small; it
@@ -317,7 +316,7 @@ they are listed in decreasing order of precedence (i.e., first is highest) that
 is inline with the precedence ordering specified in the <a class="reference internal" href="../basic/index.html#ops-literals"><span class="std std-ref">Operators and Literals</span></a> section.
 Note that variables do not need to be explicitly declared nor typed (they are booleans)
 in the propositional input language.</p>
-<div class="section" id="newlines-in-expression">
+<section id="newlines-in-expression">
 <h3><span class="section-number">3.2.5.1. </span>Newlines in Expression<a class="headerlink" href="#newlines-in-expression" title="Permalink to this headline">¶</a></h3>
 <p>One newline separator can be inserted after a binary expression operator.
 For example, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">∧</span> <span class="pre">Q</span></code> is the same as:</p>
@@ -344,8 +343,8 @@ That is:</p>
 <p>These rules follow
 <a class="reference external" href="http://www.scala-lang.org/files/archive/spec/2.11/01-lexical-syntax.html">Scala’s line-orientation</a>
 (follow the link to see more examples).</p>
-</div>
-<div class="section" id="expression-equivalence">
+</section>
+<section id="expression-equivalence">
 <span id="structural-eq"></span><h3><span class="section-number">3.2.5.2. </span>Expression Equivalence (<code class="docutils literal notranslate"><span class="pre">≡</span></code>)<a class="headerlink" href="#expression-equivalence" title="Permalink to this headline">¶</a></h3>
 <p>Logika’s propositional logic reasoning mainly uses structural equivalence
 (<code class="docutils literal notranslate"><span class="pre">≡</span></code>) that determines equality of two expressions <code class="docutils literal notranslate"><span class="pre">E1</span></code> and <code class="docutils literal notranslate"><span class="pre">E2</span></code>
@@ -355,23 +354,23 @@ equivalent to the expression it contains;
 it is only used as a means to override operator precedences.
 In other words, for any Logika expression <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span> <span class="pre">≡</span> <span class="pre">(E)</span></code>.
 This equivalence holds even for programming logic expressions.</p>
-</div>
-</div>
-<div class="section" id="justification-and-inference-rules">
+</section>
+</section>
+<section id="justification-and-inference-rules">
 <span id="prop-rules"></span><h2><span class="section-number">3.2.6. </span>Justification and Inference Rules<a class="headerlink" href="#justification-and-inference-rules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
+<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;premise&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Each regular proof step should justify the deduction that it makes
@@ -382,9 +381,9 @@ natural deduction rules that are intuitively described in
 <p>The subsequent discussion for each inference rules assumes that
 it is being applied at a regular proof step numbered <code class="docutils literal notranslate"><span class="pre">Z</span></code>
 and whose claim expression that it deduces is <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
-<div class="section" id="premise">
+<section id="premise">
 <h3><span class="section-number">3.2.6.1. </span>Premise<a class="headerlink" href="#premise" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
+<div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;premise&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">premise</span></code> justification can be used to call on one of the
@@ -412,11 +411,11 @@ For example, here is the shortest sequent proof in Logika.</p>
 There is no premise in the sequent needed to
 justify for <code class="docutils literal notranslate"><span class="pre">⊤</span></code>; one can always depend on <code class="docutils literal notranslate"><span class="pre">⊤</span></code> to be true
 to its true self.</p>
-</div>
-<div class="section" id="and-introduction-i">
+</section>
+<section id="and-introduction-i">
 <h3><span class="section-number">3.2.6.2. </span>And-Introduction (∧i)<a class="headerlink" href="#and-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The ∧i rule requires two arguments, which are regular proof step
@@ -468,13 +467,13 @@ Hence, the subsequent is without examples and
 only discusses new concepts and Logika nuances that enhance
 the natural deduction rules described
 in <a class="reference internal" href="../../../dschmidt/03-propositional-logic/index.html#propositional-logic"><span class="std std-ref">Propositional Logic</span></a>.</p>
-</div>
-<div class="section" id="and-eliminations-e1-e2">
+</section>
+<section id="and-eliminations-e1-e2">
 <h3><span class="section-number">3.2.6.3. </span>And-Eliminations (∧e1, ∧e2)<a class="headerlink" href="#and-eliminations-e1-e2" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="and-elimination1-e1">
+<section id="and-elimination1-e1">
 <h4>And-Elimination1 (∧e1)<a class="headerlink" href="#and-elimination1-e1" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="and-elim1-pattern">
@@ -484,11 +483,11 @@ Z.  R          ∧e1 X
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="and-elimination2-e2">
+</section>
+<section id="and-elimination2-e2">
 <h4>And-Elimination2 (∧e2)<a class="headerlink" href="#and-elimination2-e2" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="and-elim2-pattern">
@@ -498,14 +497,14 @@ Z.  R          ∧e2 X
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="or-introductions-i1-i2">
+</section>
+</section>
+<section id="or-introductions-i1-i2">
 <h3><span class="section-number">3.2.6.4. </span>Or-Introductions (∨i1, ∨i2)<a class="headerlink" href="#or-introductions-i1-i2" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="or-introduction1-i1">
+<section id="or-introduction1-i1">
 <h4>Or-Introduction1 (∨i1)<a class="headerlink" href="#or-introduction1-i1" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="or-intro1-pattern">
@@ -515,11 +514,11 @@ Z.  P ∨ Q      ∨i1 X       // R ≡ P ∨ Q
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="or-introduction1-i2">
+</section>
+<section id="or-introduction1-i2">
 <h4>Or-Introduction1 (∨i2)<a class="headerlink" href="#or-introduction1-i2" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="or-intro2-pattern">
@@ -529,12 +528,12 @@ Z.  P ∨ Q      ∨i2 X       // R ≡ P ∨ Q
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="or-elimination-e">
+</section>
+</section>
+<section id="or-elimination-e">
 <span id="or-elim"></span><h3><span class="section-number">3.2.6.5. </span>Or-Elimination (∨e)<a class="headerlink" href="#or-elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The ∨e justification requires two sub-proofs as its second
@@ -597,11 +596,11 @@ introduces a disjunction!</p>
 <code class="docutils literal notranslate"><span class="pre">Y21</span> <span class="pre">≡</span> <span class="pre">Y2K</span></code> (thus, <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">≡</span> <span class="pre">R2</span></code>),
 because then <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">≡</span> <span class="pre">P</span> <span class="pre">∨</span> <span class="pre">Q</span></code>, which is <code class="docutils literal notranslate"><span class="pre">X</span></code>’s claim
 (however, it is still a valid deduction).</p>
-</div>
-<div class="section" id="implication-introduction-i">
+</section>
+<section id="implication-introduction-i">
 <h3><span class="section-number">3.2.6.6. </span>Implication-Introduction (→i)<a class="headerlink" href="#implication-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="imply-intro-pattern">
@@ -616,11 +615,11 @@ Z.  P → Q      →i X        // R ≡ P → Q
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="implication-elimination-e">
+</section>
+<section id="implication-elimination-e">
 <h3><span class="section-number">3.2.6.7. </span>Implication-Elimination (→e)<a class="headerlink" href="#implication-elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="imply-elim-pattern">
@@ -631,11 +630,11 @@ Z.  R          →e X Y
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="negation-introduction-i">
+</section>
+<section id="negation-introduction-i">
 <h3><span class="section-number">3.2.6.8. </span>Negation-Introduction (¬i)<a class="headerlink" href="#negation-introduction-i" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="neg-intro-pattern">
@@ -650,11 +649,11 @@ Z.  ¬P         ¬i X        // R ≡ ¬P
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="negation-elimination-e">
+</section>
+<section id="negation-elimination-e">
 <h3><span class="section-number">3.2.6.9. </span>Negation-Elimination (¬e)<a class="headerlink" href="#negation-elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="neg-elim-pattern">
@@ -665,11 +664,11 @@ Z.  ⊥          ¬e X Y      // R ≡ ⊥
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="elimination-e">
+</section>
+<section id="elimination-e">
 <span id="bottom-elim"></span><h3><span class="section-number">3.2.6.10. </span>⊥-Elimination  (⊥e)<a class="headerlink" href="#elimination-e" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="bottom-elim-pattern">
@@ -679,11 +678,11 @@ Z.  R          ⊥e X        // R  can be anything
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="proof-by-contradiction-pbc">
+</section>
+<section id="proof-by-contradiction-pbc">
 <h3><span class="section-number">3.2.6.11. </span>Proof-by-Contradiction (pbc)<a class="headerlink" href="#proof-by-contradiction-pbc" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="c">// …</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="pbc-elim-pattern">
@@ -698,65 +697,65 @@ Z.  R          pbc
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="propositional-logic-input-language-grammar">
+</section>
+</section>
+<section id="propositional-logic-input-language-grammar">
 <span id="prop-grammar"></span><h2><span class="section-number">3.2.7. </span>Propositional Logic Input Language Grammar<a class="headerlink" href="#propositional-logic-input-language-grammar" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-antlr notranslate"><div class="highlight"><pre><span></span><span class="nl">propositional</span><span class="p">:</span><span class="w"> </span><span class="nv">sequent</span><span class="w"> </span><span class="nv">proof</span><span class="w">           </span><span class="c">// newlines are treated as whitespaces until start of proof</span><span class="w"></span>
 
 <span class="nv">sequent</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nv">claimList</span><span class="o">?</span><span class="w">               </span><span class="c">// premises</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;⊢&#39;</span><span class="w">                      </span><span class="c">// turnstile (&quot;turn-the-style&quot;), can also use &#39;|-&#39; for &#39;⊢&#39;</span><span class="w"></span>
 <span class="w">              </span><span class="nv">claimList</span><span class="w">                </span><span class="c">// conclusions</span><span class="w"></span>
 
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="o">*</span><span class="w">                   </span><span class="c">// premises</span><span class="w"></span>
 <span class="w">              </span><span class="no">HLINE</span><span class="w">                    </span><span class="c">// HLINE is three or more dashes &#39;-&#39;</span><span class="w"></span>
 <span class="w">              </span><span class="nv">claim</span><span class="o">+</span><span class="w">                   </span><span class="c">// conclusions</span><span class="w"></span>
 
-<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
+<span class="nv">claimList</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="o">)*</span><span class="w"></span>
 
-<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="nv">proof</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">+</span><span class="w">             </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;}&#39;</span><span class="w"></span>
 
 <span class="nv">proofStep</span><span class="w">   </span><span class="p">:</span><span class="w"> </span><span class="nv">regularStep</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">subProof</span><span class="w"></span>
 
-<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">        </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+<span class="nv">regularStep</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="nv">just</span><span class="w">        </span><span class="c">// rNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
 
-<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w">                   </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;{&#39;</span><span class="w"></span>
+<span class="nv">subProof</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w">                   </span><span class="c">// sNUM is NUM, distinguished for readability of just arguments later</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;{&#39;</span><span class="w"></span>
 <span class="w">                </span><span class="nv">assumeStep</span><span class="w">               </span><span class="c">// separated by newline(s)</span><span class="w"></span>
 <span class="w">                </span><span class="nv">proofStep</span><span class="o">*</span><span class="w">               </span><span class="c">// separated by newline(s)</span><span class="w"></span>
-<span class="w">              </span><span class="s">&#39;}&#39;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;}&#39;</span><span class="w"></span>
 
-<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;assume&#39;</span><span class="w"></span>
+<span class="nv">assumeStep</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nv">rNUM</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;assume&#39;</span><span class="w"></span>
 
-<span class="nv">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
+<span class="nv">claim</span><span class="w">       </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;⊤&#39;</span><span class="w">                        </span><span class="c">// true literal, can also use &#39;T&#39; or &#39;true&#39; for &#39;⊤&#39;            (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;⊥&#39;</span><span class="w">                        </span><span class="c">// false literal, can also use &#39;F&#39;, &#39;false&#39;, or &#39;_|_&#39; for &#39;⊥&#39;  (also apply in just)</span><span class="w"></span>
 <span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">                         </span><span class="c">// identifier</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;(&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;)&#39;</span><span class="w">              </span><span class="c">// parenthesized claim expression</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">                  </span><span class="c">// negation, can also use &#39;not&#39;, &#39;neg&#39;, &#39;&#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;    (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;∧&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// conjunction/and, can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;     (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;∨&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// disjunction/or, can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;       (also apply in just)</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;(&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;)&#39;</span><span class="w">              </span><span class="c">// parenthesized claim expression</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">                  </span><span class="c">// negation, can also use &#39;not&#39;, &#39;neg&#39;, &#39;&#39;!&#39;, or &#39;~&#39; for &#39;¬&#39;    (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;∧&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// conjunction/and, can also use &#39;&amp;&#39;, &#39;and&#39;, or &#39;^&#39; for &#39;∧&#39;     (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;∨&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// disjunction/or, can also use &#39;|&#39;, &#39;or&#39;, or &#39;V&#39; for &#39;∨&#39;       (also apply in just)</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="nv">claim</span><span class="w"> </span><span class="s1">&#39;→&#39;</span><span class="w"> </span><span class="nv">claim</span><span class="w">            </span><span class="c">// implication, can also use &#39;-&gt;&#39; or &#39;implies&#39; for &#39;→&#39;          (also apply in just)</span><span class="w"></span>
 
-<span class="nv">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;premise&#39;</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
-<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
+<span class="nv">just</span><span class="w">        </span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;premise&#39;</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧i&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// And-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∧e2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// And-Elimination2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i1&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction1</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨i2&#39;</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// Or-Introduction2</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;∨e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">       </span><span class="c">// Or-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Implication-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;→e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Implication-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬i&#39;</span><span class="w">  </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Negation-Introduction</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;¬e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w"> </span><span class="nv">rNUM</span><span class="w">            </span><span class="c">// Negation-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;⊥e&#39;</span><span class="w">  </span><span class="nv">rNUM</span><span class="w">                 </span><span class="c">// ⊥-Elimination</span><span class="w"></span>
+<span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;pbc&#39;</span><span class="w"> </span><span class="nv">sNUM</span><span class="w">                 </span><span class="c">// Proof-by-Contradiction</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
     </div>

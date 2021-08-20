@@ -4,17 +4,16 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1. Getting Started &#8212; Sireum Logika</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sireum.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full"></script>
     <script src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../../_static/js/jquery-fix.js"></script>
     <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -182,20 +181,20 @@ Sireum Logika Documentation
 <big><big><big><big><b>
 1. Getting Started
 </b></big></big></big></big>
-</font><div class="section" id="getting-started">
+</font><section id="getting-started">
 <span id="id1"></span><h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Logika runs on x64 macOS, Linux, and Windows operating systems
 (tested on macOS 10.12 &amp; 10.13, KDE neon, Ubuntu 17.10, and Windows 10).</p>
 <p>There two ways one can install Logika: <a class="reference internal" href="#using-binary"><span class="std std-ref">Using Sireum v3 Binary Distribution</span></a> or
 <a class="reference internal" href="#using-source"><span class="std std-ref">Using Sireum v3 Source Distribution</span></a>.</p>
-<div class="section" id="using-sireum-v3-binary-distribution">
+<section id="using-sireum-v3-binary-distribution">
 <span id="using-binary"></span><h2><span class="section-number">1.1. </span>Using Sireum v3 Binary Distribution<a class="headerlink" href="#using-sireum-v3-binary-distribution" title="Permalink to this headline">¶</a></h2>
 <hr/>
 <center>
-<p>Video Tutorials: (1) <a href="http://files.sireum.org/media/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a>, and
-(2) <a href="http://files.sireum.org/media/sireum-ive-examples.mp4">Verifying Logika Examples using Sireum IVE</a></p>
+<p>Video Tutorials: (1) <a href="https://github.com/sireum/releases/releases/download/v3/sireum-ive-win64.mp4">Installing Sireum IVE in Windows</a>, and
+(2) <a href="https://github.com/sireum/releases/releases/download/v3/sireum-ive-examples.mp4">Verifying Logika Examples using Sireum IVE</a></p>
 </center>
-<hr/><div class="section" id="installation">
+<hr/><section id="installation">
 <span id="binary-installing-running"></span><h3><span class="section-number">1.1.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <p>There are two kinds of Sireum v3 binary distributions:
 (1) Sireum Integrated Verification Environment (IVE), and
@@ -226,13 +225,13 @@ experimental features.</p>
          <div class="tab-pane" id="birm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nv">sim</span><span class="o">=</span>sireum-v3-ive-mac64.dmg <span class="o">&amp;&amp;</span> rm -f <span class="nv">$sim</span> <span class="o">&amp;&amp;</span> curl -c /dev/null -JLo <span class="nv">$sim</span> http://bit.ly/sv3ivem <span class="o">&amp;&amp;</span> open <span class="nv">$sim</span><span class="o">)</span>
+   <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nv">sim</span><span class="o">=</span>sireum-v3-ive-mac64.dmg <span class="o">&amp;&amp;</span> rm -f <span class="nv">$sim</span> <span class="o">&amp;&amp;</span> curl -c /dev/null -JLo <span class="nv">$sim</span> https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg <span class="o">&amp;&amp;</span> open <span class="nv">$sim</span><span class="o">)</span>
 </pre></div>
 </div>
    </td>
    <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim http://bit.ly/sv3ivem && open $sim)">
+     <button id="copyMacRelease" data-clipboard-text="(sim=sireum-v3-ive-mac64.dmg && rm -f $sim && curl -c /dev/null -JLo $sim https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg && open $sim)">
        <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
@@ -250,17 +249,17 @@ you need to remove Apple’s quarantine extended attribute on the .dmg file befo
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/Applications/Sireum.app/Contents/Resources/sireum-v3</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal notranslate"><span class="pre">Sireum</span></code> inside <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">/Applications/Sireum.app</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivems">http://bit.ly/sv3ivems</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-mac64.dmg.minisig</a></p>
 </div>
-<div class="tab-pane" id="birl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3ivel">http://bit.ly/sv3ivel</a></p>
+<div class="tab-pane" id="birl"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip">https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/Sireum</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/Sireum</span></code>).</p>
 <p>To run Sireum IVE in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/idea</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivels">http://bit.ly/sv3ivels</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-linux64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="birw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3ivew">http://bit.ly/sv3ivew</a></p>
+<div class="tab-pane" id="birw"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip">https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip</a></p>
 <p>Uncompress it to the <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal notranslate"><span class="pre">C:\</span></code>) so the file <code class="docutils literal notranslate"><span class="pre">C:\Sireum\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">C:\Sireum</span></code>.</p>
 <p>To run Sireum IVE:</p>
@@ -277,27 +276,27 @@ to use that, add <code class="docutils literal notranslate"><span class="pre">SI
 <li><p>in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\idea.bat</span></code> or <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\idea64.bat</span></code>.</p></li>
 </ul>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\sireum.bat</span></code></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3ivews">http://bit.ly/sv3ivews</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-ive-win64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcrm"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3clim">http://bit.ly/sv3clim</a></p>
+<div class="tab-pane" id="bcrm"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip">https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3clims">http://bit.ly/sv3clims</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-mac64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcrl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3clil">http://bit.ly/sv3clil</a></p>
+<div class="tab-pane" id="bcrl"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip">https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/sireum-v3</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/sireum-v3</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3clils">http://bit.ly/sv3clils</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-linux64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcrw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3cliw">http://bit.ly/sv3cliw</a></p>
+<div class="tab-pane" id="bcrw"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip">https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip</a></p>
 <p>Uncompress it to the <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal notranslate"><span class="pre">C:\</span></code>) so the file <code class="docutils literal notranslate"><span class="pre">C:\sireum-v3\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">C:\sireum-v3</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3cliws">http://bit.ly/sv3cliws</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip.minisig">https://github.com/sireum/releases/releases/download/v3/sireum-v3-win64.zip.minisig</a></p>
       </div>
     </div>
   </div>
@@ -316,13 +315,13 @@ to use that, add <code class="docutils literal notranslate"><span class="pre">SI
       <div class="tab-pane active" id="bidm"><p></p><hr/><p>Execute the following in a bash terminal:</p>
 <table width="100%" >
   <tr>
-   <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nv">sdim</span><span class="o">=</span>sireum-v3-dev-ive-mac64.dmg <span class="o">&amp;&amp;</span> rm -f <span class="nv">$sdim</span> <span class="o">&amp;&amp;</span> curl -c /dev/null -JLo <span class="nv">$sdim</span> http://bit.ly/sv3divem <span class="o">&amp;&amp;</span> open <span class="nv">$sdim</span><span class="o">)</span>
+   <td><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nv">sdim</span><span class="o">=</span>sireum-v3-dev-ive-mac64.dmg <span class="o">&amp;&amp;</span> rm -f <span class="nv">$sdim</span> <span class="o">&amp;&amp;</span> curl -c /dev/null -JLo <span class="nv">$sdim</span> https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg <span class="o">&amp;&amp;</span> open <span class="nv">$sdim</span><span class="o">)</span>
 </pre></div>
 </div>
    </td>
    <td style="vertical-align: text-top;">
      &nbsp;&nbsp;
-     <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim http://bit.ly/sv3divem && open $sdim)">
+     <button id="copyMacDevelopment" data-clipboard-text="(sdim=sireum-v3-dev-ive-mac64.dmg && rm -f $sdim && curl -c /dev/null -JLo $sdim https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg && open $sdim)">
        <img height="20" src="../../_static/clippy.svg" alt="Copy to clipboard"/>
      </button>
    </td>
@@ -340,17 +339,17 @@ you need to remove Apple’s quarantine extended attribute on the .dmg file befo
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/Applications/Sireum-dev.app/Contents/Resources/sireum-v3-dev</span></code>.</p>
 <p>To run Sireum IVE, double-click <code class="docutils literal notranslate"><span class="pre">Sireum-dev</span></code> inside <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> (or, in a terminal: <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">/Applications/Sireum-dev.app</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divems">http://bit.ly/sv3divems</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-mac64.dmg.minisig</a></p>
 </div>
-<div class="tab-pane" id="bidl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3divel">http://bit.ly/sv3divel</a></p>
+<div class="tab-pane" id="bidl"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/Sireum-dev</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/Sireum-dev</span></code>).</p>
 <p>To run Sireum IVE in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/idea</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divels">http://bit.ly/sv3divels</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-linux64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bidw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3divew">http://bit.ly/sv3divew</a></p>
+<div class="tab-pane" id="bidw"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip</a></p>
 <p>Uncompress it to the <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal notranslate"><span class="pre">C:\</span></code>) so the file <code class="docutils literal notranslate"><span class="pre">C:\Sireum-dev\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">C:\Sireum-dev</span></code>.</p>
 <p>To run Sireum IVE:</p>
@@ -367,27 +366,27 @@ to use that, add <code class="docutils literal notranslate"><span class="pre">SI
 <li><p>in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\idea.bat</span></code> or <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\idea64.bat</span></code>.</p></li>
 </ul>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\sireum.bat</span></code></p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3divews">http://bit.ly/sv3divews</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-ive-win64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcdm"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dclim">http://bit.ly/sv3dclim</a></p>
+<div class="tab-pane" id="bcdm"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/sireum-v3-dev</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/sireum-v3-dev</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dclims">http://bit.ly/sv3dclims</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-mac64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcdl"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dclil">http://bit.ly/sv3dclil</a></p>
+<div class="tab-pane" id="bcdl"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip</a></p>
 <p>Uncompress it in a folder whose path does not contain a whitespace such as <code class="docutils literal notranslate"><span class="pre">/opt</span></code>
 (or <code class="docutils literal notranslate"><span class="pre">~/Applications</span></code>, if your home directory path does not contain a whitespace).</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">/opt/sireum-v3-dev</span></code> (or <code class="docutils literal notranslate"><span class="pre">~/Applications/sireum-v3-dev</span></code>).</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME/sireum</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dclils">http://bit.ly/sv3dclils</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-linux64.zip.minisig</a></p>
 </div>
-<div class="tab-pane" id="bcdw"><p></p><hr/><p>Download from: <a class="reference external" href="http://bit.ly/sv3dcliw">http://bit.ly/sv3dcliw</a></p>
+<div class="tab-pane" id="bcdw"><p></p><hr/><p>Download from: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip</a></p>
 <p>Uncompress it to the <code class="docutils literal notranslate"><span class="pre">C:</span></code> drive root directory (i.e., <code class="docutils literal notranslate"><span class="pre">C:\</span></code>) so the file <code class="docutils literal notranslate"><span class="pre">C:\sireum-v3-dev\sireum.bat</span></code> is present.</p>
 <p>For subsequent instructions, replace <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME</span></code> with <code class="docutils literal notranslate"><span class="pre">C:\sireum-v3-dev</span></code>.</p>
 <p>To run Sireum CLI in a terminal: <code class="docutils literal notranslate"><span class="pre">SIREUM_HOME\sireum.bat</span></code>.</p>
-<p>Minisign: <a class="reference external" href="http://bit.ly/sv3dcliws">http://bit.ly/sv3dcliws</a></p>
+<p>Minisign: <a class="reference external" href="https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip.minisig">https://github.com/sireum/releases/releases/download/v3-dev/sireum-v3-dev-win64.zip.minisig</a></p>
         </div>
       </div>
     </div>
@@ -428,9 +427,9 @@ if (navigator.appVersion.indexOf("Win")!=-1) {
   addClass(document.getElementById('birw'), 'active');
 }
 </script></div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="running-logika-using-sireum-cli">
+<section id="running-logika-using-sireum-cli">
 <h3><span class="section-number">1.1.2. </span>Running Logika using Sireum CLI<a class="headerlink" href="#running-logika-using-sireum-cli" title="Permalink to this headline">¶</a></h3>
 <p>To run Logika:</p>
 <ul>
@@ -483,21 +482,21 @@ the Logika command above.</p>
 <p>In addition, replace <code class="docutils literal notranslate"><span class="pre">/</span></code> with <code class="docutils literal notranslate"><span class="pre">\</span></code> when entering paths in
 a Windows shell/command prompt.</p>
 </div>
-</div>
-<div class="section" id="updating-logika">
+</section>
+<section id="updating-logika">
 <h3><span class="section-number">1.1.3. </span>Updating Logika<a class="headerlink" href="#updating-logika" title="Permalink to this headline">¶</a></h3>
 <p>To update Logika, simply re-download/install/replace according to the
 above instructions.</p>
 <p>Next, see <a class="reference internal" href="#logika-examples"><span class="std std-ref">Verifying Examples using Sireum CLI</span></a>.</p>
-</div>
-</div>
-<div class="section" id="using-sireum-v3-source-distribution">
+</section>
+</section>
+<section id="using-sireum-v3-source-distribution">
 <span id="using-source"></span><h2><span class="section-number">1.2. </span>Using Sireum v3 Source Distribution<a class="headerlink" href="#using-sireum-v3-source-distribution" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="prerequisites">
+<section id="prerequisites">
 <h3><span class="section-number">1.2.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <p>On all systems, the following tools are required:
 <a class="reference external" href="https://git-scm.com">git</a>, <code class="docutils literal notranslate"><span class="pre">bash</span></code>, <code class="docutils literal notranslate"><span class="pre">unzip</span></code>, <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
-<div class="section" id="macos">
+<section id="macos">
 <h4><span class="section-number">1.2.1.1. </span>macOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h4>
 <p>On macOS, you can install <code class="docutils literal notranslate"><span class="pre">wget</span></code> using:</p>
 <ul>
@@ -506,13 +505,13 @@ above instructions.</p>
 </li>
 <li><p><a class="reference external" href="http://brew.sh">Homebrew</a>: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">wget</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="linux">
+</section>
+<section id="linux">
 <h4><span class="section-number">1.2.1.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h4>
 <p>These tools are available on most Linux distributions either by default or
 through the distribution package manager.</p>
-</div>
-<div class="section" id="windows">
+</section>
+<section id="windows">
 <h4><span class="section-number">1.2.1.3. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
 <p>On Windows, it is best to install <a class="reference external" href="https://msys2.github.io">MSYS2</a> (64-bit)
 and use its MSYS2 <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell to install the above tools.
@@ -520,9 +519,9 @@ First, open MSYS2 <code class="docutils literal notranslate"><span class="pre">b
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman -S git unzip wget
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="installing-and-running-logika">
+</section>
+</section>
+<section id="installing-and-running-logika">
 <span id="source-installing-running"></span><h3><span class="section-number">1.2.2. </span>Installing and Running Logika<a class="headerlink" href="#installing-and-running-logika" title="Permalink to this headline">¶</a></h3>
 <p>To install Logika, enter the following commands under <code class="docutils literal notranslate"><span class="pre">bash</span></code>
 (<em>in a directory whose path does not contain whitespaces</em>):</p>
@@ -579,8 +578,8 @@ Symbol Conversion Options:
 <p>For the remainder of this document, we use <code class="docutils literal notranslate"><span class="pre">LOGIKA</span></code> as a shorthand for
 <code class="docutils literal notranslate"><span class="pre">sireum-v3/sireum</span> <span class="pre">logika</span></code>.</p>
 </div>
-</div>
-<div class="section" id="source-update">
+</section>
+<section id="source-update">
 <span id="id2"></span><h3><span class="section-number">1.2.3. </span>Updating Logika<a class="headerlink" href="#source-update" title="Permalink to this headline">¶</a></h3>
 <p>To get updates, simply do a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--recurse-submodules</span></code> inside <code class="docutils literal notranslate"><span class="pre">sireum-v3</span></code> and run Logika again:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> sireum-v3
@@ -588,9 +587,9 @@ git pull --recurse-submodules
 LOGIKA
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="verifying-examples-using-sireum-cli">
+</section>
+</section>
+<section id="verifying-examples-using-sireum-cli">
 <span id="logika-examples"></span><h2><span class="section-number">1.3. </span>Verifying Examples using Sireum CLI<a class="headerlink" href="#verifying-examples-using-sireum-cli" title="Permalink to this headline">¶</a></h2>
 <p>Some Logika examples are available at <a class="reference external" href="https://github.com/sireum/v3-logika-examples">https://github.com/sireum/v3-logika-examples</a></p>
 <p>There are two ways to retrieve the examples:</p>
@@ -658,12 +657,12 @@ p ∨ q, r  ⊢  (p ∧ r) ∨ (q ∧ r)
 </pre></div>
 </div>
 <p>For a better experience, consider using the Sireum IVE’s <a class="reference internal" href="../02-live/index.html#live"><span class="std std-ref">IntelliJ-based Logika Integrated Verification Environment (LIVE)</span></a>.</p>
-</div>
-<div class="section" id="logika-command-line-configuration">
+</section>
+<section id="logika-command-line-configuration">
 <span id="cli-configuration"></span><h2><span class="section-number">1.4. </span>Logika Command-Line Configuration<a class="headerlink" href="#logika-command-line-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Logika automatically detects which logic input it is being asked to check;
 thus, there is no configuration switch needed for it.</p>
-<div class="section" id="auto-mode">
+<section id="auto-mode">
 <span id="id3"></span><h3><span class="section-number">1.4.1. </span>Auto Mode<a class="headerlink" href="#auto-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--auto</span></code>.</p>
 <p>The auto mode enables claim justifications using the
@@ -689,8 +688,8 @@ If auto is enabled, proof statements also
 propagate their premises along with their proven claims.
 For more information with examples, please refer to the
 <a class="reference internal" href="../03-language/programming/index.html#prog-proof"><span class="std std-ref">proof statement</span></a> section.</p>
-</div>
-<div class="section" id="formula">
+</section>
+<section id="formula">
 <h3><span class="section-number">1.4.2. </span>Formula<a class="headerlink" href="#formula" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--formula</span></code>, followed by the formula or sequent string to check.</p>
 <p>The formula option is use to provide the formula
@@ -698,8 +697,8 @@ For more information with examples, please refer to the
 that a file should provide a truth table or a proof for.
 This provides a redundancy check at the command-line level to
 ensure some sort of consistency.</p>
-</div>
-<div class="section" id="last-mode">
+</section>
+<section id="last-mode">
 <h3><span class="section-number">1.4.3. </span>Last Mode<a class="headerlink" href="#last-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option:</strong> <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--last</span></code>.</p>
 <p>Logika supports checking multiple files at the same time.</p>
@@ -712,8 +711,8 @@ last specified file (note that it still, for example,
 type checks all the files).
 This is handy for proof management by separating a program
 of a system into multiple files.</p>
-</div>
-<div class="section" id="timeout">
+</section>
+<section id="timeout">
 <span id="id4"></span><h3><span class="section-number">1.4.4. </span>Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">-t</span></code> or <code class="docutils literal notranslate"><span class="pre">--timeout</span></code>, followed by the timeout integer (non-positive means unbounded).</p>
 <p>Logika uses the Z3 theorem prover to automatically prove
@@ -721,16 +720,16 @@ some formulae (e.g., arithmetic).
 In some cases, Z3 might take a long time, thus,
 the timeout option specifies how long Z3 can spend to
 prove a claim.</p>
-</div>
-<div class="section" id="satisfiability-checking-mode">
+</section>
+<section id="satisfiability-checking-mode">
 <span id="check-sat"></span><h3><span class="section-number">1.4.5. </span>Satisfiability Checking Mode<a class="headerlink" href="#satisfiability-checking-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">--sat</span></code></p>
 <p>If enabled, Logika will check the satisfiability of
 contracts and facts (axioms) to ensure that
 the system is implementable (or not broken by
 assuming untrue facts).</p>
-</div>
-<div class="section" id="symbolic-execution-mode">
+</section>
+<section id="symbolic-execution-mode">
 <span id="symexe"></span><h3><span class="section-number">1.4.6. </span>Symbolic Execution Mode<a class="headerlink" href="#symbolic-execution-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">-x</span></code> or <code class="docutils literal notranslate"><span class="pre">--symexe</span></code>.</p>
 <p>This mode enables a more automated verification technique called
@@ -739,8 +738,8 @@ it requires loop invariants).
 Many program contracts can be proved using symbolic execution;
 manual proof steps can be provided in cases where the contracts
 cannot be proved automatically.</p>
-</div>
-<div class="section" id="integer-bit-width">
+</section>
+<section id="integer-bit-width">
 <span id="bitwidth"></span><h3><span class="section-number">1.4.7. </span>Integer Bit-Width<a class="headerlink" href="#integer-bit-width" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">-b</span></code> or <code class="docutils literal notranslate"><span class="pre">--bitwidth</span></code>, followed by
 either 0, 8, 16, 32, or 64.
@@ -749,16 +748,16 @@ its integer (<code class="docutils literal notranslate"><span class="pre">Z</spa
 When supplied with a non-zero parameter in <a class="reference internal" href="#symexe"><span class="std std-ref">Symbolic Execution Mode</span></a>,
 say <code class="docutils literal notranslate"><span class="pre">N</span></code>, Logika uses the ranged integer from -2 <sup>N - 1</sup>
 to 2 <sup>N -1</sup> - 1 for <code class="docutils literal notranslate"><span class="pre">Z</span></code> where over/under-flows are checked.</p>
-</div>
-<div class="section" id="symbol-conversion">
+</section>
+<section id="symbol-conversion">
 <span id="conversion"></span><h3><span class="section-number">1.4.8. </span>Symbol Conversion<a class="headerlink" href="#symbol-conversion" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">--ascii</span></code> and/or <code class="docutils literal notranslate"><span class="pre">--unicode</span></code>.
 If supplied, the input files will be converted to use ASCII and/or Unicode
 Logika symbols.
 Logika will then create new files at the same directory as the input files
 prefixed with <code class="docutils literal notranslate"><span class="pre">ascii-</span></code>/<code class="docutils literal notranslate"><span class="pre">unicode-</span></code>.</p>
-</div>
-<div class="section" id="c-translation">
+</section>
+<section id="c-translation">
 <span id="ctranslation"></span><h3><span class="section-number">1.4.9. </span>C Translation<a class="headerlink" href="#c-translation" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">--c</span></code>, followed by a directory or a file path.
 If supplied, the input files will be translated to C along with supporting
@@ -770,8 +769,8 @@ are generated and execute:</p>
 make
 </pre></div>
 </div>
-</div>
-<div class="section" id="server-mode">
+</section>
+<section id="server-mode">
 <span id="server"></span><h3><span class="section-number">1.4.10. </span>Server Mode<a class="headerlink" href="#server-mode" title="Permalink to this headline">¶</a></h3>
 <p><strong>Command-Line Option</strong>: <code class="docutils literal notranslate"><span class="pre">--server</span></code></p>
 <p>The server mode puts Logika to accepts requests through
@@ -790,9 +789,9 @@ and
 <p class="admonition-title">Note</p>
 <p>All other options are ignored when the server mode is enabled.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
